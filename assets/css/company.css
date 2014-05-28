@@ -1,0 +1,133 @@
+
+
+/*suucess Buttons */
+.btn-success {
+    background-color: #85b81d;
+    border-color: #85b81d;
+    color: #FFFFFF;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+    background-color: #7aaa19;
+    border-color: #cccccc;
+
+    color: #FFFFFF;
+}
+
+.btn-success.disabled, .btn-success[disabled], fieldset[disabled] .btn-success, .btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover, .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus, .btn-success.disabled:active, .btn-success[disabled]:active, fieldset[disabled] .btn-success:active, .btn-success.disabled.active, .btn-success.active[disabled], fieldset[disabled] .btn-success.active {
+    background-color: #8cc121;
+    border-color: #8cc121;
+}
+
+
+/* Notifaction ausschalten ANFANG*/
+
+#notification {
+ color: #ffffff;
+display: none;
+}
+
+.alert-warning {
+    background-color: #b30425;
+    border-color: #FBEED5;
+    color: #ffffff;
+}
+
+.alert-success {
+    background-color: #85B81D;
+    border-color: #FBEED5;
+    color: #ffffff;
+}
+
+.alert-danger {
+    background-color: #b30425;
+    border-color: #FBEED5;
+    color: #ffffff;
+}
+
+/* Notifaction ausschalten Ende*/
+
+
+
+
+/* STERN Plichtfeld Anfang*/
+.stern{
+color:#b82f1d;
+font-size:1.3em;
+margin-top:-2px;
+
+};
+
+.label-danger {
+    background-color: #D9534F;
+}
+.label {
+    border-radius: 0.0em;
+    color: #FFFFFF;
+    display: inline;
+   
+    font-weight: bold;
+    line-height: 1;
+    padding: 0.2em .3em 0.3em;
+    text-align: center;
+	vertical-align: top !important;
+    white-space: nowrap;
+	
+}
+/* STERN Plichtfeld Ende*/
+
+/*Warenkorb ANFANG*/
+
+
+.warenkorb{
+background-color:#85b81d; 
+border: 0px solid #B3B2B2; 
+padding:3px; 
+color:#ffffff;
+list-style: none!important;
+  position: relative;
+  float: left;    
+  -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:0;
+    bottom:0;
+    left:0px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+	 width: 100%;
+};
+
+.warenkorbul ul   {
+   float: left;   
+   list-style: none!important;
+   color:#ffffff !important;
+border: 0px solid #B3B2B2; 
+}
+
+div.hr {
+  height: 3px;
+  background: #fff url(hr1.gif) no-repeat scroll center;
+}
+div.hr hr {
+  display: none;
+};
+
+
+
+/* Warenkorb ENDE*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
