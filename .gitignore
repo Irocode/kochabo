@@ -12,3 +12,5 @@ Thumbs.db
 /app/storage/cache
 /app/storage/sessions
 /app/storage/views
+/app/config
+/jquery-file-upload/server/php
