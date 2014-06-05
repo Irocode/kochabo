@@ -101,7 +101,6 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin', 
 Route::get('/', array('as' => 'admin.dashboard', function () {
 return View::make('backend/_layout/dashboard')->with('active', 'home');
 }));
-
 //articles
 Route::resource('article', 'ArticleController');
 Route::get('article/{id}/delete', array('as' => 'admin.article.delete', 'uses' => 'ArticleController@confirmDestroy'))
@@ -130,6 +129,9 @@ Route::get('page/{id}/delete', array('as' => 'admin.page.delete', 'uses' => 'Pag
 Route::resource('photo_gallery', 'PhotoGalleryController');
 Route::get('photo_gallery/{id}/delete', array('as' => 'admin.photo_gallery.delete', 'uses' => 'PhotoGalleryController@confirmDestroy'))
 ->where('id', '[0-9]+');
+
+
+
 // file upload photo gallery
 Route::post('/photo-gallery/upload/{id}', array('as' => 'admin.photo.gallery.upload.image', 'uses' => 'PhotoGalleryController@upload'))
 ->where('id', '[0-9]+');
@@ -162,17 +164,30 @@ Route::post('form-post/{id}/toggle-answer', array('as' => 'admin.form-post.toggl
 // settings
 Route::get('/settings', array('as' => 'admin.settings', 'uses' => 'SettingController@index'));
 Route::post('/settings', array('as' => 'admin.settings.save', 'uses' => 'SettingController@save'), array('before' => 'csrf'));
-// customer
+//products
+Route::resource('products', 'ProductsController');
+////products AJAX INDEX Tablesorter
+Route::get('tablesorter_products_index', array('as'=>'admin.products.data', 'uses'=>'AjaxController@getDatatable_products'));
+// photo galleryProducts
+Route::resource('photo_gallery_products', 'PhotoGalleryProductsController');
+
+Route::get('products/{id}/delete', array('as' => 'admin.products.delete', 'uses' => 'ProductsController@confirmDestroy'))
+->where('id', '\d+');
+
 Route::resource('customer', 'CustomerController');
+////customer AJAX INDEX Tablesorter
+Route::get('tablesorter_customer_index', array('as'=>'admin.customer.data', 'uses'=>'AjaxController@getDatatable_customer'));
 Route::get('customer/{id}/delete', array('as' => 'admin.customer.delete', 'uses' => 'CustomerController@confirmDestroy'))
 ->where('id', '\d+');
 // addresses customer
 Route::resource('address', 'AddressController');
+Route::get('tablesorter_address_index', array('as'=>'admin.address.data', 'uses'=>'AjaxController@getDatatable_address'));
 Route::get('address/{id}/delete', array('as' => 'admin.address.delete', 'uses' => 'AddressController@confirmDestroy'))
 ->where('id', '\d+');
 //Logistician Manager
 Route::resource('logisticianmanager', 'LogisticianmanagerController');
-Route::get('data_index_logisticianmanager', array('as'=>'admin.logisticianmanager.data', 'uses'=>'Logisticianmanager_sefa_free_Controller@getDatatable'));
+////Logistician Manager AJAX INDEX Tablesorter
+Route::get('tablesorter_logisticianmanager_index', array('as'=>'admin.logisticianmanager.data', 'uses'=>'AjaxController@getDatatable_logisticianmanager'));
 Route::get('logisticianmanager/{id}/delete', array('as' => 'admin.logisticianmanager.delete', 'uses' => 'LogisticianmanagerController@confirmDestroy'))
 ->where('id', '\d+');
 ////Logistician with zipcode and Deliverytimes (GROUP)
@@ -195,6 +210,7 @@ Route::get('deliverytimes/{id}/delete', array('as' => 'admin.deliverytimes.delet
 // Deliverytimes End
 // Deliveryzipcode create and validate
 Route::resource('deliveryzipcode', 'DeliveryzipcodeController');
+Route::get('tablesorter_deliveryzipcode_index', array('as'=>'admin.deliveryzipcode.data', 'uses'=>'AjaxController@getDatatable_deliveryzipcode'));
 Route::get('deliveryzipcode/{id}/delete', array('as' => 'admin.deliveryzipcode.delete', 'uses' => 'DeliveryzipcodeController@confirmDestroy'))
 ->where('id', '\d+');
 // deliveryassign Startpage Dummy
@@ -233,6 +249,52 @@ Route::get('menu/{id}/delete', array('as' => 'admin.menu.delete', 'uses' => 'Men
 ->where('id', '[0-9]+');
 Route::post('menu/{id}/toggle-publish', array('as' => 'admin.menu.toggle-publish', 'uses' => 'MenuController@togglePublish'))
 ->where('id', '[0-9]+');
+
+
+//Lists
+Route::resource('list_bundesland', 'List_BundeslandController');
+Route::get('list_bundesland/{id}/delete', array('as' => 'admin.list.list_bundesland.delete', 'uses' => 'List_BundeslandController@confirmDestroy'))
+->where('id', '[0-9]+');
+Route::resource('list_abotyp', 'List_AbotypController');
+Route::get('list_abotyp/{id}/delete', array('as' => 'admin.list.list_abotyp.delete', 'uses' => 'List_AbotypController@confirmDestroy'))
+->where('id', '[0-9]+');
+Route::resource('list_gruppe', 'List_GruppeController');
+Route::get('list_gruppe/{id}/delete', array('as' => 'admin.list.list_gruppe.delete', 'uses' => 'List_GruppeController@confirmDestroy'))
+->where('id', '[0-9]+');
+Route::resource('list_status', 'List_StatusController');
+Route::get('list_status/{id}/delete', array('as' => 'admin.list.list_status.delete', 'uses' => 'List_StatusController@confirmDestroy'))
+->where('id', '[0-9]+');
+
+Route::resource('list_ust', 'List_UstController');
+Route::get('list_ust/{id}/delete', array('as' => 'admin.list.list_ust.delete', 'uses' => 'List_UstController@confirmDestroy'))
+->where('id', '[0-9]+');
+
+Route::resource('list_type', 'List_TypeController');
+Route::get('list_type/{id}/delete', array('as' => 'admin.list.list_type.delete', 'uses' => 'List_TypeController@confirmDestroy'))
+->where('id', '[0-9]+');
+
+Route::resource('list_recipe_type', 'List_Recipe_typeController');
+Route::get('list_recipe_type/{id}/delete', array('as' => 'admin.list.list_recipe_type.delete', 'uses' => 'List_Recipe_typeController@confirmDestroy'))
+->where('id', '[0-9]+');
+
+
+//Filters
+//Select Fields logisticianmanager
+Route::get('list_settings_logisticianmanager', function()
+{
+return View::make('backend.lists.index_list_settings_logisticianmanager');
+});
+//Select Fields customer
+Route::get('list_settings_customer', function()
+{
+return View::make('backend.lists.index_list_settings_customer');
+});
+//Select Fields products
+Route::get('list_settings_products', function()
+{
+return View::make('backend.lists.index_list_settings_products');
+});
+
 // log
 Route::any('log', ['as'=>'admin.log', 'uses'=>'LogController@index']);
 
@@ -485,6 +547,18 @@ return View::make('home');
 |-----------------------------------------------------------------------------------------------------------------------------------
 */
 
+// Select Listen
+View::share ('list_bundesland',List_Bundesland::all());
+View::share ('list_currency',List_Currency::all());
+View::share ('list_gruppe',List_Gruppe::all());
+View::share ('list_status',List_Status::all());
+View::share ('list_abotyp',List_Abotyp::all());
+View::share ('list_type',List_Type::all());
+View::share ('list_recipe_type',List_Recipe_type::all());
+View::share ('list_ust',List_Ust::all());
+
+
+
 //Wichtig damit Daten überall ankommen
 //importent for Share Data from Footer 
 View::share ('footer',Footer::all());
@@ -497,9 +571,21 @@ View::share ('kochabobox',Kochabobox::all());
 View::share ('offer',Offer::all());
 View::share ('ausgabe',Users::all());
 View::share ('ausgabenl',Newsletter::all());
+
 Route::get('/home',function() {
 return View::make('home');
 });
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*

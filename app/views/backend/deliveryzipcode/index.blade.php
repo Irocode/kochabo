@@ -1,136 +1,183 @@
 @extends('backend/_layout/layout')
 @section('content')
+{{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
 
+{{ Notification::showAll() }}
 <div class="container">
-   {{ Notification::showAll() }}
    <div class="panel panel-default">
       <div class="panel-heading">
-         <h3 class="panel-title">Liefergebiete hinzufügen</h3>
+              <h3 class="panel-title">Liefergebiete hinzufügen</h3>
       </div>
-
-
-
-
       <div class="panel-body">
          <div class="pull-left">
             <div class="btn-toolbar">
-               <!--<a href="{{ URL::route('admin.deliveryzipcode.create') }}" class="btn btn-u">
-               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Kunden Adresse
-               </a>
-               -->
-               <a href="{{ URL::route('admin.deliveryzipcode.create') }}" class="btn btn-u">
+                <a href="{{ URL::route('admin.deliveryzipcode.create') }}" class="btn btn-u">
                <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Postleitzahl anlegen
                </a>
             </div>
          </div>
-         <br>
-         <br>
+                <div class="pull-right">
+            <div class="btn-toolbar">
+<!--
+               <a href="{{URL::to('admin/list_settings_customer')}}" class="btn btn-u">
+               <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter Settings
+               </a>     
 
-
-{{ Form::open(array( 'keyword'=>'form_postleitzahl', 'action' => 'App\Controllers\Admin\SearchbackenddeliveryzipcodeController@search')) }}
-<div class="row">
-
-  <div class="col-md-4">
-    
-
-      
-            <div class="search-open">
-               <div class="input-group">
-
-                    <!--   <form action="" method="POST" id="form_postleitzahl">-->
-               
-              {{ Form::text('keyword', null, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'Postleitzahl Suche', 'value'=>Input::old('keyword'))) }}      
-         
-                     
-                  <span class="input-group-btn">
-                  <button class="btn-u" type="submit">Go</button><span id="flash"></span>   
-                  </span>
-               </div>
-               <!-- /input-group -->                     
+               -->          
             </div>
-              
-
-
-
-  </div>  <div class="col-md-2">  
-</div>  
-</div>  
-
- {{ Form::close() }}
-
-
-<div id="output_search"> </div>
+ </div>      
          <br>
+         <br>
+         <br>
+         <div class="table-responsive">
+            @if($deliveryzipcode->count())
+            <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
+            {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
+            {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
+            {{ HTML::script('assets/plugins/tablesorter/media/js/dataTables.bootstrap.js') }} 
+            {{ HTML::script('assets/plugins/tablesorter/TableTools-2.2.1/js/dataTables.tableTools.js') }} 
+            {{ HTML::style('assets/plugins/tablesorter/TableTools-2.2.1/css/dataTables.tableTools.css') }} 
+            <script type="text/javascript" language="javascript" class="init">
+               $(document).ready(function() {
+                $(document).ready(function() {         
+    lightbox('Wird geladen');          
+    setTimeout(function() {          
+   closeLightbox();   
+    },690);    });
+             
+                   var table = $('#example').DataTable(
+               
+                    {
+               
+               "order": [[ 0, "desc" ]],
+               "language": {
+                               "url": "{{URL::to('assets/plugins/tablesorter/media/german.json')}}"
+                           },
+               
+               
+                       "sDom": 'T<"clear">lfrtip',
+                       "oTableTools": {
+                         "sRowSelect": "multi",
+                          "sSwfPath": "{{URL::to('assets/plugins/tablesorter/TableTools-2.2.1/swf/copy_csv_xls_pdf.swf')}}",
+                           "aButtons": [
+               
+                              
+                               {
+                                   "sExtends": "copy",
+                                    "mColumns":[1,2,3],
+                                   "bFooter": false,    
+                                   "sButtonText": "Zwischenablage",
+                                    "bSelectedOnly": true
+                               },
+                               {
+                                   "sExtends": "csv",  
+                                   "mColumns":[1,2,3],
+                                   "bFooter": false,    
+
+                                   "sFileName": "Postleitzahl.csv",
+                                    "mColumns":[1,2,3],
+                                   "bFooter": false,    
+                                   "sButtonText": "CSV speichern",
+                                   "bSelectedOnly": true
+                                  
+                               },
+                            
+                               {
+                                   "sExtends": "pdf",
+                                    "sFileName": "Postleitzahl.pdf",
+                                   "sButtonText": "PDF speichern",
+                                   "bSelectedOnly": true                             
+                           
+               
+                               },
+                                {
+                                   "sExtends": "print",
+                                   "sButtonText": "Drucken"
+                               },
+                           ]
+               
+                       },  
+               
+                            
+               
+                       "ajax": "tablesorter_deliveryzipcode_index",
+               
+               
+                       "deferRender": true,
+                       "columnDefs": [ {          
+               
+                       },   
+                {
+                          
+               
+                       }
+               
+               
+                        ],
+                   } );
+               
+               
+               
+               // Apply the filter
+               $("#example tfoot input ").on( 'keyup change ', function () {
+               table
+               .column( $(this).parent().index()+':visible' )
+               .search( this.value )
+               .draw();
+               } );           
+               // Apply the filter
+               $("#example tfoot select ").on( 'keyup change ', function () {
+               table
+               .column( $(this).parent().index()+':visible' )
+               .search( this.value )
+               .draw();
+               } );      
+               
+               
+               } );
+               
+               
+            </script>
+            <table id="example" class="display" cellspacing="0" width="100%">
+               <thead>
+                  <tr>
 
 
 
-</div></div></div>
+                  <th>ID</th>
+                     <th>Postleitzahl</th>
+                       <th>Erstellt am</th>
+                         <th>Update am</th>
+                             <th>Bearbeiten</th>
+                  </tr>
+               </thead>
+               <tfoot>
+                  <tr>
+                     <th rowspan="1" colspan="1">
+                     <input class="form-control" type="text" placeholder="Filter ID">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                     <input class="form-control" type="text" placeholder="Filter PLZ">
+                     </th>
+                  
+                    
+                  
 
 
-<div class="container">
- 
-
-     <div class="panel panel-default">
-      <div class="panel-heading">
-         <h3 class="panel-title">Postleitzahlen</h3>
-      </div>  </div>  
-
-
-
- <div class="row">
-         @if($deliveryzipcode->count())
-         @foreach( $deliveryzipcode as $v ) 
-<div class="col-md-4">
-<div class="row">
-
-<div class="col-md-2">
-<a class="btn-u "> {{{ $v->zip }}}</a>
-</div>
-
-<div class="col-md-2">
-  <a class="btn-u btn-u-red" href="{{ URL::route('admin.deliveryzipcode.delete', array($v->id)) }}">Löschen</a><br>   <br>       
-</div>
-   </div>
-  </div>
-  @endforeach
-         @else
-         <div class="alert alert-danger">Keine Postleitzahl gefunden</div>
-         @endif
-
-
+                     <th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"></th>
+                  </tr>
+               </tfoot>
+               <tfoot>
+                
+               </tfoot>
+            </table>
+         </div>
       </div>
-    </div> 
-
-
-<div class="container">
-      <!-- Plichtfeld Anfang -->
-
-<div  style="margin-top:20px; margin-bottom:10px;">
-<p><span class="stern" >*</span> Plichtfelder müssen ausgefüllt werden. </p>
-</div>
- <!-- Plichtfeld Ende -->
-
-
-
-   <div class="pull-left">
-      <ul class="pagination">
-         {{ $deliveryzipcode->links() }}
-      </ul>
+      @else
+      <div class="alert alert-danger">Keine Daten vorhanden</div>
+      @endif
    </div>
-
-
-
-
 </div>
-
-
-
-
-           
-         
-    
-
-
-
+</div>
 
 @stop

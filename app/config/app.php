@@ -118,6 +118,7 @@ return array(
 		'Authority\Service\Form\FormServiceProvider',
         'Chumper\Datatable\DatatableServiceProvider',
         'Bllim\Datatables\DatatablesServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
         
     ),
 
@@ -192,7 +193,8 @@ return array(
         'LogViewer'    => 'Sefa\Facades\LogViewer',
         'Datatable'    => 'Chumper\Datatable\Facades\DatatableFacade',
         'Datatables'   => 'Bllim\Datatables\Datatables',
-          
+        'Image' => 'Intervention\Image\Facades\Image',
+        
 
     ),
 

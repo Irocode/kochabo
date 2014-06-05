@@ -172,14 +172,14 @@
    {{ Form::submit('Logistiker anlegen', array('class' => 'btn btn-u')) }}
    {{ Form::close() }}
 
-      <!-- Plichtfeld Anfang -->
+   
      
-   <!-- Plichtfeld Anfang -->
-     
+<!-- Plichtfeld Anfang -->     
 <div  style="margin-top:20px; margin-bottom:10px;">
 <p><span class="stern" >*</span> Plichtfelder müssen ausgefüllt werden. </p>
 </div>
  <!-- Plichtfeld Ende -->
+
 </div>
 
 

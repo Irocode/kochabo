@@ -75,17 +75,6 @@ public function zip_logistiker_update () {
 
 // AJAX Calls-> deliverycalendar Ende
 
-// AJAX Call-> Index Logistmanager Start
-public function getDatatable() {  
-
-return View::make('backend.logisticianmanager.data');
-  //$logisticianmanager= Logisticianmanager::all();
-  //return Response::json($logisticianmanager);
- return Response::json(  Logisticianmanager::get(array('id','name', 'street','contactPerson','phone','email'))  );
-
-}
-// AJAX Call-> Index Logistmanager END
-
 
 /**
 * Show the form for creating a new resource.

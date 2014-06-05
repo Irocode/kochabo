@@ -112,7 +112,13 @@
    <div class="control-group {{ $errors->has('abotyp') ? 'has-error' : '' }}">
       <label class="control-label" for="abotyp">Abo Typ</label>
       <div class="controls">
-         {{ Form::text('abotyp', $customer->abotyp, array('class'=>'form-control', 'id' => 'abotyp', 'placeholder'=>'Abo Typ', 'value'=>Input::old('abotyp'))) }}
+           <select name="abotyp" class="form-control">
+                           <option value="{{$customer->abotyp}}" selected>{{$customer->abotyp}}</option>
+                          @foreach( $list_abotyp as $x )  
+                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach   
+               
+                        </select>
          @if ($errors->first('abotyp'))
          <span class="help-block">{{ $errors->first('abotyp') }}</span>
          @endif
@@ -157,12 +163,20 @@
       <label class="control-label" for="abostatus">Abo Status</label>
       <div class="controls">      
 
-  <select class="control-group" name="abostatus">
-  <option value="{{$customer->abostatus}}" selected>{{$customer->abostatus}}</option>
-  @foreach( $listabostatus as $x )  
-  
-   <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-   @endforeach
+
+
+
+
+ <select name="abostatus" class="form-control">
+                           <option value="{{$customer->abostatus}}" selected>{{$customer->abostatus}}</option>
+                          @foreach( $list_status as $x )  
+                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach   
+               
+                        </select>
+
+
+
  </select>        
    @if ($errors->first('abostatus'))
          <span class="help-block">{{ $errors->first('abostatus') }}</span>
@@ -185,7 +199,13 @@
    <div class="control-group {{ $errors->has('gruppen') ? 'has-error' : '' }}">
       <label class="control-label" for="gruppen">Gruppe</label>
       <div class="controls">
-         {{ Form::text('gruppen', $customer->gruppen, array('class'=>'form-control', 'id' => 'gruppen', 'placeholder'=>'Gruppe', 'value'=>Input::old('gruppen'))) }}
+       <select name="gruppen" class="form-control">
+                           <option value="{{$customer->gruppen}}" selected>{{$customer->gruppen}}</option>
+                          @foreach( $list_gruppe as $x )  
+                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach   
+               
+                        </select>
          @if ($errors->first('gruppen'))
          <span class="help-block">{{ $errors->first('gruppen') }}</span>
          @endif

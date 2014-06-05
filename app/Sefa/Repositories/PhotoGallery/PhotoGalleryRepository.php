@@ -4,6 +4,7 @@ use PhotoGallery;
 use File;
 use Config;
 use Photo;
+use Products;
 use Image;
 use Response;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
@@ -17,6 +18,7 @@ class PhotoGalleryRepository extends Validator implements BaseRepositoryInterfac
     protected $imgDir;
     protected $perPage;
     protected $photoGallery;
+    protected $products;
 
     /**
      * Rules
@@ -32,10 +34,10 @@ class PhotoGalleryRepository extends Validator implements BaseRepositoryInterfac
      * @var array
      */
     protected static $photoRules = [
-        'file' => 'mimes:jpg,jpeg,png|max:10000'
+        'file' => 'mimes:jpg,jpeg,png|max:40000'
     ];
 
-    public function __construct(PhotoGallery $photoGallery) {
+    public function __construct(PhotoGallery $photoGallery,Products $products) {
 
         $config = Config::get('sfcms');
         $this->perPage = $config['modules']['per_page'];
@@ -43,6 +45,7 @@ class PhotoGalleryRepository extends Validator implements BaseRepositoryInterfac
         $this->height = $config['modules']['photo_gallery']['thumb_size']['height'];
         $this->imgDir = $config['modules']['photo_gallery']['image_dir'];
         $this->photoGallery = $photoGallery;
+        $this->products = $products;
     }
 
     public function all() {
@@ -94,7 +97,7 @@ class PhotoGalleryRepository extends Validator implements BaseRepositoryInterfac
     public function destroy($id) {
 
         $photo_gallery = $this->photoGallery->find($id);
-
+         
         foreach ($photo_gallery->photos as $photo) {
 
             $destinationPath = public_path() . $this->imgDir;
@@ -136,13 +139,28 @@ class PhotoGalleryRepository extends Validator implements BaseRepositoryInterfac
                     ->save($destinationPath . "thumb_" . $fileName);
 
                 $photo_gallery = $this->photoGallery->find($id);
+
+
                 $image = new Photo;
+
+             
+             
                 $image->file_name = $fileName;
                 $image->file_size = $fileSize;
                 $image->title = explode(".", $fileName)[0];
                 $image->path = $this->imgDir . $fileName;
                 $image->type = "gallery";
                 $photo_gallery->photos()->save($image);
+
+                $products = $this->products->find($id);
+                $products->picurl = $fileName;
+                $products->picangelegt = 'ja';
+                $products->save();
+
+
+
+
+
                 return true;
             }
         }
@@ -150,11 +168,30 @@ class PhotoGalleryRepository extends Validator implements BaseRepositoryInterfac
     }
 
     public function deletePhoto($fileName) {
-
+       // $products = Products::where('picurl', '=', $file_name)->update(array('picurl' => 'empty'));    
+        Products::where('picurl', '=', $fileName)->update(array('picurl' => ''));
         Photo::where('file_name', '=', $fileName)->delete();
+      
+          
+        
+
         $destinationPath = public_path() . $this->imgDir;
         File::delete($destinationPath . $fileName);
         File::delete($destinationPath . "thumb_" . $fileName);
         return Response::json('success', 200);
     }
+
+
+
+
+ public function edit($id) {
+    	 	$photo_gallery = new PhotoGallery;
+    	 	 $this->photoGallery->save();
+
+
+
+
+}
+
+
 }

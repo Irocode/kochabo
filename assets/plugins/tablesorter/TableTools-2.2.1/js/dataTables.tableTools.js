@@ -2727,10 +2727,10 @@ TableTools.BUTTONS = {
 			var
 				lines = text.split('\n').length,
 				len = this.s.dt.nTFoot === null ? lines-1 : lines-2,
-				plural = (len==1) ? "" : "s";
-			this.fnInfo( '<h6>Table copied</h6>'+
-				'<p>Copied '+len+' row'+plural+' to the clipboard.</p>',
-				1500
+				plural = (len==1) ? "" : "n";
+			this.fnInfo( '<h6>Ausgewählter Bereich im Zwischenspeicher</h6>'+
+				'',
+				3800
 			);
 		}
 	} ),
@@ -2758,8 +2758,8 @@ TableTools.BUTTONS = {
 	} ),
 
 	"print": $.extend( {}, TableTools.buttonBase, {
-		"sInfo": "<h6>Print view</h6><p>Please use your browser's print function to "+
-		  "print this table. Press escape when finished.</p>",
+		"sInfo": "<h6>Druck Ansicht</h6><p>Bitte benutze die Druckfunktion deines Browsers "+
+		  "</p>",
 		"sMessage": null,
 		"bShowAll": true,
 		"sToolTip": "View print view",

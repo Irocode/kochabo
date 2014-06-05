@@ -5,7 +5,7 @@ use Sefa\Interfaces\BaseModelInterface as BaseModelInterface;
 class PhotoGallery extends BaseModel implements BaseModelInterface {
 
     public $table = 'photo_galleries';
-    public $fillable = ['title', 'content', 'is_published'];
+    public $fillable = ['title', 'id', 'content', 'products_id', 'is_published'];
     protected $appends = ['url'];
 
     public function photos() {

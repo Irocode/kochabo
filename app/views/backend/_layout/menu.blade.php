@@ -1,6 +1,6 @@
 @if (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
 <div class="navbar navbar-inverse navbar-fixed-top">
-   <div class="container">
+
       <div class="navbar-header">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
          <span class="icon-bar"></span>
@@ -71,8 +71,20 @@
                   <!--  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/deliverytimes') }}"><span class="glyphicon glyphicon-tasks"></span>Logistik Zeiten</a></li>-->
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/deliveryassign/1/group') }}"><span class="glyphicon glyphicon-list-alt"></span>Liefergebiete zuweisen</a></li>
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/deliverycalendar') }}"><span class="glyphicon glyphicon-calendar"></span>Lieferkalender</a></li>
+                
                </ul>
             </li>
+
+
+               <li class="dropdown {{ ((isset($active) && $active=='plugins') ? 'active' : '') }}">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cutlery"></span>Produkte <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+
+                  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/products') }}"><span class="glyphicon glyphicon-cutlery"></span>Produkte verwalten</a></li>
+               </ul>
+            </li>
+
+
          </ul>
          <ul class="nav navbar-nav navbar-right">
             <li @if(isset($active) && $active=="form-post") class="active" @endif><a href="{{ url('/admin/form-post') }}"><span class="glyphicon glyphicon-envelope"></span>Inbox <span class="label label-info">{{ $formPostCount }}</span></a></li>
@@ -81,7 +93,7 @@
          </ul>
       </div>
    </div>
-</div>
+
 <!--GLOBALE VARIABLE FÜR FTP jquery-file-upload -->
 <script>
    var urlpathdomain =window.location.host;

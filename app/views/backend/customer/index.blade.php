@@ -1,34 +1,8 @@
 @extends('backend/_layout/layout')
 @section('content')
-  {{ Notification::showAll() }}
-<script type="text/javascript">
-   $(document).ready(function () {
-   
-     
-     
-   
-       // publish settings
-       $(".publish").bind("click", function (e) {
-           var id = $(this).attr('id');
-           e.preventDefault();
-           $.ajax({
-               type: "POST",
-               url: "{{ url('/admin/customer/" + id + "/toggle-publish/') }}",
-               success: function (response) {
-                   if (response['result'] == 'success') {
-                       var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/img/backend/images/publish.png" : "{{url('/')}}/assets/img/backend/images/not_publish.png";
-                       $("#publish-image-" + id).attr('src', imagePath);
-                   }
-               },
-               error: function () {
-                   alert("error");
-               }
-           })
-       });
-   });
-</script>
+{{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
+{{ Notification::showAll() }}
 <div class="container">
-  
    <div class="panel panel-default">
       <div class="panel-heading">
          <h3 class="panel-title">Kunden verwalten</h3>
@@ -41,12 +15,126 @@
                </a>
             </div>
          </div>
+                <div class="pull-right">
+            <div class="btn-toolbar">
+
+               <a href="{{URL::to('admin/list_settings_customer')}}" class="btn btn-u">
+               <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter Settings
+               </a>               
+            </div>
+ </div>      
          <br>
          <br>
          <br>
-         @if($customer->count())
          <div class="table-responsive">
-            <table class="table table-striped">
+            @if($customer->count())
+            <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
+            {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
+            {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
+            {{ HTML::script('assets/plugins/tablesorter/media/js/dataTables.bootstrap.js') }} 
+            {{ HTML::script('assets/plugins/tablesorter/TableTools-2.2.1/js/dataTables.tableTools.js') }} 
+            {{ HTML::style('assets/plugins/tablesorter/TableTools-2.2.1/css/dataTables.tableTools.css') }} 
+            <script type="text/javascript" language="javascript" class="init">
+               $(document).ready(function() {
+                  $(document).ready(function() {         
+    lightbox('Wird geladen');          
+    setTimeout(function() {          
+   closeLightbox();   
+    },690);    });
+             
+                   var table = $('#example').DataTable(
+               
+                    {
+               
+               "order": [[ 0, "desc" ]],
+               "language": {
+                               "url": "{{URL::to('assets/plugins/tablesorter/media/german.json')}}"
+                           },
+               
+               
+                       "sDom": 'T<"clear">lfrtip',
+                       "oTableTools": {
+                         "sRowSelect": "multi",
+                          "sSwfPath": "{{URL::to('assets/plugins/tablesorter/TableTools-2.2.1/swf/copy_csv_xls_pdf.swf')}}",
+                           "aButtons": [
+               
+                              
+                               {
+                                   "sExtends": "copy",
+                                     "mColumns":[1,2,3,4,5,6,7,8],
+                                   "bFooter": false,
+                                   "sButtonText": "Zwischenablage",
+                                    "bSelectedOnly": true
+                               },
+                               {
+                                   "sExtends": "csv",  
+                                       "mColumns":[1,2,3,4,5,6,7,8],
+                                   "bFooter": false,                              
+                                   "sFileName": "Kunden.csv",
+                                   "sButtonText": "CSV speichern",
+                                   "bSelectedOnly": true
+                                  
+                               },
+                            
+                               {
+                                   "sExtends": "pdf",
+                                   "mColumns":[1,2,3,4,5,6,7,8],
+                                   "bFooter": false,
+                                    "sFileName": "Kunden.pdf",
+                                   "sButtonText": "PDF speichern",
+                                   "bSelectedOnly": true                             
+                           
+               
+                               },
+                                {
+                                   "sExtends": "print",
+                                   "sButtonText": "Drucken"
+                               },
+                           ]
+               
+                       },  
+               
+                            
+               
+                       "ajax": "tablesorter_customer_index",
+               
+               
+                       "deferRender": true,
+                       "columnDefs": [ {          
+               
+                       },   
+                {
+                          
+               
+                       }
+               
+               
+                        ],
+                   } );
+               
+               
+               
+               // Apply the filter
+               $("#example tfoot input ").on( 'keyup change ', function () {
+               table
+               .column( $(this).parent().index()+':visible' )
+               .search( this.value )
+               .draw();
+               } );           
+               // Apply the filter
+               $("#example tfoot select ").on( 'keyup change ', function () {
+               table
+               .column( $(this).parent().index()+':visible' )
+               .search( this.value )
+               .draw();
+               } );      
+               
+               
+               } );
+               
+               
+            </script>
+            <table id="example" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
                      <th>ID</th>
@@ -56,75 +144,70 @@
                      <th>Abo Box</th>
                      <th>Abo Lieferung</th>
                      <th>Abo Typ</th>
-                     <th>Abo Weine</th>
-                     <th>Abo Biere</th>
-                     <th>Anzahl Obstboxen</th>
-                     <th>Abo Status</th>
                      <th>Gruppen</th>
-                     <!--<th>Veröffentlichung</th>-->
+                     <th>Abo Status</th>
+                     <th>Bearbeiten</th>
                   </tr>
                </thead>
-               <tbody>
-                  @foreach( $customer as $v )
+               <tfoot>
                   <tr>
-                     <td> {{ link_to_route( 'admin.customer.edit', $v->id, $v->id, array( 'class' => 'btn btn-link btn-xs' )) }}</td>
-                     <td>{{{ $v->first_name }}}</td>
-                     <td>{{{ $v->last_name }}}</td>
-                     <td>{{{ $v->kundeseit }}}</td>
-                     <td>{{{ $v->abobox }}}</td>
-                     <td>{{{ $v->abolieferung }}}</td>
-                     <td>{{{ $v->abotyp }}}</td>
-                     <td>{{{ $v->aboweine }}}</td>
-                     <td>{{{ $v->abobiere }}}</td>
-                     <td>{{{ $v->anzahlobstboxen }}}</td>
-                     <td>{{{ $v->abostatus }}}</td>
-                     <td>{{{ $v->gruppen }}}</td>
-                     <td>
-                        <div class="btn-group">
-                           <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
-                           Aktion
-                           <span class="caret"></span>
-                           </a>
-                           <ul class="dropdown-menu">
-                              <li>
-                                 <a href="{{ URL::route('admin.customer.edit', array($v->id)) }}">
-                                 <span class="glyphicon glyphicon-edit"></span>&nbsp;{{{ $v->first_name }}} {{{ $v->last_name }}} <b>ansehen/bearbeiten</b>
-                                 </a>
-                              </li>
-                              <li class="divider"></li>
-                              <li>
-                                 <a href="{{ URL::route('admin.customer.delete', array($v->id)) }}">
-                                 <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;{{{ $v->first_name }}} {{{ $v->last_name }}}  <strong>löschen</strong>
-                                 </a>
-                              </li>
-                              <li class="divider"></li>
-                              <li>
-                                 <a href="{{ URL::route('admin.address.edit', array($v->id)) }}">
-                                 <span class="glyphicon glyphicon-edit"></span>&nbsp; <strong>Adresse von</strong> {{{ $v->first_name }}} {{{ $v->last_name }}}
-                                 </a>
-                              </li>
-                           </ul>
-                        </div>
-                     </td>
-                     <td>
-                        <!--  <a href="#" id="{{ $v->id }}" class="publish">
-                           <img id="publish-image-{{ $v->id }}" src="{{url('/')}}/assets/img/backend/images/{{ ($v->is_published) ? 'publish.png' : 'not_publish.png'  }}"/>
-                           </a>-->
-                     </td>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter ID">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Vorname">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Nachname">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Kunde seit">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Abobox">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Abo Lieferung">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <select name="select" class="form-control">
+                           <option value="" selected>Auswahl Abo Typ</option>
+                           @foreach( $list_abotyp as $x )  
+                           <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach   
+
+                        
+                        </select>
+                     <th rowspan="1" colspan="1">
+                        <select name="select" class="form-control">
+                           <option value="" selected>Auswahl Gruppe</option>
+                           @foreach( $list_gruppe as $x )  
+                           <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach   
+                    
+                        </select>
+                     <th rowspan="1" colspan="1">
+                        <select name="select" class="form-control">
+                           <option value="" selected>Auswahl Status</option>
+                          @foreach( $list_status as $x )  
+                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach   
+               
+                        </select>
+                     </th>
+                     <th rowspan="1" colspan="1"></th>
                   </tr>
-                  @endforeach
-               </tbody>
+               </tfoot>
+               <tfoot>
+                  
+               </tfoot>
             </table>
          </div>
-         @else
-         <div class="alert alert-danger">Keine Daten vorhanden</div>
-         @endif
       </div>
+      @else
+      <div class="alert alert-danger">Keine Daten vorhanden</div>
+      @endif
    </div>
-   <div class="pull-left">
-      <ul class="pagination">
-         {{ $customer->links() }}
-      </ul>
-   </div>
+</div>
 </div>
 @stop

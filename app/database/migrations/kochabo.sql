@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 23. Mai 2014 um 18:42
+-- Erstellungszeit: 04. Jun 2014 um 13:16
 -- Server Version: 5.5.36
 -- PHP-Version: 5.4.27
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `address` (
   `telephone_delivery` bigint(20) NOT NULL,
   `zip_delivery` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=140 ;
 
 --
 -- Daten für Tabelle `address`
@@ -82,12 +82,24 @@ INSERT INTO `address` (`id`, `user_id`, `address_delivery_bill`, `prefix`, `gend
 (16, 172, 'option1', '', 'Herr', 'Herr', 'Robert', 'Ginder', '', '', '', '', '', '', 0, 675555570, 0, '', '', '', '', '', 0, NULL, '2014-05-04 16:50:17', '2014-05-04 16:50:17', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
 (17, 173, 'option1', '', 'Frau', 'Frau', 'Maria', 'Holler', '', '', '', '', '', '', 0, 660335570, 0, '', '', '', '', '', 0, NULL, '2014-05-04 16:54:38', '2014-05-04 16:54:38', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
 (18, 174, 'option1', '', 'Herr', 'Herr', 'Herbert', 'Holler', '', '', '', '', '', '', 0, 680335570, 0, '', '', '', '', '', 0, NULL, '2014-05-04 16:58:03', '2014-05-04 16:58:03', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
-(19, 175, 'option1', '', 'Frau', 'Frau', 'Sandra', 'Meier', '', '', '', '', '', '', 0, 660335690, 0, '', '', '', '', '', 0, NULL, '2014-05-04 16:58:55', '2014-05-04 16:58:55', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
-(20, 176, 'option1', '', 'Herr', 'Herr', 'Dragan', ' 	Vukic', '', '', '', '', '', '', 0, 670332270, 0, '', '', '', '', '', 0, NULL, '2014-05-04 16:59:34', '2014-05-04 16:59:34', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
-(21, 178, 'option1', '', 'Herr', 'Herr', 'Markus', 'Reh', '', '', '', '', '', '', 0, 670335571, 0, '', '', '', '', '', 0, NULL, '2014-05-04 17:51:28', '2014-05-05 12:15:56', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(19, 175, 'option1', '', 'Frau', 'Frau', 'Sandra', 'Meier', '', '', 'Bahnhofstrase 7', 'Türnitz', 'Österreich', 'Niederösterreich', 4050, 660335690, 0, 'gara@fas.at', '', '', '', '', 0, NULL, '2014-05-04 16:58:55', '2014-05-30 11:52:39', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(20, 176, 'option1', '', 'Herr', 'Herr', 'Dragan', 'Vukic', '', '', 'Flummistrasse 8', 'Inssbruck', 'Österreich', 'Tirol', 7050, 670332270, 0, 'flummi@chello.at', '', '', '', '', 0, NULL, '2014-05-04 16:59:34', '2014-05-30 11:51:51', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(21, 178, 'option1', '', 'Herr', 'Herr', 'Markus', 'Reh', '', '', 'Steiergasse 7', 'Graz', 'Österreich', 'Steiermark', 5040, 670335571, 0, 'dffd@ddd.at', '', '', '', '', 0, NULL, '2014-05-04 17:51:28', '2014-05-30 11:51:00', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
 (22, 179, 'option2', '', 'Herr', 'Herr', 'Hans', 'Hahn', '', '', 'maunzstrasse', 'aaaaaa', 'aaaa', '', 0, 670335570, 0, '', '', '', '', '', 0, NULL, '2014-05-04 17:57:59', '2014-05-05 12:10:58', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
-(23, 180, 'option1', '', 'Herr', 'Herr', 'Jörg', 'Gruber', '', '', '', '', '', '', 0, 660335896, 0, '', '', '', '', '', 0, NULL, '2014-05-04 17:58:31', '2014-05-05 12:10:29', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
-(24, 181, 'option2', '', 'Herr', 'Herr', 'Mike', 'Röhrer', '', '--', 'Ganglweg 3', 'Wien', 'Österreich', 'Wien', 1220, 660660660, 6606060633, 'mike.roehrer@chello.at', '', '', '<p>Schnell essen</p>\r\n', '12.01.1972', 0, NULL, '2014-05-04 17:59:17', '2014-05-05 08:19:34', 0, 0, NULL, 'Wienx', '-', 'Österreichxx', '13.01.1977', '<p>danke</p>\r\n', 677733, 'ressi.roherer@chello.at', 'Ressi', 'Röhrerx', 'Wienxx', 'Ganglweg 3x', 6677777, 12200);
+(23, 180, 'option1', '', 'Herr', 'Herr', 'Jörg', 'Gruber', '', '', 'Meckerstrasse 3', 'Wien', 'Österreich', 'Wien', 1220, 660335896, 0, 'nee@dd,at', '', '', '', '', 0, NULL, '2014-05-04 17:58:31', '2014-05-30 11:49:56', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(24, 181, 'option2', '', 'Herr', 'Herr', 'Mike', 'Röhrer', '', '--', 'Ganglweg 3', 'Wien', 'Österreich', 'Wien', 1220, 660660660, 6606060633, 'mike.roehrer@chello.at', '', '', '<p>Schnell essen</p>\r\n', '12.01.1972', 0, NULL, '2014-05-04 17:59:17', '2014-05-05 08:19:34', 0, 0, NULL, 'Wienx', '-', 'Österreichxx', '13.01.1977', '<p>danke</p>\r\n', 677733, 'ressi.roherer@chello.at', 'Ressi', 'Röhrerx', 'Wienxx', 'Ganglweg 3x', 6677777, 12200),
+(26, 193, '', '', '', 'Herr', 'Bernd', 'Obendorfer', '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '06 Mai 2014', 0, NULL, '2014-05-30 12:16:10', '2014-05-30 12:27:26', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(27, 190, '', '', 'Herr', 'Herr', 'Richard', 'Ranz', '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', 0, NULL, '2014-05-30 12:25:31', '2014-05-30 12:25:31', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(28, 189, '', '', 'Herr', 'Herr', 'Robert', 'Meier', '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', 0, NULL, '2014-05-30 12:25:56', '2014-05-30 12:25:56', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(30, 194, '', '', '', 'Herr', 'Eier', 'Kopf', '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '31 Mai 2014', 0, NULL, '2014-05-30 12:30:19', '2014-05-30 12:30:19', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(31, 191, '', '', '', 'Herr', 'Ralsfi', 'Meier', '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', 0, NULL, '2014-05-30 12:27:26', '2014-05-30 12:27:26', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(132, 188, '', '', '', 'Herr', 'Richard', 'Meier', '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(134, 184, '', '', 'Herr', 'Herr', 'Flocki', 'Vukic', 'Meier', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(135, 182, '', '', 'Herr', 'Herr', 'Mauki', 'Vukic', '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(136, 186, '', '', '', 'Herr', 'Mauniz', 'Vukic', '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(137, 183, '', '', 'Herr', 'Herr', 'Mauniz', 'Vukic', '', '', '', '', '', '', 0, 0, 0, 'ddd', '', '', '', '', 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(138, 185, '', '', 'Frau', 'Frau', 'Sandra', 'Meier', '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0),
+(139, 187, '', '', '', 'Frau', 'Sandra', 'Meier', '', '', '', '', '', '', 0, 0, 0, '', '', '', '', '', 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, NULL, '', '', '', '', '', 0, '', '', '', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -312,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `is_published` tinyint(1) NOT NULL,
   `gender` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=182 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=195 ;
 
 --
 -- Daten für Tabelle `customers`
@@ -329,7 +341,19 @@ INSERT INTO `customers` (`id`, `first_name`, `last_name`, `datetime`, `kundeseit
 (178, 'Markus', 'Reh', '', '13.01.1999', '4P-5R-C', '23.04.2014', 'Einwöchig', '0', '1', '1', 'Aktiv', 'General', '2014-05-04 17:51:28', '2014-05-04 19:15:57', 0, 'Herr'),
 (179, 'Hans', 'Hahn', '', '03.05.2010', '2P-3R-C', '05.05.2014', 'Einwöchig', '0', '1', '1', 'Aktiv', 'General', '2014-05-04 17:57:59', '2014-05-04 17:59:33', 0, 'Herr'),
 (180, 'Jörg', 'Gruber', '', '02.05.2010', '2P-3R-C', '05.05.2014', 'Einwöchig', '1', '1', '1', 'Aktiv', 'General', '2014-05-04 17:58:31', '2014-05-04 17:58:31', 0, 'Herr'),
-(181, 'Mike', 'Röhrer', '', '01.02.2010', '4P-3R-C', '10.05.2014', 'Einwöchig', '0', '0', '0', 'Aktiv', 'General', '2014-05-04 17:59:17', '2014-05-04 17:59:17', 0, 'Herr');
+(181, 'Mike', 'Röhrer', '', '01.02.2010', '4P-3R-C', '10.05.2014', 'Einwöchig', '0', '0', '0', 'Aktiv', 'General', '2014-05-04 17:59:17', '2014-05-04 17:59:17', 0, 'Herr'),
+(182, 'mauki', 'Vukic', '', '02.04.2014', '1P-5R-C', '05.05.2014', 'Einwöchig', '1', '0', '1', 'Aktiv', 'Retailer', '2014-05-04 16:59:34', '2014-05-04 16:59:34', 0, 'Herr'),
+(183, 'Mauniz', 'Vukic', '', '02.04.2014', '1P-5R-C', '05.05.2014', 'Einwöchig', '1', '0', '1', 'Aktiv', 'Retailer', '2014-05-04 16:59:34', '2014-05-04 16:59:34', 0, 'Herr'),
+(184, 'Flocki', 'Vukic', '', '02.04.2014', '1P-5R-C', '05.05.2014', 'Kein Abo', '1', '0', '1', 'Aktiv', 'Retailer', '2014-05-04 16:59:34', '2014-05-04 16:59:34', 0, 'Herr'),
+(185, 'Sandra', 'Meier', '', '01.05.2014', '3P-5R-C', '05.05.2014', 'Gesperrt', '1', '0', '1', 'Aktiv', 'General', '2014-05-04 16:58:55', '2014-05-04 16:58:55', 0, 'Frau'),
+(186, 'Mike', 'Röhrer', '', '01.02.2010', '4P-3R-C', '10.05.2014', 'Einwöchig', '0', '0', '0', 'Inaktiv', 'Allianz', '2014-05-04 17:59:17', '2014-05-04 17:59:17', 0, 'Herr'),
+(187, 'Sandra', 'Meier', '', '01.05.2014', '3P-5R-C', '05.05.2014', 'Vierwöchig', '1', '0', '1', 'Pausiert', 'Retailer', '2014-05-04 16:58:55', '2014-05-04 16:58:55', 0, 'Frau'),
+(188, 'Richard', 'Meier', '', '01.05.2014', '3P-5R-C', '05.05.2014', 'Vierwöchig', '1', '0', '1', 'Pausiert', 'Deleted', '2014-05-04 16:58:55', '2014-05-04 16:58:55', 0, 'Frau'),
+(189, 'Robert', 'Meier', '', '01.05.2014', '3P-5R-C', '05.05.2014', 'Einmalig', '1', '0', '1', 'Pausiert', 'Keine Mails', '2014-05-04 16:58:55', '2014-05-04 16:58:55', 0, 'Frau'),
+(190, 'Richard', 'Ranz', '', '01.05.2014', '3P-5R-C', '05.05.2014', 'Vierwöchig', '1', '0', '1', 'Pausiert', 'Deleted', '2014-05-04 16:58:55', '2014-05-04 16:58:55', 0, 'Frau'),
+(191, 'Ralsfi', 'Meier', '', '01.05.2014', '3P-5R-C', '05.05.2014', 'Einmalig', '1', '0', '1', 'Pausiert', 'Keine Mails', '2014-05-04 16:58:55', '2014-05-04 16:58:55', 0, 'Frau'),
+(193, 'Bernd', 'Obendorfer', '06 Mai 2014', '', '55dd5', '', 'Vierwöchig', '', '', '', 'Flash Sale Produkt', 'Wholesale', '2014-05-30 12:16:10', '2014-05-30 12:27:26', 0, 'Herr'),
+(194, 'Eier', 'Kopf', '31 Mai 2014', 'Immer', 'Keine', 'Klar', 'Zweiwöchig', '1', '2', '3', 'Pausiert', 'Existing Customers', '2014-05-30 12:30:18', '2014-05-30 12:30:18', 0, 'Herr');
 
 -- --------------------------------------------------------
 
@@ -815,26 +839,205 @@ INSERT INTO `kochabobox` (`id`, `title`, `content`, `slug`, `datetime`, `created
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `listabostatus`
+-- Tabellenstruktur für Tabelle `list_abotyp`
 --
 
-CREATE TABLE IF NOT EXISTS `listabostatus` (
+CREATE TABLE IF NOT EXISTS `list_abotyp` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `bezeichnung` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Daten für Tabelle `listabostatus`
+-- Daten für Tabelle `list_abotyp`
 --
 
-INSERT INTO `listabostatus` (`id`, `bezeichnung`) VALUES
-(1, 'Inaktiv'),
-(3, 'Aktiv'),
-(4, 'Pausiert'),
-(5, 'Kein Abo'),
-(6, 'Gutschein'),
-(7, 'Flash Sale Produkt');
+INSERT INTO `list_abotyp` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
+(1, 'Einmalig', '2014-05-30 12:59:34', '2014-05-30 10:59:34'),
+(3, 'Einwöchig ', '2014-05-30 12:59:54', '2014-05-30 10:59:54'),
+(4, 'Zweiwöchig', '2014-05-30 13:00:31', '2014-05-30 11:00:31'),
+(5, 'Vierwöchig', '2014-05-30 13:01:09', '2014-05-30 11:01:09'),
+(6, 'Kein Abo', '2014-05-30 13:00:59', '2014-05-30 11:00:59');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `list_bundesland`
+--
+
+CREATE TABLE IF NOT EXISTS `list_bundesland` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `bezeichnung` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Daten für Tabelle `list_bundesland`
+--
+
+INSERT INTO `list_bundesland` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
+(1, 'Wien', '2014-05-30 13:03:04', '2014-05-30 11:03:04'),
+(3, 'Niederösterreich', '2014-05-30 13:03:11', '2014-05-30 11:03:11'),
+(4, 'Kärnten', '2014-05-30 13:03:19', '2014-05-30 11:03:19'),
+(5, 'Salzburg', '2014-05-30 13:03:26', '2014-05-30 11:03:26'),
+(6, 'Tirol', '2014-05-30 13:03:40', '2014-05-30 11:03:40'),
+(7, 'Steiermark', '2014-05-30 13:03:48', '2014-05-30 11:03:48'),
+(8, 'dfdaf', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `list_currency`
+--
+
+CREATE TABLE IF NOT EXISTS `list_currency` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `bezeichnung` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Daten für Tabelle `list_currency`
+--
+
+INSERT INTO `list_currency` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
+(1, 'EUR', '2014-05-30 13:03:04', '2014-05-30 11:03:04'),
+(3, 'CHF', '2014-05-30 13:03:11', '2014-05-30 11:03:11'),
+(4, 'USD', '2014-05-30 13:03:19', '2014-05-30 11:03:19');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `list_gruppe`
+--
+
+CREATE TABLE IF NOT EXISTS `list_gruppe` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `bezeichnung` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Daten für Tabelle `list_gruppe`
+--
+
+INSERT INTO `list_gruppe` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
+(1, 'General', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Wholesale', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Retailer', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'Existing Customers', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Deleted', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'Allianz', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 'Gesperrt', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 'Keine E-Mails', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 'Gesperrt', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 'Keine E-Mails', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'Top Customer', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `list_recipe_type`
+--
+
+CREATE TABLE IF NOT EXISTS `list_recipe_type` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `bezeichnung` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Daten für Tabelle `list_recipe_type`
+--
+
+INSERT INTO `list_recipe_type` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
+(1, 'Classic', '2014-05-30 12:59:34', '2014-05-30 10:59:34'),
+(3, 'Veggie ', '2014-05-30 12:59:54', '2014-05-30 10:59:54'),
+(4, 'Vegan', '2014-05-30 13:00:31', '2014-05-30 11:00:31');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `list_status`
+--
+
+CREATE TABLE IF NOT EXISTS `list_status` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `bezeichnung` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Daten für Tabelle `list_status`
+--
+
+INSERT INTO `list_status` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
+(1, 'Inaktiv', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Aktiv', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Pausiert', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'Kein Abo', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Gutschein', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'Flash Sale Produkt', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 'ddd', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `list_type`
+--
+
+CREATE TABLE IF NOT EXISTS `list_type` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `bezeichnung` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Daten für Tabelle `list_type`
+--
+
+INSERT INTO `list_type` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
+(1, 'KochAbo-Box', '2014-05-30 12:59:34', '2014-05-30 10:59:34'),
+(3, 'Obstbox', '2014-05-30 12:59:54', '2014-05-30 10:59:54'),
+(4, 'Geschenkgutschein', '2014-05-30 13:00:31', '2014-05-30 11:00:31');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `list_ust`
+--
+
+CREATE TABLE IF NOT EXISTS `list_ust` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `bezeichnung` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Daten für Tabelle `list_ust`
+--
+
+INSERT INTO `list_ust` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
+(1, '20', '2014-05-30 12:59:34', '2014-05-30 10:59:34'),
+(3, '19', '2014-05-30 12:59:54', '2014-05-30 10:59:54'),
+(7, '2,5', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, '8', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -888,7 +1091,7 @@ CREATE TABLE IF NOT EXISTS `logisticianmanager` (
   `is_published` tinyint(1) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=188 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=205 ;
 
 --
 -- Daten für Tabelle `logisticianmanager`
@@ -899,7 +1102,23 @@ INSERT INTO `logisticianmanager` (`id`, `street`, `streetno`, `city`, `stateprov
 (10, 'Golfgasse 3', '\r\n', 'Wien', 'Wien', 1220, 'Österreich', 'Rolf Niemand', 'rolf.niemand@chello.at', '06655565569', '2014-04-19 02:02:36', '2014-05-07 14:11:51', 0, 'Niemand GmbH'),
 (171, 'Meiergasse 5', '\r\n', 'Salzburg Stadt', 'Salzburg', 5020, 'Österreich', 'Margit Zeigelt', 'm.zweigelt@chello.at', '05/5656569', '2014-05-04 15:59:17', '2014-05-07 14:12:40', 0, 'Zeigelt Logistics'),
 (186, 'Gonzigasse 7', '', 'Insbruck', 'Tirol', 7020, 'Österreich', 'Hr Markus Fritzberger', 'markus.fritzberger@chello.at', '01/504565a', '2014-05-06 19:37:06', '2014-05-11 16:58:05', 0, 'Mutzifatzi GmbH'),
-(187, 'adsf', '', 'asfd', 'asdfads', 0, 'adsfdsaf', 'asdf', '', 'asdf', '2014-05-11 16:59:06', '2014-05-18 16:24:09', 0, 'asdf');
+(187, 'franzimaunzgasse 7', '', 'St Pölten', 'Österreich', 5040, 'adsfdsaf', 'Frau Miki', '', '06606060', '2014-05-11 16:59:06', '2014-05-18 16:24:09', 0, 'Arg KG'),
+(188, 'Meiergasse 5', '\r\n', 'Salzburg Stadt', 'Salzburg', 5020, 'Österreich', 'Margit Zeigelt', 'm.zweigelt@chello.at', '05/5656569', '2014-05-04 15:59:17', '2014-05-07 14:12:40', 0, 'Zeigelt Logistics'),
+(189, 'Gonzigasse 7', '', 'Insbruck', 'Tirol', 8020, 'Österreich', 'Hr Markus Fritzberger', 'markus.fritzberger@chello.at', '01/504565a', '2014-05-06 19:37:06', '2014-05-11 16:58:05', 0, 'Mutzifatzi GmbH'),
+(190, 'kauzgasse', '\r\n', 'Salzburg Stadt', 'Salzburg', 5020, 'Österreich', 'Margit Zeigelt', 'm.zweigelt@chello.at', '05/5656569', '2014-05-04 15:59:17', '2014-05-07 14:12:40', 0, 'Zeigelt Logistics'),
+(191, 'Rachgasse 4', '\r\n', 'Wien', 'Wien', 1220, 'Österreich', 'Rolf maka', 'rolf.niemand@chello.at', '06655565569', '2014-04-19 02:02:36', '2014-05-07 14:11:51', 0, 'Niemand GmbH'),
+(193, 'fuchsgasse 8', '', 'Kärnten', 'Tirol', 7020, 'Österreich', 'Hr Markus Fritzberger', 'markus.fritzberger@chello.at', '01/504565a', '2014-05-06 19:37:06', '2014-05-11 16:58:05', 0, 'mualilaug GmbH'),
+(194, 'rudolfgasse 7', '', 'Graz', 'Tirol', 5645, 'Österreich', 'Hr Markus Fritzberger', 'markus.fritzberger@chello.at', '01/504565a', '2014-05-06 19:37:06', '2014-05-11 16:58:05', 0, 'Raunzigmbh GmbH'),
+(195, 'franzimaunzgasse 7', '', 'St Pölten', 'Österreich', 5040, 'adsfdsaf', 'Frau Miki', '', '06606060', '2014-05-11 16:59:06', '2014-05-18 16:24:09', 0, 'Arg KG'),
+(196, 'Dsdaf', 'asdf', 'sadf', 'dsaf', 0, '', 'afds', 'dsaf', 'dsaf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'Bitte Auswahl treffen.'),
+(197, 'kauzgasse', '\r\n', 'Salzburg Stadt', 'Salzburg', 5020, 'Österreich', 'Margit Zeigelt', 'm.zweigelt@chello.at', '05/5656569', '2014-05-04 15:59:17', '2014-05-07 14:12:40', 0, 'Zeigelt Logistics'),
+(198, 'Gonzigasse 7', '', 'Insbruck', 'Tirol', 8020, 'Österreich', 'Hr Markus Fritzberger', 'markus.fritzberger@chello.at', '01/504565a', '2014-05-06 19:37:06', '2014-05-11 16:58:05', 0, 'Mutzifatzi GmbH'),
+(199, 'Meiergasse 5', '\r\n', 'Salzburg Stadt', 'Salzburg', 5020, 'Österreich', 'Margit Zeigelt', 'm.zweigelt@chello.at', '05/5656569', '2014-05-04 15:59:17', '2014-05-07 14:12:40', 0, 'Zeigelt Logistics'),
+(200, 'sadfsadf', 'sadfsad', 'dsaf', 'dsafsadfsad', 0, '', 'Ddsafdsa', 'dsafsadf', 'Dudsafdsaf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'Bitte Auswahl treffen.'),
+(201, 'kauzsgasse', '\r\n', 'Salzburg Stadt', 'Salzburg', 5020, 'Österreich', 'Margit Zeigelt', 'm.zweigelt@chello.at', '05/5656569', '2014-05-04 15:59:17', '2014-05-07 14:12:40', 0, 'Zeigelt Logistics'),
+(202, 'fuchsgassse 8', '', 'Kärnten', 'Tirol', 7020, 'Österreich', 'Hr Markus Fritzberger', 'markus.fritzberger@chello.at', '01/504565a', '2014-05-06 19:37:06', '2014-05-11 16:58:05', 0, 'mualilaug GmbH'),
+(203, 'kauzgasse', '\r\n', 'Salzburg Stadt', 'Salzburg', 5020, 'Österreissch', 'Margit Zeigelt', 'm.zweigelt@chello.at', '05/5656569', '2014-05-04 15:59:17', '2014-05-07 14:12:40', 0, 'Zeigelt Logistics'),
+(204, 'kauzgasse', '\r\n', 'Salzburg Stadt', 'Salzburg', 5020, 'Österreich', 'Margisst Zeigelt', 'm.zweigelt@chello.at', '05/5656569', '2014-05-04 15:59:17', '2014-05-07 14:12:40', 0, 'Zeigelt Logistics');
 
 -- --------------------------------------------------------
 
@@ -1049,7 +1268,7 @@ CREATE TABLE IF NOT EXISTS `news` (
 --
 
 INSERT INTO `news` (`id`, `title`, `content`, `slug`, `datetime`, `created_at`, `updated_at`, `is_published`, `bild1`) VALUES
-(7, 'News 1', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar eu orci id pretium. Morbi blandit lorem non orci commodo ullamcorper. Morbi rhoncus nisl non ligula posuere malesuada. In sit amet eros feugiat, condimentum urna vel, ornare tortor. Donec quis tellus eleifend, vulputate augue sed, molestie ipsum. Aenean sapien lectus, laoreet vitae justo at, posuere faucibus justo. Nam auctor, magna at pretium luctus, nisi mi gravida arcu, suscipit ultrices velit nisi vel libero. Phasellus eget euismod tortor. Aliquam rhoncus felis sed magna scelerisque fringilla. Vestibulum at congue enim. Integer rutrum aliquam velit in dictum. Sed sed sollicitudin nisi, et scelerisque odio. Vestibulum quis dui in tellus commodo eleifend. Suspendisse et quam purus. Donec at massa feugiat leo commodo commodo.<br />\r\n<br />\r\n<img alt="" src="http://127.0.0.1/laravel/kochabo/uploads/doksoft_uploader/news/img6.jpg" style="height:333px; width:500px" /></p>\r\n', 'news-1', '2014-05-19', '2014-05-19 03:57:04', '2014-05-19 06:59:47', 1, '<p><img alt="" src="http://127.0.0.1/laravel/kochabo/uploads/doksoft_uploader/news/img9.jpg" style="height:333px; width:500px" /></p>\r\n'),
+(7, 'News 1', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar eu orci id pretium. Morbi blandit lorem non orci commodo ullamcorper. Morbi rhoncus nisl non ligula posuere malesuada. In sit amet eros feugiat, condimentum urna vel, ornare tortor. Donec quis tellus eleifend, vulputate augue sed, molestie ipsum. Aenean sapien lectus, laoreet vitae justo at, posuere faucibus justo. Nam auctor, magna at pretium luctus, nisi mi gravida arcu, suscipit ultrices velit nisi vel libero. Phasellus eget euismod tortor. Aliquam rhoncus felis sed magna scelerisque fringilla. Vestibulum at congue enim. Integer rutrum aliquam velit in dictum. Sed sed sollicitudin nisi, et scelerisque odio. Vestibulum quis dui in tellus commodo eleifend. Suspendisse et quam purus. Donec at massa feugiat leo commodo commodo.<br />\r\n&nbsp;<br />\r\n<img alt="" src="http://127.0.0.1/laravel/kochabo/uploads/doksoft_uploader/news/img6.jpg" style="height:333px; width:500px" /></p>\r\n', 'news-1', '2014-05-19', '2014-05-19 03:57:04', '2014-05-30 11:15:49', 1, '<p><img alt="" src="http://127.0.0.1/laravel/kochabo/uploads/doksoft_uploader/news/img9.jpg" style="height:333px; width:500px" /></p>\r\n'),
 (8, 'New2', '<p>Etiam pulvinar eu orci id pretium. Morbi blandit lorem non orci commodo ullamcorper. Morbi rhoncus nisl non ligula posuere malesuada. In sit amet eros feugiat, condimentum urna vel, ornare tortor. Donec quis tellus eleifend, vulputate augue sed, molestie ipsum. Aenean sapien lectus, laoreet vitae justo at, posuere faucibus justo. Nam auctor, magna at pretium luctus, nisi mi gravida arcu, suscipit ultrices velit nisi vel libero. Phasellus eget euismod tortor. Aliquam rhoncus felis sed magna scelerisque fringilla. Vestibulum at congue enim. Integer rutrum aliquam velit in dictum. Sed sed sollicitudin nisi, et scelerisque odio. Vestibulum quis dui in tellus commodo eleifend. Suspendisse et quam purus. Donec at massa feugiat leo commodo commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />\r\n<img alt="" src="http://127.0.0.1/laravel/kochabo/uploads/doksoft_uploader/news/img8.jpg" style="height:345px; width:500px" /></p>\r\n', 'new2', '2014-05-21', '2014-05-19 04:01:35', '2014-05-19 07:47:33', 1, '<p><img alt="" src="http://127.0.0.1/laravel/kochabo/uploads/doksoft_uploader/news/img8.jpg" style="height:345px; width:500px" /></p>\r\n'),
 (9, 'news 3', '<p>Morbi rhoncus nisl non ligula posuere malesuada. In sit amet eros feugiat, condimentum urna vel, ornare tortor. Donec quis tellus eleifend, vulputate augue sed, molestie ipsum. Aenean sapien lectus, laoreet vitae justo at, posuere faucibus justo. Nam auctor, magna at pretium luctus, nisi mi gravida arcu, suscipit ultrices velit nisi vel libero. Phasellus eget euismod tortor. Aliquam rhoncus felis sed magna scelerisque fringilla. Vestibulum at congue enim. Integer rutrum aliquam velit in dictum. Sed sed sollicitudin nisi, et scelerisque odio. Vestibulum quis dui in tellus commodo eleifend. Suspendisse et quam purus. Donec at massa feugiat leo commodo commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar eu orci id pretium. Morbi blandit lorem non orci commodo ullamcorper.<br />\r\n<img alt="" src="http://127.0.0.1/laravel/kochabo/uploads/doksoft_uploader/news/img9.jpg" style="height:333px; width:500px" /></p>\r\n', 'news-3', '2014-05-23', '2014-05-19 04:02:29', '2014-05-19 06:58:38', 1, '<p><img alt="" src="http://127.0.0.1/laravel/kochabo/uploads/doksoft_uploader/news/img6.jpg" style="height:333px; width:500px" /></p>\r\n');
 
@@ -1181,18 +1400,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `is_published` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
-
---
--- Daten für Tabelle `pages`
---
-
-INSERT INTO `pages` (`id`, `title`, `content`, `created_at`, `updated_at`, `is_published`) VALUES
-(1, 'Team', '<div class="container">\r\n<div class="row team margin-bottom-20">\r\n<div class="col-md-5">\r\n<div class="thumbnail-style">\r\n<h3>Jack Bour <small>Chief Executive Officer</small></h3>\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>Toll</li>\r\n	<li>Fein</li>\r\n	<li>Nett gro&szlig;z&uuml;gig und fein</li>\r\n	<li>Nett und fein</li>\r\n	<li>Nett gro&szlig;z&uuml;gig und fein</li>\r\n	<li>Nett gro&szlig;z&uuml;gig fein</li>\r\n	<li>Nett gro&szlig;z&uuml;gig und fein</li>\r\n	<li>Gro&szlig;z&uuml;gig und fein</li>\r\n	<li>Nett gro&szlig;z&uuml;gig und fein</li>\r\n	<li>Freundlich gro&szlig;z&uuml;gig und fein</li>\r\n	<li>Nett Gut und fein</li>\r\n	<li>Nett gro&szlig;z&uuml;gig und fein</li>\r\n</ul>\r\n</div>\r\n</div>\r\n\r\n<div class="col-md-7">\r\n<div class="margin-bottom-10">&nbsp;</div>\r\n\r\n<p>Acilis quidem rerum facilis est et expedita distinctio estet expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>\r\n&nbsp;\r\n\r\n<div class="tag-box tag-box-v1">\r\n<p>Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.</p>\r\n</div>\r\n\r\n<div class="carousel slide testimonials testimonials-v1" id="testimonials-3">\r\n<div class="carousel-inner">\r\n<div class="item active">\r\n<p>Ducimusqui ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, sunt in culpaid delvoe molestias..</p>\r\n\r\n<div class="testimonial-info"><img alt="" src="../uploads/doksoft_uploader/testimonials/img2.jpg" /> Jenny Lawiso <em>Web Developer, Unify Theme.</em></div>\r\n</div>\r\n\r\n<div class="item">\r\n<p>Ducimusqui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, sunt in culpaid delvoe molestias..</p>\r\n\r\n<div class="testimonial-info"><img alt="" src="../uploads/doksoft_uploader/testimonials/img1.jpg" /> User <em>Java Developer, Htmlstream</em></div>\r\n</div>\r\n\r\n<div class="item">\r\n<p>Ducimusqui ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, sunt in culpaid delvoe molestias..</p>\r\n\r\n<div class="testimonial-info"><img alt="" src="../uploads/doksoft_uploader/testimonials/user.jpg" /> Kate Davenport <em>Web Designer, Google Inc.</em></div>\r\n</div>\r\n</div>\r\n\r\n<div class="carousel-arrow">&nbsp;</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class="headline">\r\n<h2>Account Directors</h2>\r\n</div>\r\n\r\n<div class="row team margin-bottom-40">\r\n<div class="col-sm-4">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/3.jpg" />\r\n<h3>Kate Metus <small>Project Manager</small></h3>\r\n\r\n\r\n\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n</ul>\r\n</div>\r\n</div>\r\n\r\n<div class="col-sm-4">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/2.jpg" />\r\n<h3>Porta Gravida <small>VP of Operations</small></h3>\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>Gut</li>\r\n	<li>Nett</li>\r\n	<li>Lieb</li>\r\n</ul>\r\n</div>\r\n</div>\r\n\r\n<div class="col-sm-4">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/4.jpg" />\r\n<h3>Donec Elit <small>Director, R &amp; D Talent</small></h3>\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>Gut</li>\r\n	<li>Nett</li>\r\n	<li>Lieb</li>\r\n</ul>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class="tag-box tag-box-v2">\r\n<p>Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.</p>\r\n</div>\r\n\r\n<div class="margin-bottom-60">&nbsp;</div>\r\n\r\n<div class="headline">\r\n<h2>Other Team Members</h2>\r\n</div>\r\n\r\n<div class="row team margin-bottom-20">\r\n<div class="col-sm-3">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/1.jpg" />\r\n<h3>Jack Bour <small>Chief Executive Officer</small></h3>\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>Gut</li>\r\n	<li>Nett</li>\r\n	<li>Lieb</li>\r\n</ul>\r\n</div>\r\n</div>\r\n\r\n<div class="col-sm-3">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/3.jpg" />\r\n<h3>Kate Metus <small>Project Manager</small></h3>\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>Gut</li>\r\n	<li>Nett</li>\r\n	<li>Lieb</li>\r\n</ul>\r\n</div>\r\n</div>\r\n\r\n<div class="col-sm-3">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/2.jpg" />\r\n<h3>Porta Gravida <small>VP of Operations</small></h3>\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>Gut</li>\r\n	<li>Nett</li>\r\n	<li>Lieb</li>\r\n</ul>\r\n</div>\r\n</div>\r\n\r\n<div class="col-sm-3">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/4.jpg" />\r\n<h3>Donec Elit <small>Director, R &amp; D Talent</small></h3>\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>Gut</li>\r\n	<li>Nett</li>\r\n	<li>Lieb</li>\r\n</ul>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<hr />\r\n<div class="row team">\r\n<div class="col-sm-3">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/2.jpg" />\r\n<h3>Jack Bour <small>Chief Executive Officer</small></h3>\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>Gut</li>\r\n	<li>Nett</li>\r\n	<li>Lieb</li>\r\n</ul>\r\n</div>\r\n</div>\r\n\r\n<div class="col-sm-3">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/1.jpg" />\r\n<h3>Kate Metus <small>Project Manager</small></h3>\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>Gut</li>\r\n	<li>Nett</li>\r\n	<li>Lieb</li>\r\n</ul>\r\n</div>\r\n</div>\r\n\r\n<div class="col-sm-3">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/4.jpg" />\r\n<h3>Porta Gravida <small>VP of Operations</small></h3>\r\n\r\n<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>\r\n\r\n<ul>\r\n	<li>Gut</li>\r\n	<li>Nett</li>\r\n	<li>Lieb</li>\r\n</ul>\r\n</div>\r\n</div>\r\n\r\n<div class="col-sm-3">\r\n<div class="thumbnail-style"><img alt="" class="img-responsive" src="../uploads/doksoft_uploader/team/3.jpg" />\r\n<h3>&nbsp;</h3>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n', '2014-04-01 15:52:26', '2014-05-19 08:23:36', 1),
-(3, 'AGB''s', '<!-- Meta --><!-- CSS Global Compulsory--><!-- CSS Implementing Plugins --><!-- CSS Theme -->\r\n<div class="container">\r\n<div class="row-fluid privacy">\r\n<p>&sect;1 Geltungsbereich: F&uuml;r den Vertragsabschluss zwischen der KochAbo Betriebs GmbH (&bdquo;KochAbo&ldquo;) und ihren Kunden gelten ausschlie&szlig;lich die vorliegenden AGB in der jeweils g&uuml;ltigen Fassung, welche auf der Website www.kochabo.at abgerufen werden k&ouml;nnen.</p>\r\n\r\n<ol>\r\n	<li>Ut adipiscing elit magna sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet. Et harum quidem rerum facilis fusce condimentum eleifend enim a feugiat.</li>\r\n	<li>Lusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati.</li>\r\n	<li>Praesentium voluptatum deleniti atque corrupti quos</li>\r\n	<li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</li>\r\n	<li>Mentum eleifend enim a feugiat distinctio lor</li>\r\n</ol>\r\n&nbsp;\r\n\r\n<h4>Lorem ipsum dolor integer sed arcu</h4>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Integer sed arcu. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non <a href="#">libero consectetur adipiscing</a> elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>\r\n\r\n<p><strong>Iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non sit amet, consectetur adipiscing elit. Ut adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque lorem ipsum dolor sit amet. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat <a href="#">consectetur adipiscing elit</a>.</strong></p>\r\n&nbsp;\r\n\r\n<h4>Molestias excepturi sint</h4>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>\r\n\r\n<ul>\r\n	<li>Ut adipiscing elit magna sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet. Et harum quidem rerum facilis fusce condimentum eleifend enim a feugiat.</li>\r\n	<li>Lusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati.</li>\r\n	<li>Praesentium voluptatum deleniti atque corrupti quos</li>\r\n	<li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</li>\r\n	<li>Mentum eleifend enim a feugiat distinctio lor</li>\r\n	<li>Ut adipiscing elit magna sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet. Et harum quidem rerum facilis fusce condimentum eleifend enim a feugiat.</li>\r\n	<li>Lusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati.</li>\r\n	<li>Praesentium voluptatum deleniti atque corrupti quos</li>\r\n	<li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</li>\r\n	<li>Mentum eleifend enim a feugiat distinctio lor</li>\r\n</ul>\r\n\r\n<p><em>Praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non ipsum dolor sit amet. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non ipsum dolor sit amet. Ut non libero magna. Sed et quam lacus usce condimentum eleifend enim a feugiat <a href="#">consectetur adipiscing elit</a>.</em></p>\r\n</div>\r\n</div>\r\n\r\n<p>&nbsp;</p>\r\n', '2014-04-06 16:26:33', '2014-04-06 17:03:55', 1),
-(4, 'Impressum', '<!-- Meta --><!-- CSS Global Compulsory--><!-- CSS Implementing Plugins --><!-- CSS Theme --><!--/breadcrumbs--><!--=== End Breadcrumbs ===--><!--=== Content Part ===-->\r\n<div class="container">\r\n<div class="row margin-bottom-30">\r\n<div class="col-md-6 md-margin-bottom-40">\r\n<p>Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals. It works on all major web browsers, tablets and phone. Lorem sequat ipsum dolor lorem sit amet, consectetur adipiscing dolor elit. Unify is an incredibly beautiful responsive Bootstrap Template for It works on all major web.<br />\r\n<br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">KochAbo Betriebs GmbH</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">Strobachgasse 4/6</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">1050 Wien<br />\r\n<br />\r\nTelefon: </span><a href="tel:+4315443900" style="color: rgb(20, 27, 7); text-decoration: underline; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 18.66666603088379px; orphans: auto; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">01 544 3900</a><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">Internet: www.kochabo.at</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">E&minus;Mail: hilfe@kochabo.at</span><br />\r\n<br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">Gesch&auml;ftsf&uuml;hrer: Michael Str&ouml;ck, Philipp Stangl</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">Firmenbuch: </span><span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">FN 386806 h</span><span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">&nbsp;(Handelsgericht Wien)</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">UID: ATU67487908&nbsp;</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(87, 85, 86); font-family:arial,helvetica,sans-serif; font-size:13px">DVR: 4011336&nbsp;</span><br />\r\n<br />\r\n<br />\r\n&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Donec id elit non mi porta gravida</li>\r\n	<li>Corporate and Creative</li>\r\n	<li>Responsive Bootstrap Template</li>\r\n	<li>Elit non mi porta gravida</li>\r\n	<li>Award winning digital agency</li>\r\n</ul>\r\n<br />\r\n<!-- Blockquotes -->\r\n<blockquote>\r\n<p>Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why.</p>\r\n<small>CEO Jack Bour</small></blockquote>\r\n</div>\r\n\r\n<div class="col-md-6 md-margin-bottom-40">\r\n<div class="responsive-video"><iframe frameborder="0" src="http://player.vimeo.com/video/9679622"></iframe></div>\r\n</div>\r\n</div>\r\n<!--/row--><!-- Meer Our Team --></div>\r\n', '2014-04-06 16:29:39', '2014-04-06 17:00:09', 1),
-(5, 'Hilfe', '<!-- CSS Global Compulsory--><!-- CSS Implementing Plugins --><!-- CSS Theme --><!-- CSS Implementing Plugins --><!-- CSS Theme -->\r\n<div class="container">\r\n<div class="row">\r\n<div class="col-md-9">\r\n<div class="headline">\r\n<h2>General Questions</h2>\r\n</div>\r\n\r\n<div class="panel-group acc-v1 margin-bottom-40" id="accordion">\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapseOne">1. Put a bird on it squid single-origin coffee nulla? </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse in" id="collapseOne">\r\n<div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>\r\n</div>\r\n</div>\r\n\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapseTwo">2. Oliva pariatur cliche reprehenderit high life accusamus? </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse" id="collapseTwo">\r\n<div class="panel-body">\r\n<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</p>\r\n\r\n<ul>\r\n	<li>Donec id elit non mi porta gravida at eget metus..</li>\r\n	<li>Fusce dapibus, tellus ac cursus comodo egetine..</li>\r\n	<li>Food truck quinoa nesciunt laborum eiusmod runch..</li>\r\n	<li>Donec id elit non mi porta gravida at eget metus..</li>\r\n</ul>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapseThree">3. Enim eiusmod high life accusamus terry richardson? </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse" id="collapseThree">\r\n<div class="panel-body">\r\n<p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Food truck quinoa nesciunt laborum eiusmodolf moon tempor, sunt aliqua put a bird.</p>\r\n\r\n<ul>\r\n	<li>Donec id elit non mi porta gravida at eget metus..</li>\r\n	<li>Fusce dapibus, tellus ac cursus comodo egetine..</li>\r\n</ul>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapseFour">4. Livil anim keffiyeh helvetica craft beer labore wesde brunch? </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse" id="collapseFour">\r\n<div class="panel-body">Olif moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>\r\n</div>\r\n</div>\r\n\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapseFive">5. Leggings occaecat craft beer farmto tableraw denim? </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse" id="collapseFive">\r\n<div class="panel-body">\r\n<p>Keffiyeh anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>\r\n\r\n<ul>\r\n	<li>Donec id elit non mi porta gravida at eget metus..</li>\r\n	<li>Fusce dapibus, tellus ac cursus comodo egetine..</li>\r\n	<li>Food truck quinoa nesciunt laborum eiusmod runch..</li>\r\n	<li>Donec id elit non mi porta gravida at eget metus..</li>\r\n	<li>Fusce dapibus, tellus ac cursus comodo egetine..</li>\r\n	<li>Food truck quinoa nesciunt laborum eiusmod runch..</li>\r\n</ul>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapseSix">6. Keffiyeh anim keffiyeh helvetica craft beer labore wesse? </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse" id="collapseSix">\r\n<div class="panel-body">Helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Brunch sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>\r\n</div>\r\n</div>\r\n\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapseSeven">7. Helvetica craft beer labore wes anderson cred nesciu ntlife richardson? </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse" id="collapseSeven">\r\n<div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>\r\n</div>\r\n</div>\r\n</div>\r\n<!--/acc-v1--><!-- End General Questions --><!-- Other Questions -->\r\n\r\n<div class="headline">\r\n<h2>Other Questions</h2>\r\n</div>\r\n\r\n<div class="panel-group acc-v1" id="accordion-1">\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapse-One">Collapsible Group Item #1 </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse in" id="collapse-One">\r\n<div class="panel-body">\r\n<div class="row">\r\n<div class="col-md-4"><img alt="" class="img-responsive" src="http://127.0.0.1/laravel/kochabo/public/assets/img/new/img5.jpg" /></div>\r\n\r\n<div class="col-md-8">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapse-Two">Collapsible Group Item #2 </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse" id="collapse-Two">\r\n<div class="panel-body">\r\n<div class="row">\r\n<div class="col-md-8">\r\n<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</p>\r\n\r\n<ul>\r\n	<li>Donec id elit non mi porta gravida at eget metus..</li>\r\n	<li>Fusce dapibus, tellus ac cursus comodo egetine..</li>\r\n	<li>Food truck quinoa nesciunt laborum eiusmod runch..</li>\r\n</ul>\r\n</div>\r\n\r\n<div class="col-md-4"><img alt="" class="img-responsive" src="http://127.0.0.1/laravel/kochabo/public/assets/img/main/6.jpg" /></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapse-Three">Collapsible Group Item #3 </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse" id="collapse-Three">\r\n<div class="panel-body">Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Food truck quinoa nesciunt laborum eiusmodolf moon tempor, sunt aliqua put a bird. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#39;t heard of them accusamus labore sustainable VHS.</div>\r\n</div>\r\n</div>\r\n\r\n<div class="panel panel-default">\r\n<div class="panel-heading">\r\n<h4><a class="accordion-toggle" href="#collapse-Four">Collapsible Group Item #4 </a></h4>\r\n</div>\r\n\r\n<div class="panel-collapse collapse" id="collapse-Four">\r\n<div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>\r\n</div>\r\n</div>\r\n</div>\r\n<!--/acc-v1--><!-- End Other Questions --></div>\r\n<!--/col-md-9-->\r\n\r\n<div class="col-md-3"><!-- Contacts -->\r\n<div class="headline">\r\n<h2>Contacts</h2>\r\n</div>\r\n\r\n<ul>\r\n	<li><a href="#">5B Streat, City 50987 New Town US</a></li>\r\n	<li><a href="#">info@example.com</a></li>\r\n	<li><a href="#">1(222) 5x86 x97x</a></li>\r\n	<li><a href="#">http://www.example.com</a></li>\r\n</ul>\r\n<!-- End Contacts --><!-- Business Hours -->\r\n\r\n<div class="headline">\r\n<h2>Business Hours</h2>\r\n</div>\r\n\r\n<ul>\r\n	<li><strong>Monday-Friday:</strong> 10am to 8pm</li>\r\n	<li><strong>Saturday:</strong> 11am to 3pm</li>\r\n	<li><strong>Sunday:</strong> Closed</li>\r\n</ul>\r\n<!-- End Business Hours --><!-- Info Block -->\r\n\r\n<div class="headline">\r\n<h2>Why we are?</h2>\r\n</div>\r\n\r\n<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>\r\n\r\n<ul>\r\n	<li>Odio dignissimos ducimus</li>\r\n	<li>Blanditiis praesentium volup</li>\r\n	<li>Eos et accusamus</li>\r\n</ul>\r\n<!-- End Info Block --><!-- Social -->\r\n\r\n<div class="magazine-sb-social margin-bottom-20">\r\n<div class="headline headline-md">\r\n<h2>Social Icons</h2>\r\n</div>\r\n\r\n<ul>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n	<li>&nbsp;</li>\r\n</ul>\r\n\r\n<div class="clearfix">&nbsp;</div>\r\n</div>\r\n<!-- End Social --></div>\r\n<!--/col-md-3--></div>\r\n<!--/row--></div>\r\n<!--/container--><!--=== End Content Part ===-->\r\n\r\n<p>&nbsp;</p>\r\n', '2014-04-07 16:49:28', '2014-04-11 12:16:26', 1),
-(6, 'Sonstiges', '       <div class="tab-v2">\r\n                <ul class="nav nav-tabs">\r\n                    <li class="active"><a href="#home-1" data-toggle="tab">Fotos</a></li>\r\n                    <li><a href="#profile-1" data-toggle="tab">Impressum</a></li>\r\n                    <li><a href="#messages-1" data-toggle="tab">AGB''s</a></li>\r\n                    <li><a href="#settings-1" data-toggle="tab">Hilfe</a></li>\r\n                </ul>                \r\n                <div class="tab-content">\r\n                    <div class="tab-pane active" id="home-1">\r\n                        <h4>Photo Gallery 1</h4>\r\n                        <p>Bilder und ClipArt-Objekte können aus vielen verschiedenen Quellen in ein Dokument eingefügt oder kopiert werden. Sie können bei einem Anbieter von ClipArt-Objekten von einer Website heruntergeladen, von einer Webseite kopiert oder aus einem Ordner, in dem Bilder gespeichert sind, eingefügt werden.<br><br>\r\n\r\nSie können auch die Position eines Bilds oder eines ClipArt-Objekts innerhalb des Texts in einem Dokument mithilfe der Befehle Position und Zeilenumbruch ändern.<br><br>\r\n\r\n TIPP   Wenn Sie ein Bild von einem Scanner oder einer Kamera einfügen möchten, verwenden Sie die im Lieferumfang des Scanners oder der Kamera enthaltene Software, um das Bild auf den Computer zu übertragen. Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum <strong>ivamus imperdiet</strong> condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac adipiscing nunc. Pellentesque <strong>fermentum vivamus</strong> imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, ante ac felis consectetur id. Donec eget orci metusvivamus imperdiet.</p>   <br>\r\n\r\n <a class="btn-u" href="../photo_gallery/1" style="float: right">Ansehen</a>\r\n                    </div>\r\n\r\n\r\n\r\n\r\n                    <div class="tab-pane" id="profile-1">\r\n                                        \r\n                        <h4>Unser Impressum</h4>\r\n\r\n                        <p>Bal blabll bla datnot. Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, ante ac interdum ullamcorper. Donec eget orci metus, <strong>ac adipiscing nunc.</strong> Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, ante ac interdum id. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, ante ac interdum ullamcorper. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, ante ac <strong>interdum ullamcorper.</strong></p><br>\r\n\r\n                        <a class="btn-u" href="../page/4" style="float: right">Weiterlesen</a>\r\n                    </div>\r\n\r\n                    <div class="tab-pane" id="messages-1">\r\n                        <h4>Allgemeine Geschäftsbedingungen</h4>\r\n                        <p><img alt="" class="pull-right rgt-img-margin img-width-200" src="assets/img/main/6.jpg"> <strong>Vivamus imperdiet condimentum diam, eget placerat felis consectetur id.</strong> Donec eget orci metus, Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, ante ac interdum ullamcorper. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, consectetur id. Donec eget orci metus, ac adipiscing nunc. <strong>Pellentesque fermentum</strong>, ante ac interdum ullamcorper. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, ante ac interdum ullamcorper.</p><br>\r\n\r\n                        <a class="btn-u" href="../page/3" style="float: right">Weiterlesen</a>\r\n\r\n                    </div>\r\n\r\n                    <div class="tab-pane" id="settings-1">\r\n                        <h4>Hilfe</h4>\r\n                        <p><img alt="" class="pull-right rgt-img-margin img-width-200" src="assets/img/main/1.jpg"> Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, Vivamus Dieser Bereich enthält häufig gestellte Fragen (sogenannte FAQ: "Frequently Asked Questions") und die zugehörigen Antworten zunächst zu den Komponenten der Fachanwendung Abwasser (FAA) des LISA. Diese sogenannten FAQ-Listen dienen der unmittelbaren Unterstützung der Anwender der FAA. <br>Die FAQ-Listen enthalten im Wesentlichen folgende Informationen:<br>\r\n\r\nInformationen zum Funktionsumfang<br>       Hinweise zur Bedienung<br>       Allgemeine Tipps zur Arbeit mit der FAA<br>  Hinweise zu bekannten Fehlern und ggf. Workarounds oder Patches hierzu</p>\r\n\r\n<a class="btn-u" href="../page/5" style="float: right">Weiterlesen</a>\r\n                    </div>\r\n                </div>\r\n            </div>', '2014-04-14 12:22:17', '2014-04-14 12:38:46', 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1202,21 +1410,26 @@ INSERT INTO `pages` (`id`, `title`, `content`, `created_at`, `updated_at`, `is_p
 
 CREATE TABLE IF NOT EXISTS `photos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL,
   `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pathto` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `file_size` int(11) NOT NULL,
   `type` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `relationship_id` int(10) unsigned NOT NULL,
+  `path` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- Daten für Tabelle `photos`
 --
 
-INSERT INTO `photos` (`id`, `file_name`, `title`, `pathto`, `file_size`, `type`, `relationship_id`) VALUES
-(11, '1-806673771.jpg', '', 'http://www.drei.at', 0, '', 0);
+INSERT INTO `photos` (`id`, `user_id`, `file_name`, `title`, `pathto`, `file_size`, `type`, `relationship_id`, `path`) VALUES
+(13, 0, '1.png', '1', '', 62441, 'PhotoGallery', 73, '/filemanager/userfiles/products/1.png'),
+(16, 0, '9.jpg', '9', '', 231838, 'PhotoGallery', 84, '/filemanager/userfiles/products/9.jpg'),
+(17, 0, '7.jpg', '7', '', 188569, 'PhotoGallery', 83, '/filemanager/userfiles/products/7.jpg'),
+(18, 0, '1.jpg', '1', '', 104601, 'PhotoGallery', 82, '/filemanager/userfiles/products/1.jpg');
 
 -- --------------------------------------------------------
 
@@ -1226,22 +1439,67 @@ INSERT INTO `photos` (`id`, `file_name`, `title`, `pathto`, `file_size`, `type`,
 
 CREATE TABLE IF NOT EXISTS `photo_galleries` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `products_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `is_published` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=85 ;
 
 --
 -- Daten für Tabelle `photo_galleries`
 --
 
-INSERT INTO `photo_galleries` (`id`, `title`, `content`, `created_at`, `updated_at`, `is_published`) VALUES
-(1, 'Photo Gallery 1', '<p><strong>Bestell einfach online</strong> deine KochAbo-Box mit <strong>3 oder 5</strong> k&ouml;stlichen und gesunden <strong>Rezepten</strong>. Du bestimmst f&uuml;r <strong>wie viele Personen (1, 2 oder 4)</strong> du kochen m&ouml;chtest, dann bekommst du alle Rezepte und die Zutaten in der richtigen Menge direkt nach Hause.</p>\r\n\r\n<p>Du kannst dir die KochAbo-Box w&ouml;chentlich oder alle zwei Wochen liefern lassen, und <strong>jederzeit pausieren oder stornieren</strong>.</p>\r\n\r\n<p>Wir garantieren 100% Zufriedenheit - das gilt sowohl f&uuml;r unsere Produkte, als auch Lieferung und Kundenservice.<br />\r\n&nbsp;</p>\r\n\r\n<p>Wir liefern in <strong>ganz &Ouml;sterreich.</strong><br />\r\n<strong>Abh&auml;ngig von deiner Postleitzahl</strong> liefern wir dir deine Box<strong>&nbsp;Montag abend</strong> zwischen 17 und 22 Uhr <strong>oder Dienstag fr&uuml;h</strong>. <strong>Wahlweise</strong> kannst du dir deine Box auch <strong>Donnerstag abend</strong> oder <strong>Freitag Fr&uuml;h</strong> zustellen lassen.<br />\r\n<br />\r\nDu kannst <a href="http://www.kochabo.at/lieferinformation">hier</a> ganz einfach kontrollieren, <strong><a href="http://www.kochabo.at/lieferinformation">wann wir zu dir liefern</a></strong>.</p>\r\n\r\n<p><strong>Bestellannahmeschluss</strong>&nbsp;f&uuml;r die Lieferung am Mo/Di ist immer 4 Tage davor (Donnerstag bis 12 Uhr Mittag), f&uuml;r&nbsp;die Lieferung am Do/Fr ist der Annahmeschluss Montag bis 12 Uhr Mittag.</p>\r\n', '2014-04-01 15:52:26', '2014-04-11 14:17:15', 1),
-(2, 'Photo Gallery 2', '<p>KochAbo liefert kostenlos an jeden Haushalt in ganz &Ouml;sterreich. Gib einfach im untenstehenden Feld deine Postleitzahl ein, dann erh&auml;ltst du die genaue Lieferzeit in deinem Ort. <strong>Je nach Postleitzahl</strong> erh&auml;ltst du deine KochAbo-Box entweder <strong>wahlweise Montag oder Donnerstag abends</strong> oder <strong>ebenfalls wahlweise Dienstag oder Freitag in der Fr&uuml;h</strong>.<br />\r\n<br />\r\n<u><strong>Lieferung wahlweise Montag oder Donnerstag Abend:</strong></u><br />\r\nAm Montag und Donnerstag Abend liefern wir dir deine Box&nbsp;<strong>zwischen 17 und 22 Uhr</strong> direkt nach Hause. Du kannst zwischen den beiden Liefertage frei w&auml;hlen.<br />\r\n<br />\r\n<u><strong>Lieferung wahlweise Dienstag oder Freitag Fr&uuml;h:</strong></u><br />\r\nDienstag und Freitag Fr&uuml;h liefern wir dir deine Box&nbsp;<strong>zwischen 4 und 7 Uhr</strong>. Hier wird die Box ganz einfach bequem vor deiner Wohnungst&uuml;re bzw. deinem Haus abgestellt. In der Box befinden sich K&uuml;hlelemente, du kannst also ruhig ein wenig l&auml;nger schlafen ;)</p>\r\n', '2014-04-01 19:06:29', '2014-04-08 07:11:29', 1),
-(3, 'Unsere Kunden', '<p><strong>Nur die besten Zutaten kommen in unsere KochAbo-Boxen!</strong></p>\r\n\r\n<p><img alt="100% Fleisch aus Österreich - zB vom Tullnerfelder Schwein" src="http://www.kochabo.at/media/wysiwyg/100prozent_oesterreich_v2.jpg" style="float:right; width:240px" title="100% Fleisch aus Österreich - zB vom Tullnerfelder Schwein" />KochAbo kauft ganz frisch und regional ein: Die Lieferanten von KochAbo sind zumeist &ouml;sterreichische Familienunternehmen wie <a href="https://ssl.wiesbauer-gourmet.at/" target="_blank" title="Wiesbauer Gourmet">Wiesbauer Gourmet</a>, exklusiver Partner f&uuml;r Fleischwaren.&nbsp;Die langfristigen Partnerschaften mit &ouml;sterreichischen Unternehmen machen die Herkunft der Lebensmittel transparent. So ist zum Beispiel bei Wiesbauer Gourmet das Schweinefleisch ausschlie&szlig;lich vom <a href="http://www.tullnerfelderschwein.at/" target="_blank" title="Tullnerfelder Schwein">Tullnerfelder Schwein</a> und somit aus der <a href="http://www.genuss-region.at/genussregionen/niederoesterreich/tullnerfelder-schwein/index.html" target="_blank" title="GenussRegion">GenussRegion</a> aus Nieder&ouml;sterreich.</p>\r\n\r\n<p><a href="http://www.kochabo.at/unsere-partner/sonnentor" target="_self" title="Sonnentor - Da wächst die Freude">Sonnentor</a> im sch&ouml;nen Zwettl im Waldviertel produziert exklusiv unsere Bio-Gew&uuml;rzmischungen. Weder Farbstoffe noch k&uuml;nstliche Aromazus&auml;tze oder gar Konservierungsmittel tr&uuml;ben den Sonnentor Geschmack. Urspr&uuml;ngliche B&ouml;den, der sensible Umgang mit der Natur und die &uuml;ber Jahre gesammelten Erfahrungen machen die Sonnentor Produkte zu nat&uuml;rlichen und unverf&auml;lschten Lebensmitteln.</p>\r\n', '2014-04-03 10:52:17', '2014-04-08 07:08:38', 1);
+INSERT INTO `photo_galleries` (`id`, `products_id`, `title`, `content`, `created_at`, `updated_at`, `is_published`) VALUES
+(3, '', 'Anlage_von_Products', 'Products Photo Gallery', '2014-06-03 13:31:12', '2014-06-03 13:31:12', 0),
+(73, '', 'Anlage_von_Products', 'Products Photo Gallery', '2014-06-03 14:14:27', '2014-06-03 14:14:27', 0),
+(81, '', 'Anlage_von_Products', 'Products Photo Gallery', '2014-06-04 07:09:09', '2014-06-04 07:09:09', 0),
+(82, '', 'Anlage_von_Products', 'Products Photo Gallery', '2014-06-04 06:47:22', '2014-06-04 06:47:22', 0),
+(83, '', 'Anlage_von_Products', 'Products Photo Gallery', '2014-06-04 06:48:57', '2014-06-04 06:48:57', 0),
+(84, '', 'Anlage_von_Products', 'Products Photo Gallery', '2014-06-04 06:59:22', '2014-06-04 06:59:22', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `products`
+--
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL,
+  `photo_galleries_id` int(11) NOT NULL,
+  `product_name` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `picurl` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `picangelegt` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nr_of_recipes` int(10) unsigned NOT NULL,
+  `nr_of_persons` int(10) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `currency` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `ust` double NOT NULL,
+  `recipetype` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sku` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `standalone` int(10) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `is_published` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `articles_tags_article_id_index` (`type`),
+  KEY `articles_tags_tag_id_index` (`nr_of_recipes`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=85 ;
+
+--
+-- Daten für Tabelle `products`
+--
+
+INSERT INTO `products` (`id`, `user_id`, `photo_galleries_id`, `product_name`, `description`, `picurl`, `picangelegt`, `type`, `nr_of_recipes`, `nr_of_persons`, `price`, `currency`, `ust`, `recipetype`, `sku`, `standalone`, `updated_at`, `created_at`, `is_published`) VALUES
+(73, 0, 73, 'Monster Box', 'Supi über drüber Box vom Land', '1.png', '', 'Obstbox', 3, 3, '30.60', 'EUR', 0, 'Classic', '2', 1, '2014-06-04 07:29:45', '2014-06-03 14:13:58', ''),
+(82, 0, 82, 'Riesen Box', 'Wenig Geld und große Box', '1.jpg', 'ja', 'Obstbox', 1, 1, '50.50', 'EUR', 20, 'Veggie ', '1', 1, '2014-06-04 07:05:35', '2014-06-04 04:59:32', ''),
+(83, 0, 83, 'Safran Box', 'Orientalische Box mit explosiven Inhalt', '7.jpg', 'ja', 'Geschenkgutschein', 1, 1, '300.90', 'EUR', 0, 'Classic', '1', 1, '2014-06-04 07:04:44', '2014-06-04 06:48:46', ''),
+(84, 0, 84, 'Querschläger Box', 'Fein zum Futtern', '9.jpg', 'ja', 'KochAbo-Box', 1, 1, '50.50', 'EUR', 0, 'Veggie ', '1', 1, '2014-06-04 07:02:27', '2014-06-04 06:59:12', '');
 
 -- --------------------------------------------------------
 
@@ -1380,6 +1638,17 @@ INSERT INTO `tags` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (9, 'Getränk', 'getränk', '2014-04-01 15:52:26', '2014-04-01 15:52:26'),
 (10, 'Cocktail', 'cocktail', '2014-04-01 15:52:26', '2014-04-01 15:52:26'),
 (11, 'MongoDB f', 'mongodb-f', '2014-05-06 16:08:45', '2014-05-06 16:08:45');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `test`
+--
+
+CREATE TABLE IF NOT EXISTS `test` (
+  `test_float` float(10,2) NOT NULL,
+  `test_decimal` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1537,7 +1806,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `activated`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `first_name`, `last_name`, `created_at`, `updated_at`, `produkt`, `produkttyp`, `price_produkt`, `obstbox`, `price_adobstbox`, `wein`, `price_adwein`, `summe`, `terms`, `status`, `is_published`) VALUES
 (1, 'admin@admin.com', '$2y$10$NkEaWuEFQTUBHbgEkrT9zeMsx/eePq7zq/8QU/EeTbRLucyfP3GVm', NULL, 1, NULL, NULL, '2014-04-19 02:14:45', '$2y$10$rxvjqmdYYZT7VBarfa2/s.MK/vP74qFUPMZUHukjKiDz0T2hAoXMm', NULL, 'Bernd', 'Obendorfer', '2014-04-17 14:56:15', '2014-04-19 02:14:45', '0', '0', '0', '', '0', '', '0', '', '', '0', 0),
 (2, 'user@user.com', '$2y$10$zmvpoecmzvkd2xpcQVGx6O6pdTk52r6BPGVyLU20WJBKA.h2fQb3C', NULL, 1, NULL, NULL, '2014-04-17 15:00:06', '$2y$10$sPLU54S3DlArVLx9wYBNHeiGDuv4Jnuq/FvqATNqMPKZBRT4RZRg6', NULL, 'user', 'schorki', '2014-04-17 14:56:15', '2014-04-19 09:09:31', '0', '0', '0', '', '0', '', '0', '', '', '0', 0),
-(3, 'bernd.obendorfer@chello.at', '$2y$10$8AOyQXE.bt4am8Y77Z2WCOOevUxMwZXxG5RV6JazNWi1HAIVjL3wq', NULL, 1, 'Myu4J2vqYDTVIqfoad3CZQCMYnkWisrCyXwVk5IvHV', NULL, '2014-05-23 14:29:06', '$2y$10$fHKhf/CFePd1sqBx/eH6fu.CkeJgT2T3/Dw3YXyxtUGNO4O0uNhnG', NULL, 'Bernd', 'Obendorfer', '2014-04-19 02:02:36', '2014-05-23 14:29:06', '0', '0', '0', '', '0', '', '0', '', '', 'admin', 0),
+(3, 'bernd.obendorfer@chello.at', '$2y$10$8AOyQXE.bt4am8Y77Z2WCOOevUxMwZXxG5RV6JazNWi1HAIVjL3wq', NULL, 1, 'Myu4J2vqYDTVIqfoad3CZQCMYnkWisrCyXwVk5IvHV', NULL, '2014-06-04 03:24:49', '$2y$10$FbXNRgNti6btgyYfcAIkb.D3ClIou125lafJS85jI3NhxKBWuUwFS', NULL, 'Bernd', 'Obendorfer', '2014-04-19 02:02:36', '2014-06-04 03:24:49', '0', '0', '0', '', '0', '', '0', '', '', 'admin', 0),
 (84, 'm@m.at', '$2y$10$9B4DiT/9LCyY0RzvVuFEkOBgViAjPwS4MR1Y1wkgFv8D1s6h/oIR2', NULL, 1, 'SFOWvxNwbcL9bv3uXKr9vtJ4snAKGN8SexICT4G0GH', NULL, NULL, NULL, NULL, 'Mika', 'Meier', '2014-04-28 10:20:05', '2014-04-28 10:20:05', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'yes', '', 0),
 (85, 'm@mm.at', '$2y$10$jO1IizhW2KSIVx3J8ur/1OglNtPJF81IwRENxWUteI0/h/HYMGE4C', NULL, 1, 'rjFC76psdXH4Q6IsMMckUYR5maplOytL4Gi2mGHHhx', NULL, NULL, NULL, NULL, 'Mika', 'Meier', '2014-04-28 10:20:42', '2014-04-28 10:20:42', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'yes', '', 0),
 (87, 'm@maassm.at', '$2y$10$JXHzbXUfstFanqFyWhPwT.u930LZHGYsIGXGLMNr9zkP83ksW3Hy.', NULL, 1, 'z68XRuOOlrQRRgYg6VHUJcuEdTVfWKTU6YfyXyTxH2', NULL, NULL, NULL, NULL, 'Mika', 'Meier', '2014-04-28 10:24:59', '2014-04-28 10:24:59', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'cms-admin', 'yes', '', 0),
@@ -1623,3 +1892,7 @@ INSERT INTO `users_groups` (`user_id`, `group_id`) VALUES
 (3, 2),
 (61, 2),
 (85, 1);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

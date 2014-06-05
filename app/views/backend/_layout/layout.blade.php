@@ -27,6 +27,15 @@
       {{ HTML::style('assets/css/bootstrap-datetimepicker.min.css') }}
       {{ HTML::style('assets/plugins/bootstrap-notify/pnotify.custom.min.css') }}
       {{ HTML::style('assets/plugins/tablesorter/media/css/jquery.dataTables.css') }}
+
+
+   
+
+
+
+<link rel="stylesheet" href="{{URL::to('assets/plugins/bootstrap/css/stichpunkt0.css')}}" type="text/css" title="Standard" media="screen, projection">
+<link rel="alternate stylesheet" href="{{URL::to('/assets/plugins/bootstrap/css/bootstrap_widescreen.css')}}" type="text/css" title="Systemeinstellungen" media="screen, projection">
+ {{ HTML::script('assets/plugins/bootstrap/css/switch.js') }}    
     
       <!--
          Beispiele für Datepicker

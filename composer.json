@@ -11,6 +11,7 @@
 		"scalia/sphinxsearch": "dev-master",
         "chumper/datatable": "2.*",
 		"bllim/datatables": "*",
+		"intervention/image": "dev-master",
         "edvinaskrucas/notification": "1.*"
     },
 	

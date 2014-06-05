@@ -28,7 +28,9 @@ return array(
                 'height' => 150
             ),
 
-            'image_dir'  => '/uploads/dropzone/',
+
+
+            'image_dir'  => '/filemanager/userfiles/products/',
         ),
 
         /*
@@ -43,7 +45,7 @@ return array(
                 'height' => 450
             ),
 
-            'image_dir'  => '/uploads/dropzone/',
+            'image_dir'  => '/uploadsx/dropzone/',
         ),
 
         /*

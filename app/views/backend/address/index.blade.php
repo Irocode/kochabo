@@ -1,110 +1,198 @@
 @extends('backend/_layout/layout')
 @section('content')
-   {{ Notification::showAll() }}
-<script type="text/javascript">
-   $(document).ready(function () {
-   
-     
-   
-       // publish settings
-       $(".publish").bind("click", function (e) {
-           var id = $(this).attr('id');
-           e.preventDefault();
-           $.ajax({
-               type: "POST",
-               url: "{{ url('/admin/address/" + id + "/toggle-publish/') }}",
-               success: function (response) {
-                   if (response['result'] == 'success') {
-                       var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/img/backend/images/publish.png" : "{{url('/')}}/assets/img/backend/images/not_publish.png";
-                       $("#publish-image-" + id).attr('src', imagePath);
-                   }
-               },
-               error: function () {
-                   alert("error");
-               }
-           })
-       });
-   });
-</script>
+{{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
+{{ Notification::showAll() }}
 <div class="container">
-
    <div class="panel panel-default">
       <div class="panel-heading">
-         <h3 class="panel-title">Kunden Adressen</h3>
+              <h3 class="panel-title">Kunden Adressen</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
             <div class="btn-toolbar">
-               <!--<a href="{{ URL::route('admin.address.create') }}" class="btn btn-u">
-               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Kunden Adresse
-               </a>
-               -->
                <a href="{{ URL::route('admin.customer.create') }}" class="btn btn-u">
                <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Kunden anlegen (In Folge die Adresse)
                </a>
             </div>
          </div>
+                <div class="pull-right">
+            <div class="btn-toolbar">
+
+               <a href="{{URL::to('admin/list_settings_customer')}}" class="btn btn-u">
+               <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter Settings
+               </a>               
+            </div>
+ </div>      
          <br>
          <br>
          <br>
-         @if($address->count())
          <div class="table-responsive">
-            <table class="table table-striped">
+            @if($address->count())
+            <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
+            {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
+            {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
+            {{ HTML::script('assets/plugins/tablesorter/media/js/dataTables.bootstrap.js') }} 
+            {{ HTML::script('assets/plugins/tablesorter/TableTools-2.2.1/js/dataTables.tableTools.js') }} 
+            {{ HTML::style('assets/plugins/tablesorter/TableTools-2.2.1/css/dataTables.tableTools.css') }} 
+            <script type="text/javascript" language="javascript" class="init">
+               $(document).ready(function() {
+                $(document).ready(function() {         
+    lightbox('Wird geladen');          
+    setTimeout(function() {          
+   closeLightbox();   
+    },690);    });
+             
+                   var table = $('#example').DataTable(
+               
+                    {
+               
+               "order": [[ 0, "desc" ]],
+               "language": {
+                               "url": "{{URL::to('assets/plugins/tablesorter/media/german.json')}}"
+                           },
+               
+               
+                       "sDom": 'T<"clear">lfrtip',
+                       "oTableTools": {
+                         "sRowSelect": "multi",
+                          "sSwfPath": "{{URL::to('assets/plugins/tablesorter/TableTools-2.2.1/swf/copy_csv_xls_pdf.swf')}}",
+                           "aButtons": [
+               
+                              
+                               {
+                                   "sExtends": "copy",
+                                     "mColumns":[1,2,3,4,5,6,7],
+                                     "bFooter": false,
+                                   "sButtonText": "Zwischenablage",
+                                    "bSelectedOnly": true
+                               },
+                               {
+                                   "sExtends": "csv",  
+                                      "mColumns":[1,2,3,4,5,6,7],
+                                     "bFooter": false,                              
+                                   "sFileName": "Kundenadresse.csv",
+                                   "sButtonText": "CSV speichern",
+                                   "bSelectedOnly": true
+                                  
+                               },
+                            
+                               {
+                                   "sExtends": "pdf",
+                                      "mColumns":[1,2,3,4,5,6,7],
+                                     "bFooter": false,
+                                    "sFileName": "Kundenadresse.pdf",
+                                   "sButtonText": "PDF speichern",
+                                   "bSelectedOnly": true                             
+                           
+               
+                               },
+                                {
+                                   "sExtends": "print",
+                                   "sButtonText": "Drucken"
+                               },
+                           ]
+               
+                       },  
+               
+                            
+               
+                       "ajax": "tablesorter_address_index",
+               
+               
+                       "deferRender": true,
+                       "columnDefs": [ {          
+               
+                       },   
+                {
+                          
+               
+                       }
+               
+               
+                        ],
+                   } );
+               
+               
+               
+               // Apply the filter
+               $("#example tfoot input ").on( 'keyup change ', function () {
+               table
+               .column( $(this).parent().index()+':visible' )
+               .search( this.value )
+               .draw();
+               } );           
+               // Apply the filter
+               $("#example tfoot select ").on( 'keyup change ', function () {
+               table
+               .column( $(this).parent().index()+':visible' )
+               .search( this.value )
+               .draw();
+               } );      
+               
+               
+               } );
+               
+               
+            </script>
+            <table id="example" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-                     <th>ID</th>                    
+
+
+
+                     <th>ID</th>
                      <th>Vorname</th>
                      <th>Nachname</th>
+                     <th>Adresse</th>
+                     <th>PLZ</th>
+                     <th>Ort</th>                  
                      <th>Telefon</th>
+                     <th>E-Mail</th>
+                     <th>Bearbeiten</th>
                   </tr>
                </thead>
-               <tbody>
-                  @foreach( $address as $v )
+               <tfoot>
                   <tr>
-                     <td> {{ link_to_route( 'admin.address.edit', $v->id, $v->user_id, array( 'class' => 'btn btn-link btn-xs' )) }}</td>                   
-                     <td>{{{ $v->first_name }}}</td>
-                     <td>{{{ $v->last_name }}}</td>
-                     <td>{{{ $v->telephone }}}</td>
-                     <td>
-                        <div class="btn-group">
-                           <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
-                           Aktion
-                           <span class="caret"></span>
-                           </a>
-                           <ul class="dropdown-menu">
-                           
-                              <li>
-                                 <a href="{{ URL::route('admin.address.edit', array($v->user_id)) }}">
-                                   <span class="glyphicon glyphicon-edit"></span>&nbsp;{{{ $v->first_name }}} {{{ $v->last_name }}} <b>ansehen/bearbeiten</b>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter ID">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Vorname">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Nachname">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Adresse">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter PLZ">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Ort">
+                     </th>
+                      <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Telefon">
+                     </th>
+                      <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter E-Mail ">
+                     </th>
+                  
 
-                                
-                                 </a>
-                              </li>
-                            
-                              <!--<li>
-                                 <a href="{{ URL::route('admin.address.delete', array($v->user_id)) }}">
-                                 <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Kunden Adresse löschen
-                                 </a>
-                              </li>
-                              -->
-                           </ul>
-                        </div>
-                     </td>
-                     </td>
+
+                     <th rowspan="1" colspan="1"></th>
                   </tr>
-                  @endforeach
-               </tbody>
+               </tfoot>
+               <tfoot>
+                 
+               </tfoot>
             </table>
          </div>
-         @else
-         <div class="alert alert-danger">No results found</div>
-         @endif
       </div>
+      @else
+      <div class="alert alert-danger">Keine Daten vorhanden</div>
+      @endif
    </div>
-   <div class="pull-left">
-      <ul class="pagination">
-         {{ $address->links() }}
-      </ul>
-   </div>
+</div>
 </div>
 @stop

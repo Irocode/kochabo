@@ -9,6 +9,7 @@
     {{ Notification::showAll() }}
     <ul class="nav nav-tabs" id="myTab">
         <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
+        <li><a href="#aufloesung" data-toggle="tab">Auflösung</a></li>
         <li><a href="#info" data-toggle="tab">Info</a></li>
     </ul>
 
@@ -75,6 +76,37 @@
             {{ Form::submit('Änderungen übernehmen', array('class' => 'btn btn-u')) }}
             {{ Form::close() }}
         </div>
+
+
+          <div class="tab-pane" id="aufloesung">
+            <br>
+            <h4><i class="glyphicon glyphicon-info-sign"></i> Auflösung</h4>
+            <br>
+            Mittels Cookie werden die Werte auf andere Seiten übernommen.<br><br>
+         
+<a class="btn btn-u" href="javascript:setStyle('Standard')">Standard Layout</a>
+<br><br>
+<a  class="btn btn-u" href="javascript:setStyle('Systemeinstellungen')">Widescreen</a> <span class="normal"> </span>
+<br><br>
+
+
+<button class="btn btn-warning" id="uebernahme">Dieses Layout f&uuml;r alle Seiten übernehmen</button>
+<script type="text/javascript">
+$("#uebernahme" ).click(function() {
+    setStyleCookie()
+  alert( "Die Einstellung für diese Auflösung wurde übernommen." );
+  //window.location = "admin/"
+});
+</script>
+
+
+
+            <p></p>
+
+        </div>
+
+
+
         <div class="tab-pane" id="info">
             <br>
             <h4><i class="glyphicon glyphicon-info-sign"></i> Info</h4>

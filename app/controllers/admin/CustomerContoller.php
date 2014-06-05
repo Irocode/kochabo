@@ -14,11 +14,13 @@ use Sefa\Exceptions\Validation\ValidationException;
 class CustomerController extends BaseController {
 
     protected $customer;
+     
 
     public function __construct(Customer $customer) {
 
         View::share('active', 'modules');
         $this->customer = $customer;
+         
     }
 
     /**
@@ -82,7 +84,7 @@ class CustomerController extends BaseController {
         $customer = $this->customer->find($id);
         return View::make('backend.customer.edit', compact('customer'));
            // $footer = Footer::find($id);
-           $listabostatus = Listabostatus::find(1);
+          
     }
 
     /**
