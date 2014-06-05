@@ -255,6 +255,9 @@ Route::post('menu/{id}/toggle-publish', array('as' => 'admin.menu.toggle-publish
 Route::resource('list_bundesland', 'List_BundeslandController');
 Route::get('list_bundesland/{id}/delete', array('as' => 'admin.list.list_bundesland.delete', 'uses' => 'List_BundeslandController@confirmDestroy'))
 ->where('id', '[0-9]+');
+Route::resource('list_currency', 'List_CurrencyController');
+Route::get('list_currency/{id}/delete', array('as' => 'admin.list.list_currency.delete', 'uses' => 'List_CurrencyController@confirmDestroy'))
+->where('id', '[0-9]+');
 Route::resource('list_abotyp', 'List_AbotypController');
 Route::get('list_abotyp/{id}/delete', array('as' => 'admin.list.list_abotyp.delete', 'uses' => 'List_AbotypController@confirmDestroy'))
 ->where('id', '[0-9]+');

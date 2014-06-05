@@ -81,6 +81,15 @@ $pruefe_anlegen = Input::get('anlegen');
 //var_dump($pruefe_anlegen);
 
 if ($pruefe_anlegen=='ja') {
+   
+    // Anlegen Ja in Products 
+    $products = $this->products->find($id);
+              
+                $products->picangelegt = 'ja';
+                $products->save();
+
+
+
 
     //var_dump($id);
 $attributes = [
@@ -109,6 +118,10 @@ $products->save();
 }
 else
 {
+
+
+
+
 //var_dump('passt nicht');
 $photoGallery = $this->photoGallery->find($id);    
 /*

@@ -49,6 +49,17 @@
   </div>
 </div>
 
+<br>
+ <div class="row">
+  <div class="col-md-6">
+
+               <a href="{{URL::to('admin/list_currency')}}" class="btn btn-u">
+               <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter Währung
+               </a>               
+        
+  </div>
+</div>
+
 </div>
 
             
@@ -74,6 +85,10 @@ Rezept Filter
 </small>
 <small class="color-green">
 Typ
+<cite title="Source Title"> </cite>
+</small>
+<small class="color-green">
+Währung
 <cite title="Source Title"> </cite>
 </small>
 
