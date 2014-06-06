@@ -17,6 +17,7 @@ ClassLoader::addDirectories(array(
 	app_path().'/controllers',
 	app_path().'/models',
 	app_path().'/database/seeds',
+	app_path().'/libraries'
 ));
 
 /*
@@ -31,13 +32,6 @@ ClassLoader::addDirectories(array(
 */
 
 Log::useFiles(storage_path().'/logs/laravel.log');
-Log::useFiles(storage_path().'/logs/laravel.php');
-
-$logFile = 'log-'.php_sapi_name().'.php';
-
-
-//Täglich
-Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 /*
 |--------------------------------------------------------------------------
@@ -113,3 +107,40 @@ require app_path().'/composers.php';
 */
 
 require app_path().'/listeners.php';
+
+/*
+|--------------------------------------------------------------------------
+| Application Error Logger
+|--------------------------------------------------------------------------
+|
+| Here we will configure the error logger setup for the application which
+| is built on top of the wonderful Monolog library. By default we will
+| build a basic log file setup which creates a single file for logs.
+|
+*/
+
+Log::useFiles(storage_path().'/logs/laravel.log');
+
+
+/*
+|--------------------------------------------------------------------------
+| Require The Filters File
+|--------------------------------------------------------------------------
+|
+| Next we will load the filters file for the application. This gives us
+| a nice separate location to store our route and application filter
+| definitions instead of putting them all in the main routes file.
+|
+*/
+
+require __DIR__.'/../filters.php';
+
+// Require the Observables file.
+require __DIR__.'/../observables.php';
+
+/*
+|--------------------------------------------------------------------------
+| Prep Sentry for dependency Injection
+|--------------------------------------------------------------------------
+*/
+$app['Cartalyst\Sentry\Sentry'] = $app['sentry'];
