@@ -5,15 +5,10 @@
 {{trans('pages.helloworld')}}
 @stop
 {{-- Content --}}
-@section('content') 
+@section('content')
 
 
 
-{{ var_dump(Session::all());}}
-
-{{ var_dump(Session::get('user'));}}
-
-{{ var_dump(Session::get('email'));}}
 
 <div class="container">
    <div class="row">

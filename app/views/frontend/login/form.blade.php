@@ -52,7 +52,7 @@
                 <hr>
 
                 <h4>Passwort vergessen ?</h4>
-                <p>Kein Problem, <a class="color-green" href="#">click hier</a> um dein Passwort neu zu setzen.</p>
+                <p>Kein Problem, <a class="color-green" href="#">click hier</a> um dein Passowrt neu zu setzen.</p>
             </form>            
         </div>
     </div><!--/row-->

@@ -85,10 +85,6 @@
       <!-- ./ container -->
       <!-- Javascripts
          ================================================== -->
-      {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
-      {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
-      {{ HTML::script('assets/bootstrap/js/bootstrap.min.js') }}
-      {{ HTML::script('assets/plugins/hover-dropdown.min.js') }}
-      {{ HTML::script('assets/plugins/back-to-top.js') }}
+
    </body>
 </html>

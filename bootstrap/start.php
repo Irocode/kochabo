@@ -26,13 +26,12 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(array(
-  
- 
+
   	'dev_home' => array('Irocode'), //Home
   	'dev_work' => array('IrocodeBase'),	//Büro
     'dev_irocode' => array('irocode.com'), //www.irocode.com		
 	'production' => array('DEV - production.com'), //
-	 
+
 
 ));
 
