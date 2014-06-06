@@ -301,6 +301,7 @@ return View::make('backend.lists.index_list_settings_products');
 // log
 Route::any('log', ['as'=>'admin.log', 'uses'=>'LogController@index']);
 
+
 //Settings: show form to create settings
 Route::get( '/settings/new', array(
     'as' => 'settings.new',

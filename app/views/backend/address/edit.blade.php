@@ -43,14 +43,14 @@
                <style>#hi{display:none;}</style>
                <?php
                   echo" <input type='radio' name='address_delivery_bill' id='optionsRadios1' value='option1'  >
-                   Rechnugsadresse ident mit Lieferadresse
+                   Rechnungsadresse ident mit Lieferadresse
                   </label>
                   </div>
                   
                   <div class='radio'>
                   <label>
                    <input type='radio' name='address_delivery_bill' id='optionsRadios2' value='option2'  >
-                   Rechnugsadresse anders als Lieferadresse
+                   Rechnungsadresse anders als Lieferadresse
                   </label>
                   ";
                   }  else  {
@@ -58,14 +58,14 @@
                   
                   if ($address_delivery_billx=="option1") {
                   echo" <input type='radio' name='address_delivery_bill' id='optionsRadios1' value='option1'  >
-                   Rechnugsadresse ident mit Lieferadresse
+                   Rechnungsadresse ident mit Lieferadresse
                   </label>
                   </div>
                   
                   <div class='radio'>
                   <label>
                    <input type='radio' name='address_delivery_bill' id='optionsRadios2' value='option2'  >
-                   Rechnugsadresse anders als Lieferadresse
+                   Rechnungsadresse anders als Lieferadresse
                   </label>";
                    }
                    else  {};  

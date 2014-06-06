@@ -1,8 +1,10 @@
 <?php
 
+/*
+Event::listen('user.login', "Sefa\\Handlers\\AuthEventHandler@login");
+Event::listen('user.logout', "Sefa\\Handlers\\AuthEventHandler@logout");
 
-
-
+*/
 
 Event::listen('eloquent.created: *', function ($model) {
 

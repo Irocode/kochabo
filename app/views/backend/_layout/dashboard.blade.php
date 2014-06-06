@@ -23,6 +23,7 @@
                <li><a class="left" href="{{ route('admin.log') }}"><i class="glyphicon glyphicon-tasks"></i> Logs</a></li>
                <li><a class="left" href="{{ route('admin.settings') }}"><i class="glyphicon glyphicon-cog"></i> Einstellungen</a></li>
                <li @if(isset($active) && $active=="logs") class="active" @endif><a class="left" href="{{ url('/admin/log') }}"><span class="glyphicon glyphicon-pushpin"></span>Logs</a></li>
+                              
             </ul>
             <hr>
             <img class="img-responsive hidden-xs" alt="" src="<?php echo asset('assets/img/logos/logogross.png')?>">
