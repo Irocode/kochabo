@@ -144,7 +144,7 @@
                      <th style='width: 60px;'>KundenID</th>
                      <th>Vorname</th>
                      <th>Nachname</th>
-                     <th >Adresse</th>
+                     <th >Adresdddse</th>
                      <th style='width: 60px;' >PLZ</th>
                      <th >Ort</th>                  
                      <th>Land</th>
