@@ -379,8 +379,9 @@ Notification::success('Registrierungs-E-Mail wurde verschickt');
             Session::flash('error', $result['message']);
             return Redirect::route('home');
         }
-    }
-
+        
+    } 
+ 
     /**
      * Process resend activation request
      * @return Response

@@ -6,7 +6,7 @@ use Authority\Repo\User\UserInterface;
 class RegisterForm {
 
 	/**
-	 * Form Data
+	 * Form Data 
 	 *
 	 * @var array
 	 */

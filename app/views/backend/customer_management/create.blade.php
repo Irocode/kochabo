@@ -48,7 +48,7 @@
          <span class="help-block">{{ $errors->first('first_name') }}</span>
          @endif
       </div>
-   </div>
+   </div> 
    <br>
    <!-- last_name -->
    <div class="control-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
