@@ -1,5 +1,5 @@
 @extends('backend/_layout/layout')
-@section('content')
+@section('content') 
 {{ HTML::style('ckeditor/contents.css') }}
 <div class="container">
     <div class="panel panel-default">

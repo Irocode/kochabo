@@ -1,19 +1,23 @@
 <?php namespace App\Controllers\Admin;
 use BaseController;
+use AddressNoPrimaryKey;
 use Redirect;
 use View;
 use Input;
 use Validator;
 use Response;
 use Str;
+use Users;
 use Notification;
 use Sefa\Repositories\Address\AddressRepository as Address;
 use Sefa\Exceptions\Validation\ValidationException;
 class AddressController extends BaseController {
 protected $address;
-public function __construct(Address $address) {
+public function __construct(Address $address, AddressNoPrimaryKey $addressnoprimarykey, Users $users) {
 View::share('active', 'modules');
 $this->address = $address;
+$this->users = $users;
+$this->addressnoprimarykey = $addressnoprimarykey;
 }
 /**
 * Display a listing of the resource.
@@ -63,8 +67,14 @@ return View::make('backend.address.show', compact('address'));
 * @param  int $id
 * @return Response
 */
-public function edit($id) {       
-$address = $this->address->find($id);
+public function edit($id) {   
+
+
+
+
+$address = AddressNoPrimaryKey::find($id);
+
+//$address = $this->address->find($id);
 return View::make('backend.address.edit', compact('address'))
 ;
 }
@@ -76,9 +86,17 @@ return View::make('backend.address.edit', compact('address'))
 */
 public function update($id) {
 try {
+
+
+
+
+
+
+
 $this->address->update($id, Input::all());
 Notification::success('Adresse wurde geändert');
-return Redirect::route('admin.customer.index');
+ return Redirect::back();
+//return Redirect::route('admin.address.index');
 } catch (ValidationException $e) {
 return Redirect::back()->withInput()->withErrors($e->getErrors());
 }

@@ -38,7 +38,7 @@ class Users extends Eloquent{
 	 *
 	 * @return string
 	 */
-	public function getAuthPassword()
+	public function getAuthPassword() 
 	{
 		return $this->password;
 	}

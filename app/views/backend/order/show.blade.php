@@ -1,4 +1,4 @@
-@extends('backend/_layout/layout')
+@extends('backend/_layout/layout') 
 @section('content')
 {{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
 {{ Notification::showAll() }}
@@ -196,7 +196,7 @@
          </div>
       </div>
       @else
-      <div class="alert alert-danger">Keine Daten vorhanden</div>
+      <div class="alert alert-danger">Keine Adresse vorhanden</div>
       @endif
    </div>
 </div>

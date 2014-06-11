@@ -209,7 +209,7 @@ Route::get('logisticianmanager/{id}/delete', array('as' => 'admin.logisticianman
 ////Logistician with zipcode and Deliverytimes (GROUP)
 Route::get('logisticianmanager/{id}/group', array('as' => 'admin.logisticianmanager.group_sefa_free', 'uses' => 'Logisticianmanager_sefa_free_Controller@group'))
 ->where('id', '\d+');
-
+ 
 
 //Search for Results from Zip
 Route::get('search', array('as' => 'admin.search', 'uses' => 'SearchbackenddeliveryzipcodeController@index')) ->where('id', '\d+');

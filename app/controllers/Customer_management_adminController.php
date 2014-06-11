@@ -4,7 +4,7 @@ class Customer_management_adminController extends BaseController {
 	public function __construct(Address $address, Order $order) {
 
 $this->address = $address;
-$this->order = $order;
+$this->order = $order; 
 }
 
 

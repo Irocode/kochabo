@@ -113,7 +113,7 @@
                    } );
                
                
-               
+                
                // Apply the filter
                $("#example tfoot input ").on( 'keyup change ', function () {
                table

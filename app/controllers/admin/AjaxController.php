@@ -3,6 +3,7 @@ use BaseController;
 use Deliverytimes;
 use Customer;
 use Address;
+use AddressNoPrimaryKey;
 use Order;
 use Products;
 use Users;
@@ -16,7 +17,7 @@ use Response;
 use Str;
 use Notification;
 class AjaxController extends BaseController {
-public function __construct(Order $order,Users $users, Logisticianmanager $logisticianmanager, Customer $customer,  Address $address, Deliveryzipcode $deliveryzipcode, Products $products  ) {
+public function __construct(Order $order,Users $users, Logisticianmanager $logisticianmanager, Customer $customer,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products  ) {
 View::share('active', 'modules');
 $this->logisticianmanager = $logisticianmanager;
 $this->customer = $customer;
@@ -25,6 +26,9 @@ $this->products = $products;
 $this->deliveryzipcode = $deliveryzipcode;
 $this->users = $users;
 $this->order = $order;
+$this->addressnoprimarykey = $addressnoprimarykey;
+
+
 }
 
 
@@ -48,7 +52,7 @@ return View::make('backend.customer.data', compact('customer'));
 // AJAX Call-> Index Customer INDEX END
 
 // AJAX Call-> Index Address INDEX Start
-public function getDatatable_address($id) { 
+public function getDatatable_address($id) { 	
 $address = Address::where('customercustomer_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
 return View::make('backend.address.data', compact('address'));
 }
@@ -85,6 +89,7 @@ return View::make('backend.order.data', compact('order'));
 
 // AJAX Call-> Index Address INDEX Start
 public function getDatatable_customer_management() { 
+
 $users = Users::where('id', '>', 1)->orderBy('id', 'DESC')->get();
 return View::make('backend.customer_management.data', compact('users'));
 }

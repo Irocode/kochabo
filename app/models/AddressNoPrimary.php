@@ -2,9 +2,9 @@
 
 use Sefa\Interfaces\BaseModelInterface as BaseModelInterface;
 
-class Address extends BaseModel implements BaseModelInterface {
-
-	protected $primaryKey = 'customercustomer_id';
+class AddressNoPrimaryKey extends BaseModel implements BaseModelInterface {
+ 
+	
 
 
     public $table = 'address';
