@@ -248,7 +248,7 @@
                closeLightbox();   
                },690);    });
                
-                   var table = $('#example').DataTable(
+                   var table = $('#examplex').DataTable(
                
                     {
                
@@ -321,14 +321,14 @@
                
                
                // Apply the filter
-               $("#example tfoot input ").on( 'keyup change ', function () {
+               $("#examplex tfoot input ").on( 'keyup change ', function () {
                table
                .column( $(this).parent().index()+':visible' )
                .search( this.value )
                .draw();
                } );           
                // Apply the filter
-               $("#example tfoot select ").on( 'keyup change ', function () {
+               $("#examplex tfoot select ").on( 'keyup change ', function () {
                table
                .column( $(this).parent().index()+':visible' )
                .search( this.value )
@@ -340,7 +340,7 @@
                
                
             </script>
-            <table id="example" class="display" cellspacing="0" width="100%">
+            <table id="examplex" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
                      <th>Order ID</th>
@@ -419,18 +419,10 @@
          <div class="table-responsive">
             @if($address->count())
             <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
-            {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
-            {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
-            {{ HTML::script('assets/plugins/tablesorter/media/js/dataTables.bootstrap.js') }} 
-            {{ HTML::script('assets/plugins/tablesorter/TableTools-2.2.1/js/dataTables.tableTools.js') }} 
-            {{ HTML::style('assets/plugins/tablesorter/TableTools-2.2.1/css/dataTables.tableTools.css') }} 
+      
             <script type="text/javascript" language="javascript" class="init">
                $(document).ready(function() {
-                $(document).ready(function() {         
-               lightbox('Wird geladen');          
-               setTimeout(function() {          
-               closeLightbox();   
-               },690);    });
+      
                
                    var table = $('#example').DataTable(
                
