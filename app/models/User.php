@@ -57,24 +57,18 @@ class Users extends Eloquent{
 //hasmany
 public function address()
 	{
-		return $this->hasMany ('Address', 'users_id');
+		return $this->hasMany ('Address', 'customercustomer_id')->orderBy('customercustomer_id', 'ASC');
 	}
 
+
+	//hasmany
+public function order()
+	{
+		return $this->hasMany ('Order', 'customercustomer_id')->orderBy('customercustomer_id', 'ASC');
+	}
+
+
 	
-
-//hasone
-
-	  public function address_one()
-     {
-
-
-
-          return $this->hasOne('Address');
-     }
-
-
-
-
 
 
 

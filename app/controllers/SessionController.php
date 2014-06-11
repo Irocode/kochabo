@@ -55,6 +55,8 @@ $zurbestellung = Input::get('zurbestellung');
  if( $zurbestellung=='1' )        {
             
  return Redirect::to('/meinkontoregistrierung');
+   
+
         } 
 
         else {
@@ -77,6 +79,42 @@ $zurbestellung = Input::get('zurbestellung');
                 ->withErrors( $this->loginForm->errors() );
         }
 	}
+
+
+
+
+
+		/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function store_back_variable()
+	{
+		// Form Processing
+        $result = $this->loginForm->save( Input::all() );
+
+        if( $result['success'] )
+        {
+            Event::fire('user.login', array(
+            							'userId' => $result['sessionData']['userId'],
+            							'email' => $result['sessionData']['email']
+            							));
+
+         
+         return Redirect::back();
+
+
+        } else {
+            Session::flash('error', $result['message']);
+            return Redirect::to('/meinkonto')
+                ->withInput()
+                ->withErrors( $this->loginForm->errors() );
+        }
+	}
+
+
+
 
 	/**
 	 * Remove the specified resource from storage.

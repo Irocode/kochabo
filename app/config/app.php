@@ -119,6 +119,8 @@ return array(
         'Chumper\Datatable\DatatableServiceProvider',
         'Bllim\Datatables\DatatablesServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'Moltin\Cart\CartServiceProvider',
+       
         
     ),
 
@@ -194,6 +196,7 @@ return array(
         'Datatable'    => 'Chumper\Datatable\Facades\DatatableFacade',
         'Datatables'   => 'Bllim\Datatables\Datatables',
         'Image' => 'Intervention\Image\Facades\Image',
+        'Cart' => 'Moltin\Cart\Facade',
         
 
     ),

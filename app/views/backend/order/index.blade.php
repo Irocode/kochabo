@@ -5,13 +5,13 @@
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
-              <h3 class="panel-title">Kunden Adressen</h3>
+              <h3 class="panel-title">Bestellungen</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
             <div class="btn-toolbar">
                <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
-               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Kunden anlegen (In Folge die Adresse)
+               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Bestellung anlegen (In Folge die Bestellung)
                </a>
             </div>
          </div>
@@ -27,7 +27,7 @@
          <br>
          <br>
          <div class="table-responsive">
-            @if($address->count())
+            @if($order->count())
             <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
             {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
             {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
@@ -61,16 +61,16 @@
                               
                                {
                                    "sExtends": "copy",
-                                     "mColumns":[1,2,3,4,5,6,7],
+                                     "mColumns":[1,2,3,4,5,6],
                                      "bFooter": false,
                                    "sButtonText": "Zwischenablage",
                                     "bSelectedOnly": true
                                },
                                {
                                    "sExtends": "csv",  
-                                      "mColumns":[1,2,3,4,5,6,7],
+                                      "mColumns":[1,2,3,4,5,6],
                                      "bFooter": false,                              
-                                   "sFileName": "Kundenadresse.csv",
+                                   "sFileName": "Bestellung.csv",
                                    "sButtonText": "CSV speichern",
                                    "bSelectedOnly": true
                                   
@@ -78,9 +78,9 @@
                             
                                {
                                    "sExtends": "pdf",
-                                      "mColumns":[1,2,3,4,5,6,7],
+                                      "mColumns":[1,2,3,4,5,6],
                                      "bFooter": false,
-                                    "sFileName": "Kundenadresse.pdf",
+                                    "sFileName": "Bestellung.pdf",
                                    "sButtonText": "PDF speichern",
                                    "bSelectedOnly": true                             
                            
@@ -96,7 +96,7 @@
                
                             
                
-                       "ajax": "tablesorter_address_index",
+                       "ajax": "tablesorter_order_index",
                
                
                        "deferRender": true,
@@ -140,53 +140,26 @@
 
 
 
-                     <th style='width: 60px;'>ID</th>
-                     <th style='width: 60px;'>KundenID</th>
-                     <th>Vorname</th>
-                     <th>Nachname</th>
-                     <th >Adresdddse</th>
-                     <th style='width: 60px;' >PLZ</th>
-                     <th >Ort</th>                  
-                     <th>Land</th>
-                 
-                     <th>Art</th>
+                     <th>Order ID</th>
+                     <th>KundenID</th>
+                     <th>Lieferbar</th>  
+                     <th>Lieferdatum</th>                    
+                     <th>order_increment_id</th>                                        
+                     <th>created_at</th>
+                     <th>updated_at</th> 
                      <th>Bearbeiten</th>
                   </tr>
                </thead>
                <tfoot>
                   <tr>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter ID">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter KundenID">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Vorname">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Nachname">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Adresse">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter PLZ">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Ort">
-                     </th>
-                      <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Land">
-                     </th>
-                      
-                      <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Art ">
-                     </th>
-                  
-
-
                      <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                                       <th rowspan="1" colspan="1"></th>
                   </tr>
                </tfoot>
                <tfoot>

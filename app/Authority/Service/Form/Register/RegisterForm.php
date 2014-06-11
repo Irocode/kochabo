@@ -45,6 +45,7 @@ class RegisterForm {
             return false;
         }
 
+
         return $this->user->store($input);
     }
 

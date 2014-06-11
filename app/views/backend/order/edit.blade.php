@@ -8,12 +8,12 @@
 
 <!-- Tab Regulierung-->
 <?php 
-   $address_delivery_billx = $address->address_delivery_bill;   
-   if ($address_delivery_billx=="option1") {  ?>
+   $order_delivery_billx = $order->order_delivery_bill;   
+   if ($order_delivery_billx=="option1") {  ?>
 <style>#hi{display:none;}</style>
 <?php } else {};
-   if ($address_delivery_billx=="option2") {} else {};  
-   if (empty($address_delivery_billx)){}  else  {};
+   if ($order_delivery_billx=="option2") {} else {};  
+   if (empty($order_delivery_billx)){}  else  {};
    ?> 
 <div class="container">
 
@@ -32,40 +32,40 @@
 
 
 
-   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\AddressController@update', $address->customercustomer_id), 'method' => 'PATCH')) }}
+   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\OrderController@update', $order->user_id), 'method' => 'PATCH')) }}
    <div class="row">
       <div class="col-md-3">
          <div class="radio">
             <label>
                <?php 
-                  if (empty($address_delivery_billx)){
+                  if (empty($order_delivery_billx)){
                   ?>
                <style>#hi{display:none;}</style>
                <?php
-                  echo" <input type='radio' name='address_delivery_bill' id='optionsRadios1' value='option1'  >
-                   Rechnungsadresse ident mit Lieferadresse
+                  echo" <input type='radio' name='order_delivery_bill' id='optionsRadios1' value='option1'  >
+                   Rechnugsadresse ident mit Lieferadresse
                   </label>
                   </div>
                   
                   <div class='radio'>
                   <label>
-                   <input type='radio' name='address_delivery_bill' id='optionsRadios2' value='option2'  >
-                   Rechnungsadresse anders als Lieferadresse
+                   <input type='radio' name='order_delivery_bill' id='optionsRadios2' value='option2'  >
+                   Rechnugsadresse anders als Lieferadresse
                   </label>
                   ";
                   }  else  {
                   
                   
-                  if ($address_delivery_billx=="option1") {
-                  echo" <input type='radio' name='address_delivery_bill' id='optionsRadios1' value='option1'  >
-                   Rechnungsadresse ident mit Lieferadresse
+                  if ($order_delivery_billx=="option1") {
+                  echo" <input type='radio' name='order_delivery_bill' id='optionsRadios1' value='option1'  >
+                   Rechnugsadresse ident mit Lieferadresse
                   </label>
                   </div>
                   
                   <div class='radio'>
                   <label>
-                   <input type='radio' name='address_delivery_bill' id='optionsRadios2' value='option2'  >
-                   Rechnungsadresse anders als Lieferadresse
+                   <input type='radio' name='order_delivery_bill' id='optionsRadios2' value='option2'  >
+                   Rechnugsadresse anders als Lieferadresse
                   </label>";
                    }
                    else  {};  
@@ -73,16 +73,16 @@
                    
                   echo"<br>";
                   
-                    if ($address_delivery_billx=="option2") {
+                    if ($order_delivery_billx=="option2") {
                   
-                   echo"<input type='radio' name='address_delivery_bill' id='optionsRadios1' value='option1'   >
+                   echo"<input type='radio' name='order_delivery_bill' id='optionsRadios1' value='option1'   >
                    Rechnugsadresse ident mit Lieferadresse
                   </label>
                   </div>
                   
                   <div class='radio'>
                   <label>
-                   <input type='radio' name='address_delivery_bill' id='optionsRadios2' value='option2'  >
+                   <input type='radio' name='order_delivery_bill' id='optionsRadios2' value='option2'  >
                    Rechnugsadresse anders als Lieferadresse
                   </label>";
                   
@@ -112,7 +112,7 @@
       <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
       <label class="control-label" for="gender">Anrede</label>
       <div class="controls " >
-      <?php $genderselectchoice =$address->gender; 
+      <?php $genderselectchoice =$order->gender; 
      
 
          if (empty($genderselectchoice)){ echo Form::select('gender', array('Herr' => 'Herr', 'Frau' => 'Frau'), 'Herr');}  else  {
@@ -130,7 +130,7 @@
       <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
       <label class="control-label" for="last_name">Vorname</label>
       <div class="controls">
-      {{ Form::text('first_name', $address->first_name, array('class'=>'form-control', 'id' => 'Vorname', 'disabled' => 'disabled', 'placeholder'=>'Vorname', 'value'=>Input::old('first_name'))) }}
+      {{ Form::text('first_name', $order->first_name, array('class'=>'form-control', 'id' => 'Vorname', 'disabled' => 'disabled', 'placeholder'=>'Vorname', 'value'=>Input::old('first_name'))) }}
       @if ($errors->first('first_name'))
       <span class="help-block">{{ $errors->first('first_name') }}</span>
       @endif
@@ -141,7 +141,7 @@
       <div class="control-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
       <label class="control-label" for="last_name">Nachname</label>
       <div class="controls">
-      {{ Form::text('last_name', $address->last_name, array('class'=>'form-control', 'id' => 'last_name', 'disabled' => 'disabled', 'placeholder'=>'Nachname', 'value'=>Input::old('last_name'))) }}
+      {{ Form::text('last_name', $order->last_name, array('class'=>'form-control', 'id' => 'last_name', 'disabled' => 'disabled', 'placeholder'=>'Nachname', 'value'=>Input::old('last_name'))) }}
       @if ($errors->first('last_name'))
       <span class="help-block">{{ $errors->first('last_name') }}</span>
       @endif
@@ -153,7 +153,7 @@
       <div class="control-group {{ $errors->has('dateofbirth') ? 'has-error' : '' }}">
       <label class="control-label" for="dateofbirth">Geburtstag</label>
       <div class="controls">
-      {{ Form::text('dateofbirth', $address->dateofbirth, array('class'=>'form-control', 'id' => 'dateofbirth', 'disabled' => 'disabled', 'placeholder'=>'Geburtstag', 'value'=>Input::old('dateofbirth'))) }}
+      {{ Form::text('dateofbirth', $order->dateofbirth, array('class'=>'form-control', 'id' => 'dateofbirth', 'disabled' => 'disabled', 'placeholder'=>'Geburtstag', 'value'=>Input::old('dateofbirth'))) }}
       @if ($errors->first('dateofbirth'))
       <span class="help-block">{{ $errors->first('dateofbirth') }}</span>
       @endif
@@ -166,7 +166,7 @@
              <label class="control-label" for="prefix">Prefix</label>
          
              <div class="controls">
-                 {{ Form::text('prefix', $address->prefix, array('class'=>'form-control', 'id' => 'prefix', 'placeholder'=>'Prefix', 'value'=>Input::old('prefix'))) }}
+                 {{ Form::text('prefix', $order->prefix, array('class'=>'form-control', 'id' => 'prefix', 'placeholder'=>'Prefix', 'value'=>Input::old('prefix'))) }}
                  @if ($errors->first('prefix'))
                  <span class="help-block">{{ $errors->first('prefix') }}</span>
                  @endif
@@ -178,7 +178,7 @@
              <label class="control-label" for="suffix">Suffix</label>
          
              <div class="controls">
-                 {{ Form::text('suffix', $address->suffix, array('class'=>'form-control', 'id' => 'suffix', 'placeholder'=>'Suffix', 'value'=>Input::old('suffix'))) }}
+                 {{ Form::text('suffix', $order->suffix, array('class'=>'form-control', 'id' => 'suffix', 'placeholder'=>'Suffix', 'value'=>Input::old('suffix'))) }}
                  @if ($errors->first('suffix'))
                  <span class="help-block">{{ $errors->first('suffix') }}</span>
                  @endif
@@ -189,7 +189,7 @@
       <div class="control-group {{ $errors->has('company') ? 'has-error' : '' }}">
       <label class="control-label" for="company">Firma</label>
       <div class="controls">
-      {{ Form::text('company', $address->company, array('class'=>'form-control', 'id' => 'company', 'placeholder'=>'Firma', 'value'=>Input::old('company'))) }}
+      {{ Form::text('company', $order->company, array('class'=>'form-control', 'id' => 'company', 'placeholder'=>'Firma', 'value'=>Input::old('company'))) }}
       @if ($errors->first('company'))
       <span class="help-block">{{ $errors->first('company') }}</span>
       @endif
@@ -200,7 +200,7 @@
       <div class="control-group {{ $errors->has('street') ? 'has-error' : '' }}">
       <label class="control-label" for="street">Straße</label>
       <div class="controls">
-      {{ Form::text('street', $address->street, array('class'=>'form-control', 'id' => 'street', 'placeholder'=>'Straße', 'value'=>Input::old('street'))) }}
+      {{ Form::text('street', $order->street, array('class'=>'form-control', 'id' => 'street', 'placeholder'=>'Straße', 'value'=>Input::old('street'))) }}
       @if ($errors->first('street'))
       <span class="help-block">{{ $errors->first('street') }}</span>
       @endif
@@ -211,7 +211,7 @@
       <div class="control-group {{ $errors->has('city') ? 'has-error' : '' }}">
       <label class="control-label" for="city">Stadt</label>
       <div class="controls">
-      {{ Form::text('city', $address->city, array('class'=>'form-control', 'id' => 'city', 'placeholder'=>'Stadt', 'value'=>Input::old('city'))) }}
+      {{ Form::text('city', $order->city, array('class'=>'form-control', 'id' => 'city', 'placeholder'=>'Stadt', 'value'=>Input::old('city'))) }}
       @if ($errors->first('city'))
       <span class="help-block">{{ $errors->first('city') }}</span>
       @endif
@@ -222,7 +222,7 @@
       <div class="control-group {{ $errors->has('zip') ? 'has-error' : '' }}">
       <label class="control-label" for="zip">PLZ</label>
       <div class="controls">
-      {{ Form::text('zip', $address->zip, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'PLZ', 'value'=>Input::old('zip'))) }}
+      {{ Form::text('zip', $order->zip, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'PLZ', 'value'=>Input::old('zip'))) }}
       @if ($errors->first('zip'))
       <span class="help-block">{{ $errors->first('zip') }}</span>
       @endif
@@ -233,7 +233,7 @@
       <div class="control-group {{ $errors->has('stateprovince') ? 'has-error' : '' }}">
       <label class="control-label" for="stateprovince">Bundesland</label>
       <div class="controls">
-      {{ Form::text('stateprovince', $address->stateprovince, array('class'=>'form-control', 'id' => 'stateprovince', 'placeholder'=>'Bundesland', 'value'=>Input::old('stateprovince'))) }}
+      {{ Form::text('stateprovince', $order->stateprovince, array('class'=>'form-control', 'id' => 'stateprovince', 'placeholder'=>'Bundesland', 'value'=>Input::old('stateprovince'))) }}
       @if ($errors->first('stateprovince'))
       <span class="help-block">{{ $errors->first('stateprovince') }}</span>
       @endif
@@ -244,7 +244,7 @@
       <div class="control-group {{ $errors->has('country') ? 'has-error' : '' }}">
       <label class="control-label" for="country">Land</label>
       <div class="controls">
-      {{ Form::text('country', $address->country, array('class'=>'form-control', 'id' => 'country', 'placeholder'=>'Land', 'value'=>Input::old('country'))) }}
+      {{ Form::text('country', $order->country, array('class'=>'form-control', 'id' => 'country', 'placeholder'=>'Land', 'value'=>Input::old('country'))) }}
       @if ($errors->first('country'))
       <span class="help-block">{{ $errors->first('country') }}</span>
       @endif
@@ -255,7 +255,7 @@
       <div class="control-group {{ $errors->has('email') ? 'has-error' : '' }}">
       <label class="control-label" for="email">E-Mail</label>
       <div class="controls">
-      {{ Form::text('email', $address->email, array('class'=>'form-control', 'id' => 'email', 'placeholder'=>'E-Mail', 'value'=>Input::old('email'))) }}
+      {{ Form::text('email', $order->email, array('class'=>'form-control', 'id' => 'email', 'placeholder'=>'E-Mail', 'value'=>Input::old('email'))) }}
       @if ($errors->first('email'))
       <span class="help-block">{{ $errors->first('email') }}</span>
       @endif
@@ -266,7 +266,7 @@
       <div class="control-group {{ $errors->has('telephone') ? 'has-error' : '' }}">
       <label class="control-label" for="telephone">Telefon</label>
       <div class="controls">
-      {{ Form::text('telephone', $address->telephone, array('class'=>'form-control', 'id' => 'telephone', 'placeholder'=>'Telefon', 'value'=>Input::old('telephone'))) }}
+      {{ Form::text('telephone', $order->telephone, array('class'=>'form-control', 'id' => 'telephone', 'placeholder'=>'Telefon', 'value'=>Input::old('telephone'))) }}
       @if ($errors->first('telephone'))
       <span class="help-block">{{ $errors->first('telephone') }}</span>
       @endif
@@ -277,7 +277,7 @@
       <div class="control-group {{ $errors->has('fax') ? 'has-error' : '' }}">
       <label class="control-label" for="fax">Fax</label>
       <div class="controls">
-      {{ Form::text('fax', $address->fax, array('class'=>'form-control', 'id' => 'fax', 'placeholder'=>'Fax', 'value'=>Input::old('fax'))) }}
+      {{ Form::text('fax', $order->fax, array('class'=>'form-control', 'id' => 'fax', 'placeholder'=>'Fax', 'value'=>Input::old('fax'))) }}
       @if ($errors->first('fax'))
       <span class="help-block">{{ $errors->first('fax') }}</span>
       @endif
@@ -289,7 +289,7 @@
              <label class="control-label" for="latitude">Latitude</label>
          
              <div class="controls">
-                 {{ Form::text('latitude', $address->latitude, array('class'=>'form-control', 'id' => 'latitude', 'placeholder'=>'Latitude', 'value'=>Input::old('latitude'))) }}
+                 {{ Form::text('latitude', $order->latitude, array('class'=>'form-control', 'id' => 'latitude', 'placeholder'=>'Latitude', 'value'=>Input::old('latitude'))) }}
                  @if ($errors->first('latitude'))
                  <span class="help-block">{{ $errors->first('latitude') }}</span>
                  @endif
@@ -301,7 +301,7 @@
              <label class="control-label" for="longitude">Longitude</label>
          
              <div class="controls">
-                 {{ Form::text('longitude', $address->longitude, array('class'=>'form-control', 'id' => 'longitude', 'placeholder'=>'Longitude', 'value'=>Input::old('longitude'))) }}
+                 {{ Form::text('longitude', $order->longitude, array('class'=>'form-control', 'id' => 'longitude', 'placeholder'=>'Longitude', 'value'=>Input::old('longitude'))) }}
                  @if ($errors->first('longitude'))
                  <span class="help-block">{{ $errors->first('longitude') }}</span>
                  @endif
@@ -313,7 +313,7 @@
       <div class="control-group {{ $errors->has('deliveryinformation') ? 'has-error' : '' }}">
       <label class="control-label" for="deliveryinformation">Lieferinformationen<label>
       <div class="controls">
-      {{ Form::textarea('deliveryinformation', $address->deliveryinformation, array('class'=>'form-control', 'id' => 'deliveryinformation', 'placeholder'=>'Lieferinformationen', 'value'=>Input::old('deliveryinformation'))) }}
+      {{ Form::textarea('deliveryinformation', $order->deliveryinformation, array('class'=>'form-control', 'id' => 'deliveryinformation', 'placeholder'=>'Lieferinformationen', 'value'=>Input::old('deliveryinformation'))) }}
       @if ($errors->first('deliveryinformation'))
       <span class="help-block">{{ $errors->first('deliveryinformation') }}</span>
       @endif
@@ -330,7 +330,7 @@
       <div class="control-group {{ $errors->has('gender_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="gender_delivery">Anrede</label>
       <div class="controls " >
-      <?php $genderselectchoice_delivery =$address->gender_delivery;  
+      <?php $genderselectchoice_delivery =$order->gender_delivery;  
      
 
       if (empty($genderselectchoice_delivery)){ echo Form::select('gender_delivery', array('Herr' => 'Herr', 'Frau' => 'Frau'), 'Herr');}  else  {
@@ -348,7 +348,7 @@
       <div class="control-group {{ $errors->has('first_name_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="last_name_delivery">Vorname</label>
       <div class="controls">
-      {{ Form::text('first_name_delivery', $address->first_name_delivery, array('class'=>'form-control', 'id' => 'Vorname', 'placeholder'=>'Vorname', 'value'=>Input::old('first_name_delivery' ))) }}
+      {{ Form::text('first_name_delivery', $order->first_name_delivery, array('class'=>'form-control', 'id' => 'Vorname', 'placeholder'=>'Vorname', 'value'=>Input::old('first_name_delivery' ))) }}
       @if ($errors->first('first_name_delivery'))
       <span class="help-block">{{ $errors->first('first_name_delivery') }}</span>
       @endif
@@ -359,7 +359,7 @@
       <div class="control-group {{ $errors->has('last_name_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="last_name_delivery">Nachname</label>
       <div class="controls">
-      {{ Form::text('last_name_delivery', $address->last_name_delivery, array('class'=>'form-control', 'id' => 'last_name_delivery', 'placeholder'=>'Nachname', 'value'=>Input::old('last_name_delivery'))) }}
+      {{ Form::text('last_name_delivery', $order->last_name_delivery, array('class'=>'form-control', 'id' => 'last_name_delivery', 'placeholder'=>'Nachname', 'value'=>Input::old('last_name_delivery'))) }}
       @if ($errors->first('last_name_delivery'))
       <span class="help-block">{{ $errors->first('last_name') }}</span>
       @endif
@@ -378,7 +378,7 @@
       <label class="control-label" for="title">Geburtsdatum</label>
       <div class="controls">
          <div class="input-group date form_date " data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-         {{ Form::text('datetime', $address->dateofbirth_delivery,  array( 'class'=>'form-control input-append date input-group date form_date col-md-5 ', 'id' => 'dateofbirth_delivery', 'readonly', 'value'=>Input::old('dateofbirth_delivery'))) }}
+         {{ Form::text('datetime', $order->dateofbirth_delivery,  array( 'class'=>'form-control input-append date input-group date form_date col-md-5 ', 'id' => 'dateofbirth_delivery', 'readonly', 'value'=>Input::old('dateofbirth_delivery'))) }}
             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
          </div>
@@ -404,7 +404,7 @@
              <label class="control-label" for="prefix">Prefix</label>
          
              <div class="controls">
-                 {{ Form::text('prefix', $address->prefix, array('class'=>'form-control', 'id' => 'prefix', 'placeholder'=>'Prefix', 'value'=>Input::old('prefix'))) }}
+                 {{ Form::text('prefix', $order->prefix, array('class'=>'form-control', 'id' => 'prefix', 'placeholder'=>'Prefix', 'value'=>Input::old('prefix'))) }}
                  @if ($errors->first('prefix'))
                  <span class="help-block">{{ $errors->first('prefix') }}</span>
                  @endif
@@ -416,7 +416,7 @@
              <label class="control-label" for="suffix">Suffix</label>
          
              <div class="controls">
-                 {{ Form::text('suffix', $address->suffix, array('class'=>'form-control', 'id' => 'suffix', 'placeholder'=>'Suffix', 'value'=>Input::old('suffix'))) }}
+                 {{ Form::text('suffix', $order->suffix, array('class'=>'form-control', 'id' => 'suffix', 'placeholder'=>'Suffix', 'value'=>Input::old('suffix'))) }}
                  @if ($errors->first('suffix'))
                  <span class="help-block">{{ $errors->first('suffix') }}</span>
                  @endif
@@ -427,7 +427,7 @@
       <div class="control-group {{ $errors->has('company_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="company_delivery">Firma</label>
       <div class="controls">
-      {{ Form::text('company_delivery', $address->company_delivery, array('class'=>'form-control', 'id' => 'company_delivery', 'placeholder'=>'Firma', 'value'=>Input::old('company_delivery'))) }}
+      {{ Form::text('company_delivery', $order->company_delivery, array('class'=>'form-control', 'id' => 'company_delivery', 'placeholder'=>'Firma', 'value'=>Input::old('company_delivery'))) }}
       @if ($errors->first('company_delivery'))
       <span class="help-block">{{ $errors->first('company') }}</span>
       @endif
@@ -438,7 +438,7 @@
       <div class="control-group {{ $errors->has('street_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="street_delivery">Straße</label>
       <div class="controls">
-      {{ Form::text('street_delivery', $address->street_delivery, array('class'=>'form-control', 'id' => 'street_delivery', 'placeholder'=>'Straße', 'value'=>Input::old('street_delivery'))) }}
+      {{ Form::text('street_delivery', $order->street_delivery, array('class'=>'form-control', 'id' => 'street_delivery', 'placeholder'=>'Straße', 'value'=>Input::old('street_delivery'))) }}
       @if ($errors->first('street_delivery'))
       <span class="help-block">{{ $errors->first('street_delivery') }}</span>
       @endif
@@ -449,7 +449,7 @@
       <div class="control-group {{ $errors->has('city_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="city_delivery">Stadt</label>
       <div class="controls">
-      {{ Form::text('city_delivery', $address->city_delivery, array('class'=>'form-control', 'id' => 'city_delivery', 'placeholder'=>'Stadt', 'value'=>Input::old('city_delivery'))) }}
+      {{ Form::text('city_delivery', $order->city_delivery, array('class'=>'form-control', 'id' => 'city_delivery', 'placeholder'=>'Stadt', 'value'=>Input::old('city_delivery'))) }}
       @if ($errors->first('city_delivery'))
       <span class="help-block">{{ $errors->first('city_delivery') }}</span>
       @endif
@@ -460,7 +460,7 @@
       <div class="control-group {{ $errors->has('zip_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="zip_delivery">PLZ</label>
       <div class="controls">
-      {{ Form::text('zip_delivery', $address->zip_delivery, array('class'=>'form-control', 'id' => 'zip_delivery', 'placeholder'=>'PLZ', 'value'=>Input::old('zip_delivery'))) }}
+      {{ Form::text('zip_delivery', $order->zip_delivery, array('class'=>'form-control', 'id' => 'zip_delivery', 'placeholder'=>'PLZ', 'value'=>Input::old('zip_delivery'))) }}
       @if ($errors->first('zip_delivery'))
       <span class="help-block">{{ $errors->first('zip_delivery') }}</span>
       @endif
@@ -471,7 +471,7 @@
       <div class="control-group {{ $errors->has('stateprovince_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="stateprovince_delivery">Bundesland</label>
       <div class="controls">
-      {{ Form::text('stateprovince_delivery', $address->stateprovince_delivery, array('class'=>'form-control', 'id' => 'stateprovince_delivery', 'placeholder'=>'Bundesland', 'value'=>Input::old('stateprovince_delivery'))) }}
+      {{ Form::text('stateprovince_delivery', $order->stateprovince_delivery, array('class'=>'form-control', 'id' => 'stateprovince_delivery', 'placeholder'=>'Bundesland', 'value'=>Input::old('stateprovince_delivery'))) }}
       @if ($errors->first('stateprovince_delivery'))
       <span class="help-block">{{ $errors->first('stateprovince_delivery') }}</span>
       @endif
@@ -482,7 +482,7 @@
       <div class="control-group {{ $errors->has('country_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="country_delivery">Land</label>
       <div class="controls">
-      {{ Form::text('country_delivery', $address->country_delivery, array('class'=>'form-control', 'id' => 'country_delivery', 'placeholder'=>'Land', 'value'=>Input::old('country_delivery'))) }}
+      {{ Form::text('country_delivery', $order->country_delivery, array('class'=>'form-control', 'id' => 'country_delivery', 'placeholder'=>'Land', 'value'=>Input::old('country_delivery'))) }}
       @if ($errors->first('country_delivery'))
       <span class="help-block">{{ $errors->first('country_delivery') }}</span>
       @endif
@@ -493,7 +493,7 @@
       <div class="control-group {{ $errors->has('email') ? 'has-error' : '' }}">
       <label class="control-label" for="email">E-Mail</label>
       <div class="controls">
-      {{ Form::text('email_delivery', $address->email_delivery, array('class'=>'form-control', 'id' => 'email_delivery', 'placeholder'=>'E-Mail', 'value'=>Input::old('email_delivery'))) }}
+      {{ Form::text('email_delivery', $order->email_delivery, array('class'=>'form-control', 'id' => 'email_delivery', 'placeholder'=>'E-Mail', 'value'=>Input::old('email_delivery'))) }}
       @if ($errors->first('email_delivery'))
       <span class="help-block">{{ $errors->first('email_delivery') }}</span>
       @endif
@@ -504,7 +504,7 @@
       <div class="control-group {{ $errors->has('telephone_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="telephone_delivery">Telefon</label>
       <div class="controls">
-      {{ Form::text('telephone_delivery', $address->telephone_delivery, array('class'=>'form-control', 'id' => 'telephone_delivery', 'placeholder'=>'Telefon', 'value'=>Input::old('telephone_delivery'))) }}
+      {{ Form::text('telephone_delivery', $order->telephone_delivery, array('class'=>'form-control', 'id' => 'telephone_delivery', 'placeholder'=>'Telefon', 'value'=>Input::old('telephone_delivery'))) }}
       @if ($errors->first('telephone_delivery'))
       <span class="help-block">{{ $errors->first('telephone_delivery') }}</span>
       @endif
@@ -515,7 +515,7 @@
       <div class="control-group {{ $errors->has('fax_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="fax_delivery">Fax</label>
       <div class="controls">
-      {{ Form::text('fax_delivery', $address->fax_delivery, array('class'=>'form-control', 'id' => 'fax_delivery', 'placeholder'=>'Fax', 'value'=>Input::old('fax_delivery'))) }}
+      {{ Form::text('fax_delivery', $order->fax_delivery, array('class'=>'form-control', 'id' => 'fax_delivery', 'placeholder'=>'Fax', 'value'=>Input::old('fax_delivery'))) }}
       @if ($errors->first('fax_delivery'))
       <span class="help-block">{{ $errors->first('fax') }}</span>
       @endif
@@ -527,7 +527,7 @@
              <label class="control-label" for="latitude">Latitude</label>
          
              <div class="controls">
-                 {{ Form::text('latitude', $address->latitude, array('class'=>'form-control', 'id' => 'latitude', 'placeholder'=>'Latitude', 'value'=>Input::old('latitude'))) }}
+                 {{ Form::text('latitude', $order->latitude, array('class'=>'form-control', 'id' => 'latitude', 'placeholder'=>'Latitude', 'value'=>Input::old('latitude'))) }}
                  @if ($errors->first('latitude'))
                  <span class="help-block">{{ $errors->first('latitude') }}</span>
                  @endif
@@ -539,7 +539,7 @@
              <label class="control-label" for="longitude">Longitude</label>
          
              <div class="controls">
-                 {{ Form::text('longitude', $address->longitude, array('class'=>'form-control', 'id' => 'longitude', 'placeholder'=>'Longitude', 'value'=>Input::old('longitude'))) }}
+                 {{ Form::text('longitude', $order->longitude, array('class'=>'form-control', 'id' => 'longitude', 'placeholder'=>'Longitude', 'value'=>Input::old('longitude'))) }}
                  @if ($errors->first('longitude'))
                  <span class="help-block">{{ $errors->first('longitude') }}</span>
                  @endif
@@ -551,7 +551,7 @@
       <div class="control-group {{ $errors->has('deliveryinformation_delivery') ? 'has-error' : '' }}">
       <label class="control-label" for="deliveryinformation_delivery">Lieferinformationen</label>
       <div class="controls">
-      {{ Form::textarea('deliveryinformation_delivery', $address->deliveryinformation_delivery, array('class'=>'form-control', 'id' => 'deliveryinformation_delivery', 'placeholder'=>'Lieferinformationen', 'value'=>Input::old('deliveryinformation_delivery'))) }}
+      {{ Form::textarea('deliveryinformation_delivery', $order->deliveryinformation_delivery, array('class'=>'form-control', 'id' => 'deliveryinformation_delivery', 'placeholder'=>'Lieferinformationen', 'value'=>Input::old('deliveryinformation_delivery'))) }}
       @if ($errors->first('deliveryinformation_delivery'))
       <span class="help-block">{{ $errors->first('deliveryinformation_delivery') }}</span>
       @endif

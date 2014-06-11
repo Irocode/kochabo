@@ -1,5 +1,13 @@
 <?php 
-class UsernewadminController extends BaseController {
+class Customer_management_adminController extends BaseController {
+
+	public function __construct(Address $address, Order $order) {
+
+$this->address = $address;
+$this->order = $order;
+}
+
+
 /**
 * Display a listing of the resource.
 *
@@ -8,10 +16,10 @@ class UsernewadminController extends BaseController {
 public function index()
 {
 // get all the varibale_ausgabe
-$varibale_ausgabe = Users::all();
+$users = Users::all();
 // load the view and pass the varibale_ausgabe
-return View::make('backend.userverwaltung.index')
-->with('varibale_ausgabe', $varibale_ausgabe);
+return View::make('backend.customer_management.index')
+->with('users', $users);
 }
 /**
 * Show the form for creating a new resource.
@@ -21,7 +29,7 @@ return View::make('backend.userverwaltung.index')
 public function create()
 {
 // load the create form (app/views/varibale_ausgabe/create.blade.php)
-return View::make('backend.userverwaltung.create');
+return View::make('backend.customer_management.create');
 }
 /**
 * Store a newly created resource in storage.
@@ -30,15 +38,19 @@ return View::make('backend.userverwaltung.create');
 */
 public function store() {
 $formData = array(
-'first-name'       => Input::get('first_name'),
-'last-name'        => Input::get('last_name'),
+	'gender'       => Input::get('gender'),
+'first_name'       => Input::get('first_name'),
+'last_name'        => Input::get('last_name'),
 'email'            => Input::get('email'),
+'telephone'        => Input::get('telephone'),
 'password'         => Input::get('password'),
 'confirm-password' => Input::get('confirm_password')
 );
 $rules = array(
-'first-name'       => 'required|min:3',
-'last-name'        => 'required|min:3',
+
+'first_name'       => 'required|min:3',
+'last_name'        => 'required|min:3',
+'telephone'        => 'required|min:3',
 'email'            => 'required|email|unique:users,email',
 'password'         => 'required|min:4',
 'confirm-password' => 'required|same:password'
@@ -48,7 +60,9 @@ if ($validation->fails()) {
 return Redirect::action('App\Controllers\Admin\UserController@create')->withErrors($validation)->withInput();
 }
 $user = Sentry::createUser(array(
+'gender'     => $formData['gender'],
 'email'      => $formData['email'],
+'telephone'  => $formData['telephone'],
 'password'   => $formData['password'],
 'first_name' => $formData['first-name'],
 'last_name'  => $formData['last-name'],
@@ -70,7 +84,7 @@ public function show($id)
 // get the ausgabe
 $ausgabe = Users::find($id);
 // show the view and pass the ausgabe to it
-return View::make('backend.userverwaltung.show')
+return View::make('backend.customer_management.show')
 ->with('ausgabe', $ausgabe);
 }
 /**
@@ -82,11 +96,27 @@ return View::make('backend.userverwaltung.show')
 public function edit($id)
 {
 // get the ausgabe
-$ausgabe = Users::find($id);
+
 // show the edit form and pass the ausgabe
-return View::make('backend.userverwaltung.edit')
-->with('ausgabe', $ausgabe);
+//$order = Order::all();
+
+$ausgabe=Users::find($id);
+$order= Users::find($id)->order;
+$address= Users::find($id)->address;
+
+
+return View::make('backend.customer_management.edit', compact('ausgabe','order','address'));
+
 }
+
+
+
+
+
+
+
+
+
 /**
 * Update the specified resource in storage.
 *
@@ -98,26 +128,43 @@ public function update($id)
 // validate
 // read more on validation at http://laravel.com/docs/validation
 $rules = array(
-'first_name'       => 'required',			
+'first_name'     => 'required',			
 'last_name' => 'required',
-'email'      => 'required|email'
+'email'      => 'required|email',
+'telephone'      => 'required'
 );
 $validator = Validator::make(Input::all(), $rules);
 // process the login
 if ($validator->fails()) {
-return Redirect::to('admin/userverwaltung/' . $id . '/edit')
+return Redirect::to('admin/customer_management/' . $id . '/edit')
 ->withErrors($validator)
 ->withInput(Input::except('password'));
 } else {
 // store
 $ausgabe = Users::find($id);
 $ausgabe->first_name       = Input::get('first_name');
+$ausgabe->gender       = Input::get('gender');
+
+$datumumwandeln= Input::get('date_of_birth');
+$datumumwandelnready= date("Y-m-d", strtotime($datumumwandeln)); 
+$ausgabe->date_of_birth       = $datumumwandelnready;
+
+
+
+
+
+
+//var_dump($datumumwandelnready);
+
+
 $ausgabe->email      = Input::get('email');
 $ausgabe->last_name = Input::get('last_name');
+$ausgabe->telephone = Input::get('telephone');
 $ausgabe->save();
 // redirect
-Session::flash('message', 'Update erfolgreich!');
-return Redirect::to('admin/userverwaltung');
+Notification::success('Update erfolgreich');
+
+return Redirect::to('admin/customer_management');
 }
 }
 /**
@@ -132,7 +179,18 @@ public function destroy($id)
 $ausgabe = Users::find($id);
 $ausgabe->delete();
 // redirect
-Session::flash('message', 'Löschung erfolgreich');
-return Redirect::to('admin/userverwaltung');
+Notification::success('Löschung erfolgreich');
+return Redirect::to('admin/customer_management');
 }
+
+
+
+public function confirmDestroy($id) {
+
+$customer_management = Users::find($id);
+
+return View::make('backend.customer_management.confirm-destroy', compact('customer_management'));
+}
+
+
 }

@@ -13,7 +13,7 @@ return "logisticianmanager/" . $this->attributes['id'] . "/" . $this->attributes
 //hasmany
 public function deliverytimes()
 {
-return $this->hasMany ('Deliverytimes', 'user_id')->orderBy('name', 'ASC');
+return $this->hasMany ('Deliverytimes', 'user_id')->orderBy('user_id', 'ASC');
 }
 public function deliveryzipcode()
 {

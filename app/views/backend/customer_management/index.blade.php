@@ -5,29 +5,28 @@
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
-              <h3 class="panel-title">Kunden Adressen</h3>
+         <h3 class="panel-title">Kunden verwalten</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
             <div class="btn-toolbar">
                <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
-               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Kunden anlegen (In Folge die Adresse)
+               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neuen Kunden anlegen
                </a>
             </div>
          </div>
-                <div class="pull-right">
+         <div class="pull-right">
             <div class="btn-toolbar">
-
-               <a href="{{URL::to('admin/list_settings_customer')}}" class="btn btn-u" disabled="">
-               <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter Settings
+               <a href="{{URL::to('admin/list_settings_customer_management')}}" class="btn btn-u" disabled="">
+               <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter settings
                </a>               
             </div>
- </div>      
+         </div>
          <br>
          <br>
          <br>
          <div class="table-responsive">
-            @if($address->count())
+            @if($users->count())
             <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
             {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
             {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
@@ -36,12 +35,13 @@
             {{ HTML::style('assets/plugins/tablesorter/TableTools-2.2.1/css/dataTables.tableTools.css') }} 
             <script type="text/javascript" language="javascript" class="init">
                $(document).ready(function() {
-                $(document).ready(function() {         
-    lightbox('Wird geladen');          
-    setTimeout(function() {          
-   closeLightbox();   
-    },690);    });
-             
+               $(document).ready(function() {         
+               lightbox('Wird geladen');          
+               setTimeout(function() {          
+               closeLightbox();   
+               },690);    });
+               
+               
                    var table = $('#example').DataTable(
                
                     {
@@ -61,26 +61,26 @@
                               
                                {
                                    "sExtends": "copy",
-                                     "mColumns":[1,2,3,4,5,6,7],
-                                     "bFooter": false,
+                                     "mColumns":[2,3,4,5,6,7],
+                                   "bFooter": false,
                                    "sButtonText": "Zwischenablage",
                                     "bSelectedOnly": true
                                },
                                {
-                                   "sExtends": "csv",  
-                                      "mColumns":[1,2,3,4,5,6,7],
-                                     "bFooter": false,                              
-                                   "sFileName": "Kundenadresse.csv",
+                                   "sExtends": "csv",                                
+                                   "sFileName": "Kundendaten.csv",
                                    "sButtonText": "CSV speichern",
+                                   "mColumns":[2,3,4,5,6,7],
+                                   "bFooter": false,
                                    "bSelectedOnly": true
                                   
                                },
                             
                                {
                                    "sExtends": "pdf",
-                                      "mColumns":[1,2,3,4,5,6,7],
-                                     "bFooter": false,
-                                    "sFileName": "Kundenadresse.pdf",
+                                   "mColumns":[2,3,4,5,6,7],
+                                   "bFooter": false,
+                                    "sFileName": "Kundendaten.pdf",
                                    "sButtonText": "PDF speichern",
                                    "bSelectedOnly": true                             
                            
@@ -96,7 +96,7 @@
                
                             
                
-                       "ajax": "tablesorter_address_index",
+                       "ajax": "tablesorter_customer_management_index",
                
                
                        "deferRender": true,
@@ -137,66 +137,72 @@
             <table id="example" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-
-
-
                      <th style='width: 60px;'>ID</th>
-                     <th style='width: 60px;'>KundenID</th>
+                      <th style='width: 60px;'>Geschlecht</th>
                      <th>Vorname</th>
                      <th>Nachname</th>
-                     <th >Adresdddse</th>
-                     <th style='width: 60px;' >PLZ</th>
-                     <th >Ort</th>                  
-                     <th>Land</th>
-                 
-                     <th>Art</th>
+                     <th>E-Mail</th>
+                     <th>Telefon</th>
+                     <th>Geburtsdatum</th>
+                     <th>Letzer Login</th>
+                     <th>Erstellt am</th>
+                     <th>Update am</th>
                      <th>Bearbeiten</th>
                   </tr>
                </thead>
                <tfoot>
                   <tr>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter ID">
+                     <th rowspan="1" colspan="1" >
+                     <input class="form-control" type="text" placeholder="Filter ID">
                      </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter KundenID">
+                     <th rowspan="1" colspan="1" >
+                   
+                        <select name="select" class="form-control">
+                           <option value="" selected>Auswahl Anrede</option>
+                           @foreach( $list_gender as $x )  
+                           <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach   
+
+                        
+                        </select>
+
                      </th>
+
                      <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Vorname">
+                     <input class="form-control" type="text" placeholder="Filter Vorname">
                      </th>
+
                      <th rowspan="1" colspan="1">
                         <input class="form-control" type="text" placeholder="Filter Nachname">
                      </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Adresse">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter PLZ">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Ort">
-                     </th>
-                      <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Land">
-                     </th>
-                      
-                      <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Art ">
-                     </th>
-                  
 
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Email">
+                     </th>
+
+                     <th rowspan="1" colspan="1">
+                      <input class="form-control" type="text" placeholder="Filter Telefon">                      
+                     </th>
+                      <th rowspan="1" colspan="1">
+                      <input class="form-control" type="text" placeholder="Filter Geburtsdatum">                      
+                     </th>
 
                      <th rowspan="1" colspan="1"></th>
+
+                     <th rowspan="1" colspan="1"></th>
+
+                     <th rowspan="1" colspan="1"></th>
+
+                     <th rowspan="1" colspan="1"></th>
+
                   </tr>
                </tfoot>
-               <tfoot>
-                 
-               </tfoot>
+            
             </table>
          </div>
       </div>
       @else
-      <div class="alert alert-danger">Keine Daten vorhanden</div>
+      <div class="alert alert-danger">Keine Kunden vorhanden</div>
       @endif
    </div>
 </div>

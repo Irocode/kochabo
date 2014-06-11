@@ -29,11 +29,25 @@ class SentryUser extends RepoAbstract implements UserInterface {
 	 */
 	public function store($data)
 	{
+
+
+
+
+
+
 		$result = array();
 		try {
+
+
+			$datumumwandeln= e($data['date_of_birth']);
+            $datumumwandelnready= date("Y-m-d", strtotime($datumumwandeln)); 
+
+$lastInsertedemail = e($data['email']);
+
+
+
 			//Attempt to register the user. 
-			$user = $this->sentry->register(array('terms' => e($data['terms']),'price_produkt' => e($data['price_produkt']),'obstbox' => e($data['obstbox']),'price_adobstbox' => e($data['price_adobstbox']),'wein' => e($data['wein']),'price_adwein' => e($data['price_adwein']),'summe' => e($data['summe']),
-'email' => e($data['email']), 'produkttyp' => e($data['produkttyp']),'produkt' => e($data['produkt']), 'activated' => e($data['activated']), 'first_name' => e($data['first_name']), 'last_name' => e($data['last_name']), 'password' => e($data['password'])));
+			$user = $this->sentry->register(array('email' => e($data['email']),  'activated' => e($data['activated']), 'telephone' => e($data['telephone']), 'date_of_birth' => $datumumwandelnready, 'first_name' => e($data['first_name']),'gender' => e($data['gender']),'last_name' => e($data['last_name']), 'password' => e($data['password'])));
 
 			//success!
 	    	$result['success'] = true;
@@ -41,20 +55,14 @@ class SentryUser extends RepoAbstract implements UserInterface {
 	    	$result['mailData']['activationCode'] = $user->GetActivationCode();
 			$result['mailData']['userId'] = $user->getId();
 			$result['mailData']['email'] = e($data['email']);
+			$result['mailData']['telephone'] = e($data['telephone']);
 			$result['mailData']['first_name'] = e($data['first_name']);
 			$result['mailData']['activated'] = e($data['activated']);
 			$result['mailData']['last_name'] = e($data['last_name']);
-			$result['mailData']['produkt'] = e($data['produkt']);
-			$result['mailData']['produkttyp'] = e($data['produkttyp']);
+$result['mailData']['date_of_birth'] = e($data['date_of_birth']);
+$result['mailData']['gender'] = e($data['gender']);
 
-			$result['mailData']['price_produkt'] = e($data['price_produkt']);
-			$result['mailData']['obstbox'] = e($data['obstbox']);
-			$result['mailData']['price_adobstbox'] = e($data['price_adobstbox']);
-			$result['mailData']['wein'] = e($data['wein']);
-			$result['mailData']['price_adwein'] = e($data['price_adwein']);
-			$result['mailData']['terms'] = e($data['terms']);
-			$result['mailData']['summe'] = e($data['summe']);
-
+		
 
 
 			
@@ -70,7 +78,7 @@ class SentryUser extends RepoAbstract implements UserInterface {
 	    	$result['message'] = trans('users.exists');
 		}
 
-		return $result;
+		return $result ; 
 	}
 
 
@@ -85,8 +93,7 @@ class SentryUser extends RepoAbstract implements UserInterface {
 		$result = array();
 		try {
 			//Attempt to register the user. 
-			$user = $this->sentry->register(array('terms' => e($data['terms']),'price_produkt' => e($data['price_produkt']),'obstbox' => e($data['obstbox']),'price_adobstbox' => e($data['price_adobstbox']),'wein' => e($data['wein']),'price_adwein' => e($data['price_adwein']),'summe' => e($data['summe']),
-'email' => e($data['email']), 'produkttyp' => e($data['produkttyp']),'produkt' => e($data['produkt']), 'activated' => e($data['activated']), 'first_name' => e($data['first_name']), 'last_name' => e($data['last_name']), 'password' => e($data['password'])));
+			$user = $this->sentry->register(array('email' => e($data['email']), 'activated' => e($data['activated']), 'first_name' => e($data['first_name']), 'last_name' => e($data['last_name']), 'password' => e($data['password'])));
 
 			//success!
 	    	$result['success'] = true;
@@ -97,16 +104,7 @@ class SentryUser extends RepoAbstract implements UserInterface {
 			$result['mailData']['first_name'] = e($data['first_name']);
 			$result['mailData']['activated'] = e($data['activated']);
 			$result['mailData']['last_name'] = e($data['last_name']);
-			$result['mailData']['produkt'] = e($data['produkt']);
-			$result['mailData']['produkttyp'] = e($data['produkttyp']);
 
-			$result['mailData']['price_produkt'] = e($data['price_produkt']);
-			$result['mailData']['obstbox'] = e($data['obstbox']);
-			$result['mailData']['price_adobstbox'] = e($data['price_adobstbox']);
-			$result['mailData']['wein'] = e($data['wein']);
-			$result['mailData']['price_adwein'] = e($data['price_adwein']);
-			$result['mailData']['terms'] = e($data['terms']);
-			$result['mailData']['summe'] = e($data['summe']);
 
 
 

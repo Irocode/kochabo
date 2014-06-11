@@ -11,8 +11,8 @@
 <nav class="navbar navbar-inverse">
 
 	<ul class="nav navbar-nav">
-		<li><a href="{{ URL::to('admin/userverwaltung/') }}">Zeige alle Benutzer</a></li>
-		<li><a href="{{ URL::to('admin/userverwaltung/create') }}">Neuen anlegen</a>
+		<li><a href="{{ URL::to('admin/customer_management/') }}">Zeige alle Benutzer</a></li>
+		<li><a href="{{ URL::to('admin/customer_management/create') }}">Neuen anlegen</a>
 	</ul>
 </nav>
 <div class="pull-right">
@@ -29,6 +29,7 @@
 			<strong>Vorname:</strong> {{ $ausgabe->first_name }}<br>
 			<strong>Nachname:</strong> {{ $ausgabe->last_name }}<br>
 			<strong>E-Mail:</strong> {{ $ausgabe->email }}<br>
+			<strong>telephone:</strong> {{ $ausgabe->telephone }}<br>
 			<strong>Passwort:</strong> {{ $ausgabe->password }}
 		</p>
 	</div>

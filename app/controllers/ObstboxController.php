@@ -6,9 +6,10 @@ class ObstboxController extends BaseController {
 
     protected $obstbox;
 
-    public function __construct(Obstbox $obstbox) {
+    public function __construct(Obstbox $obstbox,  Products $products) {
 
         $this->obstbox = $obstbox;
+        $this->products = $products;
     }
 
     /**
@@ -19,7 +20,13 @@ class ObstboxController extends BaseController {
     public function index() {
 
         $obstbox = $this->obstbox->paginate();
-        return View::make('frontend.obstbox.index', compact('obstbox'));
+
+        $products=Products::all();
+       // $products_grosse_obst_box = Products::find(83)->products;
+        $products_grosse_obst_box =Products::where('id', '=', 83)->get();
+        $products_kleine_obst_box=Products::where('id', '=', 84)->get();
+     
+        return View::make('frontend.obstbox.index', compact('obstbox','products','products_grosse_obst_box','products_kleine_obst_box'));
     }
 
     /**
@@ -31,4 +38,16 @@ class ObstboxController extends BaseController {
         $obstbox = $this->obstbox->find($id);
         return View::make('frontend.obstbox.show', compact('obstbox'));
     }
+
+
+
+//Test loginabfrage
+ public function login_query() {
+
+        $obstbox = $this->obstbox->paginate();
+        return View::make('frontend.obstbox.login_query', compact('obstbox'));
+    }
+
+
+
 }

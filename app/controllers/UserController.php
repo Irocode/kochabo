@@ -88,21 +88,27 @@ class UserController extends BaseController {
 
         if( $result['success'] )
         {
-            Event::fire('user.signup', array(
+         
+            
+            /* Event::fire('user.signup', array(
+
+               
+         
                 'email' => $result['mailData']['email'], 
+                'telephone' => $result['mailData']['telephone'], 
                 'userId' => $result['mailData']['userId'], 
                 'activationCode' => $result['mailData']['activationCode']
-            ));
+
+
+            ));*/
 
             // Success!
        //     Session::flash('success', $result['message']);
            // return Redirect::route('home');
 
-$cmsanlegung = Input::get('cmsanlegung');        
+//return Redirect::to('/admin/customer_management');
 
-
-
-if ($cmsanlegung=="yes") { return Redirect::to('/admin');} else{ return Redirect::to('/meinkonto');}
+return Redirect::to('cart');
 
 
 
@@ -113,15 +119,12 @@ if ($cmsanlegung=="yes") { return Redirect::to('/admin');} else{ return Redirect
 
           //  Session::put('produkt',$produkt);
          //   Session::flash('error', $result['message']);
-            $cmsanlegung = Input::get('cmsanlegung'); 
+      
             //return var_dump($cmsanlegung); 
 
-if ($cmsanlegung=="yes"){ return Redirect::action('UserControlleradmin@create')
+return Redirect::action('Customer_management_adminController@create')
                 ->withInput()
-                ->withErrors( $this->registerForm->errors() ); } else{ return Redirect::action('UserController@create')
-                ->withInput()
-                ->withErrors( $this->registerForm->errors() ); }
-
+                ->withErrors( $this->registerForm->errors() ); 
            
         }
 
@@ -310,6 +313,7 @@ return View::make('frontend.meinkonto.meinkontoregistrierung');
         {
             Event::fire('user.resend', array(
                 'email' => $result['mailData']['email'], 
+                'telephone' => $result['mailData']['telephone'], 
                 'userId' => $result['mailData']['userId'], 
                 'activationCode' => $result['mailData']['activationCode']
             ));

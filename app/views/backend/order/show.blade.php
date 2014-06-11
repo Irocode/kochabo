@@ -68,7 +68,7 @@
                                },
                                {
                                    "sExtends": "csv",  
-                                      "mColumns":[1,2,3,4,5,6,7],
+                                      "mColumns":[1,2,3,4,5,6,7,8],
                                      "bFooter": false,                              
                                    "sFileName": "Kundenadresse.csv",
                                    "sButtonText": "CSV speichern",
@@ -78,7 +78,7 @@
                             
                                {
                                    "sExtends": "pdf",
-                                      "mColumns":[1,2,3,4,5,6,7],
+                                      "mColumns":[1,2,3,4,5,6,7,8],
                                      "bFooter": false,
                                     "sFileName": "Kundenadresse.pdf",
                                    "sButtonText": "PDF speichern",
@@ -96,7 +96,7 @@
                
                             
                
-                       "ajax": "tablesorter_address_index",
+                       "ajax": "../tablesorter_address_index/{{ $address->user_id }}",
                
                
                        "deferRender": true,
@@ -140,13 +140,13 @@
 
 
 
-                     <th style='width: 60px;'>ID</th>
-                     <th style='width: 60px;'>KundenID</th>
+                    <th>ID</th>
+                     <th>UserID</th>
                      <th>Vorname</th>
                      <th>Nachname</th>
-                     <th >Adresdddse</th>
-                     <th style='width: 60px;' >PLZ</th>
-                     <th >Ort</th>                  
+                     <th>Adresse</th>
+                     <th>PLZ</th>
+                     <th>Ort</th>                  
                      <th>Land</th>
                  
                      <th>Art</th>
@@ -159,7 +159,7 @@
                         <input class="form-control" type="text" placeholder="Filter ID">
                      </th>
                      <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter KundenID">
+                        <input class="form-control" type="text" placeholder="Filter UserID">
                      </th>
                      <th rowspan="1" colspan="1">
                         <input class="form-control" type="text" placeholder="Filter Vorname">
@@ -201,4 +201,5 @@
    </div>
 </div>
 </div>
+
 @stop

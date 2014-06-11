@@ -53,7 +53,7 @@
          </div>
          <div class="col-xs-6 col-md-12">
             <a href="{{ route('admin.slider.index') }}" class="btn btn-success btn " role="button" disabled><span class="glyphicon glyphicon-tint"></span> Sliders</a>
-            <a href="{{ route('admin.userverwaltung.index') }}" class="btn btn-warning btn " role="button"><span class="glyphicon glyphicon-user"></span> Benutzer</a>
+            <a href="{{ route('admin.customer_management.index') }}" class="btn btn-warning btn " role="button"><span class="glyphicon glyphicon-user"></span> Benutzer</a>
             <a href="{{ route('admin.form-post.index') }}" class="btn btn-info btn " role="button"><span class="glyphicon glyphicon-envelope"></span> Inbox</a>
             <a  href="{{ route('admin.settings') }}" class="btn btn-default btn  left" role="button"><span class="glyphicon glyphicon-cog"></span> Einstellungen</a>
          </div>

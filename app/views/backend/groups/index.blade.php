@@ -6,7 +6,7 @@
 	
 	<ul class="nav navbar-nav">
 		<li><a href="{{ URL::to('/admin/groups') }}">Gruppen gesamt</a></li>
-		<li><a href="{{ URL::to('/admin//groups/create') }}">Neue Gruppe</a>
+		<li><a href="{{ URL::to('/admin/groups/create') }}">Neue Gruppe</a>
 	</ul>
 </nav>
 <div class="pull-right">

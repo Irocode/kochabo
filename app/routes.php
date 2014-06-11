@@ -21,6 +21,10 @@ Route::get('/start', array('as' => 'frontend._layout.dashboard', function()
 return View::make('frontend._layout.dashboard');
 }));
 
+
+//CartTest
+Route::resource('cart', 'CartController');
+
 // newsletter
 Route::resource('newslettereintrag', 'NewslettereintragController');
 Route::get('newslettereintrag', array('as' => 'dashboard.newslettereintrag.show', 'uses' => 'NewslettereintragController@index'));  
@@ -45,6 +49,7 @@ Route::get('/aktuellerezepte/{id}/{slug?}', array('as' => 'dashboard.aktuellerez
 //obstbox
 Route::get('/obstbox', array('as' => 'dashboard.obstbox', 'uses' => 'ObstboxController@index'));
 Route::get('/obstbox/{id}/{slug?}', array('as' => 'dashboard.obstbox.show', 'uses' => 'ObstboxController@show'));
+Route::post('/obstbox/login_query', array('as' => 'dashboard.obstbox.login_query', 'uses' => 'ObstboxController@login_query'));
 //beispielbox
 Route::get('/beispielbox', array('as' => 'dashboard.beispielbox', 'uses' => 'BeispielboxController@index'));
 Route::get('/beispielbox/{id}/{slug?}', array('as' => 'dashboard.beispielbox.show', 'uses' => 'BeispielboxController@show'));
@@ -179,9 +184,20 @@ Route::resource('customer', 'CustomerController');
 Route::get('tablesorter_customer_index', array('as'=>'admin.customer.data', 'uses'=>'AjaxController@getDatatable_customer'));
 Route::get('customer/{id}/delete', array('as' => 'admin.customer.delete', 'uses' => 'CustomerController@confirmDestroy'))
 ->where('id', '\d+');
-// addresses customer
+
+
+//order
+Route::resource('order', 'OrderController');
+////order AJAX INDEX Tablesorter
+Route::get('tablesorter_order_index', array('as'=>'admin.order.data', 'uses'=>'AjaxController@getDatatable_order'));
+Route::get('order/{id}/delete', array('as' => 'admin.order.delete', 'uses' => 'OrderController@confirmDestroy'))
+->where('id', '\d+');
+
+
+
 Route::resource('address', 'AddressController');
-Route::get('tablesorter_address_index', array('as'=>'admin.address.data', 'uses'=>'AjaxController@getDatatable_address'));
+Route::get('tablesorter_address_index', array('as'=>'admin.address.data', 'uses'=>'AjaxController@getDatatable_address_all'));
+Route::get('tablesorter_address_index/{id}', array('as'=>'admin.address.data', 'uses'=>'AjaxController@getDatatable_address'));
 Route::get('address/{id}/delete', array('as' => 'admin.address.delete', 'uses' => 'AddressController@confirmDestroy'))
 ->where('id', '\d+');
 //Logistician Manager
@@ -249,6 +265,14 @@ Route::get('menu/{id}/delete', array('as' => 'admin.menu.delete', 'uses' => 'Men
 ->where('id', '[0-9]+');
 Route::post('menu/{id}/toggle-publish', array('as' => 'admin.menu.toggle-publish', 'uses' => 'MenuController@togglePublish'))
 ->where('id', '[0-9]+');
+
+
+
+
+////customer_management AJAX INDEX Tablesorter
+Route::get('tablesorter_customer_management_index', array('as'=>'admin.customer_management.data', 'uses'=>'AjaxController@getDatatable_customer_management'));
+
+
 
 
 //Lists
@@ -319,30 +343,29 @@ Route::post( '/settings', array(
 
 /*
 |--------------------------------------------------------------------------
-| Backend Routes outside the group Backend
+| Backend Routes outside the group ADMIN
 |--------------------------------------------------------------------------
 */
 
 //Newsletter
 Route::resource('/admin/newsletter', 'NewsletteradminController');
-//userverwaltung admin
-Route::resource('userverwaltung', 'UsernewadminController');
-Route::resource('admin/userverwaltung', 'UsernewadminController');
+//customer_management admin
+//Route::resource('customer_management', 'Customer_management_adminController');
+
+
+
+Route::resource('admin/customer_management', 'Customer_management_adminController');
+Route::resource('customer_management', 'Customer_management_adminController');
+
+Route::get('admin/register', 'Customer_management_adminController@create');
+Route::get('admin/customer_management/{id}/delete', array('as' => 'admin.customer_management.delete', 'uses' => 'Customer_management_adminController@confirmDestroy'))
+->where('id', '\d+');
+
 //Groups admin
 Route::resource('admin/groups', 'GroupadminController');
 //Session
-Route::resource('sessions', 'SessionController', array('only' => array('create', 'store', 'destroy')));
-//resend
-Route::get('admin/resend', array('as' => 'resendActivationForm', function()
-{
-return View::make('users.resend');
-}));
-Route::post('resend', 'UseradminController@resend');
-Route::get('forgot', array('as' => 'forgotPasswordForm', function()
-{
-return View::make('users.forgot');
-}));
-Route::post('admin/forgot', 'UseradminController@forgot');
+Route::resource('admin/sessions', 'SessionController', array('only' => array('create', 'store', 'destroy')));
+
 Route::post('admin/users/{id}/change', 'UseradminController@change');
 Route::get('admin/users/{id}/reset/{code}', 'UseradminController@reset')->where('id', '[0-9]+');
 Route::get('admin/users/{id}/suspend', array('as' => 'suspendUserForm', function($id)
@@ -354,8 +377,7 @@ Route::get('admin/users/{id}/unsuspend', 'UseradminController@unsuspend')->where
 Route::get('admin/users/{id}/ban', 'UseradminController@ban')->where('id', '[0-9]+');
 Route::get('admin/users/{id}/unban', 'UseradminController@unban')->where('id', '[0-9]+');
 Route::resource('admin/users', 'UseradminController');
-// Group Routes
-Route::resource('groups', 'GroupController');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -458,6 +480,7 @@ return View::make('frontend.meinkonto.meinkontologinzurbestellung');
 // Registrierung / 
 Route::post('meinkontoregistrierung', function()
 {
+
 $produkt = Input::get('produkt');
 $produkttyp = Input::get('produkttyp');
 $obstbox = Input::get('obstbox');
@@ -502,7 +525,7 @@ Route::get('meinkonto', function()
 return View::make('frontend.meinkonto.index');
 });
 // Session Routes
-Route::get('admin/register', 'UserControlleradmin@create');
+
 Route::get('login',  array('as' => 'login', 'uses' => 'SessionController@create'));
 Route::get('logout', array('as' => 'logout', 'uses' => 'SessionController@destroy'));
 Route::resource('sessions', 'SessionController', array('only' => array('create', 'store', 'destroy')));
@@ -553,6 +576,7 @@ return View::make('home');
 
 // Select Listen
 View::share ('list_bundesland',List_Bundesland::all());
+View::share ('list_gender',List_Gender::all());
 View::share ('list_currency',List_Currency::all());
 View::share ('list_gruppe',List_Gruppe::all());
 View::share ('list_status',List_Status::all());

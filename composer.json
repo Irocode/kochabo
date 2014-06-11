@@ -12,7 +12,9 @@
         "chumper/datatable": "2.*",
 		"bllim/datatables": "*",
 		"intervention/image": "dev-master",
-        "edvinaskrucas/notification": "1.*"
+        "edvinaskrucas/notification": "1.*",
+		"moltin/laravel-cart": "dev-master"
+	
     },
 	
 	"require-dev": {		

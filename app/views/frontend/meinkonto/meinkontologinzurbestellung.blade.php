@@ -22,11 +22,11 @@
         <div class="reg-block-header">
             <h2>Login</h2>
             <ul class="list-inline style-icons text-center">
-                <li><a href="{{$myuserurl}}"><i class="icon-home icon-round icon-round-sm icon-color-grey"></i></a></li>
+                <li><a href="{{ URL::to('') }}"><i class="icon-home icon-round icon-round-sm icon-color-grey"></i></a></li>
                <!-- <li><a href="#"><i class="icon-linkedin icon-round icon-round-sm icon-color-grey"></i></a></li>-->
                 <li><a href="https://www.facebook.com/KochAbo"><i class="icon-facebook icon-round icon-round-sm icon-color-grey"></i></a></li>
                 <li><a href="https://twitter.com/kochabo_at"><i class="icon-twitter icon-round icon-round-sm icon-color-grey"></i></a></li>
-                <li><a href="{{$myuserurl}}article"><i class="icon-rss icon-round icon-round-sm icon-color-grey"></i></a></li>
+                <li><a href="{{ URL::to('article') }}"><i class="icon-rss icon-round icon-round-sm icon-color-grey"></i></a></li>
             </ul>
         </div>
 

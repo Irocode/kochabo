@@ -7,13 +7,13 @@ use Validator;
 use Response;
 use Str;
 use Notification;
-use Sefa\Repositories\Address\AddressRepository as Address;
+use Sefa\Repositories\Order\OrderRepository as Order;
 use Sefa\Exceptions\Validation\ValidationException;
-class AddressController extends BaseController {
-protected $address;
-public function __construct(Address $address) {
+class OrderController extends BaseController {
+protected $order;
+public function __construct(Order $order) {
 View::share('active', 'modules');
-$this->address = $address;
+$this->order = $order;
 }
 /**
 * Display a listing of the resource.
@@ -21,8 +21,8 @@ $this->address = $address;
 * @return Response
 */
 public function index() {
-$address = $this->address->paginate(null, true);
-return View::make('backend.address.index', compact('address'));
+$order = $this->order->paginate(null, true);
+return View::make('backend.order.index', compact('order'));
 }
 /**
 * Show the form for creating a new resource.
@@ -30,7 +30,7 @@ return View::make('backend.address.index', compact('address'));
 * @return Response
 */
 public function create() {
-return View::make('backend.address.create');
+return View::make('backend.order.create');
 }
 /**
 * Store a newly created resource in storage.
@@ -39,9 +39,9 @@ return View::make('backend.address.create');
 */
 public function store() {
 try {
-$this->address->create(Input::all());
-Notification::success('Adresse wurde hinzugefügt');
-return Redirect::route('admin.address.index');
+$this->order->create(Input::all());
+Notification::success('Bestellung wurde hinzugefügt');
+return Redirect::route('admin.order.index');
 } catch (ValidationException $e) {
 return Redirect::back()->withInput()->withErrors($e->getErrors());
 }
@@ -53,9 +53,9 @@ return Redirect::back()->withInput()->withErrors($e->getErrors());
 * @return Response
 */
 public function show($id) {
-	$address = $this->address->find($id);
+	$order = $this->order->find($id);
 
-return View::make('backend.address.show', compact('address'));
+return View::make('backend.order.show', compact('order'));
 }
 /**
 * Show the form for editing the specified resource.
@@ -64,8 +64,8 @@ return View::make('backend.address.show', compact('address'));
 * @return Response
 */
 public function edit($id) {       
-$address = $this->address->find($id);
-return View::make('backend.address.edit', compact('address'))
+$order = $this->order->find($id);
+return View::make('backend.order.edit', compact('order'))
 ;
 }
 /**
@@ -76,8 +76,8 @@ return View::make('backend.address.edit', compact('address'))
 */
 public function update($id) {
 try {
-$this->address->update($id, Input::all());
-Notification::success('Adresse wurde geändert');
+$this->order->update($id, Input::all());
+Notification::success('Bestellung wurde geändert');
 return Redirect::route('admin.customer.index');
 } catch (ValidationException $e) {
 return Redirect::back()->withInput()->withErrors($e->getErrors());
@@ -90,15 +90,15 @@ return Redirect::back()->withInput()->withErrors($e->getErrors());
 * @return Response
 */
 public function destroy($id) {
-$this->address->destroy($id);
-Notification::success('Adresse wurde gelöscht');
-return Redirect::action('App\Controllers\Admin\AddressController@index');
+$this->order->destroy($id);
+Notification::success('Bestellung wurde gelöscht');
+return Redirect::action('App\Controllers\Admin\OrderController@index');
 }
 public function confirmDestroy($id) {
-$address = $this->address->find($id);
-return View::make('backend.address.confirm-destroy', compact('address'));
+$order = $this->order->find($id);
+return View::make('backend.order.confirm-destroy', compact('order'));
 }
 public function togglePublish($id) {
-return $this->address->togglePublish($id);
+return $this->order->togglePublish($id);
 }
 }
