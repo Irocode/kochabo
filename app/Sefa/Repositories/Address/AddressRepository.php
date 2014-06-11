@@ -1,11 +1,14 @@
 <?php namespace Sefa\Repositories\Address;
 use Config;
 use Address;
+use AddressNoPrimaryKey;
 use Response;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
 class AddressRepository extends Validator implements BaseRepositoryInterface {
+	
+
 protected $perPage;
 protected $address;
 /**
@@ -18,10 +21,11 @@ protected static $rules = [
 //'last_name'  => 'required',
 
 ];
-public function __construct(Address $address) {
+public function __construct(Address $address, AddressNoPrimaryKey $addressnoprimarykey) {
 $config = Config::get('sfcms');
 $this->perPage = $config['modules']['per_page'];
 $this->address = $address;
+$this->addressnoprimarykey = $addressnoprimarykey;
 }
 public function all() {
 return $this->address->orderBy('created_at', 'DESC')
