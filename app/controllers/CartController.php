@@ -135,4 +135,59 @@ Cart::insert(array(
 
 
 
+
+
+
+
+
+
+
+
+
+
+    /*
+  |--------------------------------------------------------------------------
+  | Cart Controller
+  |--------------------------------------------------------------------------
+  |
+  | add to cart, remove from cart, update cart, empty cart.
+  |
+  */
+
+  public function insert($id)
+  {
+    $item = Product::find($id);
+    Cart::add($item->id, $item->product_name,1, $item->price, $item->productlink);
+  //  return Redirect::to('cart');
+    return Redirect::to('cart');
+  }
+
+  public function delete($rowid)
+  {
+    Cart::remove($rowid);
+    //return Redirect::to('cart');  
+    return Redirect::to('cart');
+  }
+
+  public function update()
+  {
+    if($_POST['updater'] <= 0)
+    {
+      return Redirect::to("shop/delete/".$_POST['rowid']);
+    }
+    Cart::update($_POST['rowid'], array('qty' => $_POST['updater']));
+    //return Redirect::to('cart');
+    return Redirect::to('cart');
+  }
+
+  public function terminate()
+  {
+    Cart::destroy();
+    //return Redirect::to('cart');
+    return Redirect::to('cart');
+  }
+
+
+
+
 }

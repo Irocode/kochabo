@@ -7,7 +7,7 @@
                <div class="col-md-6 col-sm-5 col-xs-12">
                   <a href="{{URL::to('page/4')}}">Impressum</a> | <a href="{{URL::to('page/3')}}">AGB's</a> | <a href="{{URL::to('page/5')}}">Hilfe</a> |
                   <a href="{{URL::to('contact')}}">Kontakt</a>  
-                  <p style="color:#fff; margin-top:5px;"> &copy; KochAbo.at 2014 </p>
+                  <p style="color:#fff; margin-top:5px;"> &copy; KochAbo.at {{date('Y')}} </p>
                </div>
                <div class="col-md-1 col-sm-6 col-xs-12" style="color:#fff", align="center">
                </div>

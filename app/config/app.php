@@ -120,6 +120,7 @@ return array(
         'Bllim\Datatables\DatatablesServiceProvider',
         'Intervention\Image\ImageServiceProvider',
         'Moltin\Cart\CartServiceProvider',
+        'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
        
         
     ),
@@ -197,6 +198,7 @@ return array(
         'Datatables'   => 'Bllim\Datatables\Datatables',
         'Image' => 'Intervention\Image\Facades\Image',
         'Cart' => 'Moltin\Cart\Facade',
+        'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
         
 
     ),
