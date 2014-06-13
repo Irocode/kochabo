@@ -4,11 +4,11 @@
 use Article as Article;
 use Page as Page;
 use News as News;
-use PhotoGallery as PhotoGallery;
+//use PhotoGallery as PhotoGallery;
 use Sefa\Repositories\Article\ArticleRepository as ArticleRepository;
 use Sefa\Repositories\Page\PageRepository as PageRepository;
 use Sefa\Repositories\News\NewsRepository as NewsRepository;
-use Sefa\Repositories\PhotoGallery\PhotoGalleryRepository as PhotoGalleryRepository;
+//use Sefa\Repositories\PhotoGallery\PhotoGalleryRepository as PhotoGalleryRepository;
 
 
 
@@ -105,12 +105,15 @@ class Menu extends Eloquent {
            $opts['Page']['page-' . $k] = $v;
         }
 
+/*
         $photoGallery = new PhotoGalleryRepository(new PhotoGallery);
         $photoGalleryOpts = $photoGallery->lists();
 
         foreach ($photoGalleryOpts as $k => $v) {
            $opts['PhotoGallery']['photoGallery-' . $k] = $v;
         }
+
+        */
 
         $menuOptions = array(
             'General'       => array(
@@ -125,8 +128,8 @@ class Menu extends Eloquent {
 
                 'contact' => 'Kontakt'
             ),
-            'Page'          => $opts['Page'],
-            'Photo Gallery' => $opts['PhotoGallery'],
+          /*  'Page'          => $opts['Page'],*/
+          /*  'Photo Gallery' => $opts['PhotoGallery'],*/
         );
 
         return $menuOptions;

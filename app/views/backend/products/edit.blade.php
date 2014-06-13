@@ -118,6 +118,23 @@
       </div>
    </div>
    <br>
+   <!-- productlink -->
+   <div class="control-group {{ $errors->has('productlink') ? 'has-error' : '' }}">
+      <label class="control-label" for="productlink">Produkt Link zur Seite</label>
+      <div class="controls">
+         {{ Form::text('productlink', $products->productlink, array('class'=>'form-control', 'id' => 'productlink', 'placeholder'=>'Produkt Link', 'value'=>Input::old('productlink'))) }}
+         @if ($errors->first('productlink'))
+         <span class="help-block">{{ $errors->first('productlink') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+
+   <div class="row">
+  <div class="col-md-6">
+
+
    <!-- standalone -->
    <div class="control-group {{ $errors->has('standalone') ? 'has-error' : '' }}">
       <label class="control-label" for="standalone">Standalone</label>
@@ -129,6 +146,10 @@
       </div>
    </div>
    <br>
+
+
+  </div><div class="col-md-6">
+
    <!-- SKU -->
    <div class="control-group {{ $errors->has('sku') ? 'has-error' : '' }}">
       <label class="control-label" for="sku">SKU</label>
@@ -140,6 +161,12 @@
       </div>
    </div>
    <br>
+
+
+   </div></div>
+
+
+
    <!-- nr_of_recipes -->
    <div class="control-group {{ $errors->has('nr_of_recipes') ? 'has-error' : '' }}">
       <label class="control-label" for="nr_of_recipes">Number of Recipes</label>

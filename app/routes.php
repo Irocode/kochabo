@@ -609,9 +609,63 @@ return View::make('home');
 
 
 
+Route::post('shop', function()
+{
+return View::make('frontend.shoppingcart.index');
+});
+Route::get('cart', function()
+{
+return View::make('frontend.shoppingcart.cart');
+});
 
 
 
+
+//SHOPPING CART ANFANG-->
+//Route::get('/', function()
+Route::get('/shop', function()
+{
+	return Redirect::to('shop');
+	//return Redirect::to('home');
+});
+
+Route::get('/shop', function()
+{
+	return Redirect::to('shop');
+	//return Redirect::to('home');
+});
+
+Route::get('shop',function()
+	{
+		// get all products from db
+		$products = Product::all();
+		
+
+		return View::make('frontend.shoppingcart.products')->with('products',$products);
+		//return View::make('products')->with('products',$products);
+	});
+Route::get('/cart',function()
+	{
+		// display cart
+		if(Cart::total() == 0){
+			return Redirect::to('/shop');
+		}
+		$cartContent = Cart::content();
+		return View::make('frontend.shoppingcart.cart')->with('cartContent',$cartContent);
+		//return View::make('cart')->with('cartContent',$cartContent);
+
+	});
+Route::get('/checkout', function()
+	{
+		// destroy cart, get ready for new shopping 
+		Cart::destroy();
+		return "Zahlvorgang....<a href='home' >var_dump(Session::all());</a>";
+	});
+// cart management routes
+Route::get('shop/insert/{id}','CartController@insert');
+Route::get('delete/{rowid}','CartController@delete');
+Route::post('update','CartController@update');
+Route::get('terminate','CartController@terminate');
 
 
 

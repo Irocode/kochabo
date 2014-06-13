@@ -13,7 +13,8 @@
 		"bllim/datatables": "*",
 		"intervention/image": "dev-master",
         "edvinaskrucas/notification": "1.*",
-		"moltin/laravel-cart": "dev-master"
+		"moltin/laravel-cart": "dev-master",
+        "gloudemans/shoppingcart": "dev-master"
 	
     },
 	
