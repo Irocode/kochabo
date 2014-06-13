@@ -54,7 +54,7 @@ $zurbestellung = Input::get('zurbestellung');
 
  if( $zurbestellung=='1' )        {
             
- return Redirect::to('/meinkontoregistrierung');
+ return Redirect::to('/checkout');
    
 
         } 

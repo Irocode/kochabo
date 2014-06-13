@@ -472,11 +472,7 @@ Route::get('meinkontologin', function()
 {
 return View::make('frontend.meinkonto.meinkontologin');
 });
-// login option unangemeldet in die Bestellung
-Route::get('meinkontologinzurbestellung', function()
-{
-return View::make('frontend.meinkonto.meinkontologinzurbestellung');
-});
+
 // Registrierung / 
 Route::post('meinkontoregistrierung', function()
 {
@@ -605,9 +601,11 @@ return View::make('home');
 });
 
 
-
-
-
+/*
+|--------------------------------------------------------------------------
+| SHOPPING CART
+|--------------------------------------------------------------------------
+*/
 
 Route::post('shop', function()
 {
@@ -619,20 +617,16 @@ return View::make('frontend.shoppingcart.cart');
 });
 
 
-
-
-//SHOPPING CART ANFANG-->
-//Route::get('/', function()
 Route::get('/shop', function()
 {
 	return Redirect::to('shop');
-	//return Redirect::to('home');
+
 });
 
 Route::get('/shop', function()
 {
 	return Redirect::to('shop');
-	//return Redirect::to('home');
+
 });
 
 Route::get('shop',function()
@@ -642,7 +636,7 @@ Route::get('shop',function()
 		
 
 		return View::make('frontend.shoppingcart.products')->with('products',$products);
-		//return View::make('products')->with('products',$products);
+		
 	});
 Route::get('/cart',function()
 	{
@@ -652,20 +646,42 @@ Route::get('/cart',function()
 		}
 		$cartContent = Cart::content();
 		return View::make('frontend.shoppingcart.cart')->with('cartContent',$cartContent);
-		//return View::make('cart')->with('cartContent',$cartContent);
+	
 
 	});
 Route::get('/checkout', function()
 	{
 		// destroy cart, get ready for new shopping 
-		Cart::destroy();
-		return "Zahlvorgang....<a href='home' >var_dump(Session::all());</a>";
+		//Cart::destroy();
+
+		$cartContent = Cart::content();
+		$products = Product::all();
+		return View::make('frontend.checkout.index')->with('cartContent',$cartContent)->with('products',$products);
 	});
 // cart management routes
 Route::get('shop/insert/{id}','CartController@insert');
 Route::get('delete/{rowid}','CartController@delete');
 Route::post('update','CartController@update');
 Route::get('terminate','CartController@terminate');
+
+
+/*
+|----------------------------------------------------------------------------------------------------------------------------------
+| Checkout 
+|-----------------------------------------------------------------------------------------------------------------------------------
+*/
+
+Route::post('checkout', function()
+{
+return View::make('frontend.checkout.index');
+});
+
+
+// login option unangemeldet in die Bestellung
+Route::get('meinkontologinzurbestellung', function()
+{
+return View::make('frontend.meinkonto.meinkontologinzurbestellung');
+});
 
 
 

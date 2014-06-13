@@ -29,6 +29,7 @@
             {{ HTML::style('assets/plugins/parallax-slider/css/parallax-slider.css') }}
             {{ HTML::style('assets/css/pages/portfolio-v1.css') }}
             {{ HTML::style('assets/css/style_template.css') }}
+            {{ HTML::style('assets/plugins/bootstrap-notify/pnotify.custom.min.css') }}
             <script type="text/javascript">
                var _gaq = _gaq || [];
                _gaq.push(['_setAccount', "{{ $settings['ga_code']  or 'ga_code' }}"]);
@@ -112,7 +113,8 @@
             {{ HTML::script('assets/plugins/counter/jquery.counterup.min.js') }}
             {{ HTML::script('assets/plugins/circles-master/circles.js') }}
             {{ HTML::script('assets/js/app.js') }}
-            {{ HTML::script('assets/js/plugins/circles-master.js') }}
+            {{ HTML::script('assets/js/plugins/circles-master.js') }}     
+            {{ HTML::script('assets/plugins/bootstrap-notify/pnotify.custom.min.js') }} 
             <!--[if lt IE 9]>
             <script src="{{URL::to('assets/plugins/respond.js')}}"></script>
             <![endif]-->

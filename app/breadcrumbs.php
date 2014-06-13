@@ -179,3 +179,5 @@ Breadcrumbs::register('gutschein.show', function ($breadcrumbs, $gutschein) {
 
 
 
+
+

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
- @include('frontend/_layout/menu')
+
+
+
 
 <html lang="en">
 
@@ -15,7 +17,6 @@
     @show 
     </title>
 
-      <link href="{{URL::to('assets')}}/css/heroic-features.css" rel="stylesheet">
 
             {{ HTML::script('assets/js/jquery.2.0.3.js') }}
             {{ HTML::style('assets/css/pages/page_pricing.css') }}
@@ -30,16 +31,22 @@
             {{ HTML::style('assets/plugins/parallax-slider/css/parallax-slider.css') }}
             {{ HTML::style('assets/css/pages/portfolio-v1.css') }}
             {{ HTML::style('assets/css/style_template.css') }}
+            {{ HTML::style('assets/plugins/bootstrap-notify/pnotify.custom.min.css') }}
 
-
+             @include('frontend/_layout/menu')
 
    
 </head>
 
 <body>
 
+
+
+
+
     <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
         <div class="container">
+
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{URL::to('/shop')}}">KochAbo Shop</a>
             </div>
@@ -50,7 +57,7 @@
                         <a href="{{URL::to('/cart')}}">Warenkorb</a>
                     </li>
                     <li>
-                        <a href="{{URL::to('/cart')}}"> Du hast {{Cart::count()}} Produkt(e) im Warenkorb</a>
+                        <a href="{{URL::to('/cart')}}"> Du hast {{Cart::count()}} Produkt(e) im Warenkorb. Derzeitiger Wert: {{Cart::total()}}</a>
                     </li>
                 </ul>
             </div>
@@ -59,9 +66,15 @@
         <!-- /.container -->
     </nav>
 
-    <div class="container">
-       
-        <hr>
+  
+
+
+
+
+
+
+  
+      
         <!-- /.row -->
         <!-- site content -->
         @yield('content')
@@ -72,7 +85,7 @@
 
        
 
-    </div>
+  
     <!-- /.container -->
 
     <!-- JavaScript -->
@@ -99,7 +112,8 @@
             {{ HTML::script('assets/plugins/counter/jquery.counterup.min.js') }}
             {{ HTML::script('assets/plugins/circles-master/circles.js') }}
             {{ HTML::script('assets/js/app.js') }}
-            {{ HTML::script('assets/js/plugins/circles-master.js') }}
+            {{ HTML::script('assets/js/plugins/circles-master.js') }}        
+            {{ HTML::script('assets/plugins/bootstrap-notify/pnotify.custom.min.js') }} 
             <!--[if lt IE 9]>
             <script src="{{URL::to('assets/plugins/respond.js')}}"></script>
             <![endif]-->

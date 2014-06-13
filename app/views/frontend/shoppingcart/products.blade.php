@@ -7,6 +7,26 @@ products
 {{-- Content --}}
 
 @section('content')
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+<div class="container">
+<h1 class="pull-left">Unser Shop</h1>
+<ul class="pull-right breadcrumb">
+<li>
+<a href="{{URL::to('')}}/">Home</a>
+</li>
+<li class="active">Unser Shop</li>
+</ul>
+</div>
+</div>
+<!--/breadcrumbs-->
+<div class="container">
+
+   <div class="headline">
+            <h2>Unsere Boxen und Produkte</h2>
+         </div>
+
+
 <div class="row text-center">
             @foreach($products as $product)
                 <div class="col-lg-3 col-md-6 hero-feature">
@@ -26,4 +46,7 @@ products
 
 
         </div>
+
+
+         </div>
 @stop

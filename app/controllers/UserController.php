@@ -83,54 +83,137 @@ class UserController extends BaseController {
      */
     public function store()
     {
+
         // Form Processing
+
+      
+
+       // $result = $this->registerForm->save( Input::all() );
         $result = $this->registerForm->save( Input::all() );
+
+         $first_name= Input::get('last_name');   
+         $email= Input::get('email');
+         $password= Input::get('password');
+         
+
+var_dump($email); var_dump('<br>'); 
+var_dump($password);var_dump('<br>'); 
+var_dump($first_name);var_dump('<br>'); 
+
+/*
+$lastInsertedId = $this->user->id;
+var_dump($lastInsertedId);
+
+        // erstelle Tabel mit UserID der ID von customer
+
+         
+//$lastInsertedemail = e($data['email']);
+//$address = new Address;
+
+
+//$lastInsertedId = $this->user->id;
+//var_dump($lastInsertedemail);
+
+
+
+/*
+$address->user_id = $lastInsertedId;
+$address->gender = $this->registerForm->gender;
+$address->first_name = $this->registerForm->first_name;
+$address->last_name = $this->registerForm->last_name;
+
+// $address->id = '9991';
+$address->save();
+*/
+
+
 
         if( $result['success'] )
         {
-         
-            
-            /* Event::fire('user.signup', array(
 
-               
-         
+
+
+
+
+$email= Input::get('email');
+$users = Users::where('email', '=', $email)->get();
+
+foreach ($users as $user)
+{
+    var_dump($user->email); var_dump($user->id);
+
+     $lastInserted_id= $user->id;
+     $lastInserted_first_name= $user->first_name;
+     $lastInserted_last_name= $user->last_name;
+     $lastInserted_gender= $user->gender;
+}
+
+
+
+$address = new Address;
+$address->customercustomer_id = $lastInserted_id;
+$address->first_name = $lastInserted_first_name;
+$address->last_name = $lastInserted_last_name;
+$address->gender = $lastInserted_gender;
+$address->art = 'Rechnungsadresse';
+
+// $address->id = '9991';
+$address->save();
+
+
+
+$address = new Address;
+$address->customercustomer_id = $lastInserted_id;
+$address->first_name = $lastInserted_first_name;
+$address->last_name = $lastInserted_last_name;
+$address->gender = $lastInserted_gender;
+$address->art = 'Lieferaddresse';
+
+// $address->id = '9991';
+$address->save();
+
+
+
+
+Mail::send('backend.customer_management.versand', array(), function($message)
+{
+$email      = Input::get('email');
+$password      = Input::get('password');
+$first_name      = Input::get('first_name');
+
+$message
+->to($email)
+->from('office@kochabo.com','KochAbo.com')
+->subject('KochAbo-Registrierung');
+});
+Notification::success('Dir wurde ein Registrierungs-E-Mail geschickt');
+
+
+           /*  Event::fire('user.signup', array(
                 'email' => $result['mailData']['email'], 
-                'telephone' => $result['mailData']['telephone'], 
                 'userId' => $result['mailData']['userId'], 
                 'activationCode' => $result['mailData']['activationCode']
-
-
             ));*/
 
             // Success!
-       //     Session::flash('success', $result['message']);
+            Session::flash('success', $result['message']);
            // return Redirect::route('home');
 
-//return Redirect::to('/admin/customer_management');
-
-return Redirect::to('cart');
+      return Redirect::to('/meinkontologinzurbestellung');
 
 
 
         } else {
 
-//return var_dump($cmsanlegung);
-  
+
+     
 
           //  Session::put('produkt',$produkt);
-         //   Session::flash('error', $result['message']);
-      
-            //return var_dump($cmsanlegung); 
-
-return Redirect::action('Customer_management_adminController@create')
+            Session::flash('error', $result['message']);
+            return Redirect::action('UserController@create')
                 ->withInput()
-                ->withErrors( $this->registerForm->errors() ); 
-           
+                ->withErrors( $this->registerForm->errors() );
         }
-
-
-
-
     }
 
 
@@ -146,7 +229,7 @@ return Redirect::action('Customer_management_adminController@create')
      
     {
      
-return View::make('frontend.meinkonto.meinkontoregistrierung');
+return View::make('frontend.checkout.index');
 
         
 

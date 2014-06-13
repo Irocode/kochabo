@@ -7,8 +7,24 @@ cart
 {{-- Content --}}
 @section('content')
 
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+<div class="container">
+<h1 class="pull-left">Warenkorb</h1>
+<ul class="pull-right breadcrumb">
+<li>
+<a href="{{URL::to('')}}/shop">Unsere Produkte</a>
+</li>
+<li class="active">Warenkorb</li>
+</ul>
+</div>
+</div>
+<!--/breadcrumbs-->
+
+
+<div class="container">
 <div class="row">
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
+    
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -69,12 +85,15 @@ cart
                         </td>
                         <td class="text-right">
 	                        <a href="{{URL::to('/checkout')}}" class="btn btn-u ">
-	                            Kaufen <span class="glyphicon glyphicon-play"></span>
+	                            Zur Bestellung <span class="glyphicon glyphicon-play"></span>
 	                        </a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+      
     </div>
+
+
+     </div>
 @stop

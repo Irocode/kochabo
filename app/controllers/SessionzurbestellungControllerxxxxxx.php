@@ -46,11 +46,11 @@ class SessionzurbestellungController extends BaseController {
             							));
 
             // Success!
-            return Redirect::to('/meinkontoregistrierung');
+            return Redirect::to('/checkout');
 
         } else {
             Session::flash('error', $result['message']);
-            return Redirect::to('/meinkontoregistrierung')
+            return Redirect::to('/checkout')
                 ->withInput()
                 ->withErrors( $this->loginForm->errors() );
         }
