@@ -5,8 +5,6 @@ use Sefa\Interfaces\BaseModelInterface as BaseModelInterface;
 class Address extends BaseModel implements BaseModelInterface {
 
 	protected $primaryKey = 'customercustomer_id';
-
-
     public $table = 'address';
   
 

@@ -194,9 +194,16 @@
 
    
 
+<!--
 
-
-
+   @if($order->count())
+                     @foreach( $order as $v )                  
+                    Bestellnummer: {{ $v->customercustomer_id}} / Datum: {{ $v->delivery_date}}<br>
+                     @endforeach
+                     @else
+                     <div class="alert alert-danger">Keine Bestellung vorhanden</div>
+                     @endif 
+-->
 
 <!--Order Anfang-->
 <div class="container">
@@ -209,6 +216,9 @@
          {{ HTML::link('/admin/customer_management','Zurück', array('class'=>'btn btn-u')) }}
       </div>
    </div>
+
+
+
 
    <div class="panel panel-default">
       <div class="panel-heading">
@@ -300,9 +310,9 @@
                
                        },  
                
-                            
+                              "ajax": "../../tablesorter_order_index/{{$ausgabe->id}}",
                
-                       "ajax": "../../tablesorter_order_index",
+                      
                
                
                        "deferRender": true,
@@ -343,7 +353,8 @@
             <table id="examplex" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-                     <th>Order ID</th>
+                     <th>ID</th>
+                     <th>OrderID</th>
                      <th>KundenID</th>
                      <th>Lieferbar</th>
                      <th>Lieferdatum</th>
@@ -363,6 +374,7 @@
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
+                      <th rowspan="1" colspan="1"></th>
                   </tr>
                </tfoot>
                <tfoot>

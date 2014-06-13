@@ -54,11 +54,7 @@ class Users extends Eloquent{
 	}
 
 
-//hasmany
-public function address()
-	{
-		return $this->hasMany ('Address', 'customercustomer_id')->orderBy('customercustomer_id', 'ASC');
-	}
+
 
 
 	//hasmany
@@ -69,7 +65,11 @@ public function order()
 
 
 	
-
+//hasmany
+public function address()
+	{
+		return $this->hasMany ('Address', 'customercustomer_id')->orderBy('customercustomer_id', 'ASC');
+	}
 
 
 }

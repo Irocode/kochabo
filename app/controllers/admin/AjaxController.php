@@ -64,6 +64,24 @@ return View::make('backend.address.data', compact('address'));
 }
 // AJAX Call-> Index Address INDEX END
 
+// AJAX Call-> Index Order INDEX Start
+public function getDatatable_order($id) { 
+
+
+
+$order = Order::where('customercustomer_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
+return View::make('backend.order.data', compact('order'));
+
+}
+// AJAX Call-> Index Order INDEX END
+
+// AJAX Call-> Index Order INDEX Start ALL
+public function getDatatable_order_all() { 
+$order = Order::where('customercustomer_id', '>', 0)->orderBy('updated_at', 'DESC')->get();
+return View::make('backend.order.data', compact('order'));
+}
+// AJAX Call-> Index Order INDEX END
+
 
 // AJAX Call-> Index products INDEX Start
 public function getDatatable_products() { 
@@ -79,12 +97,7 @@ return View::make('backend.deliveryzipcode.data', compact('deliveryzipcode'));
 }
 // AJAX Call-> Index Deliveryzipcode INDEX END
 
-// AJAX Call-> Index Order INDEX Start
-public function getDatatable_order() { 
-$order = Order::where('order_id', '>', 0)->orderBy('updated_at', 'DESC')->get();
-return View::make('backend.order.data', compact('order'));
-}
-// AJAX Call-> Index Order INDEX END
+
 
 
 // AJAX Call-> Index Address INDEX Start
