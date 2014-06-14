@@ -167,7 +167,7 @@ $address->customercustomer_id = $lastInserted_id;
 $address->first_name = $lastInserted_first_name;
 $address->last_name = $lastInserted_last_name;
 $address->gender = $lastInserted_gender;
-$address->art = 'Lieferaddresse';
+$address->art = 'Lieferadresse';
 
 // $address->id = '9991';
 $address->save();
@@ -199,8 +199,7 @@ Notification::success('Dir wurde ein Registrierungs-E-Mail geschickt');
             Session::flash('success', $result['message']);
            // return Redirect::route('home');
 
-      return Redirect::to('/meinkontologinzurbestellung');
-
+      return Redirect::to('/meinkontologinzurbestellung?user_id='.$lastInserted_id.'');
 
 
         } else {

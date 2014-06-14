@@ -1,13 +1,13 @@
-<?php namespace Sefa\Repositories\Order;
+<?php namespace Sefa\Repositories\Address;
 use Config;
-use Order;
+use Address;
 use Response;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
-class OrderRepository extends Validator implements BaseRepositoryInterface {
+class AddressRepository extends Validator implements BaseRepositoryInterface {
 protected $perPage;
-protected $order;
+protected $address;
 /**
 * Rules
 *
@@ -18,54 +18,54 @@ protected static $rules = [
 //'last_name'  => 'required',
 
 ];
-public function __construct(Order $order) {
+public function __construct(Address $address) {
 $config = Config::get('sfcms');
 $this->perPage = $config['modules']['per_page'];
-$this->order = $order;
+$this->address = $address;
 }
 public function all() {
-return $this->order->orderBy('created_at', 'DESC')
+return $this->address->orderBy('created_at', 'DESC')
 ->where('is_published', 1)
 ->get();
 }
 public function lists() {
-return $this->order->get()->lists('title', 'id');
+return $this->address->get()->lists('title', 'id');
 }
 public function paginate($perPage = null, $all=false) {
 if($all)
-return $this->order->orderBy('created_at', 'DESC')
+return $this->address->orderBy('created_at', 'DESC')
 ->paginate(($perPage) ? $perPage : $this->perPage);
-return $this->order->orderBy('created_at', 'DESC')
+return $this->address->orderBy('created_at', 'DESC')
 ->where('is_published', 1)
 ->paginate(($perPage) ? $perPage : $this->perPage);
 }
 public function find($id) {
-return $this->order->findOrFail($id);
+return $this->address->findOrFail($id);
 }
 public function create($attributes) {
 $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
 if ($this->isValid($attributes)) {
-$this->order->fill($attributes)->save();
+$this->address->fill($attributes)->save();
 return true;
 }
-throw new ValidationException('order validation failed', $this->getErrors());
+throw new ValidationException('address validation failed', $this->getErrors());
 }
 public function update($id, $attributes) {
 $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
-$this->order = $this->find($id);
+$this->address = $this->find($id);
 if ($this->isValid($attributes)) {
-$this->order->fill($attributes)->save();
+$this->address->fill($attributes)->save();
 return true;
 }
-throw new ValidationException('order validation failed', $this->getErrors());
+throw new ValidationException('address validation failed', $this->getErrors());
 }
 public function destroy($id) {
-$order = $this->order->find($id)->delete();
+$address = $this->address->find($id)->delete();
 }
 public function togglePublish($id) {
-$order = $this->order->find($id);
-$order->is_published = ($order->is_published) ? false : true;
-$order->save();
-return Response::json(array('result' => 'success', 'changed' => ($order->is_published) ? 1 : 0));
+$address = $this->address->find($id);
+$address->is_published = ($address->is_published) ? false : true;
+$address->save();
+return Response::json(array('result' => 'success', 'changed' => ($address->is_published) ? 1 : 0));
 }
 }

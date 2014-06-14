@@ -657,13 +657,26 @@ Route::get('/checkout', function()
 
 		$cartContent = Cart::content();
 		$products = Product::all();
-		return View::make('frontend.checkout.index')->with('cartContent',$cartContent)->with('products',$products);
+		$users = Users::all();
+
+		
+		return View::make('frontend.checkout.index')->with('cartContent',$cartContent)->with('products',$products)->with('users',$users);
 	});
 // cart management routes
 Route::get('shop/insert/{id}','CartController@insert');
 Route::get('delete/{rowid}','CartController@delete');
 Route::post('update','CartController@update');
 Route::get('terminate','CartController@terminate');
+
+Route::get('checkout/{id}/edit','CartController@ceckout_one_edit');
+Route::get('checkout/{id}/update','CartController@ceckout_one_update');
+Route::post('checkout/{id}/update', 'CartController@ceckout_one_update');
+
+
+
+
+
+
 
 
 /*

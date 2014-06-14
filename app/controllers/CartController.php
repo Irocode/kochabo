@@ -3,8 +3,11 @@
 
 class CartController extends \BaseController {
 
-public function __construct( Products $products  ) {
+public function __construct( Products $products, Address $address, Users $users ) {
 $this->products = $products;
+$this->address = $address;
+$this->users = $users;
+
 }
 
 
@@ -186,6 +189,38 @@ Cart::insert(array(
     //return Redirect::to('cart');
     return Redirect::to('cart');
   }
+
+
+public function ceckout_one_edit($id)
+  {
+
+
+    $cartContent = Cart::content();
+    $products = Product::all();
+     $users = Users::all();
+
+
+  $address_rechnung = Address::where('customercustomer_id', '=', $id)->where('art', '=', 'Rechnungsadresse')->first();
+ $address_lieferung = Address::where('customercustomer_id', '=', $id)->where('art', '=', 'Lieferadresse')->first();
+
+return View::make('frontend.checkout.edit')->with('cartContent',$cartContent)->with('address_lieferung',$address_lieferung)->with('address_rechnung',$address_rechnung)->with('products',$products)->with('users',$users);
+ 
+     }
+
+
+
+     public function ceckout_one_update($id)
+  {
+
+        $cartContent = Cart::content();
+    $products = Product::all();
+    $users = Users::all();
+     $address_rechnung = Address::find($id);
+     $address_lieferung = Address::find($id);
+
+return View::make('frontend.checkout.edit')->with('cartContent',$cartContent)->with('address_lieferung',$address_lieferung)->with('address_rechnung',$address_rechnung)->with('products',$products)->with('users',$users);
+
+     }
 
 
 

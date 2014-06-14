@@ -49,12 +49,16 @@ class SessionController extends BaseController {
            // return Redirect::to('/meinkontoregistrierung');
 
 
+//User aus User DB UND User aus Zusendung vom Warenkorb DB ZUGLEICH
+ $user_session_Id = Session::get('userId');
 
+
+//$user_id = Input::get('user_id');
 $zurbestellung = Input::get('zurbestellung');
 
  if( $zurbestellung=='1' )        {
             
- return Redirect::to('/checkout');
+ return Redirect::to('/checkout/'.$user_session_Id.'/edit');
    
 
         } 

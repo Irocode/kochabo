@@ -21,6 +21,14 @@
         {{ Form::open(array('action' => 'SessionController@store')) }}
         <div class="reg-block-header">
             <h2>Login</h2>
+{{$user_id= Input::get('user_id'); }} 
+
+<?php echo"$user_id";?>
+
+
+
+
+
             <ul class="list-inline style-icons text-center">
                 <li><a href="{{ URL::to('') }}"><i class="icon-home icon-round icon-round-sm icon-color-grey"></i></a></li>
                <!-- <li><a href="#"><i class="icon-linkedin icon-round icon-round-sm icon-color-grey"></i></a></li>-->
@@ -39,7 +47,7 @@
             <span class="input-group-addon"><i class="icon-lock"></i></span>
             {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Passwort'))}}
              {{ ($errors->has('password') ?  $errors->first('password') : '') }}
-
+               {{ Form::hidden('user_id', $user_id, array('class' => 'form-control', 'placeholder' => 'user_id', 'autofocus')) }}
               {{ Form::hidden('zurbestellung', 1, array('class' => 'form-control', 'placeholder' => 'zurbestellung', 'autofocus')) }}
         </div>
         <hr>

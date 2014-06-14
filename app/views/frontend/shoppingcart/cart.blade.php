@@ -84,9 +84,23 @@ cart
                             
                         </td>
                         <td class="text-right">
-	                        <a href="{{URL::to('/checkout')}}" class="btn btn-u ">
-	                            Zur Bestellung <span class="glyphicon glyphicon-play"></span>
-	                        </a>
+
+   <?php $user_id=Session::get('userId'); ?>
+
+        @if (Sentry::check() )  
+         <a href="{{URL::to('/checkout/'.$user_id.'/edit')}}" class="btn btn-u ">
+                                Zur Bestellung<span class="glyphicon glyphicon-play"></span>
+                            </a>
+
+         @else
+ <a href="{{URL::to('/checkout')}}" class="btn btn-u ">
+                                Zur Bestellung <span class="glyphicon glyphicon-play"></span>
+                            </a>
+       
+ @endif
+
+
+	                       
                         </td>
                     </tr>
                 </tbody>

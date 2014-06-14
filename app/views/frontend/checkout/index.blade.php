@@ -4,7 +4,7 @@
 {{ Notification::showAll() }}
 <!-- Menü Wechsler für ACTIVE CLASS Linkanfrage -->
 <script>
-indexzwo =14;  
+indexzwo =15;  
 </script>
  <!-- Menü Wechsler für ACTIVE CLASS Linkanfrage ENDE -->
 
@@ -39,6 +39,12 @@ indexzwo =14;
 @if (Sentry::check() )  
 
 Du bist mit deiner E-Mail Adresse {{ Session::get('email') }} eingeloggt.<br>Bitte wähle Deine Lieferadresse aus.
+
+
+                     @foreach( $users as $v )                  
+                    Bestellnummer: {{ $v->id}} / Datum: {{ $v->first_name}}<br>
+                     @endforeach
+                   
 
 
 <!--Bestellung ansehen ANFANG-->
