@@ -581,6 +581,8 @@ View::share ('list_abotyp',List_Abotyp::all());
 View::share ('list_type',List_Type::all());
 View::share ('list_recipe_type',List_Recipe_type::all());
 View::share ('list_ust',List_Ust::all());
+View::share ('list_month',List_Month::all());
+View::share ('list_day',List_Day::all());
 
 
 
@@ -658,6 +660,7 @@ Route::get('/checkout', function()
 		$cartContent = Cart::content();
 		$products = Product::all();
 		$users = Users::all();
+		
 
 		
 		return View::make('frontend.checkout.index')->with('cartContent',$cartContent)->with('products',$products)->with('users',$users);

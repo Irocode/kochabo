@@ -5,6 +5,8 @@ use Cartalyst\Sentry\Sentry;
 use Authority\Repo\RepoAbstract;
 
 class SentryUser extends RepoAbstract implements UserInterface {
+
+
 	
 	protected $sentry;
 
@@ -32,22 +34,33 @@ class SentryUser extends RepoAbstract implements UserInterface {
 
 
 
+$day = e($data['day']);
+$month = e($data['month']);
+$year = e($data['year']);
+$date_of_birth="$year-$month-$day";
 
 
+		$result = array();$day = e($data['day']);
 
-		$result = array();
 		try {
 
-
-			$datumumwandeln= e($data['date_of_birth']);
-            $datumumwandelnready= date("Y-m-d", strtotime($datumumwandeln)); 
+$day = e($data['day']);
+$month = e($data['month']);
+$year = e($data['year']);
+$date_of_birth="$year-$month-$day";
+	
 
 $lastInsertedemail = e($data['email']);
 
 
+$day = e($data['day']);
+$month = e($data['month']);
+$year = e($data['year']);
+$date_of_birth="$year-$month-$day";
+
 
 			//Attempt to register the user. 
-			$user = $this->sentry->register(array('email' => e($data['email']),  'activated' => e($data['activated']), 'telephone' => e($data['telephone']), 'date_of_birth' => $datumumwandelnready, 'first_name' => e($data['first_name']),'gender' => e($data['gender']),'last_name' => e($data['last_name']), 'password' => e($data['password'])));
+			$user = $this->sentry->register(array('email' => e($data['email']),  'activated' => e($data['activated']), 'telephone' => e($data['telephone']), 'date_of_birth' => $date_of_birth, 'first_name' => e($data['first_name']),'gender' => e($data['gender']),'last_name' => e($data['last_name']), 'password' => e($data['password'])));
 
 			//success!
 	    	$result['success'] = true;
@@ -59,7 +72,7 @@ $lastInsertedemail = e($data['email']);
 			$result['mailData']['first_name'] = e($data['first_name']);
 			$result['mailData']['activated'] = e($data['activated']);
 			$result['mailData']['last_name'] = e($data['last_name']);
-$result['mailData']['date_of_birth'] = e($data['date_of_birth']);
+
 $result['mailData']['gender'] = e($data['gender']);
 
 		
@@ -91,6 +104,14 @@ $result['mailData']['gender'] = e($data['gender']);
 		public function store_zurbestellung($data)
 	{
 		$result = array();
+
+		$day = e($data['day']);
+$month = e($data['month']);
+$year = e($data['year']);
+
+$date_of_birth="$year-$month-$day";
+
+
 		try {
 			//Attempt to register the user. 
 			$user = $this->sentry->register(array('email' => e($data['email']), 'activated' => e($data['activated']), 'first_name' => e($data['first_name']), 'last_name' => e($data['last_name']), 'password' => e($data['password'])));

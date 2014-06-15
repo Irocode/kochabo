@@ -19,14 +19,17 @@
    {{ Form::open(array('action' => 'UseradminController@store')) }}
 
 
-  <div class="row">
+<div class="row">
   <div class="col-md-6">
 
+
+ <div class="row">
+  <div class="col-md-3">
      <!-- gender -->
    <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
        <label class="control-label" for="gender">Anrede <span class="stern" >*</span></label>
       <div class="controls">
-      <select name="gender" class="form-control">
+      <select name="gender" class="form-control" >
                            <option value="" selected>Auswahl Anrede</option>
                           @foreach( $list_gender as $x )  
                           <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
@@ -37,6 +40,9 @@
          <span class="help-block">{{ $errors->first('gender') }}</span>
          @endif
       </div>
+   </div>
+
+   </div>
    </div>
    <br>
    <!-- first_name -->
@@ -61,21 +67,95 @@
       </div>
    </div>
    <br>
-      <!-- Datetime -->
-   <div class="control-group {{ $errors->has('date_of_birth') ? 'has-error' : '' }}">
-      <label class="control-label" for="title">Geburtsdatum <span class="stern" >*</span></label>
-      <div class="controls">
-  <div class="input-group date form_date col-md-15" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
-         {{ Form::text('date_of_birth', null, array('class'=>'form-control', 'id' => 'date_of_birth', 'placeholder'=>'Geburtsdatum',  'value'=>Input::old('date_of_birth'))) }}
-         @if ($errors->first('date_of_birth'))
-         <span class="help-block">{{ $errors->first('date_of_birth') }}</span>
-         @endif
+
+
+   <div class="row">
+  <div class="col-md-3">
+      <!-- Day -->
+   <div class="control-group {{ $errors->has('day') ? 'has-error' : '' }}">
+      <label class="control-label" for="day">Geburttag <span class="stern" >*</span></label>
+      <div class="controls">         
+     <select name="day" class="form-control">
+                           <option value="" selected>Geburttag</option>
+                          @foreach( $list_day as $x )  
+
+                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach   
+               
+                        </select>   
+
                 
-          <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-         </div>
+
+        
+         @if ($errors->first('day'))
+         <span class="help-block">{{ $errors->first('day') }}</span>
+         @endif
+
+ 
       </div>
-   </div>
+   </div> 
+  
+
+
+  </div>
+  <div class="col-md-3">
+
+  <!-- Month -->
+     <div class="control-group {{ $errors->has('month') ? 'has-error' : '' }}">
+      <label class="control-label" for="month">Geburtsmonat <span class="stern" >*</span></label>
+      <div class="controls">         
+      
+
+
+
+
+
+
+      <select name="month" class="form-control">
+                           <option value="" selected>Geburtsmonat</option>
+
+
+                          @foreach( $list_month as $x )  
+
+                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach   
+               
+                        </select>   
+
+
+         @if ($errors->first('month'))
+         <span class="help-block">{{ $errors->first('month') }}</span>
+         @endif
+      </div>
+   </div> 
+   <br>
+
+   </div><div class="col-md-6">
+
+
+  </div>
+  <div class="col-md-4">
+       <!-- Year -->
+   <div class="control-group {{ $errors->has('year') ? 'has-error' : '' }}">
+      <label class="control-label" for="year">Geburtsjahr <span class="stern" >*</span></label>
+      <div class="controls">  
+
+
+         {{ Form::text('year', null, array('class'=>'form-control', 'id' => 'year', 'placeholder'=>'JJJJ', 'size' => '4', 'maxlength' => '4','value'=>Input::old('year'))) }}
+         @if ($errors->first('year'))
+         <span class="help-block">{{ $errors->first('year') }}</span>
+         @endif
+      </div>
+   </div> 
+
+
+  </div>
+</div>
+
+
+
+     
+
    <br>
    </div><div class="col-md-6">
 
@@ -94,7 +174,7 @@
    <br>
          <!-- telephone -->
    <div class="control-group {{ $errors->has('telephone') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name">Telefon <span class="stern" >*</span></label>
+      <label class="control-label" for="last_name">Telefon (Nur Ziffern) <span class="stern" >*</span></label>
       <div class="controls">
 
        {{ Form::text('telephone', null, array('class'=>'form-control', 'id' => 'telephone', 'placeholder'=>'Telefon',  'value'=>Input::old('telephone'))) }}
@@ -111,7 +191,7 @@
 
      <!-- password -->
    <div class="control-group {{ $errors->has('password') ? 'has-error' : '' }}">
-      <label class="control-label" for="password">Passwort <span class="stern" >*</span></label>
+      <label class="control-label" for="password">Passwort (Mindestens 6 Zeichen) <span class="stern" >*</span></label>
       <div class="controls">
 
        {{ Form::text('password', null, array('class'=>'form-control', 'id' => 'password', 'placeholder'=>'Passwort',  'value'=>Input::old('password'))) }}
@@ -149,6 +229,13 @@
 <p><span class="stern" >*</span> Plichtfelder müssen ausgefüllt werden. </p>
 </div>
  <!-- Plichtfeld Ende -->
+<!--Formular Registrierung Ende-->
+
+ {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
+            {{ Form::submit('Registrieren', array('class' => 'btn btn-u')) }}
+
+</div>
+ <!-- Plichtfeld Ende -->
    
    <br>
 
@@ -169,9 +256,7 @@
       </div>
       <br>
       -->
- {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
-            {{ Form::submit('Registrieren', array('class' => 'btn btn-u')) }}
-   {{ Form::close() }}
+
 </div>
 
 
