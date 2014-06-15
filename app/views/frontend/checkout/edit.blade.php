@@ -400,6 +400,99 @@ indexzwo =15;
       </div>
       </div>
       <br>  
+
+      <!--Abfrage Postleitzahl Anfang-->   
+
+
+
+
+                  <script type="text/javascript">
+        localStorage.removeItem("nimm");
+$(window).load(function(){
+  
+        $('#search').keyup(function(){
+
+
+           if (this.value.length >= 3 || this.value == '')
+  {
+ 
+           
+            var searchField = $('#search').val();
+            var regex = new RegExp(searchField, "i");
+            var output = '<div class="row">';
+            var count = 1;
+           
+            $.getJSON('../../postleitzahl_check', function(data) {
+              $.each(data, function(key, val){
+
+                if ((val.name.search(regex) != -1) || (val.location.search(regex) != -1)) {
+
+ 
+  var oidanimm=val.location;
+
+localStorage.setItem('nimm', oidanimm);
+
+/*
+
+                  output += '<div class="col-md-6 well">';
+                  output += '<div class="col-md-3"><img class="img-responsive" src="'+val.avatar+'" alt="'+ val.name +'" /></div>';
+                  output += '<div class="col-md-7">';
+                  output += '<h5>' + val.name + '</h5>';
+                  output += '<p>' + val.location + '</p>';       
+                  output += '</div>';
+                  output += '</div>';
+
+    */
+
+
+
+                  if(count%2 == 0){
+                    output += '</div><div class="row">'
+                  }
+                  count++;
+                }
+              });
+              output += '</div>';
+              $('#results').html(output);
+
+
+
+            }); 
+
+
+
+ nimm= localStorage.getItem('nimm');        console.log(nimm);   
+if (searchField ==nimm) {  
+ output2 = 'Vorhanden';
+$('#results2').html(output2);
+
+
+} else {  
+   output2 = '<div class="alert alert-danger">Dieses Gebiet wird nicht beliefert</div>';
+$('#results2').html(output2);
+};
+
+
+            };
+
+        });
+      });
+        </script>
+
+
+                <div id="result"></div> 
+<div id="results">xxx</div> 
+<div id="results2">xxx2</div>
+
+
+<form role="form">
+        <div class="form-group">
+          <input type="email" class="form-control input-lg" id="search" placeholder="Sart type 'a' ....">
+        </div>
+</form>
+
+  
+      <!--Abfrage Postleitzahl Ende-->
       <!-- zip -->
       <div class="control-group {{ $errors->has('zip') ? 'has-error' : '' }}">
       <label class="control-label" for="zip">PLZ</label>

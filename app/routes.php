@@ -672,6 +672,10 @@ Route::get('checkout/{id}/edit','CartController@ceckout_one_edit');
 Route::get('checkout/{id}/update','CartController@ceckout_one_update');
 Route::post('checkout/{id}/update', 'CartController@ceckout_one_update');
 
+//Abfrage Postleizahl
+Route::get('postleitzahl_check', 'Ajax_Front_Controller@postleitzahl_check');
+Route::post('postleitzahl_check', 'Ajax_Front_Controller@postleitzahl_check');
+
 
 
 

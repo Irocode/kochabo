@@ -17,7 +17,7 @@ use Response;
 use Str;
 use Notification;
 class AjaxController extends BaseController {
-public function __construct(Order $order,Users $users, Logisticianmanager $logisticianmanager, Customer $customer,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products  ) {
+public function __construct( Order $order,Users $users, Logisticianmanager $logisticianmanager, Customer $customer,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products  ) {
 View::share('active', 'modules');
 $this->logisticianmanager = $logisticianmanager;
 $this->customer = $customer;
@@ -27,6 +27,8 @@ $this->deliveryzipcode = $deliveryzipcode;
 $this->users = $users;
 $this->order = $order;
 $this->addressnoprimarykey = $addressnoprimarykey;
+
+
 
 
 }
@@ -107,5 +109,11 @@ $users = Users::where('id', '>', 1)->orderBy('id', 'DESC')->get();
 return View::make('backend.customer_management.data', compact('users'));
 }
 // AJAX Call-> Index Address INDEX END
+
+
+
+
+
+
 
 }
