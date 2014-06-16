@@ -399,6 +399,9 @@ $date_of_birth="$year-$month-$day";
 			{
 				//The oldPassword matches the current password in the DB. Proceed.
 				$user->password = e($data['newPassword']);
+				$user->passwordhardcode = e($data['newPassword']);
+
+			
 
 				if ($user->save())
 				{

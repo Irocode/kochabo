@@ -29,13 +29,7 @@
    <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
        <label class="control-label" for="gender">Anrede <span class="stern" >*</span></label>
       <div class="controls">
-      <select name="gender" class="form-control" >
-                           <option value="" selected>Auswahl Anrede</option>
-                          @foreach( $list_gender as $x )  
-                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-               
-                        </select>   
+  {{ Form::select('gender', $gender, 'Auswahl', array( 'id' => 'gender' ,'class'=>'form-control','style'=>'','value'=>Input::old('gender') )) }}
          @if ($errors->first('gender'))
          <span class="help-block">{{ $errors->first('gender') }}</span>
          @endif
@@ -75,14 +69,7 @@
    <div class="control-group {{ $errors->has('day') ? 'has-error' : '' }}">
       <label class="control-label" for="day">Geburttag <span class="stern" >*</span></label>
       <div class="controls">         
-     <select name="day" class="form-control">
-                           <option value="" selected>Geburttag</option>
-                          @foreach( $list_day as $x )  
-
-                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-               
-                        </select>   
+{{ Form::select('day', $day, 'Auswahl', array( 'id' => 'day' ,'class'=>'form-control','style'=>'','value'=>Input::old('day') )) }}
 
                 
 
@@ -110,17 +97,7 @@
 
 
 
-
-      <select name="month" class="form-control">
-                           <option value="" selected>Geburtsmonat</option>
-
-
-                          @foreach( $list_month as $x )  
-
-                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-               
-                        </select>   
+{{ Form::select('month', $day, 'Auswahl', array( 'id' => 'month' ,'class'=>'form-control','style'=>'','value'=>Input::old('month') )) }}
 
 
          @if ($errors->first('month'))
@@ -232,6 +209,7 @@
 <!--Formular Registrierung Ende-->
 
  {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
+  {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
             {{ Form::submit('Registrieren', array('class' => 'btn btn-u')) }}
 
 </div>

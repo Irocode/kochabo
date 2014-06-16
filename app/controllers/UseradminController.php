@@ -85,8 +85,13 @@ class UseradminController extends BaseController {
      */
     public function create()
     {
+
+$day = List_Day::lists('bezeichnung', 'bezeichnung');
+$month = List_Month::lists('bezeichnung', 'bezeichnung');
+$gender = List_Gender::lists('bezeichnung', 'bezeichnung');
+
        
-         return View::make('backend.customer_management.create');
+         return View::make('backend.customer_management.create')->with('month',$month)->with('gender',$gender)->with('day',$day);
 
     }
 
@@ -501,7 +506,7 @@ Notification::success('Registrierungs-E-Mail wurde verschickt');
         {
             // Success!
             Session::flash('success', $result['message']);
-            Notification::success('Löschung erfolgreich');
+            Notification::success('Passwort Wechsel erfolgreich');
 
       
                     return Redirect::to('/admin/customer_management');

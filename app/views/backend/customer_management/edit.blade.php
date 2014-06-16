@@ -71,8 +71,8 @@
       <label class="control-label" for="day">Geburttag <span class="stern" >*</span></label>
       <div class="controls">         
      <select name="day" class="form-control">
-                          
-                           <option value="{{$ausgabe->day}}" selected>{{$ausgabe->day}}</option>
+                         
+                           <option value="{{$ausgabe->birthday}}" selected>{{$ausgabe->birthday}}</option>
                           @foreach( $list_day as $x )  
 
                           <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
@@ -103,19 +103,12 @@
       
 
 
-
-
-
-
       <select name="month" class="form-control">
+          <option value="{{$ausgabe->birthmonth}}" selected>{{$ausgabe->birthmonth}}</option>
                            <option value="" selected>Geburtsmonat</option>
-
-
                           @foreach( $list_month as $x )  
-
                           <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-               
+                           @endforeach                  
                         </select>   
 
 
@@ -137,7 +130,7 @@
       <div class="controls">  
 
 
-         {{ Form::text('year', null, array('class'=>'form-control', 'id' => 'year', 'placeholder'=>'JJJJ', 'size' => '4', 'maxlength' => '4','value'=>Input::old('year'))) }}
+         {{ Form::text('birthyear', null, array('class'=>'form-control', 'id' => 'year', 'placeholder'=>'JJJJ', 'size' => '4', 'maxlength' => '4','value'=>Input::old('year'))) }}
          @if ($errors->first('year'))
          <span class="help-block">{{ $errors->first('year') }}</span>
          @endif
@@ -145,7 +138,7 @@
    </div> 
             </div>
          </div>
-         <br>
+     
          <!-- email -->
          <div class="control-group {{ $errors->has('email') ? 'has-error' : '' }}">
             <label class="control-label" for="email">E-Mail <span class="stern" >*</span></label>
@@ -164,6 +157,17 @@
                {{ Form::text('telephone', null, array('class' => 'form-control', 'placeholder' => 'Telefon')) }}
                @if ($errors->first('telephone'))
                <span class="help-block">{{ $errors->first('telephone') }}</span>
+               @endif
+            </div>
+         </div>
+         <br>
+              <!-- passwort -->
+         <div class="control-group {{ $errors->has('passwordhardcode') ? 'has-error' : '' }}">
+            <label class="control-label" for="last_name">Derzeitiges Passwort <span class="stern" >*</span></label>
+            <div class="controls">
+               {{ Form::text('passwordhardcode', null, array('disabled', 'class' => 'form-control', 'placeholder' => 'Derzeitiges passwort')) }}
+               @if ($errors->first('passwordhardcode'))
+               <span class="help-block">{{ $errors->first('passwordhardcode') }}</span>
                @endif
             </div>
          </div>

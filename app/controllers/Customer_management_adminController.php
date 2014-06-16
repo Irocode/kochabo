@@ -29,7 +29,10 @@ return View::make('backend.customer_management.index')
 public function create()
 {
 // load the create form (app/views/varibale_ausgabe/create.blade.php)
-return View::make('backend.customer_management.create');
+$day = List_Day::lists('bezeichnung', 'bezeichnung');
+$month = List_Month::lists('bezeichnung', 'bezeichnung');
+$gender = List_Gender::lists('bezeichnung', 'bezeichnung');
+return View::make('backend.customer_management.create')->with('month',$month)->with('gender',$gender)->with('day',$day);
 }
 /**
 * Store a newly created resource in storage.
