@@ -121,6 +121,7 @@ return array(
         'Intervention\Image\ImageServiceProvider',
         'Moltin\Cart\CartServiceProvider',
         'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
+        'Former\FormerServiceProvider',
        
         
     ),
@@ -199,6 +200,7 @@ return array(
         'Image' => 'Intervention\Image\Facades\Image',
         'Cart' => 'Moltin\Cart\Facade',
         'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
+        'Former' => 'Former\Facades\Former',
         
 
     ),

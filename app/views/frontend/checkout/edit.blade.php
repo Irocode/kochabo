@@ -41,6 +41,10 @@ indexzwo =15;
       </div>
          <!--HEADER mit Zurück ENDE-->
 
+<div class="form-group">
+
+   {{ Form::select('select_day', $select_day , Input::old('select_day')) }}
+     </div>
 
 
 

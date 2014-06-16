@@ -1,12 +1,13 @@
 <?php
 
-
+use Former\Facades\Former;
 class CartController extends \BaseController {
 
-public function __construct( Products $products, Address $address, Users $users ) {
+public function __construct( Products $products, Address $address, Users $users, List_Day $list_day ) {
 $this->products = $products;
 $this->address = $address;
 $this->users = $users;
+$this->list_day = $list_day;
 
 }
 
@@ -197,13 +198,18 @@ public function ceckout_one_edit($id)
 
     $cartContent = Cart::content();
     $products = Product::all();
-     $users = Users::all();
-
+     $users = Users::all();      
 
   $address_rechnung = Address::where('customercustomer_id', '=', $id)->where('art', '=', 'Rechnungsadresse')->first();
  $address_lieferung = Address::where('customercustomer_id', '=', $id)->where('art', '=', 'Lieferadresse')->first();
 
-return View::make('frontend.checkout.edit')->with('cartContent',$cartContent)->with('address_lieferung',$address_lieferung)->with('address_rechnung',$address_rechnung)->with('products',$products)->with('users',$users);
+
+$select_month = List_Month::lists('bezeichnung', 'id');
+$select_gender = List_Gender::lists('bezeichnung', 'id');
+$select_day = List_Day::lists('bezeichnung', 'id');
+
+
+return View::make('frontend.checkout.edit')->with('select_month',$select_month)->with('select_gender',$select_gender)->with('select_day',$select_day)->with('cartContent',$cartContent)->with('address_lieferung',$address_lieferung)->with('address_rechnung',$address_rechnung)->with('products',$products)->with('users',$users);
  
      }
 
