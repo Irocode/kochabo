@@ -227,8 +227,10 @@ Notification::success('Dir wurde ein Registrierungs-E-Mail geschickt');
     public function create()
      
     {
-     
-return View::make('frontend.checkout.index');
+$day = List_Day::lists('bezeichnung', 'bezeichnung');
+$month = List_Month::lists('bezeichnung', 'bezeichnung');
+$gender = List_Gender::lists('bezeichnung', 'bezeichnung');
+return View::make('frontend.checkout.index')->with('month',$month)->with('gender',$gender)->with('day',$day);
 
         
 

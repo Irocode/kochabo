@@ -23,6 +23,8 @@ class RegisterFormLaravelValidator extends AbstractLaravelValidator {
      'day' => 'required',
     'month' => 'required',
 	'year' => 'required',
+	'check_yes' => 'accepted',
+
 
 
 	

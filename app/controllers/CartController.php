@@ -203,13 +203,13 @@ public function ceckout_one_edit($id)
   $address_rechnung = Address::where('customercustomer_id', '=', $id)->where('art', '=', 'Rechnungsadresse')->first();
  $address_lieferung = Address::where('customercustomer_id', '=', $id)->where('art', '=', 'Lieferadresse')->first();
 
+$day = List_Day::lists('bezeichnung', 'bezeichnung');
+$month = List_Month::lists('bezeichnung', 'bezeichnung');
+$gender = List_Gender::lists('bezeichnung', 'bezeichnung');
+$country = List_Country::lists('de', 'code');
 
-$select_month = List_Month::lists('bezeichnung', 'id');
-$select_gender = List_Gender::lists('bezeichnung', 'id');
-$select_day = List_Day::lists('bezeichnung', 'id');
 
-
-return View::make('frontend.checkout.edit')->with('select_month',$select_month)->with('select_gender',$select_gender)->with('select_day',$select_day)->with('cartContent',$cartContent)->with('address_lieferung',$address_lieferung)->with('address_rechnung',$address_rechnung)->with('products',$products)->with('users',$users);
+return View::make('frontend.checkout.edit')->with('country',$country)->with('month',$month)->with('gender',$gender)->with('day',$day)->with('cartContent',$cartContent)->with('address_lieferung',$address_lieferung)->with('address_rechnung',$address_rechnung)->with('products',$products)->with('users',$users);
  
      }
 

@@ -169,19 +169,13 @@ Dein KochAbo Team steht dir jederzeit mit Rat und Tat zur Verfügung. Erreichbar
    <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
        <label class="control-label" for="gender">Anrede <span class="stern" >*</span></label>
       <div class="controls">
-      <select name="gender" class="form-control" >
-                           <option value="" selected>Auswahl Anrede</option>
-                          @foreach( $list_gender as $x )  
-                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-               
-                        </select>   
+ {{ Form::select('gender', $gender, 'Auswahl', array( 'id' => 'gender' ,'class'=>'form-control','style'=>'','value'=>Input::old('gender') )) }}
          @if ($errors->first('gender'))
          <span class="help-block">{{ $errors->first('gender') }}</span>
          @endif
       </div>
    </div>
-
+   
    </div>
    </div>
    <br>
@@ -215,14 +209,7 @@ Dein KochAbo Team steht dir jederzeit mit Rat und Tat zur Verfügung. Erreichbar
    <div class="control-group {{ $errors->has('day') ? 'has-error' : '' }}">
       <label class="control-label" for="day">Geburttag <span class="stern" >*</span></label>
       <div class="controls">         
-     <select name="day" class="form-control">
-                           <option value="" selected>Geburttag</option>
-                          @foreach( $list_day as $x )  
-
-                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-               
-                        </select>   
+      {{ Form::select('day', $day, 'Auswahl', array( 'id' => 'day' ,'class'=>'form-control','style'=>'','value'=>Input::old('day') )) }}
 
                 
 
@@ -250,17 +237,7 @@ Dein KochAbo Team steht dir jederzeit mit Rat und Tat zur Verfügung. Erreichbar
 
 
 
-
-      <select name="month" class="form-control">
-                           <option value="" selected>Geburtsmonat</option>
-
-
-                          @foreach( $list_month as $x )  
-
-                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-               
-                        </select>   
+ {{ Form::select('month', $month, 'Auswahl', array( 'id' => 'month' ,'class'=>'form-control','style'=>'','value'=>Input::old('month') )) }}
 
 
          @if ($errors->first('month'))
@@ -377,10 +354,14 @@ Dein KochAbo Team steht dir jederzeit mit Rat und Tat zur Verfügung. Erreichbar
 </div>
 
     <div class="col-lg-9">
-               <div class="form-group {{ ($errors->has('terms')) ? 'has-error' : '' }}">
+               <div class="form-group {{ ($errors->has('check_yes')) ? 'has-error' : '' }}">
                   <label class="checkbox">
-                  {{ Form::checkbox('terms', 'yes', false); }}
-                  {{ ($errors->has('terms') ?  $errors->first('terms') : '') }}    
+                  {{ Form::checkbox('check_yes', 'yes', false); }}
+
+                      {{ Form::checkbox('check_yes','yes');}}
+
+                 
+                   <span class="help-block" style="color:#b94a48;">{{ $errors->first('check_yes') }}</span> 
                   <a href="page_terms.html" class="color-green">AGB's</a> und <a href="page_terms.html" class="color-green">Rücktrittsrecht</a> gelesen und akzeptiert.
                   </label>  
                </div>
@@ -398,27 +379,14 @@ Dein KochAbo Team steht dir jederzeit mit Rat und Tat zur Verfügung. Erreichbar
 
 
 <!-- DATEN START-->
+<h1>Session</h1>
+<p style="background-color:#fed51c;color:#ffffff;padding:3px">{{var_dump(Session::all());}}</p>
 
-{{var_dump(Session::all());}}
+<h1>Session Cart</h1>
+<p style="background-color:#cccccc;color:#ffffff;padding:3px">{{Cart::content();}}</p>
 
 
 
-{{ $user_id = Session::get('userId');}}
-{{ $name = Session::get('name');}}
-{{ $user_id = Session::get('userId');}}
-{{ $user_id = Session::get('userId');}}
-{{ $user_id = Session::get('userId');}}
-
-<?php echo"<br><br>";echo"<br>";
-echo"User:ID: $user_id"; echo"<br>";
-echo"Produkt:ID: $name"; echo"<br>";
-echo"User:ID: $user_id"; echo"<br>";
-echo"User:ID: $user_id"; echo"<br>";
-echo"User:ID: $user_id"; echo"<br>";
-
-?>
-
-{{Cart::content();}}
 
 <!-- DATEN ENDe-->
 
@@ -445,7 +413,7 @@ echo"User:ID: $user_id"; echo"<br>";
          <button class='btn-u btn-u-red' type='button'>Jetzt bezahlen!</button>
          <br>
          @else
-<button class='btn-u btn-u-red' type='button'>Einloggen</button>
+
             @endif
 <!--ABFRAGE OB EINGELOGGT ENDE-->
 

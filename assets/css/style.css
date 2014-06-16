@@ -187,6 +187,7 @@
 blockquote p {
 	font-size: 16px;
 	font-weight: 200;
+	line-height: 30px;
 }
 
 blockquote:hover {
@@ -198,7 +199,7 @@ blockquote:hover {
 }
 .hero {
 	padding: 18px;
-	margin: 20px 0;
+	margin: 10px 10;
 	color: #566c8a;
 	font-size: 16px;
 	background: #fcfcfc;
@@ -211,7 +212,7 @@ blockquote:hover {
 
 .hero-unify p {
 	font-size: 13px;
-	line-height: 20px;
+	line-height: 30px;
 }
 
 /* Work */

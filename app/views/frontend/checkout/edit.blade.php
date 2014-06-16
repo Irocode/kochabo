@@ -41,38 +41,42 @@ indexzwo =15;
       </div>
          <!--HEADER mit Zurück ENDE-->
 
-<div class="form-group">
-
-   {{ Form::select('select_day', $select_day , Input::old('select_day')) }}
-     </div>
 
 
 
-{{{$address_rechnung->id}}}
+
+
+
+<!--{{{$address_rechnung->id}}}-->
 <div class="row">
   <div class="col-md-6">
+
+
+  <div class="row">
+  <div class="col-md-3">
 
       <!-- gender -->
    <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
        <label class="control-label" for="gender">Anrede <span class="stern" >*</span></label>
       <div class="controls">
-      <select name="gender" class="form-control">
-                          
-                           <option value="{{$address_rechnung->gender}}" selected>{{$address_rechnung->gender}}</option>
-                          @foreach( $list_gender as $x )  
-                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-               
-                        </select>   
-         @if ($errors->first('gender'))
+
+          <select name="gender" class="form-control">
+                  <option value="{{$address_rechnung->gender}}" selected>{{$address_rechnung->gender}}</option>
+                  @foreach( $list_gender as $x )  
+                  <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                  @endforeach   
+               </select>
+
+
+        <!-- {{ Form::select('gender', $gender, 'Auswahl', array( 'id' => 'gender' ,'class'=>'form-control','style'=>'','value'=>Input::old('gender') )) }}-->
          <span class="help-block">{{ $errors->first('gender') }}</span>
-         @endif
+    
       </div>
-   </div>
-   <br>
+   </div></div></div>
+
       <!-- first_name --> 
       <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name">Vorname</label>
+      <label class="control-label" for="last_name">Vorname <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('first_name', $address_rechnung->first_name, array('class'=>'form-control', 'id' => 'Vorname',  'placeholder'=>'Vorname', 'value'=>Input::old('first_name'))) }}
       @if ($errors->first('first_name'))
@@ -83,7 +87,7 @@ indexzwo =15;
       <br>
       <!-- last_name -->  
       <div class="control-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name">Nachname</label>
+      <label class="control-label" for="last_name">Nachname <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('last_name', $address_rechnung->last_name, array('class'=>'form-control', 'id' => 'last_name',  'placeholder'=>'Nachname', 'value'=>Input::old('last_name'))) }}
       @if ($errors->first('last_name'))
@@ -96,7 +100,7 @@ indexzwo =15;
 
       <!-- street -->
       <div class="control-group {{ $errors->has('street') ? 'has-error' : '' }}">
-      <label class="control-label" for="street">Straße</label>
+      <label class="control-label" for="street">Straße/Gasse <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('street', $address_rechnung->street, array('class'=>'form-control', 'id' => 'street', 'placeholder'=>'Straße', 'value'=>Input::old('street'))) }}
       @if ($errors->first('street'))
@@ -115,7 +119,7 @@ indexzwo =15;
 
           <!-- housenumber -->
       <div class="control-group {{ $errors->has('housenumber') ? 'has-error' : '' }}">
-      <label class="control-label" for="housenumber">Hausnummer</label>
+      <label class="control-label" for="housenumber">Hausnummer <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('housenumber', $address_rechnung->housenumber, array('class'=>'form-control', 'id' => 'housenumber', 'placeholder'=>'Hausnummer', 'value'=>Input::old('housenumber'))) }}
       @if ($errors->first('housenumber'))
@@ -129,7 +133,7 @@ indexzwo =15;
 
           <!-- stairway_number -->
       <div class="control-group {{ $errors->has('stairway_number') ? 'has-error' : '' }}">
-      <label class="control-label" for="street">Stiege</label>
+      <label class="control-label" for="street">Stiege </label>
       <div class="controls">
       {{ Form::text('stairway_number', $address_rechnung->stairway_number, array('class'=>'form-control', 'id' => 'stairway_number', 'placeholder'=>'Stiege', 'value'=>Input::old('stairway_number'))) }}
       @if ($errors->first('stairway_number'))
@@ -181,7 +185,7 @@ indexzwo =15;
 
       <!-- city -->
       <div class="control-group {{ $errors->has('city') ? 'has-error' : '' }}">
-      <label class="control-label" for="city">Stadt</label>
+      <label class="control-label" for="city">Stadt <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('city', $address_rechnung->city, array('class'=>'form-control', 'id' => 'city', 'placeholder'=>'Stadt', 'value'=>Input::old('city'))) }}
       @if ($errors->first('city'))
@@ -192,7 +196,7 @@ indexzwo =15;
       <br>  
       <!-- zip -->
       <div class="control-group {{ $errors->has('zip') ? 'has-error' : '' }}">
-      <label class="control-label" for="zip">PLZ</label>
+      <label class="control-label" for="zip">PLZ <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('zip', $address_rechnung->zip, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'PLZ', 'value'=>Input::old('zip'))) }}
       @if ($errors->first('zip'))
@@ -203,7 +207,7 @@ indexzwo =15;
       <br>  
       <!-- state -->
       <div class="control-group {{ $errors->has('stateprovince') ? 'has-error' : '' }}">
-      <label class="control-label" for="stateprovince">Bundesland</label>
+      <label class="control-label" for="stateprovince">Bundesland <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('stateprovince', $address_rechnung->stateprovince, array('class'=>'form-control', 'id' => 'stateprovince', 'placeholder'=>'Bundesland', 'value'=>Input::old('stateprovince'))) }}
       @if ($errors->first('stateprovince'))
@@ -214,9 +218,21 @@ indexzwo =15;
       <br>
       <!-- country -->
       <div class="control-group {{ $errors->has('country') ? 'has-error' : '' }}">
-      <label class="control-label" for="country">Land</label>
+      <label class="control-label" for="country">Land <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('country', $address_rechnung->country, array('class'=>'form-control', 'id' => 'country', 'placeholder'=>'Land', 'value'=>Input::old('country'))) }}
+     
+
+      <select name="gender" class="form-control">
+                  <option value="{{$address_rechnung->gender}}" selected>{{$address_rechnung->country}}</option>
+                  @foreach( $list_country as $x )  
+                  <option value="{{ $x->de }}">{{ $x->de }}</option>
+                  @endforeach   
+               </select>
+
+
+        <!-- {{ Form::select('country', $country, 'Auswahl', array( 'id' => 'country' ,'class'=>'form-control','style'=>'','value'=>Input::old('country') )) }}-->
+
+    
       @if ($errors->first('country'))
       <span class="help-block">{{ $errors->first('country') }}</span>
       @endif
@@ -262,31 +278,38 @@ indexzwo =15;
 
 
 
-{{{$address_lieferung->id}}}
+ <!-- {{{$address_lieferung->id}}}-->
 <div class="row">
   <div class="col-md-6">
+
+      <!-- gender -->
+  <div class="row">
+  <div class="col-md-3">
 
       <!-- gender -->
    <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
        <label class="control-label" for="gender">Anrede <span class="stern" >*</span></label>
       <div class="controls">
-      <select name="gender" class="form-control">
-                          
-                           <option value="{{$address_lieferung->gender}}" selected>{{$address_lieferung->gender}}</option>
-                          @foreach( $list_gender as $x )  
-                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-               
-                        </select>   
-         @if ($errors->first('gender'))
+      
+          <select name="gender" class="form-control">
+                  <option value="{{$address_lieferung->gender}}" selected>{{$address_lieferung->gender}}</option>
+                  @foreach( $list_gender as $x )  
+                  <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                  @endforeach   
+               </select>
+
+
+        <!-- {{ Form::select('gender', $gender, 'Auswahl', array( 'id' => 'gender' ,'class'=>'form-control','style'=>'','value'=>Input::old('gender') )) }}-->
+
+
+
          <span class="help-block">{{ $errors->first('gender') }}</span>
-         @endif
       </div>
-   </div>
-   <br>
+   </div></div></div>
+   
       <!-- first_name --> 
       <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name">Vorname</label>
+      <label class="control-label" for="last_name">Vorname <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('first_name', $address_lieferung->first_name, array('class'=>'form-control', 'id' => 'Vorname',  'placeholder'=>'Vorname', 'value'=>Input::old('first_name'))) }}
       @if ($errors->first('first_name'))
@@ -297,7 +320,7 @@ indexzwo =15;
       <br>
       <!-- last_name -->  
       <div class="control-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name">Nachname</label>
+      <label class="control-label" for="last_name">Nachname <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('last_name', $address_lieferung->last_name, array('class'=>'form-control', 'id' => 'last_name',  'placeholder'=>'Nachname', 'value'=>Input::old('last_name'))) }}
       @if ($errors->first('last_name'))
@@ -310,7 +333,7 @@ indexzwo =15;
 
       <!-- street -->
       <div class="control-group {{ $errors->has('street') ? 'has-error' : '' }}">
-      <label class="control-label" for="street">Straße</label>
+      <label class="control-label" for="street">Straße/Gasse <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('street', $address_lieferung->street, array('class'=>'form-control', 'id' => 'street', 'placeholder'=>'Straße', 'value'=>Input::old('street'))) }}
       @if ($errors->first('street'))
@@ -395,7 +418,7 @@ indexzwo =15;
 
       <!-- city -->
       <div class="control-group {{ $errors->has('city') ? 'has-error' : '' }}">
-      <label class="control-label" for="city">Stadt</label>
+      <label class="control-label" for="city">Stadt <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('city', $address_lieferung->city, array('class'=>'form-control', 'id' => 'city', 'placeholder'=>'Stadt', 'value'=>Input::old('city'))) }}
       @if ($errors->first('city'))
@@ -499,7 +522,7 @@ $('#results2').html(output2);
       <!--Abfrage Postleitzahl Ende-->
       <!-- zip -->
       <div class="control-group {{ $errors->has('zip') ? 'has-error' : '' }}">
-      <label class="control-label" for="zip">PLZ</label>
+      <label class="control-label" for="zip">PLZ <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('zip', $address_lieferung->zip, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'PLZ', 'value'=>Input::old('zip'))) }}
       @if ($errors->first('zip'))
@@ -510,7 +533,7 @@ $('#results2').html(output2);
       <br>  
       <!-- state -->
       <div class="control-group {{ $errors->has('stateprovince') ? 'has-error' : '' }}">
-      <label class="control-label" for="stateprovince">Bundesland</label>
+      <label class="control-label" for="stateprovince">Bundesland <span class="stern" >*</span></label>
       <div class="controls">
       {{ Form::text('stateprovince', $address_lieferung->stateprovince, array('class'=>'form-control', 'id' => 'stateprovince', 'placeholder'=>'Bundesland', 'value'=>Input::old('stateprovince'))) }}
       @if ($errors->first('stateprovince'))
@@ -521,9 +544,23 @@ $('#results2').html(output2);
       <br>
       <!-- country -->
       <div class="control-group {{ $errors->has('country') ? 'has-error' : '' }}">
-      <label class="control-label" for="country">Land</label>
+      <label class="control-label" for="country">Land <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('country', $address_lieferung->country, array('class'=>'form-control', 'id' => 'country', 'placeholder'=>'Land', 'value'=>Input::old('country'))) }}
+
+
+          <select name="gender" class="form-control">
+                  <option value="{{$address_lieferung->gender}}" selected>{{$address_lieferung->country}}</option>
+                  @foreach( $list_country as $x )  
+                  <option value="{{ $x->de }}">{{ $x->de }}</option>
+                  @endforeach   
+               </select>
+
+
+        <!-- {{ Form::select('country', $country, 'Auswahl', array( 'id' => 'country' ,'class'=>'form-control','style'=>'','value'=>Input::old('country') )) }}-->
+
+
+     
+
       @if ($errors->first('country'))
       <span class="help-block">{{ $errors->first('country') }}</span>
       @endif
@@ -568,7 +605,7 @@ $('#results2').html(output2);
       <br>
     
       <!-- Tabs End -->   
-      {{ Form::submit('Änderungen speichern', array('class' => 'btn btn-success')) }}
+      {{ Form::submit('Daten speichern und weiter', array('class' => 'btn btn-success')) }}
       {{ Form::close() }}
       </div>
  
@@ -634,7 +671,7 @@ $('#results2').html(output2);
 <!--ABFRAGE OB EINGELOGGT ANFANG-->
 @if (Sentry::check() )  
 
-Du bist mit deiner E-Mail Adresse {{ Session::get('email') }} eingeloggt.<br>Bitte wähle Deine Lieferadresse aus.
+
 
 
              
@@ -757,22 +794,20 @@ Dein KochAbo Team steht dir jederzeit mit Rat und Tat zur Verfügung. Erreichbar
   <div class="col-md-6">
 
      <!-- gender -->
+  <div class="row">
+  <div class="col-md-3">
+
+      <!-- gender -->
    <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
        <label class="control-label" for="gender">Anrede <span class="stern" >*</span></label>
       <div class="controls">
-      <select name="gender" class="form-control">
-                           <option value="" selected>Auswahl Anrede</option>
-                          @foreach( $list_gender as $x )  
-                          <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-               
-                        </select>   
-         @if ($errors->first('gender'))
+
+         {{ Form::select('gender', $select_gender, 'Auswahl', array( 'id' => 'gender', 'class'=>'form-control','style'=>'','value'=>Input::old('gender') )) }}
          <span class="help-block">{{ $errors->first('gender') }}</span>
-         @endif
+    
       </div>
-   </div>
-   <br>
+   </div></div></div>
+ 
    <!-- first_name -->
    <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
       <label class="control-label" for="first_name">Vorname <span class="stern" >*</span></label>
@@ -912,41 +947,28 @@ Dein KochAbo Team steht dir jederzeit mit Rat und Tat zur Verfügung. Erreichbar
 
 
 <!-- DATEN START-->
+<h1>Session</h1>
+<p style="background-color:#fed51c;color:#ffffff;padding:3px">{{var_dump(Session::all());}}</p>
 
-{{var_dump(Session::all());}}
+<h1>Session Cart</h1>
+<p style="background-color:#cccccc;color:#ffffff;padding:3px">{{Cart::content();}}</p>
 
 
-
-?>
-
-{{Cart::content();}}
 
 <!-- DATEN ENDe-->
 
 
   <!--ABFRAGE OB EINGELOGGT ANFANG-->
 @if (Sentry::check() )  
-  <div class="headline">
-  <h2>Bestellung abschließen</h2>
-  </div>
+<br>
+<h1>Eingeloggt mit User</h1>
+<p style="background-color:#000000;color:#ffffff;padding:3px">Du bist mit deiner E-Mail Adresse {{ Session::get('email') }} eingeloggt.</p>
 
 
 
-
-         <div class="headline">
-            <h2>Da du Kunde bist kannst du den kürzeren Weg gehen.</h2>
-         </div>
-         <div class="row servive-block servive-block-in margin-bottom-20">
-         </div>
-         <!--/welcome-block-->
-         <!-- End Our Services -->
-         <!-- Blockquotes -->
-         <p>Du bist mit {{ Session::get('email') }} eingeloggt und kannst daher schneller den Bezahlweg durchgehen!</p>
-         </p>
-         <button class='btn-u btn-u-red' type='button'>Jetzt bezahlen!</button>
-         <br>
+  
          @else
-<button class='btn-u btn-u-red' type='button'>Einloggen</button>
+<!--<button class='btn-u btn-u-red' type='button'>Einloggen</button>-->
             @endif
 <!--ABFRAGE OB EINGELOGGT ENDE-->
 

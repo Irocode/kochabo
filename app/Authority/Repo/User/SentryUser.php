@@ -34,33 +34,21 @@ class SentryUser extends RepoAbstract implements UserInterface {
 
 
 
-$day = e($data['day']);
-$month = e($data['month']);
-$year = e($data['year']);
-$date_of_birth="$year-$month-$day";
 
 
 		$result = array();$day = e($data['day']);
 
 		try {
 
-$day = e($data['day']);
-$month = e($data['month']);
-$year = e($data['year']);
-$date_of_birth="$year-$month-$day";
 	
 
 $lastInsertedemail = e($data['email']);
 
 
-$day = e($data['day']);
-$month = e($data['month']);
-$year = e($data['year']);
-$date_of_birth="$year-$month-$day";
 
 
 			//Attempt to register the user. 
-			$user = $this->sentry->register(array('email' => e($data['email']),  'activated' => e($data['activated']), 'telephone' => e($data['telephone']), 'date_of_birth' => $date_of_birth, 'first_name' => e($data['first_name']),'gender' => e($data['gender']),'last_name' => e($data['last_name']), 'password' => e($data['password'])));
+			$user = $this->sentry->register(array('email' => e($data['email']),  'activated' => e($data['activated']), 'birthday' => e($data['day']),'birthmonth' => e($data['month']),'birthyear' => e($data['year']),'telephone' => e($data['telephone']), 'first_name' => e($data['first_name']),'gender' => e($data['gender']),'last_name' => e($data['last_name']), 'password' => e($data['password'])));
 
 			//success!
 	    	$result['success'] = true;
@@ -106,6 +94,7 @@ $result['mailData']['gender'] = e($data['gender']);
 		$result = array();
 
 		$day = e($data['day']);
+		$gender = e($data['gender']);
 $month = e($data['month']);
 $year = e($data['year']);
 

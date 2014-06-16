@@ -583,6 +583,7 @@ View::share ('list_recipe_type',List_Recipe_type::all());
 View::share ('list_ust',List_Ust::all());
 View::share ('list_month',List_Month::all());
 View::share ('list_day',List_Day::all());
+View::share ('list_country',List_Country::all());
 
 
 
@@ -660,10 +661,13 @@ Route::get('/checkout', function()
 		$cartContent = Cart::content();
 		$products = Product::all();
 		$users = Users::all();
-		
+	$day = List_Day::lists('bezeichnung', 'bezeichnung');
+$month = List_Month::lists('bezeichnung', 'bezeichnung');
+$gender = List_Gender::lists('bezeichnung', 'bezeichnung');
+
 
 		
-		return View::make('frontend.checkout.index')->with('cartContent',$cartContent)->with('products',$products)->with('users',$users);
+		return View::make('frontend.checkout.index')->with('month',$month)->with('gender',$gender)->with('day',$day)->with('cartContent',$cartContent)->with('products',$products)->with('users',$users);
 	});
 // cart management routes
 Route::get('shop/insert/{id}','CartController@insert');
