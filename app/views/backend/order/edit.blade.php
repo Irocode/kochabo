@@ -1,641 +1,138 @@
 @extends('backend/_layout/layout')
 @section('content')
 {{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
-
-
+{{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
+{{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
 {{ HTML::script('assets/js/jquery.slug.js') }}
-
-
-<!-- Tab Regulierung-->
-<?php 
-   $order_delivery_billx = $order->order_delivery_bill;   
-   if ($order_delivery_billx=="option1") {  ?>
-<style>#hi{display:none;}</style>
-<?php } else {};
-   if ($order_delivery_billx=="option2") {} else {};  
-   if (empty($order_delivery_billx)){}  else  {};
-   ?> 
+<script type="text/javascript">
+   $(document).ready(function () {
+       $("#title").slug();
+   
+      
+   
+   });
+</script>
 <div class="container">
-
-
-
- <!--HEADER mit Zurück ANFANG-->
-     <div class="headline">
-      <h2>Adresse</h2>
-        <div class="pull-right">
-      <a href="javascript:history.back();">
-            <button class="btn btn-u"><< Zurück</button>
-            </a>
+   <div class="page-header">
+      <h3>
+         Bestellung {{$order->order_id}}
+         <div class="pull-right">
+            {{HTML::link('admin/customer_management/'.$order->customercustomer_id.'/edit','Zurück', array('class'=>'btn btn-u')) }}
          </div>
-      </div>
-         <!--HEADER mit Zurück ENDE-->
-
-
-
-   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\OrderController@update', $order->user_id), 'method' => 'PATCH')) }}
-   <div class="row">
-      <div class="col-md-3">
-         <div class="radio">
-            <label>
-               <?php 
-                  if (empty($order_delivery_billx)){
-                  ?>
-               <style>#hi{display:none;}</style>
-               <?php
-                  echo" <input type='radio' name='order_delivery_bill' id='optionsRadios1' value='option1'  >
-                   Rechnugsadresse ident mit Lieferadresse
-                  </label>
-                  </div>
-                  
-                  <div class='radio'>
-                  <label>
-                   <input type='radio' name='order_delivery_bill' id='optionsRadios2' value='option2'  >
-                   Rechnugsadresse anders als Lieferadresse
-                  </label>
-                  ";
-                  }  else  {
-                  
-                  
-                  if ($order_delivery_billx=="option1") {
-                  echo" <input type='radio' name='order_delivery_bill' id='optionsRadios1' value='option1'  >
-                   Rechnugsadresse ident mit Lieferadresse
-                  </label>
-                  </div>
-                  
-                  <div class='radio'>
-                  <label>
-                   <input type='radio' name='order_delivery_bill' id='optionsRadios2' value='option2'  >
-                   Rechnugsadresse anders als Lieferadresse
-                  </label>";
-                   }
-                   else  {};  
-                   
-                   
-                  echo"<br>";
-                  
-                    if ($order_delivery_billx=="option2") {
-                  
-                   echo"<input type='radio' name='order_delivery_bill' id='optionsRadios1' value='option1'   >
-                   Rechnugsadresse ident mit Lieferadresse
-                  </label>
-                  </div>
-                  
-                  <div class='radio'>
-                  <label>
-                   <input type='radio' name='order_delivery_bill' id='optionsRadios2' value='option2'  >
-                   Rechnugsadresse anders als Lieferadresse
-                  </label>";
-                  
-                  
-                  
-                   }
-                   else  {};   
-                  
-                  };
-                     
-                  
-                   ?>
-         </div>
-      </div>
-      <div class="col-md-9">
-      <!-- Nav tabs -->
-      <div  id="hi" >
-      <ul class="nav nav-tabs">
-      <li class="active"><a href="#home" data-toggle="tab">Rechnungsadresse</a></li>
-      <li><a href="#profile" data-toggle="tab">Lieferadresse</a></li>
-      </ul>  
-      </div>   
-      <!-- Tab panes -->
-      <div class="tab-content">
-      <div class="tab-pane active" id="home">
-      <!-- gender -->
-      <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
-      <label class="control-label" for="gender">Anrede</label>
-      <div class="controls " >
-      <?php $genderselectchoice =$order->gender; 
-     
-
-         if (empty($genderselectchoice)){ echo Form::select('gender', array('Herr' => 'Herr', 'Frau' => 'Frau'), 'Herr');}  else  {
-         if ($genderselectchoice=="Herr") { $genderselectchange="Frau";} else  {$genderselectchange="Herr";} 
-         echo Form::select('gender', array($genderselectchange => $genderselectchange, $genderselectchoice => $genderselectchoice), $genderselectchoice);
-           };
-           ?>
-      @if ($errors->first('title'))
-      <span class="help-block">{{ $errors->first('gender') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- first_name --> 
-      <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name">Vorname</label>
+      </h3>
+   </div>
+   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\OrderController@update', $order->id), 'method' => 'PATCH')) }}
+   <!-- Title -->
+   <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
+      <label class="control-label" for="title">ID</label>
       <div class="controls">
-      {{ Form::text('first_name', $order->first_name, array('class'=>'form-control', 'id' => 'Vorname', 'disabled' => 'disabled', 'placeholder'=>'Vorname', 'value'=>Input::old('first_name'))) }}
-      @if ($errors->first('first_name'))
-      <span class="help-block">{{ $errors->first('first_name') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- last_name -->  
-      <div class="control-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name">Nachname</label>
-      <div class="controls">
-      {{ Form::text('last_name', $order->last_name, array('class'=>'form-control', 'id' => 'last_name', 'disabled' => 'disabled', 'placeholder'=>'Nachname', 'value'=>Input::old('last_name'))) }}
-      @if ($errors->first('last_name'))
-      <span class="help-block">{{ $errors->first('last_name') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-
-               <!-- dateofbirth -->
-      <div class="control-group {{ $errors->has('dateofbirth') ? 'has-error' : '' }}">
-      <label class="control-label" for="dateofbirth">Geburtstag</label>
-      <div class="controls">
-      {{ Form::text('dateofbirth', $order->dateofbirth, array('class'=>'form-control', 'id' => 'dateofbirth', 'disabled' => 'disabled', 'placeholder'=>'Geburtstag', 'value'=>Input::old('dateofbirth'))) }}
-      @if ($errors->first('dateofbirth'))
-      <span class="help-block">{{ $errors->first('dateofbirth') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-
-      <!-- prefix --> <!-- 
-         <div class="control-group {{ $errors->has('prefix') ? 'has-error' : '' }}">
-             <label class="control-label" for="prefix">Prefix</label>
-         
-             <div class="controls">
-                 {{ Form::text('prefix', $order->prefix, array('class'=>'form-control', 'id' => 'prefix', 'placeholder'=>'Prefix', 'value'=>Input::old('prefix'))) }}
-                 @if ($errors->first('prefix'))
-                 <span class="help-block">{{ $errors->first('prefix') }}</span>
-                 @endif
-             </div>
-         </div>
-         <br>
-           <!-- suffix --> <!-- 
-         <div class="control-group {{ $errors->has('suffix') ? 'has-error' : '' }}">
-             <label class="control-label" for="suffix">Suffix</label>
-         
-             <div class="controls">
-                 {{ Form::text('suffix', $order->suffix, array('class'=>'form-control', 'id' => 'suffix', 'placeholder'=>'Suffix', 'value'=>Input::old('suffix'))) }}
-                 @if ($errors->first('suffix'))
-                 <span class="help-block">{{ $errors->first('suffix') }}</span>
-                 @endif
-             </div>
-         </div>
-         <br>
-           <!-- company -->
-      <div class="control-group {{ $errors->has('company') ? 'has-error' : '' }}">
-      <label class="control-label" for="company">Firma</label>
-      <div class="controls">
-      {{ Form::text('company', $order->company, array('class'=>'form-control', 'id' => 'company', 'placeholder'=>'Firma', 'value'=>Input::old('company'))) }}
-      @if ($errors->first('company'))
-      <span class="help-block">{{ $errors->first('company') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- street -->
-      <div class="control-group {{ $errors->has('street') ? 'has-error' : '' }}">
-      <label class="control-label" for="street">Straße</label>
-      <div class="controls">
-      {{ Form::text('street', $order->street, array('class'=>'form-control', 'id' => 'street', 'placeholder'=>'Straße', 'value'=>Input::old('street'))) }}
-      @if ($errors->first('street'))
-      <span class="help-block">{{ $errors->first('street') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- city -->
-      <div class="control-group {{ $errors->has('city') ? 'has-error' : '' }}">
-      <label class="control-label" for="city">Stadt</label>
-      <div class="controls">
-      {{ Form::text('city', $order->city, array('class'=>'form-control', 'id' => 'city', 'placeholder'=>'Stadt', 'value'=>Input::old('city'))) }}
-      @if ($errors->first('city'))
-      <span class="help-block">{{ $errors->first('city') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>  
-      <!-- zip -->
-      <div class="control-group {{ $errors->has('zip') ? 'has-error' : '' }}">
-      <label class="control-label" for="zip">PLZ</label>
-      <div class="controls">
-      {{ Form::text('zip', $order->zip, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'PLZ', 'value'=>Input::old('zip'))) }}
-      @if ($errors->first('zip'))
-      <span class="help-block">{{ $errors->first('zip') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>  
-      <!-- state -->
-      <div class="control-group {{ $errors->has('stateprovince') ? 'has-error' : '' }}">
-      <label class="control-label" for="stateprovince">Bundesland</label>
-      <div class="controls">
-      {{ Form::text('stateprovince', $order->stateprovince, array('class'=>'form-control', 'id' => 'stateprovince', 'placeholder'=>'Bundesland', 'value'=>Input::old('stateprovince'))) }}
-      @if ($errors->first('stateprovince'))
-      <span class="help-block">{{ $errors->first('stateprovince') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- country -->
-      <div class="control-group {{ $errors->has('country') ? 'has-error' : '' }}">
-      <label class="control-label" for="country">Land</label>
-      <div class="controls">
-      {{ Form::text('country', $order->country, array('class'=>'form-control', 'id' => 'country', 'placeholder'=>'Land', 'value'=>Input::old('country'))) }}
-      @if ($errors->first('country'))
-      <span class="help-block">{{ $errors->first('country') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- email -->
-      <div class="control-group {{ $errors->has('email') ? 'has-error' : '' }}">
-      <label class="control-label" for="email">E-Mail</label>
-      <div class="controls">
-      {{ Form::text('email', $order->email, array('class'=>'form-control', 'id' => 'email', 'placeholder'=>'E-Mail', 'value'=>Input::old('email'))) }}
-      @if ($errors->first('email'))
-      <span class="help-block">{{ $errors->first('email') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- telephone -->
-      <div class="control-group {{ $errors->has('telephone') ? 'has-error' : '' }}">
-      <label class="control-label" for="telephone">Telefon</label>
-      <div class="controls">
-      {{ Form::text('telephone', $order->telephone, array('class'=>'form-control', 'id' => 'telephone', 'placeholder'=>'Telefon', 'value'=>Input::old('telephone'))) }}
-      @if ($errors->first('telephone'))
-      <span class="help-block">{{ $errors->first('telephone') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>  
-      <!-- fax -->
-      <div class="control-group {{ $errors->has('fax') ? 'has-error' : '' }}">
-      <label class="control-label" for="fax">Fax</label>
-      <div class="controls">
-      {{ Form::text('fax', $order->fax, array('class'=>'form-control', 'id' => 'fax', 'placeholder'=>'Fax', 'value'=>Input::old('fax'))) }}
-      @if ($errors->first('fax'))
-      <span class="help-block">{{ $errors->first('fax') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- latitude --><!--
-         <div class="control-group {{ $errors->has('latitude') ? 'has-error' : '' }}">
-             <label class="control-label" for="latitude">Latitude</label>
-         
-             <div class="controls">
-                 {{ Form::text('latitude', $order->latitude, array('class'=>'form-control', 'id' => 'latitude', 'placeholder'=>'Latitude', 'value'=>Input::old('latitude'))) }}
-                 @if ($errors->first('latitude'))
-                 <span class="help-block">{{ $errors->first('latitude') }}</span>
-                 @endif
-             </div>
-         </div>
-         <br>
-         <!-- longitude --><!--
-         <div class="control-group {{ $errors->has('longitude') ? 'has-error' : '' }}">
-             <label class="control-label" for="longitude">Longitude</label>
-         
-             <div class="controls">
-                 {{ Form::text('longitude', $order->longitude, array('class'=>'form-control', 'id' => 'longitude', 'placeholder'=>'Longitude', 'value'=>Input::old('longitude'))) }}
-                 @if ($errors->first('longitude'))
-                 <span class="help-block">{{ $errors->first('longitude') }}</span>
-                 @endif
-             </div>
-         </div>
-         <br>
-   
-      <!-- Delivery Information< -->
-      <div class="control-group {{ $errors->has('deliveryinformation') ? 'has-error' : '' }}">
-      <label class="control-label" for="deliveryinformation">Lieferinformationen<label>
-      <div class="controls">
-      {{ Form::textarea('deliveryinformation', $order->deliveryinformation, array('class'=>'form-control', 'id' => 'deliveryinformation', 'placeholder'=>'Lieferinformationen', 'value'=>Input::old('deliveryinformation'))) }}
-      @if ($errors->first('deliveryinformation'))
-      <span class="help-block">{{ $errors->first('deliveryinformation') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- Published -->
-      <input type="hidden" value="is_published">
-      <!-- Tabs Ende Teil 1 -->
-      </div>
-      <!-- Tabs Anfang Teil 2 -->
-      <div class="tab-pane" id="profile">
-      <!-- gender_delivery -->
-      <div class="control-group {{ $errors->has('gender_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="gender_delivery">Anrede</label>
-      <div class="controls " >
-      <?php $genderselectchoice_delivery =$order->gender_delivery;  
-     
-
-      if (empty($genderselectchoice_delivery)){ echo Form::select('gender_delivery', array('Herr' => 'Herr', 'Frau' => 'Frau'), 'Herr');}  else  {
-      if ($genderselectchoice_delivery=="Herr") { $genderselectchange_delivery="Frau";} else  {$genderselectchange_delivery="Herr";} 
-      echo Form::select('gender_delivery', array($genderselectchange_delivery => $genderselectchange_delivery, $genderselectchoice_delivery => $genderselectchoice_delivery), $genderselectchoice_delivery);
-          };
-           ?>
-      @if ($errors->first('gender'))
-      <span class="help-block">{{ $errors->first('gender') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- first_name_delivery --> 
-      <div class="control-group {{ $errors->has('first_name_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name_delivery">Vorname</label>
-      <div class="controls">
-      {{ Form::text('first_name_delivery', $order->first_name_delivery, array('class'=>'form-control', 'id' => 'Vorname', 'placeholder'=>'Vorname', 'value'=>Input::old('first_name_delivery' ))) }}
-      @if ($errors->first('first_name_delivery'))
-      <span class="help-block">{{ $errors->first('first_name_delivery') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- last_name_delivery -->  
-      <div class="control-group {{ $errors->has('last_name_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name_delivery">Nachname</label>
-      <div class="controls">
-      {{ Form::text('last_name_delivery', $order->last_name_delivery, array('class'=>'form-control', 'id' => 'last_name_delivery', 'placeholder'=>'Nachname', 'value'=>Input::old('last_name_delivery'))) }}
-      @if ($errors->first('last_name_delivery'))
-      <span class="help-block">{{ $errors->first('last_name') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-
-   
-
-   
-
-
-
-   <!-- Datetime -->
-   <div class="control-group {{ $errors->has('dateofbirth_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="title">Geburtsdatum</label>
-      <div class="controls">
-         <div class="input-group date form_date " data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-         {{ Form::text('datetime', $order->dateofbirth_delivery,  array( 'class'=>'form-control input-append date input-group date form_date col-md-5 ', 'id' => 'dateofbirth_delivery', 'readonly', 'value'=>Input::old('dateofbirth_delivery'))) }}
-            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-         </div>
-         @if ($errors->first('dateofbirth_delivery'))
-         <span class="help-block">{{ $errors->first('dateofbirth_delivery') }}</span>
+         {{ Form::text('id', $order->id, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'ID', 'value'=>Input::old('title'))) }}
+         @if ($errors->first('id'))
+         <span class="help-block">{{ $errors->first('id') }}</span>
          @endif
       </div>
-      <input type="hidden" id="dtp_input2" value="" /><br/>
    </div>
+   <br>
 
-
-
-
-
-
-
-
-
-<br>
-
-      <!-- prefix --> <!-- 
-         <div class="control-group {{ $errors->has('prefix') ? 'has-error' : '' }}">
-             <label class="control-label" for="prefix">Prefix</label>
-         
-             <div class="controls">
-                 {{ Form::text('prefix', $order->prefix, array('class'=>'form-control', 'id' => 'prefix', 'placeholder'=>'Prefix', 'value'=>Input::old('prefix'))) }}
-                 @if ($errors->first('prefix'))
-                 <span class="help-block">{{ $errors->first('prefix') }}</span>
-                 @endif
-             </div>
-         </div>
-         <br>
-           <!-- suffix --> <!-- 
-         <div class="control-group {{ $errors->has('suffix') ? 'has-error' : '' }}">
-             <label class="control-label" for="suffix">Suffix</label>
-         
-             <div class="controls">
-                 {{ Form::text('suffix', $order->suffix, array('class'=>'form-control', 'id' => 'suffix', 'placeholder'=>'Suffix', 'value'=>Input::old('suffix'))) }}
-                 @if ($errors->first('suffix'))
-                 <span class="help-block">{{ $errors->first('suffix') }}</span>
-                 @endif
-             </div>
-         </div>
-         <br>
-           <!-- company_delivery -->
-      <div class="control-group {{ $errors->has('company_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="company_delivery">Firma</label>
+      <!-- delivery_date -->
+   <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
+      <label class="control-label" for="title">Bestelldatum</label>
       <div class="controls">
-      {{ Form::text('company_delivery', $order->company_delivery, array('class'=>'form-control', 'id' => 'company_delivery', 'placeholder'=>'Firma', 'value'=>Input::old('company_delivery'))) }}
-      @if ($errors->first('company_delivery'))
-      <span class="help-block">{{ $errors->first('company') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- street_delivery -->
-      <div class="control-group {{ $errors->has('street_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="street_delivery">Straße</label>
-      <div class="controls">
-      {{ Form::text('street_delivery', $order->street_delivery, array('class'=>'form-control', 'id' => 'street_delivery', 'placeholder'=>'Straße', 'value'=>Input::old('street_delivery'))) }}
-      @if ($errors->first('street_delivery'))
-      <span class="help-block">{{ $errors->first('street_delivery') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- city_delivery -->
-      <div class="control-group {{ $errors->has('city_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="city_delivery">Stadt</label>
-      <div class="controls">
-      {{ Form::text('city_delivery', $order->city_delivery, array('class'=>'form-control', 'id' => 'city_delivery', 'placeholder'=>'Stadt', 'value'=>Input::old('city_delivery'))) }}
-      @if ($errors->first('city_delivery'))
-      <span class="help-block">{{ $errors->first('city_delivery') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>  
-      <!-- zip_delivery -->
-      <div class="control-group {{ $errors->has('zip_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="zip_delivery">PLZ</label>
-      <div class="controls">
-      {{ Form::text('zip_delivery', $order->zip_delivery, array('class'=>'form-control', 'id' => 'zip_delivery', 'placeholder'=>'PLZ', 'value'=>Input::old('zip_delivery'))) }}
-      @if ($errors->first('zip_delivery'))
-      <span class="help-block">{{ $errors->first('zip_delivery') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>  
-      <!-- state_delivery -->
-      <div class="control-group {{ $errors->has('stateprovince_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="stateprovince_delivery">Bundesland</label>
-      <div class="controls">
-      {{ Form::text('stateprovince_delivery', $order->stateprovince_delivery, array('class'=>'form-control', 'id' => 'stateprovince_delivery', 'placeholder'=>'Bundesland', 'value'=>Input::old('stateprovince_delivery'))) }}
-      @if ($errors->first('stateprovince_delivery'))
-      <span class="help-block">{{ $errors->first('stateprovince_delivery') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- country_delivery -->
-      <div class="control-group {{ $errors->has('country_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="country_delivery">Land</label>
-      <div class="controls">
-      {{ Form::text('country_delivery', $order->country_delivery, array('class'=>'form-control', 'id' => 'country_delivery', 'placeholder'=>'Land', 'value'=>Input::old('country_delivery'))) }}
-      @if ($errors->first('country_delivery'))
-      <span class="help-block">{{ $errors->first('country_delivery') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- email_delivery -->
-      <div class="control-group {{ $errors->has('email') ? 'has-error' : '' }}">
-      <label class="control-label" for="email">E-Mail</label>
-      <div class="controls">
-      {{ Form::text('email_delivery', $order->email_delivery, array('class'=>'form-control', 'id' => 'email_delivery', 'placeholder'=>'E-Mail', 'value'=>Input::old('email_delivery'))) }}
-      @if ($errors->first('email_delivery'))
-      <span class="help-block">{{ $errors->first('email_delivery') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- telephone_delivery -->
-      <div class="control-group {{ $errors->has('telephone_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="telephone_delivery">Telefon</label>
-      <div class="controls">
-      {{ Form::text('telephone_delivery', $order->telephone_delivery, array('class'=>'form-control', 'id' => 'telephone_delivery', 'placeholder'=>'Telefon', 'value'=>Input::old('telephone_delivery'))) }}
-      @if ($errors->first('telephone_delivery'))
-      <span class="help-block">{{ $errors->first('telephone_delivery') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>  
-      <!-- fax_delivery -->
-      <div class="control-group {{ $errors->has('fax_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="fax_delivery">Fax</label>
-      <div class="controls">
-      {{ Form::text('fax_delivery', $order->fax_delivery, array('class'=>'form-control', 'id' => 'fax_delivery', 'placeholder'=>'Fax', 'value'=>Input::old('fax_delivery'))) }}
-      @if ($errors->first('fax_delivery'))
-      <span class="help-block">{{ $errors->first('fax') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <!-- latitude --><!--
-         <div class="control-group {{ $errors->has('latitude') ? 'has-error' : '' }}">
-             <label class="control-label" for="latitude">Latitude</label>
-         
-             <div class="controls">
-                 {{ Form::text('latitude', $order->latitude, array('class'=>'form-control', 'id' => 'latitude', 'placeholder'=>'Latitude', 'value'=>Input::old('latitude'))) }}
-                 @if ($errors->first('latitude'))
-                 <span class="help-block">{{ $errors->first('latitude') }}</span>
-                 @endif
-             </div>
-         </div>
-         <br>
-         <!-- longitude --><!--
-         <div class="control-group {{ $errors->has('longitude') ? 'has-error' : '' }}">
-             <label class="control-label" for="longitude">Longitude</label>
-         
-             <div class="controls">
-                 {{ Form::text('longitude', $order->longitude, array('class'=>'form-control', 'id' => 'longitude', 'placeholder'=>'Longitude', 'value'=>Input::old('longitude'))) }}
-                 @if ($errors->first('longitude'))
-                 <span class="help-block">{{ $errors->first('longitude') }}</span>
-                 @endif
-             </div>
-         </div>
-         <br>
-     
-      <!-- Delivery Information_delivery< -->
-      <div class="control-group {{ $errors->has('deliveryinformation_delivery') ? 'has-error' : '' }}">
-      <label class="control-label" for="deliveryinformation_delivery">Lieferinformationen</label>
-      <div class="controls">
-      {{ Form::textarea('deliveryinformation_delivery', $order->deliveryinformation_delivery, array('class'=>'form-control', 'id' => 'deliveryinformation_delivery', 'placeholder'=>'Lieferinformationen', 'value'=>Input::old('deliveryinformation_delivery'))) }}
-      @if ($errors->first('deliveryinformation_delivery'))
-      <span class="help-block">{{ $errors->first('deliveryinformation_delivery') }}</span>
-      @endif
-      </div>
-      </div>
-      <br>
-      <br>
-      <!-- Tabs Ende Teil 2 -->   
-      </div>
-      </div>
-      <!-- Tabs End -->   
-      {{ Form::submit('Änderungen speichern', array('class' => 'btn btn-success')) }}
-      {{ Form::close() }}
+         {{ Form::text('delivery_date', $order->delivery_date, array('class'=>'form-control', 'delivery_date' => 'delivery_date', 'placeholder'=>'Bestelldatum', 'value'=>Input::old('delivery_date'))) }}
+         @if ($errors->first('delivery_date'))
+         <span class="help-block">{{ $errors->first('delivery_date') }}</span>
+         @endif
       </div>
    </div>
-   <!--Texteditor-->
-   <script>
-      window.onload = function () {      
-      
-          CKEDITOR.replace('deliveryinformation', {
-             "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-                 height: '150px',
-               uiColor: '#85b81d',
-                language: 'de',
-            });       
-      
-          CKEDITOR.replace('deliveryinformation_delivery', {
-             "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-                  height: '150px',
-               uiColor: '#85b81d',
-                language: 'de',
-            });    
-      
-      };
-      
-   </script>
-   <!--Tabs-->
-   <script>
-      $('#myTab a').click(function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-      
-        $('#myTab a[href="#profile"]').tab('show') // Select tab by name
-      $('#myTab a:first').tab('show') // Select first tab
-      $('#myTab a:last').tab('show') // Select last tab
-      $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
-      })
-   </script>
-   <!--Rechnungs und Lieferadresse-->
-   <script>
-      $("#optionsRadios1").click(function(){
-        $("#hi").hide();
-      });
-      
-      $("#optionsRadios2").click(function(){
-        $("#hi").show();
-      });
-      
-   </script>
+   <br>
+
+
+      <!-- order_increment_id -->
+   <div class="control-group {{ $errors->has('order_increment_id') ? 'has-error' : '' }}">
+      <label class="control-label" for="order_increment_id">order_increment_id</label>
+      <div class="controls">
+         {{ Form::text('order_increment_id', $order->order_increment_id, array('class'=>'form-control', 'id' => 'order_increment_id', 'placeholder'=>'order_increment_id', 'value'=>Input::old('order_increment_id'))) }}
+         @if ($errors->first('order_increment_id'))
+         <span class="help-block">{{ $errors->first('order_increment_id') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+
+
+      <!-- deliverable -->
+   <div class="control-group {{ $errors->has('deliverable') ? 'has-error' : '' }}">
+      <label class="control-label" for="deliverable">deliverable</label>
+      <div class="controls">
+         {{ Form::text('deliverable', $order->deliverable, array('class'=>'form-control', 'id' => 'deliverable', 'placeholder'=>'deliverable', 'value'=>Input::old('deliverable'))) }}
+         @if ($errors->first('deliverable'))
+         <span class="help-block">{{ $errors->first('deliverable') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+      <!-- customercustomer_id -->
+   <div class="control-group {{ $errors->has('customercustomer_id') ? 'has-error' : '' }}">
+      <label class="control-label" for="customercustomer_id">customercustomer_id</label>
+      <div class="controls">
+         {{ Form::text('customercustomer_id', $order->customercustomer_id, array('class'=>'form-control', 'id' => 'customercustomer_id', 'placeholder'=>'customercustomer_id', 'value'=>Input::old('customercustomer_id'))) }}
+         @if ($errors->first('customercustomer_id'))
+         <span class="help-block">{{ $errors->first('customercustomer_id') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+
+         <!-- created_at -->
+   <div class="control-group {{ $errors->has('created_at') ? 'has-error' : '' }}">
+      <label class="control-label" for="created_at">created_at</label>
+      <div class="controls">
+         {{ Form::text('created_at', $order->created_at, array('class'=>'form-control', 'id' => 'created_at', 'placeholder'=>'created_at', 'value'=>Input::old('created_at'))) }}
+         @if ($errors->first('created_at'))
+         <span class="help-block">{{ $errors->first('created_at') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+
+         <!-- updated_at -->
+   <div class="control-group {{ $errors->has('updated_at') ? 'has-error' : '' }}">
+      <label class="control-label" for="updated_at">updated_at</label>
+      <div class="controls">
+         {{ Form::text('updated_at', $order->updated_at, array('class'=>'form-control', 'id' => 'updated_at', 'placeholder'=>'updated_at', 'value'=>Input::old('updated_at'))) }}
+         @if ($errors->first('updated_at'))
+         <span class="help-block">{{ $errors->first('updated_at') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+
+
+         <!-- order_id -->
+   <div class="control-group {{ $errors->has('order_id') ? 'has-error' : '' }}">
+      <label class="control-label" for="order_id">order_id</label>
+      <div class="controls">
+         {{ Form::text('order_id', $order->order_id, array('class'=>'form-control', 'id' => 'order_id', 'placeholder'=>'order_id', 'value'=>Input::old('order_id'))) }}
+         @if ($errors->first('order_id'))
+         <span class="help-block">{{ $errors->first('order_id') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
 
 
 
 
- <!--Datepicker ANFANG-->   
-   
-   <script type="text/javascript" src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
-   <script type="text/javascript" src="{{ URL::to('assets/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
-   <script type="text/javascript">
-      $(".form_date").datetimepicker({
-            language:  'de',
-            
-          weekStart: 1,
-          todayBtn:  1,
-          autoclose: 1,
-          todayHighlight: 1,
-          startView: 2,
-          minView: 2,
-          forceParse: 0
-      });
-   </script>    
-   <!--Datepicker ENDE--> 
-
-
-
+ 
+   <br>
+   {{ Form::submit('Änderungen speichern', array('class' => 'btn btn-u')) }}
+   {{ Form::close() }}
+   <!--CKEDITOR ANFANG--> 
 
 
 </div>

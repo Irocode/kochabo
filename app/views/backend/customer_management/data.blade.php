@@ -8,10 +8,7 @@
 "{{{ $v->last_name }}}",
 "{{{ $v->email }}}",
 "{{{ $v->telephone}}}",
-<?php
-$datumumwandeln= $v->date_of_birth; $datumumwandelnready= date("d-m-Y", strtotime($datumumwandeln));
-?>
-"{{{$datumumwandelnready }}}", 
+"{{{$v->birthday}}}-{{{$v->birthmonth}}}-{{{$v->birthyear}}}", 
 "{{{ $v->last_login}}}",
 "{{{ $v->created_at->format('d-m-Y (H:i:s)') }}} ",
 "{{{ $v->updated_at->format('d-m-Y (H:i:s)')}}}", 
