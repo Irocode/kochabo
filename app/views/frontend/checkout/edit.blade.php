@@ -178,7 +178,7 @@
          <div class="control-group {{ $errors->has('country') ? 'has-error' : '' }}">
             <label class="control-label" for="country">Land <span class="stern" >*</span></label>
             <div class="controls">
-               <select name="gender" class="form-control">
+               <select name="country" class="form-control">
                   <option value="{{$address_rechnung->gender}}" selected>{{$address_rechnung->country}}</option>
                   @foreach( $list_country as $x )  
                   <option value="{{ $x->de }}">{{ $x->de }}</option>
@@ -207,6 +207,9 @@
    </div>
    <!--HEADER mit Zurück ENDE-->
    <!-- {{{$address_lieferung->id}}}-->
+
+     {{ Form::open( array( 'action' => array( 'UseradminController@update', $address_lieferung->id), 'method' => 'PATCH')) }}
+
    <div class="row">
       <div class="col-md-6">
          <!-- gender -->
@@ -391,7 +394,7 @@
          </script>
         <!--Abfrage Postleitzahl Ende-->
          <div id="results"></div>
-         <form role="form">
+       <!--  <form role="form">-->
             <div class="control-group {{ $errors->has('zip') ? 'has-error' : '' }}">
             <label class="control-label" for="zip">PLZ <span class="stern" >*</span></label>
             <div class="controls">
@@ -400,7 +403,7 @@
                    <span class="help-block">{{ $errors->first('zip') }}</span>
                @endif
             </div></div>
-         </form>
+         <!-- </form>-->
          <!--Abfrage Postleitzahl Ende-->
        <br>
          <!-- state -->
@@ -418,13 +421,13 @@
          <div class="control-group {{ $errors->has('country') ? 'has-error' : '' }}">
             <label class="control-label" for="country">Land <span class="stern" >*</span></label>
             <div class="controls">
-               <select name="gender" class="form-control">
-                  <option value="{{$address_lieferung->gender}}" selected>{{$address_lieferung->country}}</option>
+               <select name="country" class="form-control">
+                  <option value="{{$address_lieferung->country}}" selected>{{$address_lieferung->country}}</option>
                   @foreach( $list_country as $x )  
                   <option value="{{ $x->de }}">{{ $x->de }}</option>
                   @endforeach   
-               </select>
-               <!-- {{ Form::select('country', $country, 'Auswahl', array( 'id' => 'country' ,'class'=>'form-control','style'=>'','value'=>Input::old('country') )) }}-->
+               </select>         
+
                @if ($errors->first('country'))
                <span class="help-block">{{ $errors->first('country') }}</span>
                @endif
@@ -448,29 +451,13 @@
    <br>
    <br>
    <!-- Tabs End -->   
-   {{ Form::submit('Daten speichern und weiter', array('class' => 'btn btn-success')) }}
+   {{ Form::submit('Daten speichern und weiter in der Bestellung', array('class' => 'btn btn-success')) }}
    {{ Form::close() }}
 
    <br>
    <br>
 </div>
-<!--Datepicker ANFANG-->   
-<script type="text/javascript" src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
-<script type="text/javascript" src="{{ URL::to('assets/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
-<script type="text/javascript">
-   $(".form_date").datetimepicker({
-         language:  'de',
-         
-       weekStart: 1,
-       todayBtn:  1,
-       autoclose: 1,
-       todayHighlight: 1,
-       startView: 2,
-       minView: 2,
-       forceParse: 0
-   });
-</script>    
-<!--Datepicker ENDE--> 
+
 <div  class="container">
    <div class="row">
       <div class="col-md-12 col-sm-12" >
@@ -540,9 +527,7 @@
                      <td>                            
                      </td>
                      <td class="text-right">
-                        <a href="{{URL::to('/checkout')}}" class="btn-u btn-u-red">
-                        Jetzt bezahlen <span class="glyphicon glyphicon-thumbs-up"></span>
-                        </a>
+                      
                      </td>
                   </tr>
                </tbody>

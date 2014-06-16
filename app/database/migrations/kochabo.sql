@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 12. Jun 2014 um 15:20
+-- Erstellungszeit: 16. Jun 2014 um 20:34
 -- Server Version: 5.5.36
 -- PHP-Version: 5.4.27
 
@@ -48,21 +48,19 @@ CREATE TABLE IF NOT EXISTS `address` (
   `is_published` tinyint(1) NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=76 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=142 ;
 
 --
 -- Daten für Tabelle `address`
 --
 
 INSERT INTO `address` (`id`, `customercustomer_id`, `art`, `gender`, `first_name`, `last_name`, `street`, `city`, `country`, `stateprovince`, `zip`, `housenumber`, `stairway_number`, `floor`, `appartement_number`, `deliveryinformation`, `created_at`, `updated_at`, `is_published`, `slug`) VALUES
-(45, 44, 'Rechnungsadresse', 'Herr', 'Robert', 'Ginder', 'makigasse', 'Wien', 'Österreich', 'Wien', 1080, '5', '3', '4', '13', '', '2014-05-04 16:50:17', '2014-05-04 16:50:17', 0, NULL),
-(48, 74, 'Lieferadresse', 'Herr', 'Mike', 'Röhrer', 'Ganglweg 3', 'Wien', 'Österreich', 'Wien', 1220, '', '', '', '', '<p>Schnell essen</p>\r\n', '2014-05-04 17:59:17', '2014-05-05 08:19:34', 0, NULL),
-(50, 70, 'Rechnungsadresse', 'Herr', 'Bernd', 'Obendorfer', '', '', '', '', 0, '', '', '', '', '', '2014-06-11 06:05:17', '2014-06-11 06:05:17', 0, NULL),
-(51, 70, 'Lieferaddresse', 'Herr', 'Bernd', 'Obendorfer', '', '', '', '', 0, '', '', '', '', '', '2014-06-11 06:05:17', '2014-06-11 06:05:17', 0, NULL),
-(52, 71, 'Lieferaddresse', 'Herr', 'Bernd', 'Obendorfer', 'Hauptstraße', 'Wien', 'Österreich', 'Wien', 1180, '3', '3', '3', '4', '', '2014-06-11 06:06:12', '2014-06-11 12:46:23', 0, NULL),
-(53, 71, 'Rechnungsadresse', 'Herr', 'Bernd', 'Obendorfer', 'Hauptstraße', 'Wien', 'Österreich', 'Wien', 1180, '3', '3', '3', '4', '', '2014-06-11 06:06:12', '2014-06-11 12:46:23', 0, NULL),
-(73, 72, 'Rechnungsadresse', 'Herr', 'Gast', 'Gast', '', '', '', '', 0, '', '', '', '', '', '2014-06-11 08:38:10', '2014-06-11 08:38:10', 0, NULL),
-(75, 72, 'Lieferaddresse', 'Herr', 'Gast', 'Gast', '', '', '', '', 0, '', '', '', '', '', '2014-06-11 08:38:10', '2014-06-11 08:38:10', 0, NULL);
+(82, 3, 'Lieferadresse', 'Herr', 'Bernd', 'Obendorfer', 'Lieferstraße', 'Wien', 'Österreich', 'Wien', 6060, '2', '', '', '', '', '0000-00-00 00:00:00', '2014-06-16 14:51:07', 0, NULL),
+(83, 3, 'Rechnungsadresse', 'Herr', 'Bernd', 'Obendorfer', 'Rechnungsstraße', 'Wien', 'Österreich', 'Wien', 1220, '1', '2', '3', '4', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, NULL),
+(138, 109, 'Rechnungsadresse', 'Frau', 'Theresa', 'Sch&ouml;rkhuber', '', '', '', '', 0, '', '', '', '', '', '2014-06-16 10:40:56', '2014-06-16 10:40:56', 0, NULL),
+(139, 109, 'Lieferadresse', 'Frau', 'Theresa', 'Sch&ouml;rkhuber', '', '', '', '', 0, '', '', '', '', '', '2014-06-16 10:40:56', '2014-06-16 10:40:56', 0, NULL),
+(140, 110, 'Rechnungsadresse', 'Herr', 'Robert', 'Ginder', '', '', '', '', 0, '', '', '', '', '', '2014-06-16 16:33:29', '2014-06-16 16:33:29', 0, NULL),
+(141, 110, 'Lieferadresse', 'Herr', 'Robert', 'Ginder', '', '', '', '', 0, '', '', '', '', '', '2014-06-16 16:33:29', '2014-06-16 16:33:29', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -476,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `deliverytimes` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `is_published` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=300 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=301 ;
 
 --
 -- Daten für Tabelle `deliverytimes`
@@ -488,7 +486,8 @@ INSERT INTO `deliverytimes` (`id`, `user_id`, `name`, `delivery_time_from`, `del
 (296, 171, 'sdafasdf', '10', '', '', '2014-05-11 17:23:39', '2014-05-11 17:36:27', '0'),
 (297, 187, 'aaanb', '', '', '', '2014-05-11 22:11:51', '2014-05-23 03:51:53', '0'),
 (298, 204, 'sdafsaf', '', '', '', '2014-06-10 09:32:11', '2014-06-10 09:32:11', '0'),
-(299, 204, 'ffff', '', '', '', '2014-06-10 09:37:02', '2014-06-10 09:37:02', '0');
+(299, 204, 'ffff', '', '', '', '2014-06-10 09:37:02', '2014-06-10 09:37:02', '0'),
+(300, 204, '10', '', '', '', '2014-06-15 05:14:40', '2014-06-15 05:14:40', '0');
 
 -- --------------------------------------------------------
 
@@ -511,7 +510,7 @@ CREATE TABLE IF NOT EXISTS `deliveryzipcode` (
 --
 
 INSERT INTO `deliveryzipcode` (`id`, `user_id`, `zip`, `is_published`, `created_at`, `updated_at`) VALUES
-(61, 0, 7060, 0, '2014-05-09 10:54:13', '2014-05-23 10:33:08'),
+(61, 204, 7060, 0, '2014-05-09 10:54:13', '2014-06-15 05:15:06'),
 (65, 187, 5050, 0, '2014-05-09 20:27:44', '2014-05-23 10:21:35'),
 (85, 10, 6060, 0, '2014-05-16 17:09:51', '2014-05-16 17:09:51'),
 (86, 10, 6666, 0, '2014-05-23 04:12:17', '2014-05-23 04:12:17'),
@@ -857,6 +856,270 @@ INSERT INTO `list_bundesland` (`id`, `bezeichnung`, `created_at`, `updated_at`) 
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `list_country`
+--
+
+CREATE TABLE IF NOT EXISTS `list_country` (
+  `code` char(2) CHARACTER SET utf8 NOT NULL,
+  `en` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `de` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`code`),
+  KEY `de` (`de`),
+  KEY `en` (`en`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Daten für Tabelle `list_country`
+--
+
+INSERT INTO `list_country` (`code`, `en`, `de`) VALUES
+('AT', 'Austria', 'Österreich'),
+('CH', 'Switzerland', 'Schweiz'),
+('AF', 'Afghanistan', 'Afghanistan'),
+('AG', 'Antigua and Barbuda', 'Antigua und Barbuda'),
+('AI', 'Anguilla', 'Anguilla'),
+('AL', 'Albania', 'Albanien'),
+('AM', 'Armenia', 'Armenien'),
+('AN', 'Netherlands Antilles', 'Niederländische Antillen'),
+('AO', 'Angola', 'Angola'),
+('AQ', 'Antarctica', 'Antarktis'),
+('AR', 'Argentina', 'Argentinien'),
+('AS', 'American Samoa', 'Amerikanisch-Samoa'),
+('AD', 'Andorra', 'Andorra'),
+('AU', 'Australia', 'Australien'),
+('AW', 'Aruba', 'Aruba'),
+('AX', 'Aland Islands', 'Åland'),
+('AZ', 'Azerbaijan', 'Aserbaidschan'),
+('BA', 'Bosnia and Herzegovina', 'Bosnien und Herzegowina'),
+('BB', 'Barbados', 'Barbados'),
+('BD', 'Bangladesh', 'Bangladesch'),
+('BE', 'Belgium', 'Belgien'),
+('BF', 'Burkina Faso', 'Burkina Faso'),
+('BG', 'Bulgaria', 'Bulgarien'),
+('BH', 'Bahrain', 'Bahrain'),
+('BI', 'Burundi', 'Burundi'),
+('BJ', 'Benin', 'Benin'),
+('BM', 'Bermuda', 'Bermuda'),
+('BN', 'Brunei', 'Brunei Darussalam'),
+('BO', 'Bolivia', 'Bolivien'),
+('BR', 'Brazil', 'Brasilien'),
+('BS', 'Bahamas', 'Bahamas'),
+('BT', 'Bhutan', 'Bhutan'),
+('BV', 'Bouvet Island', 'Bouvetinsel'),
+('BW', 'Botswana', 'Botswana'),
+('BY', 'Belarus', 'Belarus (Weißrussland)'),
+('BZ', 'Belize', 'Belize'),
+('CA', 'Canada', 'Kanada'),
+('CC', 'Cocos (Keeling) Islands', 'Kokosinseln (Keelinginseln)'),
+('CD', 'Congo (Kinshasa)', 'Kongo'),
+('CF', 'Central African Republic', 'Zentralafrikanische Republik'),
+('CG', 'Congo (Brazzaville)', 'Republik Kongo'),
+('A€', 'United Arab Emirates ', 'Vereinigte Arabische Emirate'),
+('CI', 'Ivory Coast', 'Elfenbeinküste'),
+('CK', 'Cook Islands', 'Cookinseln'),
+('CL', 'Chile', 'Chile'),
+('CM', 'Cameroon', 'Kamerun'),
+('CN', 'China', 'China, Volksrepublik'),
+('CO', 'Colombia', 'Kolumbien'),
+('CR', 'Costa Rica', 'Costa Rica'),
+('CS', 'Serbia And Montenegro', 'Serbien und Montenegro'),
+('CU', 'Cuba', 'Kuba'),
+('CV', 'Cape Verde', 'Kap Verde'),
+('CX', 'Christmas Island', 'Weihnachtsinsel'),
+('CY', 'Cyprus', 'Zypern'),
+('CZ', 'Czech Republic', 'Tschechische Republik'),
+('DE', 'Germany', 'Deutschland'),
+('DJ', 'Djibouti', 'Dschibuti'),
+('DK', 'Denmark', 'Dänemark'),
+('DM', 'Dominica', 'Dominica'),
+('DO', 'Dominican Republic', 'Dominikanische Republik'),
+('DZ', 'Algeria', 'Algerien'),
+('EC', 'Ecuador', 'Ecuador'),
+('EE', 'Estonia', 'Estland (Reval)'),
+('EG', 'Egypt', 'Ägypten'),
+('EH', 'Western Sahara', 'Westsahara'),
+('ER', 'Eritrea', 'Eritrea'),
+('ES', 'Spain', 'Spanien'),
+('ET', 'Ethiopia', 'Äthiopien'),
+('FI', 'Finland', 'Finnland'),
+('FJ', 'Fiji', 'Fidschi'),
+('FK', 'Falkland Islands', 'Falklandinseln (Malwinen)'),
+('FM', 'Micronesia', 'Mikronesien'),
+('FO', 'Faroe Islands', 'Färöer'),
+('FR', 'France', 'Frankreich'),
+('GA', 'Gabon', 'Gabun'),
+('GB', 'United Kingdom', 'Großbritannien und Nordirland'),
+('GD', 'Grenada', 'Grenada'),
+('GE', 'Georgia', 'Georgien'),
+('GF', 'French Guiana', 'Französisch-Guayana'),
+('GG', 'Guernsey', 'Guernsey (Kanalinsel)'),
+('GH', 'Ghana', 'Ghana'),
+('GI', 'Gibraltar', 'Gibraltar'),
+('GL', 'Greenland', 'Grönland'),
+('GM', 'Gambia', 'Gambia'),
+('GN', 'Guinea', 'Guinea'),
+('GP', 'Guadeloupe', 'Guadeloupe'),
+('GQ', 'Equatorial Guinea', 'Äquatorialguinea'),
+('GR', 'Greece', 'Griechenland'),
+('GS', 'South Georgia and the South Sandwich Islands', 'Südgeorgien und die Südl. Sandwichinseln'),
+('GT', 'Guatemala', 'Guatemala'),
+('GU', 'Guam', 'Guam'),
+('GW', 'Guinea-Bissau', 'Guinea-Bissau'),
+('GY', 'Guyana', 'Guyana'),
+('HK', 'Hong Kong S.A.R., China', 'Hongkong'),
+('HM', 'Heard Island and McDonald Islands', 'Heard- und McDonald-Inseln'),
+('HN', 'Honduras', 'Honduras'),
+('HR', 'Croatia', 'Kroatien'),
+('HT', 'Haiti', 'Haiti'),
+('HU', 'Hungary', 'Ungarn'),
+('ID', 'Indonesia', 'Indonesien'),
+('IE', 'Ireland', 'Irland'),
+('IL', 'Israel', 'Israel'),
+('IM', 'Isle of Man', 'Insel Man'),
+('IN', 'India', 'Indien'),
+('IO', 'British Indian Ocean Territory', 'Britisches Territorium im Indischen Ozean'),
+('IQ', 'Iraq', 'Irak'),
+('IR', 'Iran', 'Iran'),
+('IS', 'Iceland', 'Island'),
+('IT', 'Italy', 'Italien'),
+('JE', 'Jersey', 'Jersey (Kanalinsel)'),
+('JM', 'Jamaica', 'Jamaika'),
+('JO', 'Jordan', 'Jordanien'),
+('JP', 'Japan', 'Japan'),
+('KE', 'Kenya', 'Kenia'),
+('KG', 'Kyrgyzstan', 'Kirgisistan'),
+('KH', 'Cambodia', 'Kambodscha'),
+('KI', 'Kiribati', 'Kiribati'),
+('KM', 'Comoros', 'Komoren'),
+('KN', 'Saint Kitts and Nevis', 'St. Kitts und Nevis'),
+('KP', 'North Korea', 'Nordkorea'),
+('KR', 'South Korea', 'Südkorea'),
+('KW', 'Kuwait', 'Kuwait'),
+('KY', 'Cayman Islands', 'Kaimaninseln'),
+('KZ', 'Kazakhstan', 'Kasachstan'),
+('LA', 'Laos', 'Laos'),
+('LB', 'Lebanon', 'Libanon'),
+('LC', 'Saint Lucia', 'St. Lucia'),
+('LI', 'Liechtenstein', 'Liechtenstein'),
+('LK', 'Sri Lanka', 'Sri Lanka'),
+('LR', 'Liberia', 'Liberia'),
+('LS', 'Lesotho', 'Lesotho'),
+('LT', 'Lithuania', 'Litauen'),
+('LU', 'Luxembourg', 'Luxemburg'),
+('LV', 'Latvia', 'Lettland'),
+('LY', 'Libya', 'Libyen'),
+('MA', 'Morocco', 'Marokko'),
+('MC', 'Monaco', 'Monaco'),
+('MD', 'Moldova', 'Moldawien'),
+('MG', 'Madagascar', 'Madagaskar'),
+('MH', 'Marshall Islands', 'Marshallinseln'),
+('MK', 'Macedonia', 'Mazedonien'),
+('ML', 'Mali', 'Mali'),
+('MM', 'Myanmar', 'Myanmar (Burma)'),
+('MN', 'Mongolia', 'Mongolei'),
+('MO', 'Macao S.A.R., China', 'Macao'),
+('MP', 'Northern Mariana Islands', 'Nördliche Marianen'),
+('MQ', 'Martinique', 'Martinique'),
+('MR', 'Mauritania', 'Mauretanien'),
+('MS', 'Montserrat', 'Montserrat'),
+('MT', 'Malta', 'Malta'),
+('MU', 'Mauritius', 'Mauritius'),
+('MV', 'Maldives', 'Malediven'),
+('MW', 'Malawi', 'Malawi'),
+('MX', 'Mexico', 'Mexiko'),
+('MY', 'Malaysia', 'Malaysia'),
+('MZ', 'Mozambique', 'Mosambik'),
+('NA', 'Namibia', 'Namibia'),
+('NC', 'New Caledonia', 'Neukaledonien'),
+('NE', 'Niger', 'Niger'),
+('NF', 'Norfolk Island', 'Norfolkinsel'),
+('NG', 'Nigeria', 'Nigeria'),
+('NI', 'Nicaragua', 'Nicaragua'),
+('NL', 'Netherlands', 'Niederlande'),
+('NO', 'Norway', 'Norwegen'),
+('NP', 'Nepal', 'Nepal'),
+('NR', 'Nauru', 'Nauru'),
+('NU', 'Niue', 'Niue'),
+('NZ', 'New Zealand', 'Neuseeland'),
+('OM', 'Oman', 'Oman'),
+('PA', 'Panama', 'Panama'),
+('PE', 'Peru', 'Peru'),
+('PF', 'French Polynesia', 'Französisch-Polynesien'),
+('PG', 'Papua New Guinea', 'Papua-Neuguinea'),
+('PH', 'Philippines', 'Philippinen'),
+('PK', 'Pakistan', 'Pakistan'),
+('PL', 'Poland', 'Polen'),
+('PM', 'Saint Pierre and Miquelon', 'St. Pierre und Miquelon'),
+('PN', 'Pitcairn', 'Pitcairninseln'),
+('PR', 'Puerto Rico', 'Puerto Rico'),
+('PS', 'Palestinian Territory', 'Palästinensische Autonomiegebiete'),
+('PT', 'Portugal', 'Portugal'),
+('PW', 'Palau', 'Palau'),
+('PY', 'Paraguay', 'Paraguay'),
+('QA', 'Qatar', 'Katar'),
+('RE', 'Reunion', 'Réunion'),
+('RO', 'Romania', 'Rumänien'),
+('RU', 'Russia', 'Russische Föderation'),
+('RW', 'Rwanda', 'Ruanda'),
+('SA', 'Saudi Arabia', 'Saudi-Arabien'),
+('SB', 'Solomon Islands', 'Salomonen'),
+('SC', 'Seychelles', 'Seychellen'),
+('SD', 'Sudan', 'Sudan'),
+('SE', 'Sweden', 'Schweden'),
+('SG', 'Singapore', 'Singapur'),
+('SH', 'Saint Helena', 'St. Helena'),
+('SI', 'Slovenia', 'Slowenien'),
+('SJ', 'Svalbard and Jan Mayen', 'Svalbard und Jan Mayen'),
+('SK', 'Slovakia', 'Slowakei'),
+('SL', 'Sierra Leone', 'Sierra Leone'),
+('SM', 'San Marino', 'San Marino'),
+('SN', 'Senegal', 'Senegal'),
+('SO', 'Somalia', 'Somalia'),
+('SR', 'Suriname', 'Suriname'),
+('ST', 'Sao Tome and Principe', 'São Tomé und Príncipe'),
+('SV', 'El Salvador', 'El Salvador'),
+('SY', 'Syria', 'Syrien'),
+('SZ', 'Swaziland', 'Swasiland'),
+('TC', 'Turks and Caicos Islands', 'Turks- und Caicosinseln'),
+('TD', 'Chad', 'Tschad'),
+('TF', 'French Southern Territories', 'Französische Süd- und Antarktisgebiete'),
+('TG', 'Togo', 'Togo'),
+('TH', 'Thailand', 'Thailand'),
+('TJ', 'Tajikistan', 'Tadschikistan'),
+('TK', 'Tokelau', 'Tokelau'),
+('TL', 'East Timor', 'Timor-Leste'),
+('TM', 'Turkmenistan', 'Turkmenistan'),
+('TN', 'Tunisia', 'Tunesien'),
+('TO', 'Tonga', 'Tonga'),
+('TR', 'Turkey', 'Türkei'),
+('TT', 'Trinidad and Tobago', 'Trinidad und Tobago'),
+('TV', 'Tuvalu', 'Tuvalu'),
+('TW', 'Taiwan', 'Taiwan'),
+('TZ', 'Tanzania', 'Tansania'),
+('UA', 'Ukraine', 'Ukraine'),
+('UG', 'Uganda', 'Uganda'),
+('UM', 'United States Minor Outlying Islands', 'Amerikanisch-Ozeanien'),
+('US', 'United States', 'Vereinigte Staaten von Amerika'),
+('UY', 'Uruguay', 'Uruguay'),
+('UZ', 'Uzbekistan', 'Usbekistan'),
+('VA', 'Vatican', 'Vatikanstadt'),
+('VC', 'Saint Vincent and the Grenadines', 'St. Vincent und die Grenadinen'),
+('VE', 'Venezuela', 'Venezuela'),
+('VG', 'British Virgin Islands', 'Britische Jungferninseln'),
+('VI', 'U.S. Virgin Islands', 'Amerikanische Jungferninseln'),
+('VN', 'Vietnam', 'Vietnam'),
+('VU', 'Vanuatu', 'Vanuatu'),
+('WF', 'Wallis and Futuna', 'Wallis und Futuna'),
+('WS', 'Samoa', 'Samoa'),
+('YE', 'Yemen', 'Jemen'),
+('YT', 'Mayotte', 'Mayotte'),
+('ZA', 'South Africa', 'Südafrika'),
+('ZM', 'Zambia', 'Sambia'),
+('ZW', 'Zimbabwe', 'Simbabwe');
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `list_currency`
 --
 
@@ -880,6 +1143,58 @@ INSERT INTO `list_currency` (`id`, `bezeichnung`, `created_at`, `updated_at`) VA
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `list_day`
+--
+
+CREATE TABLE IF NOT EXISTS `list_day` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `bezeichnung` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+
+--
+-- Daten für Tabelle `list_day`
+--
+
+INSERT INTO `list_day` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
+(1, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, '01', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, '02', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, '03', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, '04', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, '05', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, '06', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, '07', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, '08', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, '09', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, '10', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, '11', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, '12', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, '13', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, '14', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, '15', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, '16', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, '17', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, '18', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, '19', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, '20', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, '21', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, '22', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(25, '23', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, '24', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, '25', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, '26', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, '27', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, '28', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, '29', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(32, '30', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, '31', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `list_gender`
 --
 
@@ -896,7 +1211,8 @@ CREATE TABLE IF NOT EXISTS `list_gender` (
 --
 
 INSERT INTO `list_gender` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
-(1, 'Herr', '2014-05-30 12:59:34', '2014-05-30 10:59:34'),
+(1, '', '2014-05-30 12:59:34', '2014-05-30 10:59:34'),
+(2, 'Herr', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'Frau', '2014-05-30 12:59:54', '2014-05-30 10:59:54');
 
 -- --------------------------------------------------------
@@ -929,6 +1245,39 @@ INSERT INTO `list_gruppe` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALU
 (10, 'Gesperrt', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (11, 'Keine E-Mails', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (12, 'Top Customer', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `list_month`
+--
+
+CREATE TABLE IF NOT EXISTS `list_month` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `bezeichnung` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Daten für Tabelle `list_month`
+--
+
+INSERT INTO `list_month` (`id`, `bezeichnung`, `created_at`, `updated_at`) VALUES
+(1, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, '01', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, '02', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, '03', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, '04', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, '05', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, '06', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, '07', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, '08', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, '09', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, '10', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, '11', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, '12', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1382,25 +1731,28 @@ INSERT INTO `offers` (`id`, `title`, `content`, `slug`, `datetime`, `created_at`
 --
 
 CREATE TABLE IF NOT EXISTS `order` (
-  `order_id` int(10) NOT NULL,
+  `id` int(10) NOT NULL,
   `delivery_date` date NOT NULL,
   `order_increment_id` int(10) NOT NULL,
   `deliverable` int(10) NOT NULL,
   `customercustomer_id` int(10) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`order_id`)
+  `order_id` int(10) NOT NULL,
+  `is_published` tinyint(4) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `order`
 --
 
-INSERT INTO `order` (`order_id`, `delivery_date`, `order_increment_id`, `deliverable`, `customercustomer_id`, `created_at`, `updated_at`) VALUES
-(1, '2014-06-10', 0, 1, 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, '2014-06-10', 0, 1, 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, '2014-06-11', 0, 0, 71, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, '0000-00-00', 0, 0, 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `order` (`id`, `delivery_date`, `order_increment_id`, `deliverable`, `customercustomer_id`, `created_at`, `updated_at`, `order_id`, `is_published`, `slug`) VALUES
+(1, '2014-06-10', 0, 1, 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 13330, 0, ''),
+(2, '2014-06-10', 0, 1, 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 88, 0, ''),
+(3, '2014-06-11', 0, 0, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4711, 0, ''),
+(4, '0000-00-00', 0, 0, 72, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8800, 0, '');
 
 -- --------------------------------------------------------
 
@@ -1770,7 +2122,7 @@ CREATE TABLE IF NOT EXISTS `throttle` (
   `banned_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `throttle_user_id_index` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=69 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=77 ;
 
 --
 -- Daten für Tabelle `throttle`
@@ -1844,7 +2196,15 @@ INSERT INTO `throttle` (`id`, `user_id`, `ip_address`, `attempts`, `suspended`, 
 (65, 33, NULL, 0, 0, 0, NULL, NULL, NULL),
 (66, 70, NULL, 0, 0, 0, NULL, NULL, NULL),
 (67, 71, NULL, 0, 0, 0, NULL, NULL, NULL),
-(68, 72, NULL, 0, 0, 0, NULL, NULL, NULL);
+(68, 72, NULL, 0, 0, 0, NULL, NULL, NULL),
+(69, 75, NULL, 0, 0, 0, NULL, NULL, NULL),
+(70, 76, NULL, 0, 0, 0, NULL, NULL, NULL),
+(71, 98, NULL, 0, 0, 0, NULL, NULL, NULL),
+(72, 104, NULL, 0, 0, 0, NULL, NULL, NULL),
+(73, 105, NULL, 0, 0, 0, NULL, NULL, NULL),
+(74, 106, NULL, 0, 0, 0, NULL, NULL, NULL),
+(75, 109, NULL, 0, 0, 0, NULL, NULL, NULL),
+(76, 110, NULL, 0, 0, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1856,6 +2216,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `passwordhardcode` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `permissions` text COLLATE utf8_unicode_ci,
   `activated` tinyint(1) NOT NULL DEFAULT '0',
   `activation_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1870,6 +2231,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `default_billing_address` int(10) NOT NULL,
   `default_shipping_address` int(10) NOT NULL,
   `last_name` text COLLATE utf8_unicode_ci,
+  `birthday` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `birthmonth` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `birthyear` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
   `status` tinytext COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -1878,18 +2242,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `users_activation_code_index` (`activation_code`),
   KEY `users_reset_password_code_index` (`reset_password_code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=73 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=111 ;
 
 --
 -- Daten für Tabelle `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `activated`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `first_name`, `date_of_birth`, `telephone`, `gender`, `default_billing_address`, `default_shipping_address`, `last_name`, `status`, `created_at`, `updated_at`, `is_published`) VALUES
-(1, 'admin@admin.com', '$2y$10$NkEaWuEFQTUBHbgEkrT9zeMsx/eePq7zq/8QU/EeTbRLucyfP3GVm', NULL, 1, NULL, NULL, '2014-04-19 02:14:45', '$2y$10$rxvjqmdYYZT7VBarfa2/s.MK/vP74qFUPMZUHukjKiDz0T2hAoXMm', NULL, 'Bernd', '0000-00-00', '06604258008', '1', 2, 3, 'Obendorfer', '0', '2014-04-17 14:56:15', '2014-06-09 05:07:57', 0),
-(3, 'bernd.obendorfer@chello.at', '$2y$10$8AOyQXE.bt4am8Y77Z2WCOOevUxMwZXxG5RV6JazNWi1HAIVjL3wq', NULL, 1, 'Myu4J2vqYDTVIqfoad3CZQCMYnkWisrCyXwVk5IvHV', NULL, '2014-06-12 07:10:50', '$2y$10$Admh8V8Aig0ydMWMH8EgQe1OddhwMKb2DrQNAKU8V8t0HvJiuLfci', NULL, 'Bernd', '1970-01-01', '0660645949459', 'Herr', 0, 0, 'Obendorfer', 'admin', '2014-04-19 02:02:36', '2014-06-12 07:10:50', 0),
-(70, '3trasddddhkiller@gmail.com', '$2y$10$ibozmW446pmqfaSElCoFaeEqLrpC/qO.epNbwwE04Ltxonwx2H.eS', NULL, 1, '8a4gcIsh8NS4XL1Y2VMAuZmBwdlf3ZpceOEByFo5ar', NULL, NULL, NULL, NULL, 'Bernd', '1972-01-12', '0660666465565', 'Herr', 0, 0, 'Obendorfer', '', '2014-06-11 06:05:17', '2014-06-11 06:05:17', 0),
-(71, '3trashkiller@gmail.com', '$2y$10$mr9J.bN/OKjR4D6NojBcnewvGuF0icR59yGc0gB4xjKyICZrAoAsq', NULL, 1, '1n6yUU3uZXtq86TCerOHcXr6fvsCOrEc1zPyNdKxmi', NULL, NULL, NULL, NULL, 'Bernd', '1972-01-12', '0660666465565', 'Herr', 0, 0, 'Obendorfer', '', '2014-06-11 06:06:12', '2014-06-11 06:06:12', 0),
-(72, 'gast@kochabo.com', '$2y$10$9/G9H.LLGboYaQ6lQWhOF.1QqKZ/gHRQDpjCFahCya4BkiUlNwnJm', NULL, 1, 'qwGHXiuRVr0v4LbQZFQkBjX7VIHoG1MhvABo8rcLFx', NULL, '2014-06-11 08:41:12', '$2y$10$wkI06u.fBQ2ZNxvnVgOM2.PZ32E9SNrtfROwWacQpfR57Osc9kiuK', NULL, 'Gast', '2014-06-11', '0660', 'Herr', 0, 0, 'Gast', '', '2014-06-11 08:38:10', '2014-06-11 08:41:12', 0);
+INSERT INTO `users` (`id`, `email`, `password`, `passwordhardcode`, `permissions`, `activated`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `first_name`, `date_of_birth`, `telephone`, `gender`, `default_billing_address`, `default_shipping_address`, `last_name`, `birthday`, `birthmonth`, `birthyear`, `status`, `created_at`, `updated_at`, `is_published`) VALUES
+(1, 'admin@admin.com', '$2y$10$NkEaWuEFQTUBHbgEkrT9zeMsx/eePq7zq/8QU/EeTbRLucyfP3GVm', '', NULL, 1, NULL, NULL, '2014-04-19 02:14:45', '$2y$10$rxvjqmdYYZT7VBarfa2/s.MK/vP74qFUPMZUHukjKiDz0T2hAoXMm', NULL, 'Bernd', '0000-00-00', '06604258008', '1', 2, 3, 'Obendorfer', '', '', '', '0', '2014-04-17 14:56:15', '2014-06-09 05:07:57', 0),
+(3, 'bernd.obendorfer@chello.at', '$2y$10$8AOyQXE.bt4am8Y77Z2WCOOevUxMwZXxG5RV6JazNWi1HAIVjL3wq', '', NULL, 1, 'Myu4J2vqYDTVIqfoad3CZQCMYnkWisrCyXwVk5IvHV', NULL, '2014-06-16 16:34:00', '$2y$10$YpsOq.XhK0DamtF06yyvoeQWDVPXErwrUGfdL/8t7qCekh3w7zG5y', NULL, 'Bernd', '1970-01-01', '0660645949459', 'Herr', 0, 0, 'Obendorfer', '', '', '', 'admin', '2014-04-19 02:02:36', '2014-06-16 16:34:00', 0),
+(109, 'theresa.schoerky@chello.at', '$2y$10$h2VPB80zNVTi59CqDv/wMudW88fUiB2PEF3E1lZXraCSq05j0NSTy', 'theresa', NULL, 1, 'fsDsmN4O6iSkqFTBrfOn9f11irrvc2YFVAqEtu9xkW', NULL, '2014-06-16 10:41:07', '$2y$10$F0j4TayUpCrC2hg6ktY.v.E.DFAkZ0nzU/LvEtKkGoUmjmdkKNBZi', NULL, 'Theresa', '0000-00-00', '066565656', 'Frau', 0, 0, 'Sch&ouml;rkhuber', '16', '02', '1985', '', '2014-06-16 10:40:56', '2014-06-16 10:41:07', 0),
+(110, 'robert.ginder@chello.at', '$2y$10$pCjc/sGeLQ9EiGDCSGWw8.kArnb0LraKP54Pe7Wk0tLH92qj/IpJa', '333333', NULL, 1, 'qi95leByn6qkcPVs8HcN3BFi8B60R7VBx0NoUnLTt8', NULL, '2014-06-16 16:33:39', '$2y$10$ZYnouIRCkJ6EtTBRJmw.puzQsoWmAxxOnlmOYbgyFCC.66Ie96bLS', NULL, 'Robert', '0000-00-00', '0660595656569', 'Herr', 0, 0, 'Ginder', '19', '11', '1980', '', '2014-06-16 16:33:29', '2014-06-16 16:33:39', 0);
 
 -- --------------------------------------------------------
 

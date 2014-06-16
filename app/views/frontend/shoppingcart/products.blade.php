@@ -7,6 +7,8 @@ products
 {{-- Content --}}
 
 @section('content')
+
+
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs margin-bottom-40">
 <div class="container">
