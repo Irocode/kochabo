@@ -450,6 +450,9 @@
    <!-- Tabs End -->   
    {{ Form::submit('Daten speichern und weiter', array('class' => 'btn btn-success')) }}
    {{ Form::close() }}
+
+   <br>
+   <br>
 </div>
 <!--Datepicker ANFANG-->   
 <script type="text/javascript" src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
