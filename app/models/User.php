@@ -5,9 +5,8 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 //class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterface, RemindableInterface {
 
-class Users extends Eloquent{
-
-
+class Users extends Eloquent
+{
 	/**
 	 * The database table used by the model.
 	 *
@@ -38,7 +37,7 @@ class Users extends Eloquent{
 	 *
 	 * @return string
 	 */
-	public function getAuthPassword() 
+	public function getAuthPassword()
 	{
 		return $this->password;
 	}
@@ -53,23 +52,13 @@ class Users extends Eloquent{
 		return $this->email;
 	}
 
-
-
-
-
-	//hasmany
-public function order()
+    public function order()
 	{
 		return $this->hasMany ('Order', 'customercustomer_id')->orderBy('customercustomer_id', 'ASC');
 	}
 
-
-	
-//hasmany
-public function address()
+    public function address()
 	{
 		return $this->hasMany ('Address', 'customercustomer_id')->orderBy('customercustomer_id', 'ASC');
 	}
-
-
 }

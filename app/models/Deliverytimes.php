@@ -4,14 +4,22 @@ use Sefa\Interfaces\BaseModelInterface as BaseModelInterface;
 
 class Deliverytimes extends BaseModel implements BaseModelInterface {
 
-	//protected $primaryKey = 'user_id';
+    //protected $primaryKey = 'user_id';
     public $table = 'deliverytimes';
-  
 
-   public $fillable=['id', 'is_published','user_id' ,'name', 'delivery_time_from' , 'delivery_time_to' , 'nightjump' ,'created_at','updated_at'
-];
- 
- 
+
+    public $fillable = [
+        'id',
+        'is_published',
+        'user_id' ,
+        'name',
+        'delivery_time_from' ,
+        'delivery_time_to' ,
+        'nightjump' ,
+        'created_at',
+        'updated_at' ];
+
+
 
 
 
@@ -31,12 +39,12 @@ class Deliverytimes extends BaseModel implements BaseModelInterface {
 
 
 
-//hasmanybelongs
+    //hasmanybelongs
     public function logisticianmanager()
 
     {
         return $this->belongsTo ('Logisticianmanager');
-       
+
     }
 
 

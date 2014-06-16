@@ -2,41 +2,44 @@
 
 use Sefa\Interfaces\BaseModelInterface as BaseModelInterface;
 
-class Article extends BaseModel implements BaseModelInterface {
+class Article extends BaseModel implements BaseModelInterface
+{
 
     public $table = 'articles';
-    protected $fillable = ['title', 'slug', 'content', 'meta_keywords', 'meta_description', 'is_published'];
+    protected $fillable = [
+        'title',
+        'slug',
+        'content',
+        'meta_keywords',
+        'meta_description',
+        'is_published'];
+
     protected $appends = ['url'];
 
-    public function tags() {
-
+    public function tags()
+    {
         return $this->belongsToMany('Tag', 'articles_tags');
     }
 
-    public function category() {
-
+    public function category()
+    {
         return $this->hasMany('Category', 'id', 'category_id');
     }
 
-    public function setUrlAttribute($value) {
-
+    public function setUrlAttribute($value)
+    {
         $this->attributes['url'] = $value;
     }
 
-    public function getUrlAttribute() {
-
+    public function getUrlAttribute()
+    {
         return "article/" . $this->attributes['id'] . "/" . $this->attributes['slug'];
     }
 
-/*
-
-
-public static function first()
-{
-$maukau = DB::query('select * from article where id = 1');
-}
-
-
-*/
-
+    /*
+    public static function first()
+    {
+    $maukau = DB::query('select * from article where id = 1');
+    }
+    */
 }
