@@ -10,7 +10,7 @@
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs margin-bottom-40">
    <div class="container">
-      <h1 class="pull-left">Bestellung</h1>
+      <h1 class="pull-left">Bestellung - Schritt 1</h1>
       <ul class="pull-right breadcrumb">
          <li>
             <a href="{{URL::to('')}}/cart">Warenkorb</a>
@@ -208,7 +208,8 @@
    <!--HEADER mit Zurück ENDE-->
    <!-- {{{$address_lieferung->id}}}-->
 
-     {{ Form::open( array( 'action' => array( 'UseradminController@update', $address_lieferung->id), 'method' => 'PATCH')) }}
+  {{ Form::open(array('class' => 'form-horizontal', 'method' => 'put', 'action' => array('CartController@ceckout_two_edit', $address_lieferung->customercustomer_id, $address_lieferung->id)))}}
+
 
    <div class="row">
       <div class="col-md-6">
@@ -367,12 +368,11 @@
             
             
             
+                       
+              }); 
             
-              
             
-            
-            
-            nimm= localStorage.getItem('nimm');        console.log(nimm);   
+            nimm= localStorage.getItem('nimm');        console.log(nimm);  
             if (searchField ==nimm) {  
             output2 = '<div class="alert alert-success">Dieses Gebiet wird beliefert</div>';
             $('#results').html(output2);
@@ -384,7 +384,7 @@
             };
             
 
-  }); 
+
 
             
                 };
@@ -394,7 +394,7 @@
          </script>
         <!--Abfrage Postleitzahl Ende-->
          <div id="results"></div>
-       <!--  <form role="form">-->
+      <!--  <form role="form">-->
             <div class="control-group {{ $errors->has('zip') ? 'has-error' : '' }}">
             <label class="control-label" for="zip">PLZ <span class="stern" >*</span></label>
             <div class="controls">

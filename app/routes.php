@@ -661,9 +661,9 @@ Route::get('/checkout', function()
 		$cartContent = Cart::content();
 		$products = Product::all();
 		$users = Users::all();
-	$day = List_Day::lists('bezeichnung', 'bezeichnung');
-$month = List_Month::lists('bezeichnung', 'bezeichnung');
-$gender = List_Gender::lists('bezeichnung', 'bezeichnung');
+	    $day = List_Day::lists('bezeichnung', 'bezeichnung');
+        $month = List_Month::lists('bezeichnung', 'bezeichnung');
+        $gender = List_Gender::lists('bezeichnung', 'bezeichnung');
 
 
 		
@@ -676,8 +676,9 @@ Route::post('update','CartController@update');
 Route::get('terminate','CartController@terminate');
 
 Route::get('checkout/{id}/edit','CartController@ceckout_one_edit');
-Route::get('checkout/{id}/update','CartController@ceckout_one_update');
-Route::post('checkout/{id}/update', 'CartController@ceckout_one_update');
+
+Route::get('checkout/{id}/steptwo/{address_id}','CartController@ceckout_two_edit')->where('id', '[0-9]+');
+Route::post('checkout/{id}/steptwo/{address_id}', 'CartController@ceckout_two_edit')->where('id', '[0-9]+');
 
 //Abfrage Postleizahl
 Route::get('postleitzahl_check', 'Ajax_Front_Controller@postleitzahl_check');
