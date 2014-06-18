@@ -2,34 +2,42 @@
 
 class CategoriesTableSeeder extends Seeder {
 
-    /**
-     * Run the database seeding.
-     *
-     * @return void
-     */
-    public function run() {
+	/**
+	 * Auto generated seed file
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		\DB::table('categories')->truncate();
+        
+		\DB::table('categories')->insert(array (
+			0 => 
+			array (
+				'id' => 2,
+				'title' => 'Gemüse',
+			),
+			1 => 
+			array (
+				'id' => 3,
+				'title' => 'Vegetarisch',
+			),
+			2 => 
+			array (
+				'id' => 4,
+				'title' => 'Pflanzlich',
+			),
+			3 => 
+			array (
+				'id' => 5,
+				'title' => 'Rohkost',
+			),
+			4 => 
+			array (
+				'id' => 10,
+				'title' => 'Süßigkeiten',
+			),
+		));
+	}
 
-        DB::table('categories')->truncate();
-
-        DB::table('categories')->insert(array(
-            array(
-                'title' => 'PHP'
-            ),
-            array(
-                'title' => 'SQL'
-            ),
-            array(
-                'title' => 'HTML'
-            ),
-            array(
-                'title' => 'CSS'
-            ),
-            array(
-                'title' => 'Javascript'
-            ),
-            array(
-                'title' => 'JQuery'
-            )
-        ));
-    }
 }

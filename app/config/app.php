@@ -122,6 +122,7 @@ return array(
         'Moltin\Cart\CartServiceProvider',
         'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
         'Former\FormerServiceProvider',
+        'Orangehill\Iseed\IseedServiceProvider',
        
         
     ),

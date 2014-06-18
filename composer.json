@@ -15,7 +15,8 @@
         "edvinaskrucas/notification": "1.*",
 		"moltin/laravel-cart": "dev-master",
         "gloudemans/shoppingcart": "dev-master",
-		"anahkiasen/former": "dev-master"
+		"anahkiasen/former": "dev-master",
+		"orangehill/iseed": "dev-master"
 	
     },
 	

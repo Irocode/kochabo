@@ -1,0 +1,156 @@
+<?php
+
+class AddressTableSeeder extends Seeder {
+
+	/**
+	 * Auto generated seed file
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		\DB::table('address')->truncate();
+        
+		\DB::table('address')->insert(array (
+			0 => 
+			array (
+				'id' => 82,
+				'customercustomer_id' => 3,
+				'art' => 'Lieferadresse',
+				'gender' => 'Herr',
+				'first_name' => 'Bernd',
+				'last_name' => 'Obendorfer',
+				'street' => 'Lieferstraße',
+				'city' => 'Wien',
+				'country' => 'Österreich',
+				'stateprovince' => 'Wien',
+				'zip' => 6060,
+				'housenumber' => '2',
+				'stairway_number' => '',
+				'floor' => '',
+				'appartement_number' => '',
+				'deliveryinformation' => '',
+				'created_at' => '0000-00-00 00:00:00',
+				'updated_at' => '2014-06-16 16:51:07',
+				'is_published' => 0,
+				'slug' => NULL,
+			),
+			1 => 
+			array (
+				'id' => 83,
+				'customercustomer_id' => 3,
+				'art' => 'Rechnungsadresse',
+				'gender' => 'Herr',
+				'first_name' => 'Bernd',
+				'last_name' => 'Obendorfer',
+				'street' => 'Rechnungsstraße',
+				'city' => 'Wien',
+				'country' => 'Österreich',
+				'stateprovince' => 'Wien',
+				'zip' => 1220,
+				'housenumber' => '1',
+				'stairway_number' => '2',
+				'floor' => '3',
+				'appartement_number' => '4',
+				'deliveryinformation' => '',
+				'created_at' => '0000-00-00 00:00:00',
+				'updated_at' => '0000-00-00 00:00:00',
+				'is_published' => 0,
+				'slug' => NULL,
+			),
+			2 => 
+			array (
+				'id' => 138,
+				'customercustomer_id' => 109,
+				'art' => 'Rechnungsadresse',
+				'gender' => 'Frau',
+				'first_name' => 'Theresa',
+				'last_name' => 'Sch&ouml;rkhuber',
+				'street' => '',
+				'city' => '',
+				'country' => '',
+				'stateprovince' => '',
+				'zip' => 0,
+				'housenumber' => '',
+				'stairway_number' => '',
+				'floor' => '',
+				'appartement_number' => '',
+				'deliveryinformation' => '',
+				'created_at' => '2014-06-16 12:40:56',
+				'updated_at' => '2014-06-16 12:40:56',
+				'is_published' => 0,
+				'slug' => NULL,
+			),
+			3 => 
+			array (
+				'id' => 139,
+				'customercustomer_id' => 109,
+				'art' => 'Lieferadresse',
+				'gender' => 'Frau',
+				'first_name' => 'Theresa',
+				'last_name' => 'Sch&ouml;rkhuber',
+				'street' => '',
+				'city' => '',
+				'country' => '',
+				'stateprovince' => '',
+				'zip' => 0,
+				'housenumber' => '',
+				'stairway_number' => '',
+				'floor' => '',
+				'appartement_number' => '',
+				'deliveryinformation' => '',
+				'created_at' => '2014-06-16 12:40:56',
+				'updated_at' => '2014-06-16 12:40:56',
+				'is_published' => 0,
+				'slug' => NULL,
+			),
+			4 => 
+			array (
+				'id' => 140,
+				'customercustomer_id' => 110,
+				'art' => 'Rechnungsadresse',
+				'gender' => 'Herr',
+				'first_name' => 'Robert',
+				'last_name' => 'Ginder',
+				'street' => '',
+				'city' => '',
+				'country' => '',
+				'stateprovince' => '',
+				'zip' => 0,
+				'housenumber' => '',
+				'stairway_number' => '',
+				'floor' => '',
+				'appartement_number' => '',
+				'deliveryinformation' => '',
+				'created_at' => '2014-06-16 18:33:29',
+				'updated_at' => '2014-06-16 18:33:29',
+				'is_published' => 0,
+				'slug' => NULL,
+			),
+			5 => 
+			array (
+				'id' => 141,
+				'customercustomer_id' => 110,
+				'art' => 'Lieferadresse',
+				'gender' => 'Herr',
+				'first_name' => 'Robert',
+				'last_name' => 'Ginder',
+				'street' => '',
+				'city' => '',
+				'country' => '',
+				'stateprovince' => '',
+				'zip' => 0,
+				'housenumber' => '',
+				'stairway_number' => '',
+				'floor' => '',
+				'appartement_number' => '',
+				'deliveryinformation' => '',
+				'created_at' => '2014-06-16 18:33:29',
+				'updated_at' => '2014-06-16 18:33:29',
+				'is_published' => 0,
+				'slug' => NULL,
+			),
+		));
+	}
+
+}
