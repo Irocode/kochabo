@@ -71,12 +71,15 @@ return View::make('backend.order.show', compact('order'));
 */
 public function edit($id) {       
 $order = $this->order->find($id);
+
+
+
 $order_status_history = $this->order->find($id)->order_status_history;
 
 $order_address = $this->order->find($id)->order_address;
 
 
-return View::make('backend.order.edit', compact('order','order_status_history'));
+return View::make('backend.order.edit', compact('order','order_address'));
 }
 /**
 * Update the specified resource in storage.

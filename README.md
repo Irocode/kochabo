@@ -22,7 +22,7 @@ A new web portal.
 
 ----------------------------------------------------------------
 
-# Additional commands (Developer)
+# Additional commands
 
 Convert existing MySQL database Schema into a Laravel Migration file: <br>
 Command: php artisan convert:migrations kochabo
@@ -38,7 +38,3 @@ Command: php artisan iseed users
 See more at: https://github.com/orangehill/iseed
 
 ----------------------------------------------------------------
-
-Laravel-debugbar:
-
-See more at: https://github.com/barryvdh/laravel-debugbar

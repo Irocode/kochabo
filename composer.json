@@ -13,12 +13,9 @@
 		"moltin/laravel-cart": "dev-master",
         "gloudemans/shoppingcart": "dev-master",
 		"anahkiasen/former": "dev-master",
-		"orangehill/iseed": "dev-master",
-		"barryvdh/laravel-debugbar": "1.*"
+		"orangehill/iseed": "dev-master"
 	
     },
-	
-
 	
 	"require-dev": {		
 		"mockery/mockery": "~0.9",
@@ -47,8 +44,7 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php artisan optimize",
-			"php artisan debugbar:publish"
+            "php artisan optimize"
         ],
         "post-update-cmd": [
             "php artisan clear-compiled",

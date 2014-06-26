@@ -134,20 +134,15 @@
 
 
 
-   @if($order_status_historyx->count())
-                     @foreach( $order_status_history as $v )                  
-                    Bestellnummer:  NameFirst: {{ $v->status}}<br>
+   @if($order_address->count())
+                     @foreach( $order_address as $v )                  
+                    Bestellnummer:  NameFirst: {{ $v->first_name}}<br>
                      @endforeach
                      @else
                      <div class="alert alert-danger">Keine Adresse vorhanden</div>
                      @endif 
 
 
-Debugbar::startMeasure('render','Time for rendering');
-Debugbar::stopMeasure('render');
-Debugbar::addMeasure('now', LARAVEL_START, microtime(true));
-Debugbar::measure('My long operation', function() {
-    //Do something..
-});
+
 </div>
 @stop

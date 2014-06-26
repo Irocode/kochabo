@@ -37,17 +37,17 @@ class Order extends BaseModel implements BaseModelInterface
 
      public function order_address()
     {
-        return $this->hasMany ('Order_Address', 'order_id')->orderBy('orderorder_id', 'ASC');
+        return $this->hasMany ('Order_Address', 'customercustomer_id')->orderBy('orderorder_id', 'ASC');
     }
 
      public function order_status_history()
     {
-        return $this->hasMany ('Order_Status_History');
+        return $this->hasMany ('Order_Status_History', 'customercustomer_id')->orderBy('orderorder_id', 'ASC');
     }
 
      public function order_items()
     {
-        return $this->hasMany ('Order_Items', 'order_id')->orderBy('orderorder_id', 'ASC');
+        return $this->hasMany ('Order_Items', 'customercustomer_id')->orderBy('orderorder_id', 'ASC');
     }
 }
 

@@ -36,7 +36,7 @@ class Order_Items extends BaseModel implements BaseModelInterface
 
     public function getUrlAttribute()
     {
-        return "order_items/" . $this->attributes['orderorder_id'] . "/" . $this->attributes['orderorder_id'];
+        return "order/" . $this->attributes['orderorder_id'] . "/" . $this->attributes['orderorder_id'];
     }
 
 
