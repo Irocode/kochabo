@@ -1,6 +1,7 @@
 <?php namespace Sefa\Repositories\Order_Status_History;
 use Config;
 use Order_Status_History;
+use Order;
 use Response;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
@@ -11,6 +12,7 @@ class Order_Status_HistoryRepository extends Validator implements BaseRepository
 				{
 				protected $perPage;
 				protected $order_status_history;
+				protected $order;
 				/**
 				 * Rules
 				 *
@@ -20,12 +22,13 @@ class Order_Status_HistoryRepository extends Validator implements BaseRepository
 				// 'first_name'    => 'required',
 				// 'last_name'  => 'required',
 				];
-				public function __construct(Order_Status_History $order_status_history)
+				public function __construct(Order_Status_History $order_status_history, Order $order)
 
 								{
 								$config = Config::get('sfcms');
 								$this->perPage = $config['modules']['per_page'];
 								$this->order_status_history = $order_status_history;
+								$this->order = $order;
 								}
 				public function all()
 
