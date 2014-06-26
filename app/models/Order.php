@@ -7,12 +7,12 @@ class Order extends BaseModel implements BaseModelInterface
     protected $primaryKey = 'customercustomer_id';
     public $table = 'order';
     public $fillable = [
-        'id',
+        
         'order_id',
-        'delivery_date',
         'customercustomer_id',
-        'deliverable',
-        'order_increment_id',
+        'order_increment_id',               
+        'deliverable',   
+        'delivery_date',      
         'created_at',
         'updated_at' ];
 

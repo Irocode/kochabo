@@ -60,7 +60,7 @@
       <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
       <label class="control-label" for="last_name">Vorname</label>
       <div class="controls">
-      {{ Form::text('first_name', $address->first_name, array('class'=>'form-control', 'id' => 'Vorname', 'disabled' => 'disabled', 'placeholder'=>'Vorname', 'value'=>Input::old('first_name'))) }}
+      {{ Form::text('first_name', $address->first_name, array('class'=>'form-control', 'id' => 'Vorname',  'placeholder'=>'Vorname', 'value'=>Input::old('first_name'))) }}
       @if ($errors->first('first_name'))
       <span class="help-block">{{ $errors->first('first_name') }}</span>
       @endif
@@ -71,7 +71,7 @@
       <div class="control-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
       <label class="control-label" for="last_name">Nachname</label>
       <div class="controls">
-      {{ Form::text('last_name', $address->last_name, array('class'=>'form-control', 'id' => 'last_name', 'disabled' => 'disabled', 'placeholder'=>'Nachname', 'value'=>Input::old('last_name'))) }}
+      {{ Form::text('last_name', $address->last_name, array('class'=>'form-control', 'id' => 'last_name',  'placeholder'=>'Nachname', 'value'=>Input::old('last_name'))) }}
       @if ($errors->first('last_name'))
       <span class="help-block">{{ $errors->first('last_name') }}</span>
       @endif

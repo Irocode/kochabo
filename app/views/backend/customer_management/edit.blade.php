@@ -298,9 +298,11 @@
       <div class="panel-body">
          <div class="pull-left">
             <div class="btn-toolbar">
+            <!--
                <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
                <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Bestellung anlegen (In Folge die Bestellung)
                </a>
+              -->               
             </div>
          </div>
          <div class="pull-right">
@@ -420,19 +422,19 @@
             <table id="examplex" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-                     <th>ID</th>
-                     <th>OrderID</th>
+                   <th>Order ID</th>
                      <th>KundenID</th>
-                     <th>Lieferbar</th>
-                     <th>Lieferdatum</th>
-                     <th>order_increment_id</th>
-                     <th>created_at</th>
-                     <th>updated_at</th>
+                     <th>Order_increment_id</th>     
+                     <th>Lieferbar</th>  
+                     <th>Lieferdatum</th>              
+                     <th>Erstellt am</th>
+                     <th>Update am</th> 
                      <th>Bearbeiten</th>
                   </tr>
                </thead>
                <tfoot>
                   <tr>
+                    <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
@@ -440,8 +442,6 @@
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
-                     <th rowspan="1" colspan="1"></th>
-                      <th rowspan="1" colspan="1"></th>
                   </tr>
                </tfoot>
                <tfoot>
@@ -480,9 +480,12 @@
       <div class="panel-body">
          <div class="pull-left">
             <div class="btn-toolbar">
+            <!--
                <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
                <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Kunden anlegen (In Folge die Adresse)
                </a>
+
+               -->
             </div>
          </div>
          <div class="pull-right">

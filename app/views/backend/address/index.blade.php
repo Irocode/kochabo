@@ -140,7 +140,7 @@
 
 
 
-                     <th style='width: 60px;'>ID</th>
+                     <th style='width: 60px;'>Bestell ID</th>
                      <th style='width: 60px;'>KundenID</th>
                      <th>Vorname</th>
                      <th>Nachname</th>
