@@ -4,7 +4,7 @@
 - Moltin Laravel-Cart
 - Sentry 2.1
 - Edvinaskrucas Notification
-
+- sf CMS Ver. 2.0.0
 
 
 # Additional commands

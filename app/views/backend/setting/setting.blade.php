@@ -84,9 +84,9 @@
             <br>
             Mittels Cookie werden die Werte auf andere Seiten übernommen.<br><br>
          
-<a class="btn btn-u" href="javascript:setStyle('Standard')">Standard Layout</a>
+<a class="btn btn-u" href="javascript:setStyle('Standard')">Widescreen (Standard) </a>
 <br><br>
-<a  class="btn btn-u" href="javascript:setStyle('Systemeinstellungen')">Widescreen</a> <span class="normal"> </span>
+<a  class="btn btn-u" href="javascript:setStyle('norm')">Normal Layout</a> <span class="Normal"> </span>
 <br><br>
 
 
