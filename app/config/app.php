@@ -115,15 +115,15 @@ return array(
         'Sefa\Providers\FeederServiceProvider',
         'Sefa\Providers\LogViewerServiceProvider',
         'Authority\Repo\RepoServiceProvider',
-		'Authority\Service\Form\FormServiceProvider',
-        'Chumper\Datatable\DatatableServiceProvider',
-        'Bllim\Datatables\DatatablesServiceProvider',
+		'Authority\Service\Form\FormServiceProvider',        
         'Intervention\Image\ImageServiceProvider',
         'Moltin\Cart\CartServiceProvider',
         'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
         'Former\FormerServiceProvider',
         'Orangehill\Iseed\IseedServiceProvider',
-       
+
+
+               
         
     ),
 
@@ -195,9 +195,7 @@ return array(
         'Notification' => 'Krucas\Notification\Facades\Notification',
         'Search'       => 'Sefa\Facades\Search',
         'Feeder'       => 'Sefa\Facades\Feeder',
-        'LogViewer'    => 'Sefa\Facades\LogViewer',
-        'Datatable'    => 'Chumper\Datatable\Facades\DatatableFacade',
-        'Datatables'   => 'Bllim\Datatables\Datatables',
+        'LogViewer'    => 'Sefa\Facades\LogViewer',       
         'Image' => 'Intervention\Image\Facades\Image',
         'Cart' => 'Moltin\Cart\Facade',
         'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',

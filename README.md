@@ -1,5 +1,11 @@
 # KochAbo Portal 2014-2015
 
+- Gloudemans Shoppingcart
+- Moltin Laravel-Cart
+- Sentry 2.1
+- Edvinaskrucas Notification
+
+
 
 # Additional commands
 
