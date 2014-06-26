@@ -58,8 +58,7 @@
             <li class="dropdown {{ ((isset($active) && $active=='plugins') ? 'active' : '') }}">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>Kunden <b class="caret"></b></a>
                <ul class="dropdown-menu">
-                  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/customer_management') }}"><span class="glyphicon glyphicon-user"></span>Kunden verwalten NEU</a></li>
-                  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/customer') }}"><span class="glyphicon glyphicon-user"></span>Kunden verwalten ALT</a></li>
+                  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/customer_management') }}"><span class="glyphicon glyphicon-user"></span>Kunden verwalten</a></li>                
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/address') }}"><span class="glyphicon glyphicon-user"></span>Kunden Adressen (Alle)</a></li>
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/newsletter') }}"><span class="glyphicon glyphicon-list-alt"></span>Newsletter</a></li>
                </ul>

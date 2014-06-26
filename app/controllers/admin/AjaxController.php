@@ -46,13 +46,6 @@ return View::make('backend.logisticianmanager.data', compact('logisticianmanager
 }
 // AJAX Call-> Index Logistmanager END
 
-// AJAX Call-> Index Customer INDEX Start
-public function getDatatable_customer() { 
-$customer = Customer::where('id', '>', 1)->orderBy('updated_at', 'DESC')->get();
-return View::make('backend.customer.data', compact('customer'));
-}
-// AJAX Call-> Index Customer INDEX END
-
 // AJAX Call-> Index Address INDEX Start
 public function getDatatable_address($id) { 	
 $address = Address::where('customercustomer_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
