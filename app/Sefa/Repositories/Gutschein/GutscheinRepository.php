@@ -1,4 +1,4 @@
-<?php namespace Sefa\Repositories\gutschein;
+<?php namespace Sefa\Repositories\Gutschein;
 
 use Config;
 use gutschein;
@@ -7,96 +7,84 @@ use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
 
-class GutscheinRepository extends Validator implements BaseRepositoryInterface {
+class GutscheinRepository extends Validator implements BaseRepositoryInterface
 
-    protected $perPage;
-    protected $gutschein;
+                {
+                protected $perPage;
+                protected $gutschein;
+                /**
+                 * Rules
+                 *
+                 * @var array
+                 */
+                protected static $rules = ['title' => 'required', 'content' => 'required', 'datetime' => 'required|date', ];
+                public function __construct(gutschein $gutschein)
 
-    /**
-     * Rules
-     *
-     * @var array
-     */
-    protected static $rules = [
-        'title'    => 'required',
-        'content'  => 'required',
-        'datetime' => 'required|date',
-    ];
+                                {
+                                $config = Config::get('sfcms');
+                                $this->perPage = $config['modules']['per_page'];
+                                $this->gutschein = $gutschein;
+                                }
+                public function all()
 
-    public function __construct(gutschein $gutschein) {
+                                {
+                                return $this->gutschein->orderBy('created_at', 'DESC')->where('is_published', 1)->get();
+                                }
+                public function lists()
 
-        $config = Config::get('sfcms');
-        $this->perPage = $config['modules']['per_page'];
-        $this->gutschein = $gutschein;
-    }
+                                {
+                                return $this->gutschein->get()->lists('title', 'id');
+                                }
+                public function paginate($perPage = null, $all = false)
 
-    public function all() {
+                                {
+                                if ($all) return $this->gutschein->orderBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
+                                return $this->gutschein->orderBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
+                                }
+                public function find($id)
 
-        return $this->gutschein->orderBy('created_at', 'DESC')
-            ->where('is_published', 1)
-            ->get();
-    }
+                                {
+                                return $this->gutschein->findOrFail($id);
+                                }
+                public function create($attributes)
 
-    public function lists() {
+                                {
+                                $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
+                                if ($this->isValid($attributes))
+                                                {
+                                                $this->gutschein->fill($attributes)->save();
+                                                return true;
+                                                }
+                                throw new ValidationException('gutschein validation failed', $this->getErrors());
+                                }
+                public function update($id, $attributes)
 
-        return $this->gutschein->get()->lists('title', 'id');
-    }
+                                {
+                                $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
+                                $this->gutschein = $this->find($id);
+                                if ($this->isValid($attributes))
+                                                {
+                                                $this->gutschein->fill($attributes)->save();
+                                                return true;
+                                                }
+                                throw new ValidationException('gutschein validation failed', $this->getErrors());
+                                }
+                public function destroy($id)
 
-    public function paginate($perPage = null, $all=false) {
+                                {
+                                $gutschein = $this->gutschein->find($id)->delete();
+                                }
+                public function togglePublish($id)
 
-        if($all)
-            return $this->gutschein->orderBy('created_at', 'DESC')
-            ->paginate(($perPage) ? $perPage : $this->perPage);
+                                {
+                                $gutschein = $this->gutschein->find($id);
+                                $gutschein->is_published = ($gutschein->is_published) ? false : true;
+                                $gutschein->save();
+                                return Response::json(array(
+                                                'result' => 'success',
+                                                'changed' => ($gutschein->is_published) ? 1 : 0
+                                ));
+                                }
+                }
 
-        return $this->gutschein->orderBy('created_at', 'DESC')
-            ->where('is_published', 1)
-            ->paginate(($perPage) ? $perPage : $this->perPage);
-    }
 
-    public function find($id) {
-
-        return $this->gutschein->findOrFail($id);
-    }
-
-    public function create($attributes) {
-
-        $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
-
-        if ($this->isValid($attributes)) {
-
-            $this->gutschein->fill($attributes)->save();
-            return true;
-        }
-
-        throw new ValidationException('gutschein validation failed', $this->getErrors());
-    }
-
-    public function update($id, $attributes) {
-
-        $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
-
-        $this->gutschein = $this->find($id);
-
-        if ($this->isValid($attributes)) {
-
-            $this->gutschein->fill($attributes)->save();
-            return true;
-        }
-
-        throw new ValidationException('gutschein validation failed', $this->getErrors());
-    }
-
-    public function destroy($id) {
-
-        $gutschein = $this->gutschein->find($id)->delete();
-    }
-
-    public function togglePublish($id) {
-
-        $gutschein = $this->gutschein->find($id);
-        $gutschein->is_published = ($gutschein->is_published) ? false : true;
-        $gutschein->save();
-
-        return Response::json(array('result' => 'success', 'changed' => ($gutschein->is_published) ? 1 : 0));
-    }
-}

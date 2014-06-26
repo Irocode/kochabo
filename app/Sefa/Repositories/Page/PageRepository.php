@@ -7,86 +7,83 @@ use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
 
-class PageRepository extends Validator implements BaseRepositoryInterface {
+class PageRepository extends Validator implements BaseRepositoryInterface
 
-    protected $perPage;
-    protected $page;
+                {
+                protected $perPage;
+                protected $page;
+                /**
+                 * Rules
+                 *
+                 * @var array
+                 */
+                protected static $rules = ['title' => 'required|min:3', 'content' => 'required|min:5'];
+                public function __construct(Page $page)
 
-    /**
-     * Rules
-     *
-     * @var array
-     */
-    protected static $rules = [
-        'title'   => 'required|min:3',
-        'content' => 'required|min:5'
-    ];
+                                {
+                                $config = Config::get('sfcms');
+                                $this->perPage = $config['modules']['per_page'];
+                                $this->page = $page;
+                                }
+                public function all()
 
-    public function __construct(Page $page) {
+                                {
+                                return $this->page->get();
+                                }
+                public function lists()
 
-        $config = Config::get('sfcms');
-        $this->perPage = $config['modules']['per_page'];
-        $this->page = $page;
-    }
+                                {
+                                return $this->page->get()->lists('title', 'id');
+                                }
+                public function paginate($perPage = null)
 
-    public function all() {
+                                {
+                                return $this->page->paginate(($perPage) ? $perPage : $this->perPage);
+                                }
+                public function find($id)
 
-        return $this->page->get();
-    }
+                                {
+                                return $this->page->findOrFail($id);
+                                }
+                public function create($attributes)
 
-    public function lists() {
+                                {
+                                $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
+                                if ($this->isValid($attributes))
+                                                {
+                                                $this->page->fill($attributes)->save();
+                                                return true;
+                                                }
+                                throw new ValidationException('Page validation failed', $this->getErrors());
+                                }
+                public function update($id, $attributes)
 
-        return $this->page->get()->lists('title', 'id');
-    }
+                                {
+                                $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
+                                $this->page = $this->find($id);
+                                if ($this->isValid($attributes))
+                                                {
+                                                $this->page->fill($attributes)->save();
+                                                return true;
+                                                }
+                                throw new ValidationException('Category validation failed', $this->getErrors());
+                                }
+                public function destroy($id)
 
-    public function paginate($perPage = null) {
+                                {
+                                $this->page->findOrFail($id)->delete();
+                                }
+                public function togglePublish($id)
 
-        return $this->page->paginate(($perPage) ? $perPage : $this->perPage);
-    }
+                                {
+                                $page = $this->page->find($id);
+                                $page->is_published = ($page->is_published) ? false : true;
+                                $page->save();
+                                return Response::json(array(
+                                                'result' => 'success',
+                                                'changed' => ($page->is_published) ? 1 : 0
+                                ));
+                                }
+                }
 
-    public function find($id) {
 
-        return $this->page->findOrFail($id);
-    }
-
-    public function create($attributes) {
-
-        $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
-
-        if ($this->isValid($attributes)) {
-
-            $this->page->fill($attributes)->save();
-            return true;
-        }
-
-        throw new ValidationException('Page validation failed', $this->getErrors());
-    }
-
-    public function update($id, $attributes) {
-
-        $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
-
-        $this->page = $this->find($id);
-
-        if ($this->isValid($attributes)) {
-
-            $this->page->fill($attributes)->save();
-            return true;
-        }
-
-        throw new ValidationException('Category validation failed', $this->getErrors());
-    }
-
-    public function destroy($id) {
-
-        $this->page->findOrFail($id)->delete();
-    }
-
-    public function togglePublish($id) {
-
-        $page = $this->page->find($id);
-        $page->is_published = ($page->is_published) ? false : true;
-        $page->save();
-        return Response::json(array('result' => 'success', 'changed' => ($page->is_published) ? 1 : 0));
-    }
-}
