@@ -10,7 +10,7 @@ class Order_Status_History extends BaseModel implements BaseModelInterface
        
 
     'orderorder_id',
-    'order_status_history_id',
+    'order_status_history_id',   
     'status', 
     'channel', 
     'operator',

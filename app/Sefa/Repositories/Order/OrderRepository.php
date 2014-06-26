@@ -26,6 +26,7 @@ class OrderRepository extends Validator implements BaseRepositoryInterface
 								$config = Config::get('sfcms');
 								$this->perPage = $config['modules']['per_page'];
 								$this->order = $order;
+						
 								}
 				public function all()
 

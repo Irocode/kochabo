@@ -10,7 +10,7 @@ class Order_Address extends BaseModel implements BaseModelInterface
 
 
     'address_id',
-    'orderorder_id',
+    'orderorder_id',    
     'address_type',
     'gender',
     'first_name', 
@@ -37,7 +37,7 @@ class Order_Address extends BaseModel implements BaseModelInterface
 
     public function getUrlAttribute()
     {
-        return "order_address/" . $this->attributes['address_id'] . "/" . $this->attributes['address_id'];
+        return "order_address/" . $this->attributes['orderorder_id'] . "/" . $this->attributes['orderorder_id'];
     }
     
     //hasmanybelongs

@@ -4,11 +4,12 @@ use Sefa\Interfaces\BaseModelInterface as BaseModelInterface;
 
 class Order_Items extends BaseModel implements BaseModelInterface
 {
-    protected $primaryKey = 'customercustomer_id';
+    protected $primaryKey = 'orderorder_id';
     public $table = 'order_items';
     public $fillable = [
-        
-    'orderorder_id',
+
+    'order_items_id',        
+    'orderorder_id',   
     'product_id',
     'product_sku', 
     'product_name',

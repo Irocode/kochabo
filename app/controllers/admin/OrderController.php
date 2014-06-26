@@ -7,13 +7,19 @@ use Validator;
 use Response;
 use Str;
 use Notification;
+use Order_Status_History;
+use Order_Address;
 use Sefa\Repositories\Order\OrderRepository as Order;
 use Sefa\Exceptions\Validation\ValidationException;
 class OrderController extends BaseController {
 protected $order;
-public function __construct(Order $order) {
+public function __construct(Order $order, Order_Status_History $order_status_history,  Order_Address $order_address) {
 View::share('active', 'modules');
 $this->order = $order;
+$this->order_status_history = $order_status_history;
+
+$this->order_address = $order_address;
+
 }
 /**
 * Display a listing of the resource.
@@ -65,8 +71,15 @@ return View::make('backend.order.show', compact('order'));
 */
 public function edit($id) {       
 $order = $this->order->find($id);
-return View::make('backend.order.edit', compact('order'))
-;
+
+
+
+$order_status_history = $this->order->find($id)->order_status_history;
+
+$order_address = $this->order->find($id)->order_address;
+
+
+return View::make('backend.order.edit', compact('order','order_address'));
 }
 /**
 * Update the specified resource in storage.

@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-06-26 09:31:17
+// NOTE Migration Created: 2014-06-26 11:04:00
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -765,6 +765,7 @@ Schema::create('order_address', function($table) {
 // --------------------------------------------------
  
 Schema::create('order_items', function($table) {
+ $table->increments('order_items_id');
  $table->unsignedInteger('orderorder_id');
  $table->unsignedInteger('product_id');
  $table->string('product_sku', 100);
@@ -790,8 +791,8 @@ Schema::create('order_items', function($table) {
 // --------------------------------------------------
  
 Schema::create('order_status_history', function($table) {
+ $table->increments('order_status_history_id');
  $table->unsignedInteger('orderorder_id');
- $table->unsignedInteger('order_status_history_id');
  $table->string('status', 100);
  $table->string('channel', 100);
  $table->string('operator', 100);

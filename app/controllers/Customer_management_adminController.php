@@ -41,7 +41,7 @@ return View::make('backend.customer_management.create')->with('month',$month)->w
 */
 public function store() {
 $formData = array(
-	'gender'       => Input::get('gender'),
+'gender'       => Input::get('gender'),
 'first_name'       => Input::get('first_name'),
 'last_name'        => Input::get('last_name'),
 'email'            => Input::get('email'),

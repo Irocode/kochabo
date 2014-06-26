@@ -25,7 +25,7 @@ class Order extends BaseModel implements BaseModelInterface
 
     public function getUrlAttribute()
     {
-        return "order/" . $this->attributes['id'] . "/" . $this->attributes['slug'];
+        return "order/" . $this->attributes['customercustomer_id'] . "/" . $this->attributes['customercustomer_id'];
     }
 
     public function users()
@@ -37,17 +37,17 @@ class Order extends BaseModel implements BaseModelInterface
 
      public function order_address()
     {
-        return $this->hasMany ('Order_Address', 'orderorder_id')->orderBy('orderorder_id', 'ASC');
+        return $this->hasMany ('Order_Address', 'customercustomer_id')->orderBy('orderorder_id', 'ASC');
     }
 
      public function order_status_history()
     {
-        return $this->hasMany ('Order_Status_History', 'orderorder_id')->orderBy('orderorder_id', 'ASC');
+        return $this->hasMany ('Order_Status_History', 'customercustomer_id')->orderBy('orderorder_id', 'ASC');
     }
 
      public function order_items()
     {
-        return $this->hasMany ('Order_Items', 'orderorder_id')->orderBy('orderorder_id', 'ASC');
+        return $this->hasMany ('Order_Items', 'customercustomer_id')->orderBy('orderorder_id', 'ASC');
     }
 }
 

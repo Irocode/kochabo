@@ -1,18 +1,14 @@
 @extends('backend/_layout/layout')
 @section('content')
 {{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
-{{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
-{{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
-{{ HTML::script('assets/js/jquery.slug.js') }}
-<script type="text/javascript">
-   $(document).ready(function () {
-       $("#title").slug();
-   
-      
-   
-   });
-</script>
+
+
+
 <div class="container">
+
+
+
+
    <div class="page-header">
       <h3>
          Bestellung {{$order->order_id}}
@@ -24,11 +20,11 @@
    {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\OrderController@update', $order->id), 'method' => 'PATCH')) }}
    <!-- Title -->
    <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
-      <label class="control-label" for="title">ID</label>
+      <label class="control-label" for="title">BestellID</label>
       <div class="controls">
-         {{ Form::text('id', $order->id, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'ID', 'value'=>Input::old('title'))) }}
-         @if ($errors->first('id'))
-         <span class="help-block">{{ $errors->first('id') }}</span>
+         {{ Form::text('order_id', $order->order_id, array('class'=>'form-control', 'order_id' => 'title', 'placeholder'=>'ID', 'value'=>Input::old('title'))) }}
+         @if ($errors->first('order_id'))
+         <span class="help-block">{{ $errors->first('order_id') }}</span>
          @endif
       </div>
    </div>
@@ -133,6 +129,19 @@
    {{ Form::submit('Änderungen speichern', array('class' => 'btn btn-u')) }}
    {{ Form::close() }}
    <!--CKEDITOR ANFANG--> 
+
+
+
+
+
+   @if($order_address->count())
+                     @foreach( $order_address as $v )                  
+                    Bestellnummer:  NameFirst: {{ $v->first_name}}<br>
+                     @endforeach
+                     @else
+                     <div class="alert alert-danger">Keine Adresse vorhanden</div>
+                     @endif 
+
 
 
 </div>
