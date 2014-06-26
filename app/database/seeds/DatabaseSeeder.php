@@ -64,5 +64,12 @@ class DatabaseSeeder extends Seeder {
 		$this->call('TestTableSeeder');
 		$this->call('ThrottleTableSeeder');
 		$this->call('UsersGroupsTableSeeder');
+		$this->call('VetoTableSeeder');
+		$this->call('OrderItemsTableSeeder');
+		$this->call('OrderStatusHistoryTableSeeder');
+		$this->call('OrderAddressTableSeeder');
+		$this->call('DeliveryDateTableSeeder');
+		$this->call('SubscriptionTableSeeder');
+		$this->call('ProductSubscriptionTableSeeder');
 	}
 }

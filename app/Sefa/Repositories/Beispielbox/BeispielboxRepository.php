@@ -1,4 +1,4 @@
-<?php namespace Sefa\Repositories\beispielbox;
+<?php namespace Sefa\Repositories\Beispielbox;
 
 use Config;
 use beispielbox;
@@ -7,96 +7,84 @@ use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
 
-class BeispielboxRepository extends Validator implements BaseRepositoryInterface {
+class BeispielboxRepository extends Validator implements BaseRepositoryInterface
 
-    protected $perPage;
-    protected $beispielbox;
+                {
+                protected $perPage;
+                protected $beispielbox;
+                /**
+                 * Rules
+                 *
+                 * @var array
+                 */
+                protected static $rules = ['title' => 'required', 'content' => 'required', 'datetime' => 'required|date', ];
+                public function __construct(beispielbox $beispielbox)
 
-    /**
-     * Rules
-     *
-     * @var array
-     */
-    protected static $rules = [
-        'title'    => 'required',
-        'content'  => 'required',
-        'datetime' => 'required|date',
-    ];
+                                {
+                                $config = Config::get('sfcms');
+                                $this->perPage = $config['modules']['per_page'];
+                                $this->beispielbox = $beispielbox;
+                                }
+                public function all()
 
-    public function __construct(beispielbox $beispielbox) {
+                                {
+                                return $this->beispielbox->orderBy('created_at', 'DESC')->where('is_published', 1)->get();
+                                }
+                public function lists()
 
-        $config = Config::get('sfcms');
-        $this->perPage = $config['modules']['per_page'];
-        $this->beispielbox = $beispielbox;
-    }
+                                {
+                                return $this->beispielbox->get()->lists('title', 'id');
+                                }
+                public function paginate($perPage = null, $all = false)
 
-    public function all() {
+                                {
+                                if ($all) return $this->beispielbox->orderBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
+                                return $this->beispielbox->orderBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
+                                }
+                public function find($id)
 
-        return $this->beispielbox->orderBy('created_at', 'DESC')
-            ->where('is_published', 1)
-            ->get();
-    }
+                                {
+                                return $this->beispielbox->findOrFail($id);
+                                }
+                public function create($attributes)
 
-    public function lists() {
+                                {
+                                $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
+                                if ($this->isValid($attributes))
+                                                {
+                                                $this->beispielbox->fill($attributes)->save();
+                                                return true;
+                                                }
+                                throw new ValidationException('beispielbox validation failed', $this->getErrors());
+                                }
+                public function update($id, $attributes)
 
-        return $this->beispielbox->get()->lists('title', 'id');
-    }
+                                {
+                                $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
+                                $this->beispielbox = $this->find($id);
+                                if ($this->isValid($attributes))
+                                                {
+                                                $this->beispielbox->fill($attributes)->save();
+                                                return true;
+                                                }
+                                throw new ValidationException('beispielbox validation failed', $this->getErrors());
+                                }
+                public function destroy($id)
 
-    public function paginate($perPage = null, $all=false) {
+                                {
+                                $beispielbox = $this->beispielbox->find($id)->delete();
+                                }
+                public function togglePublish($id)
 
-        if($all)
-            return $this->beispielbox->orderBy('created_at', 'DESC')
-            ->paginate(($perPage) ? $perPage : $this->perPage);
+                                {
+                                $beispielbox = $this->beispielbox->find($id);
+                                $beispielbox->is_published = ($beispielbox->is_published) ? false : true;
+                                $beispielbox->save();
+                                return Response::json(array(
+                                                'result' => 'success',
+                                                'changed' => ($beispielbox->is_published) ? 1 : 0
+                                ));
+                                }
+                }
 
-        return $this->beispielbox->orderBy('created_at', 'DESC')
-            ->where('is_published', 1)
-            ->paginate(($perPage) ? $perPage : $this->perPage);
-    }
 
-    public function find($id) {
-
-        return $this->beispielbox->findOrFail($id);
-    }
-
-    public function create($attributes) {
-
-        $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
-
-        if ($this->isValid($attributes)) {
-
-            $this->beispielbox->fill($attributes)->save();
-            return true;
-        }
-
-        throw new ValidationException('beispielbox validation failed', $this->getErrors());
-    }
-
-    public function update($id, $attributes) {
-
-        $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
-
-        $this->beispielbox = $this->find($id);
-
-        if ($this->isValid($attributes)) {
-
-            $this->beispielbox->fill($attributes)->save();
-            return true;
-        }
-
-        throw new ValidationException('beispielbox validation failed', $this->getErrors());
-    }
-
-    public function destroy($id) {
-
-        $beispielbox = $this->beispielbox->find($id)->delete();
-    }
-
-    public function togglePublish($id) {
-
-        $beispielbox = $this->beispielbox->find($id);
-        $beispielbox->is_published = ($beispielbox->is_published) ? false : true;
-        $beispielbox->save();
-
-        return Response::json(array('result' => 'success', 'changed' => ($beispielbox->is_published) ? 1 : 0));
-    }
-}

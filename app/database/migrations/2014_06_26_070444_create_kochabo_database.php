@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-06-18 03:25:40
+// NOTE Migration Created: 2014-06-26 07:04:44
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -27,7 +27,7 @@ Schema::create('address', function($table) {
  $table->string('city', 255);
  $table->string('country', 255);
  $table->string('stateprovince', 255);
- $table->bigInteger('zip');
+ $table->('zip');
  $table->string('housenumber', 100);
  $table->string('stairway_number', 100);
  $table->string('floor', 100);
@@ -157,6 +157,18 @@ Schema::create('customers', function($table) {
 
 
 //
+// NOTE -- delivery_date
+// --------------------------------------------------
+ 
+Schema::create('delivery_date', function($table) {
+ $table->unsignedInteger('delivery_date_id');
+ $table->date('date')->default("0000-00-00");
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ });
+
+
+//
 // NOTE -- deliveryarea
 // --------------------------------------------------
  
@@ -174,15 +186,15 @@ Schema::create('deliveryarea', function($table) {
  $table->string('city', 255);
  $table->string('country', 255);
  $table->string('stateprovince', 255);
- $table->bigInteger('zip');
- $table->bigInteger('telephone');
- $table->bigInteger('fax');
+ $table->('zip');
+ $table->('telephone');
+ $table->('fax');
  $table->text('email');
  $table->string('latitude', 255);
  $table->string('longitude', 255);
  $table->text('deliveryinformation');
  $table->string('dateofbirth', 255);
- $table->bigInteger('mobile');
+ $table->('mobile');
  $table->text('permissions')->nullable();
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
@@ -195,14 +207,14 @@ Schema::create('deliveryarea', function($table) {
  $table->string('country_delivery', 255);
  $table->string('dateofbirth_delivery', 255);
  $table->string('deliveryinformation_delivery', 255);
- $table->bigInteger('fax_delivery');
+ $table->('fax_delivery');
  $table->string('email_delivery', 255);
  $table->string('first_name_delivery', 255);
  $table->string('last_name_delivery', 255);
  $table->string('stateprovince_delivery', 255);
  $table->string('street_delivery', 255);
- $table->bigInteger('telephone_delivery');
- $table->bigInteger('zip_delivery');
+ $table->('telephone_delivery');
+ $table->('zip_delivery');
  });
 
 
@@ -224,15 +236,15 @@ Schema::create('deliveryassign', function($table) {
  $table->string('city', 255);
  $table->string('country', 255);
  $table->string('stateprovince', 255);
- $table->bigInteger('zip');
- $table->bigInteger('telephone');
- $table->bigInteger('fax');
+ $table->('zip');
+ $table->('telephone');
+ $table->('fax');
  $table->text('email');
  $table->string('latitude', 255);
  $table->string('longitude', 255);
  $table->text('deliveryinformation');
  $table->string('dateofbirth', 255);
- $table->bigInteger('mobile');
+ $table->('mobile');
  $table->text('permissions')->nullable();
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
@@ -245,14 +257,14 @@ Schema::create('deliveryassign', function($table) {
  $table->string('country_delivery', 255);
  $table->string('dateofbirth_delivery', 255);
  $table->string('deliveryinformation_delivery', 255);
- $table->bigInteger('fax_delivery');
+ $table->('fax_delivery');
  $table->string('email_delivery', 255);
  $table->string('first_name_delivery', 255);
  $table->string('last_name_delivery', 255);
  $table->string('stateprovince_delivery', 255);
  $table->string('street_delivery', 255);
- $table->bigInteger('telephone_delivery');
- $table->bigInteger('zip_delivery');
+ $table->('telephone_delivery');
+ $table->('zip_delivery');
  });
 
 
@@ -280,7 +292,7 @@ Schema::create('deliverytimes', function($table) {
 Schema::create('deliveryzipcode', function($table) {
  $table->increments('id');
  $table->unsignedInteger('user_id');
- $table->bigInteger('zip');
+ $table->('zip');
  $table->boolean('is_published');
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
@@ -640,24 +652,6 @@ Schema::create('menus', function($table) {
 
 
 //
-// NOTE -- menus2
-// --------------------------------------------------
- 
-Schema::create('menus2', function($table) {
- $table->increments('id')->unsigned();
- $table->string('title', 255);
- $table->string('url', 255);
- $table->unsignedInteger('order');
- $table->unsignedInteger('parent_id');
- $table->string('type', 10);
- $table->string('option', 255)->nullable();
- $table->boolean('is_published')->default("1");
- $table->timestamp('created_at')->default("0000-00-00 00:00:00");
- $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
- });
-
-
-//
 // NOTE -- news
 // --------------------------------------------------
  
@@ -738,8 +732,75 @@ Schema::create('order', function($table) {
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  $table->unsignedInteger('order_id');
- $table->tinyInteger('is_published');
+ $table->boolean('is_published');
  $table->string('slug', 255);
+ });
+
+
+//
+// NOTE -- order_address
+// --------------------------------------------------
+ 
+Schema::create('order_address', function($table) {
+ $table->increments('address_id')->unsigned();
+ $table->unsignedInteger('orderorder_id');
+ $table->string('address_type', 20);
+ $table->string('gender', 255);
+ $table->string('first_name', 255);
+ $table->string('last_name', 255);
+ $table->string('street', 255);
+ $table->string('city', 255);
+ $table->string('country', 255);
+ $table->string('stateprovince', 255);
+ $table->('zip');
+ $table->string('housenumber', 100);
+ $table->string('stairway_number', 100);
+ $table->string('floor', 100);
+ $table->string('appartement_number', 100);
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ $table->string('delivery_information', 255)->nullable();
+ });
+
+
+//
+// NOTE -- order_items
+// --------------------------------------------------
+ 
+Schema::create('order_items', function($table) {
+ $table->unsignedInteger('orderorder_id');
+ $table->unsignedInteger('product_id');
+ $table->string('product_sku', 100);
+ $table->string('product_name', 100);
+ $table->decimal('original_price_net', 10,2);
+ $table->decimal('ust', 10,2);
+ $table->decimal('discount', 10,2);
+ $table->decimal('affilate_discount', 10,2);
+ $table->decimal('affilate_credit', 10,2);
+ $table->decimal('giftvoucher_credit', 10,2);
+ $table->string('coupon_code', 100);
+ $table->string('giftvoucher_code', 100);
+ $table->string('affilate_code', 100);
+ $table->unsignedInteger('quantity');
+ $table->timestamp('timestamp')->default("CURRENT_TIMESTAMP");
+ $table->date('created_at')->default("0000-00-00");
+ $table->date('updated_at')->default("0000-00-00");
+ });
+
+
+//
+// NOTE -- order_status_history
+// --------------------------------------------------
+ 
+Schema::create('order_status_history', function($table) {
+ $table->unsignedInteger('orderorder_id');
+ $table->unsignedInteger('order_status_history_id');
+ $table->string('status', 100);
+ $table->string('channel', 100);
+ $table->string('operator', 100);
+ $table->timestamp('timestamp')->default("CURRENT_TIMESTAMP");
+ $table->date('created_at')->default("0000-00-00");
+ $table->date('updated_at')->default("0000-00-00");
  });
 
 
@@ -790,6 +851,19 @@ Schema::create('photos', function($table) {
 
 
 //
+// NOTE -- product_subscription
+// --------------------------------------------------
+ 
+Schema::create('product_subscription', function($table) {
+ $table->unsignedInteger('product_product_id');
+ $table->unsignedInteger('subscription_subscription_id');
+ $table->unsignedInteger('quantity');
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ });
+
+
+//
 // NOTE -- products
 // --------------------------------------------------
  
@@ -818,30 +892,15 @@ Schema::create('products', function($table) {
 
 
 //
-// NOTE -- productsy
-// --------------------------------------------------
- 
-Schema::create('productsy', function($table) {
- $table->increments('id')->unsigned();
- $table->string('name', 128);
- $table->unsignedInteger('price');
- $table->string('image', 256);
- $table->string('info', 256);
- $table->timestamp('created_at')->default("0000-00-00 00:00:00");
- $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
- });
-
-
-//
 // NOTE -- ranking
 // --------------------------------------------------
  
 Schema::create('ranking', function($table) {
  $table->increments('ranking_id')->unsigned();
  $table->('entry_id')->unsigned();
- $table->tinyInteger('ranking_value');
- $table->tinyInteger('ranking_column')->unsigned();
- $table->tinyInteger('judge_id');
+ $table->boolean('ranking_value');
+ $table->boolean('ranking_column')->unsigned();
+ $table->boolean('judge_id');
  $table->('contest_id')->unsigned();
  $table->timestamp('timestamp')->default("CURRENT_TIMESTAMP");
  $table->string('ip_address', 15);
@@ -895,6 +954,21 @@ Schema::create('sofunktioniertes', function($table) {
 
 
 //
+// NOTE -- subscription
+// --------------------------------------------------
+ 
+Schema::create('subscription', function($table) {
+ $table->unsignedInteger('subscription_id');
+ $table->unsignedInteger('customercustomer_id');
+ $table->date('start_date')->default("0000-00-00");
+ $table->date('end_date')->default("0000-00-00");
+ $table->unsignedInteger('interval_type');
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ });
+
+
+//
 // NOTE -- tags
 // --------------------------------------------------
  
@@ -904,36 +978,6 @@ Schema::create('tags', function($table) {
  $table->string('slug', 255);
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
- });
-
-
-//
-// NOTE -- test
-// --------------------------------------------------
- 
-Schema::create('test', function($table) {
- $table->float('test_float');
- $table->decimal('test_decimal', 10,2);
- });
-
-
-//
-// NOTE -- tests
-// --------------------------------------------------
- 
-Schema::create('tests', function($table) {
- $table->increments('id')->unsigned();
- $table->string('hl_ueberuns', 255);
- $table->text('ct_ueberuns');
- $table->string('hl_rezepte', 255);
- $table->text('ct_rezepte');
- $table->string('hl_contact', 255);
- $table->text('ct_contact');
- $table->string('slug', 255)->nullable();
- $table->date('datetime');
- $table->timestamp('created_at')->default("0000-00-00 00:00:00");
- $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
- $table->boolean('is_published')->default("1");
  });
 
 
@@ -998,34 +1042,15 @@ Schema::create('users_groups', function($table) {
 
 
 //
-// NOTE -- usersnewsxxxxxxx
+// NOTE -- veto
 // --------------------------------------------------
  
-Schema::create('usersnewsxxxxxxx', function($table) {
- $table->increments('id')->unsigned();
- $table->string('email', 255)->unique();
- $table->string('password', 255);
- $table->text('permissions')->nullable();
- $table->boolean('activated');
- $table->string('activation_code', 255)->nullable();
- $table->timestamp('activated_at')->nullable();
- $table->timestamp('last_login')->nullable();
- $table->string('persist_code', 255)->nullable();
- $table->string('reset_password_code', 255)->nullable();
- $table->text('first_name')->nullable();
- $table->text('last_name')->nullable();
+Schema::create('veto', function($table) {
+ $table->increments('veto_id');
+ $table->unsignedInteger('delivery_datedelivery_date_id');
+ $table->unsignedInteger('customercustomer_id');
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
- $table->('produkt');
- $table->('produkttyp');
- $table->('price_produkt');
- $table->('obstbox');
- $table->('price_adobstbox');
- $table->('wein');
- $table->('price_adwein');
- $table->('summe');
- $table->('terms');
- $table->('status');
  });
 
 
@@ -1047,6 +1072,7 @@ Schema::drop('beispielbox');
 Schema::drop('calendar');
 Schema::drop('categories');
 Schema::drop('customers');
+Schema::drop('delivery_date');
 Schema::drop('deliveryarea');
 Schema::drop('deliveryassign');
 Schema::drop('deliverytimes');
@@ -1075,28 +1101,29 @@ Schema::drop('list_ust');
 Schema::drop('login');
 Schema::drop('logisticianmanager');
 Schema::drop('menus');
-Schema::drop('menus2');
 Schema::drop('news');
 Schema::drop('newsletters');
 Schema::drop('obstbox');
 Schema::drop('offers');
 Schema::drop('order');
+Schema::drop('order_address');
+Schema::drop('order_items');
+Schema::drop('order_status_history');
 Schema::drop('pages');
 Schema::drop('photo_galleries');
 Schema::drop('photos');
+Schema::drop('product_subscription');
 Schema::drop('products');
-Schema::drop('productsy');
 Schema::drop('ranking');
 Schema::drop('settings');
 Schema::drop('sliders');
 Schema::drop('sofunktioniertes');
+Schema::drop('subscription');
 Schema::drop('tags');
-Schema::drop('test');
-Schema::drop('tests');
 Schema::drop('throttle');
 Schema::drop('users');
 Schema::drop('users_groups');
-Schema::drop('usersnewsxxxxxxx');
+Schema::drop('veto');
 
 }
 }
