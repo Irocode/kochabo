@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-06-26 07:04:44
+// NOTE Migration Created: 2014-06-26 09:31:17
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -724,16 +724,13 @@ Schema::create('offers', function($table) {
 // --------------------------------------------------
  
 Schema::create('order', function($table) {
- $table->increments('id');
+ $table->increments('order_id');
  $table->date('delivery_date');
  $table->unsignedInteger('order_increment_id');
  $table->unsignedInteger('deliverable');
  $table->unsignedInteger('customercustomer_id');
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
- $table->unsignedInteger('order_id');
- $table->boolean('is_published');
- $table->string('slug', 255);
  });
 
 
