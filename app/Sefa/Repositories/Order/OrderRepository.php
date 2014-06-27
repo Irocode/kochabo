@@ -31,18 +31,18 @@ class OrderRepository extends Validator implements BaseRepositoryInterface
 				public function all()
 
 								{
-								return $this->order->orderBy('created_at', 'DESC')->get();
+								return $this->order->orderBy('created_at', 'DESC')->where('is_published', 1)->get();
 								}
 				public function lists()
 
 								{
-								return $this->order->get()->lists('created_at', 'id');
+								return $this->order->get()->lists('title', 'id');
 								}
 				public function paginate($perPage = null, $all = false)
 
 								{
 								if ($all) return $this->order->orderBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
-								return $this->order->orderBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
+								return $this->order->orderBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
 								}
 				public function find($id)
 
@@ -77,7 +77,17 @@ class OrderRepository extends Validator implements BaseRepositoryInterface
 								{
 								$order = $this->order->find($id)->delete();
 								}
-		
+				public function togglePublish($id)
+
+								{
+								$order = $this->order->find($id);
+								$order->is_published = ($order->is_published) ? false : true;
+								$order->save();
+								return Response::json(array(
+												'result' => 'success',
+												'changed' => ($order->is_published) ? 1 : 0
+								));
+								}
 				}
 
 

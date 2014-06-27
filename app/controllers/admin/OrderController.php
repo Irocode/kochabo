@@ -1,11 +1,23 @@
-<?php
-
-
+<?php namespace App\Controllers\Admin;
+use BaseController;
+use Redirect;
+use View;
+use Input;
+use Validator;
+use Response;
+use Str;
+use Notification;
+use Order_Status_History;
+use OrderAddress;
+use Sefa\Repositories\Order\OrderRepository as Order;
+use Sefa\Exceptions\Validation\ValidationException;
 class OrderController extends BaseController {
-
-public function __construct(Order $order,  OrderAddress $order_address) {
+protected $order;
+public function __construct(Order $order, Order_Status_History $order_status_history,  OrderAddress $order_address) {
 View::share('active', 'modules');
 $this->order = $order;
+$this->order_status_history = $order_status_history;
+
 $this->order_address = $order_address;
 
 }
@@ -59,7 +71,14 @@ return View::make('backend.order.show', compact('order'));
 */
 public function edit($id) {       
 $order = $this->order->find($id);
+
+
+
+$order_status_history = $this->order->find($id)->order_status_history;
+
 $order_address = $this->order->find($id)->order_address;
+
+
 return View::make('backend.order.edit', compact('order','order_address'));
 }
 /**
