@@ -1,160 +1,7 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
 {{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
-
-
-<div class="container">
-
-
-
-
-   <div class="page-header">
-      <h3>
-         Bestellung {{$order->order_id}}
-         <div class="pull-right">
-            {{HTML::link('admin/customer_management/'.$order->customercustomer_id.'/edit','Zurück', array('class'=>'btn btn-u')) }}
-         </div>
-      </h3>
-   </div>
-   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\OrderController@update', $order->id), 'method' => 'PATCH')) }}
-   <!-- Title -->
-   <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
-      <label class="control-label" for="title">BestellID</label>
-      <div class="controls">
-         {{ Form::text('order_id', $order->order_id, array('class'=>'form-control', 'order_id' => 'title', 'placeholder'=>'ID', 'value'=>Input::old('title'))) }}
-         @if ($errors->first('order_id'))
-         <span class="help-block">{{ $errors->first('order_id') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
-
-      <!-- delivery_date -->
-   <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
-      <label class="control-label" for="title">Bestelldatum</label>
-      <div class="controls">
-         {{ Form::text('delivery_date', $order->delivery_date, array('class'=>'form-control', 'delivery_date' => 'delivery_date', 'placeholder'=>'Bestelldatum', 'value'=>Input::old('delivery_date'))) }}
-         @if ($errors->first('delivery_date'))
-         <span class="help-block">{{ $errors->first('delivery_date') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
-
-
-      <!-- order_increment_id -->
-   <div class="control-group {{ $errors->has('order_increment_id') ? 'has-error' : '' }}">
-      <label class="control-label" for="order_increment_id">order_increment_id</label>
-      <div class="controls">
-         {{ Form::text('order_increment_id', $order->order_increment_id, array('class'=>'form-control', 'id' => 'order_increment_id', 'placeholder'=>'order_increment_id', 'value'=>Input::old('order_increment_id'))) }}
-         @if ($errors->first('order_increment_id'))
-         <span class="help-block">{{ $errors->first('order_increment_id') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
-
-
-
-      <!-- deliverable -->
-   <div class="control-group {{ $errors->has('deliverable') ? 'has-error' : '' }}">
-      <label class="control-label" for="deliverable">deliverable</label>
-      <div class="controls">
-         {{ Form::text('deliverable', $order->deliverable, array('class'=>'form-control', 'id' => 'deliverable', 'placeholder'=>'deliverable', 'value'=>Input::old('deliverable'))) }}
-         @if ($errors->first('deliverable'))
-         <span class="help-block">{{ $errors->first('deliverable') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
-
-      <!-- customercustomer_id -->
-   <div class="control-group {{ $errors->has('customercustomer_id') ? 'has-error' : '' }}">
-      <label class="control-label" for="customercustomer_id">customercustomer_id</label>
-      <div class="controls">
-         {{ Form::text('customercustomer_id', $order->customercustomer_id, array('class'=>'form-control', 'id' => 'customercustomer_id', 'placeholder'=>'customercustomer_id', 'value'=>Input::old('customercustomer_id'))) }}
-         @if ($errors->first('customercustomer_id'))
-         <span class="help-block">{{ $errors->first('customercustomer_id') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
-
-
-         <!-- created_at -->
-   <div class="control-group {{ $errors->has('created_at') ? 'has-error' : '' }}">
-      <label class="control-label" for="created_at">created_at</label>
-      <div class="controls">
-         {{ Form::text('created_at', $order->created_at, array('class'=>'form-control', 'id' => 'created_at', 'placeholder'=>'created_at', 'value'=>Input::old('created_at'))) }}
-         @if ($errors->first('created_at'))
-         <span class="help-block">{{ $errors->first('created_at') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
-
-
-         <!-- updated_at -->
-   <div class="control-group {{ $errors->has('updated_at') ? 'has-error' : '' }}">
-      <label class="control-label" for="updated_at">updated_at</label>
-      <div class="controls">
-         {{ Form::text('updated_at', $order->updated_at, array('class'=>'form-control', 'id' => 'updated_at', 'placeholder'=>'updated_at', 'value'=>Input::old('updated_at'))) }}
-         @if ($errors->first('updated_at'))
-         <span class="help-block">{{ $errors->first('updated_at') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
-
-
-
-         <!-- order_id -->
-   <div class="control-group {{ $errors->has('order_id') ? 'has-error' : '' }}">
-      <label class="control-label" for="order_id">order_id</label>
-      <div class="controls">
-         {{ Form::text('order_id', $order->order_id, array('class'=>'form-control', 'id' => 'order_id', 'placeholder'=>'order_id', 'value'=>Input::old('order_id'))) }}
-         @if ($errors->first('order_id'))
-         <span class="help-block">{{ $errors->first('order_id') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
-
-
-
-
- 
-   <br>
-   {{ Form::submit('Änderungen speichern', array('class' => 'btn btn-u')) }}
-   {{ Form::close() }}
-   <!--CKEDITOR ANFANG--> 
-
-
-
-
-
- 
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+{{ Notification::showAll() }}
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
@@ -173,14 +20,16 @@
                 <div class="pull-right">
             <div class="btn-toolbar">
 
-                         
+               <a href="{{URL::to('admin/list_settings_customer')}}" class="btn btn-u" disabled="">
+               <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter Settings
+               </a>               
             </div>
  </div>      
          <br>
          <br>
          <br>
          <div class="table-responsive">
-    
+            @if($order_address->count())
             <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
             {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
             {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
@@ -249,7 +98,7 @@
                
                             
                
-                       "ajax": "../../tablesorter_order_address_index/112",
+                       "ajax": "tablesorter_order_address_index",
                
                
                        "deferRender": true,
@@ -315,7 +164,9 @@
             </table>
          </div>
       </div>
-
+      @else
+      <div class="alert alert-danger">Keine Daten vorhanden</div>
+      @endif
    </div>
 </div>
 </div>

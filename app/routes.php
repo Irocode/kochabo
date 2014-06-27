@@ -189,6 +189,15 @@ Route::get('order/{id}/delete', array('as' => 'admin.order.delete', 'uses' => 'O
 
 
 
+//order_address
+Route::resource('order_address', 'OrderAddressController');
+////order AJAX INDEX Tablesorter
+Route::get('tablesorter_order_address_index/{id}', array('as'=>'admin.order_address.data', 'uses'=>'AjaxController@getDatatable_order_address'));
+Route::get('order_address/{id}/delete', array('as' => 'admin.order_items.delete', 'uses' => 'OrderAddressController@confirmDestroy'))
+->where('id', '\d+');
+
+
+
 Route::resource('address', 'AddressController');
 Route::get('tablesorter_address_index', array('as'=>'admin.address.data', 'uses'=>'AjaxController@getDatatable_address_all'));
 Route::get('tablesorter_address_index/{id}', array('as'=>'admin.address.data', 'uses'=>'AjaxController@getDatatable_address'));

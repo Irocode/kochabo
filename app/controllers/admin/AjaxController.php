@@ -5,6 +5,7 @@ use Customer;
 use Address;
 use AddressNoPrimaryKey;
 use Order;
+use OrderAddress;
 use Products;
 use Users;
 use Deliveryzipcode;
@@ -17,7 +18,7 @@ use Response;
 use Str;
 use Notification;
 class AjaxController extends BaseController {
-public function __construct( Order $order,Users $users, Logisticianmanager $logisticianmanager, Customer $customer,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products  ) {
+public function __construct( Order $order,   OrderAddress $order_address, Users $users, Logisticianmanager $logisticianmanager, Customer $customer,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products  ) {
 View::share('active', 'modules');
 $this->logisticianmanager = $logisticianmanager;
 $this->customer = $customer;
@@ -26,6 +27,7 @@ $this->products = $products;
 $this->deliveryzipcode = $deliveryzipcode;
 $this->users = $users;
 $this->order = $order;
+$this->order_address = $order_address;
 $this->addressnoprimarykey = $addressnoprimarykey;
 
 
@@ -60,13 +62,9 @@ return View::make('backend.address.data', compact('address'));
 // AJAX Call-> Index Address INDEX END
 
 // AJAX Call-> Index Order INDEX Start
-public function getDatatable_order($id) { 
-
-
-
+public function getDatatable_order($id) {
 $order = Order::where('customercustomer_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
 return View::make('backend.order.data', compact('order'));
-
 }
 // AJAX Call-> Index Order INDEX END
 
@@ -76,6 +74,16 @@ $order = Order::where('customercustomer_id', '>', 0)->orderBy('updated_at', 'DES
 return View::make('backend.order.data', compact('order'));
 }
 // AJAX Call-> Index Order INDEX END
+
+
+
+// AJAX Call-> Index Order_address INDEX Start
+public function getDatatable_order_address($id) {
+$order_address = OrderAddress::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
+return View::make('backend.order_address.data', compact('order_address'));
+}
+// AJAX Call-> Index Order_address INDEX END
+
 
 
 // AJAX Call-> Index products INDEX Start

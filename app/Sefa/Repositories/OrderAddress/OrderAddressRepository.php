@@ -1,12 +1,12 @@
-<?php namespace Sefa\Repositories\Order_Address;
+<?php namespace Sefa\Repositories\OrderAddress;
 use Config;
-use Order_Address;
+use OrderAddress;
 use Response;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
 
-class Order_AddressRepository extends Validator implements BaseRepositoryInterface
+class OrderAddressRepository extends Validator implements BaseRepositoryInterface
 
 				{
 				protected $perPage;
@@ -20,7 +20,7 @@ class Order_AddressRepository extends Validator implements BaseRepositoryInterfa
 				// 'first_name'    => 'required',
 				// 'last_name'  => 'required',
 				];
-				public function __construct(Order_Address $order_address)
+				public function __construct(OrderAddress $order_address)
 
 								{
 								$config = Config::get('sfcms');
@@ -30,18 +30,20 @@ class Order_AddressRepository extends Validator implements BaseRepositoryInterfa
 				public function all()
 
 								{
-								return $this->order_address->order_addressBy('created_at', 'DESC')->where('is_published', 1)->get();
+								return $this->order_address->orderBy('created_at', 'DESC')->get();
+								
 								}
 				public function lists()
 
 								{
-								return $this->order_address->get()->lists('title', 'id');
+								return $this->order->get()->lists('last_name', 'address_id');
+								
 								}
 				public function paginate($perPage = null, $all = false)
 
 								{
-								if ($all) return $this->order_address->order_addressBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
-								return $this->order_address->order_addressBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
+								if ($all) return $this->order_address->orderBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
+								return $this->order_address->order_addressBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
 								}
 				public function find($id)
 

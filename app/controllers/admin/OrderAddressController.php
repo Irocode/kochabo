@@ -7,16 +7,13 @@ use Validator;
 use Response;
 use Str;
 use Notification;
-use Order_Status_History;
-use OrderAddress;
-use Sefa\Repositories\Order\OrderRepository as Order;
+use Sefa\Repositories\OrderAddress\OrderAddressRepository as OrderAddress;
 use Sefa\Exceptions\Validation\ValidationException;
-class OrderController extends BaseController {
-protected $order;
-public function __construct(Order $order, Order_Status_History $order_status_history,  OrderAddress $order_address) {
+class OrderAddressController extends BaseController {
+protected $order_address;
+public function __construct(OrderAddress $order_address) {
 View::share('active', 'modules');
-$this->order = $order;
-$this->order_status_history = $order_status_history;
+
 
 $this->order_address = $order_address;
 
@@ -27,8 +24,8 @@ $this->order_address = $order_address;
 * @return Response
 */
 public function index() {
-$order = $this->order->paginate(null, true);
-return View::make('backend.order.index', compact('order'));
+$order_address = $this->order_address->paginate(null, true);
+return View::make('backend.order_address.index', compact('order_address'));
 }
 /**
 * Show the form for creating a new resource.
@@ -36,7 +33,7 @@ return View::make('backend.order.index', compact('order'));
 * @return Response
 */
 public function create() {
-return View::make('backend.order.create');
+return View::make('backend.order_address.create');
 }
 /**
 * Store a newly created resource in storage.
@@ -45,9 +42,9 @@ return View::make('backend.order.create');
 */
 public function store() {
 try {
-$this->order->create(Input::all());
+$this->order_address->create(Input::all());
 Notification::success('Bestellung wurde hinzugefügt');
-return Redirect::route('admin.order.index');
+return Redirect::route('admin.order_address.index');
 } catch (ValidationException $e) {
 return Redirect::back()->withInput()->withErrors($e->getErrors());
 }
@@ -59,9 +56,9 @@ return Redirect::back()->withInput()->withErrors($e->getErrors());
 * @return Response
 */
 public function show($id) {
-	$order = $this->order->find($id);
+	$order_address = $this->order_address->find($id);
 
-return View::make('backend.order.show', compact('order'));
+return View::make('backend.order_address.show', compact('order_address'));
 }
 /**
 * Show the form for editing the specified resource.
@@ -70,16 +67,16 @@ return View::make('backend.order.show', compact('order'));
 * @return Response
 */
 public function edit($id) {       
-$order = $this->order->find($id);
+$order_address = $this->order_address->find($id);
 
 
 
-$order_status_history = $this->order->find($id)->order_status_history;
+$order_address_status_history = $this->order_address->find($id)->order_address_status_history;
 
-$order_address = $this->order->find($id)->order_address;
+$order_address = $this->order_address->find($id)->order_address;
 
 
-return View::make('backend.order.edit', compact('order','order_address'));
+return View::make('backend.order_address.edit', compact('order_address','order_address'));
 }
 /**
 * Update the specified resource in storage.
@@ -89,7 +86,7 @@ return View::make('backend.order.edit', compact('order','order_address'));
 */
 public function update($id) {
 try {
-$this->order->update($id, Input::all());
+$this->order_address->update($id, Input::all());
 Notification::success('Bestellung wurde geändert');
 return Redirect::route('admin.customer.index');
 } catch (ValidationException $e) {
@@ -103,15 +100,15 @@ return Redirect::back()->withInput()->withErrors($e->getErrors());
 * @return Response
 */
 public function destroy($id) {
-$this->order->destroy($id);
+$this->order_address->destroy($id);
 Notification::success('Bestellung wurde gelöscht');
 return Redirect::action('App\Controllers\Admin\OrderController@index');
 }
 public function confirmDestroy($id) {
-$order = $this->order->find($id);
-return View::make('backend.order.confirm-destroy', compact('order'));
+$order_address = $this->order_address->find($id);
+return View::make('backend.order_address.confirm-destroy', compact('order_address'));
 }
 public function togglePublish($id) {
-return $this->order->togglePublish($id);
+return $this->order_address->togglePublish($id);
 }
 }

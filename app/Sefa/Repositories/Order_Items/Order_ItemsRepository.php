@@ -1,6 +1,6 @@
-<?php namespace Sefa\Repositories\Order_Items;
+<?php namespace Sefa\Repositories\Order;
 use Config;
-use Order_Items;
+use Order;
 use Response;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
@@ -10,7 +10,7 @@ class Order_ItemsRepository extends Validator implements BaseRepositoryInterface
 
 				{
 				protected $perPage;
-				protected $order_items;
+				protected $order;
 				/**
 				 * Rules
 				 *
@@ -20,33 +20,34 @@ class Order_ItemsRepository extends Validator implements BaseRepositoryInterface
 				// 'first_name'    => 'required',
 				// 'last_name'  => 'required',
 				];
-				public function __construct(Order_Items $order_items)
+				public function __construct(Order $order)
 
 								{
 								$config = Config::get('sfcms');
 								$this->perPage = $config['modules']['per_page'];
-								$this->order_items = $order_items;
+								$this->order = $order;
+						
 								}
 				public function all()
 
 								{
-								return $this->order_items->order_itemsBy('created_at', 'DESC')->where('is_published', 1)->get();
+								return $this->order->orderBy('created_at', 'DESC')->where('is_published', 1)->get();
 								}
 				public function lists()
 
 								{
-								return $this->order_items->get()->lists('title', 'id');
+								return $this->order->get()->lists('title', 'id');
 								}
 				public function paginate($perPage = null, $all = false)
 
 								{
-								if ($all) return $this->order_items->order_itemsBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
-								return $this->order_items->order_itemsBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
+								if ($all) return $this->order->orderBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
+								return $this->order->orderBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
 								}
 				public function find($id)
 
 								{
-								return $this->order_items->findOrFail($id);
+								return $this->order->findOrFail($id);
 								}
 				public function create($attributes)
 
@@ -54,37 +55,37 @@ class Order_ItemsRepository extends Validator implements BaseRepositoryInterface
 								$attributes['is_published'] = isset($attributes['is_published']) ? true : false;
 								if ($this->isValid($attributes))
 												{
-												$this->order_items->fill($attributes)->save();
+												$this->order->fill($attributes)->save();
 												return true;
 												}
-								throw new ValidationException('order_items validation failed', $this->getErrors());
+								throw new ValidationException('order validation failed', $this->getErrors());
 								}
 				public function update($id, $attributes)
 
 								{
 								$attributes['is_published'] = isset($attributes['is_published']) ? true : false;
-								$this->order_items = $this->find($id);
+								$this->order = $this->find($id);
 								if ($this->isValid($attributes))
 												{
-												$this->order_items->fill($attributes)->save();
+												$this->order->fill($attributes)->save();
 												return true;
 												}
-								throw new ValidationException('order_items validation failed', $this->getErrors());
+								throw new ValidationException('order validation failed', $this->getErrors());
 								}
 				public function destroy($id)
 
 								{
-								$order_items = $this->order_items->find($id)->delete();
+								$order = $this->order->find($id)->delete();
 								}
 				public function togglePublish($id)
 
 								{
-								$order_items = $this->order_items->find($id);
-								$order_items->is_published = ($order_items->is_published) ? false : true;
-								$order_items->save();
+								$order = $this->order->find($id);
+								$order->is_published = ($order->is_published) ? false : true;
+								$order->save();
 								return Response::json(array(
 												'result' => 'success',
-												'changed' => ($order_items->is_published) ? 1 : 0
+												'changed' => ($order->is_published) ? 1 : 0
 								));
 								}
 				}
