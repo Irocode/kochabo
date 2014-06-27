@@ -386,19 +386,19 @@
             <table id="example2" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-                     <th>Order ID</th>
+                   <th>Order ID</th>
                      <th>order_status_history_id</th>
-                     <th>status</th>
-                     <th>channel</th>
-                     <th>operator</th>
+                     <th>status</th>     
+                     <th>channel</th>  
+                      <th>operator</th>
                      <th>timestamp</th>
-                     <th>Erstellt am</th>
-                     <th>Update am</th>
+                     <th>Erstellt am</th>     
+                     <th>Update am</th>  
                   </tr>
                </thead>
                <tfoot>
                   <tr>
-                     <th rowspan="1" colspan="1"></th>
+                         <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
@@ -421,7 +421,7 @@
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
-         <h3 class="panel-title">Bestellung Order Artikel {{$order->order_id}}</h3>
+         <h3 class="panel-title">Bestellung Artikel {{$order->order_id}}</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
@@ -550,15 +550,39 @@
             <table id="example3" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-                     <th>Order ID</th>
-                     <th>product_id</th>
-                     <th>product_sku</th>
-                     <th>operator</th>
-                     <th>product_name</th>
+                     <th>BestellID</th>
+                     <th>order_items_id</th>                     
+                     <th>product_id</th>                     
+                     <th>product_sku</th>              
+                     <th>product_name</th> 
+                     <th>original_price_net</th> 
+                     <th>ust</th>
+                     <th>discount</th>
+                     <th>affilate_discount</th>
+                     <th>affilate_credit</th>
+                     <th>giftvoucher_credit</th>
+                     <th>giftvoucher_code</th>
+                     <th>affilate_code</th>
+                     <th>quantity</th>
+                     <th>timestamp</th>
+                     <th>Erstellt am</th>
+                     <th>Update am</th>
                   </tr>
                </thead>
                <tfoot>
                   <tr>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>

@@ -87,12 +87,27 @@ return View::make('backend.order_items.data', compact('order_items'));
 }
 // AJAX Call-> Index Order_order_items INDEX END
 
+// AJAX Call-> Index Order_order_items (ALLE) INDEX Start
+public function getDatatable_order_items_all() {
+$order_items = OrderItems::where('orderorder_id', '>', 0)->orderBy('orderorder_id', 'DESC')->get();
+return View::make('backend.order_items.data', compact('order_items'));
+}
+// AJAX Call-> Index Order_order_items (ALLE) INDEX END
+
 // AJAX Call-> Index Order_status_history INDEX Start
 public function getDatatable_order_status_history($id) {
 $order_status_history = OrderStatusHistory::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
 return View::make('backend.order_status_history.data', compact('order_status_history'));
 }
 // AJAX Call-> Index Order_status_history INDEX END
+
+// AJAX Call-> Index Order_status_history (ALLE)INDEX Start
+public function getDatatable_order_status_history_all() {
+$order_status_history = OrderStatusHistory::where('orderorder_id', '>', 0)->orderBy('orderorder_id', 'DESC')->get();
+return View::make('backend.order_status_history.data', compact('order_status_history'));
+}
+// AJAX Call-> Index Order_status_history (ALLE) INDEX END
+
 
 // AJAX Call-> Index products INDEX Start
 public function getDatatable_products() { 

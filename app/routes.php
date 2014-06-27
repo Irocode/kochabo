@@ -193,6 +193,7 @@ Route::get('order_address/{id}/delete', array('as' => 'admin.order_address.delet
 Route::resource('order_items', 'OrderItemsController');
 ////order AJAX INDEX Tablesorter
 Route::get('tablesorter_order_items_index/{id}', array('as'=>'admin.order_items.data', 'uses'=>'AjaxController@getDatatable_order_items'));
+Route::get('tablesorter_order_items_index', array('as'=>'admin.order_items.data', 'uses'=>'AjaxController@getDatatable_order_items_all'));
 Route::get('order_items/{id}/delete', array('as' => 'admin.order_items.delete', 'uses' => 'OrderItemsController@confirmDestroy'))
 ->where('id', '\d+');
 
@@ -200,6 +201,7 @@ Route::get('order_items/{id}/delete', array('as' => 'admin.order_items.delete', 
 Route::resource('order_status_history', 'OrderStatusHistoryController');
 ////order AJAX INDEX Tablesorter
 Route::get('tablesorter_order_status_history_index/{id}', array('as'=>'admin.order_status_history.data', 'uses'=>'AjaxController@getDatatable_order_status_history'));
+Route::get('tablesorter_order_status_history_index', array('as'=>'admin.order_status_history.data', 'uses'=>'AjaxController@getDatatable_order_status_history_all'));
 Route::get('order_status_history/{id}/delete', array('as' => 'admin.order_status_history.delete', 'uses' => 'OrderStatusHistoryController@confirmDestroy'))
 ->where('id', '\d+');
 

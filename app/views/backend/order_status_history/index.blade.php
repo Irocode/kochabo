@@ -5,7 +5,7 @@
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
-              <h3 class="panel-title">Bestell Items</h3>
+              <h3 class="panel-title">Bestell Historie</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
@@ -143,14 +143,22 @@
 
 
                      <th>Order ID</th>
-                     <th>KundenID</th>
-                     <th>Order_increment_id</th>     
-                     <th>Lieferbar</th>  
+                     <th>order_status_history_id</th>
+                     <th>status</th>     
+                     <th>channel</th>  
+                      <th>operator</th>
+                     <th>timestamp</th>
+                     <th>Erstellt am</th>     
+                     <th>Update am</th>  
                 
                   </tr>
                </thead>
                <tfoot>
                   <tr>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>

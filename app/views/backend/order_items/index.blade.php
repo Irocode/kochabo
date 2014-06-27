@@ -5,7 +5,7 @@
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
-              <h3 class="panel-title">Bestellungen</h3>
+              <h3 class="panel-title">Artikel Bestellungen</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
@@ -141,18 +141,37 @@
                   <tr>
 
 
-
-                     <th>order_items_id</th>
-                     <th>orderorder_id</th>
-                     <th>product_id</th>     
-                     <th>Lieferbar</th>  
+                     <th>BestellID</th>
+                     <th>order_items_id</th>                     
+                     <th>product_id</th>                     
                      <th>product_sku</th>              
-                     <th>product_name/th>                 
-                     <th>Bearbeiten</th>
+                     <th>product_name</th> 
+                     <th>original_price_net</th> 
+                     <th>ust</th>
+                     <th>discount</th>
+                     <th>affilate_discount</th>
+                     <th>affilate_credit</th>
+                     <th>giftvoucher_credit</th>
+                     <th>giftvoucher_code</th>
+                     <th>affilate_code</th>
+                     <th>quantity</th>
+                     <th>timestamp</th>
+                     <th>Erstellt am</th>
+                     <th>Update am</th>
                   </tr>
                </thead>
                <tfoot>
                   <tr>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>

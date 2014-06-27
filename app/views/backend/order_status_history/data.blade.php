@@ -2,8 +2,8 @@
   "data": [   
 @foreach ($order_status_history as $index => $v)
 [   
-   "{{{ $v->order_status_history_id }}}",
-   "{{{ $v->orderorder_id }}}",
+  "{{{ $v->orderorder_id }}}",
+   "{{{ $v->order_status_history_id }}}", 
    "{{{ $v->status }}}",
    "{{{ $v->channel }}}",
     "{{{ $v->operator }}}",

@@ -70,6 +70,8 @@
                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-euro"></span>Bestellungen <b class="caret"></b></a>
                <ul class="dropdown-menu">
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/order') }}"><span class="glyphicon glyphicon-euro"></span>Bestellungen verwalten</a></li>
+                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/order_items') }}"><span class="glyphicon glyphicon-euro"></span>Artikel Bestellungen </a></li>
+                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/order_status_history') }}"><span class="glyphicon glyphicon-euro"></span>Bestellung Historie</a></li>
            
                </ul>
             </li>
