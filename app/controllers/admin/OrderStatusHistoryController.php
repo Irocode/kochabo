@@ -7,7 +7,6 @@ use Validator;
 use Response;
 use Str;
 use Notification;
-use OrderStatusHistory;
 use Sefa\Repositories\OrderStatusHistory\OrderStatusHistoryRepository as OrderStatusHistory;
 use Sefa\Exceptions\Validation\ValidationException;
 class OrderStatusHistoryController extends BaseController {

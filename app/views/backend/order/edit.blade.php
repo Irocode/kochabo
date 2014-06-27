@@ -2,13 +2,7 @@
 @section('content')
 {{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
 {{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
-
-
 <div class="container">
-
-
-
-
    <div class="page-header">
       <h3>
          Bestellung {{$order->order_id}}
@@ -29,8 +23,7 @@
       </div>
    </div>
    <br>
-
-      <!-- delivery_date -->
+   <!-- delivery_date -->
    <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
       <label class="control-label" for="title">Bestelldatum</label>
       <div class="controls">
@@ -41,9 +34,7 @@
       </div>
    </div>
    <br>
-
-
-      <!-- order_increment_id -->
+   <!-- order_increment_id -->
    <div class="control-group {{ $errors->has('order_increment_id') ? 'has-error' : '' }}">
       <label class="control-label" for="order_increment_id">order_increment_id</label>
       <div class="controls">
@@ -54,10 +45,7 @@
       </div>
    </div>
    <br>
-
-
-
-      <!-- deliverable -->
+   <!-- deliverable -->
    <div class="control-group {{ $errors->has('deliverable') ? 'has-error' : '' }}">
       <label class="control-label" for="deliverable">deliverable</label>
       <div class="controls">
@@ -68,8 +56,7 @@
       </div>
    </div>
    <br>
-
-      <!-- customercustomer_id -->
+   <!-- customercustomer_id -->
    <div class="control-group {{ $errors->has('customercustomer_id') ? 'has-error' : '' }}">
       <label class="control-label" for="customercustomer_id">customercustomer_id</label>
       <div class="controls">
@@ -80,9 +67,7 @@
       </div>
    </div>
    <br>
-
-
-         <!-- created_at -->
+   <!-- created_at -->
    <div class="control-group {{ $errors->has('created_at') ? 'has-error' : '' }}">
       <label class="control-label" for="created_at">created_at</label>
       <div class="controls">
@@ -93,9 +78,7 @@
       </div>
    </div>
    <br>
-
-
-         <!-- updated_at -->
+   <!-- updated_at -->
    <div class="control-group {{ $errors->has('updated_at') ? 'has-error' : '' }}">
       <label class="control-label" for="updated_at">updated_at</label>
       <div class="controls">
@@ -106,10 +89,7 @@
       </div>
    </div>
    <br>
-
-
-
-         <!-- order_id -->
+   <!-- order_id -->
    <div class="control-group {{ $errors->has('order_id') ? 'has-error' : '' }}">
       <label class="control-label" for="order_id">order_id</label>
       <div class="controls">
@@ -120,59 +100,44 @@
       </div>
    </div>
    <br>
-
-
    <br>
    {{ Form::submit('Änderungen speichern', array('class' => 'btn btn-u')) }}
    {{ Form::close() }}
    <!--CKEDITOR ANFANG--> 
-
-
 </div>
-
-
-
-
 <!--ADDRESS ANFANG ----------------------------------------------------------------- --> 
-
-
-
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
-              <h3 class="panel-title">Bestellung Adresse {{$order->order_id}}</h3>
+         <h3 class="panel-title">Bestellung Adresse {{$order->order_id}}</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
             <div class="btn-toolbar">
-            <!--
-               <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
-               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Bestellung anlegen (In Folge die Bestellung)
-               </a>
-               -->
+               <!--
+                  <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
+                  <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Bestellung anlegen (In Folge die Bestellung)
+                  </a>
+                  -->
             </div>
          </div>
-                <div class="pull-right">
+         <div class="pull-right">
             <div class="btn-toolbar">
-
-                         
             </div>
- </div>      
+         </div>
          <br>
          <br>
          <br>
          <div class="table-responsive">
-    
             <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
-   
             <script type="text/javascript" language="javascript" class="init">
                $(document).ready(function() {
                 $(document).ready(function() {         
-    lightbox('Wird geladen');          
-    setTimeout(function() {          
-   closeLightbox();   
-    },690);    });
-             
+               lightbox('Wird geladen');          
+               setTimeout(function() {          
+               closeLightbox();   
+               },690);    });
+               
                    var table = $('#example').DataTable(
                
                     {
@@ -268,15 +233,11 @@
             <table id="example" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-
-
-
                      <th>Order ID</th>
                      <th>AddressID</th>
-                     <th>Anrede</th>     
-                     <th>Vorname</th>  
-                      <th>Nachname</th>  
-                
+                     <th>Anrede</th>
+                     <th>Vorname</th>
+                     <th>Nachname</th>
                   </tr>
                </thead>
                <tfoot>
@@ -286,70 +247,50 @@
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
-                 
                   </tr>
                </tfoot>
                <tfoot>
-                 
                </tfoot>
             </table>
          </div>
       </div>
-
    </div>
 </div>
-
 </div>
-
 <!--ADDRESS ENDE ----------------------------------------------------------------- --> 
-
-
-
-
-
-
-
-
 <!--OrderHistory ANFANG ----------------------------------------------------------------- --> 
-
-
-
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
-              <h3 class="panel-title">Bestellung Historie {{$order->order_id}}</h3>
+         <h3 class="panel-title">Bestellung Historie {{$order->order_id}}</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
             <div class="btn-toolbar">
-            <!--
-               <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
-               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Bestellung anlegen (In Folge die Bestellung)
-               </a>
-               -->
+               <!--
+                  <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
+                  <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Bestellung anlegen (In Folge die Bestellung)
+                  </a>
+                  -->
             </div>
          </div>
-                <div class="pull-right">
+         <div class="pull-right">
             <div class="btn-toolbar">
-
-                         
             </div>
- </div>      
+         </div>
          <br>
          <br>
          <br>
          <div class="table-responsive">
-    
             <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
-     
             <script type="text/javascript" language="javascript" class="init">
                $(document).ready(function() {
                 $(document).ready(function() {         
-    lightbox('Wird geladen');          
-    setTimeout(function() {          
-   closeLightbox();   
-    },690);    });
-             
+               lightbox('Wird geladen');          
+               setTimeout(function() {          
+               closeLightbox();   
+               },690);    });
+               
                    var table = $('#example2').DataTable(
                
                     {
@@ -445,18 +386,14 @@
             <table id="example2" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-
-
-
-                     <th>Order ID</th>                   
-                     <th>order_status_history_id</th>     
-                     <th>status</th>  
-                      <th>channel</th>  
-                      <th>operator</th>  
-                      <th>timestamp</th>  
-                      <th>Erstellt am</th>  
-                      <th>Update am</th>  
-                
+                     <th>Order ID</th>
+                     <th>order_status_history_id</th>
+                     <th>status</th>
+                     <th>channel</th>
+                     <th>operator</th>
+                     <th>timestamp</th>
+                     <th>Erstellt am</th>
+                     <th>Update am</th>
                   </tr>
                </thead>
                <tfoot>
@@ -469,58 +406,41 @@
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
-             
-                 
                   </tr>
                </tfoot>
                <tfoot>
-                 
                </tfoot>
             </table>
          </div>
       </div>
-
    </div>
 </div>
-
 </div>
-
 <!--OrderHistory ENDE ----------------------------------------------------------------- --> 
-
-
-
-
-
 <!--OrderItems ANFANG ----------------------------------------------------------------- --> 
-
-
-
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
-              <h3 class="panel-title">Bestellung Order Artikel {{$order->order_id}}</h3>
+         <h3 class="panel-title">Bestellung Order Artikel {{$order->order_id}}</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
             <div class="btn-toolbar">
-            <!--
-               <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
-               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Bestellung anlegen (In Folge die Bestellung)
-               </a>
-               -->
+               <!--
+                  <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
+                  <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Bestellung anlegen (In Folge die Bestellung)
+                  </a>
+                  -->
             </div>
          </div>
-                <div class="pull-right">
+         <div class="pull-right">
             <div class="btn-toolbar">
-
-                         
             </div>
- </div>      
+         </div>
          <br>
          <br>
          <br>
          <div class="table-responsive">
-    
             <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
             {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
             {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
@@ -530,11 +450,11 @@
             <script type="text/javascript" language="javascript" class="init">
                $(document).ready(function() {
                 $(document).ready(function() {         
-    lightbox('Wird geladen');          
-    setTimeout(function() {          
-   closeLightbox();   
-    },690);    });
-             
+               lightbox('Wird geladen');          
+               setTimeout(function() {          
+               closeLightbox();   
+               },690);    });
+               
                    var table = $('#example3').DataTable(
                
                     {
@@ -630,16 +550,11 @@
             <table id="example3" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-
-
-
-                     <th>Order ID</th> 
-                     <th>product_id</th>  
-                      <th>product_sku</th>  
-                      <th>operator</th>  
-                      <th>product_name</th>  
-                  
-                
+                     <th>Order ID</th>
+                     <th>product_id</th>
+                     <th>product_sku</th>
+                     <th>operator</th>
+                     <th>product_name</th>
                   </tr>
                </thead>
                <tfoot>
@@ -649,23 +564,15 @@
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
-             
-             
-                 
                   </tr>
                </tfoot>
                <tfoot>
-                 
                </tfoot>
             </table>
          </div>
       </div>
-
    </div>
 </div>
-
 </div>
-
 <!--OrderItems ENDE ----------------------------------------------------------------- --> 
-
 @stop
