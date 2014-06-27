@@ -135,6 +135,17 @@
 
 
  
+
+
+
+   @if($order_address->count())
+                     @foreach( $order_address as $v )                  
+                    Bestellnummer: {{ $v->gender}} / Datum: {{ $v->first_name}}<br>
+                     @endforeach
+                     @else
+                     <div class="alert alert-danger">Keine Bestell Adresse vorhanden</div>
+                     @endif 
+
 </div>
 
 

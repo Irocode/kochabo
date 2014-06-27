@@ -179,13 +179,7 @@ Route::resource('photo_gallery_products', 'PhotoGalleryProductsController');
 Route::get('products/{id}/delete', array('as' => 'admin.products.delete', 'uses' => 'ProductsController@confirmDestroy'))
 ->where('id', '\d+');
 
-//order
-Route::resource('order', 'OrderController');
-////order AJAX INDEX Tablesorter
-Route::get('tablesorter_order_index/{id}', array('as'=>'admin.order.data', 'uses'=>'AjaxController@getDatatable_order'));
-Route::get('tablesorter_order_index', array('as'=>'admin.order.data', 'uses'=>'AjaxController@getDatatable_order_all'));
-Route::get('order/{id}/delete', array('as' => 'admin.order.delete', 'uses' => 'OrderController@confirmDestroy'))
-->where('id', '\d+');
+
 
 
 
@@ -363,6 +357,17 @@ Route::resource('customer_management', 'Customer_management_adminController');
 Route::get('admin/register', 'Customer_management_adminController@create');
 Route::get('admin/customer_management/{id}/delete', array('as' => 'admin.customer_management.delete', 'uses' => 'Customer_management_adminController@confirmDestroy'))
 ->where('id', '\d+');
+
+
+//order
+Route::resource('admin/order', 'OrderController');
+////order AJAX INDEX Tablesorter
+Route::get('admin/tablesorter_order_index/{id}', array('as'=>'admin.order.data', 'uses'=>'AjaxController@getDatatable_order'));
+Route::get('admin/tablesorter_order_index', array('as'=>'admin.order.data', 'uses'=>'AjaxController@getDatatable_order_all'));
+Route::get('admin/order/{id}/delete', array('as' => 'admin.order.delete', 'uses' => 'OrderController@confirmDestroy'))
+->where('id', '\d+');
+
+
 
 //Groups admin
 Route::resource('admin/groups', 'GroupadminController');
