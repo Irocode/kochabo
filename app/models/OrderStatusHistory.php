@@ -2,7 +2,7 @@
 
 use Sefa\Interfaces\BaseModelInterface as BaseModelInterface;
 
-class Order_Status_History extends BaseModel implements BaseModelInterface
+class OrderStatusHistory extends BaseModel implements BaseModelInterface
 {
     protected $primaryKey = 'orderorder_id';
     public $table = 'order_status_history';

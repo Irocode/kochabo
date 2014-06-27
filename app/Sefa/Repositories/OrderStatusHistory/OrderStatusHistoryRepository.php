@@ -1,12 +1,12 @@
-<?php namespace Sefa\Repositories\Order_Status_History;
+<?php namespace Sefa\Repositories\OrderStatusHistory;
 use Config;
-use Order_Status_History;
+use OrderStatusHistory;
 use Response;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
 
-class Order_Status_HistoryRepository extends Validator implements BaseRepositoryInterface
+class OrderStatusHistoryRepository extends Validator implements BaseRepositoryInterface
 
 				{
 				protected $perPage;
@@ -20,7 +20,7 @@ class Order_Status_HistoryRepository extends Validator implements BaseRepository
 				// 'first_name'    => 'required',
 				// 'last_name'  => 'required',
 				];
-				public function __construct(Order_Status_History $order_status_history)
+				public function __construct(OrderStatusHistory $order_status_history)
 
 								{
 								$config = Config::get('sfcms');
@@ -30,18 +30,20 @@ class Order_Status_HistoryRepository extends Validator implements BaseRepository
 				public function all()
 
 								{
-								return $this->order_status_history->order_status_historyBy('created_at', 'DESC')->where('is_published', 1)->get();
+								return $this->order_status_history->orderBy('created_at', 'DESC')->get();
+								
 								}
 				public function lists()
 
 								{
-								return $this->order_status_history->get()->lists('title', 'id');
+								return $this->order->get()->lists('last_name', 'order_status_history_id');
+								
 								}
 				public function paginate($perPage = null, $all = false)
 
 								{
-								if ($all) return $this->order_status_history->order_status_historyBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
-								return $this->order_status_history->order_status_historyBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
+								if ($all) return $this->order_status_history->orderBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
+								return $this->order_status_history->order_status_historyBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
 								}
 				public function find($id)
 

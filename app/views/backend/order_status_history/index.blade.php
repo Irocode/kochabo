@@ -1,18 +1,20 @@
-@extends('backend/_layout/layout') 
+@extends('backend/_layout/layout')
 @section('content')
 {{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
 {{ Notification::showAll() }}
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
-              <h3 class="panel-title">Kunden Adressen</h3>
+              <h3 class="panel-title">Bestell Items</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
             <div class="btn-toolbar">
+            <!--
                <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
-               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Kunden anlegen (In Folge die Adresse)
+               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Bestellung anlegen (In Folge die Bestellung)
                </a>
+               -->
             </div>
          </div>
                 <div class="pull-right">
@@ -27,7 +29,7 @@
          <br>
          <br>
          <div class="table-responsive">
-            @if($address->count())
+            @if($order_status_history->count())
             <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
             {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
             {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
@@ -46,7 +48,7 @@
                
                     {
                
-               "order": [[ 0, "desc" ]],
+               "order_status_history": [[ 0, "desc" ]],
                "language": {
                                "url": "{{URL::to('assets/plugins/tablesorter/media/german.json')}}"
                            },
@@ -61,16 +63,16 @@
                               
                                {
                                    "sExtends": "copy",
-                                     "mColumns":[1,2,3,4,5,6,7],
+                                     "mColumns":[1,2,3],
                                      "bFooter": false,
                                    "sButtonText": "Zwischenablage",
                                     "bSelectedOnly": true
                                },
                                {
                                    "sExtends": "csv",  
-                                      "mColumns":[1,2,3,4,5,6,7,8],
+                                      "mColumns":[1,2,3],
                                      "bFooter": false,                              
-                                   "sFileName": "Kundenadresse.csv",
+                                   "sFileName": "Bestellung.csv",
                                    "sButtonText": "CSV speichern",
                                    "bSelectedOnly": true
                                   
@@ -78,9 +80,9 @@
                             
                                {
                                    "sExtends": "pdf",
-                                      "mColumns":[1,2,3,4,5,6,7,8],
+                                      "mColumns":[1,2,3],
                                      "bFooter": false,
-                                    "sFileName": "Kundenadresse.pdf",
+                                    "sFileName": "Bestellung.pdf",
                                    "sButtonText": "PDF speichern",
                                    "bSelectedOnly": true                             
                            
@@ -96,7 +98,7 @@
                
                             
                
-                       "ajax": "../tablesorter_address_index/{{ $address->user_id }}",
+                       "ajax": "tablesorter_order_status_history_index",
                
                
                        "deferRender": true,
@@ -140,53 +142,20 @@
 
 
 
-                    <th>ID</th>
-                     <th>UserID</th>
-                     <th>Vorname</th>
-                     <th>Nachname</th>
-                     <th>Adresse</th>
-                     <th>PLZ</th>
-                     <th>Ort</th>                  
-                     <th>Land</th>
-                 
-                     <th>Art</th>
-                     <th>Bearbeiten</th>
+                     <th>Order ID</th>
+                     <th>KundenID</th>
+                     <th>Order_increment_id</th>     
+                     <th>Lieferbar</th>  
+                
                   </tr>
                </thead>
                <tfoot>
                   <tr>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter ID">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter UserID">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Vorname">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Nachname">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Adresse">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter PLZ">
-                     </th>
-                     <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Ort">
-                     </th>
-                      <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Land">
-                     </th>
-                      
-                      <th rowspan="1" colspan="1">
-                        <input class="form-control" type="text" placeholder="Filter Art ">
-                     </th>
-                  
-
-
                      <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                 
                   </tr>
                </tfoot>
                <tfoot>
@@ -196,10 +165,9 @@
          </div>
       </div>
       @else
-      <div class="alert alert-danger">Keine Adresse vorhanden</div>
+      <div class="alert alert-danger">Keine Daten vorhanden</div>
       @endif
    </div>
 </div>
 </div>
-
 @stop

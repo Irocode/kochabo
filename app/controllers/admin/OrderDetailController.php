@@ -9,14 +9,17 @@ use Str;
 use Notification;
 use OrderDetail;
 use OrderAddress;
+use OrderItems;
+use OrderStatusHistory;
 use Sefa\Exceptions\Validation\ValidationException;
 class OrderDetailController extends BaseController {
 protected $order_detail_detail;
-public function __construct(OrderDetail $order_detail, OrderAddress $order_address) {
+public function __construct(OrderDetail $order_detail, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history) {
 View::share('active', 'modules');
 $this->order_detail = $order_detail;
 $this->order_address = $order_address;
-
+$this->order_items = $order_items;
+$this->order_status_history = $order_status_history;
 }
 /**
 * Display a listing of the resource.
@@ -24,8 +27,7 @@ $this->order_address = $order_address;
 * @return Response
 */
 public function index() {
-$order_detail = $this->order_detail->paginate(null, true);
-return View::make('backend.order_detail.index', compact('order_detail'));
+
 }
 /**
 * Show the form for creating a new resource.
@@ -33,7 +35,7 @@ return View::make('backend.order_detail.index', compact('order_detail'));
 * @return Response
 */
 public function create() {
-return View::make('backend.order_detail.create');
+
 }
 /**
 * Store a newly created resource in storage.
@@ -41,13 +43,7 @@ return View::make('backend.order_detail.create');
 * @return Response
 */
 public function store() {
-try {
-$this->order_detail->create(Input::all());
-Notification::success('Bestellung wurde hinzugefügt');
-return Redirect::route('admin.order_detail.index');
-} catch (ValidationException $e) {
-return Redirect::back()->withInput()->withErrors($e->getErrors());
-}
+
 }
 /**
 * Display the specified resource.
@@ -56,10 +52,19 @@ return Redirect::back()->withInput()->withErrors($e->getErrors());
 * @return Response
 */
 public function show($id) {
-	$order_detail = $this->order_detail->find($id);
 
-return View::make('backend.order_detail.show', compact('order_detail'));
 }
+
+/**
+* Update the specified resource in storage.
+*
+* @param  int $id
+* @return Response
+*/
+public function update($id) {
+
+}
+
 /**
 * Show the form for editing the specified resource.
 *
@@ -69,42 +74,12 @@ return View::make('backend.order_detail.show', compact('order_detail'));
 public function group($id) { 
 $order = $this->order_detail->find($id);
 $order_address = $this->order_detail->find($id)->order_address;
-return View::make('backend.order.edit', compact('order','order_address'));
+$order_items = $this->order_detail->find($id)->order_items;
+$order_status_history = $this->order_detail->find($id)->order_status_history;
+return View::make('backend.order.edit', compact('order','order_address','order_items','order_status_history'));
+
+}
 
 
 
-}
-/**
-* Update the specified resource in storage.
-*
-* @param  int $id
-* @return Response
-*/
-public function update($id) {
-try {
-$this->order_detail->update($id, Input::all());
-Notification::success('Bestellung wurde geändert');
-return Redirect::route('admin.customer.index');
-} catch (ValidationException $e) {
-return Redirect::back()->withInput()->withErrors($e->getErrors());
-}
-}
-/**
-* Remove the specified resource from storage.
-*
-* @param  int $id
-* @return Response
-*/
-public function destroy($id) {
-$this->order_detail->destroy($id);
-Notification::success('Bestellung wurde gelöscht');
-return Redirect::action('App\Controllers\Admin\OrderController@index');
-}
-public function confirmDestroy($id) {
-$order_detail = $this->order_detail->find($id);
-return View::make('backend.order_detail.confirm-destroy', compact('order_detail'));
-}
-public function togglePublish($id) {
-return $this->order_detail->togglePublish($id);
-}
 }

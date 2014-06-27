@@ -6,7 +6,7 @@ use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
 
-class Order_ItemsRepository extends Validator implements BaseRepositoryInterface
+class OrderItemsRepository extends Validator implements BaseRepositoryInterface
 
 				{
 				protected $perPage;

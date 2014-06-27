@@ -1,8 +1,4 @@
 <?php
-
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Frontend Routes
@@ -135,8 +131,6 @@ Route::resource('photo_gallery', 'PhotoGalleryController');
 Route::get('photo_gallery/{id}/delete', array('as' => 'admin.photo_gallery.delete', 'uses' => 'PhotoGalleryController@confirmDestroy'))
 ->where('id', '[0-9]+');
 
-
-
 // file upload photo gallery
 Route::post('/photo-gallery/upload/{id}', array('as' => 'admin.photo.gallery.upload.image', 'uses' => 'PhotoGalleryController@upload'))
 ->where('id', '[0-9]+');
@@ -188,16 +182,26 @@ Route::get('tablesorter_order_index', array('as'=>'admin.order.data', 'uses'=>'A
 Route::get('order/{id}/delete', array('as' => 'admin.order.delete', 'uses' => 'OrderController@confirmDestroy'))
 ->where('id', '\d+');
 
-
-
 //order_address
 Route::resource('order_address', 'OrderAddressController');
 ////order AJAX INDEX Tablesorter
 Route::get('tablesorter_order_address_index/{id}', array('as'=>'admin.order_address.data', 'uses'=>'AjaxController@getDatatable_order_address'));
-Route::get('order_address/{id}/delete', array('as' => 'admin.order_items.delete', 'uses' => 'OrderAddressController@confirmDestroy'))
+Route::get('order_address/{id}/delete', array('as' => 'admin.order_address.delete', 'uses' => 'OrderAddressController@confirmDestroy'))
 ->where('id', '\d+');
 
+//order_items
+Route::resource('order_items', 'OrderItemsController');
+////order AJAX INDEX Tablesorter
+Route::get('tablesorter_order_items_index/{id}', array('as'=>'admin.order_items.data', 'uses'=>'AjaxController@getDatatable_order_items'));
+Route::get('order_items/{id}/delete', array('as' => 'admin.order_items.delete', 'uses' => 'OrderItemsController@confirmDestroy'))
+->where('id', '\d+');
 
+//order_status_history
+Route::resource('order_status_history', 'OrderStatusHistoryController');
+////order AJAX INDEX Tablesorter
+Route::get('tablesorter_order_status_history_index/{id}', array('as'=>'admin.order_status_history.data', 'uses'=>'AjaxController@getDatatable_order_status_history'));
+Route::get('order_status_history/{id}/delete', array('as' => 'admin.order_status_history.delete', 'uses' => 'OrderStatusHistoryController@confirmDestroy'))
+->where('id', '\d+');
 
 Route::resource('address', 'AddressController');
 Route::get('tablesorter_address_index', array('as'=>'admin.address.data', 'uses'=>'AjaxController@getDatatable_address_all'));
@@ -356,8 +360,6 @@ Route::resource('/admin/newsletter', 'NewsletteradminController');
 //customer_management admin
 //Route::resource('customer_management', 'Customer_management_adminController');
 
-
-
 Route::resource('admin/customer_management', 'Customer_management_adminController');
 Route::resource('customer_management', 'Customer_management_adminController');
 
@@ -381,7 +383,6 @@ Route::get('admin/users/{id}/unsuspend', 'UseradminController@unsuspend')->where
 Route::get('admin/users/{id}/ban', 'UseradminController@ban')->where('id', '[0-9]+');
 Route::get('admin/users/{id}/unban', 'UseradminController@unban')->where('id', '[0-9]+');
 Route::resource('admin/users', 'UseradminController');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -688,11 +689,6 @@ Route::get('postleitzahl_check', 'Ajax_Front_Controller@postleitzahl_check');
 Route::post('postleitzahl_check', 'Ajax_Front_Controller@postleitzahl_check');
 
 
-
-
-
-
-
 /*
 |----------------------------------------------------------------------------------------------------------------------------------
 | Checkout 
@@ -710,7 +706,6 @@ Route::get('meinkontologinzurbestellung', function()
 {
 return View::make('frontend.meinkonto.meinkontologinzurbestellung');
 });
-
 
 
 

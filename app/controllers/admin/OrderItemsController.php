@@ -7,16 +7,13 @@ use Validator;
 use Response;
 use Str;
 use Notification;
-use Order_Status_History;
-use Order_Items_Address;
-use Sefa\Repositories\Order_Items\Order_ItemsRepository as Order_Items;
+use Sefa\Repositories\OrderItems\OrderItemsRepository as OrderItems;
 use Sefa\Exceptions\Validation\ValidationException;
-class Order_ItemsController extends BaseController {
+class OrderItemsController extends BaseController {
 protected $order_items;
-public function __construct(Order_Items $order_items) {
-View::share('active', 'modules');
-$this->order_items = $order_items;
+public function __construct(OrderItems $order_items) {
 
+$this->order_items = $order_items;
 
 }
 /**
