@@ -20,7 +20,7 @@ class UserController extends BaseController {
     protected $forgotPasswordForm;
     protected $changePasswordForm;
     protected $suspendUserForm;
-        protected $offer;
+    protected $offer;
 
     /**
      * Instantiate a new UserController

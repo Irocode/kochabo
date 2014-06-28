@@ -2,9 +2,7 @@
 
 
 
-class TestController extends BaseController {
-
-  
+class TestController extends BaseController { 
 
     public function __construct(Tag $tag) {
 

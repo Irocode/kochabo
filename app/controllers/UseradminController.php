@@ -1,6 +1,4 @@
 <?php 
-
-
 use Authority\Repo\User\UserInterface;
 use Authority\Repo\Group\GroupInterface;
 use Authority\Service\Form\Register\RegisterForm;
