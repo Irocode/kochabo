@@ -8,115 +8,123 @@ use Notification;
 use Sefa\Repositories\Category\CategoryRepository as Category;
 use Sefa\Exceptions\Validation\ValidationException;
 
-class CategoryController extends BaseController {
+class CategoryController extends BaseController
 
-    protected $category;
+                {
+                protected $category;
+                public function __construct(Category $category)
 
-    public function __construct(Category $category) {
+                                {
+                                $this->category = $category;
+                                View::share('active', 'blog');
+                                }
+                /**
+                 * Display a listing of the resource.
+                 *
+                 * @return Response
+                 */
+                public function index()
 
-        $this->category = $category;
-        View::share('active', 'blog');
-    }
+                                {
+                                $categories = $this->category->paginate();
+                                return View::make('backend.category.index', compact('categories'));
+                                }
+                /**
+                 * Show the form for creating a new resource.
+                 *
+                 * @return Response
+                 */
+                public function create()
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index() {
+                                {
+                                return View::make('backend.category.create');
+                                }
+                /**
+                 * Store a newly created resource in storage.
+                 *
+                 * @return Response
+                 */
+                public function store()
 
-        $categories = $this->category->paginate();
-        return View::make('backend.category.index', compact('categories'));
-    }
+                                {
+                                try
+                                                {
+                                                $this->category->create(Input::all());
+                                                Notification::success('Kategorie wurde hinzugefügt');
+                                                return Redirect::route('admin.category.index');
+                                                }
+                                catch(ValidationException $e)
+                                                {
+                                                return Redirect::back()->withInput()->withErrors($e->getErrors());
+                                                }
+                                }
+                /**
+                 * Display the specified resource.
+                 *
+                 * @param int $id
+                 * @return Response
+                 */
+                public function show($id)
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create() {
+                                {
+                                $category = $this->category->find($id);
+                                return View::make('backend.category.show', compact('category'));
+                                }
+                /**
+                 * Show the form for editing the specified resource.
+                 *
+                 * @param int $id
+                 * @return Response
+                 */
+                public function edit($id)
 
-        return View::make('backend.category.create');
-    }
+                                {
+                                $category = $this->category->find($id);
+                                return View::make('backend.category.edit', compact('category'));
+                                }
+                /**
+                 * Update the specified resource in storage.
+                 *
+                 * @param int $id
+                 * @return Response
+                 */
+                public function update($id)
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store() {
+                                {
+                                try
+                                                {
+                                                $this->category->update($id, Input::all());
+                                                Notification::success('Kategorie wurde geupdatet');
+                                                return Redirect::route('admin.category.index');
+                                                }
+                                catch(ValidationException $e)
+                                                {
+                                                return Redirect::back()->withInput()->withErrors($e->getErrors());
+                                                }
+                                }
+                /**
+                 * Remove the specified resource from storage.
+                 *
+                 * @param int $id
+                 * @return Response
+                 */
+                public function destroy($id)
 
-        try {
-            $this->category->create(Input::all());
-            Notification::success('Kategorie wurde hinzugefügt');
-            return Redirect::route('admin.category.index');
-        } catch (ValidationException $e) {
-            return Redirect::back()->withInput()->withErrors($e->getErrors());
-        }
-    }
+                                {
+                                $this->category->destroy($id);
+                                Notification::success('Kategorie wurde gelöscht');
+                                return Redirect::route('admin.category.index');
+                                }
+                /**
+                 * @param $id
+                 * @return mixed
+                 */
+                public function confirmDestroy($id)
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function show($id) {
+                                {
+                                $category = $this->category->find($id);
+                                return View::make('backend.category.confirm-destroy', compact('category'));
+                                }
+                }
 
-        $category = $this->category->find($id);
-        return View::make('backend.category.show', compact('category'));
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id) {
-
-        $category = $this->category->find($id);
-        return View::make('backend.category.edit', compact('category'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function update($id) {
-
-        try {
-            $this->category->update($id, Input::all());
-            Notification::success('Kategorie wurde geupdatet');
-            return Redirect::route('admin.category.index');
-        } catch (ValidationException $e) {
-
-            return Redirect::back()->withInput()->withErrors($e->getErrors());
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id) {
-
-        $this->category->destroy($id);
-        Notification::success('Kategorie wurde gelöscht');
-        return Redirect::route('admin.category.index');
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function confirmDestroy($id) {
-
-        $category = $this->category->find($id);
-        return View::make('backend.category.confirm-destroy', compact('category'));
-    }
-}

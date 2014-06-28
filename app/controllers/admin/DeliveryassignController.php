@@ -20,92 +20,114 @@ $this->logisticianmanager = $logisticianmanager;
 $this->deliverytimes = $deliverytimes;
 }
 /**
-* Display a listing of the resource.
-*
-* @return Response
-*/
-public function index() {
-$deliveryassign = $this->deliveryassign->paginate(null, true);
-return View::make('backend.deliveryassign.index', compact('deliveryassign'));
-}
+ * Display a listing of the resource.
+ *
+ * @return Response
+ */
+public function index()
+
+				{
+				$deliveryassign = $this->deliveryassign->paginate(null, true);
+				return View::make('backend.deliveryassign.index', compact('deliveryassign'));
+				}
 /**
-* Show the form for creating a new resource.
-*
-* @return Response
-*/
-public function create() {
-return View::make('backend.deliveryassign.create');
-}
+ * Show the form for creating a new resource.
+ *
+ * @return Response
+ */
+public function create()
+
+				{
+				return View::make('backend.deliveryassign.create');
+				}
 /**
-* Store a newly created resource in storage.
-*
-* @return Response
-*/
-public function store() {
-try {
-$this->deliveryassign->create(Input::all());
-Notification::success('Logistiker Postleitzahl  wurde hinzugefügt');
-return Redirect::route('admin.deliveryassign.index');
-} catch (ValidationException $e) {
-return Redirect::back()->withInput()->withErrors($e->getErrors());
-}
-}
+ * Store a newly created resource in storage.
+ *
+ * @return Response
+ */
+public function store()
+
+				{
+				try
+								{
+								$this->deliveryassign->create(Input::all());
+								Notification::success('Logistiker Postleitzahl  wurde hinzugefügt');
+								return Redirect::route('admin.deliveryassign.index');
+								}
+				catch(ValidationException $e)
+								{
+								return Redirect::back()->withInput()->withErrors($e->getErrors());
+								}
+				}
 /**
-* Display the specified resource.
-*
-* @param  int $id
-* @return Response
-*/
-public function show($id) {
-$deliveryassign = $this->deliveryassign->find($id);
-return View::make('backend.deliveryassign.show', compact('deliveryassign'));
-}
+ * Display the specified resource.
+ *
+ * @param  int $id
+ * @return Response
+ */
+public function show($id)
+
+				{
+				$deliveryassign = $this->deliveryassign->find($id);
+				return View::make('backend.deliveryassign.show', compact('deliveryassign'));
+				}
 /**
-* Show the form for editing the specified resource.
-*
-* @param  int $id
-* @return Response
-*/
-public function edit($id) {       
+ * Show the form for editing the specified resource.
+ *
+ * @param  int $id
+ * @return Response
+ */
+public function edit($id)
+
+				{
+				$logisticianmanager = Logisticianmanager::find($id);
+				$deliveryzipcode = Logisticianmanager::find($id)->deliveryzipcode;
+				return View::make('backend.deliveryassign.edit', compact('deliveryzipcode, logisticianmanager'));
+				}
+/**
+ * Update the specified resource in storage.
+ *
+ * @param  int $id
+ * @return Response
+ */
+public function update($id)
+
+				{
+				try
+								{
+								$this->deliveryassign->update($id, Input::all());
+								Notification::success('Logistiker Postleitzahl wurde geändert');
+								return Redirect::route('admin.customer.index');
+								}
+				catch(ValidationException $e)
+								{
+								return Redirect::back()->withInput()->withErrors($e->getErrors());
+								}
+				}
+/**
+ * Remove the specified resource from storage.
+ *
+ * @param  int $id
+ * @return Response
+ */
+public function destroy($id)
+
+				{
+				$this->deliveryassign->destroy($id);
+				Notification::success('Logistiker Postleitzahl wurde gelöscht');
+				return Redirect::action('App\Controllers\Admin\DeliveryassignController@index');
+				}
+public function confirmDestroy($id)
+
+				{
+				$deliveryassign = $this->deliveryassign->find($id);
+				return View::make('backend.deliveryassign.confirm-destroy', compact('deliveryassign'));
+				}
+public function togglePublish($id)
+
+				{
+				return $this->deliveryassign->togglePublish($id);
+				}
+}
 
 
-$logisticianmanager=Logisticianmanager::find($id);
-    $deliveryzipcode= Logisticianmanager::find($id)->deliveryzipcode;
-return View::make('backend.deliveryassign.edit', compact('deliveryzipcode, logisticianmanager'));
-}
-
-
-/**
-* Update the specified resource in storage.
-*
-* @param  int $id
-* @return Response
-*/
-public function update($id) {
-try {
-$this->deliveryassign->update($id, Input::all());
-Notification::success('Logistiker Postleitzahl wurde geändert');
-return Redirect::route('admin.customer.index');
-} catch (ValidationException $e) {
-return Redirect::back()->withInput()->withErrors($e->getErrors());
-}
-}
-/**
-* Remove the specified resource from storage.
-*
-* @param  int $id
-* @return Response
-*/
-public function destroy($id) {
-$this->deliveryassign->destroy($id);
-Notification::success('Logistiker Postleitzahl wurde gelöscht');
-return Redirect::action('App\Controllers\Admin\DeliveryassignController@index');
-}
-public function confirmDestroy($id) {
-$deliveryassign = $this->deliveryassign->find($id);
-return View::make('backend.deliveryassign.confirm-destroy', compact('deliveryassign'));
-}
-public function togglePublish($id) {
-return $this->deliveryassign->togglePublish($id);
-}
-}

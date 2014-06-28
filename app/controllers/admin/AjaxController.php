@@ -37,98 +37,111 @@ $this->addressnoprimarykey = $addressnoprimarykey;
 }
 
 // AJAX Call-> Index Logistmanager Start
-public function getDatatable_logisticianmanager() { 
-//return Logisticianmanager::all()->toArray('id','name', 'street','contactPerson','phone','email', JSON_PRETTY_PRINT); // Array dooh
-	$logisticianmanager = Logisticianmanager::where('id', '>', 1)->orderBy('updated_at', 'DESC')->get();
-//$logisticianmanager=Logisticianmanager::all();
-return View::make('backend.logisticianmanager.data', compact('logisticianmanager'));
-//return View::make('backend.logisticianmanager.data');
-}
-// AJAX Call-> Index Logistmanager END
+public function getDatatable_logisticianmanager()
 
+				{
+				// return Logisticianmanager::all()->toArray('id','name', 'street','contactPerson','phone','email', JSON_PRETTY_PRINT); // Array dooh
+				$logisticianmanager = Logisticianmanager::where('id', '>', 1)->orderBy('updated_at', 'DESC')->get();
+				// $logisticianmanager=Logisticianmanager::all();
+				return View::make('backend.logisticianmanager.data', compact('logisticianmanager'));
+				// return View::make('backend.logisticianmanager.data');
+				}
+// AJAX Call-> Index Logistmanager END
 // AJAX Call-> Index Address INDEX Start
-public function getDatatable_address($id) { 	
-$address = Address::where('customercustomer_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
-return View::make('backend.address.data', compact('address'));
-}
+public function getDatatable_address($id)
+
+				{
+				$address = Address::where('customercustomer_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
+				return View::make('backend.address.data', compact('address'));
+				}
 // AJAX Call-> Index Address SHOW END
 // AJAX Call-> Index Address (ALLE) INDEX Start
-public function getDatatable_address_all() { 
-$address = Address::where('customercustomer_id', '>', 0)->orderBy('updated_at', 'DESC')->get();
-return View::make('backend.address.data', compact('address'));
-}
+public function getDatatable_address_all()
+
+				{
+				$address = Address::where('customercustomer_id', '>', 0)->orderBy('updated_at', 'DESC')->get();
+				return View::make('backend.address.data', compact('address'));
+				}
 // AJAX Call-> Index Address INDEX END
-
 // AJAX Call-> Index Order INDEX Start
-public function getDatatable_order($id) {
-$order = Order::where('customercustomer_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
-return View::make('backend.order.data', compact('order'));
-}
-// AJAX Call-> Index Order INDEX END
+public function getDatatable_order($id)
 
+				{
+				$order = Order::where('customercustomer_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
+				return View::make('backend.order.data', compact('order'));
+				}
+// AJAX Call-> Index Order INDEX END
 // AJAX Call-> Index Order INDEX Start ALL
-public function getDatatable_order_all() { 
-$order = Order::where('customercustomer_id', '>', 0)->orderBy('updated_at', 'DESC')->get();
-return View::make('backend.order.data', compact('order'));
-}
+public function getDatatable_order_all()
+
+				{
+				$order = Order::where('customercustomer_id', '>', 0)->orderBy('updated_at', 'DESC')->get();
+				return View::make('backend.order.data', compact('order'));
+				}
 // AJAX Call-> Index Order INDEX END
-
 // AJAX Call-> Index Order_address INDEX Start
-public function getDatatable_order_address($id) {
-$order_address = OrderAddress::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
-return View::make('backend.order_address.data', compact('order_address'));
-}
+public function getDatatable_order_address($id)
+
+				{
+				$order_address = OrderAddress::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
+				return View::make('backend.order_address.data', compact('order_address'));
+				}
 // AJAX Call-> Index Order_address INDEX END
-
 // AJAX Call-> Index Order_order_items INDEX Start
-public function getDatatable_order_items($id) {
-$order_items = OrderItems::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
-return View::make('backend.order_items.data', compact('order_items'));
-}
+public function getDatatable_order_items($id)
+
+				{
+				$order_items = OrderItems::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
+				return View::make('backend.order_items.data', compact('order_items'));
+				}
 // AJAX Call-> Index Order_order_items INDEX END
-
 // AJAX Call-> Index Order_order_items (ALLE) INDEX Start
-public function getDatatable_order_items_all() {
-$order_items = OrderItems::where('orderorder_id', '>', 0)->orderBy('orderorder_id', 'DESC')->get();
-return View::make('backend.order_items.data', compact('order_items'));
-}
+public function getDatatable_order_items_all()
+
+				{
+				$order_items = OrderItems::where('orderorder_id', '>', 0)->orderBy('orderorder_id', 'DESC')->get();
+				return View::make('backend.order_items.data', compact('order_items'));
+				}
 // AJAX Call-> Index Order_order_items (ALLE) INDEX END
-
 // AJAX Call-> Index Order_status_history INDEX Start
-public function getDatatable_order_status_history($id) {
-$order_status_history = OrderStatusHistory::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
-return View::make('backend.order_status_history.data', compact('order_status_history'));
-}
+public function getDatatable_order_status_history($id)
+
+				{
+				$order_status_history = OrderStatusHistory::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
+				return View::make('backend.order_status_history.data', compact('order_status_history'));
+				}
 // AJAX Call-> Index Order_status_history INDEX END
-
 // AJAX Call-> Index Order_status_history (ALLE)INDEX Start
-public function getDatatable_order_status_history_all() {
-$order_status_history = OrderStatusHistory::where('orderorder_id', '>', 0)->orderBy('orderorder_id', 'DESC')->get();
-return View::make('backend.order_status_history.data', compact('order_status_history'));
-}
+public function getDatatable_order_status_history_all()
+
+				{
+				$order_status_history = OrderStatusHistory::where('orderorder_id', '>', 0)->orderBy('orderorder_id', 'DESC')->get();
+				return View::make('backend.order_status_history.data', compact('order_status_history'));
+				}
 // AJAX Call-> Index Order_status_history (ALLE) INDEX END
-
-
 // AJAX Call-> Index products INDEX Start
-public function getDatatable_products() { 
-$products = Products::where('id', '>', 1)->orderBy('id', 'DESC')->get();
-return View::make('backend.products.data', compact('products'));
-}
+public function getDatatable_products()
+
+				{
+				$products = Products::where('id', '>', 1)->orderBy('id', 'DESC')->get();
+				return View::make('backend.products.data', compact('products'));
+				}
 // AJAX Call-> Index products INDEX END
-
 // AJAX Call-> Index Deliveryzipcode INDEX Start
-public function getDatatable_deliveryzipcode() { 
-$deliveryzipcode = Deliveryzipcode::where('id', '>', 1)->orderBy('updated_at', 'DESC')->get();
-return View::make('backend.deliveryzipcode.data', compact('deliveryzipcode'));
-}
+public function getDatatable_deliveryzipcode()
+
+				{
+				$deliveryzipcode = Deliveryzipcode::where('id', '>', 1)->orderBy('updated_at', 'DESC')->get();
+				return View::make('backend.deliveryzipcode.data', compact('deliveryzipcode'));
+				}
 // AJAX Call-> Index Deliveryzipcode INDEX END
-
 // AJAX Call-> Index Address INDEX Start
-public function getDatatable_customer_management() { 
+public function getDatatable_customer_management()
 
-$users = Users::where('id', '>', 1)->orderBy('id', 'DESC')->get();
-return View::make('backend.customer_management.data', compact('users'));
-}
+				{
+				$users = Users::where('id', '>', 1)->orderBy('id', 'DESC')->get();
+				return View::make('backend.customer_management.data', compact('users'));
+				}
 // AJAX Call-> Index Address INDEX END
 
 }

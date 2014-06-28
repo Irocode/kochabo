@@ -13,125 +13,131 @@ use Config;
 use Sefa\Repositories\PhotoGallery\PhotoGalleryRepository as PhotoGallery;
 use Sefa\Exceptions\Validation\ValidationException;
 
-class PhotoGalleryController extends BaseController {
+class PhotoGalleryController extends BaseController
 
-    protected $photoGallery;
+                {
+                protected $photoGallery;
+                public function __construct(PhotoGallery $photoGallery)
 
-    public function __construct(PhotoGallery $photoGallery) {
+                                {
+                                View::share('active', 'modules');
+                                $this->photoGallery = $photoGallery;
+                                }
+                /**
+                 * Display a listing of the resource.
+                 *
+                 * @return Response
+                 */
+                public function index()
 
-        View::share('active', 'modules');
-        $this->photoGallery = $photoGallery;
-    }
+                                {
+                                $photo_galleries = $this->photoGallery->paginate();
+                                return View::make('backend.photo_gallery.index', compact('photo_galleries'));
+                                }
+                /**
+                 * Show the form for creating a new resource.
+                 *
+                 * @return Response
+                 */
+                public function create()
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index() {
+                                {
+                                $attributes = ['title' => 'Photo Gallery Title', 'content' => 'Photo Gallery Content', 'is_published' => false];
+                                try
+                                                {
+                                                $id = $this->photoGallery->create($attributes);
+                                                return Redirect::to("/admin/photo_gallery/" . $id . "/edit");
+                                                }
+                                catch(ValidationException $e)
+                                                {
+                                                }
+                                }
+                /**
+                 * Display the specified resource.
+                 *
+                 * @param  int $id
+                 * @return Response
+                 */
+                public function show($id)
 
-        $photo_galleries = $this->photoGallery->paginate();
-        return View::make('backend.photo_gallery.index', compact('photo_galleries'));
-    }
+                                {
+                                $photo_gallery = $this->photoGallery->find($id);
+                                return View::make('backend.photo_gallery.show', compact('photo_gallery'));
+                                }
+                /**
+                 * Show the form for editing the specified resource.
+                 *
+                 * @param  int $id
+                 * @return Response
+                 */
+                public function edit($id)
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create() {
+                                {
+                                $photo_gallery = $this->photoGallery->find($id);
+                                return View::make('backend.photo_gallery.edit', compact('photo_gallery'));
+                                }
+                /**
+                 * Update the specified resource in storage.
+                 *
+                 * @param  int $id
+                 * @return Response
+                 */
+                public function update($id)
 
-        $attributes = [
-            'title'        => 'Photo Gallery Title',
-            'content'      => 'Photo Gallery Content',
-            'is_published' => false
-        ];
+                                {
+                                try
+                                                {
+                                                $this->photoGallery->update($id, Input::all());
+                                                Notification::success('Photogalerie wurde gepdatet');
+                                                return Redirect::route('admin.photo_gallery.index');
+                                                }
+                                catch(ValidationException $e)
+                                                {
+                                                return Redirect::back()->withInput()->withErrors($e->getErrors());
+                                                }
+                                }
+                /**
+                 * Remove the specified resource from storage.
+                 *
+                 * @param  int $id
+                 * @return Response
+                 */
+                public function destroy($id)
 
-        try {
-            $id = $this->photoGallery->create($attributes);
-            return Redirect::to("/admin/photo_gallery/" . $id . "/edit");
-        } catch (ValidationException $e) {
-        }
-    }
+                                {
+                                $this->photoGallery->destroy($id);
+                                Notification::success('Photogalerie wurde gelöscht');
+                                return Redirect::action('App\Controllers\Admin\PhotoGalleryController@index');
+                                }
+                public function confirmDestroy($id)
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id) {
+                                {
+                                $photo_gallery = $this->photoGallery->find($id);
+                                return View::make('backend.photo_gallery.confirm-destroy', compact('photo_gallery'));
+                                }
+                public function togglePublish($id)
 
-        $photo_gallery = $this->photoGallery->find($id);
-        return View::make('backend.photo_gallery.show', compact('photo_gallery'));
-    }
+                                {
+                                return $this->photoGallery->togglePublish($id);
+                                }
+                public function upload($id)
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function edit($id) {
+                                {
+                                try
+                                                {
+                                                $this->photoGallery->upload($id, Input::file());
+                                                return Response::json('success', 200);
+                                                }
+                                catch(ValidationException $e)
+                                                {
+                                                return Response::json('error: ' . $e->getErrors() , 400);
+                                                }
+                                }
+                public function deleteImage()
 
-        $photo_gallery = $this->photoGallery->find($id);
-        return View::make('backend.photo_gallery.edit', compact('photo_gallery'));
-    }
+                                {
+                                return $this->photoGallery->deletePhoto(Input::get('file'));
+                                }
+                }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function update($id) {
 
-        try {
-            $this->photoGallery->update($id, Input::all());
-            Notification::success('Photogalerie wurde gepdatet');
-            return Redirect::route('admin.photo_gallery.index');
-        } catch (ValidationException $e) {
-
-            return Redirect::back()->withInput()->withErrors($e->getErrors());
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function destroy($id) {
-
-        $this->photoGallery->destroy($id);
-        Notification::success('Photogalerie wurde gelöscht');
-        return Redirect::action('App\Controllers\Admin\PhotoGalleryController@index');
-    }
-
-    public function confirmDestroy($id) {
-
-        $photo_gallery = $this->photoGallery->find($id);
-        return View::make('backend.photo_gallery.confirm-destroy', compact('photo_gallery'));
-    }
-
-    public function togglePublish($id) {
-
-        return $this->photoGallery->togglePublish($id);
-    }
-
-    public function upload($id) {
-
-        try {
-            $this->photoGallery->upload($id, Input::file());
-            return Response::json('success', 200);
-        } catch (ValidationException $e) {
-            return Response::json('error: ' . $e->getErrors(), 400);
-        }
-    }
-
-    public function deleteImage() {
-
-        return $this->photoGallery->deletePhoto(Input::get('file'));
-    }
-}
