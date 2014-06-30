@@ -10,7 +10,7 @@
 
 {{Request::query("code") }}
 {{Request::query("id") }}
-<img class="img-responsive" alt="" src="{{URL::to('uploads/doksoft_uploader/logo/logogross.png')}}">
+<img class="img-responsive" alt="" src="{{URL::to('http://irocode.com/projekt/kochabo/filemanager/userfiles/logo/logogross.png')}}">
 <h1>Deine Aktivierung bei KochAbo.at</h1>
 	<div class="jumbotron text-center">
 		<h2>Hi!</h2>

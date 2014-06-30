@@ -128,7 +128,13 @@ class NewsletteradminController extends BaseController
 												return Redirect::to('/admin/newsletter');
 												}
 								}
-				/**
+			
+	
+
+
+
+
+								/**
 				 * Remove the specified resource from storage.
 				 *
 				 * @param  int  $id
@@ -138,12 +144,22 @@ class NewsletteradminController extends BaseController
 
 								{
 								// delete
-								$ausgaben_adminnewsletter = Newsletter::find($id);
-								$ausgaben_adminnewsletter->delete();
+								$ausgabe = Newsletter::find($id);
+								$ausgabe->delete();
 								// redirect
-								Session::flash('message', 'Löschung erfolgreich');
+								Notification::success('Löschung erfolgreich');
 								return Redirect::to('admin/newsletter');
 								}
+				public function confirmDestroy($id)
+
+								{
+								$newsletter = Newsletter::find($id);
+								return View::make('backend.newsletter.confirm-destroy', compact('newsletter'));
+								}
+			
+
+
+
 				}
 
 

@@ -1,79 +1,182 @@
 @extends('backend/_layout/layout')
 @section('content')
-
-
-
-
+{{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
+{{ Notification::showAll() }}
 <div class="container">
+   <div class="panel panel-default">
+      <div class="panel-heading">
+              <h3 class="panel-title">Newsletter</h3>
+      </div>
+      <div class="panel-body">
+         <div class="pull-left">
+            <div class="btn-toolbar">
+            <!--
+               <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
+               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Bestellung anlegen (In Folge die Bestellung)
+               </a>
+               -->
+            </div>
+         </div>
+                <div class="pull-right">
+            <div class="btn-toolbar">
 
-<nav class="navbar navbar-inverse">
+               <a href="{{URL::to('admin/list_settings_customer')}}" class="btn btn-u" disabled="">
+               <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter Settings
+               </a>               
+            </div>
+ </div>      
+         <br>
+         <br>
+         <br>
+         <div class="table-responsive">
+  
+            <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
+            {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
+            {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
+            {{ HTML::script('assets/plugins/tablesorter/media/js/dataTables.bootstrap.js') }} 
+            {{ HTML::script('assets/plugins/tablesorter/TableTools-2.2.1/js/dataTables.tableTools.js') }} 
+            {{ HTML::style('assets/plugins/tablesorter/TableTools-2.2.1/css/dataTables.tableTools.css') }} 
+            <script type="text/javascript" language="javascript" class="init">
+               $(document).ready(function() {
+                $(document).ready(function() {         
+    lightbox('Wird geladen');          
+    setTimeout(function() {          
+   closeLightbox();   
+    },690);    });
+             
+                   var table = $('#example').DataTable(
+               
+                    {
+               
+               "order": [[ 0, "desc" ]],
+               "language": {
+                               "url": "{{URL::to('assets/plugins/tablesorter/media/german.json')}}"
+                           },
+               
+               
+                       "sDom": 'T<"clear">lfrtip',
+                       "oTableTools": {
+                         "sRowSelect": "multi",
+                          "sSwfPath": "{{URL::to('assets/plugins/tablesorter/TableTools-2.2.1/swf/copy_csv_xls_pdf.swf')}}",
+                           "aButtons": [
+                
 
-	<ul class="nav navbar-nav">
-		<li><a href="{{ URL::to('admin/newsletter') }}">Zeige alle Benutzer</a></li>
-		<!--<li><a href="{{ URL::to('admin/newsletter/create') }}">Newsletter Benutzer erstellen</a>-->
-	</ul>
-</nav>
+                              
+                               {
+                                   "sExtends": "copy",
+                                     "mColumns":[1,2,3,4,5,6],
+                                     "bFooter": false,
+                                   "sButtonText": "Zwischenablage",
+                                    "bSelectedOnly": true
+                               },
+                               {
+                                   "sExtends": "csv",  
+                                      "mColumns":[1,2,3,4,5,6],
+                                     "bFooter": false,                              
+                                   "sFileName": "Bestellung.csv",
+                                   "sButtonText": "CSV speichern",
+                                   "bSelectedOnly": true
+                                  
+                               },
+                            
+                               {
+                                   "sExtends": "pdf",
+                                      "mColumns":[1,2,3,4,5,6],
+                                     "bFooter": false,
+                                    "sFileName": "Bestellung.pdf",
+                                   "sButtonText": "PDF speichern",
+                                   "bSelectedOnly": true                             
+                           
+               
+                               },
+                                {
+                                   "sExtends": "print",
+                                   "sButtonText": "Drucken"
+                               },
+                           ]
+               
+                       },  
+               
+                            
+               
+                       "ajax": "tablesorter_newsletter_index",
+               
+               
+                       "deferRender": true,
+                       "columnDefs": [ {          
+               
+                       },   
+                {
+                          
+               
+                       }
+               
+               
+                        ],
+                   } );
+               
+               
+               
+               // Apply the filter
+               $("#example tfoot input ").on( 'keyup change ', function () {
+               table
+               .column( $(this).parent().index()+':visible' )
+               .search( this.value )
+               .draw();
+               } );           
+               // Apply the filter
+               $("#example tfoot select ").on( 'keyup change ', function () {
+               table
+               .column( $(this).parent().index()+':visible' )
+               .search( this.value )
+               .draw();
+               } );      
+               
+               
+               } );
+               
+               
+            </script>
+            <table id="example" class="display" cellspacing="0" width="100%">
+               <thead>
+                  <tr>
 
-<h1>Alle Benutzer</h1>
 
-<!-- will be used to show any messages -->
-@if (Session::has('message'))
-	<div class="alert alert-info">{{ Session::get('message') }}</div>
-@endif
 
-<table class="table table-striped table-bordered">
-	<thead>
-		<tr>
-			<td>ID</td>
-			<td>UserID</td>
-			<td>Vorname</td>
-			<td>Nachname</td>
-			<td>E-Mail</td>
-			<td>Aktiviert</td>
-			<td>Aktionen</td>
-		</tr>
-	</thead>
-	<tbody>
-	@foreach($varibale_ausgabe as $key => $value)
-		<tr>
-			<td>{{ $value->id }}</td>
-			<td>{{ $value->user_id }}</td>
-			<td>{{ $value->first_name }}</td>
-			<td>{{ $value->last_name }}</td>
-			<td>{{ $value->email }}</td>
-			<td>{{ $value->aktiviert }}</td>
-			
+                     <th>ID</th>
+                     <th>KundenID</th>
+                     <th>Vorname</th>     
+                     <th>Nachname</th>  
+                     <th>E-Mail</th>              
+                     <th>Aktiviert</th>
+                     <th>Erstellt am</th> 
+                     <th>Update am</th> 
+                     <th>Bearbeiten</th>
 
-			<!-- we will also add show, edit, and delete buttons -->
-			<td>
-
-				<!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-				<!-- we will add this later since its a little more complicated than the first two buttons -->
-				{{ Form::open(array('url' => 'admin/newsletter/' . $value->id, 'class' => 'pull-right')) }}
-					{{ Form::hidden('_method', 'DELETE') }}
-					{{ Form::submit('Löschen', array('class' => 'btn btn-warning')) }}
-				{{ Form::close() }}
-
-				<!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-				<a class="btn btn-small btn-success" href="{{ URL::to('admin/newsletter/' . $value->id) }}">Anzeigen</a>
-
-				<!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-				<a class="btn btn-small btn-info" href="{{ URL::to('admin/newsletter/' . $value->id . '/edit') }}">Ändern</a>
-
-				
-
-			</td>
-		</tr>
-	@endforeach
-	</tbody>
-</table>
-
-{{ Form::open(array('url' => 'admin/newsletter/' . $value->id, 'class' => 'pull-right')) }}
-					{{ Form::hidden('_method', 'DELETE') }}
-					{{ Form::submit('Anlegen eines newsletters', array('class' => 'btn btn-warning')) }}
-				{{ Form::close() }}
-				
+                  </tr>
+               </thead>
+               <tfoot>
+                  <tr>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                   
+                  </tr>
+               </tfoot>
+               <tfoot>
+                 
+               </tfoot>
+            </table>
+         </div>
+      </div>
+ 
+   </div>
 </div>
-
-
+</div>
 @stop

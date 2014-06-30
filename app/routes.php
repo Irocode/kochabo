@@ -81,6 +81,7 @@ return View::make('frontend.meinkonto.index');
 });
 // Newsletter
 Route::resource('newsletter', 'NewsletterController');
+
 // Versand
 Route::get('/versand',function() {
 return View::make('frontend.newsletter.versand');
@@ -315,6 +316,13 @@ Route::get('list_recipe_type/{id}/delete', array('as' => 'admin.list.list_recipe
 ->where('id', '[0-9]+');
 
 
+////Newsletter AJAX INDEX Tablesorter
+Route::get('tablesorter_newsletter_index/{id}', array('as'=>'admin.newsletter.data', 'uses'=>'AjaxController@getDatatable_newsletter'));
+Route::get('tablesorter_newsletter_index', array('as'=>'admin.newsletter.data', 'uses'=>'AjaxController@getDatatable_newsletter_all'));
+
+
+
+
 //Filters
 //Select Fields logisticianmanager
 Route::get('list_settings_logisticianmanager', function()
@@ -359,9 +367,13 @@ Route::post( '/settings', array(
 
 //Newsletter
 Route::resource('/admin/newsletter', 'NewsletteradminController');
-//customer_management admin
-//Route::resource('customer_management', 'Customer_management_adminController');
+Route::get('admin/newsletter/{id}/delete', array('as' => 'admin.newsletter.delete', 'uses' => 'NewsletteradminController@confirmDestroy'))
+->where('id', '[0-9]+');
 
+
+
+
+//customer_management
 Route::resource('admin/customer_management', 'Customer_management_adminController');
 Route::resource('customer_management', 'Customer_management_adminController');
 
