@@ -390,9 +390,9 @@ Route::post('admin/users/{id}/change', 'UseradminController@change');
 Route::get('admin/tablesorter_users_index', array('as'=>'admin.users.data', 'uses'=>'UseradminController@getindex'));
 
 Route::get('admin/users/{id}/reset/{code}', 'UseradminController@reset')->where('id', '[0-9]+');
-Route::get('admin/users/{id}/suspend', array('as' => 'suspendUserForm', function($id)
+Route::get('admin/users/{id}/suspend', array('as' => 'adminsuspendUserForm', function($id)
 {
-return View::make('users.suspend')->with('id', $id);
+return View::make('backend.users.suspend')->with('id', $id);
 }));
 Route::post('admin/users/{id}/suspend', 'UseradminController@suspend')->where('id', '[0-9]+');
 Route::get('admin/users/{id}/unsuspend', 'UseradminController@unsuspend')->where('id', '[0-9]+');

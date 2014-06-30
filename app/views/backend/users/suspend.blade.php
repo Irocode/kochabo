@@ -13,7 +13,7 @@ Suspend User
     <div class="col-md-4 col-md-offset-4">
         {{ Form::open(array('action' => array('UseradminController@suspend', $id), 'method' => 'post')) }}
  
-            <h2>Benutzer Suspendieren</h2>
+            <h2>Benutzer Suspendieren </h2>
 
             <div class="form-group {{ ($errors->has('minutes')) ? 'has-error' : '' }}">
                 {{ Form::text('minutes', null, array('class' => 'form-control', 'placeholder' => 'Minuten', 'autofocus')) }}
@@ -22,7 +22,7 @@ Suspend User
 
             {{ Form::hidden('id', $id) }}
 
-            {{ Form::submit('Suspendieren', array('class' => 'btn btn-primary')) }}
+            {{ Form::submit('Suspendieren', array('class' => 'btn btn-u')) }}
             
         {{ Form::close() }}
     </div>

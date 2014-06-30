@@ -21,7 +21,7 @@ class UseradminController extends BaseController {
     protected $resendActivationForm;
     protected $forgotPasswordForm;
     protected $changePasswordForm;
-    protected $suspendUserForm;
+    protected $adminsuspendUserForm;
     protected $offer;
     protected $order;
 
@@ -39,7 +39,7 @@ class UseradminController extends BaseController {
         ResendActivationForm $resendActivationForm,
         ForgotPasswordForm $forgotPasswordForm,
         ChangePasswordForm $changePasswordForm,
-        SuspendUserForm $suspendUserForm)
+        SuspendUserForm $adminsuspendUserForm)
     {
 
         $this->users = $users;
@@ -52,7 +52,7 @@ class UseradminController extends BaseController {
         $this->resendActivationForm = $resendActivationForm;
         $this->forgotPasswordForm = $forgotPasswordForm;
         $this->changePasswordForm = $changePasswordForm;
-        $this->suspendUserForm = $suspendUserForm;
+        $this->adminsuspendUserForm = $adminsuspendUserForm;
 
         //Check CSRF token on POST
         $this->beforeFilter('csrf', array('on' => 'post'));
@@ -546,19 +546,19 @@ Notification::success('Registrierungs-E-Mail wurde verschickt');
         }
 
         // Form Processing
-        $result = $this->suspendUserForm->suspend( Input::all() );
+        $result = $this->adminsuspendUserForm->suspend( Input::all() );
 
         if( $result['success'] )
         {
             // Success!
             Session::flash('success', $result['message']);
-            return Redirect::to('backend/users');
+            return Redirect::to('admin/users');
 
         } else {
             Session::flash('error', $result['message']);
             return Redirect::action('UseradminController@suspend', array($id))
                 ->withInput()
-                ->withErrors( $this->suspendUserForm->errors() );
+                ->withErrors( $this->adminsuspendUserForm->errors() );
         }
     }
 

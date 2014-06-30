@@ -148,17 +148,6 @@ public function getDatatable_customer_management()
 				}
 // AJAX Call-> Index Address INDEX END
 
-// AJAX Call-> Index benutzer INDEX Start
-public function getDatatable_users()
-
-				{
-				$throttle =	Throttle::where('id', '>', 1)->orderBy('id', 'DESC')->get();
-				$users = Users::where('id', '>', 1)->orderBy('id', 'DESC')->get();
-				return View::make('backend.users.data', compact('users','throttle'));
-				}
-// AJAX Call-> Index benutzer INDEX END
-
-
 
 				// AJAX Call-> Index Newsletter INDEX Start
 public function getDatatable_newsletter()

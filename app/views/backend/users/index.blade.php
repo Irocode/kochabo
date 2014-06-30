@@ -147,11 +147,8 @@
                      <th>Letzer Login</th>
                      <th>Erstellt am</th>
                      <th>Update am</th>
-                     <th>Suspendiert</th>
-                       <th>Suspendiert</th>
-                         <th>Suspendiert</th>
-                         
-
+                     <th>Suspendieren</th>
+                     <th>Ban</th> 
                      <th>Bearbeiten</th>
                   </tr>
                </thead>
@@ -189,7 +186,7 @@
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
-                     <th rowspan="1" colspan="1"></th>                  
+                                  
 
                   </tr>
                </tfoot>
