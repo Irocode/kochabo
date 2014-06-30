@@ -1,9 +1,8 @@
 # KochAbo Portal 2014-2015
 
-A new web portal.
-Demo: http://irocode.com/projekt/kochabo
+A new web portal.<br>
+Demo: http://irocode.com/projekt/kochabo<br>
 Demo Admin: http://irocode.com/projekt/kochabo/admin  (gast@kochabo.com/gast05)
-
 
 ----------------------------------------------------------------
 

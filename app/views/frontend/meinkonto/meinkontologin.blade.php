@@ -8,7 +8,7 @@
             {{ HTML::style('assets/css/pages/page_log_reg_v2.css') }}
             {{ HTML::style('assets/css/themes/default.css') }}
             {{ HTML::style('assets/css/bootstrap-datetimepicker.min.css') }}
-            {{ HTML::style('assets/css/themes/headers/default.css') }}
+           
 
 
 
