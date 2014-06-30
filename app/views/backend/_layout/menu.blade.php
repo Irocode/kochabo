@@ -53,6 +53,7 @@
                 
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/users') }}"><span class="glyphicon glyphicon-user"></span>Benutzer Ban/Rechte</a></li>
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/groups') }}"><span class="glyphicon glyphicon-fire"></span>Benutzer Gruppen</a></li>
+                  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/groups/create') }}"><span class="glyphicon glyphicon-fire"></span>Benutzer Neue Gruppen</a></li>
                </ul>
             </li>
             <li class="dropdown {{ ((isset($active) && $active=='plugins') ? 'active' : '') }}">

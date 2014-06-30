@@ -13,7 +13,6 @@ use Users;
 use Deliveryzipcode;
 use Logisticianmanager;
 use Newsletter;
-use Throttle;
 use Redirect;
 use View;
 use Input;
@@ -22,7 +21,7 @@ use Response;
 use Str;
 use Notification;
 class AjaxController extends BaseController {
-public function __construct( Throttle $throttle, Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager, Customer $customer,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter   ) {
+public function __construct(  Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager, Customer $customer,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter   ) {
 View::share('active', 'modules');
 $this->logisticianmanager = $logisticianmanager;
 $this->customer = $customer;
@@ -35,7 +34,6 @@ $this->order_address = $order_address;
 $this->order_items = $order_items;
 $this->order_status_history = $order_status_history;
 $this->newsletter = $newsletter;
-$this->throttle = $throttle;
 $this->addressnoprimarykey = $addressnoprimarykey;
 
 }
