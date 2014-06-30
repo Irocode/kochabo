@@ -60,7 +60,7 @@
                <ul class="dropdown-menu">
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/customer_management') }}"><span class="glyphicon glyphicon-user"></span>Kunden verwalten</a></li>                
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/address') }}"><span class="glyphicon glyphicon-user"></span>Kunden Adressen (Alle)</a></li>
-                  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/newsletter') }}"><span class="glyphicon glyphicon-list-alt"></span>Newsletter</a></li>
+                 
                </ul>
             </li>
 
@@ -98,6 +98,13 @@
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/products') }}"><span class="glyphicon glyphicon-cutlery"></span>Produkte verwalten</a></li>
                </ul>
             </li>
+
+
+          
+
+             <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/newsletter') }}"><span class="glyphicon glyphicon-list-alt"></span>Newsletter</a></li>
+             
+
 
 
          </ul>

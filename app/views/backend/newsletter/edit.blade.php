@@ -4,13 +4,7 @@
 
 <div class="container">
 
-<nav class="navbar navbar-inverse">
 
-	<ul class="nav navbar-nav">
-		<li><a href="{{ URL::to('admin/newsletter') }}">Zeige alle Benutzer</a></li>
-		<!--<li><a href="{{ URL::to('admin/newsletter/create') }}">Newsletter Benutzer erstellen</a>-->
-	</ul>
-</nav>
 
 <div class="pull-right">
 <a href="javascript:history.back();"><button class="btn btn-u">&lt;&lt; Zurück</button></a>
