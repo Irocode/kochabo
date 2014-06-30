@@ -1,74 +1,204 @@
 @extends('backend/_layout/layout')
 @section('content')
-
-{{-- Web site Title --}}
-@section('title')
-@parent
-Home
-@stop
-
-{{-- Content --}}
-@section('content')
-
-
+{{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
+{{ Notification::showAll() }}
 <div class="container">
-<nav class="navbar navbar-inverse">
-    
-    <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('/admin/users') }}">Benutzerübersicht</a></li>
-   
-    </ul>
-</nav>
+   <div class="panel panel-default">
+      <div class="panel-heading">
+         <h3 class="panel-title">Benutzer verwalten</h3>
+      </div>
+      <div class="panel-body">
+         <div class="pull-left">
+            <div class="btn-toolbar">
+               <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
+               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neuen Benutzer anlegen
+               </a>
+            </div>
+         </div>
+         <div class="pull-right">
+            <div class="btn-toolbar">
+               <a href="{{URL::to('admin/list_settings_customer_management')}}" class="btn btn-u" disabled="">
+               <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter settings
+               </a>               
+            </div>
+         </div>
+         <br>
+         <br>
+         <br>
+         <div class="table-responsive">
+     
+            <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
+            {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
+            {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
+            {{ HTML::script('assets/plugins/tablesorter/media/js/dataTables.bootstrap.js') }} 
+            {{ HTML::script('assets/plugins/tablesorter/TableTools-2.2.1/js/dataTables.tableTools.js') }} 
+            {{ HTML::style('assets/plugins/tablesorter/TableTools-2.2.1/css/dataTables.tableTools.css') }} 
+            <script type="text/javascript" language="javascript" class="init">
+               $(document).ready(function() {
+               $(document).ready(function() {         
+               lightbox('Wird geladen');          
+               setTimeout(function() {          
+               closeLightbox();   
+               },690);    });
+               
+               
+                   var table = $('#example').DataTable(
+               
+                    {
+               
+               "order": [[ 0, "desc" ]],
+               "language": {
+                               "url": "{{URL::to('assets/plugins/tablesorter/media/german.json')}}"
+                           },
+               
+               
+                       "sDom": 'T<"clear">lfrtip',
+                       "oTableTools": {
+                         "sRowSelect": "multi",
+                          "sSwfPath": "{{URL::to('assets/plugins/tablesorter/TableTools-2.2.1/swf/copy_csv_xls_pdf.swf')}}",
+                           "aButtons": [
+               
+                              
+                               {
+                                   "sExtends": "copy",
+                                     "mColumns":[2,3,4,5,6,7],
+                                   "bFooter": false,
+                                   "sButtonText": "Zwischenablage",
+                                    "bSelectedOnly": true
+                               },
+                               {
+                                   "sExtends": "csv",                                
+                                   "sFileName": "Benutzer.csv",
+                                   "sButtonText": "CSV speichern",
+                                   "mColumns":[2,3,4,5,6,7],
+                                   "bFooter": false,
+                                   "bSelectedOnly": true
+                                  
+                               },
+                            
+                               {
+                                   "sExtends": "pdf",
+                                   "mColumns":[2,3,4,5,6,7],
+                                   "bFooter": false,
+                                    "sFileName": "Benutzer.pdf",
+                                   "sButtonText": "PDF speichern",
+                                   "bSelectedOnly": true                             
+                           
+               
+                               },
+                                {
+                                   "sExtends": "print",
+                                   "sButtonText": "Drucken"
+                               },
+                           ]
+               
+                       },  
+               
+                            
+               
+                       "ajax": "tablesorter_users_index",
+               
+               
+                       "deferRender": true,
+                       "columnDefs": [ {          
+               
+                       },   
+                {
+                          
+               
+                       }
+               
+               
+                        ],
+                   } );
+               
+               
+               
+               // Apply the filter
+               $("#example tfoot input ").on( 'keyup change ', function () {
+               table
+               .column( $(this).parent().index()+':visible' )
+               .search( this.value )
+               .draw();
+               } );           
+               // Apply the filter
+               $("#example tfoot select ").on( 'keyup change ', function () {
+               table
+               .column( $(this).parent().index()+':visible' )
+               .search( this.value )
+               .draw();
+               } );      
+               
+               
+               } );
+               
+               
+            </script>
+            <table id="example" class="display" cellspacing="0" width="100%">
+               <thead>
+                  <tr>
+                     <th style='width: 60px;'>ID</th>
+                      <th style='width: 60px;'>Geschlecht</th>
+                     <th>Vorname</th>
+                     <th>Nachname</th>
+                     <th>E-Mail</th>
+                     <th>Telefon</th>
+                     <th>Geburtsdatum</th>
+                     <th>Letzer Login</th>
+                     <th>Erstellt am</th>
+                     <th>Update am</th>
+                     <th>Suspendiert</th>
+                       <th>Suspendiert</th>
+                         <th>Suspendiert</th>
+                         
 
-<div class="pull-right">
-<a href="javascript:history.back();"><button class="btn btn-u">&lt;&lt; Zurück</button></a>
+                     <th>Bearbeiten</th>
+                  </tr>
+               </thead>
+               <tfoot>
+                  <tr>
+                     <th rowspan="1" colspan="1" >
+                     <input class="form-control" type="text" placeholder="Filter ID">
+                     </th>
+                     <th rowspan="1" colspan="1" >                   
+                        <select name="select" class="form-control">
+                           <option value="" selected>Auswahl Anrede</option>
+                           @foreach( $list_gender as $x )  
+                           <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach                        
+                        </select>
+                     </th>
+                     <th rowspan="1" colspan="1">
+                     <input class="form-control" type="text" placeholder="Filter Vorname">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Nachname">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                        <input class="form-control" type="text" placeholder="Filter Email">
+                     </th>
+                     <th rowspan="1" colspan="1">
+                      <input class="form-control" type="text" placeholder="Filter Telefon">                      
+                     </th>
+                      <th rowspan="1" colspan="1">
+                      <input class="form-control" type="text" placeholder="Filter Geburtsdatum">                      
+                     </th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>                  
+
+                  </tr>
+               </tfoot>
+            
+            </table>
+         </div>
+      </div>
+     
+   </div>
 </div>
-
-<div style="margin-top:40px">
-
 </div>
-<h4>Alle Benutzer:</h4>
-
-	<div class="table-responsive">
-		<table class="table table-striped table-hover">
-			<thead>
-				<th>Benutzer</th>
-				<th>Status</th>
-				<th>Aktionen</th>
-			</thead>
-			<tbody>
-				@foreach ($users as $user)
-					<tr>
-						<td><a href="{{ action('UseradminController@show', array($user->id)) }}">{{ $user->email }}</a></td>
-						<td>{{ $user->status }} </td>
-						<td>
-							<button class="btn-u" type="button" onClick="location.href='{{ action('UseradminController@edit', array($user->id)) }}'">Ändern</button> 
-							@if ($user->status != 'Suspended')
-								<button class="btn-u btn-u-yellow" type="button" onClick="location.href='{{ route('suspendUserForm', array($user->id)) }}'">Suspendieren</button> 
-							@else
-								<button class="btn-u btn-u-yellow" type="button" onClick="location.href='{{ action('UseradminController@unsuspend', array($user->id)) }}'">Entsperren</button> 
-							@endif
-							@if ($user->status != 'Banned')
-								<button class="btn-u btn-u-orange" type="button" onClick="location.href='{{ action('UseradminController@ban', array($user->id)) }}'">Ban</button> 
-							@else
-								<button class="btn-u btn-u-orange" type="button" onClick="location.href='{{ action('UseradminController@unban', array($user->id)) }}'">Un-Ban</button> 
-							@endif
-							
-					<!--		<button class="btn-u btn-u-red action_confirm" href="{{ action('UseradminController@destroy', array($user->id)) }}" data-token="{{ Session::getToken() }}" data-method="delete">Löschen</button>-->
-					
-
-
-		{{ Form::open(array('url' => 'admin/users/' . $user->id, 'class' => 'pull-right')) }}
-					{{ Form::hidden('_method', 'DELETE') }}
-					{{ Form::submit('Löschen', array('class' => 'btn btn-danger')) }}
-				{{ Form::close() }}
-				</td>
-
-					</tr>
-				@endforeach
-			</tbody>
-		</table>
-	
-
-</div></div>
 @stop

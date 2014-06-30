@@ -387,6 +387,8 @@ Route::resource('admin/groups', 'GroupadminController');
 Route::resource('admin/sessions', 'SessionController', array('only' => array('create', 'store', 'destroy')));
 
 Route::post('admin/users/{id}/change', 'UseradminController@change');
+Route::get('admin/tablesorter_users_index', array('as'=>'admin.users.data', 'uses'=>'UseradminController@getindex'));
+
 Route::get('admin/users/{id}/reset/{code}', 'UseradminController@reset')->where('id', '[0-9]+');
 Route::get('admin/users/{id}/suspend', array('as' => 'suspendUserForm', function($id)
 {

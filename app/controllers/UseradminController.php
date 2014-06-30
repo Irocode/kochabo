@@ -72,9 +72,22 @@ class UseradminController extends BaseController {
     public function index()
     {
         $users = $this->user->all();
-      
-        return View::make('backend/users.index')->with('users', $users);
+       
+       return View::make('backend/users.index')->with('users', $users);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function getindex()
+    {
+        $users = $this->user->all();
+        return View::make('backend.users.data')->with('users', $users);
+       // return View::make('backend/users.index')->with('users', $users);
+    }
+
 
     /**
      * Show the form for creating a new user.

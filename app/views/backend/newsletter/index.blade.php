@@ -73,7 +73,7 @@
                                    "sExtends": "csv",  
                                       "mColumns":[1,2,3,4,5,6],
                                      "bFooter": false,                              
-                                   "sFileName": "Bestellung.csv",
+                                   "sFileName": "Newsletter.csv",
                                    "sButtonText": "CSV speichern",
                                    "bSelectedOnly": true
                                   
@@ -83,7 +83,7 @@
                                    "sExtends": "pdf",
                                       "mColumns":[1,2,3,4,5,6],
                                      "bFooter": false,
-                                    "sFileName": "Bestellung.pdf",
+                                    "sFileName": "Newsletter.pdf",
                                    "sButtonText": "PDF speichern",
                                    "bSelectedOnly": true                             
                            
