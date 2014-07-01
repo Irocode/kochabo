@@ -28,7 +28,8 @@
             <div class="headline">
                <h2>Information</h2>
             </div>
-            <p> Um in dein Konto zu gelangen musst du dich davor anmelden. Benutze dazu bitte unser <a class='btn-u btn-u-red btn-u-large'  target="_top" href="{{URL::to('meinkontologin')}}">LOGIN</a></p>
+            <p> Um in dein Konto zu gelangen musst du dich davor anmelden. <br>Benutze dazu bitte unser <a class='btn-u btn-u-red btn-u-large'  target="_top" href="{{URL::to('meinkontologin')}}">LOGIN</a></p>
+            <br> <a class='btn-u btn-u'  target="_top" href="{{URL::to('forgot')}}">Passwort vergessen?</a>
          </div>
          @endif 
          <!--

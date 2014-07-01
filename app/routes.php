@@ -554,6 +554,8 @@ Route::get('resend', array('as' => 'resendActivationForm', function()
 return View::make('users.resend');
 }));
 Route::post('resend', 'UserController@resend');
+Route::get('versand', 'SessionController@forgotperemail');
+Route::post('versand', 'SessionController@forgotperemail');
 Route::get('forgot', array('as' => 'forgotPasswordForm', function()
 {
 return View::make('users.forgot');

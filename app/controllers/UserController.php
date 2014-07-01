@@ -66,16 +66,6 @@ class UserController extends BaseController {
         return View::make('users.index')->with('users', $users);
     }
 
-
-
-
-
-
-
-
-
-
-
     /**
      * Store a newly created user.
      *
@@ -232,13 +222,8 @@ $month = List_Month::lists('bezeichnung', 'bezeichnung');
 $gender = List_Gender::lists('bezeichnung', 'bezeichnung');
 return View::make('frontend.checkout.index')->with('month',$month)->with('gender',$gender)->with('day',$day);
 
-        
-
-        
+              
     }
-  
-
-
 
 
     /**
@@ -321,10 +306,6 @@ return View::make('frontend.checkout.index')->with('month',$month)->with('gender
                 ->withErrors( $this->userForm->errors() );
         }
     }
-
-
-
-
 
 
 
@@ -625,6 +606,8 @@ return View::make('frontend.checkout.index')->with('month',$month)->with('gender
         }
     }
 
+
+  
 
 }
 

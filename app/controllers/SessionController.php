@@ -3,6 +3,7 @@
 use Authority\Repo\Session\SessionInterface;
 use Authority\Service\Form\Login\LoginForm;
 
+
 class SessionController extends BaseController
 
 {
@@ -14,11 +15,12 @@ class SessionController extends BaseController
     /**
      * Constructor
      */
-    public function __construct(SessionInterface $session, LoginForm $loginForm)
+    public function __construct(SessionInterface $session, LoginForm $loginForm, Users $users)
 
     {
         $this->session = $session;
         $this->loginForm = $loginForm;
+        $this->users = $users;
     }
     /**
      * Show the login form
@@ -102,6 +104,39 @@ class SessionController extends BaseController
         Event::fire('user.logout');
         return Redirect::to('/');
     }
+
+        public function forgotperemail()
+    {   
+
+         $email = Input::get('email');
+         
+         $ausgabe = Users::where('email', '=', $email)->get();
+      
+
+            var_dump($ausgabe);
+
+         
+        return View::make('users.versand', compact('ausgabe'));
+
+
+ Mail::send('users.versand', array(), function($message)
+    {
+      
+        $ausgabe=$ausgabe;
+
+
+        $message
+        ->to($email)
+        ->from('office@kochabo.com','KochAbo.com')
+        ->subject('KochAbo-Dein Passwort');
+    });
+    Notification::success('E-Mail wurde verschickt');
+   
+
+  
+}
+
+
 }
 
 
