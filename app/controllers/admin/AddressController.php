@@ -11,124 +11,128 @@ use Users;
 use Notification;
 use Sefa\Repositories\Address\AddressRepository as Address;
 use Sefa\Exceptions\Validation\ValidationException;
-class AddressController extends BaseController {
-protected $address;
-public function __construct(Address $address, AddressNoPrimaryKey $addressnoprimarykey, Users $users) {
-View::share('active', 'modules');
-$this->address = $address;
-$this->users = $users;
-$this->addressnoprimarykey = $addressnoprimarykey;
-}
-/**
- * Display a listing of the resource.
- *
- * @return Response
- */
-public function index()
+class AddressController extends BaseController
 
-				{
-				$address = $this->address->paginate(null, true);
-				return View::make('backend.address.index', compact('address'));
-				}
-/**
- * Show the form for creating a new resource.
- *
- * @return Response
- */
-public function create()
+{
+    protected $address;
+    public function __construct(Address $address, AddressNoPrimaryKey $addressnoprimarykey, Users $users)
 
-				{
-				return View::make('backend.address.create');
-				}
-/**
- * Store a newly created resource in storage.
- *
- * @return Response
- */
-public function store()
+    {
+        View::share('active', 'modules');
+        $this->address = $address;
+        $this->users = $users;
+        $this->addressnoprimarykey = $addressnoprimarykey;
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
 
-				{
-				try
-								{
-								$this->address->create(Input::all());
-								Notification::success('Adresse wurde hinzugefügt');
-								return Redirect::route('admin.address.index');
-								}
-				catch(ValidationException $e)
-								{
-								return Redirect::back()->withInput()->withErrors($e->getErrors());
-								}
-				}
-/**
- * Display the specified resource.
- *
- * @param  int $id
- * @return Response
- */
-public function show($id)
+    {
+        $address = $this->address->paginate(null, true);
+        return View::make('backend.address.index', compact('address'));
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
 
-				{
-				$address = $this->address->find($id);
-				return View::make('backend.address.show', compact('address'));
-				}
-/**
- * Show the form for editing the specified resource.
- *
- * @param  int $id
- * @return Response
- */
-public function edit($id)
+    {
+        return View::make('backend.address.create');
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store()
 
-				{
-				$address = AddressNoPrimaryKey::find($id);
-				// $address = $this->address->find($id);
-				return View::make('backend.address.edit', compact('address'));
-				}
-/**
- * Update the specified resource in storage.
- *
- * @param  int $id
- * @return Response
- */
-public function update($id)
+    {
+        try
+        {
+            $this->address->create(Input::all());
+            Notification::success('Adresse wurde hinzugefügt');
+            return Redirect::route('admin.address.index');
+        }
+        catch(ValidationException $e)
+        {
+            return Redirect::back()->withInput()->withErrors($e->getErrors());
+        }
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function show($id)
 
-				{
-				try
-								{
-								$this->address->update($id, Input::all());
-								Notification::success('Adresse wurde geändert');
-								return Redirect::back();
-								// return Redirect::route('admin.address.index');
-								}
-				catch(ValidationException $e)
-								{
-								return Redirect::back()->withInput()->withErrors($e->getErrors());
-								}
-				}
-/**
- * Remove the specified resource from storage.
- *
- * @param  int $id
- * @return Response
- */
-public function destroy($id)
+    {
+        $address = $this->address->find($id);
+        return View::make('backend.address.show', compact('address'));
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function edit($id)
 
-				{
-				$this->address->destroy($id);
-				Notification::success('Adresse wurde gelöscht');
-				return Redirect::action('App\Controllers\Admin\AddressController@index');
-				}
-public function confirmDestroy($id)
+    {
+        $address = AddressNoPrimaryKey::find($id);
+        // $address = $this->address->find($id);
+        return View::make('backend.address.edit', compact('address'));
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function update($id)
 
-				{
-				$address = $this->address->find($id);
-				return View::make('backend.address.confirm-destroy', compact('address'));
-				}
-public function togglePublish($id)
+    {
+        try
+        {
+            $this->address->update($id, Input::all());
+            Notification::success('Adresse wurde geändert');
+            return Redirect::back();
+            // return Redirect::route('admin.address.index');
+        }
+        catch(ValidationException $e)
+        {
+            return Redirect::back()->withInput()->withErrors($e->getErrors());
+        }
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function destroy($id)
 
-				{
-				return $this->address->togglePublish($id);
-				}
+    {
+        $this->address->destroy($id);
+        Notification::success('Adresse wurde gelöscht');
+        return Redirect::action('App\Controllers\Admin\AddressController@index');
+    }
+    public function confirmDestroy($id)
+
+    {
+        $address = $this->address->find($id);
+        return View::make('backend.address.confirm-destroy', compact('address'));
+    }
+    public function togglePublish($id)
+
+    {
+        return $this->address->togglePublish($id);
+    }
 }
 
 

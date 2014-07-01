@@ -10,123 +10,126 @@ use Notification;
 use OrderAddress;
 use Sefa\Repositories\Order\OrderRepository as Order;
 use Sefa\Exceptions\Validation\ValidationException;
-class OrderController extends BaseController {
-protected $order;
-public function __construct(Order $order, OrderAddress $order_address) {
-View::share('active', 'modules');
-$this->order = $order;
-$this->order_address = $order_address;
+class OrderController extends BaseController
 
-}
-/**
- * Display a listing of the resource.
- *
- * @return Response
- */
-public function index()
+{
+    protected $order;
+    public function __construct(Order $order, OrderAddress $order_address)
 
-				{
-				$order = $this->order->paginate(null, true);
-				return View::make('backend.order.index', compact('order'));
-				}
-/**
- * Show the form for creating a new resource.
- *
- * @return Response
- */
-public function create()
+    {
+        View::share('active', 'modules');
+        $this->order = $order;
+        $this->order_address = $order_address;
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
 
-				{
-				return View::make('backend.order.create');
-				}
-/**
- * Store a newly created resource in storage.
- *
- * @return Response
- */
-public function store()
+    {
+        $order = $this->order->paginate(null, true);
+        return View::make('backend.order.index', compact('order'));
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
 
-				{
-				try
-								{
-								$this->order->create(Input::all());
-								Notification::success('Bestellung wurde hinzugefügt');
-								return Redirect::route('admin.order.index');
-								}
-				catch(ValidationException $e)
-								{
-								return Redirect::back()->withInput()->withErrors($e->getErrors());
-								}
-				}
-/**
- * Display the specified resource.
- *
- * @param  int $id
- * @return Response
- */
-public function show($id)
+    {
+        return View::make('backend.order.create');
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store()
 
-				{
-				$order = $this->order->find($id);
-				return View::make('backend.order.show', compact('order'));
-				}
-/**
- * Show the form for editing the specified resource.
- *
- * @param  int $id
- * @return Response
- */
-public function edit($id)
+    {
+        try
+        {
+            $this->order->create(Input::all());
+            Notification::success('Bestellung wurde hinzugefügt');
+            return Redirect::route('admin.order.index');
+        }
+        catch(ValidationException $e)
+        {
+            return Redirect::back()->withInput()->withErrors($e->getErrors());
+        }
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function show($id)
 
-				{
-				$order = $this->order->find($id);
-				$order_address = $this->order->find($id)->order_address;
-				return View::make('backend.order.edit', compact('order', 'order_address'));
-				}
-/**
- * Update the specified resource in storage.
- *
- * @param  int $id
- * @return Response
- */
-public function update($id)
+    {
+        $order = $this->order->find($id);
+        return View::make('backend.order.show', compact('order'));
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function edit($id)
 
-				{
-				try
-								{
-								$this->order->update($id, Input::all());
-								Notification::success('Bestellung wurde geändert');
-								return Redirect::route('admin.customer.index');
-								}
-				catch(ValidationException $e)
-								{
-								return Redirect::back()->withInput()->withErrors($e->getErrors());
-								}
-				}
-/**
- * Remove the specified resource from storage.
- *
- * @param  int $id
- * @return Response
- */
-public function destroy($id)
+    {
+        $order = $this->order->find($id);
+        $order_address = $this->order->find($id)->order_address;
+        return View::make('backend.order.edit', compact('order', 'order_address'));
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function update($id)
 
-				{
-				$this->order->destroy($id);
-				Notification::success('Bestellung wurde gelöscht');
-				return Redirect::action('App\Controllers\Admin\OrderController@index');
-				}
-public function confirmDestroy($id)
+    {
+        try
+        {
+            $this->order->update($id, Input::all());
+            Notification::success('Bestellung wurde geändert');
+            return Redirect::route('admin.customer.index');
+        }
+        catch(ValidationException $e)
+        {
+            return Redirect::back()->withInput()->withErrors($e->getErrors());
+        }
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function destroy($id)
 
-				{
-				$order = $this->order->find($id);
-				return View::make('backend.order.confirm-destroy', compact('order'));
-				}
-public function togglePublish($id)
+    {
+        $this->order->destroy($id);
+        Notification::success('Bestellung wurde gelöscht');
+        return Redirect::action('App\Controllers\Admin\OrderController@index');
+    }
+    public function confirmDestroy($id)
 
-				{
-				return $this->order->togglePublish($id);
-				}
+    {
+        $order = $this->order->find($id);
+        return View::make('backend.order.confirm-destroy', compact('order'));
+    }
+    public function togglePublish($id)
+
+    {
+        return $this->order->togglePublish($id);
+    }
 }
 
 

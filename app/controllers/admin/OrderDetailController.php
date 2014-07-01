@@ -12,75 +12,81 @@ use OrderAddress;
 use OrderItems;
 use OrderStatusHistory;
 use Sefa\Exceptions\Validation\ValidationException;
-class OrderDetailController extends BaseController {
-protected $order_detail_detail;
-public function __construct(OrderDetail $order_detail, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history) {
-View::share('active', 'modules');
-$this->order_detail = $order_detail;
-$this->order_address = $order_address;
-$this->order_items = $order_items;
-$this->order_status_history = $order_status_history;
+class OrderDetailController extends BaseController
+
+{
+    protected $order_detail_detail;
+    public function __construct(OrderDetail $order_detail, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history)
+
+    {
+        View::share('active', 'modules');
+        $this->order_detail = $order_detail;
+        $this->order_address = $order_address;
+        $this->order_items = $order_items;
+        $this->order_status_history = $order_status_history;
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+
+    {
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+
+    {
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store()
+
+    {
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function show($id)
+
+    {
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function update($id)
+
+    {
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function group($id)
+
+    {
+        $order = $this->order_detail->find($id);
+        $order_address = $this->order_detail->find($id)->order_address;
+        $order_items = $this->order_detail->find($id)->order_items;
+        $order_status_history = $this->order_detail->find($id)->order_status_history;
+        return View::make('backend.order.edit', compact('order', 'order_address', 'order_items', 'order_status_history'));
+    }
 }
-/**
- * Display a listing of the resource.
- *
- * @return Response
- */
-public function index()
 
-				{
-				}
-/**
- * Show the form for creating a new resource.
- *
- * @return Response
- */
-public function create()
 
-				{
-				}
-/**
- * Store a newly created resource in storage.
- *
- * @return Response
- */
-public function store()
-
-				{
-				}
-/**
- * Display the specified resource.
- *
- * @param  int $id
- * @return Response
- */
-public function show($id)
-
-				{
-				}
-/**
- * Update the specified resource in storage.
- *
- * @param  int $id
- * @return Response
- */
-public function update($id)
-
-				{
-				}
-/**
- * Show the form for editing the specified resource.
- *
- * @param  int $id
- * @return Response
- */
-public function group($id)
-
-				{
-				$order = $this->order_detail->find($id);
-				$order_address = $this->order_detail->find($id)->order_address;
-				$order_items = $this->order_detail->find($id)->order_items;
-				$order_status_history = $this->order_detail->find($id)->order_status_history;
-				return View::make('backend.order.edit', compact('order', 'order_address', 'order_items', 'order_status_history'));
-				}
-}
