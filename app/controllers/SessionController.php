@@ -85,7 +85,7 @@ class SessionController extends BaseController
             return Redirect::back();
         }
         else
-        {
+        {   
             Session::flash('error', $result['message']);
             return Redirect::to('/meinkonto')->withInput()->withErrors($this->loginForm->errors());
         }
@@ -109,7 +109,7 @@ class SessionController extends BaseController
 
              
          
-          
+       
     $email = Input::get('email');     
     $ausgabe = Users::where('email', '=', $email)->get();
     foreach( $ausgabe as $x ) 
@@ -129,9 +129,12 @@ class SessionController extends BaseController
         ->from('office@kochabo.com','KochAbo.com')
         ->subject('KochAbo-Dein Passwort');
     });
-   Session::flash('message', 'E-Mail wurde dir zugeschickt');   
-   
+   //Backend and Frontend
+  
+    Session::flash('message', 'E-Mail wurde dir zugeschickt');       
     return Redirect::back();
+
+
   
 }
 

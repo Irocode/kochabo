@@ -44,9 +44,10 @@
         <div class="input-group margin-bottom-20 {{ ($errors->has('password')) ? 'has-error' : '' }}">
             <span class="input-group-addon"><i class="icon-lock"></i></span>
             {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Passwort'))}}
-             {{ ($errors->has('password') ?  $errors->first('password') : '') }}
-               {{ Form::hidden('user_id', $user_id, array('class' => 'form-control', 'placeholder' => 'user_id', 'autofocus')) }}
-              {{ Form::hidden('zurbestellung', 1, array('class' => 'form-control', 'placeholder' => 'zurbestellung', 'autofocus')) }}
+            {{ ($errors->has('password') ?  $errors->first('password') : '') }}
+            {{ Form::hidden('user_id', $user_id); }}              
+            {{  Form::hidden('zurbestellung', '1'); }}
+            
         </div>
         <hr>
         <label class="checkbox">
@@ -76,18 +77,19 @@
 
 
 <!-- JS Global Compulsory -->           
-<script type="text/javascript" src="assets/plugins/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
-<script type="text/javascript" src="assets/plugins/hover-dropdown.min.js"></script> 
-<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
-<!-- JS Implementing Plugins -->           
-<script type="text/javascript" src="assets/plugins/countdown/jquery.countdown.js"></script>
-<script type="text/javascript" src="assets/plugins/backstretch/jquery.backstretch.min.js"></script>
+ {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
+ {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
+ {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
+ {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
+ {{ HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js') }}
+ {{ HTML::script('assets/plugins/hover-dropdown.min.js') }}
+ {{ HTML::script('assets/plugins/countdown/jquery.countdown.js') }}
+ {{ HTML::script('assets/plugins/back-to-top.js') }}
+ {{ HTML::script('assets/plugins/backstretch/jquery.backstretch.min.js') }}
 <script type="text/javascript">
     $.backstretch([
-      "assets/img/bg/5.jpg",
-      "assets/img/bg/4.jpg",
+     "{{ URL::to('assets/img/bg/5.jpg') }}",
+     "{{ URL::to('assets/img/bg/4.jpg') }}",
       ], {
         fade: 1000,
         duration: 7000

@@ -76,22 +76,18 @@
 
 <!-- JS Global Compulsory -->  
  {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
-  {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
- 
-
-
-<script type="text/javascript" src="assets/plugins/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
-<script type="text/javascript" src="assets/plugins/hover-dropdown.min.js"></script> 
-<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
-<!-- JS Implementing Plugins -->           
-<script type="text/javascript" src="assets/plugins/countdown/jquery.countdown.js"></script>
-<script type="text/javascript" src="assets/plugins/backstretch/jquery.backstretch.min.js"></script>
+ {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
+ {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
+ {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
+ {{ HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js') }}
+ {{ HTML::script('assets/plugins/hover-dropdown.min.js') }}
+ {{ HTML::script('assets/plugins/countdown/jquery.countdown.js') }}
+ {{ HTML::script('assets/plugins/back-to-top.js') }}
+ {{ HTML::script('assets/plugins/backstretch/jquery.backstretch.min.js') }}
 <script type="text/javascript">
     $.backstretch([
-      "assets/img/bg/5.jpg",
-      "assets/img/bg/4.jpg",
+       "{{ URL::to('assets/img/bg/5.jpg') }}",
+       "{{ URL::to('assets/img/bg/4.jpg') }}",
       ], {
         fade: 1000,
         duration: 7000

@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>sf CMS</title>
+    <title>KochAbo.at CMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <!-- CSS are placed here -->
-    {{ HTML::style('assets/bootstrap/css/backend_bootstrap.css') }}
-    {{ HTML::style('assets/bootstrap/css/signin.css') }}
-    <style>
-        body {
-            background-color: #1b1b1b;
-            padding-top: 40px;
-        }
+       
+       {{ HTML::style('assets/plugins/bootstrap/css/bootstrap.min.css') }}
+       {{ HTML::style('assets/css/style.css') }}
+       {{ HTML::style('assets/css/headers/header1.css') }}
+       {{ HTML::style('assets/css/responsive.css') }}
+       {{ HTML::style('assets/plugins/font-awesome/css/font-awesome.css') }}
+       {{ HTML::style('assets/css/pages/page_log_reg_v2.css') }}
+       {{ HTML::style('assets/css/themes/default.css') }}
+       {{ HTML::style('assets/css/bootstrap-datetimepicker.min.css') }}
+       {{ HTML::style('assets/plugins/bootstrap-notify/pnotify.custom.min.css') }}
 
-        .input-group-addon {
-            background-color: rgb(50, 118, 177);
-            border-color: rgb(40, 94, 142);
-            color: rgb(255, 255, 255);
-        }
+       {{ HTML::script('assets/plugins/bootstrap-notify/pnotify.custom.min.js') }}   
 
-        .form-control:focus {
-            background-color: rgb(50, 118, 177);
-            border-color: rgb(40, 94, 142);
-            color: rgb(255, 255, 255);
-        }
-
-        .form-signup input[type="text"], .form-signup input[type="password"] {
-            border: 1px solid rgb(50, 118, 177);
-        }
-    </style>
 </head>
 
 <div class="container">
@@ -39,7 +28,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h5 class="text-center"><b>Passwort vergessen</b></h5>
-                    {{ Form::open(array('class' => 'form-signup', 'id' => 'form-signin')) }}
+                    {{ Form::open(array('action' => 'SessionController@forgotperemail', 'method' => 'post')) }}
 
                     @if ($errors->has('forgot-password'))
                     <div class="alert alert-danger">
@@ -60,14 +49,54 @@
                             {{ Form::text('email', null,array('class' => 'form-control', 'placeholder'=>'E-Mail', 'autofocus'=>'')) }}
                         </div>
                     </div>
+                      
+                    
+                       
 
-                    {{ Form::submit('Passwort senden', array('class' => 'btn btn-sm btn-primary btn-block', 'role'=>'button')) }}
+                    {{ Form::submit('Passwort senden', array('class' => 'btn-u btn-block', 'role'=>'button')) }}<br>
+                    <br>
+                    {{ Session::get('message') }}
                     {{ Form::close() }}
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- JS Global Compulsory -->  
+ {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
+ {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
+ {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
+ {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
+ {{ HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js') }}
+ {{ HTML::script('assets/plugins/hover-dropdown.min.js') }}
+ {{ HTML::script('assets/plugins/countdown/jquery.countdown.js') }}
+ {{ HTML::script('assets/plugins/back-to-top.js') }}
+ {{ HTML::script('assets/plugins/backstretch/jquery.backstretch.min.js') }}                                             
+                                  
 
+
+<script type="text/javascript">
+    $.backstretch([
+
+        "{{ URL::to('assets/img/bg/5.jpg') }}",
+        "{{ URL::to('assets/img/bg/4.jpg') }}",
+    
+     
+      ], {
+        fade: 1000,
+        duration: 7000
+    });
+</script>
+<!-- JS Page Level -->           
+      {{ HTML::script('assets/js/app.js') }}
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="assets/plugins/respond.js"></script>
+<![endif]-->
 </body>
 </html>
