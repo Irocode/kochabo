@@ -108,17 +108,31 @@ class SessionController extends BaseController
     {   
 
              
-         
+        
        
     $email = Input::get('email');     
     $ausgabe = Users::where('email', '=', $email)->get();
+
+
+
+
     foreach( $ausgabe as $x ) 
     {   
         $email=$x->email;
+
+
          $first_name=$x->first_name;
          $passwordhardcode=$x->passwordhardcode; 
     }    
-  
+ 
+ if (empty($passwordhardcode)) {var_dump('nix');
+Session::flash('message', 'Kein Passwort für diese E-Mail Adresse vorhanden');       
+return Redirect::back();
+
+}; 
+
+
+
  $data = array('first_name' => $first_name, 'email' => $email, 'passwordhardcode' => $passwordhardcode);
  Mail::send('users.versand', $data, function($message)
     {
