@@ -122,24 +122,13 @@
 
 
    <br>
-   {{ Form::submit('Änderungen speichern', array('class' => 'btn btn-u')) }}
+  <!-- {{ Form::submit('Änderungen speichern', array('class' => 'btn btn-u')) }}--> 
    {{ Form::close() }}
    <!--CKEDITOR ANFANG--> 
 </div>
 
 
-
- 
-
-
- @foreach( $order_items as $order_items )                  
-                    Bestellnummer: {{ $order_items->order_items_id}}d <br>
-                     @endforeach
-
-
-
-   @if($order->count())
-               
+   @if($order_address->count())              
 
 <!--ADDRESS ANFANG ----------------------------------------------------------------- --> 
 <div class="container">
@@ -193,16 +182,16 @@
                               
                                {
                                    "sExtends": "copy",
-                                     "mColumns":[1,2,3],
+                                     "mColumns":[1,2,3,4],
                                      "bFooter": false,
                                    "sButtonText": "Zwischenablage",
                                     "bSelectedOnly": true
                                },
                                {
                                    "sExtends": "csv",  
-                                      "mColumns":[1,2,3],
+                                      "mColumns":[1,2,3,4],
                                      "bFooter": false,                              
-                                   "sFileName": "Bestellung.csv",
+                                   "sFileName": "BestellungAdresse.csv",
                                    "sButtonText": "CSV speichern",
                                    "bSelectedOnly": true
                                   
@@ -210,9 +199,9 @@
                             
                                {
                                    "sExtends": "pdf",
-                                      "mColumns":[1,2,3],
+                                      "mColumns":[1,2,3,4],
                                      "bFooter": false,
-                                    "sFileName": "Bestellung.pdf",
+                                    "sFileName": "BestellungAdresse.pdf",
                                    "sButtonText": "PDF speichern",
                                    "bSelectedOnly": true                             
                            
@@ -299,6 +288,9 @@
 </div>
 <!--ADDRESS ENDE ----------------------------------------------------------------- --> 
 <!--OrderHistory ANFANG ----------------------------------------------------------------- --> 
+
+ @if($order_status_history->count())
+
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
@@ -359,7 +351,7 @@
                                    "sExtends": "csv",  
                                       "mColumns":[1,2,3],
                                      "bFooter": false,                              
-                                   "sFileName": "Bestellung.csv",
+                                   "sFileName": "BestellAdresse.csv",
                                    "sButtonText": "CSV speichern",
                                    "bSelectedOnly": true
                                   
@@ -369,7 +361,7 @@
                                    "sExtends": "pdf",
                                       "mColumns":[1,2,3],
                                      "bFooter": false,
-                                    "sFileName": "Bestellung.pdf",
+                                    "sFileName": "BestellAdresse.pdf",
                                    "sButtonText": "PDF speichern",
                                    "bSelectedOnly": true                             
                            
@@ -438,7 +430,7 @@
                </thead>
                <tfoot>
                   <tr>
-                         <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
@@ -452,12 +444,19 @@
                </tfoot>
             </table>
          </div>
+         </div>
+         @else
+          <div class="alert alert-danger">Keine Bestell Historie vorhanden</div>
+          @endif 
       </div>
    </div>
 </div>
 </div>
 <!--OrderHistory ENDE ----------------------------------------------------------------- --> 
-<!--OrderItems ANFANG ----------------------------------------------------------------- --> 
+<!--OrderItems ANFANG ----------------------------------------------------------------- -->  
+
+@if($order_items->count())                  
+      
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
@@ -514,16 +513,16 @@
                               
                                {
                                    "sExtends": "copy",
-                                     "mColumns":[1,2,3],
+                                     "mColumns":[1,2,3,4,5,6,7,8,9],
                                      "bFooter": false,
                                    "sButtonText": "Zwischenablage",
                                     "bSelectedOnly": true
                                },
                                {
                                    "sExtends": "csv",  
-                                      "mColumns":[1,2,3],
+                                      "mColumns":[1,2,3,4,5,6,7,8,9],
                                      "bFooter": false,                              
-                                   "sFileName": "Bestellung.csv",
+                                   "sFileName": "BestellArtikel.csv",
                                    "sButtonText": "CSV speichern",
                                    "bSelectedOnly": true
                                   
@@ -531,9 +530,9 @@
                             
                                {
                                    "sExtends": "pdf",
-                                      "mColumns":[1,2,3],
+                                      "mColumns":[1,2,3,4,5,6,7,8,9],
                                      "bFooter": false,
-                                    "sFileName": "Bestellung.pdf",
+                                    "sFileName": "BestellArtikel.pdf",
                                    "sButtonText": "PDF speichern",
                                    "bSelectedOnly": true                             
                            
@@ -634,6 +633,10 @@
                </tfoot>
             </table>
          </div>
+         </div>
+         @else
+         <div class="alert alert-danger">Kein Bestell Artikel vorhanden</div>
+          @endif 
       </div>
    </div>
 </div>

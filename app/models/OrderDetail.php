@@ -28,22 +28,22 @@ class OrderDetail extends BaseModel implements BaseModelInterface
         return "order_detail/" . $this->attributes['order_id'] . "/" . $this->attributes['order_id'];
     }
 
+ 
 
 
-
-     public function order_address()
+     public function orderaddress()
     {
-        return $this->hasMany ('OrderAddress');
+        return $this->hasMany ('OrderAddress', 'orderorder_id')->orderBy('orderorder_id', 'ASC');
     }
 
-     public function order_status_history()
+     public function orderstatushistory()
     {
-        return $this->hasMany ('OrderStatusHistory');
+        return $this->hasMany ('OrderStatusHistory', 'orderorder_id')->orderBy('orderorder_id', 'ASC');
     }
 
-     public function order_items()
+     public function orderitems()
     {
-        return $this->hasMany ('OrderItems');
+        return $this->hasMany ('OrderItems', 'orderorder_id')->orderBy('orderorder_id', 'ASC');
     }
 }
 

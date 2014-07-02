@@ -84,6 +84,7 @@ class OrderController extends BaseController
     {
         $order = $this->order->find($id);
         $order_address = $this->order->find($id)->order_address;
+        
         return View::make('backend.order.edit', compact('order', 'order_address'));
     }
     /**

@@ -176,8 +176,9 @@ Route::get('products/{id}/delete', array('as' => 'admin.products.delete', 'uses'
 
 //order
 Route::resource('order', 'OrderController');
+Route::resource('order', 'OrderDetailController');
 ////order AJAX INDEX Tablesorter
-Route::get('order/{id}/group', array('as'=>'admin.order.edit', 'uses'=>'OrderDetailController@group'));
+
 Route::get('tablesorter_order_index/{id}', array('as'=>'admin.order.data', 'uses'=>'AjaxController@getDatatable_order'));
 Route::get('tablesorter_order_index', array('as'=>'admin.order.data', 'uses'=>'AjaxController@getDatatable_order_all'));
 Route::get('order/{id}/delete', array('as' => 'admin.order.delete', 'uses' => 'OrderController@confirmDestroy'))
