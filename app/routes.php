@@ -175,7 +175,7 @@ Route::get('products/{id}/delete', array('as' => 'admin.products.delete', 'uses'
 ->where('id', '\d+');
 
 //order
-Route::resource('order', 'OrderController');
+Route::resource('order_all', 'OrderController');
 Route::resource('order', 'OrderDetailController');
 ////order AJAX INDEX Tablesorter
 
