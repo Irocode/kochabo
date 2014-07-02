@@ -19,9 +19,10 @@
       <div class="panel panel-default">
          <div class="panel-body">
             <ul class="nav nav-pills nav-stacked">
-               <li><a class="left" href="{{ route('admin.form-post.index') }}"><i class="glyphicon glyphicon-envelope"></i> Inbox</a></li>
-               <li><a class="left" href="{{ route('admin.log') }}"><i class="glyphicon glyphicon-tasks"></i> Logs</a></li>
+               
+               <li><a class="left" href="{{ route('admin.users.index') }}"><i class="glyphicon glyphicon-tasks"></i> Benutzer</a></li>
                <li><a class="left" href="{{ route('admin.settings') }}"><i class="glyphicon glyphicon-cog"></i> Einstellungen</a></li>
+               <li><a class="left" href="{{ route('admin.form-post.index') }}"><i class="glyphicon glyphicon-envelope"></i> Inbox</a></li>
                <li @if(isset($active) && $active=="logs") class="active" @endif><a class="left" href="{{ url('/admin/log') }}"><span class="glyphicon glyphicon-pushpin"></span>Logs</a></li>
                               
             </ul>
@@ -53,7 +54,7 @@
          </div>
          <div class="col-xs-6 col-md-12">
             <a href="{{ route('admin.slider.index') }}" class="btn btn-success btn " role="button" disabled><span class="glyphicon glyphicon-tint"></span> Sliders</a>
-            <a href="{{ route('admin.customer_management.index') }}" class="btn btn-warning btn " role="button"><span class="glyphicon glyphicon-user"></span> Benutzer</a>
+            <a href="{{ route('admin.users.index') }}" class="btn btn-warning btn " role="button"><span class="glyphicon glyphicon-user"></span> Benutzer</a>
             <a href="{{ route('admin.form-post.index') }}" class="btn btn-info btn " role="button"><span class="glyphicon glyphicon-envelope"></span> Inbox</a>
             <a  href="{{ route('admin.settings') }}" class="btn btn-default btn  left" role="button"><span class="glyphicon glyphicon-cog"></span> Einstellungen</a>
          </div>
