@@ -19,7 +19,9 @@
 
 
 <div class="container">
-
+ @if (Session::has('message'))
+ <div class="alert alert-info">{{ Session::get('message') }}</div>
+ @endif
 
 <div class="row">
   <div class="col-md-6">
@@ -30,15 +32,18 @@
             
             <h2>Passwort vergessen? Kein Problem.</h2>
             <p> Gib einfach deine E-Mail Adresse ein. Danach wird dir dein Passwort zugeschickt.</p>
-            
+            <div class="row">
+             <div class="col-md-6">
             <div class="form-group {{ ($errors->has('email')) ? 'has-error' : '' }}">
                 {{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'Meine E-Mail Adresse', 'autofocus')) }}
                 {{ ($errors->has('email') ? $errors->first('email') : '') }}
             </div>
-
+            </div></div>
+          
             {{ Form::submit('Passwort zusenden', array('class' => 'btn btn-u'))}}
 
         {{ Form::close() }}
+         
    </div>
    <br>
 

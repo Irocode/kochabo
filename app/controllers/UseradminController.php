@@ -100,9 +100,7 @@ class UseradminController extends BaseController {
 $day = List_Day::lists('bezeichnung', 'bezeichnung');
 $month = List_Month::lists('bezeichnung', 'bezeichnung');
 $gender = List_Gender::lists('bezeichnung', 'bezeichnung');
-
-       
-         return View::make('backend.customer_management.create')->with('month',$month)->with('gender',$gender)->with('day',$day);
+return View::make('backend.customer_management.create')->with('month',$month)->with('gender',$gender)->with('day',$day);
 
     }
 

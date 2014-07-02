@@ -13,13 +13,13 @@
   </tr>
 </table>
 
- @foreach( $ausgabe as $x )  
  
-		<h2>Hi  {{ $x->first_name }}!</h2>
+ 
+		<h2>Hi  {{ $first_name }}!</h2>
 		<p> Du hast dein Passwort angefordert.</p><br>
-		    <p>Deine E-Mail Adresse: <strong>{{ $x->email }}</strong></p>			
-			<p>Dein Passwort:  {{ $x->passwordhardcode }}<strong></strong><br></p>		
-  @endforeach 
+		    <p>Deine E-Mail Adresse: <strong>{{ $email }}</strong></p>			
+			<p>Dein Passwort:  <strong>{{ $passwordhardcode }}</strong><br></p>		
+ 
 <br>
 			<p>Freundliche Grüße, <br>Dein KochAbo-Team</p>
 	
