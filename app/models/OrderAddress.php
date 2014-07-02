@@ -41,9 +41,9 @@ class OrderAddress extends BaseModel implements BaseModelInterface
     }
     
     //hasmanybelongs
-    public function order()
+    public function order_detail()
     {
-        return $this->belongsTo ('Order');
+        return $this->belongsTo ('OrderDetail');
     }
 }
 

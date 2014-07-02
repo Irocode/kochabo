@@ -11,8 +11,18 @@
          </div>
       </h3>
    </div>
+
+
+
    {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\OrderController@update', $order->id), 'method' => 'PATCH')) }}
    <!-- Title -->
+
+
+   <div class="row">
+  <div class="col-md-6">
+
+
+
    <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
       <label class="control-label" for="title">BestellID</label>
       <div class="controls">
@@ -56,6 +66,12 @@
       </div>
    </div>
    <br>
+
+
+   </div>
+  <div class="col-md-6">
+
+
    <!-- customercustomer_id -->
    <div class="control-group {{ $errors->has('customercustomer_id') ? 'has-error' : '' }}">
       <label class="control-label" for="customercustomer_id">customercustomer_id</label>
@@ -100,11 +116,31 @@
       </div>
    </div>
    <br>
+
+</div>
+</div>
+
+
    <br>
    {{ Form::submit('Änderungen speichern', array('class' => 'btn btn-u')) }}
    {{ Form::close() }}
    <!--CKEDITOR ANFANG--> 
 </div>
+
+
+
+ 
+
+
+ @foreach( $order_items as $order_items )                  
+                    Bestellnummer: {{ $order_items->order_items_id}}d <br>
+                     @endforeach
+
+
+
+   @if($order->count())
+               
+
 <!--ADDRESS ANFANG ----------------------------------------------------------------- --> 
 <div class="container">
    <div class="panel panel-default">
@@ -254,6 +290,10 @@
             </table>
          </div>
       </div>
+       @else
+      <div class="alert alert-danger">Keine Bestellungen vorhanden</div>
+      @endif
+   </div>
    </div>
 </div>
 </div>

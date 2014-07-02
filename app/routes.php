@@ -370,9 +370,6 @@ Route::resource('/admin/newsletter', 'NewsletteradminController');
 Route::get('admin/newsletter/{id}/delete', array('as' => 'admin.newsletter.delete', 'uses' => 'NewsletteradminController@confirmDestroy'))
 ->where('id', '[0-9]+');
 
-
-
-
 //customer_management
 Route::resource('admin/customer_management', 'Customer_management_adminController');
 Route::resource('customer_management', 'Customer_management_adminController');

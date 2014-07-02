@@ -25,29 +25,25 @@ class OrderDetail extends BaseModel implements BaseModelInterface
 
     public function getUrlAttribute()
     {
-        return "order/" . $this->attributes['customercustomer_id'] . "/" . $this->attributes['customercustomer_id'];
+        return "order_detail/" . $this->attributes['order_id'] . "/" . $this->attributes['order_id'];
     }
 
-    public function users()
 
-    {
-        return $this->belongsTo ('Users');
-    }
 
 
      public function order_address()
     {
-        return $this->hasMany ('Order_Address', 'orderorder_id')->orderBy('orderorder_id', 'ASC');
+        return $this->hasMany ('OrderAddress');
     }
 
      public function order_status_history()
     {
-        return $this->hasMany ('Order_Status_History', 'orderorder_id')->orderBy('orderorder_id', 'ASC');
+        return $this->hasMany ('OrderStatusHistory');
     }
 
      public function order_items()
     {
-        return $this->hasMany ('Order_Items', 'orderorder_id')->orderBy('orderorder_id', 'ASC');
+        return $this->hasMany ('OrderItems');
     }
 }
 

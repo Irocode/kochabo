@@ -36,14 +36,14 @@ class OrderItems extends BaseModel implements BaseModelInterface
 
     public function getUrlAttribute()
     {
-        return "order/" . $this->attributes['orderorder_id'] . "/" . $this->attributes['orderorder_id'];
+        return "order_items/" . $this->attributes['orderorder_id'] . "/" . $this->attributes['orderorder_id'];
     }
 
 
    //hasmanybelongs
-    public function order()
+    public function order_detail()
     {
-        return $this->belongsTo ('Order');
+        return $this->belongsTo ('OrderDetail');
     }
 }
 
