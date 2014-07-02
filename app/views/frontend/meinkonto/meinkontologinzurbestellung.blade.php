@@ -9,8 +9,6 @@
     <!-- CSS Page Style -->    
     <link rel="stylesheet" href="assets/css/pages/page_log_reg_v2.css">    
     <!-- CSS Theme -->    
-    <link rel="stylesheet" href="assets/css/themes/default.css" id="style_color">
-    <link rel="stylesheet" href="assets/css/themes/headers/default.css" id="style_color-header-1">    
 
 
 
@@ -53,12 +51,18 @@
         <hr>
         <label class="checkbox">
             <input type="checkbox"> 
-            <p>Merken</p>
+              <p>Merken</p>
         </label>
                                 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <button type="submit" class="btn-u btn-block">Eintreten</button>
+            </div>
+        </div>
+ <br>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <a style="text-align:center" class='btn btn-sm btn-default btn-block'  target="_top" href="{{URL::to('forgot')}}">Passwort vergessen?</a>
             </div>
         </div>
 

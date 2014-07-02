@@ -40,14 +40,7 @@
    
    
    //Daten holen nach LOGIN von der Session:
-   
-   
-   
-   // $wein_checked = Session::get('wein_checked');
-   //  $obstbox_checked = Session::get('obstbox_checked');
-   
-   
-   
+
    //Preise aus Session holen. Da kommen diese aus der PriceListe
    $price_adobstbox = Session::get('price_adobstbox');
    $price_adwein = Session::get('price_adwein');
@@ -59,10 +52,7 @@
    $price_produkt_rechnen=$price_produkt;
    
    
-   //für layoutkontrolle deaktiviert
-   /*  if ($obstboxecheck=='obstbox_checked') {echo"ja";} else {echo"no";};
-   if ($weincheck=='wein_checked') {echo"ja";} else {echo"no";};
-   */
+  
    
    
    //Wenn angehackt dann price weiterreichen an summi_brummi oder wenn nicht auf NULL seutzen für die Berechnung

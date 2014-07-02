@@ -3,7 +3,6 @@
 use Authority\Repo\Session\SessionInterface;
 use Authority\Service\Form\Login\LoginForm;
 
-
 class SessionController extends BaseController
 
 {
@@ -111,20 +110,15 @@ class SessionController extends BaseController
              
          
           
-          $email = Input::get('email');     
-$ausgabe = Users::where('email', '=', $email)->get();
-foreach( $ausgabe as $x ) 
-{
-    var_dump($x->email); var_dump($x->first_name);  var_dump($x->passwordhardcode);
-    $email=$x->email;
-    $first_name=$x->first_name;
-    $passwordhardcode=$x->passwordhardcode;
- 
-}    
-
-         
-// return View::make('users.versand', compact('ausgabe'));
-
+    $email = Input::get('email');     
+    $ausgabe = Users::where('email', '=', $email)->get();
+    foreach( $ausgabe as $x ) 
+    {   
+        $email=$x->email;
+         $first_name=$x->first_name;
+         $passwordhardcode=$x->passwordhardcode; 
+    }    
+  
  $data = array('first_name' => $first_name, 'email' => $email, 'passwordhardcode' => $passwordhardcode);
  Mail::send('users.versand', $data, function($message)
     {
@@ -135,8 +129,7 @@ foreach( $ausgabe as $x )
         ->from('office@kochabo.com','KochAbo.com')
         ->subject('KochAbo-Dein Passwort');
     });
-   Session::flash('message', 'E-Mail wurde dir zugeschickt');
-   
+   Session::flash('message', 'E-Mail wurde dir zugeschickt');   
    
     return Redirect::back();
   

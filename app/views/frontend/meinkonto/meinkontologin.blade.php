@@ -1,6 +1,6 @@
 <!-- CSS Global Compulsory-->
    
- {{ HTML::style('assets/plugins/bootstrap/css/bootstrap.min.css') }}
+            {{ HTML::style('assets/plugins/bootstrap/css/bootstrap.min.css') }}
             {{ HTML::style('assets/css/style.css') }}
             {{ HTML::style('assets/css/headers/header1.css') }}
             {{ HTML::style('assets/css/responsive.css') }}
@@ -9,10 +9,6 @@
             {{ HTML::style('assets/css/themes/default.css') }}
             {{ HTML::style('assets/css/bootstrap-datetimepicker.min.css') }}
            
-
-
-
-
 
 
 
