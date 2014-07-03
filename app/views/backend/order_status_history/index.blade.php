@@ -5,7 +5,7 @@
 <div class="container">
    <div class="panel panel-default">
       <div class="panel-heading">
-              <h3 class="panel-title">Bestell Historie</h3>
+        <h3 class="panel-title">Bestell Historie</h3>
       </div>
       <div class="panel-body">
          <div class="pull-left">
@@ -19,12 +19,11 @@
          </div>
                 <div class="pull-right">
             <div class="btn-toolbar">
-
                <a href="{{URL::to('admin/list_settings_customer')}}" class="btn btn-u" disabled="">
                <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter Settings
                </a>               
             </div>
- </div>      
+         </div>      
          <br>
          <br>
          <br>
@@ -39,10 +38,10 @@
             <script type="text/javascript" language="javascript" class="init">
                $(document).ready(function() {
                 $(document).ready(function() {         
-    lightbox('Wird geladen');          
-    setTimeout(function() {          
-   closeLightbox();   
-    },690);    });
+                lightbox('Wird geladen');          
+                setTimeout(function() {          
+                closeLightbox();   
+                },690);    });
              
                    var table = $('#example').DataTable(
                
@@ -139,36 +138,34 @@
             <table id="example" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-
-
-
-                     <th>Order ID</th>
-                     <th>order_status_history_id</th>
+                     <th style='width: 60px;'>Order ID</th>
+                     <th style='width: 60px;'>order_status_history_id</th>
                      <th>status</th>     
                      <th>channel</th>  
                       <th>operator</th>
                      <th>timestamp</th>
                      <th>Erstellt am</th>     
-                     <th>Update am</th>  
-                
+                     <th>Update am</th>                  
                   </tr>
                </thead>
                <tfoot>
                   <tr>
+                      <th rowspan="1" colspan="1" >
+                     <input class="form-control" type="text" placeholder="Filter Order ID">
+                     </th>
+                      <th rowspan="1" colspan="1" >
+                     <input class="form-control" type="text" placeholder="Filter ID">
+                     </th>
+                      <th rowspan="1" colspan="1" >
+                     <input class="form-control" type="text" placeholder="Filter Status">
+                     </th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
-                     <th rowspan="1" colspan="1"></th>
-                     <th rowspan="1" colspan="1"></th>
-                     <th rowspan="1" colspan="1"></th>
-                     <th rowspan="1" colspan="1"></th>
-                 
+                     <th rowspan="1" colspan="1"></th>                 
                   </tr>
-               </tfoot>
-               <tfoot>
-                 
-               </tfoot>
+               </tfoot>                
             </table>
          </div>
       </div>

@@ -155,19 +155,14 @@
                      <th rowspan="1" colspan="1" >
                      <input class="form-control" type="text" placeholder="Filter ID">
                      </th>
-                     <th rowspan="1" colspan="1" >
-                   
+                     <th rowspan="1" colspan="1" >                   
                         <select name="select" class="form-control">
                            <option value="" selected>Auswahl Anrede</option>
                            @foreach( $list_gender as $x )  
                            <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach   
-
-                        
+                           @endforeach 
                         </select>
-
                      </th>
-
                      <th rowspan="1" colspan="1">
                      <input class="form-control" type="text" placeholder="Filter Vorname">
                      </th>

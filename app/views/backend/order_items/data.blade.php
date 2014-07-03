@@ -20,10 +20,10 @@
    "{{{ $v->timestamp }}}",
    "{{{ $v->created_at }}}",
    "{{{ $v->updated_at }}}"  
-], 
-
 @if ($index == -1)
 @elseif ($index+1 == count($order_items))
-    [ "", "","","","","","","","","","","","", "", "", "", ""] ]}
+  ] ]}
+  @else
+  ], 
 @endif
 @endforeach

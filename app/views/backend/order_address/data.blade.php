@@ -9,12 +9,11 @@
    
  
 
-], 
-
 @if ($index == -1)
 @elseif ($index+1 == count($order_address))
-    [ "", "", "","",""] ]}
+  ] ]}
+  @else
+  ], 
 @endif
 @endforeach
-
 

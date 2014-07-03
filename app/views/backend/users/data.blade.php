@@ -16,10 +16,10 @@
 "@if ($user->status != 'Banned')<button class=\"btn-u btn-u-orange\" type=\"button\" onClick=\"location.href='{{ action('UseradminController@ban', array($user->id)) }}'\">Ban</button>@else<button class=\"btn-u btn-u-orange\" type=\"button\" onClick=\"location.href='{{ action('UseradminController@unban', array($user->id)) }}'\">Un-Ban</button>@endif",
 
    "<div class=\"btn-group\"><a class=\"btn btn-danger dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">Aktion<span class=\"caret\"></span></a><ul class=\"dropdown-menu\"><li><a href=\"{{ URL::route('admin.customer_management.edit', array($user->id)) }}\"><span class=\"glyphicon glyphicon-edit\"></span>&nbsp;{{{ $user->first_name }}} {{{ $user->last_name }}} <b>ansehen/bearbeiten</b></a></li><li class=\"divider\"></li><li><a href=\"{{ URL::route('admin.customer_management.delete', array($user->id)) }}\"><span class=\"glyphicon glyphicon-remove-circle\"></span>&nbsp;{{{ $user->first_name }}} {{{ $user->last_name }}}  <strong>löschen</strong></a></li><li class=\"divider\"></li><li><a href=\"{{ URL::route('admin.address.show', array($user->id)) }}\"><span class=\"glyphicon glyphicon-edit\"></span>&nbsp; <strong>Adresse von</strong> {{{ $user->first_name }}} {{{ $user->last_name }}}</a></li></ul></div>"
-
-], 
-@if ($index == 0)
+@if ($index == -1)
 @elseif ($index+1 == count($users))
-    [ "", "", "", "", "","", "", "", "", "","","","" ] ]}
+  ] ]}
+  @else
+  ], 
 @endif
 @endforeach

@@ -128,10 +128,11 @@
 </div>
 
 
-   @if($order_address->count())              
+  
 
 <!--ADDRESS ANFANG ----------------------------------------------------------------- --> 
 <div class="container">
+ @if($order_address->count())              
    <div class="panel panel-default">
       <div class="panel-heading">
          <h3 class="panel-title">Bestellung Adresse {{$order->order_id}}</h3>
@@ -286,12 +287,14 @@
    </div>
 </div>
 </div>
+
 <!--ADDRESS ENDE ----------------------------------------------------------------- --> 
 <!--OrderHistory ANFANG ----------------------------------------------------------------- --> 
 
- @if($order_status_history->count())
+ 
 
 <div class="container">
+@if($order_status_history->count())
    <div class="panel panel-default">
       <div class="panel-heading">
          <h3 class="panel-title">Bestellung Historie {{$order->order_id}}</h3>
@@ -455,9 +458,10 @@
 <!--OrderHistory ENDE ----------------------------------------------------------------- --> 
 <!--OrderItems ANFANG ----------------------------------------------------------------- -->  
 
-@if($order_items->count())                  
+                
       
 <div class="container">
+@if($order_items->count())  
    <div class="panel panel-default">
       <div class="panel-heading">
          <h3 class="panel-title">Bestellung Artikel {{$order->order_id}}</h3>

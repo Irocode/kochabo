@@ -19,12 +19,11 @@
          </div>
                 <div class="pull-right">
             <div class="btn-toolbar">
-
                <a href="{{URL::to('admin/list_settings_customer')}}" class="btn btn-u" disabled="">
                <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter Settings
                </a>               
             </div>
- </div>      
+    </div>      
          <br>
          <br>
          <br>
@@ -63,14 +62,14 @@
                               
                                {
                                    "sExtends": "copy",
-                                     "mColumns":[1,2,3,4,5,6],
+                                     "mColumns":[1,2,3,4,5],
                                      "bFooter": false,
                                    "sButtonText": "Zwischenablage",
                                     "bSelectedOnly": true
                                },
                                {
                                    "sExtends": "csv",  
-                                      "mColumns":[1,2,3,4,5,6],
+                                      "mColumns":[1,2,3,4,5],
                                      "bFooter": false,                              
                                    "sFileName": "Bestellung.csv",
                                    "sButtonText": "CSV speichern",
@@ -80,7 +79,7 @@
                             
                                {
                                    "sExtends": "pdf",
-                                      "mColumns":[1,2,3,4,5,6],
+                                      "mColumns":[1,2,3,4,5],
                                      "bFooter": false,
                                     "sFileName": "Bestellung.pdf",
                                    "sButtonText": "PDF speichern",
@@ -139,9 +138,6 @@
             <table id="example" class="display" cellspacing="0" width="100%">
                <thead>
                   <tr>
-
-
-
                      <th>Order ID</th>
                      <th>KundenID</th>
                      <th>Order_increment_id</th>     
@@ -154,9 +150,14 @@
                </thead>
                <tfoot>
                   <tr>
-                     <th rowspan="1" colspan="1"></th>
-                     <th rowspan="1" colspan="1"></th>
-                     <th rowspan="1" colspan="1"></th>
+                     <th rowspan="1" colspan="1" >
+                     <input class="form-control" type="text" placeholder="Filter Order ID">
+                     </th>
+                      <th rowspan="1" colspan="1" >
+                     <input class="form-control" type="text" placeholder="Kunden ID">
+                     </th>
+                      <th rowspan="1" colspan="1" >               
+                     </th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1"></th>
@@ -164,9 +165,7 @@
                      <th rowspan="1" colspan="1"></th>
                   </tr>
                </tfoot>
-               <tfoot>
-                 
-               </tfoot>
+           
             </table>
          </div>
       </div>
@@ -176,4 +175,5 @@
    </div>
 </div>
 </div>
+
 @stop

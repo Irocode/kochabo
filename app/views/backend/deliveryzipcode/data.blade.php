@@ -7,9 +7,10 @@
 "{{{ $v->created_at->format('d-m-Y (H:i:s)') }}} ",
 "{{{ $v->updated_at->format('d-m-Y (H:i:s)')}}}", 
    "<a class=\"btn-u btn-u-red\" href=\"{{ URL::route('admin.deliveryzipcode.delete', array($v->id)) }}\">Löschen</a>"
-], 
-@if ($index == 0)
+@if ($index == -1)
 @elseif ($index+1 == count($deliveryzipcode))
-    [ "", "", "", "", "", "", "", "", "", "" ] ]}
+  ] ]}
+  @else
+  ], 
 @endif
 @endforeach
