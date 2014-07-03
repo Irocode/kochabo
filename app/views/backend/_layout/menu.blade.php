@@ -61,18 +61,19 @@
                <ul class="dropdown-menu">
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/customer_management') }}"><span class="glyphicon glyphicon-user"></span>Kunden verwalten</a></li>                
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/address') }}"><span class="glyphicon glyphicon-user"></span>Kunden Adressen (Alle)</a></li>
+                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/address') }}"><span class="glyphicon glyphicon-user"></span>Kunden Gruppen</a></li>
                  
                </ul>
             </li>
 
-
+ <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/newsletter') }}"><span class="glyphicon glyphicon-list-alt"></span>Newsletter</a></li>
 
               <li class="dropdown {{ ((isset($active) && $active=='plugins') ? 'active' : '') }}">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-euro"></span>Bestellungen <b class="caret"></b></a>
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Bestellungen <b class="caret"></b></a>
                <ul class="dropdown-menu">
-                  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/order_all') }}"><span class="glyphicon glyphicon-euro"></span>Bestellungen verwalten</a></li>
-                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/order_items') }}"><span class="glyphicon glyphicon-euro"></span>Artikel Bestellungen </a></li>
-                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/order_status_history') }}"><span class="glyphicon glyphicon-euro"></span>Bestellung Historie</a></li>
+                  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/order_all') }}"><span class="glyphicon glyphicon-shopping-cart"></span>Bestellungen verwalten</a></li>
+                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/order_items') }}"><span class="glyphicon glyphicon-folder-close"></span>Artikel Bestellungen </a></li>
+                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/order_status_history') }}"><span class="glyphicon glyphicon-screenshot"></span>Bestellung Historie</a></li>
            
                </ul>
             </li>
@@ -93,17 +94,17 @@
 
 
                <li class="dropdown {{ ((isset($active) && $active=='plugins') ? 'active' : '') }}">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cutlery"></span>Produkte <b class="caret"></b></a>
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-folder-close"></span>Produkte <b class="caret"></b></a>
                <ul class="dropdown-menu">
 
-                  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/products') }}"><span class="glyphicon glyphicon-cutlery"></span>Produkte verwalten</a></li>
+                  <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/products') }}"><span class="glyphicon glyphicon-folder-close"></span>Produkte verwalten</a></li>
                </ul>
             </li>
 
 
           
 
-             <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/newsletter') }}"><span class="glyphicon glyphicon-list-alt"></span>Newsletter</a></li>
+             <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/rezeptemanager') }}"><span class="glyphicon glyphicon-cutlery"></span>Rezepte</a></li>
              
 
 
