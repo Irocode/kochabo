@@ -15,8 +15,9 @@ class OrderTableSeeder extends Seeder {
 			0 => 
 			array (
 				'order_id' => 1,
+				'test' => 'hallo',
 				'delivery_date' => '2014-06-25',
-				'order_increment_id' => 1,
+				'order_increment_id' => 1,				
 				'deliverable' => 1,
 				'customercustomer_id' => 112,
 				'created_at' => '2014-06-18 00:00:00',
@@ -25,6 +26,7 @@ class OrderTableSeeder extends Seeder {
 			1 => 
 			array (
 				'order_id' => 61,
+				'test' => 'hallo',
 				'delivery_date' => '0000-00-00',
 				'order_increment_id' => 7060,
 				'deliverable' => 0,
@@ -35,6 +37,7 @@ class OrderTableSeeder extends Seeder {
 			2 => 
 			array (
 				'order_id' => 65,
+				'test' => 'hallo',
 				'delivery_date' => '0000-00-00',
 				'order_increment_id' => 5050,
 				'deliverable' => 0,
@@ -45,6 +48,7 @@ class OrderTableSeeder extends Seeder {
 			3 => 
 			array (
 				'order_id' => 85,
+				'test' => 'hallo',
 				'delivery_date' => '0000-00-00',
 				'order_increment_id' => 6060,
 				'deliverable' => 0,
@@ -55,6 +59,7 @@ class OrderTableSeeder extends Seeder {
 			4 => 
 			array (
 				'order_id' => 86,
+				'test' => 'hallo',
 				'delivery_date' => '0000-00-00',
 				'order_increment_id' => 6666,
 				'deliverable' => 0,
@@ -65,8 +70,20 @@ class OrderTableSeeder extends Seeder {
 			5 => 
 			array (
 				'order_id' => 87,
+				'test' => 'hallo',
 				'delivery_date' => '0000-00-00',
 				'order_increment_id' => 5654,
+				'deliverable' => 0,
+				'customercustomer_id' => 0,
+				'created_at' => '2014-05-23 06:12:24',
+				'updated_at' => '2014-05-23 12:26:48',
+			),
+			6 => 
+			array (
+				'order_id' => 867,
+				'test' => 'hallo',
+				'delivery_date' => '0000-00-00',
+				'order_increment_id' => 56654,
 				'deliverable' => 0,
 				'customercustomer_id' => 0,
 				'created_at' => '2014-05-23 06:12:24',

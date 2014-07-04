@@ -12,6 +12,7 @@ use Products;
 use Users;
 use Deliveryzipcode;
 use Logisticianmanager;
+use CustomersGroups;
 use Newsletter;
 use Redirect;
 use View;
@@ -23,7 +24,7 @@ use Notification;
 class AjaxController extends BaseController
 
 {
-    public function __construct(Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager, Customer $customer, Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter)
+    public function __construct(Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager, Customer $customer, Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
 
     {
         View::share('active', 'modules');
@@ -38,6 +39,7 @@ class AjaxController extends BaseController
         $this->order_items = $order_items;
         $this->order_status_history = $order_status_history;
         $this->newsletter = $newsletter;
+        $this->customers_groups = $customers_groups;        
         $this->addressnoprimarykey = $addressnoprimarykey;
     }
     // AJAX Call-> Index Logistmanager Start
@@ -163,6 +165,27 @@ class AjaxController extends BaseController
         return View::make('backend.newsletter.data', compact('newsletter'));
     }
     // AJAX Call-> Index Newsletter INDEX END
+
+   
+    // AJAX Call-> Index CustomersGroups INDEX Start
+    public function getDatatable_customers_groups($id)
+
+    {
+        $customers_groups = CustomersGroups::where('customers_groups_id', '=', $id)->orderBy('customers_groups_id', 'DESC')->get();
+        return View::make('backend.customers_groups.data', compact('customers_groups'));
+    }
+    
+    // AJAX Call-> Index CustomersGroups (ALLE)INDEX Start
+    public function getDatatable_customers_groups_all()
+
+    {
+        $customers_groups = CustomersGroups::where('customers_groups_id', '>', 0)->orderBy('customers_groups_id', 'DESC')->get();
+        return View::make('backend.customers_groups.data', compact('customers_groups'));
+    }
+
+    
+
+
 }
 
 

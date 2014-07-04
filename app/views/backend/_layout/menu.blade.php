@@ -61,7 +61,7 @@
                <ul class="dropdown-menu">
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/customer_management') }}"><span class="glyphicon glyphicon-user"></span>Kunden verwalten</a></li>                
                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/address') }}"><span class="glyphicon glyphicon-user"></span>Kunden Adressen (Alle)</a></li>
-                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/address') }}"><span class="glyphicon glyphicon-user"></span>Kunden Gruppen</a></li>
+                   <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/customers_groups') }}"><span class="glyphicon glyphicon-user"></span>Kunden Gruppen</a></li>
                  
                </ul>
             </li>

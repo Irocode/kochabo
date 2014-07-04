@@ -71,5 +71,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call('DeliveryDateTableSeeder');
 		$this->call('SubscriptionTableSeeder');
 		$this->call('ProductSubscriptionTableSeeder');
+		$this->call('CustomersGroupsTableSeeder');
 	}
 }

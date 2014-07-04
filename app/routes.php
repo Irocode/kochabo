@@ -199,6 +199,16 @@ Route::get('tablesorter_order_items_index', array('as'=>'admin.order_items.data'
 Route::get('order_items/{id}/delete', array('as' => 'admin.order_items.delete', 'uses' => 'OrderItemsController@confirmDestroy'))
 ->where('id', '\d+');
 
+//customers_groups
+Route::resource('customers_groups', 'CustomersGroupsController');
+////order AJAX INDEX Tablesorter
+Route::get('tablesorter_customers_groups_index/{id}', array('as'=>'admin.customers_groups.data', 'uses'=>'AjaxController@getDatatable_customers_groups'));
+Route::get('tablesorter_customers_groups_index_all', array('as'=>'admin.customers_groups.data', 'uses'=>'AjaxController@getDatatable_customers_groups_all'));
+Route::get('customers_groups/{id}/delete', array('as' => 'admin.customers_groups.delete', 'uses' => 'CustomersGroupsController@confirmDestroy'))
+->where('id', '\d+');
+
+
+
 //order_status_history
 Route::resource('order_status_history', 'OrderStatusHistoryController');
 ////order AJAX INDEX Tablesorter
@@ -288,6 +298,10 @@ Route::get('tablesorter_customer_management_index', array('as'=>'admin.customer_
 
 
 //Lists
+Route::resource('list_janein', 'List_JaneinController');
+Route::get('list_janein/{id}/delete', array('as' => 'admin.list.list_janein.delete', 'uses' => 'List_JaneinController@confirmDestroy'))
+->where('id', '[0-9]+');
+
 Route::resource('list_bundesland', 'List_BundeslandController');
 Route::get('list_bundesland/{id}/delete', array('as' => 'admin.list.list_bundesland.delete', 'uses' => 'List_BundeslandController@confirmDestroy'))
 ->where('id', '[0-9]+');
@@ -603,6 +617,7 @@ View::share ('list_ust',List_Ust::all());
 View::share ('list_month',List_Month::all());
 View::share ('list_day',List_Day::all());
 View::share ('list_country',List_Country::all());
+View::share ('list_janein',List_Janein::all());
 
 
 

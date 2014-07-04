@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-04 07:39:08
+// NOTE Migration Created: 2014-07-04 11:19:33
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -153,6 +153,19 @@ Schema::create('customers', function($table) {
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  $table->boolean('is_published');
  $table->string('gender', 255);
+ });
+
+
+//
+// NOTE -- customers_groups
+// --------------------------------------------------
+ 
+Schema::create('customers_groups', function($table) {
+ $table->increments('customers_groups_id')->unsigned();
+ $table->text('groupname')->nullable();
+ $table->boolean('default');
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  });
 
 
@@ -652,7 +665,7 @@ Schema::create('menus', function($table) {
 
 
 //
-// NOTE -- menus
+// NOTE -- menus2
 // --------------------------------------------------
  
 Schema::create('menus2', function($table) {
@@ -951,7 +964,6 @@ Schema::create('sliders', function($table) {
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  });
 
- 
 
 //
 // NOTE -- sofunktioniertes
@@ -993,6 +1005,24 @@ Schema::create('tags', function($table) {
  $table->increments('id')->unsigned();
  $table->string('name', 255);
  $table->string('slug', 255);
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ });
+
+
+//
+// NOTE -- test
+// --------------------------------------------------
+ 
+Schema::create('test', function($table) {
+ $table->increments('id')->unsigned();
+ $table->string('title', 255);
+ $table->string('url', 255);
+ $table->unsignedInteger('order');
+ $table->unsignedInteger('parent_id');
+ $table->string('type', 10);
+ $table->string('option', 255)->nullable();
+ $table->boolean('is_published')->default("1");
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  });
@@ -1089,6 +1119,7 @@ Schema::drop('beispielbox');
 Schema::drop('calendar');
 Schema::drop('categories');
 Schema::drop('customers');
+Schema::drop('customers_groups');
 Schema::drop('delivery_date');
 Schema::drop('deliveryarea');
 Schema::drop('deliveryassign');
@@ -1138,11 +1169,11 @@ Schema::drop('sliders');
 Schema::drop('sofunktioniertes');
 Schema::drop('subscription');
 Schema::drop('tags');
+Schema::drop('test');
 Schema::drop('throttle');
 Schema::drop('users');
 Schema::drop('users_groups');
 Schema::drop('veto');
-
 
 }
 }
