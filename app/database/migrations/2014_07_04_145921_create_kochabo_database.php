@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-04 11:19:33
+// NOTE Migration Created: 2014-07-04 14:59:21
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -542,6 +542,19 @@ Schema::create('list_gender', function($table) {
 Schema::create('list_gruppe', function($table) {
  $table->increments('id');
  $table->string('bezeichnung', 255);
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ });
+
+
+//
+// NOTE -- list_janein
+// --------------------------------------------------
+ 
+Schema::create('list_janein', function($table) {
+ $table->increments('id');
+ $table->string('bezeichnung', 255);
+ $table->('wert');
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  });
@@ -1141,6 +1154,7 @@ Schema::drop('list_currency');
 Schema::drop('list_day');
 Schema::drop('list_gender');
 Schema::drop('list_gruppe');
+Schema::drop('list_janein');
 Schema::drop('list_month');
 Schema::drop('list_recipe_type');
 Schema::drop('list_status');
