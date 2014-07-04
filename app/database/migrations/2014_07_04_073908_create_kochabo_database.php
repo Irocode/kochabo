@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-06-26 11:04:00
+// NOTE Migration Created: 2014-07-04 07:39:08
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -652,6 +652,24 @@ Schema::create('menus', function($table) {
 
 
 //
+// NOTE -- menus
+// --------------------------------------------------
+ 
+Schema::create('menus2', function($table) {
+ $table->increments('id')->unsigned();
+ $table->string('title', 255);
+ $table->string('url', 255);
+ $table->unsignedInteger('order');
+ $table->unsignedInteger('parent_id');
+ $table->string('type', 10);
+ $table->string('option', 255)->nullable();
+ $table->boolean('is_published')->default("1");
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ });
+
+
+//
 // NOTE -- news
 // --------------------------------------------------
  
@@ -681,7 +699,7 @@ Schema::create('newsletters', function($table) {
  $table->timestamp('created_at')->default("CURRENT_TIMESTAMP");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  $table->('aktiviert');
- $table->unsignedInteger('code')->unique();
+ $table->string('code', 255)->unique();
  });
 
 
@@ -933,6 +951,7 @@ Schema::create('sliders', function($table) {
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  });
 
+ 
 
 //
 // NOTE -- sofunktioniertes
@@ -1099,6 +1118,7 @@ Schema::drop('list_ust');
 Schema::drop('login');
 Schema::drop('logisticianmanager');
 Schema::drop('menus');
+Schema::drop('menus2');
 Schema::drop('news');
 Schema::drop('newsletters');
 Schema::drop('obstbox');
@@ -1122,6 +1142,7 @@ Schema::drop('throttle');
 Schema::drop('users');
 Schema::drop('users_groups');
 Schema::drop('veto');
+
 
 }
 }
