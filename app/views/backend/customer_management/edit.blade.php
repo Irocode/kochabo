@@ -16,7 +16,7 @@
    {{ Form::model($ausgabe, array('route' => array('customer_management.update', $ausgabe->id), 'method' => 'PUT')) }}
    <div class="row">
       <div class="col-md-6">
-         
+    {{$kundengruppe}} hier     
 <div class="row">
   <div class="col-md-3">
          <!-- gender -->
@@ -34,7 +34,37 @@
                <span class="help-block">{{ $errors->first('gender') }}</span>
                @endif
             </div>
-         </div></div></div>
+         </div></div>
+
+
+     <div class="col-md-6">
+     <!-- kundengruppe -->
+   <div class="control-group {{ $errors->has('kundengruppe') ? 'has-error' : '' }}">
+       <label class="control-label" for="kundengruppe">Kundengruppe <span class="stern" >*</span></label>
+      <div class="controls">
+  <select name="customers_groups_id" class="form-control"> 
+    <option value="{{$ausgabe->customers_groups_id }}" selected>{{$ausgabe->customers_groups_id }}</option>
+
+                          @foreach( $list_kundengruppe as $x ) 
+                          <option value="{{ $x->customers_groups_id }}">{{ $x->groupname }}</option>
+                           @endforeach                  
+                        </select>   
+            @if ($errors->first('kundengruppe'))
+         <span class="help-block">{{ $errors->first('kundengruppe') }}</span>
+         @endif
+
+
+
+
+
+      </div>
+   </div>
+
+   </div>
+
+         </div>
+
+
          <br>
          <!-- first_name -->
          <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
@@ -45,6 +75,7 @@
                <span class="help-block">{{ $errors->first('first_name') }}</span>
                @endif
             </div>
+
          </div>
          <br>
          <!-- last_name -->

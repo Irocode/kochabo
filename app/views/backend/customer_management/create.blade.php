@@ -43,7 +43,7 @@
    <div class="control-group {{ $errors->has('kundengruppe') ? 'has-error' : '' }}">
        <label class="control-label" for="kundengruppe">Kundengruppe <span class="stern" >*</span></label>
       <div class="controls">
-  <select name="customers_groups_id" class="form-control"> 
+  <select name="default" class="form-control"> 
                           @foreach( $list_kundengruppe as $x ) 
                           <option value="{{ $x->customers_groups_id }}">{{ $x->groupname }}</option>
                            @endforeach                  

@@ -105,10 +105,16 @@ class Customer_management_adminController extends BaseController
         // get the ausgabe
         // show the edit form and pass the ausgabe
         // $order = Order::all();
+      
+        $kundengruppe = List_Kundengruppe::where('customers_groups_id', '=', 'customers_groups_id')->orderBy('customers_groups_id', 'DESC')->get();
+
+      
+
+
         $ausgabe = Users::find($id);
         $order = Users::find($id)->order;
         $address = Users::find($id)->address;
-        return View::make('backend.customer_management.edit', compact('ausgabe', 'order', 'address'));
+        return View::make('backend.customer_management.edit', compact('ausgabe', 'order', 'address','kundengruppe'));
     }
 
     /**

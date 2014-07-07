@@ -24,4 +24,11 @@ class CustomersGroups extends BaseModel implements BaseModelInterface
     {
         return "customers_groups/" . $this->attributes['customers_groups_id'] . "/" . $this->attributes['customers_groups_id'];
     }
+
+     public function users()
+    {
+        return $this->belongsTo ('Users');
+    }
+
+    
 }

@@ -61,4 +61,12 @@ class Users extends Eloquent
 	{
 		return $this->hasMany ('Address', 'customercustomer_id')->orderBy('customercustomer_id', 'ASC');
 	}
+
+public function customersgroups()
+	{
+		return $this->hasMany ('CustomersGroups', 'customers_groups_id')->orderBy('customers_groups_id', 'ASC');
+	}
+
+
+
 }
