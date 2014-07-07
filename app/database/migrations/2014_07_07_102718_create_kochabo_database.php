@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-07 09:01:28
+// NOTE Migration Created: 2014-07-07 10:27:18
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -128,32 +128,6 @@ Schema::create('calendar', function($table) {
 Schema::create('categories', function($table) {
  $table->increments('id')->unsigned();
  $table->string('title', 255);
- });
-
-
-//
-// NOTE -- customers
-// --------------------------------------------------
- 
-Schema::create('customers', function($table) {
- $table->increments('id')->unsigned();
- $table->unsignedInteger('customers_groups_id');
- $table->text('first_name')->nullable();
- $table->text('last_name')->nullable();
- $table->string('datetime', 255);
- $table->string('kundeseit', 255);
- $table->string('abobox', 255);
- $table->string('abolieferung', 255);
- $table->string('abotyp', 255);
- $table->string('aboweine', 255);
- $table->string('abobiere', 255);
- $table->string('anzahlobstboxen', 255);
- $table->string('abostatus', 255);
- $table->string('gruppen', 255);
- $table->timestamp('created_at')->default("0000-00-00 00:00:00");
- $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
- $table->boolean('is_published');
- $table->string('gender', 255);
  });
 
 
@@ -1096,7 +1070,6 @@ Schema::drop('articles_tags');
 Schema::drop('beispielbox');
 Schema::drop('calendar');
 Schema::drop('categories');
-Schema::drop('customers');
 Schema::drop('customers_groups');
 Schema::drop('delivery_date');
 Schema::drop('deliveryarea');

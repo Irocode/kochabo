@@ -73,32 +73,32 @@ class CustomersGroupsTableSeeder extends Seeder {
 				'customers_groups_id' => 8,
 				'groupname' => 'TopCustomer',
 				'default' => 0,
-				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '0000-00-00 00:00:00',
+				'created_at' => '2014-07-07 10:08:00',
+				'updated_at' => '2014-07-07 10:08:00',
 			),
 			8 => 
 			array (
 				'customers_groups_id' => 9,
 				'groupname' => 'Wholesale',
 				'default' => 0,
-				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '0000-00-00 00:00:00',
+				'created_at' => '2014-07-07 10:08:00',
+				'updated_at' => '2014-07-07 10:08:00',
 			),
 			9 => 
 			array (
 				'customers_groups_id' => 10,
 				'groupname' => 'TopCustomer',
 				'default' => 0,
-				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '0000-00-00 00:00:00',
+				'created_at' => '2014-07-07 10:08:00',
+				'updated_at' => '2014-07-07 10:08:00',
 			),
 			10 => 
 			array (
 				'customers_groups_id' => 11,
 				'groupname' => 'Wholesale',
 				'default' => 0,
-				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '0000-00-00 00:00:00',
+				'created_at' => '2014-07-07 10:08:00',
+				'updated_at' => '2014-07-07 10:08:00',
 			),
 		));
 	}

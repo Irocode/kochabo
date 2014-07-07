@@ -4,7 +4,12 @@
 [ 
 "{{{ $v->customers_groups_id }}}",
 "{{{ $v->groupname }}}",
-"{{{ $v->default }}}",
+
+@if($v->default=="1") 
+    "<span class=\"badge badge-green\" style=\"background-color:#85b81d\">Ja</span>  ",
+    @else           
+    "<span class=\"badge badge-blue\" style=\"background-color:#517fdc\">Nein</span>  ",
+     @endif
 "{{{ $v->created_at->format('d-m-Y (H:i:s)') }}} ",
 "{{{ $v->updated_at->format('d-m-Y (H:i:s)')}}}", 
    "<div class=\"btn-group\"><a class=\"btn btn-danger dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">Aktion<span class=\"caret\"></span></a><ul class=\"dropdown-menu\"><li><a href=\"{{ URL::route('admin.customers_groups.edit', array($v->customers_groups_id)) }}\"><span class=\"glyphicon glyphicon-edit\"></span>&nbsp;{{{ $v->groupname }}}  <b>ansehen/bearbeiten</b></a></li><li class=\"divider\"></li><li><a href=\"{{ URL::route('admin.customers_groups.delete', array($v->customers_groups_id)) }}\"><span class=\"glyphicon glyphicon-remove-circle\"></span>&nbsp;{{{ $v->groupname }}}   <strong>löschen</strong></a></li><li class=\"divider\"></li><li><a href=\"{{ URL::route('admin.address.show', array($v->customers_groups_id)) }}\"><span class=\"glyphicon glyphicon-edit\"></span>&nbsp; <strong>Gruppe von</strong> {{{ $v->groupname }}} </a></li></ul></div>"

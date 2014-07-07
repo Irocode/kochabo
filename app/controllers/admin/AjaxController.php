@@ -1,7 +1,6 @@
 <?php namespace App\Controllers\Admin;
 use BaseController;
 use Deliverytimes;
-use Customer;
 use Address;
 use AddressNoPrimaryKey;
 use Order;
@@ -24,12 +23,11 @@ use Notification;
 class AjaxController extends BaseController
 
 {
-    public function __construct(Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager, Customer $customer, Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
+    public function __construct(Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
 
     {
         View::share('active', 'modules');
-        $this->logisticianmanager = $logisticianmanager;
-        $this->customer = $customer;
+        $this->logisticianmanager = $logisticianmanager;      
         $this->address = $address;
         $this->products = $products;
         $this->deliveryzipcode = $deliveryzipcode;

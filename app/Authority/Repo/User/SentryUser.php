@@ -48,7 +48,7 @@ $lastInsertedemail = e($data['email']);
 
 
 			//Attempt to register the user. 
-			$user = $this->sentry->register(array('email' => e($data['email']),  'activated' => e($data['activated']), 'birthday' => e($data['day']),'birthmonth' => e($data['month']),'birthyear' => e($data['year']),'telephone' => e($data['telephone']), 'first_name' => e($data['first_name']),'gender' => e($data['gender']),'last_name' => e($data['last_name']),'passwordhardcode' => e($data['password']), 'password' => e($data['password'])));
+			$user = $this->sentry->register(array('customers_groups_id' => e($data['customers_groups_id']),'email' => e($data['email']),  'activated' => e($data['activated']), 'birthday' => e($data['day']),'birthmonth' => e($data['month']),'birthyear' => e($data['year']),'telephone' => e($data['telephone']), 'first_name' => e($data['first_name']),'gender' => e($data['gender']),'last_name' => e($data['last_name']),'passwordhardcode' => e($data['password']), 'password' => e($data['password'])));
 
 			//success!
 	    	$result['success'] = true;

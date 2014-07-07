@@ -43,10 +43,19 @@
    <div class="control-group {{ $errors->has('kundengruppe') ? 'has-error' : '' }}">
        <label class="control-label" for="kundengruppe">Kundengruppe <span class="stern" >*</span></label>
       <div class="controls">
-  {{ Form::select('kundengruppe', $kundengruppe, 'Auswahl', array( 'id' => 'kundengruppe' ,'class'=>'form-control','style'=>'','value'=>Input::old('kundengruppe') )) }}
+  <select name="customers_groups_id" class="form-control"> 
+                          @foreach( $list_kundengruppe as $x ) 
+                          <option value="{{ $x->customers_groups_id }}">{{ $x->groupname }}</option>
+                           @endforeach                  
+                        </select>   
             @if ($errors->first('kundengruppe'))
          <span class="help-block">{{ $errors->first('kundengruppe') }}</span>
          @endif
+
+
+
+
+
       </div>
    </div>
 

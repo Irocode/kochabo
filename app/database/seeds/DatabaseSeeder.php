@@ -24,8 +24,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('AddressTableSeeder');
 		$this->call('AktuellerezepteTableSeeder');
 		$this->call('BeispielboxTableSeeder');
-		$this->call('CalendarTableSeeder');
-		$this->call('CustomersTableSeeder');
+		$this->call('CalendarTableSeeder');	
 		$this->call('DeliveryareaTableSeeder');
 		$this->call('DeliveryassignTableSeeder');
 		$this->call('DeliverytimesTableSeeder');
