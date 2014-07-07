@@ -87,8 +87,10 @@ class CustomersGroupsController extends BaseController
     public function edit($id)
 
     {
-        $customers_groups = CustomersGroups::find($id);
-        // $customers_groups = $this->customers_groups->find($id);
+
+
+        
+        $customers_groups = $this->customers_groups->find($id);
         return View::make('backend.customers_groups.edit', compact('customers_groups'));
     }
     /**

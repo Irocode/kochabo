@@ -35,7 +35,7 @@ class CustomersGroupsRepository extends Validator implements BaseRepositoryInter
     public function lists()
 
     {
-        return $this->order->get()->lists('last_name', 'address_id');
+        return $this->order->get()->lists('groupname', 'default');
     }
     public function paginate($perPage = null, $all = false)
 
@@ -51,6 +51,10 @@ class CustomersGroupsRepository extends Validator implements BaseRepositoryInter
     public function create($attributes)
 
     {
+
+
+
+
         $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
         if ($this->isValid($attributes))
         {
