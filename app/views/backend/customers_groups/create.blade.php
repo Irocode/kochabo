@@ -77,6 +77,10 @@
 
 
 
+<!-- Plichtfeld Anfang -->     
+<div  style="margin-top:20px; margin-bottom:10px;">
+<p><span class="stern" >*</span> Plichtfelder müssen ausgefüllt werden. </p>
+</div>
  <!-- Plichtfeld Ende -->
    
 

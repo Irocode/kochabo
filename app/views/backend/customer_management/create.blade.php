@@ -37,6 +37,20 @@
    </div>
 
    </div>
+
+     <div class="col-md-6">
+     <!-- kundengruppe -->
+   <div class="control-group {{ $errors->has('kundengruppe') ? 'has-error' : '' }}">
+       <label class="control-label" for="kundengruppe">Kundengruppe <span class="stern" >*</span></label>
+      <div class="controls">
+  {{ Form::select('kundengruppe', $kundengruppe, 'Auswahl', array( 'id' => 'kundengruppe' ,'class'=>'form-control','style'=>'','value'=>Input::old('kundengruppe') )) }}
+            @if ($errors->first('kundengruppe'))
+         <span class="help-block">{{ $errors->first('kundengruppe') }}</span>
+         @endif
+      </div>
+   </div>
+
+   </div>
    </div>
    <br>
    <!-- first_name -->

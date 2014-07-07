@@ -51,8 +51,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ListUstTableSeeder');
 		$this->call('ListRecipeTypeTableSeeder');
 		$this->call('LoginTableSeeder');
-		$this->call('LogisticianmanagerTableSeeder');
-		$this->call('Menus2TableSeeder');
+		$this->call('LogisticianmanagerTableSeeder');		
 		$this->call('NewslettersTableSeeder');
 		$this->call('ObstboxTableSeeder');
 		$this->call('OffersTableSeeder');
@@ -60,8 +59,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('PhotosTableSeeder');
 		$this->call('ProductsTableSeeder');
 		$this->call('RankingTableSeeder');
-		$this->call('SlidersTableSeeder');
-		$this->call('TestTableSeeder');
+		$this->call('SlidersTableSeeder');		
 		$this->call('ThrottleTableSeeder');
 		$this->call('UsersGroupsTableSeeder');
 		$this->call('VetoTableSeeder');

@@ -11,6 +11,7 @@ use Sefa\Repositories\Offer\OfferRepository as Offer;
 use Sefa\Repositories\Order\OrderRepository as Order;
 
 
+
 class UseradminController extends BaseController {
 
     protected $address;
@@ -96,11 +97,11 @@ class UseradminController extends BaseController {
      */
     public function create()
     {
-
+$kundengruppe = List_Kundengruppe::lists('groupname', 'groupname');
 $day = List_Day::lists('bezeichnung', 'bezeichnung');
 $month = List_Month::lists('bezeichnung', 'bezeichnung');
 $gender = List_Gender::lists('bezeichnung', 'bezeichnung');
-return View::make('backend.customer_management.create')->with('month',$month)->with('gender',$gender)->with('day',$day);
+return View::make('backend.customer_management.create')->with('month',$month)->with('gender',$gender)->with('day',$day)->with('kundengruppe',$kundengruppe);
 
     }
 

@@ -42,7 +42,7 @@ class CustomersGroupsController extends BaseController
     public function create()
 
     {
-        $janein = List_Janein::lists('bezeichnung', 'bezeichnung','wert', 'wert');
+        $janein = List_Janein::lists('bezeichnung', 'bezeichnung');
         $janeinwert = List_Janein::lists('wert', 'wert');
      
         return View::make('backend.customers_groups.create')->with('janein', $janein)->with('janeinwert', $janeinwert);
@@ -89,7 +89,7 @@ class CustomersGroupsController extends BaseController
     {
 
 
-        
+
         $customers_groups = $this->customers_groups->find($id);
         return View::make('backend.customers_groups.edit', compact('customers_groups'));
     }

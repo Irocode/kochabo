@@ -12,6 +12,8 @@
    {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\CustomersGroupsController@update', $customers_groups->id), 'method' => 'PATCH')) }}
    <div class="row">
   <div class="col-md-6">
+ <div class="row">
+  <div class="col-md-3">
 
    <!-- Janein -->
    <div class="control-group {{ $errors->has('product_name') ? 'has-error' : '' }}">
@@ -27,14 +29,19 @@
             <option value="{{ $x->wert }}">{{ $x->bezeichnung }}</option>
             @endforeach               
          </select>
-          <span class="input-group-addon">%</span></div>
+          </div>
          @if ($errors->first('title'))
          <span class="help-block">{{ $errors->first('ust') }}</span>
          @endif
       </div>
    </div>
+
+     </div>
+   </div>
    <br>
    <!-- groupname -->
+   <div class="row">
+  <div class="col-md-5">
    <div class="control-group {{ $errors->has('groupname') ? 'has-error' : '' }}">
       <label class="control-label" for="groupname">Kunden Gruppenname <span class="stern" >*</span></label>
       <div class="controls">
@@ -42,6 +49,8 @@
          @if ($errors->first('description'))
          <span class="help-block">{{ $errors->first('groupname') }}</span>
          @endif
+      </div>
+   </div>
       </div>
    </div>
    <br>

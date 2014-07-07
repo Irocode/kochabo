@@ -29,10 +29,11 @@ class Customer_management_adminController extends BaseController
     public function create()
     {
         // load the create form (app/views/varibale_ausgabe/create.blade.php)
+        $kundengruppe = List_Kundengruppe::lists('groupname', 'groupname');
         $day = List_Day::lists('bezeichnung', 'bezeichnung');
         $month = List_Month::lists('bezeichnung', 'bezeichnung');
         $gender = List_Gender::lists('bezeichnung', 'bezeichnung');
-        return View::make('backend.customer_management.create')->with('month', $month)->with('gender', $gender)->with('day', $day);
+        return View::make('backend.customer_management.create')->with('month', $month)->with('gender', $gender)->with('day', $day)->with('kundengruppe', $kundengruppe);
     }
 
     /**

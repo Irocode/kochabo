@@ -15,6 +15,7 @@ class CustomersTableSeeder extends Seeder {
 			0 => 
 			array (
 				'id' => 3,
+				'customers_groups_id' => 0,
 				'first_name' => 'Bernd',
 				'last_name' => 'Obendorfer',
 				'datetime' => '',
@@ -35,6 +36,7 @@ class CustomersTableSeeder extends Seeder {
 			1 => 
 			array (
 				'id' => 171,
+				'customers_groups_id' => 0,
 				'first_name' => 'Tom',
 				'last_name' => 'Reichel',
 				'datetime' => '',
@@ -55,6 +57,7 @@ class CustomersTableSeeder extends Seeder {
 			2 => 
 			array (
 				'id' => 172,
+				'customers_groups_id' => 0,
 				'first_name' => 'Robert',
 				'last_name' => 'Ginder',
 				'datetime' => '',
@@ -75,6 +78,7 @@ class CustomersTableSeeder extends Seeder {
 			3 => 
 			array (
 				'id' => 173,
+				'customers_groups_id' => 0,
 				'first_name' => 'Maria',
 				'last_name' => 'Holler',
 				'datetime' => '',
@@ -95,6 +99,7 @@ class CustomersTableSeeder extends Seeder {
 			4 => 
 			array (
 				'id' => 174,
+				'customers_groups_id' => 0,
 				'first_name' => 'Herbert',
 				'last_name' => 'Holler',
 				'datetime' => '',
@@ -115,6 +120,7 @@ class CustomersTableSeeder extends Seeder {
 			5 => 
 			array (
 				'id' => 175,
+				'customers_groups_id' => 0,
 				'first_name' => 'Sandra',
 				'last_name' => 'Meier',
 				'datetime' => '',
@@ -135,6 +141,7 @@ class CustomersTableSeeder extends Seeder {
 			6 => 
 			array (
 				'id' => 176,
+				'customers_groups_id' => 0,
 				'first_name' => 'Dragan',
 				'last_name' => 'Vukic',
 				'datetime' => '',
@@ -155,6 +162,7 @@ class CustomersTableSeeder extends Seeder {
 			7 => 
 			array (
 				'id' => 178,
+				'customers_groups_id' => 0,
 				'first_name' => 'Markus',
 				'last_name' => 'Reh',
 				'datetime' => '',
@@ -175,6 +183,7 @@ class CustomersTableSeeder extends Seeder {
 			8 => 
 			array (
 				'id' => 179,
+				'customers_groups_id' => 0,
 				'first_name' => 'Hans',
 				'last_name' => 'Hahn',
 				'datetime' => '',
@@ -195,6 +204,7 @@ class CustomersTableSeeder extends Seeder {
 			9 => 
 			array (
 				'id' => 180,
+				'customers_groups_id' => 0,
 				'first_name' => 'Jörg',
 				'last_name' => 'Gruber',
 				'datetime' => '',
@@ -215,6 +225,7 @@ class CustomersTableSeeder extends Seeder {
 			10 => 
 			array (
 				'id' => 181,
+				'customers_groups_id' => 0,
 				'first_name' => 'Mike',
 				'last_name' => 'Röhrer',
 				'datetime' => '',
@@ -235,6 +246,7 @@ class CustomersTableSeeder extends Seeder {
 			11 => 
 			array (
 				'id' => 182,
+				'customers_groups_id' => 0,
 				'first_name' => 'mauki',
 				'last_name' => 'Vukic',
 				'datetime' => '',
@@ -255,6 +267,7 @@ class CustomersTableSeeder extends Seeder {
 			12 => 
 			array (
 				'id' => 183,
+				'customers_groups_id' => 0,
 				'first_name' => 'Mauniz',
 				'last_name' => 'Vukic',
 				'datetime' => '',
@@ -275,6 +288,7 @@ class CustomersTableSeeder extends Seeder {
 			13 => 
 			array (
 				'id' => 184,
+				'customers_groups_id' => 0,
 				'first_name' => 'Flocki',
 				'last_name' => 'Vukic',
 				'datetime' => '',
@@ -295,6 +309,7 @@ class CustomersTableSeeder extends Seeder {
 			14 => 
 			array (
 				'id' => 185,
+				'customers_groups_id' => 0,
 				'first_name' => 'Sandra',
 				'last_name' => 'Meier',
 				'datetime' => '',
@@ -315,6 +330,7 @@ class CustomersTableSeeder extends Seeder {
 			15 => 
 			array (
 				'id' => 186,
+				'customers_groups_id' => 0,
 				'first_name' => 'Mike',
 				'last_name' => 'Röhrer',
 				'datetime' => '',
@@ -335,6 +351,7 @@ class CustomersTableSeeder extends Seeder {
 			16 => 
 			array (
 				'id' => 187,
+				'customers_groups_id' => 0,
 				'first_name' => 'Sandra',
 				'last_name' => 'Meier',
 				'datetime' => '',
@@ -355,6 +372,7 @@ class CustomersTableSeeder extends Seeder {
 			17 => 
 			array (
 				'id' => 188,
+				'customers_groups_id' => 0,
 				'first_name' => 'Richard',
 				'last_name' => 'Meier',
 				'datetime' => '',
@@ -375,6 +393,7 @@ class CustomersTableSeeder extends Seeder {
 			18 => 
 			array (
 				'id' => 189,
+				'customers_groups_id' => 0,
 				'first_name' => 'Robert',
 				'last_name' => 'Meier',
 				'datetime' => '',
@@ -395,6 +414,7 @@ class CustomersTableSeeder extends Seeder {
 			19 => 
 			array (
 				'id' => 190,
+				'customers_groups_id' => 0,
 				'first_name' => 'Richard',
 				'last_name' => 'Ranz',
 				'datetime' => '',
@@ -415,6 +435,7 @@ class CustomersTableSeeder extends Seeder {
 			20 => 
 			array (
 				'id' => 191,
+				'customers_groups_id' => 0,
 				'first_name' => 'Ralsfi',
 				'last_name' => 'Meier',
 				'datetime' => '',
@@ -435,6 +456,7 @@ class CustomersTableSeeder extends Seeder {
 			21 => 
 			array (
 				'id' => 193,
+				'customers_groups_id' => 0,
 				'first_name' => 'Bernd',
 				'last_name' => 'Obendorfer',
 				'datetime' => '06 Mai 2014',
@@ -455,6 +477,7 @@ class CustomersTableSeeder extends Seeder {
 			22 => 
 			array (
 				'id' => 194,
+				'customers_groups_id' => 0,
 				'first_name' => 'Eier',
 				'last_name' => 'Kopf',
 				'datetime' => '31 Mai 2014',

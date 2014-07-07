@@ -7,6 +7,7 @@ class Customer extends BaseModel implements BaseModelInterface
     public $table = 'customers';
     public $fillable = [
         'id',
+        'customers_groups_id',
         'first_name',
         'gender',
         'last_name',

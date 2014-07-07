@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-04 14:59:21
+// NOTE Migration Created: 2014-07-07 09:01:28
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -137,6 +137,7 @@ Schema::create('categories', function($table) {
  
 Schema::create('customers', function($table) {
  $table->increments('id')->unsigned();
+ $table->unsignedInteger('customers_groups_id');
  $table->text('first_name')->nullable();
  $table->text('last_name')->nullable();
  $table->string('datetime', 255);
@@ -678,24 +679,6 @@ Schema::create('menus', function($table) {
 
 
 //
-// NOTE -- menus2
-// --------------------------------------------------
- 
-Schema::create('menus2', function($table) {
- $table->increments('id')->unsigned();
- $table->string('title', 255);
- $table->string('url', 255);
- $table->unsignedInteger('order');
- $table->unsignedInteger('parent_id');
- $table->string('type', 10);
- $table->string('option', 255)->nullable();
- $table->boolean('is_published')->default("1");
- $table->timestamp('created_at')->default("0000-00-00 00:00:00");
- $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
- });
-
-
-//
 // NOTE -- news
 // --------------------------------------------------
  
@@ -1024,24 +1007,6 @@ Schema::create('tags', function($table) {
 
 
 //
-// NOTE -- test
-// --------------------------------------------------
- 
-Schema::create('test', function($table) {
- $table->increments('id')->unsigned();
- $table->string('title', 255);
- $table->string('url', 255);
- $table->unsignedInteger('order');
- $table->unsignedInteger('parent_id');
- $table->string('type', 10);
- $table->string('option', 255)->nullable();
- $table->boolean('is_published')->default("1");
- $table->timestamp('created_at')->default("0000-00-00 00:00:00");
- $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
- });
-
-
-//
 // NOTE -- throttle
 // --------------------------------------------------
  
@@ -1163,7 +1128,6 @@ Schema::drop('list_ust');
 Schema::drop('login');
 Schema::drop('logisticianmanager');
 Schema::drop('menus');
-Schema::drop('menus2');
 Schema::drop('news');
 Schema::drop('newsletters');
 Schema::drop('obstbox');
@@ -1183,7 +1147,6 @@ Schema::drop('sliders');
 Schema::drop('sofunktioniertes');
 Schema::drop('subscription');
 Schema::drop('tags');
-Schema::drop('test');
 Schema::drop('throttle');
 Schema::drop('users');
 Schema::drop('users_groups');

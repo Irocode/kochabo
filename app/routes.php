@@ -331,6 +331,8 @@ Route::get('list_recipe_type/{id}/delete', array('as' => 'admin.list.list_recipe
 ->where('id', '[0-9]+');
 
 
+Route::resource('list_kundengruppe', 'List_KundengruppeController');
+
 ////Newsletter AJAX INDEX Tablesorter
 Route::get('tablesorter_newsletter_index/{id}', array('as'=>'admin.newsletter.data', 'uses'=>'AjaxController@getDatatable_newsletter'));
 Route::get('tablesorter_newsletter_index', array('as'=>'admin.newsletter.data', 'uses'=>'AjaxController@getDatatable_newsletter_all'));
@@ -618,6 +620,7 @@ View::share ('list_month',List_Month::all());
 View::share ('list_day',List_Day::all());
 View::share ('list_country',List_Country::all());
 View::share ('list_janein',List_Janein::all());
+View::share ('list_kundengruppe',List_Kundengruppe::all());
 
 
 
