@@ -138,6 +138,7 @@
                <thead>
                   <tr>
                      <th style='width: 60px;'>ID</th>
+                      <th>Kundengruppe</th>
                       <th style='width: 60px;'>Geschlecht</th>
                      <th>Vorname</th>
                      <th>Nachname</th>
@@ -155,6 +156,7 @@
                      <th rowspan="1" colspan="1" >
                      <input class="form-control" type="text" placeholder="Filter ID">
                      </th>
+                        <th rowspan="1" colspan="1"></th>
                      <th rowspan="1" colspan="1" >                   
                         <select name="select" class="form-control">
                            <option value="" selected>Auswahl Anrede</option>

@@ -16,7 +16,11 @@
    {{ Form::model($ausgabe, array('route' => array('customer_management.update', $ausgabe->id), 'method' => 'PUT')) }}
    <div class="row">
       <div class="col-md-6">
-    {{$kundengruppe}} hier     
+   
+
+             
+
+
 <div class="row">
   <div class="col-md-3">
          <!-- gender -->
@@ -42,13 +46,20 @@
    <div class="control-group {{ $errors->has('kundengruppe') ? 'has-error' : '' }}">
        <label class="control-label" for="kundengruppe">Kundengruppe <span class="stern" >*</span></label>
       <div class="controls">
+  <!-- retrieval Data from customers_groups_id an collation with CustomerGroup Start-->
   <select name="customers_groups_id" class="form-control"> 
-    <option value="{{$ausgabe->customers_groups_id }}" selected>{{$ausgabe->customers_groups_id }}</option>
+    
+    <option value="{{$ausgabe->customers_groups_id }}"
+     selected>@foreach( $kundengrupperesult as $x )
+     {{ $x->groupname }}
+      @endforeach
+      </option>
 
-                          @foreach( $list_kundengruppe as $x ) 
-                          <option value="{{ $x->customers_groups_id }}">{{ $x->groupname }}</option>
-                           @endforeach                  
-                        </select>   
+      @foreach( $list_kundengruppe as $x ) 
+      <option value="{{ $x->customers_groups_id }}">{{ $x->groupname }}</option>
+      @endforeach                  
+      </select>   
+      <!-- retrieval Data from customers_groups_id an collation with CustomerGroup End-->
             @if ($errors->first('kundengruppe'))
          <span class="help-block">{{ $errors->first('kundengruppe') }}</span>
          @endif

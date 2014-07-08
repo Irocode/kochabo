@@ -3,6 +3,7 @@
 @foreach ($users as $index => $v)
 [ 
 "{{{ $v->id }}}",
+"{{{ $v->customers_groups_id }}}",
 "{{{ $v->gender }}}",
 "{{{ $v->first_name }}}",
 "{{{ $v->last_name }}}",
