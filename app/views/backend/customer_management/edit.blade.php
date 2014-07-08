@@ -46,11 +46,13 @@
    <div class="control-group {{ $errors->has('kundengruppe') ? 'has-error' : '' }}">
        <label class="control-label" for="kundengruppe">Kundengruppe <span class="stern" >*</span></label>
       <div class="controls">
+
   <!-- retrieval Data from customers_groups_id an collation with CustomerGroup Start-->
   <select name="customers_groups_id" class="form-control"> 
     
     <option value="{{$ausgabe->customers_groups_id }}"
-     selected>@foreach( $kundengrupperesult as $x )
+     selected>
+     @foreach( $kundengrupperesult as $x )
      {{ $x->groupname }}
       @endforeach
       </option>
@@ -64,18 +66,10 @@
          <span class="help-block">{{ $errors->first('kundengruppe') }}</span>
          @endif
 
-
-
-
-
       </div>
    </div>
-
-   </div>
-
+    </div>
          </div>
-
-
          <br>
          <!-- first_name -->
          <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">

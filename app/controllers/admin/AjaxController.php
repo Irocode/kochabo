@@ -9,6 +9,7 @@ use OrderItems;
 use OrderStatusHistory;
 use Products;
 use Users;
+use List_Kundengruppe;
 use Deliveryzipcode;
 use Logisticianmanager;
 use CustomersGroups;
@@ -139,14 +140,46 @@ class AjaxController extends BaseController
         return View::make('backend.deliveryzipcode.data', compact('deliveryzipcode'));
     }
     // AJAX Call-> Index Deliveryzipcode INDEX END
+
+
     // AJAX Call-> Index Address INDEX Start
     public function getDatatable_customer_management()
 
     {
-        $users = Users::where('id', '>', 1)->orderBy('id', 'DESC')->get();
-        return View::make('backend.customer_management.data', compact('users'));
+
+        $users = Users::where('id', '>', 0)->get();
+        foreach ($users as $user)
+                {
+            $customers_groups_id_retrieval= $user->customers_groups_id;   
+                      
+                }  
+
+
+
+
+
+var_dump(
+Users::all()->toArray()
+    );
+
+var_dump(
+Users::join('customers_groups','customers_groups.customers_groups_id','=','users.customers_groups_id')->get()->toArray()
+
+    );
+     
+
+
+
+            
+
+ $kundengrupperesult = List_Kundengruppe::where('customers_groups_id', '=',  $customers_groups_id_retrieval )->get();
+       
+
+        return View::make('backend.customer_management.data', compact('users','kundengrupperesult'));
     }
     // AJAX Call-> Index Address INDEX END
+
+
     // AJAX Call-> Index Newsletter INDEX Start
     public function getDatatable_newsletter()
 

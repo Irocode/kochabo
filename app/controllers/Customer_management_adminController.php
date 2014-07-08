@@ -102,6 +102,7 @@ class Customer_management_adminController extends BaseController
      */
     public function edit($id)
     {
+
         // <!-- retrieval Data from customers_groups_id an collation with CustomerGroup Start-->
         $users = Users::where('id', '=', $id)->get();
         foreach ($users as $user)
@@ -110,9 +111,8 @@ class Customer_management_adminController extends BaseController
                 }
 
         $kundengrupperesult = List_Kundengruppe::where('customers_groups_id', '=',  $customers_groups_id_retrieval )->get();
-
-
          // <!-- retrieval Data from customers_groups_id an collation with CustomerGroup End-->
+
         $ausgabe = Users::find($id);
         $order = Users::find($id)->order;
         $address = Users::find($id)->address;
@@ -147,6 +147,7 @@ class Customer_management_adminController extends BaseController
         {
             // store
             $ausgabe = Users::find($id);
+            $ausgabe->customers_groups_id = Input::get('customers_groups_id');
             $ausgabe->first_name = Input::get('first_name');
             $ausgabe->gender = Input::get('gender');
             $datumumwandeln = Input::get('date_of_birth');
