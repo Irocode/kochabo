@@ -138,6 +138,20 @@ class CustomersGroupsController extends BaseController
     {
         return $this->customers_groups->togglePublish($id);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index_customers_groups($id)
+
+    {
+         $users = Users::all();
+         $id= $id;        
+        return View::make('backend.customer_management.index_customers_groups', compact('users','id'));
+    }
+
 }
 
 

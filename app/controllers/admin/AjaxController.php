@@ -142,7 +142,7 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Deliveryzipcode INDEX END
 
 
-    // AJAX Call-> Index Address INDEX Start
+    // AJAX Call-> Index Customer_managment INDEX Start
     public function getDatatable_customer_management()
 
     {
@@ -154,7 +154,6 @@ class AjaxController extends BaseController
                       
                 }  
 
-
 $kundengrupperesult = Users::join('customers_groups','customers_groups.customers_groups_id','=','users.customers_groups_id')
 ->get([
     'users.id',
@@ -163,20 +162,57 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
     'users.last_name',
     'users.email',
     'users.telephone',
-
+    'users.birthday',
+    'users.birthmonth',
+    'users.birthyear',
+    'users.last_login',
+    'users.created_at',
+    'users.updated_at',
     'customers_groups.groupname',
- 
 
-    ]);
-
-            
-
- //$kundengrupperesult = List_Kundengruppe::where('customers_groups_id', '=',  $customers_groups_id_retrieval )->get();
-       
+    ]);            
+      
 
         return View::make('backend.customer_management.data', compact('users','kundengrupperesult'));
     }
-    // AJAX Call-> Index Address INDEX END
+    // AJAX Call-> Index Customer_management INDEX END
+
+
+
+ // AJAX Call-> Index customer_management_customers_groups INDEX END
+  public function getDatatable_tablesorter_customer_management_customers_groups($id)
+
+    {
+        $users = Users::where('id', '>', 0)->get();
+        foreach ($users as $user)
+                {
+            $customers_groups_id_retrieval= $user->customers_groups_id;   
+                      
+                }  
+
+$kundengrupperesult = Users::join('customers_groups','customers_groups.customers_groups_id','=','users.customers_groups_id')
+->where('users.customers_groups_id','=',$id)
+->get([
+    'users.id',
+    'users.gender',
+    'users.first_name',
+    'users.last_name',
+    'users.email',
+    'users.telephone',
+    'users.birthday',
+    'users.birthmonth',
+    'users.birthyear',
+    'users.last_login',
+    'users.created_at',
+    'users.updated_at',
+    'customers_groups.groupname',
+
+    ]);            
+
+       
+     return View::make('backend.customer_management.data_customers_groups', compact('users','kundengrupperesult'));
+    }
+ // AJAX Call-> Index customer_management_customers_groups INDEX END
 
 
     // AJAX Call-> Index Newsletter INDEX Start

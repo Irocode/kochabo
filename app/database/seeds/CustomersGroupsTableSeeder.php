@@ -55,10 +55,10 @@ class CustomersGroupsTableSeeder extends Seeder {
 			5 => 
 			array (
 				'customers_groups_id' => 6,
-				'groupname' => 'keine E-Mails',
-				'default' => 1,
+				'groupname' => 'Keine E-Mails',
+				'default' => 0,
 				'created_at' => '2014-07-07 06:21:25',
-				'updated_at' => '2014-07-07 06:21:25',
+				'updated_at' => '2014-07-08 09:59:05',
 			),
 			6 => 
 			array (
@@ -79,22 +79,6 @@ class CustomersGroupsTableSeeder extends Seeder {
 			8 => 
 			array (
 				'customers_groups_id' => 9,
-				'groupname' => 'Wholesale',
-				'default' => 0,
-				'created_at' => '2014-07-07 10:08:00',
-				'updated_at' => '2014-07-07 10:08:00',
-			),
-			9 => 
-			array (
-				'customers_groups_id' => 10,
-				'groupname' => 'TopCustomer',
-				'default' => 0,
-				'created_at' => '2014-07-07 10:08:00',
-				'updated_at' => '2014-07-07 10:08:00',
-			),
-			10 => 
-			array (
-				'customers_groups_id' => 11,
 				'groupname' => 'Wholesale',
 				'default' => 0,
 				'created_at' => '2014-07-07 10:08:00',

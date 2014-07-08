@@ -206,6 +206,11 @@ Route::get('tablesorter_customers_groups_index/{id}', array('as'=>'admin.custome
 Route::get('tablesorter_customers_groups_index_all', array('as'=>'admin.customers_groups.data', 'uses'=>'AjaxController@getDatatable_customers_groups_all'));
 Route::get('customers_groups/{id}/delete', array('as' => 'admin.customers_groups.delete', 'uses' => 'CustomersGroupsController@confirmDestroy'))
 ->where('id', '\d+');
+//customer_management _customers_groups_tablesorter
+Route::get('tablesorter_customer_management_customers_groups/{id}', array('as'=>'admin.customer_management.data_customers_groups', 'uses'=>'AjaxController@getDatatable_tablesorter_customer_management_customers_groups'));
+//customer_management _customers_groups_index
+Route::get('index_customer_management_groups/{id}', array('as'=>'admin.customer_management.index_customers_groups', 'uses'=>'CustomersGroupsController@index_customers_groups'));
+
 
 
 
@@ -288,14 +293,8 @@ Route::get('menu/{id}/delete', array('as' => 'admin.menu.delete', 'uses' => 'Men
 Route::post('menu/{id}/toggle-publish', array('as' => 'admin.menu.toggle-publish', 'uses' => 'MenuController@togglePublish'))
 ->where('id', '[0-9]+');
 
-
-
-
 ////customer_management AJAX INDEX Tablesorter
 Route::get('tablesorter_customer_management_index', array('as'=>'admin.customer_management.data', 'uses'=>'AjaxController@getDatatable_customer_management'));
-
-
-
 
 //Lists
 Route::resource('list_janein', 'List_JaneinController');
@@ -394,6 +393,12 @@ Route::resource('customer_management', 'Customer_management_adminController');
 Route::get('admin/register', 'Customer_management_adminController@create');
 Route::get('admin/customer_management/{id}/delete', array('as' => 'admin.customer_management.delete', 'uses' => 'Customer_management_adminController@confirmDestroy'))
 ->where('id', '\d+');
+
+
+
+
+
+
 
 //Groups admin
 Route::resource('admin/groups', 'GroupadminController');
