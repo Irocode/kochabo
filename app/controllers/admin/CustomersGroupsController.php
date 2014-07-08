@@ -106,8 +106,8 @@ class CustomersGroupsController extends BaseController
         {
             $this->customers_groups->update($id, Input::all());
             Notification::success('Gruppe wurde geändert');
-            return Redirect::back();
-            // return Redirect::route('admin.customers_groups.index');
+            //return Redirect::back();
+             return Redirect::route('admin.customers_groups.index');
         }
         catch(ValidationException $e)
         {

@@ -9,7 +9,7 @@
       </div>
    </div>
    <!--HEADER mit Zurück ENDE-->
-   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\CustomersGroupsController@update', $customers_groups->id), 'method' => 'PATCH')) }}
+   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\CustomersGroupsController@update', $customers_groups->customers_groups_id), 'method' => 'PATCH')) }}
    <div class="row">
   <div class="col-md-6">
  <div class="row">
@@ -17,13 +17,13 @@
 
    <!-- Janein -->
    <div class="control-group {{ $errors->has('product_name') ? 'has-error' : '' }}">
-      <label class="control-label" for="product_name">Artikel Name <span class="stern" >*</span></label>
+      <label class="control-label" for="product_name">Ja/Nein<span class="stern" >*</span></label>
        <div class="controls">
        <div class="input-group">
 
        <?php if ($customers_groups->default=='1'   ) {$default='Ja';} else {$default='Nein';} ?>
        
-         <select name="ust" class="form-control">
+         <select name="default" class="form-control">
             <option value="{{$default}}" selected>{{$default}}</option>
             @foreach( $list_janein as $x ) 
             <option value="{{ $x->wert }}">{{ $x->bezeichnung }}</option>

@@ -156,7 +156,14 @@
                      <th rowspan="1" colspan="1" >
                      <input class="form-control" type="text" placeholder="Filter ID">
                      </th>
-                        <th rowspan="1" colspan="1"></th>
+                        <th rowspan="1" colspan="1">
+                           <select name="select" class="form-control">
+                           <option value="" selected>Auswahl Kundengruppe</option>
+                            @foreach( $list_kundengruppe as $x ) 
+                           <option value="{{ $x->groupname }}">{{ $x->groupname }}</option>
+                           @endforeach     
+                        </select>
+                        </th>
                      <th rowspan="1" colspan="1" >                   
                         <select name="select" class="form-control">
                            <option value="" selected>Auswahl Anrede</option>
