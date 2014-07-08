@@ -155,24 +155,23 @@ class AjaxController extends BaseController
                 }  
 
 
+$kundengrupperesult = Users::join('customers_groups','customers_groups.customers_groups_id','=','users.customers_groups_id')
+->get([
+    'users.id',
+    'users.gender',
+    'users.first_name',
+    'users.last_name',
+    'users.email',
+    'users.telephone',
 
+    'customers_groups.groupname',
+ 
 
-
-var_dump(
-Users::all()->toArray()
-    );
-
-var_dump(
-Users::join('customers_groups','customers_groups.customers_groups_id','=','users.customers_groups_id')->get()->toArray()
-
-    );
-     
-
-
+    ]);
 
             
 
- $kundengrupperesult = List_Kundengruppe::where('customers_groups_id', '=',  $customers_groups_id_retrieval )->get();
+ //$kundengrupperesult = List_Kundengruppe::where('customers_groups_id', '=',  $customers_groups_id_retrieval )->get();
        
 
         return View::make('backend.customer_management.data', compact('users','kundengrupperesult'));
