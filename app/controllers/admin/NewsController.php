@@ -11,7 +11,7 @@ use Notification;
 use Sefa\Repositories\News\NewsRepository as News;
 use Sefa\Exceptions\Validation\ValidationException;
 
-<?php
+
 class NewsController extends BaseController
 
 {

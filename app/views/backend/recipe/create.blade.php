@@ -40,7 +40,7 @@
    <div class="control-group {{ $errors->has('titel') ? 'has-error' : '' }}">
       <label class="control-label" for="titel">Titel <span class="stern" >*</span></label>
       <div class="controls">         
-         {{ Form::text('titel', null, array('class'=>'form-control', 'id' => 'titel', 'placeholder'=>'titel', 'value'=>Input::old('titel'))) }}
+         {{ Form::text('titel', null, array('class'=>'form-control', 'id' => 'titel', 'placeholder'=>'Titel', 'value'=>Input::old('titel'))) }}
          @if ($errors->first('titel'))
          <span class="help-block">{{ $errors->first('titel') }}</span>
          @endif
@@ -276,6 +276,42 @@
 
    </div>
 
+
+      <div class="control-group {{ $errors->has('img_small') ? 'has-error' : '' }}">
+      <label class="control-label" for="img_small">Kleines Bild einfügen</label>
+      <div class="controls">
+      {{ Form::textarea('img_small', null, array('class'=>'form-control', 'id' => 'img_small', 'placeholder'=>'Kleines Bild einfügen', 'value'=>Input::old('img_small'))) }}
+         @if ($errors->first('img_small'))
+         <span class="help-block">{{ $errors->first('img_small') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+
+      <div class="control-group {{ $errors->has('img_medium') ? 'has-error' : '' }}">
+      <label class="control-label" for="img_medium">Mittleres Bild einfügen</label>
+      <div class="controls">
+       {{ Form::textarea('img_medium', null, array('class'=>'form-control', 'id' => 'img_medium', 'placeholder'=>'Mittleres Bild einfügen', 'value'=>Input::old('img_medium'))) }}
+         @if ($errors->first('img_medium'))
+         <span class="help-block">{{ $errors->first('img_medium') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+
+      <div class="control-group {{ $errors->has('img_large') ? 'has-error' : '' }}">
+      <label class="control-label" for="img_large">Großes Bild einfügen</label>
+      <div class="controls">
+      {{ Form::textarea('img_large', null, array('class'=>'form-control', 'id' => 'img_large', 'placeholder'=>'Großes Bild einfügen', 'value'=>Input::old('img_large'))) }}
+         @if ($errors->first('img_large'))
+         <span class="help-block">{{ $errors->first('img_large') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
 </div>
    </div><div class="col-md-6">
 
@@ -341,7 +377,7 @@
          @endif
       </div>
    </div> 
-
+ <br>
     <!-- step_5 -->
    <div class="control-group {{ $errors->has('step_5') ? 'has-error' : '' }}">
       <label class="control-label" for="step_5">Schritt 5 <span class="stern" >*</span></label>
@@ -430,39 +466,127 @@
 
 
 
-   <script type="text/javascript" src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
-   <script type="text/javascript" src="{{ URL::to('assets/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
-<script type="text/javascript">
-    $('.form_datetime').datetimepicker({
-        //language:  'fr',
-        weekStart: 1,
-        todayBtn:  1,
-      autoclose: 1,
-      todayHighlight: 1,
-      startView: 2,
-      forceParse: 0,
-        showMeridian: 1
-    });
-   $('.form_date').datetimepicker({
-        language:  'de',
-        weekStart: 1,
-        todayBtn:  1,
-      autoclose: 1,
-      todayHighlight: 1,
-      startView: 2,
-      minView: 2,
-      forceParse: 0
-    });
-   $('.form_time').datetimepicker({
-        language:  'de',
-        weekStart: 1,
-        todayBtn:  1,
-      autoclose: 1,
-      todayHighlight: 1,
-      startView: 1,
-      minView: 0,
-      maxView: 1,
-      forceParse: 0
-    });
-</script>
+<!--CKEDITOR ANFANG--> 
+   <script>
+      window.onload = function () {
+      
+      
+      
+          CKEDITOR.replace('step_1', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+                language: 'de',
+              height: '150px',
+              
+      
+            });  
+             CKEDITOR.replace('step_2', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+                language: 'de',
+              height: '150px',
+      
+            });  
+                CKEDITOR.replace('step_3', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+                language: 'de',
+              height: '150px',
+      
+            });  
+                   CKEDITOR.replace('step_4', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+                language: 'de',
+              height: '150px',
+      
+            });  
+                      CKEDITOR.replace('step_5', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+                language: 'de',
+              height: '150px',
+      
+            });  
+                         CKEDITOR.replace('step_6', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+                language: 'de',
+              height: '150px',
+      
+            });  
+                            CKEDITOR.replace('step_7', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+                language: 'de',
+              height: '150px',
+      
+            });  
+
+
+                               CKEDITOR.replace('athome', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+                language: 'de',
+              height: '150px',
+      
+            });  
+
+                                  CKEDITOR.replace('tip', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+                language: 'de',
+              height: '150px',
+      
+            });  
+
+
+               CKEDITOR.replace('description', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+                language: 'de',
+              height: '150px',
+      
+            });                        
+      
+      
+       CKEDITOR.replace('img_small', {
+      
+               language: 'de',
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+              height: '300px',
+               width: '450px',
+              customConfig: 'ckeditor_config_single.js'
+            });  
+
+
+
+        CKEDITOR.replace('img_medium', {
+      
+               language: 'de',
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+              height: '300px',
+               width: '450px',
+              customConfig: 'ckeditor_config_single.js'
+            });  
+      
+           CKEDITOR.replace('img_large', {
+      
+               language: 'de',
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+               uiColor: '#85b81d',
+              height: '300px',
+               width: '450px',
+              customConfig: 'ckeditor_config_single.js'
+            });  
+      
+      
+      
+      
+      };
+      
+   </script>
+   <!--CKEDITOR Ende--> 
 @stop

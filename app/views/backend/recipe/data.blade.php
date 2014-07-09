@@ -3,7 +3,7 @@
 @foreach( $recipe as $index => $x )
 [ 
 "{{{ $x->id }}}",
-"{{{$x->img_small }}}",
+"",
 "{{{ $x->titel }}}",
 "{{{ $x->created_at }}} ",
 "{{{ $x->updated_at}}}", 
