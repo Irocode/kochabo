@@ -14,6 +14,8 @@ class Recipe extends BaseModel implements BaseModelInterface
         'titel',   
         'duration',   
         'cooking_time',
+        'tip',
+        'athome',
         'description',
         'img_small',
         'img_medium',
