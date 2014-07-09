@@ -199,6 +199,30 @@ Route::get('tablesorter_order_items_index', array('as'=>'admin.order_items.data'
 Route::get('order_items/{id}/delete', array('as' => 'admin.order_items.delete', 'uses' => 'OrderItemsController@confirmDestroy'))
 ->where('id', '\d+');
 
+//ingredients
+Route::resource('ingredients', 'OrderController');
+////order AJAX INDEX Tablesorter ingredients
+Route::get('tablesorter_ingredients_index/{id}', array('as'=>'admin.ingredients.data', 'uses'=>'AjaxController@getDatatable_ingredients'));
+Route::get('tablesorter_ingredients_index', array('as'=>'admin.ingredients.data', 'uses'=>'AjaxController@getDatatable_ingredients_all'));
+Route::get('ingredients/{id}/delete', array('as' => 'admin.ingredients.delete', 'uses' => 'IngredientsController@confirmDestroy'))
+->where('id', '\d+');
+
+//recipe_ingredient
+Route::resource('recipe_ingredient', 'Recipe_ingredientController');
+////order AJAX INDEX Tablesorter ingredients
+Route::get('tablesorter_recipe_ingredient_index/{id}', array('as'=>'admin.recipe_ingredient.data', 'uses'=>'AjaxController@getDatatable_recipe_ingredient'));
+Route::get('tablesorter_recipe_ingredient_index', array('as'=>'admin.recipe_ingredient.data', 'uses'=>'AjaxController@getDatatable_recipe_ingredient_all'));
+Route::get('recipe_ingredient/{id}/delete', array('as' => 'admin.recipe_ingredient.delete', 'uses' => 'Recipe_ingredientController@confirmDestroy'))
+->where('id', '\d+');
+
+//recipe
+Route::resource('recipe', 'RecipeController');
+////order AJAX INDEX Tablesorter ingredients
+Route::get('tablesorter_recipe_index/{id}', array('as'=>'admin.recipe.data', 'uses'=>'AjaxController@getDatatable_recipe'));
+Route::get('tablesorter_recipe_index', array('as'=>'admin.recipe.data', 'uses'=>'AjaxController@getDatatable_recipe_all'));
+Route::get('recipe/{id}/delete', array('as' => 'admin.recipe.delete', 'uses' => 'RecipeController@confirmDestroy'))
+->where('id', '\d+');
+
 //customers_groups
 Route::resource('customers_groups', 'CustomersGroupsController');
 ////order AJAX INDEX Tablesorter

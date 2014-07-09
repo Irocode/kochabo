@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-09 07:10:45
+// NOTE Migration Created: 2014-07-09 07:21:46
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -435,6 +435,7 @@ Schema::create('ingredients', function($table) {
  $table->('image');
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ $table->unsignedInteger('is_published');
  });
 
 

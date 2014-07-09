@@ -14,6 +14,9 @@ use Deliveryzipcode;
 use Logisticianmanager;
 use CustomersGroups;
 use Newsletter;
+use Ingredients;
+use Recipe;
+use Recipe_ingredient;
 use Redirect;
 use View;
 use Input;
@@ -24,7 +27,7 @@ use Notification;
 class AjaxController extends BaseController
 
 {
-    public function __construct(Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
+    public function __construct(Recipe_ingredient $recipe_ingredient, Recipe $recipe, Ingredients $ingredients, Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
 
     {
         View::share('active', 'modules');
@@ -40,6 +43,10 @@ class AjaxController extends BaseController
         $this->newsletter = $newsletter;
         $this->customers_groups = $customers_groups;        
         $this->addressnoprimarykey = $addressnoprimarykey;
+        $this->ingredients = $ingredients;
+        $this->recipe = $recipe;
+        $this->recipe_ingredient = $recipe_ingredient;
+
     }
     // AJAX Call-> Index Logistmanager Start
     public function getDatatable_logisticianmanager()
@@ -249,8 +256,62 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
         return View::make('backend.customers_groups.data', compact('customers_groups'));
     }
 
-    
 
+    // AJAX Call-> Index ingredient INDEX Start
+    public function getDatatable_ingredients()
+
+    {
+         $ingredient = Ingredient::where('id', '=', $id)->orderBy('id', 'DESC')->get();
+        return View::make('backend.ingredient.data', compact('ingredient'));
+
+    }
+    // AJAX Call-> Index ingredient INDEX Ende
+
+    // AJAX Call-> Index ingredient (ALLE)INDEX Start
+    public function getDatatable_ingredients_all()
+    {
+         $ingredient = Ingredient::where('id', '>', 0)->orderBy('id', 'DESC')->get();
+          return View::make('backend.ingredient.data', compact('ingredient'));
+    }
+    // AJAX Call-> Index ingredient (ALLE)INDEX Ende
+
+
+ // AJAX Call-> Index recipe_ingredient INDEX Start
+    public function getDatatable_recipe_ingredient()
+
+    {
+         $recipe_ingredient = Recipe_ingredient::where('recipe_id', '=', $id)->orderBy('recipe_id', 'DESC')->get();
+        return View::make('backend.recipe_ingredient.data', compact('recipe_ingredient'));
+
+    }
+    // AJAX Call-> Index recipe_ingredient INDEX Ende
+
+    // AJAX Call-> Index recipe_ingredient (ALLE)INDEX Start
+    public function getDatatable_recipe_ingredient_all()
+    {
+         $recipe_ingredient = Recipe_ingredient::where('recipe_id', '>', 0)->orderBy('recipe_id', 'DESC')->get();
+          return View::make('backend.recipe_ingredient.data', compact('recipe_ingredient'));
+    }
+    // AJAX Call-> Index recipe_ingredient (ALLE)INDEX Ende
+
+
+     // AJAX Call-> Index recipe INDEX Start
+    public function getDatatable_recipe()
+
+    {
+         $recipe = Recipe::where('id', '=', $id)->orderBy('id', 'DESC')->get();
+        return View::make('backend.recipe.data', compact('recipe'));
+
+    }
+    // AJAX Call-> Index recipe INDEX Ende
+
+    // AJAX Call-> Index recipe (ALLE)INDEX Start
+    public function getDatatable_recipe_all()
+    {
+         $recipe = Recipe::where('id', '>', 0)->orderBy('id', 'DESC')->get();
+          return View::make('backend.recipe.data', compact('recipe'));
+    }
+    // AJAX Call-> Index recipe (ALLE)INDEX Ende
 
 }
 
