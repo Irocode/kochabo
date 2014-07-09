@@ -9,9 +9,9 @@ class ListJaneinTableSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		\DB::table('List_Janein')->truncate();
+		\DB::table('list_janein')->truncate();
         
-		\DB::table('List_Janein')->insert(array (
+		\DB::table('list_janein')->insert(array (
 			0 => 
 			array (
 				'id' => 1,

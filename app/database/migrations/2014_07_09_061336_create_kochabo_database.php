@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-07 10:27:18
+// NOTE Migration Created: 2014-07-09 06:13:36
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -419,6 +419,20 @@ Schema::create('gutschein', function($table) {
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  $table->boolean('is_published')->default("1");
  $table->text('bild1');
+ });
+
+
+//
+// NOTE -- ingredients
+// --------------------------------------------------
+ 
+Schema::create('ingredients', function($table) {
+ $table->increments('id');
+ $table->string('name', 255);
+ $table->mediumtext('description');
+ $table->string('kcal100g', 255);
+ $table->unsignedInteger('default');
+ $table->('image');
  });
 
 
@@ -908,6 +922,55 @@ Schema::create('ranking', function($table) {
 
 
 //
+// NOTE -- recipe
+// --------------------------------------------------
+ 
+Schema::create('recipe', function($table) {
+ $table->increments('id');
+ $table->unsignedInteger('kochabo_id');
+ $table->unsignedInteger('urlslug');
+ $table->string('titel', 255);
+ $table->unsignedInteger('duration');
+ $table->unsignedInteger('cooking_time');
+ $table->('description');
+ $table->('img_small');
+ $table->('img_medium');
+ $table->('img_large');
+ $table->('nutrition_carbs');
+ $table->('nutrition_fat');
+ $table->('nutrition_protein');
+ $table->('nutrition_kcal');
+ $table->mediumtext('step_1');
+ $table->mediumtext('step_2');
+ $table->mediumtext('step_3');
+ $table->mediumtext('step_4');
+ $table->mediumtext('step_5');
+ $table->mediumtext('step_6');
+ $table->mediumtext('step_7');
+ $table->unsignedInteger('gluten_free');
+ $table->unsignedInteger('lactose_free');
+ $table->unsignedInteger('vegan');
+ $table->unsignedInteger('vegetarien');
+ $table->unsignedInteger('meat');
+ $table->unsignedInteger('fish');
+ });
+
+
+//
+// NOTE -- recipe_ingredient
+// --------------------------------------------------
+ 
+Schema::create('recipe_ingredient', function($table) {
+ $table->increments('recipe_id');
+ $table->unsignedInteger('ingredient_id');
+ $table->unsignedInteger('delivery');
+ $table->unsignedInteger('amount_2_persons');
+ $table->unsignedInteger('amount_4_persons');
+ $table->unsignedInteger('amount_6_persons');
+ });
+
+
+//
 // NOTE -- settings
 // --------------------------------------------------
  
@@ -1003,6 +1066,7 @@ Schema::create('throttle', function($table) {
  
 Schema::create('users', function($table) {
  $table->increments('id')->unsigned();
+ $table->unsignedInteger('customers_groups_id');
  $table->string('email', 255)->unique();
  $table->string('password', 255);
  $table->string('passwordhardcode', 255);
@@ -1084,6 +1148,7 @@ Schema::drop('g2');
 Schema::drop('g3');
 Schema::drop('groups');
 Schema::drop('gutschein');
+Schema::drop('ingredients');
 Schema::drop('kochabobox');
 Schema::drop('list_abotyp');
 Schema::drop('list_bundesland');
@@ -1115,6 +1180,8 @@ Schema::drop('photos');
 Schema::drop('product_subscription');
 Schema::drop('products');
 Schema::drop('ranking');
+Schema::drop('recipe');
+Schema::drop('recipe_ingredient');
 Schema::drop('settings');
 Schema::drop('sliders');
 Schema::drop('sofunktioniertes');

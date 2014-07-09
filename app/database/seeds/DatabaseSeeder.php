@@ -70,5 +70,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ProductSubscriptionTableSeeder');
 		$this->call('CustomersGroupsTableSeeder');
 		$this->call('ListJaneinTableSeeder');
+		$this->call('IngredientsTableSeeder');
+		$this->call('RecipeTableSeeder');
+		$this->call('RecipeIngredientTableSeeder');
 	}
 }
