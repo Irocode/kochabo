@@ -20,7 +20,7 @@ class IngredientsRepository extends Validator implements BaseRepositoryInterface
     // 'first_name'    => 'required',
     // 'last_name'  => 'required',
     ];
-    public function __construct(ingredients $ingredients)
+    public function __construct(Ingredients $ingredients)
 
     {
         $config = Config::get('sfcms');

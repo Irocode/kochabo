@@ -200,7 +200,7 @@ Route::get('order_items/{id}/delete', array('as' => 'admin.order_items.delete', 
 ->where('id', '\d+');
 
 //ingredients
-Route::resource('ingredients', 'OrderController');
+Route::resource('ingredients', 'IngredientsController');
 ////order AJAX INDEX Tablesorter ingredients
 Route::get('tablesorter_ingredients_index/{id}', array('as'=>'admin.ingredients.data', 'uses'=>'AjaxController@getDatatable_ingredients'));
 Route::get('tablesorter_ingredients_index', array('as'=>'admin.ingredients.data', 'uses'=>'AjaxController@getDatatable_ingredients_all'));
@@ -212,7 +212,7 @@ Route::resource('recipe_ingredient', 'Recipe_ingredientController');
 ////order AJAX INDEX Tablesorter ingredients
 Route::get('tablesorter_recipe_ingredient_index/{id}', array('as'=>'admin.recipe_ingredient.data', 'uses'=>'AjaxController@getDatatable_recipe_ingredient'));
 Route::get('tablesorter_recipe_ingredient_index', array('as'=>'admin.recipe_ingredient.data', 'uses'=>'AjaxController@getDatatable_recipe_ingredient_all'));
-Route::get('recipe_ingredient/{id}/delete', array('as' => 'admin.recipe_ingredient.delete', 'uses' => 'Recipe_ingredientController@confirmDestroy'))
+Route::get('recipe_ingredient/{id}/delete', array('as' => 'admin.recipe_ingredient.delete', 'uses' => 'Recipe_ingredient@Controller@confirmDestroy'))
 ->where('id', '\d+');
 
 //recipe
