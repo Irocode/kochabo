@@ -41,6 +41,8 @@ class RecipeTableSeeder extends Seeder {
 				'vegetarien' => 1,
 				'meat' => 0,
 				'fish' => 0,
+				'created_at' => '0000-00-00 00:00:00',
+				'updated_at' => '0000-00-00 00:00:00',
 			),
 		));
 	}

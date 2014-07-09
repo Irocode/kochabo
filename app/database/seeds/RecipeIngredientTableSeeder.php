@@ -20,6 +20,8 @@ class RecipeIngredientTableSeeder extends Seeder {
 				'amount_2_persons' => 0,
 				'amount_4_persons' => 1,
 				'amount_6_persons' => 0,
+				'created_at' => '0000-00-00 00:00:00',
+				'updated_at' => '0000-00-00 00:00:00',
 			),
 		));
 	}
