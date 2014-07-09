@@ -5,7 +5,6 @@ use Response;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
-
 class RecipeRepository extends Validator implements BaseRepositoryInterface
 
 {
@@ -30,7 +29,7 @@ class RecipeRepository extends Validator implements BaseRepositoryInterface
     public function all()
 
     {
-        return $this->recipe->recipeBy('created_at', 'DESC')->where('is_published', 1)->get();
+        return $this->recipe->orderBy('created_at', 'DESC')->where('is_published', 1)->get();
     }
     public function lists()
 
@@ -40,8 +39,8 @@ class RecipeRepository extends Validator implements BaseRepositoryInterface
     public function paginate($perPage = null, $all = false)
 
     {
-        if ($all) return $this->recipe->recipeBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
-        return $this->recipe->recipeBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
+        if ($all) return $this->recipe->orderBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
+        return $this->recipe->orderBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
     }
     public function find($id)
 

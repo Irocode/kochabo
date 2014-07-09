@@ -30,7 +30,7 @@ class IngredientsRepository extends Validator implements BaseRepositoryInterface
     public function all()
 
     {
-        return $this->ingredients->ingredientsBy('created_at', 'DESC')->where('is_published', 1)->get();
+        return $this->ingredients->orderBy('created_at', 'DESC')->where('is_published', 1)->get();
     }
     public function lists()
 
@@ -40,8 +40,8 @@ class IngredientsRepository extends Validator implements BaseRepositoryInterface
     public function paginate($perPage = null, $all = false)
 
     {
-        if ($all) return $this->ingredients->ingredientsBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
-        return $this->ingredients->ingredientsBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
+        if ($all) return $this->ingredients->orderBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
+        return $this->ingredients->orderBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
     }
     public function find($id)
 

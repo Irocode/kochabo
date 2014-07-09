@@ -104,7 +104,7 @@
 
           
 
-             <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/rezeptemanager') }}"><span class="glyphicon glyphicon-cutlery"></span>Rezepte</a></li>
+             <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/recipe') }}"><span class="glyphicon glyphicon-cutlery"></span>Rezepte</a></li>
              
 
 

@@ -30,7 +30,7 @@ class RecipeingredientRepository extends Validator implements BaseRepositoryInte
     public function all()
 
     {
-        return $this->recipe_ingredient->recipe_ingredientBy('created_at', 'DESC')->where('is_published', 1)->get();
+        return $this->recipe_ingredient->orderBy('created_at', 'DESC')->where('is_published', 1)->get();
     }
     public function lists()
 
@@ -40,8 +40,8 @@ class RecipeingredientRepository extends Validator implements BaseRepositoryInte
     public function paginate($perPage = null, $all = false)
 
     {
-        if ($all) return $this->recipe_ingredient->recipe_ingredientBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
-        return $this->recipe_ingredient->recipe_ingredientBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
+        if ($all) return $this->recipe_ingredient->orderBy('created_at', 'DESC')->paginate(($perPage) ? $perPage : $this->perPage);
+        return $this->recipe_ingredient->orderBy('created_at', 'DESC')->where('is_published', 1)->paginate(($perPage) ? $perPage : $this->perPage);
     }
     public function find($id)
 
