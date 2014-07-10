@@ -203,7 +203,7 @@
       <label class="control-label" for="gluten_free ">Glutenfrei?</label>
       <div class="controls">   
 
-      {{ Form::checkbox('gluten_free', '1', Input::old('gluten_free', 1))}}
+      {{ Form::checkbox('gluten_free', '1', Input::old('gluten_free', 0))}}
 
          
          @if ($errors->first('gluten_free '))
@@ -222,7 +222,7 @@
       <label class="control-label" for="lactose_free">Laktosefrei?</label>
       <div class="controls">         
 
-      {{ Form::checkbox('lactose_free', '1', Input::old('lactose_free', 1))}}
+      {{ Form::checkbox('lactose_free', '1', Input::old('lactose_free', 0))}}
 
     
          @if ($errors->first('lactose_free'))
@@ -241,7 +241,7 @@
    <div class="control-group {{ $errors->has('meat') ? 'has-error' : '' }}">
       <label class="control-label" for="meat">Fleisch?</label>
       <div class="controls">         
-        {{ Form::checkbox('meat', '1', Input::old('meat', 1))}}   
+        {{ Form::checkbox('meat', '1', Input::old('meat', 0))}}   
          @if ($errors->first('meat'))
          <span class="help-block">{{ $errors->first('meat') }}</span>
          @endif
@@ -258,7 +258,7 @@
    <div class="control-group {{ $errors->has('fish') ? 'has-error' : '' }}">
       <label class="control-label" for="fish">Fisch?</label>
       <div class="controls">      
-   {{ Form::checkbox('fish', '1', Input::old('fish', 1))}}   
+   {{ Form::checkbox('fish', '1', Input::old('fish', 0))}}   
          @if ($errors->first('fish'))
          <span class="help-block">{{ $errors->first('fish') }}</span>
          @endif
@@ -275,7 +275,7 @@
    <div class="control-group {{ $errors->has('vegetarien') ? 'has-error' : '' }}">
       <label class="control-label" for="vegetarien">Vegetarisch?</label>
       <div class="controls">       
-       {{ Form::checkbox('vegetarien', '1', Input::old('vegetarien', 1))}}    
+       {{ Form::checkbox('vegetarien', '1', Input::old('vegetarien', 0))}}    
   
          @if ($errors->first('vegetarien'))
          <span class="help-block">{{ $errors->first('vegetarien') }}</span>
@@ -292,7 +292,7 @@
    <div class="control-group {{ $errors->has('vegan') ? 'has-error' : '' }}">
       <label class="control-label" for="vegetarien">Vegan?</label>
       <div class="controls">       
-       {{ Form::checkbox('vegan', '1', Input::old('vegan', 1))}}    
+       {{ Form::checkbox('vegan', '1', Input::old('vegan', 0))}}    
   
          @if ($errors->first('vegan'))
          <span class="help-block">{{ $errors->first('vegan') }}</span>
