@@ -47,34 +47,7 @@
       </div>
    </div> 
        <br> 
-
- <!-- tip -->
-   <div class="control-group {{ $errors->has('tip') ? 'has-error' : '' }}">
-      <label class="control-label" for="tip">Tipp <span class="stern" >*</span></label>
-      <div class="controls">         
-         {{ Form::textarea ('tip', null, array('class'=>'form-control', 'id' => 'tip', 'placeholder'=>'Tipp', 'value'=>Input::old('tip'))) }}
-         @if ($errors->first('tip'))
-         <span class="help-block">{{ $errors->first('tip') }}</span>
-         @endif
-      </div>
-   </div> 
-       <br> 
-
-
-        <!-- athome -->
-   <div class="control-group {{ $errors->has('athome') ? 'has-error' : '' }}">
-      <label class="control-label" for="athome">Solltest zu Hause haben <span class="stern" >*</span></label>
-      <div class="controls">         
-         {{ Form::textarea ('athome', null, array('class'=>'form-control', 'id' => 'athome', 'placeholder'=>'Solltest zu Hause haben', 'value'=>Input::old('athome'))) }}
-         @if ($errors->first('athome'))
-         <span class="help-block">{{ $errors->first('athome') }}</span>
-         @endif
-      </div>
-   </div> 
-       <br> 
-
-
-       <div class="row">
+         <div class="row">
   <div class="col-md-6">
 
    <!-- duration -->
@@ -106,6 +79,35 @@
    <br>
    </div>
 </div>
+<br><br><br>
+
+ <!-- tip -->
+   <div class="control-group {{ $errors->has('tip') ? 'has-error' : '' }}">
+      <label class="control-label" for="tip">Tipp <span class="stern" >*</span></label>
+      <div class="controls">         
+         {{ Form::textarea ('tip', null, array('class'=>'form-control', 'id' => 'tip', 'placeholder'=>'Tipp', 'value'=>Input::old('tip'))) }}
+         @if ($errors->first('tip'))
+         <span class="help-block">{{ $errors->first('tip') }}</span>
+         @endif
+      </div>
+   </div> 
+       <br> 
+
+
+        <!-- athome -->
+   <div class="control-group {{ $errors->has('athome') ? 'has-error' : '' }}">
+      <label class="control-label" for="athome">Solltest zu Hause haben <span class="stern" >*</span></label>
+      <div class="controls">         
+         {{ Form::textarea ('athome', null, array('class'=>'form-control', 'id' => 'athome', 'placeholder'=>'Solltest zu Hause haben', 'value'=>Input::old('athome'))) }}
+         @if ($errors->first('athome'))
+         <span class="help-block">{{ $errors->first('athome') }}</span>
+         @endif
+      </div>
+   </div> 
+       <br> 
+
+
+     
 
 
    <!-- description -->
@@ -195,13 +197,16 @@
 
    <div class="row">
   <div class="col-md-2">
-   <!-- glutenfree  -->
-   <div class="control-group {{ $errors->has('glutenfree ') ? 'has-error' : '' }}">
-      <label class="control-label" for="glutenfree ">Glutenfrei?<span class="stern" >*</span></label>
-      <div class="controls">         
-         {{ Form::checkbox('glutenfree ', null, array('class'=>'form-control', 'id' => 'glutenfree  ', 'placeholder'=>'Glutenfrei?', 'value'=>Input::old('glutenfree '))) }}
-         @if ($errors->first('glutenfree '))
-         <span class="help-block">{{ $errors->first('glutenfree  ') }}</span>
+   <!-- gluten_free  -->
+   <div class="control-group {{ $errors->has('gluten_free ') ? 'has-error' : '' }}">
+      <label class="control-label" for="gluten_free ">Glutenfrei?</label>
+      <div class="controls">   
+
+      {{ Form::checkbox('gluten_free', '1', Input::old('gluten_free', 1))}}
+
+         
+         @if ($errors->first('gluten_free '))
+         <span class="help-block">{{ $errors->first('gluten_free  ') }}</span>
          @endif
       </div>
    </div> 
@@ -211,13 +216,16 @@
   </div>
   <div class="col-md-2">
 
-   <!-- vegetarien -->
-   <div class="control-group {{ $errors->has('vegetarien') ? 'has-error' : '' }}">
-      <label class="control-label" for="vegetarien">Laktosefrei?<span class="stern" >*</span></label>
+   <!-- lactose_free -->
+   <div class="control-group {{ $errors->has('lactose_free') ? 'has-error' : '' }}">
+      <label class="control-label" for="lactose_free">Laktosefrei?</label>
       <div class="controls">         
-         {{ Form::checkbox('vegetarien', null, array('class'=>'form-control', 'id' => 'vegetarien', 'placeholder'=>'Laktosefrei?', 'value'=>Input::old('vegetarien'))) }}
-         @if ($errors->first('vegetarien'))
-         <span class="help-block">{{ $errors->first('vegetarien') }}</span>
+
+      {{ Form::checkbox('lactose_free', '1', Input::old('lactose_free', 1))}}
+
+    
+         @if ($errors->first('lactose_free'))
+         <span class="help-block">{{ $errors->first('lactose_free') }}</span>
          @endif
       </div>
    </div> 
@@ -226,13 +234,13 @@
    </div>
 
 
-     <div class="col-md-3">
+     <div class="col-md-2">
 
    <!-- meat -->
    <div class="control-group {{ $errors->has('meat') ? 'has-error' : '' }}">
-      <label class="control-label" for="meat">Fleisch Gericht?<span class="stern" >*</span></label>
+      <label class="control-label" for="meat">Fleisch?</label>
       <div class="controls">         
-         {{ Form::checkbox('meat', null, array('class'=>'form-control', 'id' => 'meat', 'placeholder'=>'Fleisch Gericht?', 'value'=>Input::old('meat'))) }}
+        {{ Form::checkbox('meat', '1', Input::old('meat', 1))}}   
          @if ($errors->first('meat'))
          <span class="help-block">{{ $errors->first('meat') }}</span>
          @endif
@@ -243,13 +251,13 @@
    </div>
 
 
-     <div class="col-md-3">
+     <div class="col-md-2">
 
    <!-- fish -->
    <div class="control-group {{ $errors->has('fish') ? 'has-error' : '' }}">
-      <label class="control-label" for="fish">Fisch Gericht?<span class="stern" >*</span></label>
-      <div class="controls">         
-         {{ Form::checkbox('fish', null, array('class'=>'form-control', 'id' => 'fish', 'placeholder'=>'Fisch Gericht??', 'value'=>Input::old('fish'))) }}
+      <label class="control-label" for="fish">Fisch?</label>
+      <div class="controls">      
+   {{ Form::checkbox('fish', '1', Input::old('fish', 1))}}   
          @if ($errors->first('fish'))
          <span class="help-block">{{ $errors->first('fish') }}</span>
          @endif
@@ -262,19 +270,39 @@
 
      <div class="col-md-2">
 
-   <!-- lactose_free -->
-   <div class="control-group {{ $errors->has('lactose_free') ? 'has-error' : '' }}">
-      <label class="control-label" for="lactose_free">Laktosefrei?<span class="stern" >*</span></label>
-      <div class="controls">         
-         {{ Form::checkbox('lactose_free', null, array('class'=>'form-control', 'id' => 'lactose_free', 'placeholder'=>'Laktosefrei?', 'value'=>Input::old('lactose_free'))) }}
-         @if ($errors->first('lactose_free'))
-         <span class="help-block">{{ $errors->first('lactose_free') }}</span>
+   <!-- vegetarien -->
+   <div class="control-group {{ $errors->has('vegetarien') ? 'has-error' : '' }}">
+      <label class="control-label" for="vegetarien">Vegetarisch?</label>
+      <div class="controls">       
+       {{ Form::checkbox('vegetarien', '1', Input::old('vegetarien', 1))}}    
+  
+         @if ($errors->first('vegetarien'))
+         <span class="help-block">{{ $errors->first('vegetarien') }}</span>
          @endif
       </div>
    </div> 
    <br>
 
    </div>
+
+        <div class="col-md-2">
+
+   <!-- vegan -->
+   <div class="control-group {{ $errors->has('vegan') ? 'has-error' : '' }}">
+      <label class="control-label" for="vegetarien">Vegan?<span class="stern" >*</span></label>
+      <div class="controls">       
+       {{ Form::checkbox('vegan', '1', Input::old('vegan', 1))}}    
+  
+         @if ($errors->first('vegan'))
+         <span class="help-block">{{ $errors->first('vegan') }}</span>
+         @endif
+      </div>
+   </div> 
+  
+
+   </div>
+
+</div>
 
 
       <div class="control-group {{ $errors->has('img_small') ? 'has-error' : '' }}">
@@ -312,7 +340,7 @@
    </div>
    <br>
 
-</div>
+
    </div><div class="col-md-6">
 
 
@@ -355,7 +383,7 @@
          @endif
       </div>
    </div> 
-
+<br>
     <!-- step_3 -->
    <div class="control-group {{ $errors->has('step_3') ? 'has-error' : '' }}">
       <label class="control-label" for="step_3">Schritt 3 <span class="stern" >*</span></label>
@@ -413,7 +441,17 @@
    <br>
 
  
-
+ <!-- Published -->
+   <input type="hidden" value="is_published">
+    <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
+      <div class="controls">
+          <label class="checkbox">{{ Form::checkbox('is_published', 'is_published') }} Veröffentlichen ?</label>
+          @if ($errors->first('is_published'))
+          <span class="help-block">{{ $errors->first('is_published') }}</span>
+          @endif
+      </div>
+      </div>
+      <br>
 
 
 
@@ -431,7 +469,7 @@
 
  {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
   {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
-            {{ Form::submit('Registrieren', array('class' => 'btn btn-u')) }}
+            {{ Form::submit('Anlegen', array('class' => 'btn btn-u')) }}
 
 </div>
  <!-- Plichtfeld Ende -->
@@ -443,18 +481,8 @@
 
 
    <br>
-   <!-- Published -->
-   <input type="hidden" value="is_published">
-   <!--  <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
-      <div class="controls">
-          <label class="checkbox">{{ Form::checkbox('is_published', 'is_published') }} Veröffentlichen ?</label>
-          @if ($errors->first('is_published'))
-          <span class="help-block">{{ $errors->first('is_published') }}</span>
-          @endif
-      </div>
-      </div>
-      <br>
-      -->
+  
+      
 
 </div>
 
@@ -477,7 +505,7 @@
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',
-              
+               customConfig: 'ckeditor_config_recipe.js'
       
             });  
              CKEDITOR.replace('step_2', {
@@ -485,6 +513,7 @@
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',
+              customConfig: 'ckeditor_config_recipe.js'
       
             });  
                 CKEDITOR.replace('step_3', {
@@ -492,6 +521,7 @@
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',
+              customConfig: 'ckeditor_config_recipe.js'
       
             });  
                    CKEDITOR.replace('step_4', {
@@ -499,6 +529,7 @@
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',
+              customConfig: 'ckeditor_config_recipe.js'
       
             });  
                       CKEDITOR.replace('step_5', {
@@ -506,6 +537,7 @@
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',
+              customConfig: 'ckeditor_config_recipe.js'
       
             });  
                          CKEDITOR.replace('step_6', {
@@ -513,6 +545,7 @@
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',
+              customConfig: 'ckeditor_config_recipe.js'
       
             });  
                             CKEDITOR.replace('step_7', {
@@ -520,6 +553,7 @@
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',
+              customConfig: 'ckeditor_config_recipe.js'
       
             });  
 
@@ -529,6 +563,7 @@
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',
+              customConfig: 'ckeditor_config_recipe.js'
       
             });  
 
@@ -537,6 +572,7 @@
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',
+              customConfig: 'ckeditor_config_recipe.js'
       
             });  
 
@@ -546,6 +582,7 @@
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',
+              customConfig: 'ckeditor_config_recipe.js'
       
             });                        
       
@@ -555,8 +592,8 @@
                language: 'de',
             "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
                uiColor: '#85b81d',
-              height: '300px',
-               width: '450px',
+              height: '150px',
+              
               customConfig: 'ckeditor_config_single.js'
             });  
 
@@ -568,7 +605,7 @@
             "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
                uiColor: '#85b81d',
               height: '300px',
-               width: '450px',
+              
               customConfig: 'ckeditor_config_single.js'
             });  
       
@@ -577,8 +614,8 @@
                language: 'de',
             "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
                uiColor: '#85b81d',
-              height: '300px',
-               width: '450px',
+              height: '450px',
+              
               customConfig: 'ckeditor_config_single.js'
             });  
       
