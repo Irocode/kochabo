@@ -2,6 +2,39 @@
 @section('content')
 {{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
 
+{{ HTML::script('ckfinder/ckfinder.js') }} 
+
+  
+  
+  <script type="text/javascript">
+
+function BrowseServer()
+{
+  // You can use the "CKFinder" class to render CKFinder in a page:
+  var finder = new CKFinder();
+  finder.basePath = '../';  // The path for the installation of CKFinder (default = "/ckfinder/").
+  finder.selectActionFunction = SetFileField;
+  finder.popup();
+
+  // It can also be done in a single line, calling the "static"
+  // popup( basePath, width, height, selectFunction ) function:
+  // CKFinder.popup( '../', null, null, SetFileField ) ;
+  //
+  // The "popup" function can also accept an object as the only argument.
+  // CKFinder.popup( { basePath : '../', selectActionFunction : SetFileField } ) ;
+}
+
+// This is a sample function which is called when a file is selected in CKFinder.
+function SetFileField( fileUrl )
+{
+  document.getElementById( 'xFilePath' ).value = fileUrl;
+}
+
+  </script>
+
+
+
+
 
 {{ HTML::script('assets/js/jquery.slug.js') }}
 
@@ -318,6 +351,13 @@
       <a class ="btn btn-u" href="<?php echo asset('filemanager/show?CKEditor=content&CKEditorFuncNum=1&langCode=de')?>" target="_blank" onclick="return popup(this.href);">Dokumente uploaden / durchsuchen</a>
       <br><br>
    </div>
+   <div>
+
+<input type="button" onclick="BrowseServer();"  class ="btn btn-u" value="Dokumente uploaden / durchsuchen NEU TEST">
+     
+      <br><br>
+   </div>
+
 
 <div style="height:34px;"> </div>
 
@@ -555,7 +595,7 @@
       
       
           CKEDITOR.replace('step_1', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+            "filebrowserBrowseUrl": "{{ url('filemanagernew/show') }}",
                uiColor: '#85b81d',
                 language: 'de',
               height: '150px',

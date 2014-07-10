@@ -459,6 +459,17 @@ Route::get('filemanager/showiamges', function () {
 return View::make('backend/plugins/filemanager');
 });
 
+
+Route::get('filemanagernew/show', function () {
+return View::make('backend/plugins/filemanagernew');
+});
+
+
+// filemanager little fileupload images
+Route::get('filemanagernew/showiamges', function () {
+return View::make('backend/plugins/filemanagernew');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Backend Login
