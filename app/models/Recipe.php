@@ -20,6 +20,7 @@ class Recipe extends BaseModel implements BaseModelInterface
         'img_small',
         'img_medium',
         'img_large',
+        'nutrition_fat',
         'nutrition_carbs',
         'nutrition_protein',
         'nutrition_kcal',

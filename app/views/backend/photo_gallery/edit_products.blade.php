@@ -3,8 +3,7 @@
 {{ Notification::showAll() }}
 
 
-
-    {{ HTML::style('filemanager/dropzone/css/basic.css') }}
+{{ HTML::style('filemanager/dropzone/css/basic.css') }}
 {{ HTML::style('filemanager/dropzone/css/dropzone.css') }}
 {{ HTML::script('filemanager/dropzone/dropzone.js') }}
 

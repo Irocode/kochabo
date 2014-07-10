@@ -2,6 +2,7 @@
 @section('content')
 {{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
 
+
 {{ HTML::script('assets/js/jquery.slug.js') }}
 
 <div class="container">
@@ -52,9 +53,9 @@
 
    <!-- duration -->
    <div class="control-group {{ $errors->has('duration') ? 'has-error' : '' }}">
-      <label class="control-label" for="duration">Dauer <span class="stern" >*</span></label>
+      <label class="control-label" for="duration">Dauer (min)<span class="stern" >*</span></label>
       <div class="controls">         
-         {{ Form::text('duration', null, array('class'=>'form-control', 'id' => 'duration', 'placeholder'=>'Dauer', 'value'=>Input::old('duration'))) }}
+         {{ Form::text('duration', null, array('class'=>'form-control', 'id' => 'duration', 'placeholder'=>'Dauer (min)', 'value'=>Input::old('duration'))) }}
          @if ($errors->first('duration'))
          <span class="help-block">{{ $errors->first('duration') }}</span>
          @endif
@@ -68,9 +69,9 @@
 
    <!-- cooking_time -->
    <div class="control-group {{ $errors->has('cooking_time') ? 'has-error' : '' }}">
-      <label class="control-label" for="cooking_time">Kochzeit <span class="stern" >*</span></label>
+      <label class="control-label" for="cooking_time">Kochzeit (min)<span class="stern" >*</span></label>
       <div class="controls">         
-         {{ Form::text('cooking_time', null, array('class'=>'form-control', 'id' => 'cooking_time', 'placeholder'=>'Kochzeit', 'value'=>Input::old('cooking_time'))) }}
+         {{ Form::text('cooking_time', null, array('class'=>'form-control', 'id' => 'cooking_time', 'placeholder'=>'Kochzeit (min)', 'value'=>Input::old('cooking_time'))) }}
          @if ($errors->first('cooking_time'))
          <span class="help-block">{{ $errors->first('cooking_time') }}</span>
          @endif
@@ -165,9 +166,9 @@
    <div class="control-group {{ $errors->has('nutrition_protein ') ? 'has-error' : '' }}">
       <label class="control-label" for="nutrition_protein ">Nährwertangabe - Eiweiß (g)<span class="stern" >*</span></label>
       <div class="controls">         
-         {{ Form::text('nutrition_protein ', null, array('class'=>'form-control', 'id' => 'nutrition_protein  ', 'placeholder'=>'Nährwertangabe - Eiweiß (g)', 'value'=>Input::old('nutrition_protein '))) }}
+         {{ Form::text('nutrition_protein', null, array('class'=>'form-control', 'id' => 'nutrition_protein', 'placeholder'=>'Nährwertangabe - Eiweiß (g)', 'value'=>Input::old('nutrition_protein '))) }}
          @if ($errors->first('nutrition_protein '))
-         <span class="help-block">{{ $errors->first('nutrition_protein  ') }}</span>
+         <span class="help-block">{{ $errors->first('nutrition_protein') }}</span>
          @endif
       </div>
    </div> 
@@ -289,7 +290,7 @@
 
    <!-- vegan -->
    <div class="control-group {{ $errors->has('vegan') ? 'has-error' : '' }}">
-      <label class="control-label" for="vegetarien">Vegan?<span class="stern" >*</span></label>
+      <label class="control-label" for="vegetarien">Vegan?</label>
       <div class="controls">       
        {{ Form::checkbox('vegan', '1', Input::old('vegan', 1))}}    
   
@@ -304,6 +305,21 @@
 
 </div>
 
+<!-- Server durchsuchen -->
+   <div>
+      <br>
+      <script type="text/javascript">
+         function popup (url) {
+          fenster = window.open(url, "Popupfenster", "width=950,height=600,resizable=yes");
+          fenster.focus();
+          return false;
+         }
+      </script>
+      <a class ="btn btn-u" href="<?php echo asset('filemanager/show?CKEditor=content&CKEditorFuncNum=1&langCode=de')?>" target="_blank" onclick="return popup(this.href);">Dokumente uploaden / durchsuchen</a>
+      <br><br>
+   </div>
+
+<div style="height:34px;"> </div>
 
       <div class="control-group {{ $errors->has('img_small') ? 'has-error' : '' }}">
       <label class="control-label" for="img_small">Kleines Bild einfügen</label>
@@ -339,6 +355,7 @@
       </div>
    </div>
    <br>
+
 
 
    </div><div class="col-md-6">
@@ -458,6 +475,43 @@
        </div></div>
 
    <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    
          <!-- Plichtfeld Anfang -->
      
@@ -609,10 +663,13 @@
               customConfig: 'ckeditor_config_single.js'
             });  
       
-           CKEDITOR.replace('img_large', {
-      
+           CKEDITOR.replace(
+            'img_large', 
+            {extraPlugins: 'doksoft_image',
+              toolbar: 'customToolbar',
+
                language: 'de',
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
+              "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
                uiColor: '#85b81d',
               height: '450px',
               
@@ -625,5 +682,5 @@
       };
       
    </script>
-   <!--CKEDITOR Ende--> 
+   
 @stop

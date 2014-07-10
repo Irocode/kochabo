@@ -452,6 +452,8 @@ Route::resource('admin/users', 'UseradminController');
 Route::get('filemanager/show', function () {
 return View::make('backend/plugins/filemanager');
 });
+
+
 // filemanager little fileupload images
 Route::get('filemanager/showiamges', function () {
 return View::make('backend/plugins/filemanager');
