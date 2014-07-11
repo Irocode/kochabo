@@ -205,11 +205,9 @@
    <div class="control-group {{ $errors->has('gluten_free ') ? 'has-error' : '' }}">
       <label class="control-label" for="gluten_free ">Glutenfrei?</label>
       <div class="controls"> 
-       @if ($recipe->gluten_free == 0)
-       {{ Form::checkbox('gluten_free', '1', Input::old('gluten_free', 0))}}
-       @else
-       {{ Form::checkbox('gluten_free', '1', Input::old('gluten_free', 1))}}
-       @endif  
+
+       {{ Form::hidden('gluten_free', 0); }}  
+       {{ Form::checkbox('gluten_free', '1', Input::old('gluten_free', $recipe->gluten_free)) }}
          
          @if ($errors->first('gluten_free '))
          <span class="help-block">{{ $errors->first('gluten_free  ') }}</span>
@@ -225,15 +223,11 @@
    <!-- lactose_free -->
    <div class="control-group {{ $errors->has('lactose_free') ? 'has-error' : '' }}">
       <label class="control-label" for="lactose_free">Laktosefrei?</label>
-      <div class="controls">         
-
-    
-      @if ($recipe->lactose_free == 0)
-       {{ Form::checkbox('lactose_free', '1', Input::old('lactose_free', 0))}}
-       @else
-       {{ Form::checkbox('lactose_free', '1', Input::old('lactose_free', 1))}}
-       @endif  
-    
+      <div class="controls">    
+      
+      {{ Form::hidden('lactose_free', 0); }}  
+      {{ Form::checkbox('lactose_free', '1', Input::old('lactose_free', $recipe->lactose_free)) }}
+     
          @if ($errors->first('lactose_free'))
          <span class="help-block">{{ $errors->first('lactose_free') }}</span>
          @endif
@@ -251,11 +245,8 @@
       <label class="control-label" for="meat">Fleisch?</label>
       <div class="controls">    
 
-      @if ($recipe->meat == 0)
-       {{ Form::checkbox('meat', '1', Input::old('meat', 0))}}
-       @else
-       {{ Form::checkbox('meat', '1', Input::old('meat', 1))}}
-       @endif  
+      {{ Form::hidden('meat', 0); }}  
+      {{ Form::checkbox('meat', '1', Input::old('meat', $recipe->meat)) }}
 
          @if ($errors->first('meat'))
          <span class="help-block">{{ $errors->first('meat') }}</span>
@@ -273,12 +264,10 @@
    <div class="control-group {{ $errors->has('fish') ? 'has-error' : '' }}">
       <label class="control-label" for="fish">Fisch?</label>
       <div class="controls">   
-       @if ($recipe->fish == 0)
-       {{ Form::checkbox('fish', '1', Input::old('fish', 0))}}
-       @else
-       {{ Form::checkbox('fish', '1', Input::old('fish', 1))}}
-       @endif  
- 
+
+      {{ Form::hidden('fish', 0); }}  
+      {{ Form::checkbox('fish', '1', Input::old('fish', $recipe->fish)) }}
+
          @if ($errors->first('fish'))
          <span class="help-block">{{ $errors->first('fish') }}</span>
          @endif
@@ -294,12 +283,10 @@
    <!-- vegetarien -->
    <div class="control-group {{ $errors->has('vegetarien') ? 'has-error' : '' }}">
       <label class="control-label" for="vegetarien">Vegetarisch?</label>
-      <div class="controls">  
-         @if ($recipe->vegetarien == 0)
-       {{ Form::checkbox('vegetarien', '1', Input::old('vegetarien', 0))}}
-       @else
-       {{ Form::checkbox('vegetarien', '1', Input::old('vegetarien', 1))}}
-       @endif     
+      <div class="controls"> 
+
+       {{ Form::hidden('vegetarien', 0); }}  
+       {{ Form::checkbox('vegetarien', '1', Input::old('vegetarien', $recipe->vegetarien)) }}
      
          @if ($errors->first('vegetarien'))
          <span class="help-block">{{ $errors->first('vegetarien') }}</span>
@@ -315,12 +302,11 @@
    <!-- vegan -->
    <div class="control-group {{ $errors->has('vegan') ? 'has-error' : '' }}">
       <label class="control-label" for="vegetarien">Vegan?</label>
-      <div class="controls">      
-       @if ($recipe->vegan == 0)
-       {{ Form::checkbox('vegan', '1', Input::old('vegan', 0))}}
-       @else
-       {{ Form::checkbox('vegan', '1', Input::old('vegan', 1))}}
-       @endif  
+      <div class="controls">   
+        
+       {{ Form::hidden('vegan', 0); }}  
+       {{ Form::checkbox('vegan', '1', Input::old('vegan', $recipe->vegan)) }}
+
          @if ($errors->first('vegan'))
          <span class="help-block">{{ $errors->first('vegan') }}</span>
          @endif

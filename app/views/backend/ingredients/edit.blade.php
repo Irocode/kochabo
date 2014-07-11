@@ -83,19 +83,12 @@
                <div class="control-group {{ $errors->has('defaultunit ') ? 'has-error' : '' }}">
                   <label class="control-label" for="defaultunit ">Default</label>
                   <div class="controls">  
-
-                 
-                 
-                   {{{$ingredients->defaultunit}}}
-
-
-
                 
                   {{ Form::hidden('defaultunit', 0); }}  
                   {{ Form::checkbox('defaultunit', '1', Input::old('defaultunit', $ingredients->defaultunit)) }}
 
                      @if ($errors->first('defaultunit '))
-                     <span class="help-block">{{ $errors->first('defaultunit  ') }}</span>
+                     <span class="help-block">{{ $errors->first('defaultunit') }}</span>
                      @endif
                   </div>
                </div>

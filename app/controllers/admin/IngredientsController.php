@@ -52,7 +52,7 @@ class IngredientsController extends BaseController
         try
         {
             $this->ingredients->create(Input::all());
-            Notification::success('Rezept wurde hinzugefügt');
+            Notification::success('Zutat wurde hinzugefügt');
             return Redirect::route('admin.ingredients.index');
         }
         catch(ValidationException $e)
@@ -98,7 +98,7 @@ class IngredientsController extends BaseController
         try
         {
             $this->ingredients->update($id, Input::all());
-            Notification::success('Rezept wurde geändert');
+            Notification::success('Zutat wurde geändert');
             return Redirect::route('admin.ingredients.index');
         }
         catch(ValidationException $e)
@@ -116,7 +116,7 @@ class IngredientsController extends BaseController
 
     {
         $this->ingredients->destroy($id);
-        Notification::success('Rezept wurde gelöscht');
+        Notification::success('Zutat wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\IngredientsController@index');
     }
     public function confirmDestroy($id)
