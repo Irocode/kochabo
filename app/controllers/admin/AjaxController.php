@@ -261,8 +261,8 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
     public function getDatatable_ingredients()
 
     {
-         $ingredient = Ingredient::where('id', '=', $id)->orderBy('id', 'DESC')->get();
-        return View::make('backend.ingredient.data', compact('ingredient'));
+         $ingredients = Ingredients::where('id', '=', $id)->orderBy('id', 'DESC')->get();
+        return View::make('backend.ingredients.data', compact('ingredients'));
 
     }
     // AJAX Call-> Index ingredient INDEX Ende
@@ -270,8 +270,8 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
     // AJAX Call-> Index ingredient (ALLE)INDEX Start
     public function getDatatable_ingredients_all()
     {
-         $ingredient = Ingredient::where('id', '>', 0)->orderBy('id', 'DESC')->get();
-          return View::make('backend.ingredient.data', compact('ingredient'));
+         $ingredients = Ingredients::where('id', '>', 0)->orderBy('id', 'DESC')->get();
+          return View::make('backend.ingredients.data', compact('ingredients'));
     }
     // AJAX Call-> Index ingredient (ALLE)INDEX Ende
 

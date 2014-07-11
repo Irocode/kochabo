@@ -101,13 +101,12 @@
                </ul>
             </li>
 
-
-          
-
-             <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/recipe') }}"><span class="glyphicon glyphicon-cutlery"></span>Rezepte</a></li>
-             
-
-
+                <li class="dropdown {{ ((isset($active) && $active=='plugins') ? 'active' : '') }}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cutlery"></span>Rezepte <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+             <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/recipe') }}"><span class="glyphicon glyphicon-cutlery"></span>Rezept</a></li>
+             <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/ingredients') }}"><span class="glyphicon glyphicon-plus"></span>Zutaten</a></li>
+             </ul>
 
          </ul>
          <ul class="nav navbar-nav navbar-right">
