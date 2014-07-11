@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-09 11:34:38
+// NOTE Migration Created: 2014-07-11 06:56:54
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -516,6 +516,18 @@ Schema::create('list_day', function($table) {
 
 
 //
+// NOTE -- list_einheit
+// --------------------------------------------------
+ 
+Schema::create('list_einheit', function($table) {
+ $table->increments('id');
+ $table->string('bezeichnung', 255);
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ });
+
+
+//
 // NOTE -- list_gender
 // --------------------------------------------------
  
@@ -952,12 +964,12 @@ Schema::create('recipe', function($table) {
  $table->mediumtext('step_5');
  $table->mediumtext('step_6');
  $table->mediumtext('step_7');
- $table->unsignedInteger('gluten_free');
- $table->unsignedInteger('lactose_free');
- $table->unsignedInteger('vegan');
- $table->unsignedInteger('vegetarien');
- $table->unsignedInteger('meat');
- $table->unsignedInteger('fish');
+ $table->boolean('gluten_free');
+ $table->boolean('lactose_free');
+ $table->boolean('vegan');
+ $table->boolean('vegetarien');
+ $table->boolean('meat');
+ $table->boolean('fish');
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  $table->unsignedInteger('is_published');
@@ -969,8 +981,9 @@ Schema::create('recipe', function($table) {
 // --------------------------------------------------
  
 Schema::create('recipe_ingredient', function($table) {
- $table->increments('recipe_id');
+ $table->increments('id');
  $table->unsignedInteger('ingredient_id');
+ $table->unsignedInteger('recipe_id');
  $table->unsignedInteger('delivery');
  $table->unsignedInteger('amount_2_persons');
  $table->unsignedInteger('amount_4_persons');
@@ -1166,6 +1179,7 @@ Schema::drop('list_bundesland');
 Schema::drop('list_country');
 Schema::drop('list_currency');
 Schema::drop('list_day');
+Schema::drop('list_einheit');
 Schema::drop('list_gender');
 Schema::drop('list_gruppe');
 Schema::drop('list_janein');

@@ -34,7 +34,7 @@ class Logisticianmanager extends BaseModel implements BaseModelInterface
 
     public function deliverytimes()
     {
-        return $this->hasMany ('Deliverytimes', 'user_id')->orderBy('user_id', 'ASC');
+        return $this->hasMany ('Deliverytimes', 'id')->orderBy('id', 'ASC');
     }
 
     public function deliveryzipcode()

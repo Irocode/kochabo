@@ -30,6 +30,13 @@ class Ingredients extends BaseModel implements BaseModelInterface
     }
 
  
+   //hasmanybelongs
+    public function recipe()
+
+    {
+        return $this->belongsTo ('Recipe');
+
+    }
 
 
 

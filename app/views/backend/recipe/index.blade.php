@@ -17,7 +17,7 @@
          </div>
          <div class="pull-right">
             <div class="btn-toolbar">
-               <a href="{{URL::to('admin/list_settings_recipe')}}" class="btn btn-u" disabled="">
+               <a href="{{URL::to('admin/list_einheit')}}" class="btn btn-u" >
                <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter settings
                </a>               
             </div>

@@ -1,6 +1,7 @@
 <?php namespace Sefa\Repositories\Recipe;
 use Config;
 use Recipe;
+use Recipe_ingredient;
 use Response;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
@@ -10,6 +11,7 @@ class RecipeRepository extends Validator implements BaseRepositoryInterface
 {
     protected $perPage;
     protected $recipe;
+    protected $recipe_ingredient;
     /**
      * Rules
      *
@@ -19,12 +21,13 @@ class RecipeRepository extends Validator implements BaseRepositoryInterface
     // 'first_name'    => 'required',
     // 'last_name'  => 'required',
     ];
-    public function __construct(Recipe $recipe)
+    public function __construct(Recipe $recipe, Recipe_ingredient $recipe_ingredient)
 
     {
         $config = Config::get('sfcms');
         $this->perPage = $config['modules']['per_page'];
         $this->recipe = $recipe;
+        $this->recipe_ingredient = $recipe_ingredient;
     }
     public function all()
 

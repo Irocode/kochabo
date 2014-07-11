@@ -587,6 +587,17 @@ function SetFileField( fileUrl )
 
 
 
+   @if($recipe_ingredient->count())
+                     @foreach( $recipe_ingredient as $v )                  
+                    Bestellnummer: {{ $v->recipe_id}} / Datum: {{ $v->ingredient_id}}<br>
+                     @endforeach
+                     @else
+                     <div class="alert alert-danger">Kein Rezept vorhanden</div>
+                     @endif 
+
+
+
+
 
 <!--CKEDITOR ANFANG--> 
    <script>

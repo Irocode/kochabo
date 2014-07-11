@@ -7,17 +7,19 @@ use Validator;
 use Response;
 use Str;
 use Notification;
+use Recipe_ingredient;
 use Sefa\Repositories\Recipe\RecipeRepository as Recipe;
 use Sefa\Exceptions\Validation\ValidationException;
 class RecipeController extends BaseController
 
 {
     protected $recipe;
-    public function __construct(Recipe $recipe)
+    public function __construct(Recipe $recipe, Recipe_ingredient $recipe_ingredient)
 
     {
         View::share('active', 'modules');
         $this->recipe = $recipe;
+        $this->recipe_ingredient = $recipe_ingredient;
       
     }
     /**
@@ -39,7 +41,10 @@ class RecipeController extends BaseController
     public function create()
 
     {
-        return View::make('backend.recipe.create');
+            
+
+        $recipe_ingredient = Recipe_ingredient::all();
+        return View::make('backend.recipe.create', compact('recipe_ingredient'));
     }
     /**
      * Store a newly created resource in storage.
@@ -82,9 +87,10 @@ class RecipeController extends BaseController
 
     {
         $recipe = $this->recipe->find($id);
-       
         
-        return View::make('backend.recipe.edit', compact('recipe'));
+        $recipe_ingredient = $this->recipe->find($id)->recipe_ingredient;
+        
+        return View::make('backend.recipe.edit', compact('recipe','recipe_ingredient'));
     }
     /**
      * Update the specified resource in storage.

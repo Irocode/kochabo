@@ -321,10 +321,12 @@ Route::post('menu/{id}/toggle-publish', array('as' => 'admin.menu.toggle-publish
 Route::get('tablesorter_customer_management_index', array('as'=>'admin.customer_management.data', 'uses'=>'AjaxController@getDatatable_customer_management'));
 
 //Lists
+Route::resource('list_einheit', 'List_EinheitController');
+Route::get('list_einheit/{id}/delete', array('as' => 'admin.list.list_einheit.delete', 'uses' => 'List_EinheitController@confirmDestroy'))
+->where('id', '[0-9]+');
 Route::resource('list_janein', 'List_JaneinController');
 Route::get('list_janein/{id}/delete', array('as' => 'admin.list.list_janein.delete', 'uses' => 'List_JaneinController@confirmDestroy'))
 ->where('id', '[0-9]+');
-
 Route::resource('list_bundesland', 'List_BundeslandController');
 Route::get('list_bundesland/{id}/delete', array('as' => 'admin.list.list_bundesland.delete', 'uses' => 'List_BundeslandController@confirmDestroy'))
 ->where('id', '[0-9]+');
@@ -663,6 +665,7 @@ View::share ('list_day',List_Day::all());
 View::share ('list_country',List_Country::all());
 View::share ('list_janein',List_Janein::all());
 View::share ('list_kundengruppe',List_Kundengruppe::all());
+View::share ('list_einheit',List_Einheit::all());
 
 
 

@@ -53,8 +53,19 @@ class Recipe extends BaseModel implements BaseModelInterface
     }
 
 
+  public function ingredients()
+    {
+        return $this->hasMany ('Ingredients', 'user_id')->orderBy('user_id', 'ASC');
+    }
 
 
+
+
+
+ public function recipe_ingredient()
+    {
+        return $this->hasMany ('Recipe_ingredient', 'recipe_id')->orderBy('recipe_id', 'ASC');
+    }
 
 }
 
