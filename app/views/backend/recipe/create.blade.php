@@ -50,7 +50,7 @@ function SetFileField( fileUrl )
       </div>
          <!--HEADER mit Zurück ENDE-->
 
-   {{ Form::open(array('action' => 'App\Controllers\Admin\RecipeController@store')) }}
+   {{ Form::open(array('action' => 'App\Controllers\Admin\RecipeController@store' , 'files'=> true)) }}
 
 
 <div class="row">
@@ -397,18 +397,22 @@ function SetFileField( fileUrl )
    <br>
 
 
+    <div class="control-group {{ $errors->has('imagesmall') ? 'has-error' : '' }}">
+      <label class="control-label" for="imagesmall">Kleines Bild einfügen</label>
+      <div class="controls">
+      {{ Form::file('imagesmall', null, array('class'=>'form-control', 'id' => 'imagesmall', 'placeholder'=>'Kleines Bild einfügen', 'value'=>Input::old('imagesmall'))) }}
+         @if ($errors->first('imagesmall'))
+         <span class="help-block">{{ $errors->first('imagesmall') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+
+
+
 
    </div><div class="col-md-6">
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -605,91 +609,7 @@ function SetFileField( fileUrl )
       
       
       
-          CKEDITOR.replace('step_1', {
-            "filebrowserBrowseUrl": "{{ url('filemanagernew/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-               customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-             CKEDITOR.replace('step_2', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-                CKEDITOR.replace('step_3', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-                   CKEDITOR.replace('step_4', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-                      CKEDITOR.replace('step_5', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-                         CKEDITOR.replace('step_6', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-                            CKEDITOR.replace('step_7', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-
-
-                               CKEDITOR.replace('athome', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-
-                                  CKEDITOR.replace('tip', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-
-
-               CKEDITOR.replace('description', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });                        
+                          
       
       
        CKEDITOR.replace('img_small', {

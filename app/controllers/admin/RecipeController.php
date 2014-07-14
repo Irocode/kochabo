@@ -42,6 +42,8 @@ class RecipeController extends BaseController
 
     {
             
+        
+
 
         $recipe_ingredient = Recipe_ingredient::all();
         return View::make('backend.recipe.create', compact('recipe_ingredient'));
@@ -56,6 +58,10 @@ class RecipeController extends BaseController
     {
         try
         {
+             $imagesmall=Input::file('imagesmall');       
+            // $imagesmall->getRealPath());
+
+
             $this->recipe->create(Input::all());
             Notification::success('Rezept wurde hinzugefügt');
             return Redirect::route('admin.recipe.index');

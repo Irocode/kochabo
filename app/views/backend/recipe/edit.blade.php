@@ -489,7 +489,42 @@
 
 
 
+<div class="control-group {{ $errors->has('imagesmall') ? 'has-error' : '' }}">
+      <label class="control-label" for="imagesmall">Kleines Bild einfügen</label>
+      <div class="controls">
+      {{ Form::file('imagesmall', null, array('class'=>'form-control', 'id' => 'imagesmall', 'placeholder'=>'Kleines Bild einfügen', 'value'=>Input::old('imagesmall'))) }}
+         @if ($errors->first('imagesmall'))
+         <span class="help-block">{{ $errors->first('imagesmall') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+<img width="160" height="160" alt="{{$recipe->imagesmall}}" src="data:image/gif;base64,{{$recipe->imagesmall}}  " />
 
+{{$recipe->imagesmall}} 
+
+      <div class="control-group {{ $errors->has('imagemiddle') ? 'has-error' : '' }}">
+      <label class="control-label" for="imagemiddle">Mittleres Bild einfügen</label>
+      <div class="controls">
+       {{ Form::file('imagemiddle', null, array('class'=>'form-control', 'id' => 'imagemiddle', 'placeholder'=>'Mittleres Bild einfügen', 'value'=>Input::old('imagemiddle'))) }}
+         @if ($errors->first('imagemiddle'))
+         <span class="help-block">{{ $errors->first('imagemiddle') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+
+      <div class="control-group {{ $errors->has('imagebig') ? 'has-error' : '' }}">
+      <label class="control-label" for="imagebig">Großes Bild einfügen</label>
+      <div class="controls">
+      {{ Form::file('imagebig', null, array('class'=>'form-control', 'id' => 'imagebig', 'placeholder'=>'Großes Bild einfügen', 'value'=>Input::old('imagebig'))) }}
+         @if ($errors->first('imagebig'))
+         <span class="help-block">{{ $errors->first('imagebig') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
 
 
 
@@ -548,91 +583,7 @@
       
       
       
-          CKEDITOR.replace('step_1', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-               customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-             CKEDITOR.replace('step_2', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-                CKEDITOR.replace('step_3', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-                   CKEDITOR.replace('step_4', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-                      CKEDITOR.replace('step_5', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-                         CKEDITOR.replace('step_6', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-                            CKEDITOR.replace('step_7', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-
-
-                               CKEDITOR.replace('athome', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-
-                                  CKEDITOR.replace('tip', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });  
-
-
-               CKEDITOR.replace('description', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-                language: 'de',
-              height: '150px',
-              customConfig: 'ckeditor_config_recipe.js'
-      
-            });                        
+                         
       
       
        CKEDITOR.replace('img_small', {
