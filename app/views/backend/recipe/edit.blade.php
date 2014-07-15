@@ -492,6 +492,8 @@
 <img src="{{ $recipe->imagesmall }}" />
 <br>
 <img src="{{ $recipe->imagemiddle }}" />
+<br><br>
+<img src="{{ $recipe->imagebig }}" />
 <br>
 ---------<br>
 

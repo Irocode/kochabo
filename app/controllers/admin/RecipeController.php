@@ -66,20 +66,25 @@ class RecipeController extends BaseController
             //Anfrage ob Bild vorhanden wenn ja dann erstelle ein Upload 200x200px
 $input = Input::all();
 
-    if (Input::hasFile('imagesmall')){
+    //if (Input::hasFile('imagesmall')){
 
        $file = Input::file('imagesmall');
        $file2 = Input::file('imagemiddle');
+       $file3 = Input::file('imagebig');
        $name = $file->getClientOriginalName();
        $name2 = $file2->getClientOriginalName();
+       $name3 = $file3->getClientOriginalName();
 
        $image = Image::make(Input::file('imagesmall')->getRealPath())->resize(200, 200);
        $image->save(public_path() . '/filemanager/userfiles/' . $input['imagesmall']->getClientOriginalName());
        $image2 = Image::make(Input::file('imagemiddle')->getRealPath())->resize(200, 200);
        $image2->save(public_path() . '/filemanager/userfiles/' . $input['imagemiddle']->getClientOriginalName());
+       $image3 = Image::make(Input::file('imagebig')->getRealPath())->resize(200, 200);
+       $image3->save(public_path() . '/filemanager/userfiles/' . $input['imagebig']->getClientOriginalName());
        
        $input['imagesmall'] = $name;
        $input2['imagemiddle'] = $name2;
+       $input3['imagebig'] = $name3;
 
 // Upload nehmen und in DB speichern.
 $path=public_path() . '/filemanager/userfiles/' . $input['imagesmall'];
@@ -95,11 +100,20 @@ $data2 = file_get_contents($path2);
 $base642 = 'data:image/' . $type . ';base64,' . base64_encode($data2);
 $input2['imagemiddle'] = $base642;
 
-$input3 = (array_merge($input, $input2));
-var_dump($input3);
-   }
 
-   $this->recipe->create($input3);
+$path3=public_path() . '/filemanager/userfiles/' . $input3['imagebig'];
+$type = pathinfo($path3, PATHINFO_EXTENSION);
+$data3 = file_get_contents($path3);
+$base643 = 'data:image/' . $type . ';base64,' . base64_encode($data3);
+$input3['imagebig'] = $base643;
+
+
+//Merger all inputs
+$input_all = (array_merge($input, $input2, $input3));
+
+  // }
+
+   $this->recipe->create($input_all);
 
 // Image New END            
 
@@ -108,7 +122,7 @@ var_dump($input3);
 
          //   $this->recipe->create(Input::all());
             Notification::success('Rezept wurde hinzugefügt');
-          //  return Redirect::route('admin.recipe.index');
+           return Redirect::route('admin.recipe.index');
         }
         catch(ValidationException $e)
         {
