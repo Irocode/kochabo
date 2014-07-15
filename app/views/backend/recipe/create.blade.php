@@ -50,7 +50,7 @@ function SetFileField( fileUrl )
       </div>
          <!--HEADER mit Zurück ENDE-->
 
-   {{ Form::open(array('action' => 'App\Controllers\Admin\RecipeController@store' , 'files'=> true)) }}
+   {{ Form::open(array('action' => 'App\Controllers\Admin\RecipeController@store' , 'files'=> true )) }}
 
 
 <div class="row">
@@ -361,52 +361,129 @@ function SetFileField( fileUrl )
 
 <div style="height:34px;"> </div>
 
-      <div class="control-group {{ $errors->has('img_small') ? 'has-error' : '' }}">
-      <label class="control-label" for="img_small">Kleines Bild einfügen</label>
-      <div class="controls">
-      {{ Form::textarea('img_small', null, array('class'=>'form-control', 'id' => 'img_small', 'placeholder'=>'Kleines Bild einfügen', 'value'=>Input::old('img_small'))) }}
-         @if ($errors->first('img_small'))
-         <span class="help-block">{{ $errors->first('img_small') }}</span>
-         @endif
-      </div>
-   </div>
+
+
+
+
+
+   <div>Kleines Bild</div>
    <br>
 
 
-      <div class="control-group {{ $errors->has('img_medium') ? 'has-error' : '' }}">
-      <label class="control-label" for="img_medium">Mittleres Bild einfügen</label>
-      <div class="controls">
-       {{ Form::textarea('img_medium', null, array('class'=>'form-control', 'id' => 'img_medium', 'placeholder'=>'Mittleres Bild einfügen', 'value'=>Input::old('img_medium'))) }}
-         @if ($errors->first('img_medium'))
-         <span class="help-block">{{ $errors->first('img_medium') }}</span>
-         @endif
-      </div>
-   </div>
+   <style>
+  .thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+
+  .example {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+#drop_zone {
+    border: 2px dashed #bbb;
+    border-radius: 5px;
+    color: #bbb;
+    padding: 25px;
+    text-align: center;
+}
+.thumb {
+    border: 1px solid #000;
+    height: 75px;
+    margin: 10px 5px 0 0;
+}
+#progress_bar {
+    border: 1px solid #000;
+    clear: both;
+    font-size: 14px;
+    margin: 10px 0;
+    opacity: 0;
+    padding: 3px;
+    transition: opacity 1s linear 0s;
+}
+#progress_bar.loading {
+    opacity: 1;
+}
+#progress_bar .percent {
+    background-color: #99ccff;
+    height: auto;
+    width: 0;
+}
+#byte_content {
+    margin: 5px 0;
+    max-height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#byte_range {
+    margin-top: 5px;
+}
+</style>
+
+<input type="file" id="files" name="imagesmall"  />
+<output id="list"></output>
+
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+
+
+<br><br>
+  <div>Mittelgroßes Bild</div>
    <br>
 
-
-      <div class="control-group {{ $errors->has('img_large') ? 'has-error' : '' }}">
-      <label class="control-label" for="img_large">Großes Bild einfügen</label>
-      <div class="controls">
-      {{ Form::textarea('img_large', null, array('class'=>'form-control', 'id' => 'img_large', 'placeholder'=>'Großes Bild einfügen', 'value'=>Input::old('img_large'))) }}
-         @if ($errors->first('img_large'))
-         <span class="help-block">{{ $errors->first('img_large') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
+<input type="file" id="files" name="imagemiddle"  />
 
 
-    <div class="control-group {{ $errors->has('imagesmall') ? 'has-error' : '' }}">
-      <label class="control-label" for="imagesmall">Kleines Bild einfügen</label>
-      <div class="controls">
-      {{ Form::file('imagesmall', null, array('class'=>'form-control', 'id' => 'imagesmall', 'placeholder'=>'Kleines Bild einfügen', 'value'=>Input::old('imagesmall'))) }}
-         @if ($errors->first('imagesmall'))
-         <span class="help-block">{{ $errors->first('imagesmall') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -654,4 +731,23 @@ function SetFileField( fileUrl )
       
    </script>
    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @stop

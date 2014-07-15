@@ -491,45 +491,12 @@
 
 <img src="{{ $recipe->imagesmall }}" />
 <br>
-
+<img src="{{ $recipe->imagemiddle }}" />
 <br>
 ---------<br>
 
 
-<div class="control-group {{ $errors->has('imagesmall') ? 'has-error' : '' }}">
-      <label class="control-label" for="imagesmall">Kleines Bild einfügen</label>
-      <div class="controls">
-      {{ Form::file('imagesmall', null, array('class'=>'form-control', 'id' => 'imagesmall', 'placeholder'=>'Kleines Bild einfügen', 'value'=>Input::old('imagesmall'))) }}
-         @if ($errors->first('imagesmall'))
-         <span class="help-block">{{ $errors->first('imagesmall') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
 
-
-      <div class="control-group {{ $errors->has('imagemiddle') ? 'has-error' : '' }}">
-      <label class="control-label" for="imagemiddle">Mittleres Bild einfügen</label>
-      <div class="controls">
-       {{ Form::file('imagemiddle', null, array('class'=>'form-control', 'id' => 'imagemiddle', 'placeholder'=>'Mittleres Bild einfügen', 'value'=>Input::old('imagemiddle'))) }}
-         @if ($errors->first('imagemiddle'))
-         <span class="help-block">{{ $errors->first('imagemiddle') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
-
-
-      <div class="control-group {{ $errors->has('imagebig') ? 'has-error' : '' }}">
-      <label class="control-label" for="imagebig">Großes Bild einfügen</label>
-      <div class="controls">
-      {{ Form::file('imagebig', null, array('class'=>'form-control', 'id' => 'imagebig', 'placeholder'=>'Großes Bild einfügen', 'value'=>Input::old('imagebig'))) }}
-         @if ($errors->first('imagebig'))
-         <span class="help-block">{{ $errors->first('imagebig') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
 
 
 

@@ -62,46 +62,53 @@ class RecipeController extends BaseController
         {
 
 // Image New Start
+
+            //Anfrage ob Bild vorhanden wenn ja dann erstelle ein Upload 200x200px
 $input = Input::all();
 
     if (Input::hasFile('imagesmall')){
 
        $file = Input::file('imagesmall');
+       $file2 = Input::file('imagemiddle');
        $name = $file->getClientOriginalName();
-
+       $name2 = $file2->getClientOriginalName();
 
        $image = Image::make(Input::file('imagesmall')->getRealPath())->resize(200, 200);
        $image->save(public_path() . '/filemanager/userfiles/' . $input['imagesmall']->getClientOriginalName());
-
+       $image2 = Image::make(Input::file('imagemiddle')->getRealPath())->resize(200, 200);
+       $image2->save(public_path() . '/filemanager/userfiles/' . $input['imagemiddle']->getClientOriginalName());
+       
        $input['imagesmall'] = $name;
+       $input2['imagemiddle'] = $name2;
 
+// Upload nehmen und in DB speichern.
 $path=public_path() . '/filemanager/userfiles/' . $input['imagesmall'];
-
-       $type = pathinfo($path, PATHINFO_EXTENSION);
+$type = pathinfo($path, PATHINFO_EXTENSION);
 $data = file_get_contents($path);
 $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-
-
 $input['imagesmall'] = $base64;
 
+
+$path2=public_path() . '/filemanager/userfiles/' . $input2['imagemiddle'];
+$type = pathinfo($path2, PATHINFO_EXTENSION);
+$data2 = file_get_contents($path2);
+$base642 = 'data:image/' . $type . ';base64,' . base64_encode($data2);
+$input2['imagemiddle'] = $base642;
+
+$input3 = (array_merge($input, $input2));
+var_dump($input3);
    }
 
-   $this->recipe->create($input);
+   $this->recipe->create($input3);
 
 // Image New END            
-
-
-
-
-
-
 
 
           
 
          //   $this->recipe->create(Input::all());
             Notification::success('Rezept wurde hinzugefügt');
-            return Redirect::route('admin.recipe.index');
+          //  return Redirect::route('admin.recipe.index');
         }
         catch(ValidationException $e)
         {
