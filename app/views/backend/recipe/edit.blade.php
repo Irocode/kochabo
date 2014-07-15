@@ -20,7 +20,7 @@
 
 
    
-   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\RecipeController@update', $recipe->id), 'method' => 'PATCH')) }}
+      {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\RecipeController@update', $recipe->id ),'files'=>true, 'method' => 'PATCH')) }}
 
 <div class="row">
   <div class="col-md-6">
@@ -318,56 +318,185 @@
 
 </div>
 
-<!-- Server durchsuchen -->
-   <div>
-      <br>
-      <script type="text/javascript">
-         function popup (url) {
-          fenster = window.open(url, "Popupfenster", "width=950,height=600,resizable=yes");
-          fenster.focus();
-          return false;
-         }
-      </script>
-      <a class ="btn btn-u" href="<?php echo asset('filemanager/show?CKEditor=content&CKEditorFuncNum=1&langCode=de')?>" target="_blank" onclick="return popup(this.href);">Dokumente uploaden / durchsuchen</a>
-      <br><br>
-   </div>
+
 
 <div style="height:34px;"> </div>
 
-      <div class="control-group {{ $errors->has('img_small') ? 'has-error' : '' }}">
-      <label class="control-label" for="img_small">Kleines Bild einfügen</label>
-      <div class="controls">
-       {{ Form::textarea('img_small', $recipe->img_small, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Kleines Bild einfügen', 'value'=>Input::old('img_small'))) }}   
-          @if ($errors->first('img_small'))
-         <span class="help-block">{{ $errors->first('img_small') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
+      
 
 
-      <div class="control-group {{ $errors->has('img_medium') ? 'has-error' : '' }}">
-      <label class="control-label" for="img_medium">Mittleres Bild einfügen</label>
-      <div class="controls">
-       {{ Form::textarea('img_medium', $recipe->img_medium, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Mittleres Bild einfügen', 'value'=>Input::old('img_medium'))) }}   
-                @if ($errors->first('img_medium'))
-         <span class="help-block">{{ $errors->first('img_medium') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
+ <br>
+   <style>
+  .thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+  .example {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+</style>
+
+<hr>
+<label class="control-label" for="vegetarien">Kleines Bild einfügen</label>
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files' name='imagesmall'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+    &nbsp;
+    <span  class="badge badge-important" ></span>
+</span>
 
 
-      <div class="control-group {{ $errors->has('img_large') ? 'has-error' : '' }}">
-      <label class="control-label" for="img_large">Großes Bild einfügen</label>
-      <div class="controls">
-       {{ Form::textarea('img_large', $recipe->img_large, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Großes Bild einfügen', 'value'=>Input::old('img_large'))) }}   
-               @if ($errors->first('img_large'))
-         <span class="help-block">{{ $errors->first('img_large') }}</span>
-         @endif
-      </div>
-   </div>
-   <br>
+
+<output id="list"></output>
+
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+
+
+<br><br><hr>
+ <label class="control-label" for="vegetarien">Mittelgroßes Bild einfügen</label>
+
+
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files2' name='imagemiddle'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+    &nbsp;
+    <span  class="badge badge-important" ></span>
+</span>
+
+
+<output id="list2"></output>
+
+<script>
+  function handleFileSelect2(evt2) {
+    var files2 = evt2.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files2[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list2').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('files2').addEventListener('change', handleFileSelect2, false);
+</script>
+
+
+
+
+<img src="{{ $recipe->imagemiddle }}" />
+<br><br>
+<hr>
+ <label class="control-label" for="imagebig">Großes Bild einfügen</label>
+
+
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files3' name='imagebig'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+    &nbsp;
+    <span  class="badge badge-important" ></span>
+</span>
+<output id="list3"></output>
+
+<script>
+  function handleFileSelect3(evt3) {
+    var files3 = evt3.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files3[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list3').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('files3').addEventListener('change', handleFileSelect3, false);
+</script>
+
+<hr>
+
+
+
+
+
 
 
 
@@ -484,18 +613,14 @@
 
 
 
-<br>
------------<br>
-<br>
+
+<div style="height:34px;"> </div>
 
 
-<img src="{{ $recipe->imagesmall }}" />
-<br>
-<img src="{{ $recipe->imagemiddle }}" />
-<br><br>
-<img src="{{ $recipe->imagebig }}" />
-<br>
----------<br>
+
+
+  
+
 
 
 
@@ -529,7 +654,7 @@
 
  {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
   {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
-            {{ Form::submit('Anlegen', array('class' => 'btn btn-u')) }}
+            {{ Form::submit('Ändern', array('class' => 'btn btn-u')) }}
 
 </div>
  <!-- Plichtfeld Ende -->
@@ -551,55 +676,6 @@
 
 
 
-<!--CKEDITOR ANFANG--> 
-   <script>
-      window.onload = function () {
-      
-      
-      
-                         
-      
-      
-       CKEDITOR.replace('img_small', {
-      
-               language: 'de',
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-              height: '150px',
-              
-              customConfig: 'ckeditor_config_single.js'
-            });  
 
-
-
-        CKEDITOR.replace('img_medium', {
-      
-               language: 'de',
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-              height: '300px',
-              
-              customConfig: 'ckeditor_config_single.js'
-            });  
-      
-           CKEDITOR.replace(
-            'img_large', 
-            {extraPlugins: 'doksoft_image',
-              toolbar: 'customToolbar',
-
-               language: 'de',
-              "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-               uiColor: '#85b81d',
-              height: '450px',
-              
-              customConfig: 'ckeditor_config_single.js'
-            });  
-      
-      
-      
-      
-      };
-      
-   </script>
    
 @stop
