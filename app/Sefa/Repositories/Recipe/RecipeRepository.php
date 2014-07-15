@@ -3,6 +3,8 @@ use Config;
 use Recipe;
 use Recipe_ingredient;
 use Response;
+use Image;
+use File;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
