@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-14 11:55:13
+// NOTE Migration Created: 2014-07-15 12:11:21
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -950,12 +950,9 @@ Schema::create('recipe', function($table) {
  $table->mediumtext('tip');
  $table->mediumtext('athome');
  $table->('description');
- $table->string('img_small', 255)->nullable();
  $table->('imagesmall');
  $table->('imagemiddle');
  $table->('imagebig');
- $table->string('img_medium', 255);
- $table->string('img_large', 255);
  $table->('nutrition_carbs');
  $table->('nutrition_fat');
  $table->('nutrition_protein');
