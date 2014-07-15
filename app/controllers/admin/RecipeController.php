@@ -3,10 +3,11 @@ use BaseController;
 use Redirect;
 use View;
 use Input;
+use Image;
+use File;
 use Validator;
 use Response;
 use Str;
-use Image;
 use Notification;
 use Recipe_ingredient;
 use Sefa\Repositories\Recipe\RecipeRepository as Recipe;
@@ -43,10 +44,11 @@ class RecipeController extends BaseController
 
     {
             
-   
+        
+
 
         $recipe_ingredient = Recipe_ingredient::all();
-     return View::make('backend.recipe.create', compact('recipe_ingredient'));
+        return View::make('backend.recipe.create', compact('recipe_ingredient'));
     }
     /**
      * Store a newly created resource in storage.
@@ -59,24 +61,51 @@ class RecipeController extends BaseController
         try
         {
 
+// Image New Start
+$input = Input::all();
 
-   $imagesmall = Input::file('imagesmall') ;    
-   var_dump($imagesmall->getRealPath());
-   $filename = $imagesmall->getClientOriginalName();
-   var_dump($filename);
-   Image::make($imagesmall->getRealPath())->resize('280', '200')->save('filemanager/userfiles/'.$filename);
+    if (Input::hasFile('imagesmall')){
 
-
-           
+       $file = Input::file('imagesmall');
+       $name = $file->getClientOriginalName();
 
 
-            $this->recipe->create(Input::all());
+       $image = Image::make(Input::file('imagesmall')->getRealPath())->resize(200, 200);
+       $image->save(public_path() . '/filemanager/userfiles/' . $input['imagesmall']->getClientOriginalName());
+
+       $input['imagesmall'] = $name;
+
+$path=public_path() . '/filemanager/userfiles/' . $input['imagesmall'];
+
+       $type = pathinfo($path, PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+
+$input['imagesmall'] = $base64;
+
+   }
+
+   $this->recipe->create($input);
+
+// Image New END            
+
+
+
+
+
+
+
+
+          
+
+         //   $this->recipe->create(Input::all());
             Notification::success('Rezept wurde hinzugefügt');
-           // return Redirect::route('admin.recipe.index');
+            return Redirect::route('admin.recipe.index');
         }
         catch(ValidationException $e)
         {
-          //  return Redirect::back()->withInput()->withErrors($e->getErrors());
+            return Redirect::back()->withInput()->withErrors($e->getErrors());
         }
     }
     /**

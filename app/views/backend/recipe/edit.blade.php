@@ -484,16 +484,16 @@
 
 
 
-
------------
-<img src="data:image/jpeg;base64,<?php= base64_encode({{{$recipe->imagesmall}}} ) ?>" width="200" height="300">
-
-<img width="160" height="160" alt="{{$recipe->imagesmall}}" src="data:image/gif;base64,{{$recipe->imagesmall}}  " />
-
-<br>hier
-{{$recipe->imagesmall}} 
 <br>
----------
+-----------<br>
+<br>
+
+
+<img src="{{ $recipe->imagesmall }}" />
+<br>
+
+<br>
+---------<br>
 
 
 <div class="control-group {{ $errors->has('imagesmall') ? 'has-error' : '' }}">
