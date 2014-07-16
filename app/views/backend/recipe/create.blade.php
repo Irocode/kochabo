@@ -50,7 +50,7 @@ function SetFileField( fileUrl )
       </div>
          <!--HEADER mit Zurück ENDE-->
 
-   {{ Form::open(array('action' => 'App\Controllers\Admin\RecipeController@store' , 'files'=> true )) }}
+   {{ Form::open(array('action' => 'App\Controllers\Admin\RecipeController@store' , 'files'=> true, 'method' => 'post' )) }}
 
 
 <div class="row">

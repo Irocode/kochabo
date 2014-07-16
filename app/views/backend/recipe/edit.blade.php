@@ -388,6 +388,11 @@
 </script>
 
 
+
+<div> 
+<span style="background-color:#fed51c">Derzeit gespeichert</span><br><span>
+<img src="{{ $recipe->imagesmall }}" width="120" height="120">" </span>
+</div>
 <br><br><hr>
  <label class="control-label" for="vegetarien">Mittelgroßes Bild einfügen</label>
 
@@ -441,9 +446,11 @@
 
 
 
-<img src="{{ $recipe->imagemiddle }}" />
-<br><br>
-<hr>
+<div> 
+<span style="background-color:#fed51c">Derzeit gespeichert</span><br><span>
+<img src="{{ $recipe->imagemiddle }}" width="120" height="120">" </span>
+</div>
+<br><br><hr>
  <label class="control-label" for="imagebig">Großes Bild einfügen</label>
 
 
@@ -491,7 +498,11 @@
   document.getElementById('files3').addEventListener('change', handleFileSelect3, false);
 </script>
 
-<hr>
+<div> 
+<span style="background-color:#fed51c">Derzeit gespeichert</span><br><span>
+<img src="{{ $recipe->imagebig }}" width="120" height="120">" </span>
+</div>
+<br><br><hr>
 
 
 
