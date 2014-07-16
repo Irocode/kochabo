@@ -11,7 +11,7 @@
       </div>
    </div>
    <!--HEADER mit Zurück ENDE-->
-   {{ Form::open(array('action' => 'App\Controllers\Admin\ProductsController@store')) }}
+   {{ Form::open(array('action' => 'App\Controllers\Admin\ProductsController@store' , 'files'=> true, 'method' => 'post')) }}
 
 
 
@@ -111,10 +111,6 @@
 
 
    <br>  
-
-   </div><div class="col-md-6">
-
-
    <!-- recipetype -->
    <div class="control-group {{ $errors->has('recipetype') ? 'has-error' : '' }}">
       <label class="control-label" for="recipetype">Rezept Typ</label>
@@ -131,6 +127,10 @@
       </div>
    </div>
    <br>
+   </div><div class="col-md-6">
+
+
+
 
    <!-- standalone -->
    <div class="control-group {{ $errors->has('standalone') ? 'has-error' : '' }}">
@@ -175,6 +175,70 @@
          @endif
       </div>
    </div>
+   
+   <br>
+    <!-- Image -->
+     <style>
+  .thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+  .example {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+</style>
+
+<hr>
+<label class="control-label" for="image">Bild einfügen (Derzeit 200 x 200px)</label>
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files' name='imagex'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+    &nbsp;
+    <span  class="badge badge-important" ></span>
+</span>
+
+
+
+<output id="list"></output>
+
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+<hr>
    
    <!-- Published -->
    <input type="hidden" value="is_published">

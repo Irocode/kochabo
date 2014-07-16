@@ -9,7 +9,9 @@
       </div>
    </div>
    <!--HEADER mit Zurück ENDE-->
-   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\ProductsController@update', $products->id), 'method' => 'PATCH')) }}
+
+   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\ProductsController@update', $products->id ),'files'=>true, 'method' => 'PATCH')) }}
+  
    <div class="row">
   <div class="col-md-6">
 
@@ -101,8 +103,7 @@
       </div>
    </div>
    <br>
-     </div><div class="col-md-6">
-   <!-- recipetype -->
+     <!-- recipetype -->
    <div class="control-group {{ $errors->has('recipetype') ? 'has-error' : '' }}">
       <label class="control-label" for="recipetype">Rezept Typ</label>
       <div class="controls">
@@ -118,7 +119,7 @@
       </div>
    </div>
    <br>
-   <!-- productlink -->
+      <!-- productlink -->
    <div class="control-group {{ $errors->has('productlink') ? 'has-error' : '' }}">
       <label class="control-label" for="productlink">Produkt Link zur Seite</label>
       <div class="controls">
@@ -129,6 +130,9 @@
       </div>
    </div>
    <br>
+
+     </div><div class="col-md-6">
+ 
 
 
    <div class="row">
@@ -188,6 +192,74 @@
          @endif
       </div>
    </div>
+
+   <br>
+   <!-- Image -->
+   <style>
+  .thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+  .example {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+</style>
+
+<hr>
+<label class="control-label" for="vegetarien">Bild einfügen (Derzeit 200 x 200px)</label>
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files' name='imagex'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+    &nbsp;
+    <span  class="badge badge-important" ></span>
+</span>
+
+
+
+<output id="list"></output>
+
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+<div> 
+<span style="background-color:#fed51c">Derzeit gespeichert</span><br><span>
+<img src="{{ $products->imagex }}" width="120" height="120">" </span>
+</div>
+<br><br><hr>
 
    </div></div>
 

@@ -6,8 +6,7 @@ class Products extends Eloquent
     public $table = 'products';
     public $fillable = [
         'id',
-        'user_id',
-        'picangelegt',
+        'user_id',        
         'currency',
         'productlink',
         'product_name',
@@ -19,8 +18,8 @@ class Products extends Eloquent
         'price','ust',
         'recipetype',
         'sku',
-        'standalone' ,
-        'picurl',
+        'standalone' ,        
+        'imagex',
         'updated_at',
         'created_at' ];
 }

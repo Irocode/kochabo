@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-15 12:11:21
+// NOTE Migration Created: 2014-07-16 12:53:12
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -901,8 +901,7 @@ Schema::create('products', function($table) {
  $table->unsignedInteger('photo_galleries_id');
  $table->mediumtext('product_name');
  $table->('description');
- $table->mediumtext('picurl');
- $table->string('picangelegt', 50);
+ $table->('imagex');
  $table->string('type', 255);
  $table->unsignedInteger('nr_of_recipes')->unsigned();
  $table->unsignedInteger('nr_of_persons');
