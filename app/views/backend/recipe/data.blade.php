@@ -3,7 +3,11 @@
 @foreach( $recipe as $index => $x )
 [ 
 "{{{ $x->id }}}",
-"",
+@if( ! empty($x->imagesmall))
+"<img src=\"{{ $x->imagesmall }}\" width=\"50\" height=\"50\"> ",
+@else           
+"<img src=\"{{URL::to('assets/img/backend/images/empty.png')}}\" width=\"50\" height=\"50\"> ",
+@endif
 "{{{ $x->titel }}}",
 "{{{ $x->created_at }}} ",
 "{{{ $x->updated_at}}}", 
