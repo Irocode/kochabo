@@ -339,7 +339,7 @@
 </style>
 
 <hr>
-<label class="control-label" for="vegetarien">Kleines Bild einfügen</label>
+<label class="control-label" for="vegetarien">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
 <span>
     <input  type="file" 
             style="visibility:hidden; width: 1px;" 
@@ -394,7 +394,7 @@
 <img src="{{ $recipe->imagesmall }}" width="120" height="120">" </span>
 </div>
 <br><br><hr>
- <label class="control-label" for="vegetarien">Mittelgroßes Bild einfügen</label>
+ <label class="control-label" for="vegetarien">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
 
 
 <span>
@@ -451,7 +451,7 @@
 <img src="{{ $recipe->imagemiddle }}" width="120" height="120">" </span>
 </div>
 <br><br><hr>
- <label class="control-label" for="imagebig">Großes Bild einfügen</label>
+ <label class="control-label" for="imagebig">Großes Bild einfügen (Derzeit 200 x 200px)</label>
 
 
 <span>

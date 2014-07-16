@@ -360,7 +360,7 @@ function SetFileField( fileUrl )
 </style>
 
 <hr>
-<label class="control-label" for="vegetarien">Kleines Bild einfügen</label>
+<label class="control-label" for="vegetarien">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
 <span>
     <input  type="file" 
             style="visibility:hidden; width: 1px;" 
@@ -410,7 +410,7 @@ function SetFileField( fileUrl )
 
 
 <br><br><hr>
- <label class="control-label" for="vegetarien">Mittelgroßes Bild einfügen</label>
+ <label class="control-label" for="vegetarien">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
 
 
 <span>
@@ -464,7 +464,7 @@ function SetFileField( fileUrl )
 
 
 <br><br><hr>
- <label class="control-label" for="imagebig">Großes Bild einfügen</label>
+ <label class="control-label" for="imagebig">Großes Bild einfügen (Derzeit 200 x 200px)</label>
 
 
 <span>
