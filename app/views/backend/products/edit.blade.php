@@ -206,7 +206,7 @@
 
 <div id="stored" >
 <span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
-<img src="{{ $products->imagex }}" width="120" height="120">" </span>
+<img src="{{ $products->imagex }}" width="120" height="120"> </span>
 </div>
 
 <script>

@@ -339,7 +339,7 @@
 </span>
 <div id="stored" >
 <span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
-<img src="{{ $recipe->imagesmall }}" width="120" height="120">" </span>
+<img src="{{ $recipe->imagesmall }}" width="120" height="120"> </span>
 </div>
 <script>
   function handleFileSelect(evt) {
@@ -399,7 +399,7 @@
 </span>
 <div id="stored2" >
 <span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
-<img src="{{ $recipe->imagemiddle }}" width="120" height="120">" </span>
+<img src="{{ $recipe->imagemiddle }}" width="120" height="120"> </span>
 </div>
 <script>
   function handleFileSelect(evt2) {
@@ -459,7 +459,7 @@
 </span>
 <div id="stored3" >
 <span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
-<img src="{{ $recipe->imagebig }}" width="120" height="120">" </span>
+<img src="{{ $recipe->imagebig }}" width="120" height="120"> </span>
 </div>
 <script>
   function handleFileSelect(evt3) {
@@ -615,39 +615,7 @@
 
 
 
-
-
-
-
-
-
-
-
 <div style="height:34px;"> </div>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
