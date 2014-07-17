@@ -13,7 +13,7 @@ class Ingredients extends BaseModel implements BaseModelInterface
         'description',               
         'kcal100g',   
         'defaultunit', 
-        'image',
+        'imagex',
         'created_at',
         'updated_at' ];
 

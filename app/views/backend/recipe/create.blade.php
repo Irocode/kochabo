@@ -477,47 +477,9 @@ function SetFileField( fileUrl )
 </script>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
 <br>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    </div><div class="col-md-6">
-
-
-
-
-
-
-
-
-
 
    <!-- step_1 -->
    <div class="control-group {{ $errors->has('step_1') ? 'has-error' : '' }}">

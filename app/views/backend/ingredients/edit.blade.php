@@ -2,31 +2,10 @@
 @section('content')
 {{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
 {{ HTML::script('ckfinder/ckfinder.js') }} 
-<script type="text/javascript">
-   function BrowseServer()
-   {
-     // You can use the "CKFinder" class to render CKFinder in a page:
-     var finder = new CKFinder();
-     finder.basePath = '../';  // The path for the installation of CKFinder (default = "/ckfinder/").
-     finder.selectActionFunction = SetFileField;
-     finder.popup();
-   
-     // It can also be done in a single line, calling the "static"
-     // popup( basePath, width, height, selectFunction ) function:
-     // CKFinder.popup( '../', null, null, SetFileField ) ;
-     //
-     // The "popup" function can also accept an object as the only argument.
-     // CKFinder.popup( { basePath : '../', selectActionFunction : SetFileField } ) ;
-   }
-   
-   // This is a sample function which is called when a file is selected in CKFinder.
-   function SetFileField( fileUrl )
-   {
-     document.getElementById( 'xFilePath' ).value = fileUrl;
-   }
+
    
      
-</script>
+
 {{ HTML::script('assets/js/jquery.slug.js') }}
 <div class="container">
    <!--HEADER mit Zurück ANFANG-->
@@ -37,7 +16,8 @@
       </div>
    </div>
    <!--HEADER mit Zurück ENDE-->
-  {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\IngredientsController@update', $ingredients->id), 'method' => 'PATCH')) }}
+     {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\IngredientsController@update', $ingredients->id ),'files'=>true, 'method' => 'PATCH')) }}
+
    <div class="row">
       <div class="col-md-6">
          <br> 
@@ -99,27 +79,75 @@
       </div>
       <div class="col-md-6">
          <div style="height:30px;"> </div>
-         <!-- Server durchsuchen -->
-         <br>
-         <script type="text/javascript">
-            function popup (url) {
-             fenster = window.open(url, "Popupfenster", "width=950,height=600,resizable=yes");
-             fenster.focus();
-             return false;
-            }
-         </script>
-         <a class ="btn btn-u" href="<?php echo asset('filemanager/show?CKEditor=content&CKEditorFuncNum=1&langCode=de')?>" target="_blank" onclick="return popup(this.href);">Dokumente uploaden / durchsuchen</a>
-         <input type="button" onclick="BrowseServer();"  class ="btn btn-u" value="Dokumente uploaden / durchsuchen NEU TEST">
-         <br><br>
-         <div class="control-group {{ $errors->has('image') ? 'has-error' : '' }}">
-            <label class="control-label" for="image">Bild einfügen</label>
-            <div class="controls">
-              {{ Form::textarea('image', $ingredients->image, array('class'=>'form-control', 'id' => 'ingredients',  'placeholder'=>'Bild einfügen', 'value'=>Input::old('image'))) }}             
-               @if ($errors->first('image'))
-               <span class="help-block">{{ $errors->first('image') }}</span>
-               @endif
-            </div>
-         </div>
+     
+
+     <br>
+       <!-- Image -->
+<label class="control-label" for="image">Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files' name='imagex'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+            <input id="btnclick" class="btn btn-u" type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
+</span>
+
+<div id="stored" >
+<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
+<img src="{{ $ingredients->imagex }}" width="120" height="120"> </span>
+</div>
+
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+
+  $( "#btnclick" ).click(function() {
+  $( "#stored" ).animate({
+    opacity: 0.25,
+    left: "+=10"
+    
+  }, 700, function() {
+    $("#stored").css("visibility","hidden");
+  });
+});
+
+
+</script>
+<!--Aktuelles Bild-->
+<input type="hidden" name="hiddenupdateimagex" value="{{$ingredients->imagex}}">
+
+
+</div>
          <br>
          <!-- Published -->
          <input type="hidden" value="is_published">
@@ -149,33 +177,5 @@
 <br>
 <br>
 </div>
-<!--CKEDITOR ANFANG--> 
-<script>
-   window.onload = function () {
-   
-   
-            CKEDITOR.replace('description', {
-           "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-           uiColor: '#85b81d',
-           language: 'de',
-           height: '150px',
-           customConfig: 'ckeditor_config_recipe.js',
-   
-         });                        
-   
-   
-    CKEDITOR.replace('image', {
-   
-            language: 'de',
-           "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-            uiColor: '#85b81d',
-           height: '180px',           
-           customConfig: 'ckeditor_config_single.js'
-         });  
-   
-   
-   
-   };
-   
-</script>
+
 @stop

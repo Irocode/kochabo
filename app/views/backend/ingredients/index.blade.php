@@ -138,10 +138,10 @@
                <thead>
                   <tr>
                      <th>ID</th>
+                     <th>Voransicht</th> 
                      <th>Name</th>                  
                       <th>Kcal 100g</th>
-                      <th>defaultunit</th>     
-                      <th>Bild</th>                     
+                      <th>defaultunit</th>                                          
                      <th>Erstellt am</th>
                      <th>Update am</th>
                      <th>Bearbeiten</th>

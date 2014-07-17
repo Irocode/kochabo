@@ -138,7 +138,7 @@
                <thead>
                   <tr>
                      <th>ID</th>
-                      <th>Bild</th>
+                      <th>Voransicht</th>
                       <th>Titel</th>                     
                      <th>Erstellt am</th>
                      <th>Update am</th>
