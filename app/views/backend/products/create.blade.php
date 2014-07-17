@@ -127,12 +127,8 @@
       </div>
    </div>
    <br>
-   </div><div class="col-md-6">
 
-
-
-
-   <!-- standalone -->
+      <!-- standalone -->
    <div class="control-group {{ $errors->has('standalone') ? 'has-error' : '' }}">
       <label class="control-label" for="standalone">Standalone</label>
       <div class="controls">
@@ -143,6 +139,12 @@
       </div>
    </div>
    <br>
+   </div><div class="col-md-6">
+
+
+
+
+
    <!-- sku -->
    <div class="control-group {{ $errors->has('sku') ? 'has-error' : '' }}">
       <label class="control-label" for="sku">SKU</label>
@@ -178,34 +180,17 @@
    
    <br>
     <!-- Image -->
-     <style>
-  .thumb {
-    height: 75px;
-    border: 1px solid #000;
-    margin: 10px 5px 0 0;
-  }
-  .example {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-</style>
-
-<hr>
 <label class="control-label" for="image">Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
 <span>
     <input  type="file" 
             style="visibility:hidden; width: 1px;" 
             id='files' name='imagex'  
             onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-    &nbsp;
-    <span  class="badge badge-important" ></span>
+            <input class="btn btn-u" type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
 </span>
-
-
-
-<output id="list"></output>
-
 <script>
   function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
@@ -217,7 +202,6 @@
       if (!f.type.match('image.*')) {
         continue;
       }
-
       var reader = new FileReader();
 
       // Closure to capture the file information.
@@ -230,15 +214,14 @@
           document.getElementById('list').insertBefore(span, null);
         };
       })(f);
-
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
     }
   }
-
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 </script>
-<hr>
+</div>
+
    
    <!-- Published -->
    <input type="hidden" value="is_published">

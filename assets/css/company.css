@@ -1,3 +1,42 @@
+/*images Uploader*/
+   
+  .thumb {
+    height: 120px;
+    border: 1px solid #000;
+    margin: 5px 5px 0 0;
+  }
+  .example {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+#zone {
+  border:2px dashed #BBBBBB;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  color:#BBBBBB;
+  height: 195px;
+
+  
+ 
+
+  line-height:normal;
+  padding:10px;
+  text-align:left;
+}
+
+#zonepicandtitle {
+ 
+  margin-top:-50px; 
+  line-height:normal;
+  padding:10px;
+  text-align:center;
+}
+
+
+
+
 /*red buttons without border*/
 
 .btn-u-red {
@@ -40,11 +79,6 @@
    z-index: 1000;
    display: none;
    }
-
-
-
-
-
 
 
 
