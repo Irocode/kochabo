@@ -379,6 +379,8 @@
   });
 });
 </script>
+<!--Aktuelles Bild-->
+<input type="hidden" name="hiddenupdateimagesmall" value="{{$recipe->imagesmall}}">
 </div>
 
 
@@ -437,6 +439,8 @@
   });
 });
 </script>
+<!--Aktuelles Bild-->
+<input type="hidden" name="hiddenupdateimagemiddle" value="{{$recipe->imagemiddle}}">
 </div>
 
 
@@ -495,6 +499,8 @@
   });
 });
 </script>
+<!--Aktuelles Bild-->
+<input type="hidden" name="hiddenupdateimagebig" value="{{$recipe->imagebig}}">
 </div>
 
 

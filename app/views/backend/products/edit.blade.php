@@ -252,6 +252,10 @@
 
 
 </script>
+<!--Aktuelles Bild-->
+<input type="hidden" name="hiddenupdateimagex" value="{{$products->imagex}}">
+
+
 </div>
 
 
