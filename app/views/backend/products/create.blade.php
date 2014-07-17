@@ -128,7 +128,26 @@
    </div>
    <br>
 
-      <!-- standalone -->
+     <!-- productlink -->
+   <div class="control-group {{ $errors->has('productlink') ? 'has-error' : '' }}">
+      <label class="control-label" for="productlink">Produkt Link zur Seite</label>
+      <div class="controls">
+        {{ Form::text('productlink', null, array('class'=>'form-control', 'id' => 'productlink', 'placeholder'=>'Produkt Link', 'value'=>Input::old('productlink'))) }}  
+        
+         @if ($errors->first('productlink'))
+         <span class="help-block">{{ $errors->first('productlink') }}</span>
+         @endif
+      </div>
+   </div>
+   <br>
+
+
+
+   
+   </div><div class="col-md-6">
+
+
+   <!-- standalone -->
    <div class="control-group {{ $errors->has('standalone') ? 'has-error' : '' }}">
       <label class="control-label" for="standalone">Standalone</label>
       <div class="controls">
@@ -139,10 +158,6 @@
       </div>
    </div>
    <br>
-   </div><div class="col-md-6">
-
-
-
 
 
    <!-- sku -->
@@ -187,7 +202,7 @@
             style="visibility:hidden; width: 1px;" 
             id='files' name='imagex'  
             onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-            <input class="btn btn-u" type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
      
    <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
 </span>

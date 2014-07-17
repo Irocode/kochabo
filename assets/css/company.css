@@ -11,19 +11,34 @@
 }
 #zone {
   border:2px dashed #BBBBBB;
-  border-bottom-left-radius:5px;
-  border-bottom-right-radius:5px;
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
+  border-bottom-left-radius:2px;
+  border-bottom-right-radius:2px;
+  border-top-left-radius:2px;
+  border-top-right-radius:2px;
   color:#BBBBBB;
   height: 195px;
-
-  
- 
-
   line-height:normal;
   padding:10px;
   text-align:left;
+}
+
+#stored {
+margin-top:-50px; 
+  line-height:normal;
+  padding:10px;
+  text-align:center;
+}
+#stored2 {
+margin-top:-50px; 
+  line-height:normal;
+  padding:10px;
+  text-align:center;
+}
+#stored3 {
+margin-top:-50px; 
+  line-height:normal;
+  padding:10px;
+  text-align:center;
 }
 
 #zonepicandtitle {

@@ -113,7 +113,7 @@ function SetFileField( fileUrl )
    <br>
    </div>
 </div>
-<br><br><br>
+<br><br>
 
  <!-- tip -->
    <div class="control-group {{ $errors->has('tip') ? 'has-error' : '' }}">
@@ -344,37 +344,18 @@ function SetFileField( fileUrl )
 <div style="height:34px;"> </div>
 
 
-
-
-   <br>
-   <style>
-  .thumb {
-    height: 75px;
-    border: 1px solid #000;
-    margin: 10px 5px 0 0;
-  }
-  .example {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-</style>
-
-<hr>
+ <!-- Image -->
 <label class="control-label" for="imagesmall">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
 <span>
     <input  type="file" 
             style="visibility:hidden; width: 1px;" 
             id='files' name='imagesmall'  
             onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-    &nbsp;
-    <span  class="badge badge-important" ></span>
+            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
 </span>
-
-
-
-<output id="list"></output>
-
 <script>
   function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
@@ -386,7 +367,6 @@ function SetFileField( fileUrl )
       if (!f.type.match('image.*')) {
         continue;
       }
-
       var reader = new FileReader();
 
       // Closure to capture the file information.
@@ -399,35 +379,30 @@ function SetFileField( fileUrl )
           document.getElementById('list').insertBefore(span, null);
         };
       })(f);
-
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
     }
   }
-
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 </script>
+</div>
 
 
-<br><br><hr>
- <label class="control-label" for="imagemiddle">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
 
-
+<!-- Image -->
+<label class="control-label" for="imagemiddle">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
 <span>
     <input  type="file" 
             style="visibility:hidden; width: 1px;" 
             id='files2' name='imagemiddle'  
             onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-    &nbsp;
-    <span  class="badge badge-important" ></span>
+            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list2"></output></div>
 </span>
-
-
-<output id="list2"></output>
-
 <script>
-  function handleFileSelect2(evt2) {
+  function handleFileSelect(evt2) {
     var files2 = evt2.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
@@ -437,7 +412,6 @@ function SetFileField( fileUrl )
       if (!f.type.match('image.*')) {
         continue;
       }
-
       var reader = new FileReader();
 
       // Closure to capture the file information.
@@ -450,36 +424,30 @@ function SetFileField( fileUrl )
           document.getElementById('list2').insertBefore(span, null);
         };
       })(f);
-
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
     }
   }
-
-  document.getElementById('files2').addEventListener('change', handleFileSelect2, false);
+  document.getElementById('files2').addEventListener('change', handleFileSelect, false);
 </script>
+</div>
 
 
 
-
-
-<br><br><hr>
- <label class="control-label" for="imagebig">Großes Bild einfügen (Derzeit 200 x 200px)</label>
-
-
+<!-- Image -->
+<label class="control-label" for="imagebig">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
 <span>
     <input  type="file" 
             style="visibility:hidden; width: 1px;" 
             id='files3' name='imagebig'  
             onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-    &nbsp;
-    <span  class="badge badge-important" ></span>
+            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list3"></output></div>
 </span>
-<output id="list3"></output>
-
 <script>
-  function handleFileSelect3(evt3) {
+  function handleFileSelect(evt3) {
     var files3 = evt3.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
@@ -489,7 +457,6 @@ function SetFileField( fileUrl )
       if (!f.type.match('image.*')) {
         continue;
       }
-
       var reader = new FileReader();
 
       // Closure to capture the file information.
@@ -502,16 +469,26 @@ function SetFileField( fileUrl )
           document.getElementById('list3').insertBefore(span, null);
         };
       })(f);
-
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
     }
   }
-
-  document.getElementById('files3').addEventListener('change', handleFileSelect3, false);
+  document.getElementById('files3').addEventListener('change', handleFileSelect, false);
 </script>
+</div>
 
-<hr>
+
+
+
+
+
+
+
+
+
+
+
+<br>
 
 
 

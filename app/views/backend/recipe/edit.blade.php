@@ -325,35 +325,22 @@
       
 
 
- <br>
-   <style>
-  .thumb {
-    height: 75px;
-    border: 1px solid #000;
-    margin: 10px 5px 0 0;
-  }
-  .example {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-</style>
-
-<hr>
-<label class="control-label" for="vegetarien">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
+ <!-- Image -->
+<label class="control-label" for="imagesmall">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
 <span>
     <input  type="file" 
             style="visibility:hidden; width: 1px;" 
             id='files' name='imagesmall'  
             onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-    &nbsp;
-    <span  class="badge badge-important" ></span>
+            <input id="btnclick" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
 </span>
-
-
-
-<output id="list"></output>
-
+<div id="stored" >
+<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
+<img src="{{ $recipe->imagesmall }}" width="120" height="120">" </span>
+</div>
 <script>
   function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
@@ -365,7 +352,6 @@
       if (!f.type.match('image.*')) {
         continue;
       }
-
       var reader = new FileReader();
 
       // Closure to capture the file information.
@@ -378,40 +364,43 @@
           document.getElementById('list').insertBefore(span, null);
         };
       })(f);
-
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
     }
   }
-
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  $( "#btnclick" ).click(function() {
+  $( "#stored" ).animate({
+    opacity: 0.25,
+    left: "+=10"
+    
+  }, 700, function() {
+    $("#stored").css("visibility","hidden");
+  });
+});
 </script>
-
-
-
-<div> 
-<span style="background-color:#fed51c">Derzeit gespeichert</span><br><span>
-<img src="{{ $recipe->imagesmall }}" width="120" height="120">" </span>
 </div>
-<br><br><hr>
- <label class="control-label" for="vegetarien">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
 
 
+
+<!-- Image -->
+<label class="control-label" for="imagemiddle">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
 <span>
     <input  type="file" 
             style="visibility:hidden; width: 1px;" 
             id='files2' name='imagemiddle'  
             onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-    &nbsp;
-    <span  class="badge badge-important" ></span>
+            <input id="btnclick2" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list2"></output></div>
 </span>
-
-
-<output id="list2"></output>
-
+<div id="stored2" >
+<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
+<img src="{{ $recipe->imagemiddle }}" width="120" height="120">" </span>
+</div>
 <script>
-  function handleFileSelect2(evt2) {
+  function handleFileSelect(evt2) {
     var files2 = evt2.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
@@ -421,7 +410,6 @@
       if (!f.type.match('image.*')) {
         continue;
       }
-
       var reader = new FileReader();
 
       // Closure to capture the file information.
@@ -434,39 +422,43 @@
           document.getElementById('list2').insertBefore(span, null);
         };
       })(f);
-
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
     }
   }
-
-  document.getElementById('files2').addEventListener('change', handleFileSelect2, false);
+  document.getElementById('files2').addEventListener('change', handleFileSelect, false);
+  $( "#btnclick2" ).click(function() {
+  $( "#stored2" ).animate({
+    opacity: 0.25,
+    left: "+=10"
+    
+  }, 700, function() {
+    $("#stored2").css("visibility","hidden");
+  });
+});
 </script>
-
-
-
-
-<div> 
-<span style="background-color:#fed51c">Derzeit gespeichert</span><br><span>
-<img src="{{ $recipe->imagemiddle }}" width="120" height="120">" </span>
 </div>
-<br><br><hr>
- <label class="control-label" for="imagebig">Großes Bild einfügen (Derzeit 200 x 200px)</label>
 
 
+
+<!-- Image -->
+<label class="control-label" for="imagebig">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
 <span>
     <input  type="file" 
             style="visibility:hidden; width: 1px;" 
             id='files3' name='imagebig'  
             onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-    <input class="btn btn-u" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-    &nbsp;
-    <span  class="badge badge-important" ></span>
+            <input id="btnclick3" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list3"></output></div>
 </span>
-<output id="list3"></output>
-
+<div id="stored3" >
+<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
+<img src="{{ $recipe->imagebig }}" width="120" height="120">" </span>
+</div>
 <script>
-  function handleFileSelect3(evt3) {
+  function handleFileSelect(evt3) {
     var files3 = evt3.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
@@ -476,7 +468,6 @@
       if (!f.type.match('image.*')) {
         continue;
       }
-
       var reader = new FileReader();
 
       // Closure to capture the file information.
@@ -489,21 +480,22 @@
           document.getElementById('list3').insertBefore(span, null);
         };
       })(f);
-
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
     }
   }
-
-  document.getElementById('files3').addEventListener('change', handleFileSelect3, false);
+  document.getElementById('files3').addEventListener('change', handleFileSelect, false);
+  $( "#btnclick3" ).click(function() {
+  $( "#stored3" ).animate({
+    opacity: 0.25,
+    left: "+=10"
+    
+  }, 700, function() {
+    $("#stored3").css("visibility","hidden");
+  });
+});
 </script>
-
-<div> 
-<span style="background-color:#fed51c">Derzeit gespeichert</span><br><span>
-<img src="{{ $recipe->imagebig }}" width="120" height="120">" </span>
 </div>
-<br><br><hr>
-
 
 
 

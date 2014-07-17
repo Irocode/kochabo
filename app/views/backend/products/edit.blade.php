@@ -135,10 +135,6 @@
  
 
 
-   <div class="row">
-  <div class="col-md-6">
-
-
    <!-- standalone -->
    <div class="control-group {{ $errors->has('standalone') ? 'has-error' : '' }}">
       <label class="control-label" for="standalone">Standalone</label>
@@ -152,7 +148,7 @@
    <br>
 
 
-  </div><div class="col-md-6">
+
 
    <!-- SKU -->
    <div class="control-group {{ $errors->has('sku') ? 'has-error' : '' }}">
@@ -167,7 +163,7 @@
    <br>
 
 
-   </div></div>
+  
 
 
 
@@ -203,14 +199,15 @@
             style="visibility:hidden; width: 1px;" 
             id='files' name='imagex'  
             onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-            <input class="btn btn-u" type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+            <input id="btnclick" class="btn btn-u" type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
      
    <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
 </span>
 
-
-<span style="background-color:#fed51c">Derzeit gespeichert</span><br><span>
+<div id="stored" >
+<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
 <img src="{{ $products->imagex }}" width="120" height="120">" </span>
+</div>
 
 <script>
   function handleFileSelect(evt) {
@@ -240,6 +237,20 @@
     }
   }
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+
+  $( "#btnclick" ).click(function() {
+  $( "#stored" ).animate({
+    opacity: 0.25,
+    left: "+=10"
+    
+  }, 700, function() {
+    $("#stored").css("visibility","hidden");
+  });
+});
+
+
 </script>
 </div>
 
