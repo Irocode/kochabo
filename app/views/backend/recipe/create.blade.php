@@ -361,7 +361,7 @@ function SetFileField( fileUrl )
 
 
 
-<div style="height:34px;"> </div>
+
 
 
  <!-- Image -->
@@ -406,8 +406,8 @@ function SetFileField( fileUrl )
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 </script>
 </div>
-
-
+<div style="height:17px;"> </div>
+<br>
 
 <!-- Image -->
 <label class="control-label" for="imagemiddle">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
@@ -452,7 +452,8 @@ function SetFileField( fileUrl )
 </script>
 </div>
 
-
+<div style="height:17px;"> </div>
+<br>
 
 <!-- Image -->
 <label class="control-label" for="imagebig">Kleines Bild einfügen (Derzeit 200 x 200px)</label>

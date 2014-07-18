@@ -339,7 +339,7 @@
      
 
 
-<div style="height:34px;"> </div>
+
 
       
 
@@ -402,7 +402,8 @@
 <input type="hidden" name="hiddenupdateimagesmall" value="{{$recipe->imagesmall}}">
 </div>
 
-
+<div style="height:17px;"> </div>
+<br>
 
 <!-- Image -->
 <label class="control-label" for="imagemiddle">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
@@ -462,7 +463,8 @@
 <input type="hidden" name="hiddenupdateimagemiddle" value="{{$recipe->imagemiddle}}">
 </div>
 
-
+<div style="height:17px;"> </div>
+<br>
 
 <!-- Image -->
 <label class="control-label" for="imagebig">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
