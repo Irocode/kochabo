@@ -3,12 +3,17 @@
 {{ HTML::script('assets/js/jquery.slug.js') }}
 <script type="text/javascript">
    $(document).ready(function () {
-       $("#title").slug();
-   
+       $("#title").slug();  
       
    
    });
 </script>
+
+<style>
+#description, #tip, #athome, #step_1, #step_2, #step_3, #step_4, #step_5, #step_6, #step_7 {
+height: 194px;
+}
+</style>
 
 <div class="container">
 
@@ -42,10 +47,12 @@
    </div> 
   <br> 
    <!-- Title -->
+  
    <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
       <label class="control-label" for="title">Titel</label>
       <div class="controls">
-         {{ Form::text('title', $recipe->title, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'Titel', 'value'=>Input::old('title'))) }}
+        {{ Form::text('title', $recipe->title, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Titel', 'value'=>Input::old('title'))) }}  
+        
          @if ($errors->first('title'))
          <span class="help-block">{{ $errors->first('title') }}</span>
          @endif
@@ -175,7 +182,249 @@
 
 
 
-   <div class="row">
+<div style="height:67px;"> </div>
+
+   
+
+
+ <!-- tip -->
+   <div class="control-group {{ $errors->has('tip') ? 'has-error' : '' }}">
+      <label class="control-label" for="tip">Tipp <span class="stern" >*</span></label>
+      <div class="controls">         
+      {{ Form::textarea('tip', $recipe->tip, array('class'=>'form-control', 'id' => 'tip',  'placeholder'=>'Tipp', 'value'=>Input::old('tip'))) }}   
+         @if ($errors->first('tip'))
+         <span class="help-block">{{ $errors->first('tip') }}</span>
+         @endif
+      </div>
+   </div> 
+       <br> 
+
+
+        <!-- athome -->
+   <div class="control-group {{ $errors->has('athome') ? 'has-error' : '' }}">
+      <label class="control-label" for="athome">Solltest zu Hause haben <span class="stern" >*</span></label>
+      <div class="controls">         
+      {{ Form::textarea('athome', $recipe->athome, array('class'=>'form-control', 'id' => 'athome',  'placeholder'=>'Solltest zu Hause haben', 'value'=>Input::old('athome'))) }}      
+         @if ($errors->first('athome'))
+         <span class="help-block">{{ $errors->first('athome') }}</span>
+         @endif
+      </div>
+   </div> 
+       <br> 
+
+
+     
+
+
+   <!-- description -->
+   <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
+      <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
+      <div class="controls">         
+      {{ Form::textarea('description', $recipe->description, array('class'=>'form-control', 'id' => 'description',  'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}       
+         @if ($errors->first('description'))
+         <span class="help-block">{{ $errors->first('description') }}</span>
+         @endif
+      </div>
+   </div> 
+  
+   <br>
+     
+
+
+
+
+      
+
+
+ <!-- Image -->
+<label class="control-label" for="imagesmall">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files' name='imagesmall'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+            <input id="btnclick" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
+</span>
+<div id="stored" >
+<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
+<img src="{{ $recipe->imagesmall }}" width="120" height="120"> </span>
+</div>
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  $( "#btnclick" ).click(function() {
+  $( "#stored" ).animate({
+    opacity: 0.25,
+    left: "+=10"
+    
+  }, 700, function() {
+    $("#stored").css("visibility","hidden");
+  });
+});
+</script>
+<!--Aktuelles Bild-->
+<input type="hidden" name="hiddenupdateimagesmall" value="{{$recipe->imagesmall}}">
+</div>
+
+
+<br>
+
+<!-- Image -->
+<label class="control-label" for="imagemiddle">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files2' name='imagemiddle'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+            <input id="btnclick2" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list2"></output></div>
+</span>
+<div id="stored2" >
+<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
+<img src="{{ $recipe->imagemiddle }}" width="120" height="120"> </span>
+</div>
+<script>
+  function handleFileSelect(evt2) {
+    var files2 = evt2.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files2[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list2').insertBefore(span, null);
+        };
+      })(f);
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+  document.getElementById('files2').addEventListener('change', handleFileSelect, false);
+  $( "#btnclick2" ).click(function() {
+  $( "#stored2" ).animate({
+    opacity: 0.25,
+    left: "+=10"
+    
+  }, 700, function() {
+    $("#stored2").css("visibility","hidden");
+  });
+});
+</script>
+<!--Aktuelles Bild-->
+<input type="hidden" name="hiddenupdateimagemiddle" value="{{$recipe->imagemiddle}}">
+</div>
+
+
+<br>
+
+<!-- Image -->
+<label class="control-label" for="imagebig">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files3' name='imagebig'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+            <input id="btnclick3" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list3"></output></div>
+</span>
+<div id="stored3" >
+<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
+<img src="{{ $recipe->imagebig }}" width="120" height="120"> </span>
+</div>
+<script>
+  function handleFileSelect(evt3) {
+    var files3 = evt3.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files3[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list3').insertBefore(span, null);
+        };
+      })(f);
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+  document.getElementById('files3').addEventListener('change', handleFileSelect, false);
+  $( "#btnclick3" ).click(function() {
+  $( "#stored3" ).animate({
+    opacity: 0.25,
+    left: "+=10"
+    
+  }, 700, function() {
+    $("#stored3").css("visibility","hidden");
+  });
+});
+</script>
+<!--Aktuelles Bild-->
+<input type="hidden" name="hiddenupdateimagebig" value="{{$recipe->imagebig}}">
+</div>
+
+
+
+
+
+
+
+   </div><div class="col-md-6">
+
+<div class="row">
   <div class="col-md-2">
    <!-- gluten_free  -->
    <div class="control-group {{ $errors->has('gluten_free ') ? 'has-error' : '' }}">
@@ -294,251 +543,11 @@
 
 </div>
 
-
- <!-- tip -->
-   <div class="control-group {{ $errors->has('tip') ? 'has-error' : '' }}">
-      <label class="control-label" for="tip">Tipp <span class="stern" >*</span></label>
-      <div class="controls">         
-      {{ Form::textarea('tip', $recipe->tip, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Tipp', 'value'=>Input::old('tip'))) }}   
-         @if ($errors->first('tip'))
-         <span class="help-block">{{ $errors->first('tip') }}</span>
-         @endif
-      </div>
-   </div> 
-       <br> 
-
-
-        <!-- athome -->
-   <div class="control-group {{ $errors->has('athome') ? 'has-error' : '' }}">
-      <label class="control-label" for="athome">Solltest zu Hause haben <span class="stern" >*</span></label>
-      <div class="controls">         
-      {{ Form::textarea('athome', $recipe->athome, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Solltest zu Hause haben', 'value'=>Input::old('athome'))) }}      
-         @if ($errors->first('athome'))
-         <span class="help-block">{{ $errors->first('athome') }}</span>
-         @endif
-      </div>
-   </div> 
-       <br> 
-
-
-     
-
-
-   <!-- description -->
-   <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
-      <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
-      <div class="controls">         
-      {{ Form::textarea('description', $recipe->description, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}       
-         @if ($errors->first('description'))
-         <span class="help-block">{{ $errors->first('description') }}</span>
-         @endif
-      </div>
-   </div> 
-  
-   <br>
-     
-
-
-
-
-      
-
-
- <!-- Image -->
-<label class="control-label" for="imagesmall">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
-<div id="zone">
-<span>
-    <input  type="file" 
-            style="visibility:hidden; width: 1px;" 
-            id='files' name='imagesmall'  
-            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-            <input id="btnclick" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-     
-   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
-</span>
-<div id="stored" >
-<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
-<img src="{{ $recipe->imagesmall }}" width="120" height="120"> </span>
-</div>
-<script>
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-          document.getElementById('list').insertBefore(span, null);
-        };
-      })(f);
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  }
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
-  $( "#btnclick" ).click(function() {
-  $( "#stored" ).animate({
-    opacity: 0.25,
-    left: "+=10"
-    
-  }, 700, function() {
-    $("#stored").css("visibility","hidden");
-  });
-});
-</script>
-<!--Aktuelles Bild-->
-<input type="hidden" name="hiddenupdateimagesmall" value="{{$recipe->imagesmall}}">
-</div>
-
-<div style="height:17px;"> </div>
-<br>
-
-<!-- Image -->
-<label class="control-label" for="imagemiddle">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
-<div id="zone">
-<span>
-    <input  type="file" 
-            style="visibility:hidden; width: 1px;" 
-            id='files2' name='imagemiddle'  
-            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-            <input id="btnclick2" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-     
-   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list2"></output></div>
-</span>
-<div id="stored2" >
-<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
-<img src="{{ $recipe->imagemiddle }}" width="120" height="120"> </span>
-</div>
-<script>
-  function handleFileSelect(evt2) {
-    var files2 = evt2.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files2[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-          document.getElementById('list2').insertBefore(span, null);
-        };
-      })(f);
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  }
-  document.getElementById('files2').addEventListener('change', handleFileSelect, false);
-  $( "#btnclick2" ).click(function() {
-  $( "#stored2" ).animate({
-    opacity: 0.25,
-    left: "+=10"
-    
-  }, 700, function() {
-    $("#stored2").css("visibility","hidden");
-  });
-});
-</script>
-<!--Aktuelles Bild-->
-<input type="hidden" name="hiddenupdateimagemiddle" value="{{$recipe->imagemiddle}}">
-</div>
-
-<div style="height:17px;"> </div>
-<br>
-
-<!-- Image -->
-<label class="control-label" for="imagebig">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
-<div id="zone">
-<span>
-    <input  type="file" 
-            style="visibility:hidden; width: 1px;" 
-            id='files3' name='imagebig'  
-            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-            <input id="btnclick3" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-     
-   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list3"></output></div>
-</span>
-<div id="stored3" >
-<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
-<img src="{{ $recipe->imagebig }}" width="120" height="120"> </span>
-</div>
-<script>
-  function handleFileSelect(evt3) {
-    var files3 = evt3.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files3[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-          document.getElementById('list3').insertBefore(span, null);
-        };
-      })(f);
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  }
-  document.getElementById('files3').addEventListener('change', handleFileSelect, false);
-  $( "#btnclick3" ).click(function() {
-  $( "#stored3" ).animate({
-    opacity: 0.25,
-    left: "+=10"
-    
-  }, 700, function() {
-    $("#stored3").css("visibility","hidden");
-  });
-});
-</script>
-<!--Aktuelles Bild-->
-<input type="hidden" name="hiddenupdateimagebig" value="{{$recipe->imagebig}}">
-</div>
-
-
-
-
-
-
-
-   </div><div class="col-md-6">
-
-
-
    <!-- step_1 -->
    <div class="control-group {{ $errors->has('step_1') ? 'has-error' : '' }}">
       <label class="control-label" for="step_1">Schritt 1 <span class="stern" >*</span></label>
       <div class="controls">  
-       {{ Form::textarea('step_1', $recipe->step_1, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Schritt 1', 'value'=>Input::old('step_1'))) }}          
+       {{ Form::textarea('step_1', $recipe->step_1, array('class'=>'form-control', 'id' => 'step_1',  'placeholder'=>'Schritt 1', 'value'=>Input::old('step_1'))) }}          
             @if ($errors->first('step_1'))
          <span class="help-block">{{ $errors->first('step_1') }}</span>
          @endif
@@ -549,7 +558,7 @@
    <div class="control-group {{ $errors->has('step_2') ? 'has-error' : '' }}">
       <label class="control-label" for="step_2">Schritt 2 <span class="stern" >*</span></label>
       <div class="controls">       
-       {{ Form::textarea('step_2', $recipe->step_2, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Schritt 2', 'value'=>Input::old('step_2'))) }}     
+       {{ Form::textarea('step_2', $recipe->step_2, array('class'=>'form-control', 'id' => 'step_2',  'placeholder'=>'Schritt 2', 'value'=>Input::old('step_2'))) }}   
      
          @if ($errors->first('step_2'))
          <span class="help-block">{{ $errors->first('step_2') }}</span>
@@ -561,7 +570,7 @@
    <div class="control-group {{ $errors->has('step_3') ? 'has-error' : '' }}">
       <label class="control-label" for="step_3">Schritt 3 <span class="stern" >*</span></label>
       <div class="controls">   
-       {{ Form::textarea('step_3', $recipe->step_3, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Schritt 3', 'value'=>Input::old('step_3'))) }}         
+       {{ Form::textarea('step_3', $recipe->step_3, array('class'=>'form-control', 'id' => 'step_3',  'placeholder'=>'Schritt 3', 'value'=>Input::old('step_3'))) }}         
           @if ($errors->first('step_3'))
          <span class="help-block">{{ $errors->first('step_3') }}</span>
          @endif
@@ -572,7 +581,7 @@
    <div class="control-group {{ $errors->has('step_4') ? 'has-error' : '' }}">
       <label class="control-label" for="step_4">Schritt 4 <span class="stern" >*</span></label>
       <div class="controls">  
-       {{ Form::textarea('step_4', $recipe->step_4, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Schritt 4', 'value'=>Input::old('step_4'))) }}          
+       {{ Form::textarea('step_4', $recipe->step_4, array('class'=>'form-control', 'id' => 'step_4',  'placeholder'=>'Schritt 4', 'value'=>Input::old('step_4'))) }}          
               @if ($errors->first('step_4'))
          <span class="help-block">{{ $errors->first('step_4') }}</span>
          @endif
@@ -583,7 +592,7 @@
    <div class="control-group {{ $errors->has('step_5') ? 'has-error' : '' }}">
       <label class="control-label" for="step_5">Schritt 5 <span class="stern" >*</span></label>
       <div class="controls"> 
-       {{ Form::textarea('step_5', $recipe->step_5, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Schritt 5', 'value'=>Input::old('step_5'))) }}         
+       {{ Form::textarea('step_5', $recipe->step_5, array('class'=>'form-control', 'id' => 'step_5',  'placeholder'=>'Schritt 5', 'value'=>Input::old('step_5'))) }}         
                  @if ($errors->first('step_5'))
          <span class="help-block">{{ $errors->first('step_5') }}</span>
          @endif
@@ -594,18 +603,18 @@
    <div class="control-group {{ $errors->has('step_6') ? 'has-error' : '' }}">
       <label class="control-label" for="step_6">Schritt 6 <span class="stern" >*</span></label>
       <div class="controls">     
-       {{ Form::textarea('step_6', $recipe->step_6, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Schritt 6', 'value'=>Input::old('step_6'))) }}       
+       {{ Form::textarea('step_6', $recipe->step_6, array('class'=>'form-control', 'id' => 'step_6',  'placeholder'=>'Schritt 6', 'value'=>Input::old('step_6'))) }}       
                  @if ($errors->first('step_6'))
          <span class="help-block">{{ $errors->first('step_6') }}</span>
          @endif
       </div>
    </div> 
-
+ <br>
     <!-- step_7 -->
    <div class="control-group {{ $errors->has('step_7') ? 'has-error' : '' }}">
       <label class="control-label" for="step_7">Schritt 7 <span class="stern" >*</span></label>
       <div class="controls">    
-       {{ Form::textarea('step_7', $recipe->step_7, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Schritt 7', 'value'=>Input::old('step_7'))) }}       
+       {{ Form::textarea('step_7', $recipe->step_7, array('class'=>'form-control', 'id' => 'step_7',  'placeholder'=>'Schritt 7', 'value'=>Input::old('step_7'))) }}       
                 @if ($errors->first('step_7'))
          <span class="help-block">{{ $errors->first('step_7') }}</span>
          @endif

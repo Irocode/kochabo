@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-16 12:53:12
+// NOTE Migration Created: 2014-07-18 07:49:00
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -432,7 +432,7 @@ Schema::create('ingredients', function($table) {
  $table->mediumtext('description');
  $table->string('kcal100g', 255);
  $table->unsignedInteger('defaultunit');
- $table->string('image', 255);
+ $table->('imagex');
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  $table->unsignedInteger('is_published');
@@ -942,7 +942,7 @@ Schema::create('ranking', function($table) {
 Schema::create('recipe', function($table) {
  $table->increments('id');
  $table->unsignedInteger('kochabo_id');
- $table->unsignedInteger('urlslug');
+ $table->string('slug', 255);
  $table->string('titel', 255);
  $table->string('duration', 100);
  $table->string('cooking_time', 100);

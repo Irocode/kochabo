@@ -9,9 +9,9 @@ class Recipe extends BaseModel implements BaseModelInterface
     public $fillable = [
         
         'id',
-        'kochabo_id',
-        'slug',               
-        'titel',   
+        'kochabo_id',                      
+        'title',
+        'slug',    
         'duration',   
         'cooking_time',
         'tip',
@@ -49,7 +49,8 @@ class Recipe extends BaseModel implements BaseModelInterface
 
     public function getUrlAttribute()
     {
-        return "recipe/" . $this->attributes['id'] . "/" . $this->attributes['id'];
+     return "recipe/" . $this->attributes['id'] . "/" . $this->attributes['slug'];
+       
     }
 
 

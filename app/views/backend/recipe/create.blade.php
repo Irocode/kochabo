@@ -6,40 +6,13 @@
        $("#title").slug();      
    
    });
-</script>
-  
-  
-  <script type="text/javascript">
+</script>  
 
-function BrowseServer()
-{
-  // You can use the "CKFinder" class to render CKFinder in a page:
-  var finder = new CKFinder();
-  finder.basePath = '../';  // The path for the installation of CKFinder (default = "/ckfinder/").
-  finder.selectActionFunction = SetFileField;
-  finder.popup();
-
-  // It can also be done in a single line, calling the "static"
-  // popup( basePath, width, height, selectFunction ) function:
-  // CKFinder.popup( '../', null, null, SetFileField ) ;
-  //
-  // The "popup" function can also accept an object as the only argument.
-  // CKFinder.popup( { basePath : '../', selectActionFunction : SetFileField } ) ;
+<style>
+#description, #tip, #athome, #step_1, #step_2, #step_3, #step_4, #step_5, #step_6, #step_7 {
+height: 194px;
 }
-
-// This is a sample function which is called when a file is selected in CKFinder.
-function SetFileField( fileUrl )
-{
-  document.getElementById( 'xFilePath' ).value = fileUrl;
-}
-
-  </script>
-
-
-
-
-
-{{ HTML::script('assets/js/jquery.slug.js') }}
+</style>
 
 <div class="container">
 
@@ -172,7 +145,7 @@ function SetFileField( fileUrl )
   </div>
 
 </div>
-
+<br>
    <div class="row">
   <div class="col-md-6">
    <!-- nutrition_protein  -->
@@ -186,7 +159,7 @@ function SetFileField( fileUrl )
       </div>
    </div> 
   
-
+<br>
 
   </div>
   <div class="col-md-6">
@@ -206,8 +179,194 @@ function SetFileField( fileUrl )
    </div>
 
 </div>
+
+
+<div style="height:67px;"> </div>
+   
+
+ <!-- tip -->
+   <div class="control-group {{ $errors->has('tip') ? 'has-error' : '' }}">
+      <label class="control-label" for="tip">Tipp <span class="stern" >*</span></label>
+      <div class="controls">         
+         {{ Form::textarea ('tip', null, array('class'=>'form-control', 'id' => 'tip', 'placeholder'=>'Tipp', 'value'=>Input::old('tip'))) }}
+         @if ($errors->first('tip'))
+         <span class="help-block">{{ $errors->first('tip') }}</span>
+         @endif
+      </div>
+   </div> 
+       <br> 
+
+
+        <!-- athome -->
+   <div class="control-group {{ $errors->has('athome') ? 'has-error' : '' }}">
+      <label class="control-label" for="athome">Solltest zu Hause haben <span class="stern" >*</span></label>
+      <div class="controls">         
+         {{ Form::textarea ('athome', null, array('class'=>'form-control', 'id' => 'athome', 'placeholder'=>'Solltest zu Hause haben', 'value'=>Input::old('athome'))) }}
+         @if ($errors->first('athome'))
+         <span class="help-block">{{ $errors->first('athome') }}</span>
+         @endif
+      </div>
+   </div> 
+       <br> 
+
+
+   <!-- description -->
+   <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
+      <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
+      <div class="controls">         
+         {{ Form::textarea('description', null, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}
+         @if ($errors->first('description'))
+         <span class="help-block">{{ $errors->first('description') }}</span>
+         @endif
+      </div>
+   </div> 
+  
+   <br>
+     
+
+
+
+
+
+
+
+ <!-- Image -->
+<label class="control-label" for="imagesmall">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files' name='imagesmall'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
+</span>
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+</div>
+
 <br>
 
+<!-- Image -->
+<label class="control-label" for="imagemiddle">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files2' name='imagemiddle'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list2"></output></div>
+</span>
+<script>
+  function handleFileSelect(evt2) {
+    var files2 = evt2.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files2[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list2').insertBefore(span, null);
+        };
+      })(f);
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+  document.getElementById('files2').addEventListener('change', handleFileSelect, false);
+</script>
+</div>
+
+
+<br>
+
+<!-- Image -->
+<label class="control-label" for="imagebig">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
+<div id="zone">
+<span>
+    <input  type="file" 
+            style="visibility:hidden; width: 1px;" 
+            id='files3' name='imagebig'  
+            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+     
+   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list3"></output></div>
+</span>
+<script>
+  function handleFileSelect(evt3) {
+    var files3 = evt3.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files3[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list3').insertBefore(span, null);
+        };
+      })(f);
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+  document.getElementById('files3').addEventListener('change', handleFileSelect, false);
+</script>
+</div>
+
+<br>
+
+   </div><div class="col-md-6">
 
    <div class="row">
   <div class="col-md-2">
@@ -318,190 +477,6 @@ function SetFileField( fileUrl )
 
 </div>
 
- <!-- tip -->
-   <div class="control-group {{ $errors->has('tip') ? 'has-error' : '' }}">
-      <label class="control-label" for="tip">Tipp <span class="stern" >*</span></label>
-      <div class="controls">         
-         {{ Form::textarea ('tip', null, array('class'=>'form-control', 'id' => 'tip', 'placeholder'=>'Tipp', 'value'=>Input::old('tip'))) }}
-         @if ($errors->first('tip'))
-         <span class="help-block">{{ $errors->first('tip') }}</span>
-         @endif
-      </div>
-   </div> 
-       <br> 
-
-
-        <!-- athome -->
-   <div class="control-group {{ $errors->has('athome') ? 'has-error' : '' }}">
-      <label class="control-label" for="athome">Solltest zu Hause haben <span class="stern" >*</span></label>
-      <div class="controls">         
-         {{ Form::textarea ('athome', null, array('class'=>'form-control', 'id' => 'athome', 'placeholder'=>'Solltest zu Hause haben', 'value'=>Input::old('athome'))) }}
-         @if ($errors->first('athome'))
-         <span class="help-block">{{ $errors->first('athome') }}</span>
-         @endif
-      </div>
-   </div> 
-       <br> 
-
-
-   <!-- description -->
-   <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
-      <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
-      <div class="controls">         
-         {{ Form::textarea('description', null, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}
-         @if ($errors->first('description'))
-         <span class="help-block">{{ $errors->first('description') }}</span>
-         @endif
-      </div>
-   </div> 
-  
-   <br>
-     
-
-
-
-
-
-
-
- <!-- Image -->
-<label class="control-label" for="imagesmall">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
-<div id="zone">
-<span>
-    <input  type="file" 
-            style="visibility:hidden; width: 1px;" 
-            id='files' name='imagesmall'  
-            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-     
-   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
-</span>
-<script>
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-          document.getElementById('list').insertBefore(span, null);
-        };
-      })(f);
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  }
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
-</script>
-</div>
-<div style="height:17px;"> </div>
-<br>
-
-<!-- Image -->
-<label class="control-label" for="imagemiddle">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
-<div id="zone">
-<span>
-    <input  type="file" 
-            style="visibility:hidden; width: 1px;" 
-            id='files2' name='imagemiddle'  
-            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-     
-   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list2"></output></div>
-</span>
-<script>
-  function handleFileSelect(evt2) {
-    var files2 = evt2.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files2[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-          document.getElementById('list2').insertBefore(span, null);
-        };
-      })(f);
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  }
-  document.getElementById('files2').addEventListener('change', handleFileSelect, false);
-</script>
-</div>
-
-<div style="height:17px;"> </div>
-<br>
-
-<!-- Image -->
-<label class="control-label" for="imagebig">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
-<div id="zone">
-<span>
-    <input  type="file" 
-            style="visibility:hidden; width: 1px;" 
-            id='files3' name='imagebig'  
-            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-     
-   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list3"></output></div>
-</span>
-<script>
-  function handleFileSelect(evt3) {
-    var files3 = evt3.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files3[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-          document.getElementById('list3').insertBefore(span, null);
-        };
-      })(f);
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  }
-  document.getElementById('files3').addEventListener('change', handleFileSelect, false);
-</script>
-</div>
-
-<br>
-
-   </div><div class="col-md-6">
-
    <!-- step_1 -->
    <div class="control-group {{ $errors->has('step_1') ? 'has-error' : '' }}">
       <label class="control-label" for="step_1">Schritt 1 <span class="stern" >*</span></label>
@@ -567,7 +542,7 @@ function SetFileField( fileUrl )
          @endif
       </div>
    </div> 
-
+<br>
     <!-- step_7 -->
    <div class="control-group {{ $errors->has('step_7') ? 'has-error' : '' }}">
       <label class="control-label" for="step_7">Schritt 7 <span class="stern" >*</span></label>
