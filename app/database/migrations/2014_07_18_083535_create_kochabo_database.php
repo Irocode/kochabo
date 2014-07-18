@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-18 07:49:00
+// NOTE Migration Created: 2014-07-18 08:35:35
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -943,7 +943,7 @@ Schema::create('recipe', function($table) {
  $table->increments('id');
  $table->unsignedInteger('kochabo_id');
  $table->string('slug', 255);
- $table->string('titel', 255);
+ $table->string('title', 255);
  $table->string('duration', 100);
  $table->string('cooking_time', 100);
  $table->mediumtext('tip');
