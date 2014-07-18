@@ -1,9 +1,14 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
-
-
 {{ HTML::script('assets/js/jquery.slug.js') }}
+<script type="text/javascript">
+   $(document).ready(function () {
+       $("#title").slug();
+   
+      
+   
+   });
+</script>
 
 <div class="container">
 
@@ -24,9 +29,6 @@
 
 <div class="row">
   <div class="col-md-6">
-
-
-
    <!-- Kochabo Rezept ID -->
    <div class="control-group {{ $errors->has('kochabo_id') ? 'has-error' : '' }}">
       <label class="control-label" for="kochabo_id">Kochabo Rezept ID <span class="stern" >*</span></label>
@@ -38,19 +40,34 @@
          @endif
       </div>
    </div> 
-
   <br> 
-   <!-- titel -->
-   <div class="control-group {{ $errors->has('titel') ? 'has-error' : '' }}">
-      <label class="control-label" for="titel">Titel <span class="stern" >*</span></label>
-      <div class="controls">   
-         {{ Form::text('titel', $recipe->titel, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Titel', 'value'=>Input::old('titel'))) }}  
-         @if ($errors->first('titel'))
-         <span class="help-block">{{ $errors->first('titel') }}</span>
+   <!-- Title -->
+   <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
+      <label class="control-label" for="title">Titel</label>
+      <div class="controls">
+         {{ Form::text('title', $recipe->title, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'Titel', 'value'=>Input::old('title'))) }}
+         @if ($errors->first('title'))
+         <span class="help-block">{{ $errors->first('title') }}</span>
          @endif
       </div>
-   </div> 
-       <br> 
+   </div>
+   <br>
+
+   <!-- Slug -->
+   <div class="control-group {{ $errors->has('slug') ? 'has-error' : '' }}">
+      <label class="control-label" for="title">Slug</label>
+      <div class="controls">
+         <div class="input-group">
+            <span class="input-group-addon">www.kochabo.at/</span>
+            {{ Form::text('slug', $recipe->slug, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
+         </div>
+         @if ($errors->first('slug'))
+         <span class="help-block">{{ $errors->first('slug') }}</span>
+         @endif
+      </div>
+   </div>
+     <br> 
+
          <div class="row">
   <div class="col-md-6">
 
@@ -83,50 +100,9 @@
    <br>
    </div>
 </div>
-<br><br><br>
-
- <!-- tip -->
-   <div class="control-group {{ $errors->has('tip') ? 'has-error' : '' }}">
-      <label class="control-label" for="tip">Tipp <span class="stern" >*</span></label>
-      <div class="controls">         
-      {{ Form::textarea('tip', $recipe->tip, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Tipp', 'value'=>Input::old('tip'))) }}   
-         @if ($errors->first('tip'))
-         <span class="help-block">{{ $errors->first('tip') }}</span>
-         @endif
-      </div>
-   </div> 
-       <br> 
 
 
-        <!-- athome -->
-   <div class="control-group {{ $errors->has('athome') ? 'has-error' : '' }}">
-      <label class="control-label" for="athome">Solltest zu Hause haben <span class="stern" >*</span></label>
-      <div class="controls">         
-      {{ Form::textarea('athome', $recipe->athome, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Solltest zu Hause haben', 'value'=>Input::old('athome'))) }}      
-         @if ($errors->first('athome'))
-         <span class="help-block">{{ $errors->first('athome') }}</span>
-         @endif
-      </div>
-   </div> 
-       <br> 
-
-
-     
-
-
-   <!-- description -->
-   <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
-      <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
-      <div class="controls">         
-      {{ Form::textarea('description', $recipe->description, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}       
-         @if ($errors->first('description'))
-         <span class="help-block">{{ $errors->first('description') }}</span>
-         @endif
-      </div>
-   </div> 
-  
-   <br>
-      <div class="row">
+ <div class="row">
   <div class="col-md-6">
    <!-- nutrition_carbs -->
    <div class="control-group {{ $errors->has('nutrition_carbs') ? 'has-error' : '' }}">
@@ -162,7 +138,7 @@
   </div>
 
 </div>
-<br>
+
    <div class="row">
   <div class="col-md-6">
    <!-- nutrition_protein  -->
@@ -196,7 +172,7 @@
    </div>
 
 </div>
-<br>
+
 
 
    <div class="row">
@@ -318,6 +294,49 @@
 
 </div>
 
+
+ <!-- tip -->
+   <div class="control-group {{ $errors->has('tip') ? 'has-error' : '' }}">
+      <label class="control-label" for="tip">Tipp <span class="stern" >*</span></label>
+      <div class="controls">         
+      {{ Form::textarea('tip', $recipe->tip, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Tipp', 'value'=>Input::old('tip'))) }}   
+         @if ($errors->first('tip'))
+         <span class="help-block">{{ $errors->first('tip') }}</span>
+         @endif
+      </div>
+   </div> 
+       <br> 
+
+
+        <!-- athome -->
+   <div class="control-group {{ $errors->has('athome') ? 'has-error' : '' }}">
+      <label class="control-label" for="athome">Solltest zu Hause haben <span class="stern" >*</span></label>
+      <div class="controls">         
+      {{ Form::textarea('athome', $recipe->athome, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Solltest zu Hause haben', 'value'=>Input::old('athome'))) }}      
+         @if ($errors->first('athome'))
+         <span class="help-block">{{ $errors->first('athome') }}</span>
+         @endif
+      </div>
+   </div> 
+       <br> 
+
+
+     
+
+
+   <!-- description -->
+   <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
+      <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
+      <div class="controls">         
+      {{ Form::textarea('description', $recipe->description, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}       
+         @if ($errors->first('description'))
+         <span class="help-block">{{ $errors->first('description') }}</span>
+         @endif
+      </div>
+   </div> 
+  
+   <br>
+     
 
 
 <div style="height:34px;"> </div>

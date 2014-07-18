@@ -10,7 +10,7 @@ class Recipe extends BaseModel implements BaseModelInterface
         
         'id',
         'kochabo_id',
-        'urlslug',               
+        'slug',               
         'titel',   
         'duration',   
         'cooking_time',
