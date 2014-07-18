@@ -13,9 +13,19 @@
 		"moltin/laravel-cart": "dev-master",
         "gloudemans/shoppingcart": "dev-master",
 		"anahkiasen/former": "dev-master",
-		"orangehill/iseed": "dev-master"
+		"orangehill/iseed": "dev-master",
+        "cartalyst/sentry-social": "2.1.*"
 	
+
     },
+
+    "repositories": [
+    {
+        "type": "composer",
+        "url": "http://packages.cartalyst.com"
+    }
+],
+
 	
 	"require-dev": {		
 		"mockery/mockery": "~0.9",
@@ -42,6 +52,8 @@
 		
 		
     },
+
+
     "scripts": {
         "post-install-cmd": [
             "php artisan optimize"

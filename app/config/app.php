@@ -121,6 +121,7 @@ return array(
         'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
         'Former\FormerServiceProvider',
         'Orangehill\Iseed\IseedServiceProvider',
+        'Cartalyst\SentrySocial\SentrySocialServiceProvider',
 
 
                
@@ -200,6 +201,7 @@ return array(
         'Cart' => 'Moltin\Cart\Facade',
         'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
         'Former' => 'Former\Facades\Former',
+        'SentrySocial' => 'Cartalyst\SentrySocial\Facades\Laravel\SentrySocial',
         
 
     ),
