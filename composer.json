@@ -13,8 +13,9 @@
 		"moltin/laravel-cart": "dev-master",
         "gloudemans/shoppingcart": "dev-master",
 		"anahkiasen/former": "dev-master",
-		"orangehill/iseed": "dev-master",
-        "cartalyst/sentry-social": "2.1.*"
+		"orangehill/iseed": "dev-master",    
+		"nesbot/Carbon": "*",
+		"hybridauth/hybridauth": "*"
 	
 
     },

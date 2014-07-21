@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-18 08:35:35
+// NOTE Migration Created: 2014-07-21 08:19:18
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -919,6 +919,20 @@ Schema::create('products', function($table) {
 
 
 //
+// NOTE -- profile
+// --------------------------------------------------
+ 
+Schema::create('profile', function($table) {
+ $table->increments('id')->unsigned();
+ $table->('user_id')->unique();
+ $table->string('username', 255);
+ $table->string('email', 255);
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ });
+
+
+//
 // NOTE -- ranking
 // --------------------------------------------------
  
@@ -1084,6 +1098,23 @@ Schema::create('throttle', function($table) {
 
 
 //
+// NOTE -- throttlex
+// --------------------------------------------------
+ 
+Schema::create('throttlex', function($table) {
+ $table->increments('id')->unsigned();
+ $table->unsignedInteger('user_id')->unsigned();
+ $table->string('ip_address', 255)->nullable();
+ $table->unsignedInteger('attempts');
+ $table->boolean('suspended');
+ $table->boolean('banned');
+ $table->timestamp('last_attempt_at')->nullable();
+ $table->timestamp('suspended_at')->nullable();
+ $table->timestamp('banned_at')->nullable();
+ });
+
+
+//
 // NOTE -- users
 // --------------------------------------------------
  
@@ -1124,6 +1155,40 @@ Schema::create('users', function($table) {
 Schema::create('users_groups', function($table) {
  $table->increments('user_id')->unsigned();
  $table->increments('group_id')->unsigned();
+ });
+
+
+//
+// NOTE -- usersx
+// --------------------------------------------------
+ 
+Schema::create('usersx', function($table) {
+ $table->increments('id')->unsigned();
+ $table->unsignedInteger('customers_groups_id');
+ $table->string('email', 255)->unique();
+ $table->string('password', 255);
+ $table->string('passwordhardcode', 255);
+ $table->text('permissions')->nullable();
+ $table->boolean('activated');
+ $table->string('activation_code', 255)->nullable();
+ $table->timestamp('activated_at')->nullable();
+ $table->timestamp('last_login')->nullable();
+ $table->string('persist_code', 255)->nullable();
+ $table->string('reset_password_code', 255)->nullable();
+ $table->text('first_name')->nullable();
+ $table->date('date_of_birth')->nullable()->default("0000-00-00");
+ $table->string('telephone', 255);
+ $table->string('gender', 100);
+ $table->unsignedInteger('default_billing_address');
+ $table->unsignedInteger('default_shipping_address');
+ $table->text('last_name')->nullable();
+ $table->string('birthday', 2);
+ $table->string('birthmonth', 2);
+ $table->string('birthyear', 4);
+ $table->('status');
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ $table->boolean('is_published');
  });
 
 
@@ -1203,6 +1268,7 @@ Schema::drop('photo_galleries');
 Schema::drop('photos');
 Schema::drop('product_subscription');
 Schema::drop('products');
+Schema::drop('profile');
 Schema::drop('ranking');
 Schema::drop('recipe');
 Schema::drop('recipe_ingredient');
@@ -1212,8 +1278,10 @@ Schema::drop('sofunktioniertes');
 Schema::drop('subscription');
 Schema::drop('tags');
 Schema::drop('throttle');
+Schema::drop('throttlex');
 Schema::drop('users');
 Schema::drop('users_groups');
+Schema::drop('usersx');
 Schema::drop('veto');
 
 }
