@@ -3,9 +3,27 @@
    <div class="container">
       <ul class="loginbar pull-right">
 
+
+{{var_dump(Session::all())}}
+
+<br><br>
+
+
+
+{{ Session::get('id') }}
+
+
+
+
+
+
+<br><br>
       
          <li><a href="{{URL::to('page/5')}}" target="_top" >Hilfe</a></li>
          <li class="devider"></li>
+
+
+
          <!-- <li><a href="{{URL::to('')}}" target="_top">Mein Konto</a></li>  -->  
          @if (Sentry::check())
          <!--  <li {{ (Request::is('users/show/' . Session::get('userId')) ? 'class="active"' : '') }}><a href="{{ URL::to('users') }}/{{ Session::get('userId') }}">{{ Session::get('email') }}</a></li> -->  

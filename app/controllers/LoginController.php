@@ -1,8 +1,20 @@
 <?php
+use Authority\Repo\Session\SessionInterface;
+use Authority\Service\Form\Login\LoginForm;
+
+
 
 class LoginController extends BaseController {
 
-    public function __construct() {
+
+    protected $session;
+
+
+    public function __construct(SessionInterface $session, Users $users) {
+
+        $this->session = $session;
+        $this->users = $users;
+
         //We will implement Filters later
         $this -> beforeFilter('csrf', array('on' => 'post'));
     }
@@ -39,12 +51,20 @@ class LoginController extends BaseController {
         } catch(Exception $e) {
             // exception codes can be found on HybBridAuth's web site
             Session::flash('error_msg', $e -> getMessage());
-            return Redirect::to('/login');
+
+            return Redirect::to('/meinkontologin');
         }
+      
+       
 
-        $this -> createOAuthProfile($userProfile);
+        // LOGGIN MIT FAcebook
+ $email = strlen($userProfile -> email);
+    
+$test=$email;
 
-        return Redirect::to('/');
+   return View::make('frontend.meinkonto.index')->with('test',$test);
+
+       //return Redirect::to('/meinkonto')->with('test', $test);
     }
 
     public function createOAuthProfile($userProfile) {
@@ -102,26 +122,28 @@ class LoginController extends BaseController {
 
             //At this point we may get many exceptions lets handle all user management and throttle exceptions
         } catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
-            Session::flash('error_msg', 'Login field is required.');
-            return Redirect::to('/login');
+            Session::flash('error_msg', 'Anmeldung ist erforderlich.');
+            return Redirect::to('/meinkontologin');
         } catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
-            Session::flash('error_msg', 'Password field is required.');
-            return Redirect::to('/login');
+            Session::flash('error_msg', 'Passwort ist erforderlich.');
+            return Redirect::to('/meinkontologin');
         } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
-            Session::flash('error_msg', 'Wrong password, try again.');
-            return Redirect::to('/login');
+            Session::flash('error_msg', 'Falsches Passwort, bitte noch einmal versuchen.');
+            return Redirect::to('/meinkontologin');
         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
-            Session::flash('error_msg', 'User was not found.');
-            return Redirect::to('/login');
+            Session::flash('error_msg', 'Benutzer wurde nicht gefunden.');
+            return Redirect::to('/meinkontologin');
         } catch (Cartalyst\Sentry\Users\UserNotActivatedException $e) {
-            Session::flash('error_msg', 'User is not activated.');
-            return Redirect::to('/login');
+            Session::flash('error_msg', 'Benutzer ist nicht aktiviert.');
+            return Redirect::to('/meinkontologin');
         } catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e) {
-            Session::flash('error_msg', 'User is suspended ');
-            return Redirect::to('/login');
+            Session::flash('error_msg', 'Benutzer ist suspendiert. ');
+            return Redirect::to('/meinkontologin');
         } catch (Cartalyst\Sentry\Throttling\UserBannedException $e) {
-            Session::flash('error_msg', 'User is banned.');
-            return Redirect::to('/login');
+            Session::flash('error_msg', 'Benutzer ist banned.');
+
+
+            return Redirect::to('/meinkontologin');
         }
 
     }
@@ -185,15 +207,15 @@ class LoginController extends BaseController {
                 $inputs['identity'] = $user -> email;
 
             } else {
-                Session::flash('error_msg', 'User does not exist');
-                return Redirect::to('/login') -> withInput(Input::except('password'));
+                Session::flash('error_msg', 'Benutzer existiert nicht');
+                return Redirect::to('/meinkontologin') -> withInput(Input::except('password'));
             }
         }
 
         $v = Validator::make($inputs, $rules);
 
         if ($v -> fails()) {
-            return Redirect::to('/login') -> withErrors($v) -> withInput(Input::except('password'));
+            return Redirect::to('/meinkontologin') -> withErrors($v) -> withInput(Input::except('password'));
         } else {
             try {
                 //Try to authenticate user
@@ -211,30 +233,55 @@ class LoginController extends BaseController {
 
                 //At this point we may get many exceptions lets handle all user management and throttle exceptions
             } catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
-                Session::flash('error_msg', 'Login field is required.');
-                return Redirect::to('/login');
+                Session::flash('error_msg', 'Anmeldung ist erforderlich.');
+                return Redirect::to('/meinkontologin');
             } catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
-                Session::flash('error_msg', 'Password field is required.');
-                return Redirect::to('/login');
+                Session::flash('error_msg', 'Passwort ist erforderlich.');
+                return Redirect::to('/meinkontologin');
             } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
-                Session::flash('error_msg', 'Wrong password, try again.');
-                return Redirect::to('/login');
+                Session::flash('error_msg', 'Falsches Passwort, bitte noch einmal versuchen.');
+                return Redirect::to('/meinkontologin');
             } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
-                Session::flash('error_msg', 'User was not found.');
-                return Redirect::to('/login');
+                Session::flash('error_msg', 'Benutzer wurde nicht gefunden.');
+                return Redirect::to('/meinkontologin');
             } catch (Cartalyst\Sentry\Users\UserNotActivatedException $e) {
-                Session::flash('error_msg', 'User is not activated.');
-                return Redirect::to('/login');
+                Session::flash('error_msg', 'Benutzer ist nicht aktiviert.');
+                return Redirect::to('/meinkontologin');
             } catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e) {
-                Session::flash('error_msg', 'User is suspended ');
-                return Redirect::to('/login');
+                Session::flash('error_msg', 'Benutzer ist suspendiert. ');
+                return Redirect::to('/meinkontologin');
             } catch (Cartalyst\Sentry\Throttling\UserBannedException $e) {
-                Session::flash('error_msg', 'User is banned.');
-                return Redirect::to('/login');
+                Session::flash('error_msg', 'Benutzer ist banned.');
+                return Redirect::to('/meinkontologin');
             }
 
-            Session::flash('success_msg', 'Loggedin Successfully');
-            return Redirect::to('/');
+
+ // LOGGIN MIT EMAIL
+            Session::flash('success_msg', 'Erfolgreich eingeloggtx');
+            Session::flash('oida', 'Erfolgreich eingeloggtx');
+            $user_session_Id = Session::get('userId');
+          
+            $email = Input::get('identity');  
+
+            $ausgabe = Users::where('email', '=', $email)->get();
+            foreach( $ausgabe as $x ) 
+               {   
+               
+                 $id=$x->id;
+              
+    }    
+ 
+
+
+   
+   Session::put('email', $email); 
+   Session::put('userId', $id); 
+  
+   return View::make('frontend.meinkonto.index');
+
+
+
+           // return Redirect::to('/meinkonto');
 
         }
 
@@ -248,7 +295,7 @@ class LoginController extends BaseController {
             // Attempt to activate the user
             if ($user -> attemptActivation($activationCode)) {
                 Session::flash('success_msg', 'User Activation Successfull Please login below.');
-                return Redirect::to('/login');
+                return Redirect::to('/meinkontologin');
             } else {
                 Session::flash('error_msg', 'Unable to activate user Try again later or contact Support Team.');
                 return Redirect::to('/register');
@@ -443,7 +490,7 @@ class LoginController extends BaseController {
                         // Attempt to reset the user password
                         if ($user -> attemptResetPassword(Input::get('resetcode'), Input::get('password'))) {
                             Session::flash('success_msg', 'Password changed successfully . Please login below');
-                            return Redirect::to('/login');
+                            return Redirect::to('/meinkontologin');
                         } else {
                             Session::flash('error_msg', 'Unable to reset password . Please try again');
                             return Redirect::to('/forgotpassword');
@@ -467,7 +514,8 @@ class LoginController extends BaseController {
 
     public function getLogout() {
         Sentry::logout();
-        return Redirect::to('/login');
+         $this->session->destroy();
+        return Redirect::to('/');
     }
 
 }
