@@ -10,8 +10,8 @@
 
 
 
-{{ Session::get('id') }}
-
+{{ Session::get('email') }}
+{{ Session::get('userId') }}
 
 
 

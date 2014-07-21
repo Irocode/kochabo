@@ -9,8 +9,7 @@ class LoginController extends BaseController {
 
     protected $session;
 
-
-    public function __construct(SessionInterface $session, Users $users) {
+ public function __construct(SessionInterface $session, Users $users) {
 
         $this->session = $session;
         $this->users = $users;
@@ -22,6 +21,7 @@ class LoginController extends BaseController {
     public function dashboard() {
         return View::make('index');
     }
+
     
 
     public function loginWithSocial( $action = "") {
@@ -54,17 +54,21 @@ class LoginController extends BaseController {
 
             return Redirect::to('/meinkontologin');
         }
-      
-       
+
+        $this -> createOAuthProfile($userProfile);
 
         // LOGGIN MIT FAcebook
- $email = strlen($userProfile -> email);
-    
-$test=$email;
+        $email_facebook=$userProfile->email;        
+        $ausgabe_facebook = Users::where('email', '=', $email_facebook)->get();
+        foreach( $ausgabe_facebook as $v ) 
+               {   
+               
+                 $user_id=$v->id;              
+               } 
+               Session::put('email', $email_facebook); 
+               Session::put('userId', $user_id);  
 
-   return View::make('frontend.meinkonto.index')->with('test',$test);
-
-       //return Redirect::to('/meinkonto')->with('test', $test);
+        return Redirect::to('/meinkonto');
     }
 
     public function createOAuthProfile($userProfile) {
@@ -257,7 +261,7 @@ $test=$email;
 
 
  // LOGGIN MIT EMAIL
-            Session::flash('success_msg', 'Erfolgreich eingeloggtx');
+           Session::flash('success_msg', 'Erfolgreich eingeloggtx');
             Session::flash('oida', 'Erfolgreich eingeloggtx');
             $user_session_Id = Session::get('userId');
           
@@ -278,10 +282,6 @@ $test=$email;
    Session::put('userId', $id); 
   
    return View::make('frontend.meinkonto.index');
-
-
-
-           // return Redirect::to('/meinkonto');
 
         }
 
@@ -515,6 +515,7 @@ $test=$email;
     public function getLogout() {
         Sentry::logout();
          $this->session->destroy();
+         Session::flush();
         return Redirect::to('/');
     }
 
