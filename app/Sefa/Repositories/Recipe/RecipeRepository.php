@@ -5,6 +5,8 @@ use Recipe_ingredient;
 use Response;
 use Image;
 use File;
+use Redirect;
+use Str;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
@@ -59,9 +61,15 @@ class RecipeRepository extends Validator implements BaseRepositoryInterface
         if ($this->isValid($attributes))
         {
             $this->recipe->fill($attributes)->save();
-            return true;
+           // $idneu = $this->recipe->id;
+
+           
+            //var_dump($idneu);
+           return $this->recipe->id;
+            //return true;
         }
         throw new ValidationException('recipe validation failed', $this->getErrors());
+       
     }
     public function update($id, $attributes)
 
