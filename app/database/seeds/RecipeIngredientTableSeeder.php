@@ -14,6 +14,19 @@ class RecipeIngredientTableSeeder extends Seeder {
 		\DB::table('recipe_ingredient')->insert(array (
 			0 => 
 			array (
+				'id' => 0,
+				'ingredient_id' => 0,
+				'recipe_id' => 0,
+				'delivery' => 0,
+				'amount_2_persons' => 0,
+				'amount_4_persons' => 0,
+				'amount_6_persons' => 0,
+				'created_at' => '2014-07-22 07:50:29',
+				'updated_at' => '2014-07-22 07:50:29',
+				'is_published' => 0,
+			),
+			1 => 
+			array (
 				'id' => 2,
 				'ingredient_id' => 3,
 				'recipe_id' => 1,
@@ -25,7 +38,7 @@ class RecipeIngredientTableSeeder extends Seeder {
 				'updated_at' => '0000-00-00 00:00:00',
 				'is_published' => 0,
 			),
-			1 => 
+			2 => 
 			array (
 				'id' => 3,
 				'ingredient_id' => 2,
@@ -38,7 +51,7 @@ class RecipeIngredientTableSeeder extends Seeder {
 				'updated_at' => '0000-00-00 00:00:00',
 				'is_published' => 0,
 			),
-			2 => 
+			3 => 
 			array (
 				'id' => 28,
 				'ingredient_id' => 1,

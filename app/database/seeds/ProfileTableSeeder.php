@@ -14,21 +14,12 @@ class ProfileTableSeeder extends Seeder {
 		\DB::table('profile')->insert(array (
 			0 => 
 			array (
-				'id' => 1,
-				'user_id' => 117,
-				'username' => 'Bernd Obendorfer',
-				'email' => 'bernd.obendorfer@chello.at',
-				'created_at' => '2014-07-21 06:32:05',
-				'updated_at' => '2014-07-21 06:32:05',
-			),
-			1 => 
-			array (
-				'id' => 2,
-				'user_id' => 118,
+				'id' => 4,
+				'user_id' => 120,
 				'username' => 'Arschi Lochi',
 				'email' => '3trashkiller@gmail.com',
-				'created_at' => '2014-07-21 08:02:15',
-				'updated_at' => '2014-07-21 08:02:15',
+				'created_at' => '2014-07-22 05:42:07',
+				'updated_at' => '2014-07-22 05:42:07',
 			),
 		));
 	}
