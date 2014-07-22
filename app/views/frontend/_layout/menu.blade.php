@@ -4,20 +4,9 @@
       <ul class="loginbar pull-right">
 
 
-{{var_dump(Session::all())}}
-
-<br><br>
 
 
 
-{{ Session::get('email') }}
-{{ Session::get('userId') }}
-
-
-
-
-
-<br><br>
       
          <li><a href="{{URL::to('page/5')}}" target="_top" >Hilfe</a></li>
          <li class="devider"></li>

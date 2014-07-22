@@ -58,7 +58,9 @@ class LoginController extends BaseController {
         $this -> createOAuthProfile($userProfile);
 
         // LOGGIN MIT FAcebook
-        $email_facebook=$userProfile->email;        
+        $email_facebook=$userProfile->email;  
+          if  (empty($email_facebook)) {} else {
+
         $ausgabe_facebook = Users::where('email', '=', $email_facebook)->get();
         foreach( $ausgabe_facebook as $v ) 
                {   
@@ -67,7 +69,7 @@ class LoginController extends BaseController {
                } 
                Session::put('email', $email_facebook); 
                Session::put('userId', $user_id);  
-
+}
         return Redirect::to('/meinkonto');
     }
 
