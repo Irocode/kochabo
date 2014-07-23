@@ -315,11 +315,14 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
 
 
     // AJAX Call-> Index recipename (ALLE) RecipeForm Edit Anfang
-    public function getDatatable_recipe_recipe_recipename()
+    public function getDatatable_recipe_ingredientsname()
     {
+
+        $ingredients = Ingredients::where('id', '>', 0)->orderBy('id', 'DESC')->get();
+        
         // $recipe = Recipe::where('id', '>', 0)->orderBy('id', 'DESC')->get();
           //return View::make('backend.recipe.data_rezeptname', compact('recipe'));
-        return View::make('backend.recipe.data_rezeptname');
+        return View::make('backend.recipe.data_ingredientsname', compact('ingredients'));
     }
     // AJAX Call-> Index recipename (ALLE) RecipeForm Edit Ende
  

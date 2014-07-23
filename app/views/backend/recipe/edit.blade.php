@@ -635,7 +635,7 @@
 
 {{ HTML::script('assets/plugins/typeahead/typeahead.bundle.js') }}
  {{ HTML::style('assets/plugins/typeahead/main.css') }}
- {{ HTML::script('assets/plugins/typeahead/prefetch.js') }}
+
 
 <!-- Zutaten Ende  http://twitter.github.io/typeahead.js/-->
 
@@ -643,26 +643,30 @@
 
 
 
-
-
-
-
-
-
 <div id="prefetch">
-  <input class="typeahead" type="text" placeholder="Countries">
+  <input class="typeahead form-control" type="text" placeholder="Zutaten">
 </div>
 
 <script>
 
-var countries = new Bloodhound({
+
+var random;
+// Get a random number between 1-10 and add 3, to get one between 4-13:
+random = Math.ceil(Math.random() * 10) + 3;
+// Generate a random between 0-1. If it's 0, make the number negative:
+random = (Math.floor(Math.random() * 2) == 0) ? 0 - random : random;
+
+
+
+
+var zutatenname = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   limit: 10,
   prefetch: {
     // url points to a json file that contains an array of country names, see
-    // https://github.com/twitter/typeahead.js/blob/gh-pages/data/countries.json
-    url: '../tablesorter_recipe_recipename',
+    // https://github.com/twitter/typeahead.js/blob/gh-pages/data/zutatenname.json
+    url: '../../tablesorter_recipe_ingredientsname?random='+random+'',
     // the json file contains an array of strings, but the Bloodhound
     // suggestion engine expects JavaScript objects so this converts all of
     // those strings
@@ -673,16 +677,16 @@ var countries = new Bloodhound({
 });
  
 // kicks off the loading/processing of `local` and `prefetch`
-countries.initialize();
+zutatenname.initialize();
  
 // passing in `null` for the `options` arguments will result in the default
 // options being used
 $('#prefetch .typeahead').typeahead(null, {
-  name: 'countries',
+  name: 'zutatenname',
   displayKey: 'name',
   // `ttAdapter` wraps the suggestion engine in an adapter that
   // is compatible with the typeahead jQuery plugin
-  source: countries.ttAdapter()
+  source: zutatenname.ttAdapter()
 });
 </script
 </div>
