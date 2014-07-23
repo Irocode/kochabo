@@ -41,6 +41,7 @@ class LoginController extends BaseController {
         }
 
         try {
+            $provider="Facebook";
             // create a HybridAuth object
             $socialAuth = new Hybrid_Auth(app_path() . '/config/hybridauth.php');
             // authenticate with Provider
@@ -52,12 +53,26 @@ class LoginController extends BaseController {
             // exception codes can be found on HybBridAuth's web site
             Session::flash('error_msg', $e -> getMessage());
 
+             
             return Redirect::to('/meinkontologin');
         }
 
         $this -> createOAuthProfile($userProfile);
 
+ 
+        $email=$userProfile->email;
+        $displayName= $userProfile->displayName;
+        if  (empty($displayName)) {Session::flush();} else {
+        Session::put('displayName', $displayName);  
+        }
+
         // LOGGIN MIT FAcebook
+
+        
+
+        
+        Session::put('email_frage', $email_frage); 
+
         $email_facebook=$userProfile->email;  
           if  (empty($email_facebook)) {} else {
 
@@ -70,7 +85,10 @@ class LoginController extends BaseController {
                Session::put('email', $email_facebook); 
                Session::put('userId', $user_id);  
 }
-        return Redirect::to('/meinkonto');
+        //return Redirect::to('/meinkonto');
+$provider->logout(); 
+return View::make('frontend.meinkonto.index')->with('email', $email)->with('displayName', $displayName);
+
     }
 
     public function createOAuthProfile($userProfile) {

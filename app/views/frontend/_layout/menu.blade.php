@@ -5,12 +5,67 @@
 
 
 
+{{var_dump(Session::all()); }}<br><br>
 
 
       
          <li><a href="{{URL::to('page/5')}}" target="_top" >Hilfe</a></li>
          <li class="devider"></li>
 
+
+<pre>
+
+
+<?php
+
+
+
+
+
+if  (empty($displayName)) {} else {
+echo "$displayName";
+ Session::put('email', $email);  
+
+}
+
+if  (empty($email)) {} else {
+echo "$email";
+}
+
+
+
+if  (empty($userProfile)) {} else {
+echo "$userProfile";
+}
+
+
+
+
+(Session::get('userProfile'))
+
+
+
+
+?>
+
+  @if (Sentry::check())
+ja
+ @else
+ nein
+  @endif
+
+</pre>
+<br>
+<!--
+<pre>
+
+@if(Session::has('email'))
+   <span>Du bist eingeloggt {{ Session::get('email') }}
+@else
+   <span>Du bist nicht eingeloggt</span>
+@endif
+</pre>
+-->
 
 
          <!-- <li><a href="{{URL::to('')}}" target="_top">Mein Konto</a></li>  -->  

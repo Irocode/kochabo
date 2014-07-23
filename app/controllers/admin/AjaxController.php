@@ -313,6 +313,19 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
     }
     // AJAX Call-> Index recipe (ALLE)INDEX Ende
 
+
+    // AJAX Call-> Index recipename (ALLE) RecipeForm Edit Anfang
+    public function getDatatable_recipe_recipe_recipename()
+    {
+        // $recipe = Recipe::where('id', '>', 0)->orderBy('id', 'DESC')->get();
+          //return View::make('backend.recipe.data_rezeptname', compact('recipe'));
+        return View::make('backend.recipe.data_rezeptname');
+    }
+    // AJAX Call-> Index recipename (ALLE) RecipeForm Edit Ende
+ 
+
+
+
 }
 
 

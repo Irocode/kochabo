@@ -18,6 +18,10 @@ return View::make('frontend._layout.dashboard');
 }));
 
 
+
+
+
+
 //CartTest
 Route::resource('cart', 'CartController');
 
@@ -801,6 +805,55 @@ Route::post('/login', 'LoginController@storeLogin');
 Route::get('/logout', 'LoginController@getLogout');
 
 Route::get('/social/{provider}/{action?}', array("as" => "loginWith", "uses" => "LoginController@loginWithSocial"));
+/*
+
+Route::get('social/{action?}', array("as" => "hybridauth", function($action = "")
+{
+	// check URL segment
+	if ($action == "auth") {
+		// process authentication
+		try {
+			Hybrid_Endpoint::process();
+		}
+		catch (Exception $e) {
+			// redirect back to http://URL/social/
+			return Redirect::route('hybridauth');
+		}
+		return;
+	}
+	try {
+		// create a HybridAuth object
+		$socialAuth = new Hybrid_Auth(app_path() . '/config/hybridauth.php');
+		// authenticate with facebook
+		$provider = $socialAuth->authenticate("Facebook");
+		// fetch user profile
+		$userProfile = $provider->getUserProfile();
+	}
+	catch(Exception $e) {
+		// exception codes can be found on HybBridAuth's web site
+		return $e->getMessage();
+
+		
+	}
+
+$email=$userProfile->email;
+$displayName= $userProfile->displayName;
+
+
+if  (empty($email)) {Session::flush();} else {
+Session::put('email', $email);
+Session::put('displayName', $displayName);  
+
+Session::put('hybridAuth', $userProfile);
+}
+
+
+
+$provider->logout();
+return View::make('frontend.meinkonto.index')->with('displayName', $displayName)->with('email', $email)->with('hybridAuth', $userProfile);
+
+
+}));
 
 
 
