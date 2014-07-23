@@ -71,7 +71,7 @@ class LoginController extends BaseController {
         
 
         
-        Session::put('email_frage', $email_frage); 
+      //  Session::put('email_frage', $email_frage); 
 
         $email_facebook=$userProfile->email;  
           if  (empty($email_facebook)) {} else {

@@ -72,7 +72,7 @@
 
  <div class="row">
  <div class="col-md-10 col-md-offset-1"> 
- <a href="{{URL::to('http://local.kochabo.at')}}/social/Facebook" class="btn btn-facebook btn-lg btn-block"><span style="margin-left:-40px"><img src="/assets/img/frontend/images/bg/fb.png" width="22" height="21"></span>  &nbsp;&nbsp;&nbsp;mit Facebook anmelden</a>
+ <a href="{{URL::to('http://local.kochabo.at')}}/social/Facebook" class="btn btn-facebook btn-lg btn-block"><span style="margin-left:-40px"><img src="{{ URL::to('')}}/assets/img/frontend/images/bg/fb.png" width="22" height="21"></span>  &nbsp;&nbsp;&nbsp;mit Facebook anmelden</a>
 
 </div>
 </div>

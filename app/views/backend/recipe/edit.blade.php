@@ -588,7 +588,34 @@
                <td>
                 
 
+<!--selectize Zutenname auswählen Anfang-->
 
+{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
+{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
+{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
+{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
+   
+    <div id="wrapper">          
+        <div class="control-group"> 
+            <select id="select-beast" name="ingredient_id"  required class="demo-default" placeholder="Select a person...">
+              <option value="" selected >Wähle eine Zutat</option>
+              @foreach( $ingredients as $x ) 
+              <option value="{{$x->id }}">{{ $x->name }}</option>
+               @endforeach             
+            </select>
+        </div>
+        <script>
+        $('#select-beast').selectize({
+          create: true,
+          sortField: {
+            field: 'text',
+            direction: 'asc'
+          }
+        });
+        </script>
+      </div>
+</div>
+<!--selectize Zutenname auswählen Ende-->
 
 
 
@@ -680,39 +707,6 @@
 
 
 
-
-
-{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
-{{ HTML::style('assets/plugins/selectize/examples/css/stylesheet.css') }}
-{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
-{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
-{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
-   
-    <div id="wrapper">     
-     
-        <div class="control-group">
-          
-     
-            <select id="select-beast" name="ingredient_id"  required class="demo-default" placeholder="Select a person...">
-              <option value="" selected >Wähle eine Zutat</option>
-              @foreach( $ingredients as $x ) 
-              <option value="{{$x->id }}">{{ $x->name }}</option>
-               @endforeach             
-            </select>
-          
-         
-        </div>
-        <script>
-        $('#select-beast').selectize({
-          create: true,
-          sortField: {
-            field: 'text',
-            direction: 'asc'
-          }
-        });
-        </script>
-      </div>
-</div>
 
     
 
