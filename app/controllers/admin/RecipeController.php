@@ -8,15 +8,16 @@ use File;
 use Validator;
 use Response;
 use Str;
+use Ingredients;
 use Notification;
-use Recipe_ingredient;
+use Recipeingredient;
 use Sefa\Repositories\Recipe\RecipeRepository as Recipe;
 use Sefa\Exceptions\Validation\ValidationException;
 class RecipeController extends BaseController
 
 {
     protected $recipe;
-    public function __construct(Recipe $recipe, Recipe_ingredient $recipe_ingredient)
+    public function __construct(Recipe $recipe, Recipeingredient $recipe_ingredient)
 
     {
         View::share('active', 'modules');
@@ -193,11 +194,20 @@ $this->recipe->create($input_all);
     public function edit($id)
 
     {
+
+
+
+
+       
+        $recipe_ingredient = Recipeingredient::where('recipe_id', '=', $id)->orderBy('id', 'DESC')->get();
+
+
+        $ingredients = Ingredients::where('id', '>', 0)->orderBy('id', 'DESC')->get();
         $recipe = $this->recipe->find($id);
         
-        $recipe_ingredient = $this->recipe->find($id)->recipe_ingredient;
+      //  $recipe_ingredient = $this->recipe->find($id)->recipe_ingredient;
         
-        return View::make('backend.recipe.edit', compact('recipe','recipe_ingredient'));
+        return View::make('backend.recipe.edit', compact('recipe','recipe_ingredient','ingredients'));
     }
     /**
      * Update the specified resource in storage.
@@ -293,7 +303,7 @@ $input_all = (array_merge($input, $input1, $input2, $input3));
 // Image New END            
           //  $this->recipe->update($id, Input::all());
             Notification::success('Rezept wurde geändert');
-            return Redirect::route('admin.recipe.index');
+           // return Redirect::route('admin.recipe.index');
         }
         catch(ValidationException $e)
         {

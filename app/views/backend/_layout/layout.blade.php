@@ -33,6 +33,7 @@
 
 
 
+
 <link rel="alternate stylesheet" href="{{URL::to('assets/plugins/bootstrap/css/normal.css')}}" type="text/css" title="Normal" media="screen, projection">
 <link rel="stylesheet" href="{{URL::to('/assets/plugins/bootstrap/css/bootstrap_widescreen.css')}}" type="text/css" title="Standard" media="screen, projection">
  {{ HTML::script('assets/plugins/bootstrap/css/switch.js') }}    

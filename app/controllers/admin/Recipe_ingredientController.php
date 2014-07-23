@@ -9,11 +9,11 @@ use Str;
 use Notification;
 use Sefa\Repositories\Recipeingredient\RecipeingredientRepository as Recipeingredient;
 use Sefa\Exceptions\Validation\ValidationException;
-class Recipe_ingredientController extends BaseController
+class RecipeingredientController extends BaseController
 
 {
     protected $recipe_ingredient;
-    public function __construct(Recipe_ingredient $recipe_ingredient)
+    public function __construct(Recipeingredient $recipe_ingredient)
 
     {
         View::share('active', 'modules');
@@ -52,8 +52,9 @@ class Recipe_ingredientController extends BaseController
         try
         {
             $this->recipe_ingredient->create(Input::all());
-            Notification::success('Rezept wurde hinzugefügt');
-            return Redirect::route('admin.recipe_ingredient.index');
+            Notification::success('Zutat wurde hinzugefügt');
+            //return Redirect::route('admin.recipe.index');
+            return Redirect::back();
         }
         catch(ValidationException $e)
         {
@@ -117,7 +118,7 @@ class Recipe_ingredientController extends BaseController
     {
         $this->recipe_ingredient->destroy($id);
         Notification::success('Rezept wurde gelöscht');
-        return Redirect::action('App\Controllers\Admin\Recipe_ingredientController@index');
+        return Redirect::action('App\Controllers\Admin\RecipeingredientController@index');
     }
     public function confirmDestroy($id)
 

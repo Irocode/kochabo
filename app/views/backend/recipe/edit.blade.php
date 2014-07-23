@@ -541,10 +541,33 @@
 <br>
 <br>
 </div>
+{{ Form::close() }}
+
+  
+
+
+
+<div class="container">
+  @if (isset($recipe_ingredient)) 
+[
+@foreach( $recipe_ingredient as $index => $x )
+ {recipe_id: '{{{ $x->recipe_id }}}',    {id: '{{{ $x->id }}}', einheit:' {{{ $x->einheit }}}' , ingredient_id:' {{{ $x->ingredient_id }}}' <br>
+@if ($index == -1)
+@elseif ($index+1 == count($recipe_ingredient)) 
+  @else
+  },
+@endif
+@endforeach
+}];
+  @endif
+
+  </div>
+
+
 <!-- Zutaten Anfang -->
 <div class="container">
    <!--Anlegen Anfang-->
-   {{ Form::open(array('action' => 'App\Controllers\Admin\DeliverytimesController@store')) }}
+    {{ Form::open(array('action' => 'App\Controllers\Admin\RecipeingredientController@store')) }}
    <hr>
    <div class="table-responsive">
       <table class="table table-striped">
@@ -563,12 +586,14 @@
          <tbody>
             <tr>
                <td>
-                  <div class="control-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                     {{ Form::text('name', null, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Bezeichnung', 'value'=>Input::old('name'))) }}   
-                     @if ($errors->first('name'))
-                     <span class="help-block">{{ $errors->first('name') }}</span>
-                     @endif
-                  </div>
+                
+
+
+
+
+
+
+
                </td>
                <td>
                   <div class="control-group {{ $errors->has('amount_2_persons') ? 'has-error' : '' }}">
@@ -597,7 +622,7 @@
                <td>
                   <div class="control-group {{ $errors->has('price') ? 'has-error' : '' }}">
                      <div class="controls">
-                        <select name="currency" class="form-control">
+                        <select name="einheit" class="form-control">
                            <option value="EUR" selected>Einheit</option>
                            @foreach( $list_einheit as $x )             
                            <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
@@ -625,74 +650,77 @@
          </tbody>
       </table>
    </div>
-   {{ Form::close() }}
+   
    <!--Anlegen ENDE-->   
 
 
 
 
-<div class="container">
-
-{{ HTML::script('assets/plugins/typeahead/typeahead.bundle.js') }}
- {{ HTML::style('assets/plugins/typeahead/main.css') }}
-
-
-<!-- Zutaten Ende  http://twitter.github.io/typeahead.js/-->
 
 
 
 
 
-<div id="prefetch">
-  <input class="typeahead form-control" type="text" placeholder="Zutaten">
-</div>
-
-<script>
-
-
-var random;
-// Get a random number between 1-10 and add 3, to get one between 4-13:
-random = Math.ceil(Math.random() * 10) + 3;
-// Generate a random between 0-1. If it's 0, make the number negative:
-random = (Math.floor(Math.random() * 2) == 0) ? 0 - random : random;
-
-
-
-
-var zutatenname = new Bloodhound({
-  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-  queryTokenizer: Bloodhound.tokenizers.whitespace,
-  limit: 10,
-  prefetch: {
-    // url points to a json file that contains an array of country names, see
-    // https://github.com/twitter/typeahead.js/blob/gh-pages/data/zutatenname.json
-    url: '../../tablesorter_recipe_ingredientsname?random='+random+'',
-    // the json file contains an array of strings, but the Bloodhound
-    // suggestion engine expects JavaScript objects so this converts all of
-    // those strings
-    filter: function(list) {
-      return $.map(list, function(country) { return { name: country }; });
-    }
-  }
-});
- 
-// kicks off the loading/processing of `local` and `prefetch`
-zutatenname.initialize();
- 
-// passing in `null` for the `options` arguments will result in the default
-// options being used
-$('#prefetch .typeahead').typeahead(null, {
-  name: 'zutatenname',
-  displayKey: 'name',
-  // `ttAdapter` wraps the suggestion engine in an adapter that
-  // is compatible with the typeahead jQuery plugin
-  source: zutatenname.ttAdapter()
-});
-</script
 </div>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
+{{ HTML::style('assets/plugins/selectize/examples/css/stylesheet.css') }}
+{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
+{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
+{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
+   
+    <div id="wrapper">     
+     
+        <div class="control-group">
+          
+     
+            <select id="select-beast" name="ingredient_id"  required class="demo-default" placeholder="Select a person...">
+              <option value="" selected >Wähle eine Zutat</option>
+              @foreach( $ingredients as $x ) 
+              <option value="{{$x->id }}">{{ $x->name }}</option>
+               @endforeach             
+            </select>
+          
+         
+        </div>
+        <script>
+        $('#select-beast').selectize({
+          create: true,
+          sortField: {
+            field: 'text',
+            direction: 'asc'
+          }
+        });
+        </script>
+      </div>
+</div>
+
+    
+
+
+<input type="hidden" name="recipe_id" value="{{$recipe->id}}">
+
+
+
+{{ Form::close() }}
 
 @stop

@@ -22,7 +22,7 @@ class RecipeingredientRepository extends Validator implements BaseRepositoryInte
     // 'first_name'    => 'required',
     // 'last_name'  => 'required',
     ];
-    public function __construct(Recipe_ingredient $recipe_ingredient,Recipe $recipe)
+    public function __construct(Recipeingredient $recipe_ingredient,Recipe $recipe)
 
     {
         $config = Config::get('sfcms');

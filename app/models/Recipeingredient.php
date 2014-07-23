@@ -2,18 +2,19 @@
 
 use Sefa\Interfaces\BaseModelInterface as BaseModelInterface;
 
-class Recipe_ingredient extends BaseModel implements BaseModelInterface
+class Recipeingredient extends BaseModel implements BaseModelInterface
 {
-    protected $primaryKey = 'customercustomer_id';
+  //  protected $primaryKey = 'customercustomer_id';
     public $table = 'recipe_ingredient';
     public $fillable = [
-        
+        'id',
         'recipe_id',
         'ingredient_id',
         'delivery',               
         'amount_2_persons',   
         'amount_4_persons',    
         'amount_6_persons' ,
+        'einheit',
         'created_at',
         'updated_at' ];
 

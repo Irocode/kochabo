@@ -1,7 +1,7 @@
 <?php namespace Sefa\Repositories\Recipe;
 use Config;
 use Recipe;
-use Recipe_ingredient;
+use Recipeingredient;
 use Response;
 use Image;
 use File;
@@ -25,7 +25,7 @@ class RecipeRepository extends Validator implements BaseRepositoryInterface
     // 'first_name'    => 'required',
     // 'last_name'  => 'required',
     ];
-    public function __construct(Recipe $recipe, Recipe_ingredient $recipe_ingredient)
+    public function __construct(Recipe $recipe, Recipeingredient $recipe_ingredient)
 
     {
         $config = Config::get('sfcms');
