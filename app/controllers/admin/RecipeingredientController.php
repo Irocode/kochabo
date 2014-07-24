@@ -6,6 +6,7 @@ use Input;
 use Validator;
 use Response;
 use Str;
+use Recipe;
 use Notification;
 use Sefa\Repositories\Recipeingredient\RecipeingredientRepository as Recipeingredient;
 use Sefa\Exceptions\Validation\ValidationException;
@@ -13,11 +14,12 @@ class RecipeingredientController extends BaseController
 
 {
     protected $recipe_ingredient;
-    public function __construct(Recipeingredient $recipe_ingredient)
+    public function __construct(Recipeingredient $recipe_ingredient, Recipe $recipe)
 
     {
         View::share('active', 'modules');
         $this->recipe_ingredient = $recipe_ingredient;
+         $this->recipe = $recipe;
       
     }
     /**
@@ -49,12 +51,29 @@ class RecipeingredientController extends BaseController
     public function store()
 
     {
+
+    if (isset($_GET["recipeid"])) {
+    $recipeid = $_GET["recipeid"];
+    echo"$recipeid";
+}
+
         try
         {
+
+
+
+
             $this->recipe_ingredient->create(Input::all());
             Notification::success('Zutat wurde hinzugefügt');
             //return Redirect::route('admin.recipe.index');
-            return Redirect::back();
+        //    return Redirect::back();
+
+
+  return Redirect::to("/admin/recipe/" . $recipeid . "/edit#zielanker_speichern");
+
+             //return Redirect::back() . '#zielanker';
+
+
         }
         catch(ValidationException $e)
         {
@@ -116,9 +135,22 @@ class RecipeingredientController extends BaseController
     public function destroy($id)
 
     {
+
+       
+if (isset($_GET["recipeid"])) {
+    $recipeid = $_GET["recipeid"];
+    echo"$recipeid";
+}
+
+
+
         $this->recipe_ingredient->destroy($id);
-        Notification::success('Rezept wurde gelöscht');
-        return Redirect::action('App\Controllers\Admin\RecipeController@edit');
+        Notification::success('Zutat wurde gelöscht');
+
+           return Redirect::to("/admin/recipe/" . $recipeid . "/edit#zielanker_loeschen");
+
+
+        //return Redirect::action('App\Controllers\Admin\RecipeController@edit');
     }
     public function confirmDestroy($id)
 

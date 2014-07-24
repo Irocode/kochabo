@@ -8,6 +8,9 @@
    
    });
 </script>
+
+
+
 <style>
    #description, #tip, #athome, #step_1, #step_2, #step_3, #step_4, #step_5, #step_6, #step_7 {
    height: 194px;
@@ -542,24 +545,11 @@
 <br>
 </div>
 {{ Form::close() }}
-
   
 
 
 
 <div class="container">
-  @if (isset($recipe_ingredient)) 
-[
-@foreach( $recipe_ingredient as $index => $x )
- {recipe_id: '{{{ $x->recipe_id }}}',    {id: '{{{ $x->id }}}', einheit:' {{{ $x->einheit }}}' , ingredient_id:' {{{ $x->ingredient_id }}}' <br>
-@if ($index == -1)
-@elseif ($index+1 == count($recipe_ingredient)) 
-  @else
-  },
-@endif
-@endforeach
-}];
-  @endif
 
   </div>
 
@@ -567,7 +557,11 @@
 <!-- Zutaten Anfang -->
 <div class="container">
    <!--Anlegen Anfang-->
-    {{ Form::open(array('action' => 'App\Controllers\Admin\RecipeingredientController@store')) }}
+  
+
+
+    {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\RecipeingredientController@store', 'recipeid' => $recipe->id) ) ) }}
+    
    <hr>
    <div class="table-responsive">
       <table class="table table-striped">
@@ -618,7 +612,7 @@
 <!--selectize Zutenname auswählen Ende-->
 
 
-
+<div id="zielanker_speichern"></div>
 
 
                </td>
@@ -650,7 +644,7 @@
                   <div class="control-group {{ $errors->has('price') ? 'has-error' : '' }}">
                      <div class="controls">
                         <select name="einheit" class="form-control">
-                           <option value="EUR" selected>Einheit</option>
+                           <option value="" selected>Einheit</option>
                            @foreach( $list_einheit as $x )             
                            <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
                            @endforeach  
@@ -713,6 +707,7 @@
          </div>
          <div class="panel-body">
             @if($recipe_ingredient->count())
+            <div id="zielanker_loeschen"></div>
             <div class="table-responsive">
                <table class="table table-striped">
                   <thead>
@@ -740,7 +735,6 @@
                      <form action="" method="PATCH" id="form_lieferzeiten_{{$v->id}}">
                         <tr>
                            <td>
-
 
 
 
@@ -943,5 +937,8 @@
          @else
          <div class="alert alert-danger">Kein Rezept angelegt</div>
          @endif 
+
+
+
 <!--Anlegen und löschen Ende-->
 @stop

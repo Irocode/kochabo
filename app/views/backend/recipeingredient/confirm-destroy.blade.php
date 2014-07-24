@@ -1,7 +1,17 @@
 @extends('backend/_layout/layout')
 @section('content')
+
+
+<?php
+if (isset($_GET["recipeid"])) {
+    $recipeid = $_GET["recipeid"];  
+}
+?>
+
+
 <div class="container">
-       {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\RecipeingredientController@destroy', $recipe_ingredient->id ) ) ) }}
+       {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\RecipeingredientController@destroy', $recipe_ingredient->id, 'recipeid'=> $recipeid) ) ) }}
+    
     {{ Form::hidden( '_method', 'DELETE' ) }}
 
 <div class="tag-box tag-box-v2">
@@ -13,13 +23,7 @@
         </div>
         <div class="clearfix"></div>
 
-<?php
 
-if (isset($_GET["recipeid"])) {
-    $recipeid = $_GET["recipeid"];
-    echo"$recipeid";
-}
-?>
 
 </p>
 

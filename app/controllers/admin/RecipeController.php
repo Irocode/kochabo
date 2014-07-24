@@ -303,7 +303,7 @@ $input_all = (array_merge($input, $input1, $input2, $input3));
 // Image New END            
           //  $this->recipe->update($id, Input::all());
             Notification::success('Rezept wurde geändert');
-           // return Redirect::route('admin.recipe.index');
+            return Redirect::route('admin.recipe.index');
         }
         catch(ValidationException $e)
         {
