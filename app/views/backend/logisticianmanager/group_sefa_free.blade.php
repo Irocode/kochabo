@@ -183,9 +183,10 @@
 
 
 
-       <div id="zielanker_loeschen"></div>
+       
 
    <!--Anlegen Anfang-->
+   <div id="zielanker_loeschen"></div>
    <div class="container">
       <div class="panel panel-default">
          <div class="panel-heading">

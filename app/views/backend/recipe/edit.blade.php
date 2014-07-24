@@ -554,140 +554,6 @@
   </div>
 
 
-<!-- Zutaten Anfang -->
-<div class="container">
-   <!--Anlegen Anfang-->
-  
-     <div id="zielanker_speichern"></div>
-
-    {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\RecipeingredientController@store', 'recipeid' => $recipe->id) ) ) }}
-    
-   <hr>
-   <div class="table-responsive">
-      <table class="table table-striped">
-         <thead>
-            <tr>
-               <th>Name <span class="stern" >*</span></th>
-               <th>Menge für 2 Personen <span class="stern" >*</span></th>
-               <th>Menge für 4 Personen <span class="stern" >*</span></th>
-               <th>Menge für 6 Personen <span class="stern" >*</span></th>
-               <th>Einheit<span class="stern" >*</span></th>
-               <th>Auslieferung <span class="stern" >*</span></th>
-               <th>Aktion <span class="stern" >*</span></th>
-               <th></th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td>
-                
-
-<!--selectize Zutenname auswählen Anfang-->
-
-{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
-{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
-{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
-{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
-   
-    <div id="wrapper">          
-        <div class="control-group"> 
-            <select id="select-beast" name="ingredient_id"  required class="demo-default" placeholder="Wähle eine Zutat">
-              <option value="" selected >Wähle eine Zutat</option>
-              @foreach( $ingredients as $x ) 
-              <option value="{{$x->id }}">{{ $x->name }}</option>
-               @endforeach             
-            </select>
-        </div>
-        <script>
-        $('#select-beast').selectize({
-          create: true,
-          sortField: {
-            field: 'text',
-            direction: 'asc'
-          }
-        });
-        </script>
-      </div>
-</div>
-<!--selectize Zutenname auswählen Ende-->
-
-
-
-
-
-               </td>
-               <td>
-                  <div class="control-group {{ $errors->has('amount_2_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_2_persons', null, array('class'=>'form-control', 'id' => 'amount_2_persons', 'placeholder'=>'Menge für 2 Personen', 'value'=>Input::old('amount_2_persons'))) }}   
-                     @if ($errors->first('amount_2_persons'))
-                     <span class="help-block">{{ $errors->first('amount_2_persons') }}</span>
-                     @endif
-                  </div>
-               </td>
-               <td>
-                  <div class="control-group {{ $errors->has('amount_4_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_4_persons', null, array('class'=>'form-control', 'id' => 'amount_4_persons', 'placeholder'=>'Menge für 4 Personen', 'value'=>Input::old('amount_4_persons'))) }}   
-                     @if ($errors->first('amount_4_persons'))
-                     <span class="help-block">{{ $errors->first('amount_4_persons') }}</span>
-                     @endif
-                  </div>
-               </td>
-               <td>
-                  <div class="control-group {{ $errors->has('amount_6_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_6_persons', null, array('class'=>'form-control', 'id' => 'amount_6_persons', 'placeholder'=>'Menge für 6 Personen', 'value'=>Input::old('amount_6_persons'))) }}   
-                     @if ($errors->first('amount_6_persons'))
-                     <span class="help-block">{{ $errors->first('amount_6_persons') }}</span>
-                     @endif
-                  </div>
-               </td>
-               <td>
-                  <div class="control-group {{ $errors->has('price') ? 'has-error' : '' }}">
-                     <div class="controls">
-                        <select name="einheit" class="form-control">
-                           <option value="" selected>Einheit</option>
-                           @foreach( $list_einheit as $x )             
-                           <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
-                           @endforeach  
-                        </select>
-                        @if ($errors->first('ust'))
-                        <span class="help-block">{{ $errors->first('ust') }}</span>
-                        @endif
-                     </div>
-                  </div>
-               </td>
-               <td>
-                  <div class="control-group {{ $errors->has('delivery') ? 'has-error' : '' }}">  
-                     {{ Form::checkbox('delivery', '1', Input::old('delivery', 0))}}    
-                     @if ($errors->first('delivery'))
-                     <span class="help-block">{{ $errors->first('delivery') }}</span>
-                     @endif
-                  </div>
-               </td>
-               <td>
-                  {{ Form::submit('Neue Zutat anlegen', array('class' => 'btn btn-danger ')) }}
-               </td>
-               </td>
-            </tr>
-         </tbody>
-      </table>
-   </div>
-   
-   <!--Anlegen ENDE-->   
-
-
-</div>
-
-<input type="hidden" name="recipe_id" value="{{$recipe->id}}">
-{{ Form::close() }}
-
-
-
-
-
-
-
-
-
 
 
 
@@ -700,6 +566,7 @@
 
 
 <!--Anlegen und löschen Anfang-->
+ <div id="zielanker_loeschen"></div>
    <div class="container">
       <div class="panel panel-default">
          <div class="panel-heading">
@@ -707,7 +574,7 @@
          </div>
          <div class="panel-body">
             @if($recipe_ingredient->count())
-            <div id="zielanker_loeschen"></div>
+           
             <div class="table-responsive">
                <table class="table table-striped">
                   <thead>
@@ -716,7 +583,7 @@
                         <th>Menge für 2 Personen <span class="stern" >*</span></th>
                         <th>Menge für 2 Personen <span class="stern" >*</span></th>
                         <th>Menge für 6 Personen <span class="stern" >*</span></th>
-                        <th>Einheit<span class="stern" >*</span></th>
+                        <th>Einheit <span class="stern" >*</span></th>
                         <th>Auslieferung <span class="stern" >*</span></th>
                      </tr>
                   </thead>
@@ -941,4 +808,132 @@
 
 
 <!--Anlegen und löschen Ende-->
+<!-- Zutaten Anfang -->
+
+
+
+  
+     <div id="zielanker_speichern"></div>
+
+    {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\RecipeingredientController@store', 'recipeid' => $recipe->id) ) ) }}
+    
+   <hr>
+   <div class="table-responsive">
+      <table class="table table-striped">
+         <thead>
+            <tr>
+               <th>Name <span class="stern" >*</span></th>
+               <th>Menge für 2 Personen <span class="stern" >*</span></th>
+               <th>Menge für 4 Personen <span class="stern" >*</span></th>
+               <th>Menge für 6 Personen <span class="stern" >*</span></th>
+               <th>Einheit <span class="stern" >*</span></th>
+               <th>Auslieferung <span class="stern" >*</span></th>
+               <th></th>
+               <th></th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>
+                
+
+<!--selectize Zutenname auswählen Anfang-->
+
+{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
+{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
+{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
+{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
+   
+    <div id="wrapper">          
+        <div class="control-group"> 
+            <select id="select-beast" name="ingredient_id"  required class="demo-default" placeholder="Wähle eine Zutat">
+              <option value="" selected >Wähle eine Zutat</option>
+              @foreach( $ingredients as $x ) 
+              <option value="{{$x->id }}">{{ $x->name }}</option>
+               @endforeach             
+            </select>
+        </div>
+        <script>
+        $('#select-beast').selectize({
+          create: true,
+          sortField: {
+            field: 'text',
+            direction: 'asc'
+          }
+        });
+        </script>
+      </div>
+</div>
+<!--selectize Zutenname auswählen Ende-->
+
+
+
+
+
+               </td>
+               <td>
+                  <div class="control-group {{ $errors->has('amount_2_persons') ? 'has-error' : '' }}">
+                     {{ Form::text('amount_2_persons', null, array('class'=>'form-control', 'id' => 'amount_2_persons', 'placeholder'=>'Menge für 2 Personen', 'value'=>Input::old('amount_2_persons'))) }}   
+                     @if ($errors->first('amount_2_persons'))
+                     <span class="help-block">{{ $errors->first('amount_2_persons') }}</span>
+                     @endif
+                  </div>
+               </td>
+               <td>
+                  <div class="control-group {{ $errors->has('amount_4_persons') ? 'has-error' : '' }}">
+                     {{ Form::text('amount_4_persons', null, array('class'=>'form-control', 'id' => 'amount_4_persons', 'placeholder'=>'Menge für 4 Personen', 'value'=>Input::old('amount_4_persons'))) }}   
+                     @if ($errors->first('amount_4_persons'))
+                     <span class="help-block">{{ $errors->first('amount_4_persons') }}</span>
+                     @endif
+                  </div>
+               </td>
+               <td>
+                  <div class="control-group {{ $errors->has('amount_6_persons') ? 'has-error' : '' }}">
+                     {{ Form::text('amount_6_persons', null, array('class'=>'form-control', 'id' => 'amount_6_persons', 'placeholder'=>'Menge für 6 Personen', 'value'=>Input::old('amount_6_persons'))) }}   
+                     @if ($errors->first('amount_6_persons'))
+                     <span class="help-block">{{ $errors->first('amount_6_persons') }}</span>
+                     @endif
+                  </div>
+               </td>
+               <td>
+                  <div class="control-group {{ $errors->has('price') ? 'has-error' : '' }}">
+                     <div class="controls">
+                        <select name="einheit" class="form-control">
+                           <option value="" selected>Einheit</option>
+                           @foreach( $list_einheit as $x )             
+                           <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+                           @endforeach  
+                        </select>
+                        @if ($errors->first('ust'))
+                        <span class="help-block">{{ $errors->first('ust') }}</span>
+                        @endif
+                     </div>
+                  </div>
+               </td>
+               <td>
+                  <div class="control-group {{ $errors->has('delivery') ? 'has-error' : '' }}">  
+                     {{ Form::checkbox('delivery', '1', Input::old('delivery', 0))}}    
+                     @if ($errors->first('delivery'))
+                     <span class="help-block">{{ $errors->first('delivery') }}</span>
+                     @endif
+                  </div>
+               </td>
+               <td>
+                  {{ Form::submit('Neue Zutat anlegen', array('class' => 'btn btn-danger ')) }}
+               </td>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   
+   
+
+
+</div>
+
+<input type="hidden" name="recipe_id" value="{{$recipe->id}}">
+{{ Form::close() }}
+
+<!--Anlegen ENDE-->   
 @stop
