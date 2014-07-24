@@ -51,11 +51,18 @@ class DeliverytimesController extends BaseController
     public function store()
 
     {
+    if (isset($_GET["logisticianmanagerid"])) {
+    $logisticianmanagerid = $_GET["logisticianmanagerid"];
+   
+}
+
         try
         {
             $this->deliverytimes->create(Input::all());
             Notification::success('Zeit wurde hinzugefügt');
-            return Redirect::back();
+            return Redirect::to("/admin/logisticianmanager/" . $logisticianmanagerid . "/group#zielanker_speichern");
+
+            //return Redirect::back();
         }
         catch(ValidationException $e)
         {
@@ -115,9 +122,18 @@ class DeliverytimesController extends BaseController
     public function destroy($id)
 
     {
+
+           if (isset($_GET["logisticianmanagerid"])) {
+    $logisticianmanagerid = $_GET["logisticianmanagerid"];
+
+}
         $user_id = Input::get('user_id');
         $this->deliverytimes->destroy($id);
         // Notification::warning('Zeit wurde gelöscht');
+
+          return Redirect::to("/admin/logisticianmanager/" . $logisticianmanagerid . "/group#zielanker_loeschen");
+
+
         return Redirect::route('admin.logisticianmanager.group_sefa_free', array(
             $user_id
         ));
@@ -125,8 +141,13 @@ class DeliverytimesController extends BaseController
     public function confirmDestroy($id)
 
     {
+
+     
+
         $deliverytimes = $this->deliverytimes->find($id);
         return View::make('backend.deliverytimes.confirm-destroy', compact('deliverytimes'));
+          
+
     }
     public function lieferzeiten_update($id)
 

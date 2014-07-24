@@ -1,7 +1,15 @@
 @extends('backend/_layout/layout')
 @section('content')
+
+<?php
+if (isset($_GET["logisticianmanagerid"])) {
+    $logisticianmanagerid = $_GET["logisticianmanagerid"];  
+}
+?>
+
+
 <div class="container">
-    {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\DeliverytimesController@destroy', $deliverytimes->id) ) ) }}
+    {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\DeliverytimesController@destroy', $deliverytimes->id, 'logisticianmanagerid'=> $logisticianmanagerid ) ) ) }}
     {{ Form::hidden( '_method', 'DELETE' ) }}
 
 

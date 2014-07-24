@@ -51,27 +51,15 @@ class RecipeingredientController extends BaseController
     public function store()
 
     {
-
     if (isset($_GET["recipeid"])) {
     $recipeid = $_GET["recipeid"];
-    echo"$recipeid";
+    
 }
-
         try
         {
-
-
-
-
             $this->recipe_ingredient->create(Input::all());
             Notification::success('Zutat wurde hinzugefügt');
-            //return Redirect::route('admin.recipe.index');
-        //    return Redirect::back();
-
-
-  return Redirect::to("/admin/recipe/" . $recipeid . "/edit#zielanker_speichern");
-
-             //return Redirect::back() . '#zielanker';
+            return Redirect::to("/admin/recipe/" . $recipeid . "/edit#zielanker_speichern");           
 
 
         }
@@ -139,7 +127,7 @@ class RecipeingredientController extends BaseController
        
 if (isset($_GET["recipeid"])) {
     $recipeid = $_GET["recipeid"];
-    echo"$recipeid";
+
 }
 
 
@@ -150,7 +138,7 @@ if (isset($_GET["recipeid"])) {
            return Redirect::to("/admin/recipe/" . $recipeid . "/edit#zielanker_loeschen");
 
 
-        //return Redirect::action('App\Controllers\Admin\RecipeController@edit');
+       
     }
     public function confirmDestroy($id)
 

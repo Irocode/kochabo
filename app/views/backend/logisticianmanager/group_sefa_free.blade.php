@@ -183,7 +183,7 @@
 
 
 
-
+       <div id="zielanker_loeschen"></div>
 
    <!--Anlegen Anfang-->
    <div class="container">
@@ -242,7 +242,7 @@
                               @endif
                               <input type="hidden" name="id" id="id" value="{{ $v->id}}">
                            <td>
-                              <a id="button_" class="btn btn-danger publish" title="" href="{{ URL::route('admin.deliverytimes.delete', array($v->id)  ) }}">Löschen</a>
+                              <a id="button_" class="btn btn-danger publish" title="" href="{{ URL::route('admin.deliverytimes.delete', array($v->id, 'logisticianmanagerid' => $logisticianmanager->id)  ) }}">Löschen</a>
                            </td>
                            <td>
                               <button type="submit" class="btn btn-u"  id="update_{{ $v->id}}"> Aktualisieren</button>
@@ -335,7 +335,9 @@
          <div class="alert alert-danger">Keine Zeiten angelegt</div>
          @endif 
          <!--Anlegen Anfang-->
-         {{ Form::open(array('action' => 'App\Controllers\Admin\DeliverytimesController@store')) }}
+         <div id="zielanker_speichern"></div>
+        
+         {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\DeliverytimesController@store', 'logisticianmanagerid' => $logisticianmanager->id) ) ) }}
          <hr>
          <div class="table-responsive">
             <table class="table table-striped">
