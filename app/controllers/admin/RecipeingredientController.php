@@ -29,7 +29,7 @@ class RecipeingredientController extends BaseController
 
     {
         $recipe_ingredient = $this->recipe_ingredient->paginate(null, true);
-        return View::make('backend.recipe_ingredient.index', compact('recipe_ingredient'));
+        return View::make('backend.recipeingredient.index', compact('recipe_ingredient'));
     }
     /**
      * Show the form for creating a new resource.
@@ -39,7 +39,7 @@ class RecipeingredientController extends BaseController
     public function create()
 
     {
-        return View::make('backend.recipe_ingredient.create');
+        return View::make('backend.recipeingredient.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -71,7 +71,7 @@ class RecipeingredientController extends BaseController
 
     {
         $recipe_ingredient = $this->recipe_ingredient->find($id);
-        return View::make('backend.recipe_ingredient.show', compact('recipe_ingredient'));
+        return View::make('backend.recipeingredient.show', compact('recipe_ingredient'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -85,7 +85,7 @@ class RecipeingredientController extends BaseController
         $recipe_ingredient = $this->recipe_ingredient->find($id);
        
         
-        return View::make('backend.recipe_ingredient.edit', compact('recipe_ingredient'));
+        return View::make('backend.recipeingredient.edit', compact('recipe_ingredient'));
     }
     /**
      * Update the specified resource in storage.
@@ -100,7 +100,7 @@ class RecipeingredientController extends BaseController
         {
             $this->recipe_ingredient->update($id, Input::all());
             Notification::success('Rezept wurde geändert');
-            return Redirect::route('admin.recipe_ingredient.index');
+            return Redirect::route('admin.recipeingredient.index');
         }
         catch(ValidationException $e)
         {
@@ -118,13 +118,13 @@ class RecipeingredientController extends BaseController
     {
         $this->recipe_ingredient->destroy($id);
         Notification::success('Rezept wurde gelöscht');
-        return Redirect::action('App\Controllers\Admin\RecipeingredientController@index');
+        return Redirect::action('App\Controllers\Admin\RecipeController@edit');
     }
     public function confirmDestroy($id)
 
     {
         $recipe_ingredient = $this->recipe_ingredient->find($id);
-        return View::make('backend.recipe_ingredient.confirm-destroy', compact('recipe_ingredient'));
+        return View::make('backend.recipeingredient.confirm-destroy', compact('recipe_ingredient'));
     }
     public function togglePublish($id)
 

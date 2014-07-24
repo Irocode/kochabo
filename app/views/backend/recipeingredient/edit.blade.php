@@ -851,7 +851,7 @@
                             
                               <input type="hidden" name="id" id="id" value="{{ $v->id}}">
                            <td>
-                              <a id="button_" class="btn btn-danger publish" title="" href="{{ URL::route('admin.recipeingredient.delete', array($v->id, 'recipeid' => $recipe->id)  ) }}">Löschen</a>
+                              <a id="button_" class="btn btn-danger publish" title="" href="{{ URL::route('admin.recipe_ingredient.delete', array($v->id)  ) }}">Löschen</a>
                            </td>
                            <td>
                               <button type="submit" class="btn btn-u"  id="update_{{ $v->id}}"> Aktualisieren</button>
