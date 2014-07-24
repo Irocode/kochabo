@@ -197,19 +197,30 @@ $this->recipe->create($input_all);
 
 
         
-        $recipe_ingredient = Ingredients::join('recipe_ingredient','recipe_ingredient.ingredient_id','=','ingredients.id')
-->orderBy('id', 'DESC')->get([
-    'ingredients.id',
-    'ingredients.name',   
+   // $recipe_ingredient = Ingredients::join('recipe_ingredient','recipe_ingredient.ingredient_id','=','ingredients.id')
 
 
-'recipe_ingredient.recipe_id',
+ $recipe_ingredient = Recipeingredient::join('ingredients','ingredients.id','=','recipe_ingredient.ingredient_id')
+
+
+
+
+
+
+->get([
+   
+    'ingredients.name',  
+
+'recipe_ingredient.id',
+        
         'recipe_ingredient.ingredient_id',
+        'recipe_ingredient.recipe_id',        
         'recipe_ingredient.delivery',               
         'recipe_ingredient.amount_2_persons',   
         'recipe_ingredient.amount_4_persons',    
         'recipe_ingredient.amount_6_persons' ,
         'recipe_ingredient.einheit',   
+        'recipe_ingredient.delivery',
 
 
     ]);    

@@ -592,11 +592,17 @@
                      <?php   $amount_4_persons_e =  $v->id; $amount_4_persons_ee ="amount_4_persons_$amount_4_persons_e" ?>
                      <?php   $amount_6_persons_e =  $v->id; $amount_6_persons_ee ="amount_4_persons_$amount_6_persons_e" ?>
                      <?php   $einheit_e =  $v->id; $einheit_ee ="einheit_$einheit_e" ?> 
-                     <?php   $ingredient_id_e =  $v->id; $selectbeastx_ee ="einheit_$ingredient_id_e" ?> 
+
+<?php
+$random=(rand(1,500));
+echo"$random";
+?>
+
+                     <?php   $ingredient_id_e =  $v->id; $selectbeastx_ee ="einheit_$random$ingredient_id_e" ?> 
                      <?php   $delivery_e =  $v->id; $delivery_ee ="delivery_$delivery_e" ?> 
-
-
-
+<script>
+random();
+</script>
                      <form action="" method="PATCH" id="form_lieferzeiten_{{$v->id}}">
                         <tr>
                            <td>
