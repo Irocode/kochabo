@@ -530,11 +530,7 @@
    </div>
    <br>
    <div style="height:34px;"> </div>
-   <!-- Plichtfeld Anfang -->
-   <div  style="margin-top:20px; margin-bottom:10px;">
-      <p><span class="stern" >*</span> Plichtfelder müssen ausgefüllt werden. </p>
-   </div>
-   <!-- Plichtfeld Ende -->
+  
    <!--Formular Registrierung Ende-->
    {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
@@ -585,6 +581,8 @@
                         <th>Menge für 6 Personen <span class="stern" >*</span></th>
                         <th>Einheit <span class="stern" >*</span></th>
                         <th>Auslieferung <span class="stern" >*</span></th>
+                         <th></th>
+                          <th></th>
                      </tr>
                   </thead>
                   <tbody>
@@ -617,7 +615,7 @@
     <div id="wrapper">          
         <div class="control-group"> 
             <select id="{{$selectbeastx_ee}}" name="ingredient_id"  required class="demo-default" placeholder="Wähle eine Zutat">
-              <option value="{{$v->ingredient_id}}" selected >{{$v->ingredient_id}}</option>
+              <option value="{{$v->ingredient_id}}" selected >{{$v->name}}</option>
               @foreach( $ingredients as $x ) 
               <option value="{{$x->id }}">{{ $x->name }}</option>
                @endforeach             
@@ -807,6 +805,13 @@
 
 
 
+
+
+
+
+
+
+
 <!--Anlegen und löschen Ende-->
 <!-- Zutaten Anfang -->
 
@@ -934,6 +939,15 @@
 
 <input type="hidden" name="recipe_id" value="{{$recipe->id}}">
 {{ Form::close() }}
+</div>
+ <!-- Plichtfeld Anfang -->
+   <div  style="margin-top:20px; margin-bottom:10px;">
+      <p><span class="stern" >*</span> Plichtfelder müssen ausgefüllt werden. </p>
+   </div>
+   <!-- Plichtfeld Ende -->
 
+
+
+<br>
 <!--Anlegen ENDE-->   
 @stop

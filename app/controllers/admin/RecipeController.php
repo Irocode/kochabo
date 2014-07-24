@@ -196,18 +196,32 @@ $this->recipe->create($input_all);
     {
 
 
+        
+        $recipe_ingredient = Ingredients::join('recipe_ingredient','recipe_ingredient.ingredient_id','=','ingredients.id')
+->orderBy('id', 'DESC')->get([
+    'ingredients.id',
+    'ingredients.name',   
 
+
+'recipe_ingredient.recipe_id',
+        'recipe_ingredient.ingredient_id',
+        'recipe_ingredient.delivery',               
+        'recipe_ingredient.amount_2_persons',   
+        'recipe_ingredient.amount_4_persons',    
+        'recipe_ingredient.amount_6_persons' ,
+        'recipe_ingredient.einheit',   
+
+
+    ]);    
 
        
-        $recipe_ingredient = Recipeingredient::where('recipe_id', '=', $id)->orderBy('id', 'DESC')->get();
-
-
+        //$recipe_ingredient = Recipeingredient::where('recipe_id', '=', $id)->orderBy('id', 'DESC')->get();
         $ingredients = Ingredients::where('id', '>', 0)->orderBy('id', 'DESC')->get();
         $recipe = $this->recipe->find($id);
         
       //  $recipe_ingredient = $this->recipe->find($id)->recipe_ingredient;
         
-        return View::make('backend.recipe.edit', compact('recipe','recipe_ingredient','ingredients'));
+        return View::make('backend.recipe.edit', compact('recipe','recipe_ingredient','ingredients' ));
     }
     /**
      * Update the specified resource in storage.
