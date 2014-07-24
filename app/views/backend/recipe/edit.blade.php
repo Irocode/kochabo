@@ -681,40 +681,204 @@
    <!--Anlegen ENDE-->   
 
 
-
-
-
-
-
-
-
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
-
-
-    
-
-
 <input type="hidden" name="recipe_id" value="{{$recipe->id}}">
-
-
-
 {{ Form::close() }}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Anlegen und löschen Anfang-->
+   <div class="container">
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <h3 class="panel-title">Rezept Zutaten</h3>
+         </div>
+         <div class="panel-body">
+            @if($recipe_ingredient->count())
+            <div class="table-responsive">
+               <table class="table table-striped">
+                  <thead>
+                     <tr>
+                        <th>Bezeichnung <span class="stern" >*</span></th>
+                        <th>Menge für 2 Personen <span class="stern" >*</span></th>
+                        <th>Menge für 2 Personen <span class="stern" >*</span></th>
+                        <th>Menge für 6 Personen <span class="stern" >*</span></th>
+                        <th>Einheit<span class="stern" >*</span></th>
+                        <th>Auslieferung <span class="stern" >*</span></th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     @foreach( $recipe_ingredient as $v )
+                     <?php  $name_e =  $v->id; $name_ee ="name_$name_e" ?>
+                     <?php   $amount_2_persons_e =  $v->id; $amount_2_persons_ee ="amount_2_persons_$amount_2_persons_e" ?>
+                     <?php   $amount_4_persons_e =  $v->id; $amount_4_persons_ee ="amount_4_persons_$amount_4_persons_e" ?>
+                     <?php   $amount_6_persons_e =  $v->id; $amount_6_persons_ee ="amount_4_persons_$amount_6_persons_e" ?>
+                     <?php   $einheit_e =  $v->id; $einheit_ee ="einheit_$einheit_e" ?> 
+
+                     <?php   $nightjump_e =  $v->id;  $nightjump_ee ="nightjump_$nightjump_e" ?>
+                     <form action="" method="PATCH" id="form_lieferzeiten_{{$v->id}}">
+                        <tr>
+                           <td>
+                              <div class="control-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                                 {{ Form::text('name', $v->name, array('class'=>'form-control', 'id' => $name_ee, 'placeholder' => 'Bezeichnung', 'maxlength' => 100,'required' => true,'value'=>Input::old('name'))) }}
+                                 @if ($errors->first('name'))
+                                 <span class="help-block">{{ $errors->first('name') }}</span>
+                                 @endif
+                              </div>
+                           </td>
+                           <td>
+                              <div class="control-group {{ $errors->has('amount_2_persons') ? 'has-error' : '' }}">
+                                 {{ Form::text('amount_2_persons', $v->amount_2_persons, array('class'=>'form-control', 'id' => $amount_2_persons_ee, 'placeholder'=>'Menge für 2 Personen', 'value'=>Input::old('amount_2_persons'))) }}
+                                 @if ($errors->first('amount_2_persons'))
+                                 <span class="help-block">{{ $errors->first('amount_2_persons') }}</span>
+                                 @endif
+                              </div>
+                           </td>
+                           <td>
+                              <div class="control-group {{ $errors->has('amount_4_persons') ? 'has-error' : '' }}">
+                                 {{ Form::text('amount_4_persons', $v->amount_4_persons, array('class'=>'form-control', 'id' => $amount_4_persons_ee, 'placeholder'=>'Menge für 4 Personen', 'value'=>Input::old('amount_4_persons'))) }}
+                                 @if ($errors->first('amount_4_persons'))
+                                 <span class="help-block">{{ $errors->first('amount_4_persons') }}</span>
+                                 @endif
+                              </div>
+                           </td>
+
+                               <td>
+                              <div class="control-group {{ $errors->has('amount_6_persons') ? 'has-error' : '' }}">
+                                 {{ Form::text('amount_6_persons', $v->amount_6_persons, array('class'=>'form-control', 'id' => $amount_6_persons_ee, 'placeholder'=>'Menge für 6 Personen', 'value'=>Input::old('amount_6_persons'))) }}
+                                 @if ($errors->first('amount_6_persons'))
+                                 <span class="help-block">{{ $errors->first('amount_6_persons') }}</span>
+                                 @endif
+                              </div>
+                           </td>
+
+                            <td>
+                              <div class="control-group {{ $errors->has('einheit') ? 'has-error' : '' }}">
+                                 {{ Form::text('einheit', $v->einheit, array('class'=>'form-control', 'id' => $einheit_ee, 'placeholder'=>'Einheit', 'value'=>Input::old('einheit'))) }}
+                                 @if ($errors->first('einheit'))
+                                 <span class="help-block">{{ $errors->first('einheit') }}</span>
+                                 @endif
+                              </div>
+                           </td>
+
+
+
+                           <td>
+                              {{ Form::text('nightjump', $v->nightjump, array('class'=>'form-control', 'id' => $nightjump_ee, 'placeholder'=>'Nachtsprung', 'value'=>Input::old('nightjump'))) }}     
+                              @if ($errors->first('nightjump'))
+                              <span class="help-block">{{ $errors->first('nightjump') }}</span>
+                              @endif
+                              <input type="hidden" name="id" id="id" value="{{ $v->id}}">
+                           <td>
+                              <a id="button_" class="btn btn-danger publish" title="" href="{{ URL::route('admin.recipe_ingredient.delete', array($v->id)  ) }}">Löschen</a>
+                           </td>
+                           <td>
+                              <button type="submit" class="btn btn-u"  id="update_{{ $v->id}}"> Aktualisieren</button>
+                           </td>
+                           <td>
+                              <div id="flash_{{$v->id}}">&nbsp;</div>
+                           </td>
+                     </form>
+            </div>
+            </td>
+            <td>
+            </td>
+            </td>
+            </tr>
+            <!-- AJAX FORM POST SCRIPT ANFANG-->
+            <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+            <script>
+               $(document).ready(function(){
+               
+               $('#form_lieferzeiten_{{$v->id}}').submit(function(e){
+               
+               
+               
+               
+               
+                           $("#flash_{{$v->id}}").show();
+                           $("#flash_{{$v->id}}").fadeIn(1000).html('<img src="{{ URL::to('assets/img/backend/icons/ajax-loader.gif') }}" />'); 
+                           $("#flash_{{$v->id}}").fadeOut(1000);
+               
+               
+               //Hinweis Anfang
+                   $(function(){
+                    new PNotify({     
+                   title: 'Hinweis',
+                   text: 'Logistik Zeit wurde aktualisiert.',
+                    type: 'success',
+                   mouse_reset: false
+               });
+                   });
+               
+               //Hinweis ENDE   
+               
+               e.preventDefault();
+               
+               //formData 
+               var formData = new FormData();
+               
+               formData.append('name', $('#name_{{$v->id}}').val());
+               formData.append('delivery_time_from', $('#delivery_time_from_{{$v->id}}').val());
+               formData.append('delivery_time_to', $('#delivery_time_to_{{$v->id}}').val());
+               formData.append('nightjump', $('#nightjump_{{$v->id}}').val());
+               
+               
+               $.ajax ({
+               url:'../submitx/{{$v->id}}/toggle-publish',
+               method:'post',
+               processData:false,
+               contentType:false,
+               cache:false,
+               dataType: 'json',
+               data:formData,
+               success:function(data) { 
+               
+               if(data.success) {               
+                 
+               
+               $.each(data.errors, function(index, error){    
+               });
+               
+               }else {    
+               
+               }
+               
+               },
+               error:function(){}
+               
+               });
+               
+               });
+               
+               }); 
+               
+            </script>
+            <!-- AJAX FORM POST SCRIPT ENDE-->
+            @endforeach
+            </tbody>
+            </table>
+         </div>
+         @else
+         <div class="alert alert-danger">Kein Rezept angelegt</div>
+         @endif 
+<!--Anlegen und löschen Ende-->
 @stop
