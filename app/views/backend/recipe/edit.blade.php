@@ -590,20 +590,19 @@
                      <?php  $ingredient_id_e =  $v->id; $ingredient_id_ee ="ingredient_id_$ingredient_id_e" ?>
                      <?php   $amount_2_persons_e =  $v->id; $amount_2_persons_ee ="amount_2_persons_$amount_2_persons_e" ?>
                      <?php   $amount_4_persons_e =  $v->id; $amount_4_persons_ee ="amount_4_persons_$amount_4_persons_e" ?>
-                     <?php   $amount_6_persons_e =  $v->id; $amount_6_persons_ee ="amount_4_persons_$amount_6_persons_e" ?>
+                     <?php   $amount_6_persons_e =  $v->id; $amount_6_persons_ee ="amount_6_persons_$amount_6_persons_e" ?>
                      <?php   $einheit_e =  $v->id; $einheit_ee ="einheit_$einheit_e" ?> 
-
-<?php
-$random=(rand(1,500));
-echo"$random";
-?>
-
-                     <?php   $ingredient_id_e =  $v->id; $selectbeastx_ee ="einheit_$random$ingredient_id_e" ?> 
+                     <?php   $ingredient_id_aktu_e =  $v->id; $ingredient_id_aktu_ee ="ingredient_id_aktu_$ingredient_id_aktu_e" ?>              
+                     <?php   $random=(rand(1,500)); ?> 
                      <?php   $delivery_e =  $v->id; $delivery_ee ="delivery_$delivery_e" ?> 
-<script>
-random();
-</script>
-                     <form action="" method="PATCH" id="form_lieferzeiten_{{$v->id}}">
+
+
+
+                     <?php   $selectbeastx_e =  $v->id; $selectbeastx_ee ="selectbeastx_$selectbeastx_e" ?> 
+
+                   
+
+                     <form action="" method="PATCH" id="form_zutaten_{{$v->id}}">
                         <tr>
                            <td>
 
@@ -640,6 +639,11 @@ random();
 </div>
 <!--selectize Zutenname auswählen Ende-->
 
+
+
+
+
+                                
 
                            </td>
                            <td>
@@ -736,7 +740,7 @@ random();
             <script>
                $(document).ready(function(){
                
-               $('#form_lieferzeiten_{{$v->id}}').submit(function(e){
+               $('#form_zutaten_{{$v->id}}').submit(function(e){
                
                
                
@@ -764,10 +768,16 @@ random();
                //formData 
                var formData = new FormData();
                
-               formData.append('name', $('#name_{{$v->id}}').val());
-               formData.append('delivery_time_from', $('#delivery_time_from_{{$v->id}}').val());
-               formData.append('delivery_time_to', $('#delivery_time_to_{{$v->id}}').val());
-               formData.append('nightjump', $('#nightjump_{{$v->id}}').val());
+
+             
+
+
+                 formData.append('ingredient_id', $('#selectbeastx_{{$v->id}}').val());
+              
+               formData.append('amount_2_persons', $('#amount_2_persons_{{$v->id}}').val());
+               formData.append('amount_4_persons', $('#amount_4_persons_{{$v->id}}').val());
+               formData.append('amount_6_persons', $('#amount_6_persons_{{$v->id}}').val());
+               formData.append('einheit', $('#einheit_{{$v->id}}').val());
                
                
                $.ajax ({

@@ -222,6 +222,7 @@ Route::get('recipe_ingredient/{id}/delete', array('as' => 'admin.recipeingredien
 //recipe
 Route::resource('recipe', 'RecipeController');
 ////order AJAX INDEX Tablesorter ingredients
+Route::post('recipe/submitx/{id}/toggle-publish', array('as' => 'admin.recipe.submitx', 'uses' => 'RecipeingredientController@zutaten_update'));
 Route::get('tablesorter_recipe_index/{id}', array('as'=>'admin.recipe.data', 'uses'=>'AjaxController@getDatatable_recipe'));
 Route::get('tablesorter_recipe_index', array('as'=>'admin.recipe.data', 'uses'=>'AjaxController@getDatatable_recipe_all'));
 

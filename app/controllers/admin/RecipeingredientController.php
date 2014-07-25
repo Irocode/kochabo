@@ -151,6 +151,16 @@ if (isset($_GET["recipeid"])) {
     {
         return $this->recipe_ingredient->togglePublish($id);
     }
+
+
+
+       public function zutaten_update($id)
+
+    {
+        $this->recipe_ingredient->update($id, Input::all());
+        return $this->recipe_ingredient->zutaten_update($id);
+    }
+    
 }
 
 
