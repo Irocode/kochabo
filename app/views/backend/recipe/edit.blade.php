@@ -536,12 +536,36 @@
       </div>
    </div>
    <br>
+
+<style>
+ .stuck {
+    position: fixed;
+    top: 100px;
+    right: 10px;
+    height: 100px;
+    width: 150px;
+    overflow: auto;   
+    z-index:2
+}
+
+
+</style>
+
+
    <div style="height:34px;"> </div>
   
    <!--Formular Registrierung Ende-->
    {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
-   {{ Form::submit('Rezept Bereich speichern', array('class' => 'btn btn-u')) }}
+    {{ Form::submit('Rezept speichern', array('class' => 'btn btn-u')) }}
+<div class="stuck" align="right"><br><br><br>
+   {{ Form::submit('Rezept speichern', array('class' => 'btn btn-u')) }}
+</div>
+
+
+
+
+
 </div>
 <!-- Plichtfeld Ende -->
 <br>
