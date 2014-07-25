@@ -6,6 +6,11 @@
 if (isset($_GET["recipeid"])) {
     $recipeid = $_GET["recipeid"];  
 }
+if (isset($_GET["name"])) {
+    $name = $_GET["name"];  
+    
+}
+
 ?>
 
 
@@ -16,7 +21,7 @@ if (isset($_GET["recipeid"])) {
 
 <div class="tag-box tag-box-v2">
 
-<p><div class="pull-left"><h2>Sei vorsichtig!</h2>Bist du sicher beim Löschen von der Zutat <b>{{{ $recipe_ingredient->id }}}  </b> ?</div>
+<p><div class="pull-left"><h2>Sei vorsichtig!</h2>Bist du sicher beim Löschen von der Zutat <b>{{{ $name }}}  </b> ?</div>
 <div class="pull-right">
             {{ Form::submit( 'Ja bitte löschen', array( 'class' => 'btn-u btn-u-red' ) ) }}<br><hr>
             {{ link_to( URL::previous(), 'Nein bitte zurück', array( 'class' => 'btn-u' ) ) }}
