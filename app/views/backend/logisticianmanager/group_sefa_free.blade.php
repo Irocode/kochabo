@@ -175,14 +175,6 @@
 
 
 
-
-
-
-
-
-
-
-
        
 
    <!--Anlegen Anfang-->
@@ -414,7 +406,7 @@
 </div>
 <!-- Plichtfeld Ende -->
 </div>
-<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-2.1.1.js"></script>-->
 <!--Datepicker ANFANG-->   
 <script type="text/javascript" src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
 <script type="text/javascript" src="{{ URL::to('assets/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>

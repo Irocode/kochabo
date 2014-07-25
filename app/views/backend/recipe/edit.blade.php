@@ -16,6 +16,13 @@
    height: 194px;
    }
 </style>
+
+{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
+{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
+{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
+{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
+
+
 <div class="container">
    <!--HEADER mit Zurück ANFANG-->
    <div class="headline">
@@ -593,11 +600,9 @@
                      <?php   $amount_6_persons_e =  $v->id; $amount_6_persons_ee ="amount_6_persons_$amount_6_persons_e" ?>
                      <?php   $einheit_e =  $v->id; $einheit_ee ="einheit_$einheit_e" ?> 
                      <?php   $ingredient_id_aktu_e =  $v->id; $ingredient_id_aktu_ee ="ingredient_id_aktu_$ingredient_id_aktu_e" ?>              
-                     <?php   $random=(rand(1,500)); ?> 
+                  
+
                      <?php   $delivery_e =  $v->id; $delivery_ee ="delivery_$delivery_e" ?> 
-
-
-
                      <?php   $selectbeastx_e =  $v->id; $selectbeastx_ee ="selectbeastx_$selectbeastx_e" ?> 
 
                    
@@ -612,10 +617,7 @@
 
 <!--selectize Zutenname auswählen Anfang-->
 
-{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
-{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
-{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
-{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
+
    
     <div id="wrapper">          
         <div class="control-group"> 
@@ -697,11 +699,10 @@
                            <td>
 
                      <div class="controls"> 
-                     {{ Form::hidden('delivery', 0); }}  
+                     {{ Form::hidden('delivery', 0); }}
+                       {{ Form::checkbox('delivery', '1', Input::old('delivery', $v->delivery) , ['id' => $delivery_ee])}}               
+                      
 
-                     {{ Form::checkbox('delivery', '1',  array('id' => $delivery_ee, 'value'=>Input::old('delivery', $recipe->delivery))) }}
-                     {{ Form::checkbox('delivery', 1, null, array('id' => $delivery_ee, Input::old('delivery', $recipe->delivery))) }}
-                         {{ Form::checkbox('pandas_are_cute', '1', true) }}
 
                      @if ($errors->first('delivery '))
                      <span class="help-block">{{ $errors->first('delivery  ') }}</span>
@@ -736,7 +737,7 @@
             </td>
             </tr>
             <!-- AJAX FORM POST SCRIPT ANFANG-->
-            <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+     
             <script>
                $(document).ready(function(){
                
@@ -766,18 +767,13 @@
                e.preventDefault();
                
                //formData 
-               var formData = new FormData();
-               
-
-             
-
-
-                 formData.append('ingredient_id', $('#selectbeastx_{{$v->id}}').val());
-              
+               var formData = new FormData();   
+               formData.append('ingredient_id', $('#selectbeastx_{{$v->id}}').val());              
                formData.append('amount_2_persons', $('#amount_2_persons_{{$v->id}}').val());
                formData.append('amount_4_persons', $('#amount_4_persons_{{$v->id}}').val());
                formData.append('amount_6_persons', $('#amount_6_persons_{{$v->id}}').val());
                formData.append('einheit', $('#einheit_{{$v->id}}').val());
+                formData.append('delivery', $('#delivery_{{$v->id}}').val());
                
                
                $.ajax ({
@@ -860,10 +856,6 @@
 
 <!--selectize Zutenname auswählen Anfang-->
 
-{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
-{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
-{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
-{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
    
     <div id="wrapper">          
         <div class="control-group"> 
