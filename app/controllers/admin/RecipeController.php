@@ -200,18 +200,13 @@ $this->recipe->create($input_all);
    // $recipe_ingredient = Ingredients::join('recipe_ingredient','recipe_ingredient.ingredient_id','=','ingredients.id')
 
 
- $recipe_ingredient = Recipeingredient::join('ingredients','ingredients.id','=','recipe_ingredient.ingredient_id')
-
-
-
-
+ $recipe_ingredient = Recipeingredient::join('ingredients','ingredients.id','=','recipe_ingredient.ingredient_id')->where('recipe_id', '=', $id)
 
 
 ->get([
    
-    'ingredients.name',  
-
-'recipe_ingredient.id',
+        'ingredients.name',
+        'recipe_ingredient.id',
         
         'recipe_ingredient.ingredient_id',
         'recipe_ingredient.recipe_id',        
@@ -226,7 +221,7 @@ $this->recipe->create($input_all);
     ]);    
 
        
-        //$recipe_ingredient = Recipeingredient::where('recipe_id', '=', $id)->orderBy('id', 'DESC')->get();
+       // $recipe_ingredientx = Recipeingredient::where('recipe_id', '=', $id)->orderBy('id', 'DESC')->get();
         $ingredients = Ingredients::where('id', '>', 0)->orderBy('id', 'DESC')->get();
         $recipe = $this->recipe->find($id);
         

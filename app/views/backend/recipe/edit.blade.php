@@ -541,7 +541,7 @@
    <!--Formular Registrierung Ende-->
    {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
-   {{ Form::submit('Ändern', array('class' => 'btn btn-u')) }}
+   {{ Form::submit('Rezept Bereich speichern', array('class' => 'btn btn-u')) }}
 </div>
 <!-- Plichtfeld Ende -->
 <br>
@@ -812,7 +812,7 @@
             </table>
          </div>
          @else
-         <div class="alert alert-danger">Kein Rezept angelegt</div>
+         <div class="alert alert-danger">Keine Zutat angelegt</div>
          @endif 
 
 
