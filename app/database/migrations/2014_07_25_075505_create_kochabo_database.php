@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-22 09:28:01
+// NOTE Migration Created: 2014-07-25 07:55:05
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -1001,6 +1001,7 @@ Schema::create('recipe_ingredient', function($table) {
  $table->unsignedInteger('amount_2_persons');
  $table->unsignedInteger('amount_4_persons');
  $table->unsignedInteger('amount_6_persons');
+ $table->string('einheit', 255);
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  $table->unsignedInteger('is_published');
