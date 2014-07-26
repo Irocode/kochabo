@@ -19,6 +19,13 @@ class RecipeingredientRepository extends Validator implements BaseRepositoryInte
      * @var array
      */
     protected static $rules = [
+
+    'ingredient_id'    => 'required',
+    'amount_2_persons'    => 'numeric',
+    'amount_4_persons'    => 'numeric',
+    'amount_6_persons'    => 'numeric',
+
+
     // 'first_name'    => 'required',
     // 'last_name'  => 'required',
     ];

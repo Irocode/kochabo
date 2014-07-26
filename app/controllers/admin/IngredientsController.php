@@ -87,7 +87,30 @@ $input_all = (array_merge($input, $input1));
 
            // $this->ingredients->create(Input::all());
             Notification::success('Zutat wurde hinzugefügt');
-            return Redirect::route('admin.ingredients.index');
+
+
+          
+ $modal = Input::get('modal');
+ $name = Input::get('name');
+ $recipeid = Input::get('recipeid');
+
+
+            if ($modal == 'yes')
+            {      
+ 
+              
+              //var_dump($lastInsertedId);
+                
+                   return Redirect::to("/admin/recipe/" . $recipeid . "/edit?name=$name&idzutat=lastInsertedId#zielanker_speichern");  
+            }
+            else
+            {
+                return Redirect::route('admin.ingredients.index');
+            }
+
+
+
+            
         }
         catch(ValidationException $e)
         {

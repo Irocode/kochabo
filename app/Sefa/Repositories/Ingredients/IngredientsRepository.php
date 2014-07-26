@@ -55,6 +55,8 @@ class IngredientsRepository extends Validator implements BaseRepositoryInterface
         if ($this->isValid($attributes))
         {
             $this->ingredients->fill($attributes)->save();
+            //$lastInsertedId= $this->ingredients->id;
+           
             return true;
         }
         throw new ValidationException('ingredients validation failed', $this->getErrors());

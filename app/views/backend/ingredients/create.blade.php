@@ -1,6 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
+
      
 
 {{ HTML::script('assets/js/jquery.slug.js') }}

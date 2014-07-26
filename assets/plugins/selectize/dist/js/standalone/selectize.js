@@ -1331,7 +1331,15 @@
 					return '<div class="item">' + escape(data[field_label]) + '</div>';
 				},
 				'option_create': function(data, escape) {
-					return '<div class="create">Add <strong>' + escape(data.input) + '</strong>&hellip;</div>';
+			//	alert('nawiegehts');
+				//	return '<div class="create">Add <strong>' + escape(data.input) + '</strong>&hellip;</div>';
+				return'<button class="btn btn-u" style="background: none repeat scroll 0 0 #85b81d;border: 0 none;color: #fff !important;cursor: pointer;display: inline-block;font-size: 14px;padding: 6px 13px;position: relative;text-decoration: none !important;" data-target="#myModal" data-toggle="modal">Zutat anlegen</button>';
+				
+				
+				
+	
+	
+				
 				}
 			};
 	
