@@ -17,6 +17,12 @@ if (isset($_GET["name"])) {
 if (isset($_GET["name"])) {
     $name = $_GET["name"];     
 }
+
+
+if (isset($_GET["idzt"])) {
+    $idzt = $_GET["idzt"];     
+}
+
 ?>
 
 
@@ -900,9 +906,12 @@ if (isset($_GET["name"])) {
             <select id="select-beast" name="ingredient_id"  style="width:200px; " required class="demo-default" placeholder="Wähle eine Zutat">
 
               <?php 
-              if (isset($name))
+
+
+         if (isset($idzt))      
+              
               { ?>
-               <option value="" selected >{{$name}}</option>
+               <option value="<?php if (isset($name)) {echo"$idzt";}  ?> " selected >{{$name}}</option>
               <?php
               } 
                else { ?>
@@ -1133,47 +1142,58 @@ background: rgba(0, 0, 0, 0.3);
          <div style="height:30px;"> </div>
 
          <!-- Image -->
-<label class="control-label" for="image">Bild einfügen (Derzeit 200 x 200px)</label>
-<div id="zone">
-<span>
-    <input  type="file" 
-            style="visibility:hidden; width: 1px;" 
-            id='files' name='imagex'  
-            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-            <input class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-     
-   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
-</span>
-<script>
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-          document.getElementById('list').insertBefore(span, null);
-        };
-      })(f);
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  }
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
-</script>
-</div>    
+ <label class="control-label" for="imagex">Bild einfügen (Derzeit 200 x 200px)</label>
+         <div id="zone">
+            <span>
+               <input  type="file" 
+                  style="visibility:hidden; width: 1px;" 
+                  id='files4' name='imagex'  
+                  onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
+               <input id="btnclick4" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
+               <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list4"></output></div>
+            </span>
+         
+            <script>
+               function handleFileSelect(evt4) {
+                 var files4 = evt4.target.files; // FileList object
+               
+                 // Loop through the FileList and render image files as thumbnails.
+                 for (var i = 0, f; f = files4[i]; i++) {
+               
+                   // Only process image files.
+                   if (!f.type.match('image.*')) {
+                     continue;
+                   }
+                   var reader = new FileReader();
+               
+                   // Closure to capture the file information.
+                   reader.onload = (function(theFile) {
+                     return function(e) {
+                       // Render thumbnail.
+                       var span = document.createElement('span');
+                       span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                                         '" title="', escape(theFile.name), '"/>'].join('');
+                       document.getElementById('list4').insertBefore(span, null);
+                     };
+                   })(f);
+                   // Read in the image file as a data URL.
+                   reader.readAsDataURL(f);
+                 }
+               }
+               document.getElementById('files4').addEventListener('change', handleFileSelect, false);
+               $( "#btnclick4" ).click(function() {
+               $( "#stored4" ).animate({
+                 opacity: 0.25,
+                 left: "+=10"
+                 
+               }, 700, function() {
+                 $("#stored4").css("visibility","hidden");
+               });
+               });
+            </script>
+           
+          
+         </div>   
          <br>
          <!-- Published -->       
        

@@ -7,6 +7,7 @@ use Validator;
 use Response;
 use Str;
 use Image;
+use Session;
 use File;
 use Notification;
 use Sefa\Repositories\Ingredients\IngredientsRepository as Ingredients;
@@ -93,15 +94,17 @@ $input_all = (array_merge($input, $input1));
  $modal = Input::get('modal');
  $name = Input::get('name');
  $recipeid = Input::get('recipeid');
-
+ //$lastInsertedId = Input::get('lastInsertedId');
+ $lastInsertedId = Session::get('lastInsertedId');
+//var_dump($lastInsertedId);
 
             if ($modal == 'yes')
             {      
  
               
-              //var_dump($lastInsertedId);
+           //   var_dump($lastInsertedId);
                 
-                   return Redirect::to("/admin/recipe/" . $recipeid . "/edit?name=$name&idzutat=lastInsertedId#zielanker_speichern");  
+                   return Redirect::to("/admin/recipe/" . $recipeid . "/edit?name=$name&idzt=$lastInsertedId#zielanker_speichern");  
             }
             else
             {
@@ -114,6 +117,12 @@ $input_all = (array_merge($input, $input1));
         }
         catch(ValidationException $e)
         {
+
+
+           #zielanker_speichern
+
+
+            
             return Redirect::back()->withInput()->withErrors($e->getErrors());
         }
     }

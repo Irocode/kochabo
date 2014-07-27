@@ -24,6 +24,11 @@ class RecipeingredientRepository extends Validator implements BaseRepositoryInte
     'amount_2_persons'    => 'numeric',
     'amount_4_persons'    => 'numeric',
     'amount_6_persons'    => 'numeric',
+    'amount_2_persons'  => 'required',
+    'amount_4_persons'  => 'required',
+    'amount_6_persons'  => 'required',
+     
+
 
 
     // 'first_name'    => 'required',

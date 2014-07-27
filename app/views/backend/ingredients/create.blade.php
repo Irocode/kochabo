@@ -146,6 +146,7 @@
    {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::submit('Anlegen', array('class' => 'btn btn-u')) }}
+   {{ Form::close() }}
 </div>
 <!-- Plichtfeld Ende -->
 <br>

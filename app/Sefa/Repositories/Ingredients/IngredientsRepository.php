@@ -2,6 +2,8 @@
 use Config;
 use Ingredients;
 use Response;
+use Str;
+use Session;
 use Sefa\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Sefa\Exceptions\Validation\ValidationException;
 use Sefa\Repositories\AbstractValidator as Validator;
@@ -55,8 +57,13 @@ class IngredientsRepository extends Validator implements BaseRepositoryInterface
         if ($this->isValid($attributes))
         {
             $this->ingredients->fill($attributes)->save();
-            //$lastInsertedId= $this->ingredients->id;
+            $lastInsertedId= $this->ingredients->id;
            
+            $lastInsertedId= $this->ingredients->id;      
+     
+              
+              Session::put('lastInsertedId', $lastInsertedId);
+
             return true;
         }
         throw new ValidationException('ingredients validation failed', $this->getErrors());
@@ -72,6 +79,9 @@ class IngredientsRepository extends Validator implements BaseRepositoryInterface
             return true;
         }
         throw new ValidationException('ingredients validation failed', $this->getErrors());
+
+       
+        
     }
     public function destroy($id)
 
