@@ -807,7 +807,13 @@ Route::post('/login', 'LoginController@storeLogin');
 
 Route::get('/logout', 'LoginController@getLogout');
 
+Route::resource('/conformemail', 'ConformeemailController');
+
+
+
 Route::get('/social/{provider}/{action?}', array("as" => "loginWith", "uses" => "LoginController@loginWithSocial"));
+
+
 /*
 
 Route::get('social/{action?}', array("as" => "hybridauth", function($action = "")

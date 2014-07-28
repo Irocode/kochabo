@@ -94,6 +94,11 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
 
     public function createOAuthProfile($userProfile) {
 
+
+          
+
+
+
         if (isset($userProfile -> username)){
             $username = strlen($userProfile -> username) > 0 ? $userProfile -> username : "";
         }
@@ -180,6 +185,17 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             $profile -> user_id = $user -> getId();
             $profile -> email = $email;
             $profile -> username = $username;
+            
+
+
+            //Email hinterfragen  
+            $conformuser_id  =   $user -> getId();     
+            $conformemail="yes";
+            $conformemailaddress=$email;;
+            Session::put('conformemail', $conformemail); 
+            Session::put('conformemailaddress', $conformemailaddress); 
+            Session::put('conformuser_id', $conformuser_id); 
+
 
 
             if (isset($firstname)) {$profile -> firstname = $firstname;}
@@ -194,32 +210,42 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             if (isset($country)) {$profile -> country = $country;}
             if (isset($region)) {$profile -> region = $region;}
             if (isset($city)) {$profile -> city = $city;}
-             if (isset($zip)) {$profile -> city = $zip;}      
+            if (isset($zip)) {$profile -> city = $zip;}      
              
                  
           
             $profile -> save();
 
 
-
+            // Addresse anlegen 
             $address = new Address;
             $address->customercustomer_id =  $user -> getId();
-            $address->first_name =  $firstname;
-            $address->last_name =  $lastname;
-            $address->gender =  $gender;
+              if (isset($firstname))  {$address->first_name =  $firstname;}
+              if (isset($lastname))  {$address->last_name =  $lastname;}
+              if (isset($gender))  {  
+
+                if ($gender=="male") {$gendenew="Herr";} 
+                    if ($gender=="female") {$gendenew="Frau";} 
+          }
+
+              if (isset($gender))  {$address->gender =  $gendenew;}  
             $address->art = 'Rechnungsadresse';
             $address->save(); 
 
             $address = new Address;
             $address->customercustomer_id =  $user -> getId();
-            $address->first_name =  $firstname;
-            $address->last_name =  $lastname;
-            $address->gender =  $gender;
+              if (isset($firstname))  {$address->first_name =  $firstname;}
+              if (isset($lastname))  {$address->last_name =  $lastname;}
+              if (isset($gender))  {
+                if ($gender=="male") {$gendenew="Herr";} 
+                    if ($gender=="female") {$gendenew="Frau";} 
+          }
+              if (isset($gender))  {$address->gender =  $gendenew;}  
             $address->art = 'Lieferadresse';
             $address->save();
 
- 
 
+            
 
 
         }
@@ -258,6 +284,9 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             return Redirect::to('/meinkontologin');
         } catch (Cartalyst\Sentry\Throttling\UserBannedException $e) {
             Session::flash('error_msg', 'Benutzer ist banned.');
+
+
+
 
 
             return Redirect::to('/meinkontologin');
@@ -631,5 +660,12 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
          Session::flush();
         return Redirect::to('/');
     }
+
+
+
+
+
+
+
 
 }

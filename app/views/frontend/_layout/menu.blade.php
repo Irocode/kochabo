@@ -1,3 +1,4 @@
+
 <!--=== Top ===-->    
 <div class="top" style="background-color:#fafafa">
    <div class="container">
@@ -5,37 +6,39 @@
 
 
 
-{{var_dump(Session::all()); }}<br><br>
+<!--{{var_dump(Session::all()); }}-->
 
 
-      
+
+
+
+
          <li><a href="{{URL::to('page/5')}}" target="_top" >Hilfe</a></li>
          <li class="devider"></li>
 
-
+<!--
 <pre>
+-->
 
 
 <?php
 
 
 
-
-
 if  (empty($displayName)) {} else {
-echo "$displayName";
+//echo "$displayName";
  Session::put('email', $email);  
 
 }
 
 if  (empty($email)) {} else {
-echo "$email";
+//echo "$email";
 }
 
 
 
 if  (empty($userProfile)) {} else {
-echo "$userProfile";
+//echo "$userProfile";
 }
 
 
@@ -47,7 +50,7 @@ echo "$userProfile";
 
 
 ?>
-
+<!--
   @if (Sentry::check())
 ja
  @else
@@ -55,15 +58,17 @@ ja
   @endif
 
 </pre>
-<br>
+<br>  
 <!--
 <pre>
-
+-->
+<!--
 @if(Session::has('email'))
    <span>Du bist eingeloggt {{ Session::get('email') }}
 @else
    <span>Du bist nicht eingeloggt</span>
 @endif
+<!--
 </pre>
 -->
 
@@ -248,3 +253,127 @@ ja
        menu.css({ left:newpos });
    });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- AKTUELLE EMAIL ADDRESSE ANFANG-->
+<?php
+$conformemail = Session::get('conformemail');
+$conformemailaddress = Session::get('conformemailaddress');
+$conformuser_id = Session::get('conformuser_id');
+
+if (isset($conformemail)) {
+//if ($conformemail="yes") {echo "IST DAS DEINE RICHTIGE ADDRESSE";}
+
+
+if ($conformemail="yes") {
+
+  ?>
+  <style>
+.in {
+background: rgba(0, 0, 0, 0.3);
+}
+</style>
+
+     <script type="text/javascript">
+            $(window).load(function(){
+                $('#myModal').modal('show');
+            });
+        </script>
+
+<!-- Button trigger modal -->
+ {{ Form::open( array( 'action' => array( 'App\Controllers\LoginController@storeNewPassword', $conformuser_id ), 'method' => 'PATCH')) }}
+<!-- Modal -->
+<div class="container">
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"u aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Schließen</span></button>
+        <h4 class="modal-title" id="myModalLabel">Aktuelle E-Mail Adresse?</h4>
+      </div>
+      <div class="modal-body">
+<br>
+Ist <strong>
+
+
+<?php
+if (isset($conformemailaddress)) {
+ echo " $conformemailaddress " ;
+
+
+}
+
+
+     ?></strong>
+deine aktuelle E-Mail Adresse?<br>
+
+<br>
+Nein! Dann einfach im folgenden Eingabefeld ändern und speichern.<br><br>
+   <div class="row">
+      <div class="col-md-6">
+      
+         <!-- emailaktuell -->
+         <div class="control-group {{ $errors->has('emailaktuell') ? 'has-error' : '' }}">
+            <label class="control-label" for="emailaktuell">Aktuelle E-Mail Adresse </label>
+            <div class="controls">         
+               {{ Form::text('emailaktuell', $conformemailaddress, array('class'=>'form-control', 'id' => 'emailaktuell',  'placeholder'=>'Aktuelle E-Mail Adresse', 'value'=>Input::old('emailaktuell'))) }}
+               @if ($errors->first('emailaktuell'))
+               <span class="help-block">{{ $errors->first('emailaktuell') }}</span>
+               @endif
+            </div>
+         </div>
+ 
+          </div> </div>
+
+
+
+
+<div class="row">
+      <div class="col-md-12">
+           <br><i>
+      Info: Es kommt vor das  Facebook E-Mail Login Adressen häufig nicht mit der aktuellen E-Mail Addresse übereinstimmen.</i>
+
+ </div> </div>
+      </div>
+
+     
+
+
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">E-Mail Adresse ist aktuell.</button>
+         {{ Form::submit('Nein! Neue E-Mail Adresse wird gespeichert', array('class' => 'btn btn-u')) }} 
+         
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{{ Form::close() }}
+
+
+<?php
+}
+
+}
+?>
+<!-- AKTUELLE EMAIL ADDRESSE Ende-->
