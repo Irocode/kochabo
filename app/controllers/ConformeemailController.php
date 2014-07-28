@@ -78,7 +78,7 @@ class ConformeemailController extends BaseController
     {
 
         //Remove the Session for Popup         
-         Session::forget('keconformemaily');
+         Session::forget('conformemail');
 
 
          $fbaktuelleemail = Users::find($id);
@@ -86,9 +86,9 @@ class ConformeemailController extends BaseController
          $fbaktuelleemail->save();
           
         
-       return Redirect::to('/social/Facebook#_=_');
+     
            
-       //return Redirect::back();
+       return Redirect::back();
     }
     /**
      * Remove the specified resource from storage.
