@@ -1,7 +1,7 @@
 <?php
 use Authority\Repo\Session\SessionInterface;
 use Authority\Service\Form\Login\LoginForm;
-
+use Address;
 
 
 class LoginController extends BaseController {
@@ -9,10 +9,11 @@ class LoginController extends BaseController {
 
     protected $session;
 
- public function __construct(SessionInterface $session, Users $users) {
+ public function __construct(SessionInterface $session, Users $users, Address $address) {
 
         $this->session = $session;
         $this->users = $users;
+        $this->address = $address;
 
         //We will implement Filters later
         $this -> beforeFilter('csrf', array('on' => 'post'));
@@ -129,6 +130,29 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             $profile -> email = $email;
             $profile -> username = $username;
             $profile -> save();
+
+
+
+            $address = new Address;
+            $address->customercustomer_id = $lastInserted_id;
+            $address->first_name = $lastInserted_first_name;
+            $address->last_name = $lastInserted_last_name;
+            $address->gender = $lastInserted_gender;
+            $address->art = 'Rechnungsadresse';
+            $address->save(); 
+
+            $address = new Address;
+            $address->customercustomer_id = $lastInserted_id;
+            $address->first_name = $lastInserted_first_name;
+            $address->last_name = $lastInserted_last_name;
+            $address->gender = $lastInserted_gender;
+            $address->art = 'Lieferadresse';
+            $address->save();
+
+ 
+ 
+
+
         }
         //Login user
         //Try to authenticate user

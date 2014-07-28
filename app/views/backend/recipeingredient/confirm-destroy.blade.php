@@ -7,7 +7,7 @@ if (isset($_GET["recipeid"])) {
     $recipeid = $_GET["recipeid"];  
 }
 if (isset($_GET["name"])) {
-    $name = $_GET["name"];  
+    $name = $_GET["name"]; 
     
 }
 
