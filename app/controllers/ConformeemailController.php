@@ -1,5 +1,11 @@
 <?php 
 
+
+
+
+
+
+
 class ConformeemailController extends BaseController
 
 {
@@ -7,10 +13,7 @@ class ConformeemailController extends BaseController
     public function __construct(Users $users)
 
     {
-        View::share('active', 'modules');
-        $this->users = $users;
-    
-      
+      $this->users = $users;
     }
     /**
      * Display a listing of the resource.
@@ -20,49 +23,18 @@ class ConformeemailController extends BaseController
     public function index()
 
     {
-  
+      
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
-
-    /*
     public function create()
 
-    {  
-        
-
-
-        $users_ingredient = Recipe_ingredient::all();
-        return View::make('backend.users.create', compact('users_ingredient'));
-    }
-*/
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function update($id)
-
-    {  
-     $users = $this->users->find($id);
-        return View::make('backend.users.show', compact('users'));   
-    }
-
-
-public function create()
-
     {
-
+      
     }
-
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -71,7 +43,7 @@ public function create()
     public function store()
 
     {
-      
+        
     }
     /**
      * Display the specified resource.
@@ -82,8 +54,7 @@ public function create()
     public function show($id)
 
     {
-        $users = $this->users->find($id);
-        return View::make('backend.users.show', compact('users'));
+      
     }
     /**
      * Show the form for editing the specified resource.
@@ -93,7 +64,31 @@ public function create()
      */
     public function edit($id)
 
-    {     
+    {
+       
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function update($id)
+
+    {
+
+        //Remove the Session for Popup         
+         Session::forget('keconformemaily');
+
+
+         $fbaktuelleemail = Users::find($id);
+         $fbaktuelleemail->fbaktuelleemail = Input::get('fbaktuelleemail');
+         $fbaktuelleemail->save();
+          
+        
+       return Redirect::to('/social/Facebook#_=_');
+           
+       //return Redirect::back();
     }
     /**
      * Remove the specified resource from storage.
@@ -104,23 +99,18 @@ public function create()
     public function destroy($id)
 
     {
-     
+       
     }
     public function confirmDestroy($id)
 
     {
-   
+      
     }
     public function togglePublish($id)
 
     {
-
+        
     }
-
-
-   
-
-
 }
 
 

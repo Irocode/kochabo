@@ -5,8 +5,7 @@
       <ul class="loginbar pull-right">
 
 
-
-<!--{{var_dump(Session::all()); }}-->
+{{var_dump(Session::all()); }}
 
 
 
@@ -298,7 +297,8 @@ background: rgba(0, 0, 0, 0.3);
         </script>
 
 <!-- Button trigger modal -->
- {{ Form::open( array( 'action' => array( 'App\Controllers\LoginController@storeNewPassword', $conformuser_id ), 'method' => 'PATCH')) }}
+
+   {{ Form::open( array( 'action' => array( 'ConformeemailController@update', $conformuser_id), 'method' => 'PATCH')) }}
 <!-- Modal -->
 <div class="container">
 
@@ -331,13 +331,13 @@ Nein! Dann einfach im folgenden Eingabefeld ändern und speichern.<br><br>
    <div class="row">
       <div class="col-md-6">
       
-         <!-- emailaktuell -->
-         <div class="control-group {{ $errors->has('emailaktuell') ? 'has-error' : '' }}">
-            <label class="control-label" for="emailaktuell">Aktuelle E-Mail Adresse </label>
+         <!-- fbaktuelleemail -->
+         <div class="control-group {{ $errors->has('fbaktuelleemail') ? 'has-error' : '' }}">
+            <label class="control-label" for="fbaktuelleemail">Aktuelle E-Mail Adresse </label>
             <div class="controls">         
-               {{ Form::text('emailaktuell', $conformemailaddress, array('class'=>'form-control', 'id' => 'emailaktuell',  'placeholder'=>'Aktuelle E-Mail Adresse', 'value'=>Input::old('emailaktuell'))) }}
-               @if ($errors->first('emailaktuell'))
-               <span class="help-block">{{ $errors->first('emailaktuell') }}</span>
+               {{ Form::text('fbaktuelleemail', $conformemailaddress, array('class'=>'form-control', 'id' => 'fbaktuelleemail',  'placeholder'=>'Aktuelle E-Mail Adresse', 'value'=>Input::old('fbaktuelleemail'))) }}
+               @if ($errors->first('fbaktuelleemail'))
+               <span class="help-block">{{ $errors->first('fbaktuelleemail') }}</span>
                @endif
             </div>
          </div>
