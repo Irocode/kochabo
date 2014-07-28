@@ -1,7 +1,7 @@
 <?php
 use Authority\Repo\Session\SessionInterface;
 use Authority\Service\Form\Login\LoginForm;
-use Address;
+
 
 
 class LoginController extends BaseController {
@@ -97,6 +97,58 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
         if (isset($userProfile -> username)){
             $username = strlen($userProfile -> username) > 0 ? $userProfile -> username : "";
         }
+
+        if (isset($userProfile -> firstName)){
+            $firstname = strlen($userProfile -> firstName) > 0 ? $userProfile -> firstName : "";
+        }
+
+         if (isset($userProfile -> lastName)){
+            $lastname = strlen($userProfile -> lastName) > 0 ? $userProfile -> lastName : "";
+        }
+
+         if (isset($userProfile -> gender)){
+            $gender = strlen($userProfile -> gender) > 0 ? $userProfile -> gender : "";
+        }
+
+           if (isset($userProfile -> language)){
+            $language = strlen($userProfile -> language) > 0 ? $userProfile -> language : "";
+        }
+   
+
+          if (isset($userProfile -> age)){
+            $age = strlen($userProfile -> age) > 0 ? $userProfile -> age : "";
+        }
+
+          if (isset($userProfile -> city)){
+            $city = strlen($userProfile -> city) > 0 ? $userProfile -> city : "";
+        }
+
+           if (isset($userProfile -> zip)){
+            $zip = strlen($userProfile -> zip) > 0 ? $userProfile -> zip : "";
+        }
+           if (isset($userProfile -> region)){
+            $region = strlen($userProfile -> region) > 0 ? $userProfile -> region : "";
+        }
+           if (isset($userProfile -> country)){
+            $country = strlen($userProfile -> country) > 0 ? $userProfile -> country : "";
+        }
+           if (isset($userProfile -> birthDay)){
+            $birthday = strlen($userProfile -> birthDay) > 0 ? $userProfile -> birthDay : "";
+        }
+
+             if (isset($userProfile -> birthMonth)){
+            $birthmonth = strlen($userProfile -> birthMonth) > 0 ? $userProfile -> birthMonth : "";
+        }
+
+             if (isset($userProfile -> birthYear)){
+            $birthyear = strlen($userProfile -> birthYear) > 0 ? $userProfile -> birthYear : "";
+        }
+           if (isset($userProfile -> phone)){
+            $phone = strlen($userProfile -> phone) > 0 ? $userProfile -> phone : "";
+        }
+           if (isset($userProfile -> address)){
+            $address = strlen($userProfile -> address) > 0 ? $userProfile -> address : "";
+        }
         
         if (isset($userProfile -> screen_name)){
             $username = strlen($userProfile -> screen_name) > 0 ? $userProfile -> screen_name : "";
@@ -125,32 +177,49 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             $user -> addGroup($user_group);
 
             $profile = new Profile();
-
             $profile -> user_id = $user -> getId();
             $profile -> email = $email;
             $profile -> username = $username;
+
+
+            if (isset($firstname)) {$profile -> firstname = $firstname;}
+            if (isset($lastname)) {$profile -> lastname = $lastname;}
+            if (isset($gender)) {$profile -> gender = $gender;}
+            if (isset($language)) {$profile -> language = $language;}
+            if (isset($age)) {$profile -> age = $age;}
+            if (isset($birthday)) {$profile -> birthday = $birthday;}
+            if (isset($birthmonth)) {$profile -> birthmonth = $birthmonth;}
+            if (isset($birthyear)) {$profile -> birthyear = $birthyear;}
+            if (isset($phone)) {$profile -> phone = $phone;}
+            if (isset($country)) {$profile -> country = $country;}
+            if (isset($region)) {$profile -> region = $region;}
+            if (isset($city)) {$profile -> city = $city;}
+             if (isset($zip)) {$profile -> city = $zip;}      
+             
+                 
+          
             $profile -> save();
 
 
 
             $address = new Address;
-            $address->customercustomer_id = $lastInserted_id;
-            $address->first_name = $lastInserted_first_name;
-            $address->last_name = $lastInserted_last_name;
-            $address->gender = $lastInserted_gender;
+            $address->customercustomer_id =  $user -> getId();
+            $address->first_name =  $firstname;
+            $address->last_name =  $lastname;
+            $address->gender =  $gender;
             $address->art = 'Rechnungsadresse';
             $address->save(); 
 
             $address = new Address;
-            $address->customercustomer_id = $lastInserted_id;
-            $address->first_name = $lastInserted_first_name;
-            $address->last_name = $lastInserted_last_name;
-            $address->gender = $lastInserted_gender;
+            $address->customercustomer_id =  $user -> getId();
+            $address->first_name =  $firstname;
+            $address->last_name =  $lastname;
+            $address->gender =  $gender;
             $address->art = 'Lieferadresse';
             $address->save();
 
  
- 
+
 
 
         }
