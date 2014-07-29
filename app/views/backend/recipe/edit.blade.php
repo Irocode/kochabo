@@ -25,8 +25,28 @@ if (isset($_GET["idzt"])) {
 
 ?>
 
+<!-- Nur Zahlen möglich-->
+<script>
+    function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+    return false;
+    return true;
+}
+</script>
 
 
+<!-- required Pics -->
+<!--http://skybeam.de/blog/html5-input-required/-->
+<style type="text/css">
+  input:required:valid {background-image:url({{URL::to('assets/img/backend/images/valid.png')}});
+  background-position:right center;
+  background-repeat:no-repeat;}
+  input:required:invalid {background-image:url({{URL::to('assets/img/backend/images/invalid.png')}});
+  background-position:right center;
+  background-repeat:no-repeat;
+  -moz-box-shadow:none;}
+</style>
 <style>
    #description, #tip, #athome, #step_1, #step_2, #step_3, #step_4, #step_5, #step_6, #step_7 {
    height: 194px;
@@ -693,7 +713,7 @@ if (isset($_GET["idzt"])) {
 
 
                               <div class="control-group {{ $errors->has($amount_2_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_2_persons', $v->amount_2_persons, array('class'=>'form-control', 'id' => $amount_2_persons_ee, 'placeholder'=>'Menge für 2 Personen', 'value'=>Input::old('amount_2_persons'))) }}
+                                 {{ Form::text('amount_2_persons', $v->amount_2_persons, array('class'=>'form-control', 'id' => $amount_2_persons_ee, 'placeholder'=>'Nur Zahlen möglich', 'required', 'onkeypress' =>'return isNumberKey(event)', 'value'=>Input::old('amount_2_persons'))) }}
                                  @if ($errors->first($amount_2_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_2_persons_ee) }}</span>
                                  @endif
@@ -701,7 +721,7 @@ if (isset($_GET["idzt"])) {
                            </td>
                            <td>
                               <div class="control-group {{ $errors->has($amount_4_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_4_persons', $v->amount_4_persons, array('class'=>'form-control', 'id' => $amount_4_persons_ee, 'placeholder'=>'Menge für 4 Personen', 'value'=>Input::old('amount_4_persons'))) }}
+                                 {{ Form::text('amount_4_persons', $v->amount_4_persons, array('class'=>'form-control', 'id' => $amount_4_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required', 'onkeypress' =>'return isNumberKey(event)', 'value'=>Input::old('amount_4_persons'))) }}
                                  @if ($errors->first($amount_4_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_4_persons_ee) }}</span>
                                  @endif
@@ -710,7 +730,7 @@ if (isset($_GET["idzt"])) {
 
                                <td>
                               <div class="control-group {{ $errors->has($amount_6_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_6_persons', $v->amount_6_persons, array('class'=>'form-control', 'id' => $amount_6_persons_ee, 'placeholder'=>'Menge für 6 Personen', 'value'=>Input::old('amount_6_persons'))) }}
+                                 {{ Form::text('amount_6_persons', $v->amount_6_persons, array('class'=>'form-control', 'id' => $amount_6_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required',  'onkeypress' =>'return isNumberKey(event)', 'value'=>Input::old('amount_6_persons'))) }}
                                  @if ($errors->first($amount_6_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_6_persons_ee) }}</span>
                                  @endif
@@ -721,7 +741,7 @@ if (isset($_GET["idzt"])) {
                               <div class="control-group {{ $errors->has('einheit') ? 'has-error' : '' }}">
                             
 
-                            <select name="einheit" class="form-control" id="{{$einheit_ee}}">
+                            <select  required name="einheit" class="form-control" id="{{$einheit_ee}}">
                            <option value="{{$v->einheit}}" selected>{{$v->einheit}}</option>
                          
                         
@@ -861,10 +881,6 @@ if (isset($_GET["idzt"])) {
 
 
 
-
-
-
-
 <!--Anlegen und löschen Ende-->
 <!-- Zutaten Anfang -->
 
@@ -903,7 +919,7 @@ if (isset($_GET["idzt"])) {
    
     <div id="wrapper">          
           <div class="control-group {{ $errors->has('ingredient_id') ? 'has-error' : '' }}">
-            <select id="select-beast" name="ingredient_id"  style="width:200px; " required class="demo-default" placeholder="Wähle eine Zutat">
+            <select  required id="select-beast" name="ingredient_id"  style="width:200px; " required class="demo-default" placeholder="Wähle eine Zutat">
 
               <?php 
 
@@ -915,7 +931,7 @@ if (isset($_GET["idzt"])) {
               <?php
               } 
                else { ?>
-                <option value="" selected >Wähle eine Zutat</option>
+                <option value="" selected  >Wähle eine Zutat</option>
               <?php
               }
               ?>               
@@ -948,8 +964,18 @@ if (isset($_GET["idzt"])) {
 
                </td>
                <td>
+              
+         
+   
+
+        
+
+
+
+
+
                   <div class="control-group {{ $errors->has('amount_2_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_2_persons', null, array('class'=>'form-control', 'id' => 'amount_2_persons', 'placeholder'=>'Menge für 2 Personen', 'value'=>Input::old('amount_2_persons'))) }}   
+                     {{ Form::text('amount_2_persons', null, array('class'=>'form-control', 'id' => 'amount_2_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required', 'value'=>Input::old('amount_2_persons'))) }}   
                      @if ($errors->first('amount_2_persons'))
                      <span class="help-block">{{ $errors->first('amount_2_persons') }}</span>
                      @endif
@@ -957,7 +983,7 @@ if (isset($_GET["idzt"])) {
                </td>
                <td>
                   <div class="control-group {{ $errors->has('amount_4_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_4_persons', null, array('class'=>'form-control', 'id' => 'amount_4_persons', 'placeholder'=>'Menge für 4 Personen', 'value'=>Input::old('amount_4_persons'))) }}   
+                     {{ Form::text('amount_4_persons', null, array('class'=>'form-control', 'id' => 'amount_4_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich','required', 'value'=>Input::old('amount_4_persons'))) }}   
                      @if ($errors->first('amount_4_persons'))
                      <span class="help-block">{{ $errors->first('amount_4_persons') }}</span>
                      @endif
@@ -965,7 +991,7 @@ if (isset($_GET["idzt"])) {
                </td>
                <td>
                   <div class="control-group {{ $errors->has('amount_6_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_6_persons', null, array('class'=>'form-control', 'id' => 'amount_6_persons', 'placeholder'=>'Menge für 6 Personen', 'value'=>Input::old('amount_6_persons'))) }}   
+                     {{ Form::text('amount_6_persons', null, array('class'=>'form-control', 'id' => 'amount_6_persons',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required','value'=>Input::old('amount_6_persons'))) }}   
                      @if ($errors->first('amount_6_persons'))
                      <span class="help-block">{{ $errors->first('amount_6_persons') }}</span>
                      @endif
@@ -974,8 +1000,8 @@ if (isset($_GET["idzt"])) {
                <td>
                   <div class="control-group {{ $errors->has('price') ? 'has-error' : '' }}">
                      <div class="controls">
-                        <select name="einheit" class="form-control">
-                           <option value="" selected>Einheit</option>
+                        <select required name="einheit" class="form-control" >
+                           <option value="" selected >Einheit</option>
                            @foreach( $list_einheit as $x )             
                            <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
                            @endforeach  
@@ -1224,6 +1250,17 @@ background: rgba(0, 0, 0, 0.3);
   </div>
 </div>
 <!--Modal Form Ende-->
+
+
+
+
+
+
+
+
+
+
+
 
 
 
