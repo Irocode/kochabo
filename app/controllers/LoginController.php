@@ -255,7 +255,7 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
              $user->customers_groups_id = '4';
             if (isset($firstname)) {$user -> first_name = $firstname;}
             if (isset($lastname)) {$user -> last_name = $lastname;}
-            if (isset($gender)) {$user -> gender = $gender;}
+            if (isset($gender)) {$user -> gender = $gendenew;}
             if (isset($birthday)) {$user -> birthday = $birthday;}
             if (isset($birthmonth)) {$user -> birthmonth = $birthmonth;}
             if (isset($birthyear)) {$user -> birthyear = $birthyear;}
