@@ -67,7 +67,7 @@ class LoginController extends BaseController {
         Session::put('displayName', $displayName);  
         }
 
-        // LOGGIN MIT FAcebook
+        // LOGGIN MIT Facebook
 
         
 
@@ -197,7 +197,7 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             Session::put('conformuser_id', $conformuser_id); 
 
 
-
+            // Profil anlegen
             if (isset($firstname)) {$profile -> firstname = $firstname;}
             if (isset($lastname)) {$profile -> lastname = $lastname;}
             if (isset($gender)) {$profile -> gender = $gender;}
@@ -210,12 +210,14 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             if (isset($country)) {$profile -> country = $country;}
             if (isset($region)) {$profile -> region = $region;}
             if (isset($city)) {$profile -> city = $city;}
-            if (isset($zip)) {$profile -> city = $zip;}      
-             
-                 
-          
+            if (isset($zip)) {$profile -> zip = $zip;}    
             $profile -> save();
 
+
+      
+
+
+ 
 
             // Addresse anlegen 
             $address = new Address;
@@ -243,6 +245,23 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
               if (isset($gender))  {$address->gender =  $gendenew;}  
             $address->art = 'Lieferadresse';
             $address->save();
+
+
+
+
+                   // User ergänzen 
+             $conformuser_id = Session::get('conformuser_id');            
+             $user = Users::find($conformuser_id);
+             $user->customers_groups_id = '4';
+            if (isset($firstname)) {$user -> first_name = $firstname;}
+            if (isset($lastname)) {$user -> last_name = $lastname;}
+            if (isset($gender)) {$user -> gender = $gender;}
+            if (isset($birthday)) {$user -> birthday = $birthday;}
+            if (isset($birthmonth)) {$user -> birthmonth = $birthmonth;}
+            if (isset($birthyear)) {$user -> birthyear = $birthyear;}
+             if (isset($phone)) {$user -> telephone = $phone;}
+
+             $user->save();
 
 
             
@@ -403,7 +422,7 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
 
 
  // LOGGIN MIT EMAIL
-           Session::flash('success_msg', 'Erfolgreich eingeloggtx');
+           Session::flash('success_msg', 'Erfolgreich eingeloggt');
             Session::flash('oida', 'Erfolgreich eingeloggtx');
             $user_session_Id = Session::get('userId');
           

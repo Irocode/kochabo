@@ -182,6 +182,24 @@
             </div>
          </div>
          <br>
+
+      
+           <!-- facebookemail -->
+        
+         <div class="control-group {{ $errors->has('fbaktuelleemail') ? 'has-error' : '' }}">
+            <label class="control-label" for="fbaktuelleemail">Bestätigte E-Mail FB </label>
+            <div class="controls">
+               {{ Form::text('fbaktuelleemail', null, array('class' => 'form-control', 'placeholder' => 'E-Mail FB')) }}
+               @if ($errors->first('fbaktuelleemail'))
+               <span class="help-block">{{ $errors->first('fbaktuelleemail') }}</span>
+               @endif
+            </div>
+         </div>
+         <br>
+    
+
+
+
          <!-- telephone -->
          <div class="control-group {{ $errors->has('telephone') ? 'has-error' : '' }}">
             <label class="control-label" for="last_name">Telefon <span class="stern" >*</span></label>

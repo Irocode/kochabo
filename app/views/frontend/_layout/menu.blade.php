@@ -4,8 +4,7 @@
    <div class="container">
       <ul class="loginbar pull-right">
 
-
-{{var_dump(Session::all()); }}
+<!--{{var_dump(Session::all()); }} -->
 
 
 
@@ -258,19 +257,6 @@ ja
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- AKTUELLE EMAIL ADDRESSE ANFANG-->
 <?php
 $conformemail = Session::get('conformemail');
@@ -350,7 +336,7 @@ Nein! Dann einfach im folgenden Eingabefeld ändern und speichern.<br><br>
 <div class="row">
       <div class="col-md-12">
            <br><i>
-      Info: Es kommt vor das  Facebook E-Mail Login Adressen häufig nicht mit der aktuellen E-Mail Addresse übereinstimmen.</i>
+      Info: Deine Facebook Login E-Mail Adressen muss nicht zwangsläufig deine aktuelle E-Mail Addresse sein. Um dich jederzeit für wichtige Nachrichten erreichen zu können, kannst du hier deine aktuelle E-Mail eintragen. </i>
 
  </div> </div>
       </div>
@@ -359,8 +345,23 @@ Nein! Dann einfach im folgenden Eingabefeld ändern und speichern.<br><br>
 
 
       <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">E-Mail Adresse ist aktuell.</button>
+
+<div class="row">
+  <div class="col-md-6">
+
+
          {{ Form::submit('Nein! Neue E-Mail Adresse wird gespeichert', array('class' => 'btn btn-u')) }} 
+         {{ Form::close() }}
+
+        </div>
+  <div class="col-md-6">
+
+         {{ Form::open( array( 'action' => array( 'ConformeemailController@destroy', $conformuser_id), 'method' => 'PATCH')) }}
+         {{ Form::submit('E-Mail Adresse ist aktuell.', array('class' => 'btn btn-default')) }} 
+         {{ Form::close() }}
+
+        </div>
+</div>
          
       </div>
     </div>
@@ -368,7 +369,7 @@ Nein! Dann einfach im folgenden Eingabefeld ändern und speichern.<br><br>
 </div>
 </div>
 
-{{ Form::close() }}
+
 
 
 <?php

@@ -90,6 +90,11 @@ class ConformeemailController extends BaseController
            
        return Redirect::back();
     }
+
+
+ 
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -99,6 +104,8 @@ class ConformeemailController extends BaseController
     public function destroy($id)
 
     {
+          Session::forget('conformemail');             
+       return Redirect::back();
        
     }
     public function confirmDestroy($id)
