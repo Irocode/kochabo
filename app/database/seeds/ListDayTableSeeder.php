@@ -22,63 +22,63 @@ class ListDayTableSeeder extends Seeder {
 			1 => 
 			array (
 				'id' => 3,
-				'bezeichnung' => '01',
+				'bezeichnung' => '1',
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 			),
 			2 => 
 			array (
 				'id' => 4,
-				'bezeichnung' => '02',
+				'bezeichnung' => '2',
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 			),
 			3 => 
 			array (
 				'id' => 5,
-				'bezeichnung' => '03',
+				'bezeichnung' => '3',
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 			),
 			4 => 
 			array (
 				'id' => 6,
-				'bezeichnung' => '04',
+				'bezeichnung' => '4',
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 			),
 			5 => 
 			array (
 				'id' => 7,
-				'bezeichnung' => '05',
+				'bezeichnung' => '5',
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 			),
 			6 => 
 			array (
 				'id' => 8,
-				'bezeichnung' => '06',
+				'bezeichnung' => '6',
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 			),
 			7 => 
 			array (
 				'id' => 9,
-				'bezeichnung' => '07',
+				'bezeichnung' => '7',
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 			),
 			8 => 
 			array (
 				'id' => 10,
-				'bezeichnung' => '08',
+				'bezeichnung' => '8',
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 			),
 			9 => 
 			array (
 				'id' => 11,
-				'bezeichnung' => '09',
+				'bezeichnung' => '9',
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 			),

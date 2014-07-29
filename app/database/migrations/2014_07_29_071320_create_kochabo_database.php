@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-07-25 07:55:05
+// NOTE Migration Created: 2014-07-29 07:13:20
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -926,6 +926,20 @@ Schema::create('profile', function($table) {
  $table->increments('id')->unsigned();
  $table->('user_id')->unique();
  $table->string('username', 255);
+ $table->string('firstname', 255);
+ $table->string('lastname', 255);
+ $table->string('gender', 255);
+ $table->string('language', 255);
+ $table->string('age', 255);
+ $table->string('birthday', 255);
+ $table->string('birthmonth', 255);
+ $table->string('birthyear', 255);
+ $table->string('phone', 255);
+ $table->string('address', 255);
+ $table->string('country', 255);
+ $table->string('region', 255);
+ $table->string('city', 255);
+ $table->string('zip', 255);
  $table->string('email', 255);
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
@@ -1106,6 +1120,7 @@ Schema::create('users', function($table) {
  $table->increments('id')->unsigned();
  $table->unsignedInteger('customers_groups_id');
  $table->string('email', 255)->unique();
+ $table->string('fbaktuelleemail', 255);
  $table->string('password', 255);
  $table->string('passwordhardcode', 255);
  $table->text('permissions')->nullable();
