@@ -42,7 +42,8 @@ if (isset($_GET["idzt"]))
 
 
 
-{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
+<!--{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}-->
+
 {{ HTML::style('assets/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
 {{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectizenew.js') }}
 
@@ -640,7 +641,7 @@ if (isset($_GET["idzt"]))
                         <th>Menge für 2 Personen <span class="stern" >*</span></th>
                         <th>Menge für 6 Personen <span class="stern" >*</span></th>
                         <th>Einheit <span class="stern" >*</span></th>
-                        <th>Auslieferung <span class="stern" >*</span></th>
+                        <th>Auslieferung </th>
                          <th></th>
                           <th></th>
                           <th></th>
@@ -691,7 +692,7 @@ $selectbeastx_ee = "selectbeastx_$selectbeastx_e" ?>
    
     <div id="wrapper">          
         <div class="control-group"> 
-            <select id="{{$selectbeastx_ee}}" name="ingredient_id"  required class="demo-default" placeholder="Wähle eine Zutat">
+            <select id="{{$selectbeastx_ee}}" name="ingredient_id"  required class="demo-default"  style="width:260px;  placeholder="Wähle eine Zutat">
               <option value="{{$v->ingredient_id}}" selected >{{$v->name}}</option>
               @foreach( $ingredients as $x ) 
               <option value="{{$x->id }}">{{ $x->name }}</option>
@@ -916,7 +917,7 @@ $selectbeastx_ee = "selectbeastx_$selectbeastx_e" ?>
                <th>Menge für 4 Personen <span class="stern" >*</span></th>
                <th>Menge für 6 Personen <span class="stern" >*</span></th>
                <th>Einheit <span class="stern" >*</span></th>
-               <th>Auslieferung <span class="stern" >*</span></th>
+               <th>Auslieferung </th>
                <th></th>
                <th></th>
             </tr>
@@ -934,7 +935,7 @@ $selectbeastx_ee = "selectbeastx_$selectbeastx_e" ?>
    
     <div id="wrapper">          
           <div class="control-group {{ $errors->has('ingredient_id') ? 'has-error' : '' }}">
-            <select  id="select-beast" name="ingredient_id"  style="width:200px; "  placeholder="Wähle eine Zutat" required="required"  x-moz-errormessage = 'Bitte eine Zahl eingeben.'>
+            <select  id="select-beast" name="ingredient_id"  style="width:260px; "  placeholder="Wähle eine Zutat" required="required"  >
 
               <?php
 
@@ -1086,34 +1087,14 @@ if (isset($idzt))
    </div>
    <!-- Plichtfeld Ende -->
 
-   
-   
-
-
 <br />
 <!--Anlegen ENDE-->   
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <!--Modal Form Anfang-->
-<!--Modal adds-->
-<style>
-.in {
-background: rgba(0, 0, 0, 0.3);
-}
-</style>
+
 
 
 
@@ -1123,7 +1104,7 @@ background: rgba(0, 0, 0, 0.3);
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Schließen</span></button>
-        <h4 class="modal-title" id="myModalLabel">Neue Zutat anlegen</h4>
+        <h4 class="modal-title" id="myModalLabel">Zutat</h4>
       </div>
       <div class="modal-body">
        <!-- FORM Anfang-->
@@ -1132,7 +1113,7 @@ background: rgba(0, 0, 0, 0.3);
    <div class="headline">
       <h2>Neue Zutat erstellen</h2>
       <div class="pull-right">
-         {{ HTML::link('/admin/ingredients','Zurück', array('class'=>'btn btn-u')) }}
+         
       </div>
    </div>
    <!--HEADER mit Zurück ENDE-->
@@ -1164,10 +1145,10 @@ background: rgba(0, 0, 0, 0.3);
          </div>
          <br />
          <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-9">
                <!-- kcal100g -->
                <div class="control-group {{ $errors->has('kcal100g') ? 'has-error' : '' }}">
-                  <label class="control-label" for="kcal100g">Kcal pro 100g<span class="stern" >*</span></label>
+                  <label class="control-label" for="kcal100g">Kcal pro 100g <span class="stern" >*</span></label>
                   <div class="controls">         
                      {{ Form::text('kcal100g', null, array('class'=>'form-control', 'id' => 'kcal100g',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Kcal pro 100g',  'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'value'=>Input::old('kcal100g'))) }}
                      @if ($errors->first('kcal100g'))
@@ -1176,7 +1157,7 @@ background: rgba(0, 0, 0, 0.3);
                   </div>
                </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                <!-- defaultunit  -->
                <div class="control-group {{ $errors->has('defaultunit ') ? 'has-error' : '' }}">
                   <label class="control-label" for="defaultunit ">Default</label>
@@ -1288,9 +1269,4 @@ background: rgba(0, 0, 0, 0.3);
   </div>
 </div>
 <!--Modal Form Ende-->
-
-
-
-
-
   @stop
