@@ -98,15 +98,18 @@ if (isset($_GET["idzt"])) {
    
     <script src="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/examples/js/jquery.js"></script>
     <script src="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/dist/js/standalone/selectize.js"></script>
-
+<script src="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/dist/js/standalone/selectize.js"></script>
 -->
 
 
 {{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
 {{ HTML::style('assets/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
+{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectizenew.js') }}
 
 
-<script src="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/dist/js/standalone/selectize.js"></script>
+
+
+
 
 
 
@@ -769,7 +772,7 @@ if (isset($_GET["idzt"])) {
 
 
                               <div class="control-group {{ $errors->has($amount_2_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_2_persons', $v->amount_2_persons, array('class'=>'form-control', 'id' => $amount_2_persons_ee, 'placeholder'=>'Nur Zahlen möglich', 'required', 'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben','value'=>Input::old('amount_2_persons'))) }}
+                                 {{ Form::text('amount_2_persons', $v->amount_2_persons, array('class'=>'form-control', 'id' => $amount_2_persons_ee, 'placeholder'=>'Nur Zahlen möglich', 'required', 'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_2_persons'))) }}
                                  @if ($errors->first($amount_2_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_2_persons_ee) }}</span>
                                  @endif
@@ -777,7 +780,7 @@ if (isset($_GET["idzt"])) {
                            </td>
                            <td>
                               <div class="control-group {{ $errors->has($amount_4_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_4_persons', $v->amount_4_persons, array('class'=>'form-control', 'id' => $amount_4_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required', 'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben', 'value'=>Input::old('amount_4_persons'))) }}
+                                 {{ Form::text('amount_4_persons', $v->amount_4_persons, array('class'=>'form-control', 'id' => $amount_4_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required', 'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'value'=>Input::old('amount_4_persons'))) }}
                                  @if ($errors->first($amount_4_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_4_persons_ee) }}</span>
                                  @endif
@@ -786,7 +789,7 @@ if (isset($_GET["idzt"])) {
 
                                <td>
                               <div class="control-group {{ $errors->has($amount_6_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_6_persons', $v->amount_6_persons, array('class'=>'form-control', 'id' => $amount_6_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required',  'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben','value'=>Input::old('amount_6_persons'))) }}
+                                 {{ Form::text('amount_6_persons', $v->amount_6_persons, array('class'=>'form-control', 'id' => $amount_6_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required',  'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_6_persons'))) }}
                                  @if ($errors->first($amount_6_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_6_persons_ee) }}</span>
                                  @endif
@@ -975,7 +978,7 @@ if (isset($_GET["idzt"])) {
    
     <div id="wrapper">          
           <div class="control-group {{ $errors->has('ingredient_id') ? 'has-error' : '' }}">
-            <select  id="select-beast" name="ingredient_id"  style="width:200px; "  placeholder="Wähle eine Zutat" required >
+            <select  id="select-beast" name="ingredient_id"  style="width:200px; "  placeholder="Wähle eine Zutat" required="required"  x-moz-errormessage = 'Bitte eine Zahl eingeben.'>
 
               <?php 
 
@@ -1033,7 +1036,7 @@ if (isset($_GET["idzt"])) {
 
 
                   <div class="control-group {{ $errors->has('amount_2_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_2_persons', null, array('class'=>'form-control', 'id' => 'amount_2_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben', 'value'=>Input::old('amount_2_persons'))) }}   
+                     {{ Form::text('amount_2_persons', null, array('class'=>'form-control', 'id' => 'amount_2_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'value'=>Input::old('amount_2_persons'))) }}   
                      @if ($errors->first('amount_2_persons'))
                      <span class="help-block">{{ $errors->first('amount_2_persons') }}</span>
                      @endif
@@ -1041,7 +1044,7 @@ if (isset($_GET["idzt"])) {
                </td>
                <td>
                   <div class="control-group {{ $errors->has('amount_4_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_4_persons', null, array('class'=>'form-control', 'id' => 'amount_4_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich','required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben','value'=>Input::old('amount_4_persons'))) }}   
+                     {{ Form::text('amount_4_persons', null, array('class'=>'form-control', 'id' => 'amount_4_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich','required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_4_persons'))) }}   
                      @if ($errors->first('amount_4_persons'))
                      <span class="help-block">{{ $errors->first('amount_4_persons') }}</span>
                      @endif
@@ -1049,7 +1052,7 @@ if (isset($_GET["idzt"])) {
                </td>
                <td>
                   <div class="control-group {{ $errors->has('amount_6_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_6_persons', null, array('class'=>'form-control', 'id' => 'amount_6_persons',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben','value'=>Input::old('amount_6_persons'))) }}   
+                     {{ Form::text('amount_6_persons', null, array('class'=>'form-control', 'id' => 'amount_6_persons',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_6_persons'))) }}   
                      @if ($errors->first('amount_6_persons'))
                      <span class="help-block">{{ $errors->first('amount_6_persons') }}</span>
                      @endif
@@ -1206,7 +1209,7 @@ background: rgba(0, 0, 0, 0.3);
                <div class="control-group {{ $errors->has('kcal100g') ? 'has-error' : '' }}">
                   <label class="control-label" for="kcal100g">Kcal pro 100g<span class="stern" >*</span></label>
                   <div class="controls">         
-                     {{ Form::text('kcal100g', null, array('class'=>'form-control', 'id' => 'kcal100g',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Kcal pro 100g',  'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben', 'value'=>Input::old('kcal100g'))) }}
+                     {{ Form::text('kcal100g', null, array('class'=>'form-control', 'id' => 'kcal100g',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Kcal pro 100g',  'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'value'=>Input::old('kcal100g'))) }}
                      @if ($errors->first('kcal100g'))
                      <span class="help-block">{{ $errors->first('kcal100g') }}</span>
                      @endif
