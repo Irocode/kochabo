@@ -36,25 +36,54 @@ if (isset($_GET["idzt"])) {
 </script>
 
 
-<!-- required Pics -->
-<!--http://skybeam.de/blog/html5-input-required/-->
 <style type="text/css">
+/*REQUIERD FIELDS*/
+/*<!--http://skybeam.de/blog/html5-input-required/-->*/
   input:required:valid {background-image:url({{URL::to('assets/img/backend/images/valid.png')}});
   background-position:right center;
-  background-repeat:no-repeat;}
-  input:required:invalid {background-image:url({{URL::to('assets/img/backend/images/invalid.png')}});
+  background-repeat:no-repeat;
+  }
+
+ textarea:valid {background-image:url({{URL::to('assets/img/backend/images/valid.png')}});
   background-position:right center;
   background-repeat:no-repeat;
-  -moz-box-shadow:none;}
+}
 
-input[type="text"]:invalid {
-    color: red;
+ select:valid {background-image:url({{URL::to('assets/img/backend/images/valid.png')}});
+  background-position:right center;
+  background-repeat:no-repeat;
 }
 
 
-::-webkit-validation-bubble-message { display: none; }
+  input:required:invalid {background-image:url({{URL::to('assets/img/backend/images/invalid.png')}});
+  background-position:right center;
+  background-repeat:no-repeat;
+
+}
+
+ textarea:required:invalid {background-image:url({{URL::to('assets/img/backend/images/invalid.png')}});
+  background-position:right center;
+  background-repeat:no-repeat;
+  -moz-box-shadow:none;
+  textarea[type="text"]:invalid {
+    color: red;
+}
+}
+
+ select:required:invalid {background-image:url({{URL::to('assets/img/backend/images/invalid.png')}});
+  background-position:right center;
+  background-repeat:no-repeat;
+  -moz-box-shadow:none;
+  -webkit-box-shadow: 0 0 3px red;
+    -moz-box-shadow: 0 0 3px red;
+    box-shadow: 0 0 3px red;}
+  select[type="text"]:invalid {
+    color: red;
+}
+}
 
 </style>
+
 
 
 <!--
@@ -511,7 +540,7 @@ input[type="text"]:invalid {
          <div class="control-group {{ $errors->has('step_1') ? 'has-error' : '' }}">
             <label class="control-label" for="step_1">Schritt 1 <span class="stern" >*</span></label>
             <div class="controls">  
-               {{ Form::textarea('step_1', $recipe->step_1, array('class'=>'form-control', 'id' => 'step_1',  'placeholder'=>'Schritt 1', 'value'=>Input::old('step_1'))) }}          
+               {{ Form::textarea('step_1', $recipe->step_1, array('class'=>'form-control', 'id' => 'step_1',  'placeholder'=>'Schritt 1', 'required', 'value'=>Input::old('step_1'))) }}          
                @if ($errors->first('step_1'))
                <span class="help-block">{{ $errors->first('step_1') }}</span>
                @endif
@@ -522,7 +551,7 @@ input[type="text"]:invalid {
          <div class="control-group {{ $errors->has('step_2') ? 'has-error' : '' }}">
             <label class="control-label" for="step_2">Schritt 2 <span class="stern" >*</span></label>
             <div class="controls">       
-               {{ Form::textarea('step_2', $recipe->step_2, array('class'=>'form-control', 'id' => 'step_2',  'placeholder'=>'Schritt 2', 'value'=>Input::old('step_2'))) }}   
+               {{ Form::textarea('step_2', $recipe->step_2, array('class'=>'form-control', 'id' => 'step_2',  'placeholder'=>'Schritt 2', 'required', 'value'=>Input::old('step_2'))) }}   
                @if ($errors->first('step_2'))
                <span class="help-block">{{ $errors->first('step_2') }}</span>
                @endif
@@ -533,7 +562,7 @@ input[type="text"]:invalid {
          <div class="control-group {{ $errors->has('step_3') ? 'has-error' : '' }}">
             <label class="control-label" for="step_3">Schritt 3 <span class="stern" >*</span></label>
             <div class="controls">   
-               {{ Form::textarea('step_3', $recipe->step_3, array('class'=>'form-control', 'id' => 'step_3',  'placeholder'=>'Schritt 3', 'value'=>Input::old('step_3'))) }}         
+               {{ Form::textarea('step_3', $recipe->step_3, array('class'=>'form-control', 'id' => 'step_3',  'placeholder'=>'Schritt 3',  'required','value'=>Input::old('step_3'))) }}         
                @if ($errors->first('step_3'))
                <span class="help-block">{{ $errors->first('step_3') }}</span>
                @endif
@@ -544,7 +573,7 @@ input[type="text"]:invalid {
          <div class="control-group {{ $errors->has('step_4') ? 'has-error' : '' }}">
             <label class="control-label" for="step_4">Schritt 4 <span class="stern" >*</span></label>
             <div class="controls">  
-               {{ Form::textarea('step_4', $recipe->step_4, array('class'=>'form-control', 'id' => 'step_4',  'placeholder'=>'Schritt 4', 'value'=>Input::old('step_4'))) }}          
+               {{ Form::textarea('step_4', $recipe->step_4, array('class'=>'form-control', 'id' => 'step_4',  'placeholder'=>'Schritt 4',  'required', 'value'=>Input::old('step_4'))) }}          
                @if ($errors->first('step_4'))
                <span class="help-block">{{ $errors->first('step_4') }}</span>
                @endif
@@ -555,7 +584,7 @@ input[type="text"]:invalid {
          <div class="control-group {{ $errors->has('step_5') ? 'has-error' : '' }}">
             <label class="control-label" for="step_5">Schritt 5 <span class="stern" >*</span></label>
             <div class="controls"> 
-               {{ Form::textarea('step_5', $recipe->step_5, array('class'=>'form-control', 'id' => 'step_5',  'placeholder'=>'Schritt 5', 'value'=>Input::old('step_5'))) }}         
+               {{ Form::textarea('step_5', $recipe->step_5, array('class'=>'form-control', 'id' => 'step_5',  'placeholder'=>'Schritt 5', 'required', 'value'=>Input::old('step_5'))) }}         
                @if ($errors->first('step_5'))
                <span class="help-block">{{ $errors->first('step_5') }}</span>
                @endif
@@ -566,7 +595,7 @@ input[type="text"]:invalid {
          <div class="control-group {{ $errors->has('step_6') ? 'has-error' : '' }}">
             <label class="control-label" for="step_6">Schritt 6 <span class="stern" >*</span></label>
             <div class="controls">     
-               {{ Form::textarea('step_6', $recipe->step_6, array('class'=>'form-control', 'id' => 'step_6',  'placeholder'=>'Schritt 6', 'value'=>Input::old('step_6'))) }}       
+               {{ Form::textarea('step_6', $recipe->step_6, array('class'=>'form-control', 'id' => 'step_6',  'placeholder'=>'Schritt 6',  'required','value'=>Input::old('step_6'))) }}       
                @if ($errors->first('step_6'))
                <span class="help-block">{{ $errors->first('step_6') }}</span>
                @endif
@@ -577,14 +606,14 @@ input[type="text"]:invalid {
          <div class="control-group {{ $errors->has('step_7') ? 'has-error' : '' }}">
             <label class="control-label" for="step_7">Schritt 7 <span class="stern" >*</span></label>
             <div class="controls">    
-               {{ Form::textarea('step_7', $recipe->step_7, array('class'=>'form-control', 'id' => 'step_7',  'placeholder'=>'Schritt 7', 'value'=>Input::old('step_7'))) }}       
+               {{ Form::textarea('step_7', $recipe->step_7, array('class'=>'form-control', 'id' => 'step_7',  'placeholder'=>'Schritt 7',  'required','value'=>Input::old('step_7'))) }}       
                @if ($errors->first('step_7'))
                <span class="help-block">{{ $errors->first('step_7') }}</span>
                @endif
             </div>
          </div>
          <br>
-         <!-- Published -->
+         <!-- Published --><!-- 
          <input type="hidden" value="is_published">
          <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
             <div class="controls">
@@ -595,6 +624,7 @@ input[type="text"]:invalid {
             </div>
          </div>
          <br>
+         -->
       </div>
    </div>
    <br>
@@ -739,7 +769,7 @@ input[type="text"]:invalid {
 
 
                               <div class="control-group {{ $errors->has($amount_2_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_2_persons', $v->amount_2_persons, array('class'=>'form-control', 'id' => $amount_2_persons_ee, 'placeholder'=>'Nur Zahlen möglich', 'required', 'onkeypress' =>'return isNumberKey(event)', 'value'=>Input::old('amount_2_persons'))) }}
+                                 {{ Form::text('amount_2_persons', $v->amount_2_persons, array('class'=>'form-control', 'id' => $amount_2_persons_ee, 'placeholder'=>'Nur Zahlen möglich', 'required', 'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben','value'=>Input::old('amount_2_persons'))) }}
                                  @if ($errors->first($amount_2_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_2_persons_ee) }}</span>
                                  @endif
@@ -747,7 +777,7 @@ input[type="text"]:invalid {
                            </td>
                            <td>
                               <div class="control-group {{ $errors->has($amount_4_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_4_persons', $v->amount_4_persons, array('class'=>'form-control', 'id' => $amount_4_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required', 'onkeypress' =>'return isNumberKey(event)', 'value'=>Input::old('amount_4_persons'))) }}
+                                 {{ Form::text('amount_4_persons', $v->amount_4_persons, array('class'=>'form-control', 'id' => $amount_4_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required', 'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben', 'value'=>Input::old('amount_4_persons'))) }}
                                  @if ($errors->first($amount_4_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_4_persons_ee) }}</span>
                                  @endif
@@ -756,7 +786,7 @@ input[type="text"]:invalid {
 
                                <td>
                               <div class="control-group {{ $errors->has($amount_6_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_6_persons', $v->amount_6_persons, array('class'=>'form-control', 'id' => $amount_6_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required',  'onkeypress' =>'return isNumberKey(event)', 'value'=>Input::old('amount_6_persons'))) }}
+                                 {{ Form::text('amount_6_persons', $v->amount_6_persons, array('class'=>'form-control', 'id' => $amount_6_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required',  'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben','value'=>Input::old('amount_6_persons'))) }}
                                  @if ($errors->first($amount_6_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_6_persons_ee) }}</span>
                                  @endif
@@ -945,7 +975,7 @@ input[type="text"]:invalid {
    
     <div id="wrapper">          
           <div class="control-group {{ $errors->has('ingredient_id') ? 'has-error' : '' }}">
-            <select  id="select-beast" name="ingredient_id"  style="width:200px; "  placeholder="Wähle eine Zutat" required>
+            <select  id="select-beast" name="ingredient_id"  style="width:200px; "  placeholder="Wähle eine Zutat" required >
 
               <?php 
 
@@ -991,8 +1021,10 @@ input[type="text"]:invalid {
                </td>
                <td>
               
-         
+
+      
    
+
 
         
 
@@ -1001,7 +1033,7 @@ input[type="text"]:invalid {
 
 
                   <div class="control-group {{ $errors->has('amount_2_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_2_persons', null, array('class'=>'form-control', 'id' => 'amount_2_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required', 'value'=>Input::old('amount_2_persons'))) }}   
+                     {{ Form::text('amount_2_persons', null, array('class'=>'form-control', 'id' => 'amount_2_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben', 'value'=>Input::old('amount_2_persons'))) }}   
                      @if ($errors->first('amount_2_persons'))
                      <span class="help-block">{{ $errors->first('amount_2_persons') }}</span>
                      @endif
@@ -1009,7 +1041,7 @@ input[type="text"]:invalid {
                </td>
                <td>
                   <div class="control-group {{ $errors->has('amount_4_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_4_persons', null, array('class'=>'form-control', 'id' => 'amount_4_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich','required', 'value'=>Input::old('amount_4_persons'))) }}   
+                     {{ Form::text('amount_4_persons', null, array('class'=>'form-control', 'id' => 'amount_4_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich','required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben','value'=>Input::old('amount_4_persons'))) }}   
                      @if ($errors->first('amount_4_persons'))
                      <span class="help-block">{{ $errors->first('amount_4_persons') }}</span>
                      @endif
@@ -1017,15 +1049,17 @@ input[type="text"]:invalid {
                </td>
                <td>
                   <div class="control-group {{ $errors->has('amount_6_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_6_persons', null, array('class'=>'form-control', 'id' => 'amount_6_persons',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required','value'=>Input::old('amount_6_persons'))) }}   
+                     {{ Form::text('amount_6_persons', null, array('class'=>'form-control', 'id' => 'amount_6_persons',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben','value'=>Input::old('amount_6_persons'))) }}   
                      @if ($errors->first('amount_6_persons'))
                      <span class="help-block">{{ $errors->first('amount_6_persons') }}</span>
                      @endif
                   </div>
-
-                  <input type="text" name="zipc" required="required" pattern="[0-9]+"
+<!--
+                  <input type="text" name="zipc" x-moz-errormessage=Wrong  required="required"  pattern="[0-9]+"
         placeholder="Required information"
         data-errormessage="NENE" />
+
+        -->
 
                </td>
                <td>
@@ -1148,7 +1182,7 @@ background: rgba(0, 0, 0, 0.3);
          <div class="control-group {{ $errors->has('name') ? 'has-error' : '' }}">
             <label class="control-label" for="name">Name <span class="stern" >*</span></label>
             <div class="controls">         
-               {{ Form::text('name', null, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Name', 'value'=>Input::old('name'))) }}
+               {{ Form::text('name', null, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Name', 'required', 'value'=>Input::old('name'))) }}
                @if ($errors->first('name'))
                <span class="help-block">{{ $errors->first('name') }}</span>
                @endif
@@ -1159,7 +1193,7 @@ background: rgba(0, 0, 0, 0.3);
          <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
             <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
             <div class="controls">         
-               {{ Form::textarea('description', null, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}
+               {{ Form::textarea('description', null, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Beschreibung',  'required', 'value'=>Input::old('description'))) }}
                @if ($errors->first('description'))
                <span class="help-block">{{ $errors->first('description') }}</span>
                @endif
@@ -1172,7 +1206,7 @@ background: rgba(0, 0, 0, 0.3);
                <div class="control-group {{ $errors->has('kcal100g') ? 'has-error' : '' }}">
                   <label class="control-label" for="kcal100g">Kcal pro 100g<span class="stern" >*</span></label>
                   <div class="controls">         
-                     {{ Form::text('kcal100g', null, array('class'=>'form-control', 'id' => 'kcal100g', 'placeholder'=>'Kcal pro 100g', 'value'=>Input::old('kcal100g'))) }}
+                     {{ Form::text('kcal100g', null, array('class'=>'form-control', 'id' => 'kcal100g',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Kcal pro 100g',  'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben', 'value'=>Input::old('kcal100g'))) }}
                      @if ($errors->first('kcal100g'))
                      <span class="help-block">{{ $errors->first('kcal100g') }}</span>
                      @endif
@@ -1289,4 +1323,27 @@ background: rgba(0, 0, 0, 0.3);
 
 
 
-@stop
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  @stop
