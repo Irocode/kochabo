@@ -46,17 +46,43 @@ if (isset($_GET["idzt"])) {
   background-position:right center;
   background-repeat:no-repeat;
   -moz-box-shadow:none;}
-</style>
-<style>
-   #description, #tip, #athome, #step_1, #step_2, #step_3, #step_4, #step_5, #step_6, #step_7 {
-   height: 194px;
-   }
+
+input[type="text"]:invalid {
+    color: red;
+}
+
+
+::-webkit-validation-bubble-message { display: none; }
+
 </style>
 
+
+<!--
+
 {{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
-{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
+{{ HTML::style('assets/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
 {{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
 {{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
+
+<link rel="stylesheet" href="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/examples/css/normalize.css">
+    <link rel="stylesheet" href="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/examples/css/stylesheet.css">
+   
+    <script src="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/examples/js/jquery.js"></script>
+    <script src="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/dist/js/standalone/selectize.js"></script>
+
+-->
+
+
+{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
+{{ HTML::style('assets/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
+
+
+<script src="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/dist/js/standalone/selectize.js"></script>
+
+
+
+
+
 
 
 <div class="container">
@@ -75,7 +101,7 @@ if (isset($_GET["idzt"])) {
          <div class="control-group {{ $errors->has('kochabo_id') ? 'has-error' : '' }}">
             <label class="control-label" for="kochabo_id">Kochabo Rezept ID <span class="stern" >*</span></label>
             <div class="controls">       
-               {{ Form::text('kochabo_id', $recipe->kochabo_id, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Kochabo Rezept ID', 'value'=>Input::old('kochabo_id'))) }}  
+               {{ Form::text('kochabo_id', $recipe->kochabo_id, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Kochabo Rezept ID', 'required','value'=>Input::old('kochabo_id'))) }}  
                @if ($errors->first('kochabo_id'))
                <span class="help-block">{{ $errors->first('kochabo_id') }}</span>
                @endif
@@ -86,7 +112,7 @@ if (isset($_GET["idzt"])) {
          <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
             <label class="control-label" for="title">Titel</label>
             <div class="controls">
-               {{ Form::text('title', $recipe->title, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Titel', 'value'=>Input::old('title'))) }}  
+               {{ Form::text('title', $recipe->title, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Titel', 'required','value'=>Input::old('title'))) }}  
                @if ($errors->first('title'))
                <span class="help-block">{{ $errors->first('title') }}</span>
                @endif
@@ -99,7 +125,7 @@ if (isset($_GET["idzt"])) {
             <div class="controls">
                <div class="input-group">
                   <span class="input-group-addon">www.kochabo.at/</span>
-                  {{ Form::text('slug', $recipe->slug, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
+                  {{ Form::text('slug', $recipe->slug, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'required','value'=>Input::old('slug'))) }}
                </div>
                @if ($errors->first('slug'))
                <span class="help-block">{{ $errors->first('slug') }}</span>
@@ -113,7 +139,7 @@ if (isset($_GET["idzt"])) {
                <div class="control-group {{ $errors->has('duration') ? 'has-error' : '' }}">
                   <label class="control-label" for="duration">Dauer (min)<span class="stern" >*</span></label>
                   <div class="controls">         
-                     {{ Form::text('duration', $recipe->duration, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Dauer (min)', 'value'=>Input::old('duration'))) }} 
+                     {{ Form::text('duration', $recipe->duration, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Dauer (min)', 'required', 'value'=>Input::old('duration'))) }} 
                      @if ($errors->first('duration'))
                      <span class="help-block">{{ $errors->first('duration') }}</span>
                      @endif
@@ -126,7 +152,7 @@ if (isset($_GET["idzt"])) {
                <div class="control-group {{ $errors->has('cooking_time') ? 'has-error' : '' }}">
                   <label class="control-label" for="cooking_time">Kochzeit (min) <span class="stern" >*</span></label>
                   <div class="controls">         
-                     {{ Form::text('cooking_time', $recipe->cooking_time, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Kochzeit (min)', 'value'=>Input::old('cooking_time'))) }}    
+                     {{ Form::text('cooking_time', $recipe->cooking_time, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Kochzeit (min)', 'required', 'value'=>Input::old('cooking_time'))) }}    
                      @if ($errors->first('cooking_time'))
                      <span class="help-block">{{ $errors->first('cooking_time') }}</span>
                      @endif
@@ -141,7 +167,7 @@ if (isset($_GET["idzt"])) {
                <div class="control-group {{ $errors->has('nutrition_carbs') ? 'has-error' : '' }}">
                   <label class="control-label" for="nutrition_carbs">Nährwertangabe - Kohlenhydrate (g) <span class="stern" >*</span></label>
                   <div class="controls">        
-                     {{ Form::text('nutrition_carbs', $recipe->nutrition_carbs, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Kohlenhydrate (g)', 'value'=>Input::old('nutrition_carbs'))) }}           
+                     {{ Form::text('nutrition_carbs', $recipe->nutrition_carbs, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Kohlenhydrate (g)', 'required', 'value'=>Input::old('nutrition_carbs'))) }}           
                      @if ($errors->first('nutrition_carbs'))
                      <span class="help-block">{{ $errors->first('nutrition_carbs') }}</span>
                      @endif
@@ -153,7 +179,7 @@ if (isset($_GET["idzt"])) {
                <div class="control-group {{ $errors->has('nutrition_fat') ? 'has-error' : '' }}">
                   <label class="control-label" for="nutrition_fat">Nährwertangabe - Fett (g) <span class="stern" >*</span></label>
                   <div class="controls">   
-                     {{ Form::text('nutrition_fat', $recipe->nutrition_fat, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Fett (g)', 'value'=>Input::old('nutrition_fat'))) }}       
+                     {{ Form::text('nutrition_fat', $recipe->nutrition_fat, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Fett (g)', 'required','value'=>Input::old('nutrition_fat'))) }}       
                      @if ($errors->first('nutrition_fat'))
                      <span class="help-block">{{ $errors->first('nutrition_fat') }}</span>
                      @endif
@@ -170,7 +196,7 @@ if (isset($_GET["idzt"])) {
                <div class="control-group {{ $errors->has('nutrition_protein ') ? 'has-error' : '' }}">
                   <label class="control-label" for="nutrition_protein ">Nährwertangabe - Eiweiß (g)<span class="stern" >*</span></label>
                   <div class="controls">    
-                     {{ Form::text('nutrition_protein', $recipe->nutrition_protein, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Eiweiß (g)', 'value'=>Input::old('nutrition_protein'))) }}      
+                     {{ Form::text('nutrition_protein', $recipe->nutrition_protein, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Eiweiß (g)', 'required','value'=>Input::old('nutrition_protein'))) }}      
                      @if ($errors->first('nutrition_protein '))
                      <span class="help-block">{{ $errors->first('nutrition_protein') }}</span>
                      @endif
@@ -182,7 +208,7 @@ if (isset($_GET["idzt"])) {
                <div class="control-group {{ $errors->has('nutrition_kcal') ? 'has-error' : '' }}">
                   <label class="control-label" for="nutrition_kcal">Nährwertangabe - Energie (kcal)<span class="stern" >*</span></label>
                   <div class="controls">  
-                     {{ Form::text('nutrition_kcal', $recipe->nutrition_kcal, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Energie (kcal)', 'value'=>Input::old('nutrition_kcal'))) }}        
+                     {{ Form::text('nutrition_kcal', $recipe->nutrition_kcal, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Energie (kcal)','required', 'value'=>Input::old('nutrition_kcal'))) }}        
                      @if ($errors->first('nutrition_kcal'))
                      <span class="help-block">{{ $errors->first('nutrition_kcal') }}</span>
                      @endif
@@ -196,7 +222,7 @@ if (isset($_GET["idzt"])) {
          <div class="control-group {{ $errors->has('tip') ? 'has-error' : '' }}">
             <label class="control-label" for="tip">Tipp <span class="stern" >*</span></label>
             <div class="controls">         
-               {{ Form::textarea('tip', $recipe->tip, array('class'=>'form-control', 'id' => 'tip',  'placeholder'=>'Tipp', 'value'=>Input::old('tip'))) }}   
+               {{ Form::textarea('tip', $recipe->tip, array('class'=>'form-control', 'id' => 'tip',  'placeholder'=>'Tipp', 'required', 'value'=>Input::old('tip'))) }}   
                @if ($errors->first('tip'))
                <span class="help-block">{{ $errors->first('tip') }}</span>
                @endif
@@ -207,7 +233,7 @@ if (isset($_GET["idzt"])) {
          <div class="control-group {{ $errors->has('athome') ? 'has-error' : '' }}">
             <label class="control-label" for="athome">Solltest zu Hause haben <span class="stern" >*</span></label>
             <div class="controls">         
-               {{ Form::textarea('athome', $recipe->athome, array('class'=>'form-control', 'id' => 'athome',  'placeholder'=>'Solltest zu Hause haben', 'value'=>Input::old('athome'))) }}      
+               {{ Form::textarea('athome', $recipe->athome, array('class'=>'form-control', 'id' => 'athome',  'placeholder'=>'Solltest zu Hause haben', 'required',  'value'=>Input::old('athome'))) }}      
                @if ($errors->first('athome'))
                <span class="help-block">{{ $errors->first('athome') }}</span>
                @endif
@@ -218,7 +244,7 @@ if (isset($_GET["idzt"])) {
          <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
             <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
             <div class="controls">         
-               {{ Form::textarea('description', $recipe->description, array('class'=>'form-control', 'id' => 'description',  'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}       
+               {{ Form::textarea('description', $recipe->description, array('class'=>'form-control', 'id' => 'description',  'placeholder'=>'Beschreibung', 'required', 'value'=>Input::old('description'))) }}       
                @if ($errors->first('description'))
                <span class="help-block">{{ $errors->first('description') }}</span>
                @endif
@@ -919,7 +945,7 @@ if (isset($_GET["idzt"])) {
    
     <div id="wrapper">          
           <div class="control-group {{ $errors->has('ingredient_id') ? 'has-error' : '' }}">
-            <select  required id="select-beast" name="ingredient_id"  style="width:200px; " required class="demo-default" placeholder="Wähle eine Zutat">
+            <select  id="select-beast" name="ingredient_id"  style="width:200px; "  placeholder="Wähle eine Zutat" required>
 
               <?php 
 
@@ -996,6 +1022,11 @@ if (isset($_GET["idzt"])) {
                      <span class="help-block">{{ $errors->first('amount_6_persons') }}</span>
                      @endif
                   </div>
+
+                  <input type="text" name="zipc" required="required" pattern="[0-9]+"
+        placeholder="Required information"
+        data-errormessage="NENE" />
+
                </td>
                <td>
                   <div class="control-group {{ $errors->has('price') ? 'has-error' : '' }}">
@@ -1250,17 +1281,6 @@ background: rgba(0, 0, 0, 0.3);
   </div>
 </div>
 <!--Modal Form Ende-->
-
-
-
-
-
-
-
-
-
-
-
 
 
 
