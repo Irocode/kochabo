@@ -951,7 +951,7 @@
 			position: 'absolute',
 			top: -99999,
 			left: -99999,
-			width: 216,
+			width: 214,
 			padding: 0,
 			whiteSpace: 'pre'
 		}).text(str).appendTo('body');
