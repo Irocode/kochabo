@@ -50,7 +50,8 @@ if (isset($_GET["idzt"])) {
 }
 
  select:valid {background-image:url({{URL::to('assets/img/backend/images/valid.png')}});
-  background-position:right center;
+
+  background-position:85% 50%;
   background-repeat:no-repeat;
 }
 
@@ -71,12 +72,11 @@ if (isset($_GET["idzt"])) {
 }
 
  select:required:invalid {background-image:url({{URL::to('assets/img/backend/images/invalid.png')}});
-  background-position:right center;
+    background-position:85% 50%;
+  margin-right:15px;
   background-repeat:no-repeat;
   -moz-box-shadow:none;
-  -webkit-box-shadow: 0 0 3px red;
-    -moz-box-shadow: 0 0 3px red;
-    box-shadow: 0 0 3px red;}
+ 
   select[type="text"]:invalid {
     color: red;
 }
