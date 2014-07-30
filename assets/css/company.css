@@ -1,5 +1,75 @@
 
 
+  /*REQUIERD FIELDS*/
+/*<!--http://skybeam.de/blog/html5-input-required/-->*/
+  input:required:valid {
+  background-image:url(../../assets/img/backend/images/valid.png);
+  background-position:right center;
+  background-repeat:no-repeat;
+  }
+
+
+ textarea:valid {
+ background-image:url(../../assets/img/backend/images/valid.png);
+  background-position:right center;
+  background-repeat:no-repeat;
+}
+
+ select:valid {
+ background-image:url(../../assets/img/backend/images/valid.png);
+
+  background-position:85% 50%;
+  background-repeat:no-repeat;
+}
+
+  input:required:invalid {
+     background-image:url(../../assets/img/backend/images/invalid.png);
+  background-position:right center;
+  background-repeat:no-repeat;
+
+}
+
+  textarea:required:invalid {
+   background-image:url(../../assets/img/backend/images/invalid.png);
+  background-position:right center;
+  background-repeat:no-repeat;
+  -moz-box-shadow:none;
+  textarea[type="text"]:invalid {
+    color: red;
+}
+}
+
+ select:required:invalid {
+   background-image:url(../../assets/img/backend/images/invalid.png);
+  background-position:85% 50%;
+  margin-right:15px;
+  background-repeat:no-repeat;
+  -moz-box-shadow:none;
+ 
+  select[type="text"]:invalid {
+    color: red;
+}
+}
+
+textarea{
+height:195px!important;
+}
+
+
+
+/*Rezept speichern*/
+
+ .stuck {
+    position: fixed;
+    top: 100px;  
+    right: 10px;
+    height: 100px;
+    width: 150px;
+    overflow: auto;   
+    z-index:2
+}
+
+
 
 /*facebook*/
 .btn-facebook {

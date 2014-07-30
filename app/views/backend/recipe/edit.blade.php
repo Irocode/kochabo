@@ -11,21 +11,25 @@
 
 <!--Modal adds-->
 <?php
-if (isset($_GET["name"])) {
-    $recipeid = $_GET["name"];  
-}
-if (isset($_GET["name"])) {
-    $name = $_GET["name"];     
-}
 
+if (isset($_GET["name"]))
+  {
+  $recipeid = $_GET["name"];
+  }
 
-if (isset($_GET["idzt"])) {
-    $idzt = $_GET["idzt"];     
-}
+if (isset($_GET["name"]))
+  {
+  $name = $_GET["name"];
+  }
+
+if (isset($_GET["idzt"]))
+  {
+  $idzt = $_GET["idzt"];
+  }
 
 ?>
 
-<!-- Nur Zahlen möglich-->
+<!-- [Zahl angeben]-->
 <script>
     function isNumberKey(evt){
     var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -36,83 +40,11 @@ if (isset($_GET["idzt"])) {
 </script>
 
 
-<style type="text/css">
-/*REQUIERD FIELDS*/
-/*<!--http://skybeam.de/blog/html5-input-required/-->*/
-  input:required:valid {background-image:url({{URL::to('assets/img/backend/images/valid.png')}});
-  background-position:right center;
-  background-repeat:no-repeat;
-  }
-
- textarea:valid {background-image:url({{URL::to('assets/img/backend/images/valid.png')}});
-  background-position:right center;
-  background-repeat:no-repeat;
-}
-
- select:valid {background-image:url({{URL::to('assets/img/backend/images/valid.png')}});
-
-  background-position:85% 50%;
-  background-repeat:no-repeat;
-}
-
-
-  input:required:invalid {background-image:url({{URL::to('assets/img/backend/images/invalid.png')}});
-  background-position:right center;
-  background-repeat:no-repeat;
-
-}
-
- textarea:required:invalid {background-image:url({{URL::to('assets/img/backend/images/invalid.png')}});
-  background-position:right center;
-  background-repeat:no-repeat;
-  -moz-box-shadow:none;
-  textarea[type="text"]:invalid {
-    color: red;
-}
-}
-
- select:required:invalid {background-image:url({{URL::to('assets/img/backend/images/invalid.png')}});
-    background-position:85% 50%;
-  margin-right:15px;
-  background-repeat:no-repeat;
-  -moz-box-shadow:none;
- 
-  select[type="text"]:invalid {
-    color: red;
-}
-}
-
-</style>
-
-
-
-<!--
-
-{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
-{{ HTML::style('assets/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
-{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
-{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
-
-<link rel="stylesheet" href="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/examples/css/normalize.css">
-    <link rel="stylesheet" href="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/examples/css/stylesheet.css">
-   
-    <script src="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/examples/js/jquery.js"></script>
-    <script src="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/dist/js/standalone/selectize.js"></script>
-<script src="http://informator-mikrofirmy.pl/selectize.js-master/selectize.js-master/dist/js/standalone/selectize.js"></script>
--->
 
 
 {{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
 {{ HTML::style('assets/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
 {{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectizenew.js') }}
-
-
-
-
-
-
-
-
 
 
 
@@ -139,7 +71,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br> 
+         <br /> 
          <!-- Title -->
          <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
             <label class="control-label" for="title">Titel</label>
@@ -150,10 +82,10 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <!-- Slug -->
          <div class="control-group {{ $errors->has('slug') ? 'has-error' : '' }}">
-            <label class="control-label" for="title">Slug</label>
+            <label class="control-label" for="slug">Slug</label>
             <div class="controls">
                <div class="input-group">
                   <span class="input-group-addon">www.kochabo.at/</span>
@@ -164,33 +96,33 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br> 
+         <br /> 
          <div class="row">
             <div class="col-md-6">
                <!-- duration -->
                <div class="control-group {{ $errors->has('duration') ? 'has-error' : '' }}">
                   <label class="control-label" for="duration">Dauer (min)<span class="stern" >*</span></label>
                   <div class="controls">         
-                     {{ Form::text('duration', $recipe->duration, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Dauer (min)', 'required', 'value'=>Input::old('duration'))) }} 
+                     {{ Form::text('duration', $recipe->duration, array('class'=>'form-control', 'id' => 'recipe', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Dauer (min) [Zahl angeben]', 'required', 'value'=>Input::old('duration'))) }} 
                      @if ($errors->first('duration'))
                      <span class="help-block">{{ $errors->first('duration') }}</span>
                      @endif
                   </div>
                </div>
-               <br> 
+               <br /> 
             </div>
             <div class="col-md-6">
                <!-- cooking_time -->
                <div class="control-group {{ $errors->has('cooking_time') ? 'has-error' : '' }}">
                   <label class="control-label" for="cooking_time">Kochzeit (min) <span class="stern" >*</span></label>
                   <div class="controls">         
-                     {{ Form::text('cooking_time', $recipe->cooking_time, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Kochzeit (min)', 'required', 'value'=>Input::old('cooking_time'))) }}    
+                     {{ Form::text('cooking_time', $recipe->cooking_time, array('class'=>'form-control', 'id' => 'recipe', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'onkeypress' =>'return isNumberKey(event)',  'placeholder'=>'Kochzeit (min) [Zahl angeben]', 'required', 'value'=>Input::old('cooking_time'))) }}    
                      @if ($errors->first('cooking_time'))
                      <span class="help-block">{{ $errors->first('cooking_time') }}</span>
                      @endif
                   </div>
                </div>
-               <br>
+               <br />
             </div>
          </div>
          <div class="row">
@@ -199,7 +131,7 @@ if (isset($_GET["idzt"])) {
                <div class="control-group {{ $errors->has('nutrition_carbs') ? 'has-error' : '' }}">
                   <label class="control-label" for="nutrition_carbs">Nährwertangabe - Kohlenhydrate (g) <span class="stern" >*</span></label>
                   <div class="controls">        
-                     {{ Form::text('nutrition_carbs', $recipe->nutrition_carbs, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Kohlenhydrate (g)', 'required', 'value'=>Input::old('nutrition_carbs'))) }}           
+                     {{ Form::text('nutrition_carbs', $recipe->nutrition_carbs, array('class'=>'form-control', 'id' => 'recipe', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nährwertangabe - Kohlenhydrate (g) [Zahl angeben]', 'required', 'value'=>Input::old('nutrition_carbs'))) }}           
                      @if ($errors->first('nutrition_carbs'))
                      <span class="help-block">{{ $errors->first('nutrition_carbs') }}</span>
                      @endif
@@ -211,13 +143,13 @@ if (isset($_GET["idzt"])) {
                <div class="control-group {{ $errors->has('nutrition_fat') ? 'has-error' : '' }}">
                   <label class="control-label" for="nutrition_fat">Nährwertangabe - Fett (g) <span class="stern" >*</span></label>
                   <div class="controls">   
-                     {{ Form::text('nutrition_fat', $recipe->nutrition_fat, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Fett (g)', 'required','value'=>Input::old('nutrition_fat'))) }}       
+                     {{ Form::text('nutrition_fat', $recipe->nutrition_fat, array('class'=>'form-control', 'id' => 'recipe', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nährwertangabe - Fett (g) [Zahl angeben]', 'required','value'=>Input::old('nutrition_fat'))) }}       
                      @if ($errors->first('nutrition_fat'))
                      <span class="help-block">{{ $errors->first('nutrition_fat') }}</span>
                      @endif
                   </div>
                </div>
-               <br>
+               <br />
             </div>
             <div class="col-md-6">
             </div>
@@ -228,7 +160,7 @@ if (isset($_GET["idzt"])) {
                <div class="control-group {{ $errors->has('nutrition_protein ') ? 'has-error' : '' }}">
                   <label class="control-label" for="nutrition_protein ">Nährwertangabe - Eiweiß (g)<span class="stern" >*</span></label>
                   <div class="controls">    
-                     {{ Form::text('nutrition_protein', $recipe->nutrition_protein, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Eiweiß (g)', 'required','value'=>Input::old('nutrition_protein'))) }}      
+                     {{ Form::text('nutrition_protein', $recipe->nutrition_protein, array('class'=>'form-control', 'id' => 'recipe',   'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nährwertangabe - Eiweiß (g) [Zahl angeben]', 'required','value'=>Input::old('nutrition_protein'))) }}      
                      @if ($errors->first('nutrition_protein '))
                      <span class="help-block">{{ $errors->first('nutrition_protein') }}</span>
                      @endif
@@ -240,13 +172,13 @@ if (isset($_GET["idzt"])) {
                <div class="control-group {{ $errors->has('nutrition_kcal') ? 'has-error' : '' }}">
                   <label class="control-label" for="nutrition_kcal">Nährwertangabe - Energie (kcal)<span class="stern" >*</span></label>
                   <div class="controls">  
-                     {{ Form::text('nutrition_kcal', $recipe->nutrition_kcal, array('class'=>'form-control', 'id' => 'recipe',  'placeholder'=>'Nährwertangabe - Energie (kcal)','required', 'value'=>Input::old('nutrition_kcal'))) }}        
+                     {{ Form::text('nutrition_kcal', $recipe->nutrition_kcal, array('class'=>'form-control', 'id' => 'recipe', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nährwertangabe - Energie (kcal) [Zahl angeben]','required', 'value'=>Input::old('nutrition_kcal'))) }}        
                      @if ($errors->first('nutrition_kcal'))
                      <span class="help-block">{{ $errors->first('nutrition_kcal') }}</span>
                      @endif
                   </div>
                </div>
-               <br>
+               <br />
             </div>
          </div>
          <div style="height:67px;"> </div>
@@ -260,7 +192,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br> 
+         <br /> 
          <!-- athome -->
          <div class="control-group {{ $errors->has('athome') ? 'has-error' : '' }}">
             <label class="control-label" for="athome">Solltest zu Hause haben <span class="stern" >*</span></label>
@@ -271,7 +203,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br> 
+         <br /> 
          <!-- description -->
          <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
             <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
@@ -282,7 +214,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <!-- Image -->
          <label class="control-label" for="imagesmall">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
          <div id="zone">
@@ -292,36 +224,46 @@ if (isset($_GET["idzt"])) {
                   id='files' name='imagesmall'  
                   onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
                <input id="btnclick" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-               <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
+               <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br /><output id="list"></output></div>
             </span>
             <div id="stored" >
-               <span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
+               <span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br /><span>
                <img src="{{ $recipe->imagesmall }}" width="120" height="120"> </span>
             </div>
             <script>
                function handleFileSelect(evt) {
                  var files = evt.target.files; // FileList object
+
                
                  // Loop through the FileList and render image files as thumbnails.
+
                  for (var i = 0, f; f = files[i]; i++) {
+
                
                    // Only process image files.
+
                    if (!f.type.match('image.*')) {
                      continue;
                    }
                    var reader = new FileReader();
+
                
                    // Closure to capture the file information.
+
                    reader.onload = (function(theFile) {
                      return function(e) {
+
                        // Render thumbnail.
+
                        var span = document.createElement('span');
                        span.innerHTML = ['<img class="thumb" src="', e.target.result,
                                          '" title="', escape(theFile.name), '"/>'].join('');
                        document.getElementById('list').insertBefore(span, null);
                      };
                    })(f);
+
                    // Read in the image file as a data URL.
+
                    reader.readAsDataURL(f);
                  }
                }
@@ -339,7 +281,7 @@ if (isset($_GET["idzt"])) {
             <!--Aktuelles Bild-->
             <input type="hidden" name="hiddenupdateimagesmall" value="{{$recipe->imagesmall}}">
          </div>
-         <br>
+         <br />
          <!-- Image -->
          <label class="control-label" for="imagemiddle">Mittelgroßes Bild einfügen (Derzeit 200 x 200px)</label>
          <div id="zone">
@@ -349,36 +291,46 @@ if (isset($_GET["idzt"])) {
                   id='files2' name='imagemiddle'  
                   onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
                <input id="btnclick2" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-               <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list2"></output></div>
+               <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br /><output id="list2"></output></div>
             </span>
             <div id="stored2" >
-               <span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
+               <span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br /><span>
                <img src="{{ $recipe->imagemiddle }}" width="120" height="120"> </span>
             </div>
             <script>
                function handleFileSelect(evt2) {
                  var files2 = evt2.target.files; // FileList object
+
                
                  // Loop through the FileList and render image files as thumbnails.
+
                  for (var i = 0, f; f = files2[i]; i++) {
+
                
                    // Only process image files.
+
                    if (!f.type.match('image.*')) {
                      continue;
                    }
                    var reader = new FileReader();
+
                
                    // Closure to capture the file information.
+
                    reader.onload = (function(theFile) {
                      return function(e) {
+
                        // Render thumbnail.
+
                        var span = document.createElement('span');
                        span.innerHTML = ['<img class="thumb" src="', e.target.result,
                                          '" title="', escape(theFile.name), '"/>'].join('');
                        document.getElementById('list2').insertBefore(span, null);
                      };
                    })(f);
+
                    // Read in the image file as a data URL.
+
                    reader.readAsDataURL(f);
                  }
                }
@@ -396,7 +348,7 @@ if (isset($_GET["idzt"])) {
             <!--Aktuelles Bild-->
             <input type="hidden" name="hiddenupdateimagemiddle" value="{{$recipe->imagemiddle}}">
          </div>
-         <br>
+         <br />
          <!-- Image -->
          <label class="control-label" for="imagebig">Kleines Bild einfügen (Derzeit 200 x 200px)</label>
          <div id="zone">
@@ -406,36 +358,46 @@ if (isset($_GET["idzt"])) {
                   id='files3' name='imagebig'  
                   onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
                <input id="btnclick3" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-               <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list3"></output></div>
+               <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br /><output id="list3"></output></div>
             </span>
             <div id="stored3" >
-               <span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
+               <span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br /><span>
                <img src="{{ $recipe->imagebig }}" width="120" height="120"> </span>
             </div>
             <script>
                function handleFileSelect(evt3) {
                  var files3 = evt3.target.files; // FileList object
+
                
                  // Loop through the FileList and render image files as thumbnails.
+
                  for (var i = 0, f; f = files3[i]; i++) {
+
                
                    // Only process image files.
+
                    if (!f.type.match('image.*')) {
                      continue;
                    }
                    var reader = new FileReader();
+
                
                    // Closure to capture the file information.
+
                    reader.onload = (function(theFile) {
                      return function(e) {
+
                        // Render thumbnail.
+
                        var span = document.createElement('span');
                        span.innerHTML = ['<img class="thumb" src="', e.target.result,
                                          '" title="', escape(theFile.name), '"/>'].join('');
                        document.getElementById('list3').insertBefore(span, null);
                      };
                    })(f);
+
                    // Read in the image file as a data URL.
+
                    reader.readAsDataURL(f);
                  }
                }
@@ -481,7 +443,7 @@ if (isset($_GET["idzt"])) {
                      @endif
                   </div>
                </div>
-               <br>
+               <br />
             </div>
             <div class="col-md-2">
                <!-- meat -->
@@ -495,7 +457,7 @@ if (isset($_GET["idzt"])) {
                      @endif
                   </div>
                </div>
-               <br>
+               <br />
             </div>
             <div class="col-md-2">
                <!-- fish -->
@@ -509,7 +471,7 @@ if (isset($_GET["idzt"])) {
                      @endif
                   </div>
                </div>
-               <br>
+               <br />
             </div>
             <div class="col-md-2">
                <!-- vegetarien -->
@@ -523,7 +485,7 @@ if (isset($_GET["idzt"])) {
                      @endif
                   </div>
                </div>
-               <br>
+               <br />
             </div>
             <div class="col-md-2">
                <!-- vegan -->
@@ -549,7 +511,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <!-- step_2 -->
          <div class="control-group {{ $errors->has('step_2') ? 'has-error' : '' }}">
             <label class="control-label" for="step_2">Schritt 2 <span class="stern" >*</span></label>
@@ -560,7 +522,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <!-- step_3 -->
          <div class="control-group {{ $errors->has('step_3') ? 'has-error' : '' }}">
             <label class="control-label" for="step_3">Schritt 3 <span class="stern" >*</span></label>
@@ -571,7 +533,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <!-- step_4 -->
          <div class="control-group {{ $errors->has('step_4') ? 'has-error' : '' }}">
             <label class="control-label" for="step_4">Schritt 4 <span class="stern" >*</span></label>
@@ -582,7 +544,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <!-- step_5 -->
          <div class="control-group {{ $errors->has('step_5') ? 'has-error' : '' }}">
             <label class="control-label" for="step_5">Schritt 5 <span class="stern" >*</span></label>
@@ -593,7 +555,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <!-- step_6 -->
          <div class="control-group {{ $errors->has('step_6') ? 'has-error' : '' }}">
             <label class="control-label" for="step_6">Schritt 6 <span class="stern" >*</span></label>
@@ -604,7 +566,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <!-- step_7 -->
          <div class="control-group {{ $errors->has('step_7') ? 'has-error' : '' }}">
             <label class="control-label" for="step_7">Schritt 7 <span class="stern" >*</span></label>
@@ -615,7 +577,7 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <!-- Published --><!-- 
          <input type="hidden" value="is_published">
          <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
@@ -626,25 +588,12 @@ if (isset($_GET["idzt"])) {
                @endif
             </div>
          </div>
-         <br>
+         <br />
          -->
       </div>
    </div>
-   <br>
+   <br />
 
-<style>
- .stuck {
-    position: fixed;
-    top: 100px;
-    right: 10px;
-    height: 100px;
-    width: 150px;
-    overflow: auto;   
-    z-index:2
-}
-
-
-</style>
 
 
    <div style="height:34px;"> </div>
@@ -653,37 +602,22 @@ if (isset($_GET["idzt"])) {
    {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
     {{ Form::submit('Rezept speichern', array('class' => 'btn btn-u')) }}
-<div class="stuck" align="right"><br><br><br>
+<div class="stuck" align="right"><br /><br /><br />
    {{ Form::submit('Rezept speichern', array('class' => 'btn btn-u')) }}
 </div>
 
-
-
-
-
 </div>
 <!-- Plichtfeld Ende -->
-<br>
-<br>
+<br />
+<br />
 </div>
 {{ Form::close() }}
   
 
 
-
 <div class="container">
 
   </div>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -714,16 +648,32 @@ if (isset($_GET["idzt"])) {
                   </thead>
                   <tbody>
                      @foreach( $recipe_ingredient as $v )
-                     <?php  $ingredient_id_e =  $v->id; $ingredient_id_ee ="ingredient_id_$ingredient_id_e" ?>
-                     <?php   $amount_2_persons_e =  $v->id; $amount_2_persons_ee ="amount_2_persons_$amount_2_persons_e" ?>
-                     <?php   $amount_4_persons_e =  $v->id; $amount_4_persons_ee ="amount_4_persons_$amount_4_persons_e" ?>
-                     <?php   $amount_6_persons_e =  $v->id; $amount_6_persons_ee ="amount_6_persons_$amount_6_persons_e" ?>
-                     <?php   $einheit_e =  $v->id; $einheit_ee ="einheit_$einheit_e" ?> 
-                     <?php   $ingredient_id_aktu_e =  $v->id; $ingredient_id_aktu_ee ="ingredient_id_aktu_$ingredient_id_aktu_e" ?>              
+                     <?php
+$ingredient_id_e = $v->id;
+$ingredient_id_ee = "ingredient_id_$ingredient_id_e" ?>
+                     <?php
+$amount_2_persons_e = $v->id;
+$amount_2_persons_ee = "amount_2_persons_$amount_2_persons_e" ?>
+                     <?php
+$amount_4_persons_e = $v->id;
+$amount_4_persons_ee = "amount_4_persons_$amount_4_persons_e" ?>
+                     <?php
+$amount_6_persons_e = $v->id;
+$amount_6_persons_ee = "amount_6_persons_$amount_6_persons_e" ?>
+                     <?php
+$einheit_e = $v->id;
+$einheit_ee = "einheit_$einheit_e" ?> 
+                     <?php
+$ingredient_id_aktu_e = $v->id;
+$ingredient_id_aktu_ee = "ingredient_id_aktu_$ingredient_id_aktu_e" ?>              
                   
 
-                     <?php   $delivery_e =  $v->id; $delivery_ee ="delivery_$delivery_e" ?> 
-                     <?php   $selectbeastx_e =  $v->id; $selectbeastx_ee ="selectbeastx_$selectbeastx_e" ?> 
+                     <?php
+$delivery_e = $v->id;
+$delivery_ee = "delivery_$delivery_e" ?> 
+                     <?php
+$selectbeastx_e = $v->id;
+$selectbeastx_ee = "selectbeastx_$selectbeastx_e" ?> 
 
                    
 
@@ -772,7 +722,7 @@ if (isset($_GET["idzt"])) {
 
 
                               <div class="control-group {{ $errors->has($amount_2_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_2_persons', $v->amount_2_persons, array('class'=>'form-control', 'id' => $amount_2_persons_ee, 'placeholder'=>'Nur Zahlen möglich', 'required', 'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_2_persons'))) }}
+                                 {{ Form::text('amount_2_persons', $v->amount_2_persons, array('class'=>'form-control', 'id' => $amount_2_persons_ee, 'placeholder'=>'[Zahl angeben]', 'required', 'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_2_persons'))) }}
                                  @if ($errors->first($amount_2_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_2_persons_ee) }}</span>
                                  @endif
@@ -780,7 +730,7 @@ if (isset($_GET["idzt"])) {
                            </td>
                            <td>
                               <div class="control-group {{ $errors->has($amount_4_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_4_persons', $v->amount_4_persons, array('class'=>'form-control', 'id' => $amount_4_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required', 'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'value'=>Input::old('amount_4_persons'))) }}
+                                 {{ Form::text('amount_4_persons', $v->amount_4_persons, array('class'=>'form-control', 'id' => $amount_4_persons_ee, 'placeholder'=>'[Zahl angeben]',  'required', 'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'value'=>Input::old('amount_4_persons'))) }}
                                  @if ($errors->first($amount_4_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_4_persons_ee) }}</span>
                                  @endif
@@ -789,7 +739,7 @@ if (isset($_GET["idzt"])) {
 
                                <td>
                               <div class="control-group {{ $errors->has($amount_6_persons_ee) ? 'has-error' : '' }}">
-                                 {{ Form::text('amount_6_persons', $v->amount_6_persons, array('class'=>'form-control', 'id' => $amount_6_persons_ee, 'placeholder'=>'Nur Zahlen möglich',  'required',  'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_6_persons'))) }}
+                                 {{ Form::text('amount_6_persons', $v->amount_6_persons, array('class'=>'form-control', 'id' => $amount_6_persons_ee, 'placeholder'=>'[Zahl angeben]',  'required',  'onkeypress' =>'return isNumberKey(event)', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_6_persons'))) }}
                                  @if ($errors->first($amount_6_persons_ee))
                                  <span class="help-block">{{ $errors->first($amount_6_persons_ee) }}</span>
                                  @endif
@@ -870,9 +820,11 @@ if (isset($_GET["idzt"])) {
                            $("#flash_{{$v->id}}").show();
                            $("#flash_{{$v->id}}").fadeIn(1000).html('<img src="{{ URL::to('assets/img/backend/icons/ajax-loader.gif') }}" />'); 
                            $("#flash_{{$v->id}}").fadeOut(1000);
+
                
                
-               //Hinweis Anfang
+               // Hinweis Anfang
+
                    $(function(){
                     new PNotify({     
                    title: 'Hinweis',
@@ -881,12 +833,16 @@ if (isset($_GET["idzt"])) {
                    mouse_reset: false
                });
                    });
+
                
-               //Hinweis ENDE   
+               // Hinweis ENDE   
+
                
                e.preventDefault();
+
                
-               //formData 
+               // formData 
+
                var formData = new FormData();   
                formData.append('ingredient_id', $('#selectbeastx_{{$v->id}}').val());              
                formData.append('amount_2_persons', $('#amount_2_persons_{{$v->id}}').val());
@@ -980,20 +936,24 @@ if (isset($_GET["idzt"])) {
           <div class="control-group {{ $errors->has('ingredient_id') ? 'has-error' : '' }}">
             <select  id="select-beast" name="ingredient_id"  style="width:200px; "  placeholder="Wähle eine Zutat" required="required"  x-moz-errormessage = 'Bitte eine Zahl eingeben.'>
 
-              <?php 
-
-
-         if (isset($idzt))      
-              
-              { ?>
-               <option value="<?php if (isset($name)) {echo"$idzt";}  ?> " selected >{{$name}}</option>
               <?php
-              } 
-               else { ?>
+
+if (isset($idzt))
+  { ?>
+               <option value="<?php
+  if (isset($name))
+    {
+    echo "$idzt";
+    } ?> " selected >{{$name}}</option>
+              <?php
+  }
+  else
+  { ?>
                 <option value="" selected  >Wähle eine Zutat</option>
               <?php
-              }
-              ?>               
+  }
+
+?>               
 
               @foreach( $ingredients as $x ) 
               <option value="{{$x->id }}">{{ $x->name }}</option>
@@ -1036,7 +996,7 @@ if (isset($_GET["idzt"])) {
 
 
                   <div class="control-group {{ $errors->has('amount_2_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_2_persons', null, array('class'=>'form-control', 'id' => 'amount_2_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'value'=>Input::old('amount_2_persons'))) }}   
+                     {{ Form::text('amount_2_persons', null, array('class'=>'form-control', 'id' => 'amount_2_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'[Zahl angeben]', 'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'value'=>Input::old('amount_2_persons'))) }}   
                      @if ($errors->first('amount_2_persons'))
                      <span class="help-block">{{ $errors->first('amount_2_persons') }}</span>
                      @endif
@@ -1044,7 +1004,7 @@ if (isset($_GET["idzt"])) {
                </td>
                <td>
                   <div class="control-group {{ $errors->has('amount_4_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_4_persons', null, array('class'=>'form-control', 'id' => 'amount_4_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich','required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_4_persons'))) }}   
+                     {{ Form::text('amount_4_persons', null, array('class'=>'form-control', 'id' => 'amount_4_persons', 'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'[Zahl angeben]','required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_4_persons'))) }}   
                      @if ($errors->first('amount_4_persons'))
                      <span class="help-block">{{ $errors->first('amount_4_persons') }}</span>
                      @endif
@@ -1052,7 +1012,7 @@ if (isset($_GET["idzt"])) {
                </td>
                <td>
                   <div class="control-group {{ $errors->has('amount_6_persons') ? 'has-error' : '' }}">
-                     {{ Form::text('amount_6_persons', null, array('class'=>'form-control', 'id' => 'amount_6_persons',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Nur Zahlen möglich', 'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_6_persons'))) }}   
+                     {{ Form::text('amount_6_persons', null, array('class'=>'form-control', 'id' => 'amount_6_persons',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'[Zahl angeben]', 'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.','value'=>Input::old('amount_6_persons'))) }}   
                      @if ($errors->first('amount_6_persons'))
                      <span class="help-block">{{ $errors->first('amount_6_persons') }}</span>
                      @endif
@@ -1068,8 +1028,8 @@ if (isset($_GET["idzt"])) {
                <td>
                   <div class="control-group {{ $errors->has('price') ? 'has-error' : '' }}">
                      <div class="controls">
-                        <select required name="einheit" class="form-control" >
-                           <option value="" selected >Einheit</option>
+                        <select required name="einheit" class="form-control"  >
+                           <option placeholder="Einheit"value="" selected ></option>
                            @foreach( $list_einheit as $x )             
                            <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
                            @endforeach  
@@ -1130,7 +1090,7 @@ if (isset($_GET["idzt"])) {
    
 
 
-<br>
+<br />
 <!--Anlegen ENDE-->   
 
 
@@ -1180,7 +1140,7 @@ background: rgba(0, 0, 0, 0.3);
    {{ Form::open(array('action' => 'App\Controllers\Admin\IngredientsController@store', 'files'=> true, 'method' => 'post' )) }}
    <div class="row">
       <div class="col-md-6">
-         <br> 
+         <br /> 
          <!-- name -->
          <div class="control-group {{ $errors->has('name') ? 'has-error' : '' }}">
             <label class="control-label" for="name">Name <span class="stern" >*</span></label>
@@ -1191,7 +1151,7 @@ background: rgba(0, 0, 0, 0.3);
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <!-- description -->
          <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
             <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
@@ -1202,7 +1162,7 @@ background: rgba(0, 0, 0, 0.3);
                @endif
             </div>
          </div>
-         <br>
+         <br />
          <div class="row">
             <div class="col-md-6">
                <!-- kcal100g -->
@@ -1227,10 +1187,10 @@ background: rgba(0, 0, 0, 0.3);
                      @endif
                   </div>
                </div>
-               <br>
+               <br />
             </div>
          </div>
-         <br>
+         <br />
       </div>
       <div class="col-md-6">
          <div style="height:30px;"> </div>
@@ -1244,33 +1204,43 @@ background: rgba(0, 0, 0, 0.3);
                   id='files4' name='imagex'  
                   onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
                <input id="btnclick4" class="btn btn-u"  type="button" value="Bild auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-               <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list4"></output></div>
+               <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br /><output id="list4"></output></div>
             </span>
          
             <script>
                function handleFileSelect(evt4) {
                  var files4 = evt4.target.files; // FileList object
+
                
                  // Loop through the FileList and render image files as thumbnails.
+
                  for (var i = 0, f; f = files4[i]; i++) {
+
                
                    // Only process image files.
+
                    if (!f.type.match('image.*')) {
                      continue;
                    }
                    var reader = new FileReader();
+
                
                    // Closure to capture the file information.
+
                    reader.onload = (function(theFile) {
                      return function(e) {
+
                        // Render thumbnail.
+
                        var span = document.createElement('span');
                        span.innerHTML = ['<img class="thumb" src="', e.target.result,
                                          '" title="', escape(theFile.name), '"/>'].join('');
                        document.getElementById('list4').insertBefore(span, null);
                      };
                    })(f);
+
                    // Read in the image file as a data URL.
+
                    reader.readAsDataURL(f);
                  }
                }
@@ -1288,13 +1258,13 @@ background: rgba(0, 0, 0, 0.3);
            
           
          </div>   
-         <br>
+         <br />
          <!-- Published -->       
        
-         <br>
+         <br />
       </div>
    </div>
-   <br>
+   <br />
    <!-- Plichtfeld Anfang -->
    <div  style="margin-top:20px; margin-bottom:10px;">
       <p><span class="stern" >*</span> Plichtfelder müssen ausgefüllt werden. </p>
@@ -1308,8 +1278,8 @@ background: rgba(0, 0, 0, 0.3);
    {{ Form::submit('Anlegen', array('class' => 'btn btn-u')) }}
 </div>
 <!-- Plichtfeld Ende -->
-<br>
-<br>
+<br />
+<br />
 </div>
        
       </div>
@@ -1318,32 +1288,6 @@ background: rgba(0, 0, 0, 0.3);
   </div>
 </div>
 <!--Modal Form Ende-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
 
 
 
