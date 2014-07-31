@@ -33,7 +33,7 @@
    <div class="control-group {{ $errors->has('name') ? 'has-error' : '' }}">
       <label class="control-label" for="name">Logistiker <span class="stern" >*</span></label>
       <div class="controls">
-        {{ Form::text('name', null, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Logistiker', 'value'=>Input::old('name'))) }}
+        {{ Form::text('name', null, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Logistiker',  'pattern' =>'.{2,}', 'required', 'value'=>Input::old('name'))) }}
          @if ($errors->first('name'))
          <span class="help-block">{{ $errors->first('name') }}</span>
          @endif
@@ -46,7 +46,7 @@
    <div class="control-group {{ $errors->has('street') ? 'has-error' : '' }}">
       <label class="control-label" for="street">Straße <span class="stern" >*</span></label>
       <div class="controls">
-         {{ Form::text('street', null, array('class'=>'form-control', 'id' => 'street', 'placeholder'=>'Straße', 'value'=>Input::old('street'))) }}
+         {{ Form::text('street', null, array('class'=>'form-control', 'id' => 'street', 'placeholder'=>'Straße',  'pattern' =>'.{2,}', 'required', 'value'=>Input::old('street'))) }}
          @if ($errors->first('street'))
          <span class="help-block">{{ $errors->first('street') }}</span>
          @endif
@@ -57,7 +57,7 @@
    <div class="control-group {{ $errors->has('strettno') ? 'has-error' : '' }}">
       <label class="control-label" for="strettno">Adress Zusatz</label>
       <div class="controls">
-        {{ Form::text('streetno', null, array('class'=>'form-control', 'id' => 'streetno', 'placeholder'=>'Adress Zusatz', 'value'=>Input::old('streetno'))) }}
+        {{ Form::text('streetno', null, array('class'=>'form-control', 'id' => 'streetno', 'placeholder'=>'Adress Zusatz',  'value'=>Input::old('streetno'))) }}
          @if ($errors->first('strettno'))
          <span class="help-block">{{ $errors->first('strettno') }}</span>
          @endif
@@ -68,7 +68,7 @@
    <div class="control-group {{ $errors->has('zip') ? 'has-error' : '' }}">
       <label class="control-label" for="zip">PLZ <span class="stern" >*</span> </label>
       <div class="controls">
-      {{ Form::text('zip', null, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'PLZ', 'value'=>Input::old('zip'))) }}
+      {{ Form::text('zip', null, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'PLZ [Zahl angeben]', 'onkeypress' =>'return isNumberKey(event)', 'pattern' =>'.{4,}', 'required','value'=>Input::old('zip'))) }}
          @if ($errors->first('title'))
          <span class="help-block">{{ $errors->first('zip') }}</span>
          @endif
@@ -79,7 +79,7 @@
    <div class="control-group {{ $errors->has('city') ? 'has-error' : '' }}">
       <label class="control-label" for="city">Ort <span class="stern" >*</span> </label>
       <div class="controls">
-      {{ Form::text('city', null, array('class'=>'form-control', 'id' => 'city', 'placeholder'=>'Ort', 'value'=>Input::old('city'))) }}
+      {{ Form::text('city', null, array('class'=>'form-control', 'id' => 'city', 'placeholder'=>'Ort', 'pattern' =>'.{2,}', 'required', 'value'=>Input::old('city'))) }}
          @if ($errors->first('city'))
          <span class="help-block">{{ $errors->first('city') }}</span>
          @endif
@@ -94,7 +94,7 @@
    <div class="control-group {{ $errors->has('stateprovince') ? 'has-error' : '' }}">
       <label class="control-label" for="stateprovince">Bundesland <span class="stern" >*</span></label>
       <div class="controls">
-    {{ Form::text('stateprovince', null, array('class'=>'form-control', 'id' => 'stateprovince', 'placeholder'=>'Bundesland', 'value'=>Input::old('stateprovince'))) }}
+    {{ Form::text('stateprovince', null, array('class'=>'form-control', 'id' => 'stateprovince', 'placeholder'=>'Bundesland', 'pattern' =>'.{2,}', 'required', 'value'=>Input::old('stateprovince'))) }}
          @if ($errors->first('stateprovince'))
          <span class="help-block">{{ $errors->first('stateprovince') }}</span>
          @endif
@@ -105,7 +105,7 @@
    <div class="control-group {{ $errors->has('country_id') ? 'has-error' : '' }}">
       <label class="control-label" for="country_id">Land <span class="stern" >*</span></label>
       <div class="controls">
-         {{ Form::text('country_id', null, array('class'=>'form-control', 'id' => 'country_id', 'placeholder'=>'Land', 'value'=>Input::old('country_id'))) }}
+         {{ Form::text('country_id', null, array('class'=>'form-control', 'id' => 'country_id', 'placeholder'=>'Land', 'pattern' =>'.{2,}', 'required', 'value'=>Input::old('country_id'))) }}
          @if ($errors->first('country_id'))
          <span class="help-block">{{ $errors->first('country_id') }}</span>
          @endif
@@ -116,7 +116,7 @@
    <div class="control-group {{ $errors->has('contactPerson') ? 'has-error' : '' }}">
       <label class="control-label" for="contactPerson">Kontakt Person <span class="stern" >*</span></label>
       <div class="controls">
-       {{ Form::text('contactPerson', null, array('class'=>'form-control', 'id' => 'contactPerson', 'placeholder'=>'Kontakt Person', 'value'=>Input::old('contactPerson'))) }}
+       {{ Form::text('contactPerson', null, array('class'=>'form-control', 'id' => 'contactPerson', 'placeholder'=>'Kontakt Person',  'pattern' =>'.{2,}', 'required','value'=>Input::old('contactPerson'))) }}
          @if ($errors->first('contactPerson'))
          <span class="help-block">{{ $errors->first('contactPerson') }}</span>
          @endif
@@ -127,7 +127,8 @@
    <div class="control-group {{ $errors->has('phone') ? 'has-error' : '' }}">
       <label class="control-label" for="phone">Telefon <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('phone', null, array('class'=>'form-control', 'id' => 'phone', 'placeholder'=>'Telefon', 'value'=>Input::old('phone'))) }}
+      {{ Form::text('phone', null, array('class'=>'form-control', 'id' => 'phone', 'placeholder'=>'Telefon [Zahl angeben]', 'pattern' =>'.{4,}', 'required', 'onkeypress' =>'return isNumberKey(event)', 'value'=>Input::old('phone'))) }}
+         
          @if ($errors->first('phone'))
          <span class="help-block">{{ $errors->first('phone') }}</span>
          @endif

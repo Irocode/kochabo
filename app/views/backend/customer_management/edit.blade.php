@@ -28,7 +28,7 @@
          <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
             <label class="control-label" for="gender">Anrede <span class="stern" >*</span></label>
             <div class="controls">
-               <select name="gender" class="form-control">
+               <select name="gender" class="form-control" required>
                   <option value="{{$ausgabe->gender}}" selected>{{$ausgabe->gender}}</option>
                   @foreach( $list_gender as $x )  
                   <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
@@ -48,7 +48,7 @@
       <div class="controls">
 
   <!-- retrieval Data from customers_groups_id an collation with CustomerGroup Start-->
-  <select name="customers_groups_id" class="form-control"> 
+  <select name="customers_groups_id" class="form-control" required> 
     
     <option value="{{$ausgabe->customers_groups_id }}"
      selected>
@@ -75,7 +75,7 @@
          <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
             <label class="control-label" for="first_name">Vorname <span class="stern" >*</span></label>
             <div class="controls">      
-               {{ Form::text('first_name', null, array('class'=>'form-control', 'id' => 'first_name', 'placeholder'=>'Vorname', 'value'=>Input::old('first_name'))) }}
+               {{ Form::text('first_name', null, array('class'=>'form-control', 'id' => 'first_name', 'placeholder'=>'Vorname', 'required', 'value'=>Input::old('first_name'))) }}
                @if ($errors->first('first_name'))
                <span class="help-block">{{ $errors->first('first_name') }}</span>
                @endif
@@ -87,7 +87,7 @@
          <div class="control-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
             <label class="control-label" for="last_name">Nachname <span class="stern" >*</span></label>
             <div class="controls">
-               {{ Form::text('last_name', null, array('class'=>'form-control', 'id' => 'last_name', 'placeholder'=>'Nachname', 'value'=>Input::old('last_name'))) }}          
+               {{ Form::text('last_name', null, array('class'=>'form-control', 'id' => 'last_name', 'placeholder'=>'Nachname','required', 'value'=>Input::old('last_name'))) }}          
                @if ($errors->first('last_name'))
                <span class="help-block">{{ $errors->first('last_name') }}</span>
                @endif
@@ -106,7 +106,7 @@
    <div class="control-group {{ $errors->has('day') ? 'has-error' : '' }}">
       <label class="control-label" for="day">Geburttag <span class="stern" >*</span></label>
       <div class="controls">         
-     <select name="day" class="form-control">
+     <select name="day" class="form-control" required>
                          
                            <option value="{{$ausgabe->birthday}}" selected>{{$ausgabe->birthday}}</option>
                           @foreach( $list_day as $x )  
@@ -136,7 +136,7 @@
      <div class="control-group {{ $errors->has('month') ? 'has-error' : '' }}">
       <label class="control-label" for="month">Geburtsmonat <span class="stern" >*</span></label>
       <div class="controls"> 
-      <select name="month" class="form-control">
+      <select name="month" class="form-control" required>
        <option value="{{$ausgabe->birthmonth}}" selected>{{$ausgabe->birthmonth}}</option>                   
                           @foreach( $list_month as $x )  
                           <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
@@ -162,7 +162,7 @@
       <div class="controls">  
 
 
-         {{ Form::text('birthyear', null, array('class'=>'form-control', 'id' => 'year', 'placeholder'=>'JJJJ', 'size' => '4', 'maxlength' => '4','value'=>Input::old('year'))) }}
+         {{ Form::text('birthyear', null, array('class'=>'form-control', 'id' => 'year', 'placeholder'=>'JJJJ', 'size' => '4', 'maxlength' => '4','required', 'value'=>Input::old('year'))) }}
          @if ($errors->first('year'))
          <span class="help-block">{{ $errors->first('year') }}</span>
          @endif
@@ -175,7 +175,7 @@
          <div class="control-group {{ $errors->has('email') ? 'has-error' : '' }}">
             <label class="control-label" for="email">E-Mail <span class="stern" >*</span></label>
             <div class="controls">
-               {{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'E-Mail')) }}
+               {{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'E-Mail','required')) }}
                @if ($errors->first('email'))
                <span class="help-block">{{ $errors->first('email') }}</span>
                @endif
@@ -189,7 +189,7 @@
          <div class="control-group {{ $errors->has('fbaktuelleemail') ? 'has-error' : '' }}">
             <label class="control-label" for="fbaktuelleemail">Bestätigte E-Mail FB </label>
             <div class="controls">
-               {{ Form::text('fbaktuelleemail', null, array('class' => 'form-control', 'placeholder' => 'E-Mail FB')) }}
+               {{ Form::email('fbaktuelleemail', null, array('class' => 'form-control', 'placeholder' => 'E-Mail FB')) }}
                @if ($errors->first('fbaktuelleemail'))
                <span class="help-block">{{ $errors->first('fbaktuelleemail') }}</span>
                @endif
@@ -204,7 +204,7 @@
          <div class="control-group {{ $errors->has('telephone') ? 'has-error' : '' }}">
             <label class="control-label" for="last_name">Telefon <span class="stern" >*</span></label>
             <div class="controls">
-               {{ Form::text('telephone', null, array('class' => 'form-control', 'placeholder' => 'Telefon')) }}
+               {{ Form::text('telephone', null, array('onkeypress' =>'return isNumberKey(event)', 'class' => 'form-control', 'placeholder' => 'Telefon [Zahl angeben]','required')) }}
                @if ($errors->first('telephone'))
                <span class="help-block">{{ $errors->first('telephone') }}</span>
                @endif

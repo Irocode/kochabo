@@ -34,8 +34,8 @@
                <div class="headline">
                   <h2>Logistiker wählen</h2>
                </div>
-               <form name="form1" method="post" action="">
-                  <select  name="select" size="5">
+               <form name="form1" method="post" action=""  >
+                  <select  name="select" size="5" class="notinvalid">
                      @foreach($logisticianmanager_all as $x)
                      <option   id="change_{{ $x->id }}" value="{{ $x->id }}">{{ $x->name }} </option>
                      <!--  Handler for change url-->

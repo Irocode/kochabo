@@ -28,8 +28,8 @@
      <!-- gender -->
    <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
        <label class="control-label" for="gender">Anrede <span class="stern" >*</span></label>
-      <div class="controls">
-  {{ Form::select('gender', $gender, 'Auswahl', array( 'id' => 'gender' ,'class'=>'form-control','style'=>'','value'=>Input::old('gender') )) }}
+      <div class="controls">   
+  {{ Form::select('gender', $gender, 'Auswahl', array( 'id' => 'gender' ,'class'=>'form-control','style'=>'', 'required', 'value'=>Input::old('gender') )) }}
          @if ($errors->first('gender'))
          <span class="help-block">{{ $errors->first('gender') }}</span>
          @endif
@@ -43,7 +43,7 @@
    <div class="control-group {{ $errors->has('kundengruppe') ? 'has-error' : '' }}">
        <label class="control-label" for="kundengruppe">Kundengruppe <span class="stern" >*</span></label>
       <div class="controls">
-  <select name="default" class="form-control"> 
+  <select name="default" class="form-control" required> 
                           @foreach( $list_kundengruppe as $x ) 
                           <option value="{{ $x->customers_groups_id }}">{{ $x->groupname }}</option>
                            @endforeach                  
@@ -66,7 +66,7 @@
    <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
       <label class="control-label" for="first_name">Vorname <span class="stern" >*</span></label>
       <div class="controls">         
-         {{ Form::text('first_name', null, array('class'=>'form-control', 'id' => 'first_name', 'placeholder'=>'Vorname', 'value'=>Input::old('first_name'))) }}
+         {{ Form::text('first_name', null, array('class'=>'form-control', 'id' => 'first_name', 'placeholder'=>'Vorname', 'required', 'value'=>Input::old('first_name'))) }}
          @if ($errors->first('first_name'))
          <span class="help-block">{{ $errors->first('first_name') }}</span>
          @endif
@@ -77,7 +77,7 @@
    <div class="control-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
       <label class="control-label" for="last_name">Nachname <span class="stern" >*</span></label>
       <div class="controls">
-         {{ Form::text('last_name', null, array('class'=>'form-control', 'id' => 'last_name', 'placeholder'=>'Nachname', 'value'=>Input::old('last_name'))) }}          
+         {{ Form::text('last_name', null, array('class'=>'form-control', 'id' => 'last_name', 'placeholder'=>'Nachname',  'required', 'value'=>Input::old('last_name'))) }}          
          @if ($errors->first('last_name'))
          <span class="help-block">{{ $errors->first('last_name') }}</span>
          @endif
@@ -92,7 +92,7 @@
    <div class="control-group {{ $errors->has('day') ? 'has-error' : '' }}">
       <label class="control-label" for="day">Geburttag <span class="stern" >*</span></label>
       <div class="controls">         
-{{ Form::select('day', $day, 'Auswahl', array( 'id' => 'day' ,'class'=>'form-control','style'=>'','value'=>Input::old('day') )) }}
+{{ Form::select('day', $day, 'Auswahl', array( 'id' => 'day' ,'class'=>'form-control','style'=>'', 'required', 'value'=>Input::old('day') )) }}
 
                 
 
@@ -120,7 +120,7 @@
 
 
 
-{{ Form::select('month', $day, 'Auswahl', array( 'id' => 'month' ,'class'=>'form-control','style'=>'','value'=>Input::old('month') )) }}
+{{ Form::select('month', $day, 'Auswahl', array( 'id' => 'month' ,'class'=>'form-control','style'=>'', 'required', 'value'=>Input::old('month') )) }}
 
 
          @if ($errors->first('month'))
@@ -141,7 +141,7 @@
       <div class="controls">  
 
 
-         {{ Form::text('year', null, array('class'=>'form-control', 'id' => 'year', 'placeholder'=>'JJJJ', 'size' => '4', 'maxlength' => '4','value'=>Input::old('year'))) }}
+         {{ Form::text('year', null, array('class'=>'form-control', 'id' => 'year', 'placeholder'=>'JJJJ', 'size' => '4', 'maxlength' => '4', 'required','value'=>Input::old('year'))) }}
          @if ($errors->first('year'))
          <span class="help-block">{{ $errors->first('year') }}</span>
          @endif
@@ -163,7 +163,7 @@
    <div class="control-group {{ $errors->has('email') ? 'has-error' : '' }}">
       <label class="control-label" for="email">E-Mail <span class="stern" >*</span></label>
       <div class="controls">
-            {{ Form::text('email', null, array('class'=>'form-control', 'id' => 'email', 'placeholder'=>'E-Mail',  'value'=>Input::old('email'))) }}
+            {{ Form::email('email', null, array('class'=>'form-control', 'id' => 'email', 'placeholder'=>'E-Mail',  'required', 'value'=>Input::old('email'))) }}
             
             
            @if ($errors->first('email'))
@@ -177,7 +177,7 @@
       <label class="control-label" for="last_name">Telefon (Nur Ziffern) <span class="stern" >*</span></label>
       <div class="controls">
 
-       {{ Form::text('telephone', null, array('class'=>'form-control', 'id' => 'telephone', 'placeholder'=>'Telefon',  'value'=>Input::old('telephone'))) }}
+       {{ Form::text('telephone', null, array('onkeypress' =>'return isNumberKey(event)', 'class'=>'form-control', 'id' => 'telephone', 'placeholder'=>'Telefon [Zahl angeben]',  'required', 'value'=>Input::old('telephone'))) }}
 
                
                
@@ -194,7 +194,7 @@
       <label class="control-label" for="password">Passwort (Mindestens 6 Zeichen) <span class="stern" >*</span></label>
       <div class="controls">
 
-       {{ Form::text('password', null, array('class'=>'form-control', 'id' => 'password', 'placeholder'=>'Passwort',  'value'=>Input::old('password'))) }}
+       {{ Form::text('password', null, array('class'=>'form-control', 'id' => 'password', 'placeholder'=>'Passwort', 'pattern' =>'.{6,}', 'required', 'value'=>Input::old('password'))) }}
   
            
             @if ($errors->first('password'))
@@ -207,7 +207,7 @@
    <div class="control-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
       <label class="control-label" for="password_confirmation">Passwort bestätigen <span class="stern" >*</span></label>
       <div class="controls">
-                {{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Passwort bestätigen')) }}
+                {{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Passwort bestätigen','pattern' =>'.{6,}', 'required')) }}
               
              @if ($errors->first('password_confirmation'))
          <span class="help-block">{{ $errors->first('password_confirmation') }}</span>

@@ -29,7 +29,10 @@
    <div class="control-group {{ $errors->has('zip') ? 'has-error' : '' }}">
       <label class="control-label" for="zip">Postleitzahl <span class="stern" >*</span></label>
       <div class="controls">
-         {{ Form::text('zip', null, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'Postleitzahl', 'value'=>Input::old('zip'))) }}           
+         {{ Form::text('zip', null, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'Postleitzahl [Zahl angeben]', 'pattern' =>'.{4,}', 'required', 'onkeypress' =>'return isNumberKey(event)','value'=>Input::old('zip'))) }}    
+
+
+                 
          @if ($errors->first('zip'))
          <span class="help-block">{{ $errors->first('zip') }}</span>
          @endif

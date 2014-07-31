@@ -49,6 +49,7 @@
                   <label class="control-label" for="kcal100g">Kcal pro 100g<span class="stern" >*</span></label>
                   <div class="controls">         
                      {{ Form::text('kcal100g', null, array('class'=>'form-control', 'onkeypress' =>'return isNumberKey(event)', 'id' => 'kcal100g', 'placeholder'=>'Kcal pro 100g [Zahl angeben]', 'required','value'=>Input::old('kcal100g'))) }}
+                     
                      @if ($errors->first('kcal100g'))
                      <span class="help-block">{{ $errors->first('kcal100g') }}</span>
                      @endif

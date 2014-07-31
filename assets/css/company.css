@@ -39,9 +39,7 @@ background: rgba(0, 0, 0, 0.3);
   background-position:right center;
   background-repeat:no-repeat;
   -moz-box-shadow:none;
-  textarea[type="text"]:invalid {
-    color: red;
-}
+
 }
 
  select:required:invalid {
@@ -51,14 +49,29 @@ background: rgba(0, 0, 0, 0.3);
   background-repeat:no-repeat;
   -moz-box-shadow:none;
  
-  select[type="text"]:invalid {
-    color: red;
-}
+
 }
 
 textarea{
 height:195px!important;
 }
+
+
+.notinvalid{
+
+     background-image: none !important;
+}
+
+.form-control.input-sm{
+ background-image: none !important;
+}
+
+
+html body div.container div.panel.panel-default div.panel-body div.table-responsive div#example_wrapper.dataTables_wrapper.form-inline table#example.display.dataTable.DTTT_selectable tfoot tr th select.form-control
+{
+ background-image: none !important;
+}
+
 
 
 
