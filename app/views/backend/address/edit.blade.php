@@ -34,7 +34,7 @@
 
    {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\AddressController@update', $address->id), 'method' => 'PATCH')) }}
 
-{{{$address->id}}}
+
 <div class="row">
   <div class="col-md-6">
 
@@ -42,7 +42,7 @@
    <div class="control-group {{ $errors->has('gender') ? 'has-error' : '' }}">
        <label class="control-label" for="gender">Anrede <span class="stern" >*</span></label>
       <div class="controls">
-      <select name="gender" class="form-control">
+      <select name="gender" class="form-control" required>
                           
                            <option value="{{$address->gender}}" selected>{{$address->gender}}</option>
                           @foreach( $list_gender as $x )  
@@ -58,9 +58,9 @@
    <br>
       <!-- first_name --> 
       <div class="control-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name">Vorname</label>
+      <label class="control-label" for="last_name">Vorname <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('first_name', $address->first_name, array('class'=>'form-control', 'id' => 'Vorname',  'placeholder'=>'Vorname', 'value'=>Input::old('first_name'))) }}
+      {{ Form::text('first_name', $address->first_name, array('class'=>'form-control', 'id' => 'Vorname',  'placeholder'=>'Vorname', 'required', 'value'=>Input::old('first_name'))) }}
       @if ($errors->first('first_name'))
       <span class="help-block">{{ $errors->first('first_name') }}</span>
       @endif
@@ -69,9 +69,9 @@
       <br>
       <!-- last_name -->  
       <div class="control-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
-      <label class="control-label" for="last_name">Nachname</label>
+      <label class="control-label" for="last_name">Nachname <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('last_name', $address->last_name, array('class'=>'form-control', 'id' => 'last_name',  'placeholder'=>'Nachname', 'value'=>Input::old('last_name'))) }}
+      {{ Form::text('last_name', $address->last_name, array('class'=>'form-control', 'id' => 'last_name',  'placeholder'=>'Nachname',  'required','value'=>Input::old('last_name'))) }}
       @if ($errors->first('last_name'))
       <span class="help-block">{{ $errors->first('last_name') }}</span>
       @endif
@@ -82,9 +82,9 @@
 
       <!-- street -->
       <div class="control-group {{ $errors->has('street') ? 'has-error' : '' }}">
-      <label class="control-label" for="street">Straße</label>
+      <label class="control-label" for="street">Straße <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('street', $address->street, array('class'=>'form-control', 'id' => 'street', 'placeholder'=>'Straße', 'value'=>Input::old('street'))) }}
+      {{ Form::text('street', $address->street, array('class'=>'form-control', 'id' => 'street', 'placeholder'=>'Straße',  'required','value'=>Input::old('street'))) }}
       @if ($errors->first('street'))
       <span class="help-block">{{ $errors->first('street') }}</span>
       @endif
@@ -101,9 +101,9 @@
 
           <!-- housenumber -->
       <div class="control-group {{ $errors->has('housenumber') ? 'has-error' : '' }}">
-      <label class="control-label" for="housenumber">Hausnummer</label>
+      <label class="control-label" for="housenumber">Hausnummer <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('housenumber', $address->housenumber, array('class'=>'form-control', 'id' => 'housenumber', 'placeholder'=>'Hausnummer', 'value'=>Input::old('housenumber'))) }}
+      {{ Form::text('housenumber', $address->housenumber, array('class'=>'form-control', 'id' => 'housenumber', 'placeholder'=>'Hausnummer', 'required', 'value'=>Input::old('housenumber'))) }}
       @if ($errors->first('housenumber'))
       <span class="help-block">{{ $errors->first('housenumber') }}</span>
       @endif
@@ -117,7 +117,7 @@
       <div class="control-group {{ $errors->has('stairway_number') ? 'has-error' : '' }}">
       <label class="control-label" for="street">Stiege</label>
       <div class="controls">
-      {{ Form::text('stairway_number', $address->stairway_number, array('class'=>'form-control', 'id' => 'stairway_number', 'placeholder'=>'Stiege', 'value'=>Input::old('stairway_number'))) }}
+      {{ Form::text('stairway_number', $address->stairway_number, array('class'=>'form-control', 'id' => 'stairway_number', 'placeholder'=>'Stiege',  'value'=>Input::old('stairway_number'))) }}
       @if ($errors->first('stairway_number'))
       <span class="help-block">{{ $errors->first('stairway_number') }}</span>
       @endif
@@ -167,9 +167,9 @@
 
       <!-- city -->
       <div class="control-group {{ $errors->has('city') ? 'has-error' : '' }}">
-      <label class="control-label" for="city">Stadt</label>
+      <label class="control-label" for="city">Stadt <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('city', $address->city, array('class'=>'form-control', 'id' => 'city', 'placeholder'=>'Stadt', 'value'=>Input::old('city'))) }}
+      {{ Form::text('city', $address->city, array('class'=>'form-control', 'id' => 'city', 'required', 'placeholder'=>'Stadt', 'value'=>Input::old('city'))) }}
       @if ($errors->first('city'))
       <span class="help-block">{{ $errors->first('city') }}</span>
       @endif
@@ -178,9 +178,9 @@
       <br>  
       <!-- zip -->
       <div class="control-group {{ $errors->has('zip') ? 'has-error' : '' }}">
-      <label class="control-label" for="zip">PLZ</label>
+      <label class="control-label" for="zip">PLZ <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('zip', $address->zip, array('class'=>'form-control', 'id' => 'zip', 'placeholder'=>'PLZ', 'value'=>Input::old('zip'))) }}
+      {{ Form::text('zip', $address->zip, array('onkeypress' =>'return isNumberKey(event)','class'=>'form-control', 'id' => 'zip', 'placeholder'=>'PLZ [Zahl angeben]',  'required', 'value'=>Input::old('zip'))) }}
       @if ($errors->first('zip'))
       <span class="help-block">{{ $errors->first('zip') }}</span>
       @endif
@@ -189,9 +189,9 @@
       <br>  
       <!-- state -->
       <div class="control-group {{ $errors->has('stateprovince') ? 'has-error' : '' }}">
-      <label class="control-label" for="stateprovince">Bundesland</label>
+      <label class="control-label" for="stateprovince">Bundesland <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('stateprovince', $address->stateprovince, array('class'=>'form-control', 'id' => 'stateprovince', 'placeholder'=>'Bundesland', 'value'=>Input::old('stateprovince'))) }}
+      {{ Form::text('stateprovince', $address->stateprovince, array('class'=>'form-control', 'id' => 'stateprovince', 'placeholder'=>'Bundesland', 'required', 'value'=>Input::old('stateprovince'))) }}
       @if ($errors->first('stateprovince'))
       <span class="help-block">{{ $errors->first('stateprovince') }}</span>
       @endif
@@ -200,9 +200,9 @@
       <br>
       <!-- country -->
       <div class="control-group {{ $errors->has('country') ? 'has-error' : '' }}">
-      <label class="control-label" for="country">Land</label>
+      <label class="control-label" for="country">Land <span class="stern" >*</span></label>
       <div class="controls">
-      {{ Form::text('country', $address->country, array('class'=>'form-control', 'id' => 'country', 'placeholder'=>'Land', 'value'=>Input::old('country'))) }}
+      {{ Form::text('country', $address->country, array('class'=>'form-control', 'id' => 'country', 'placeholder'=>'Land', 'required','value'=>Input::old('country'))) }}
       @if ($errors->first('country'))
       <span class="help-block">{{ $errors->first('country') }}</span>
       @endif
