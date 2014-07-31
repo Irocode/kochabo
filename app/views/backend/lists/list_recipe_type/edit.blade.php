@@ -16,7 +16,7 @@
          <div class="control-group {{ $errors->has('bezeichnung') ? 'has-error' : '' }}">
             <label class="control-label" for="bezeichnung">Rezept Typ <span class="stern" >*</span></label>
             <div class="controls">
-               {{ Form::text('bezeichnung', $list_recipe_type->bezeichnung, array('class'=>'form-control', 'id' => 'bezeichnung', 'placeholder'=>'Rezept Typ', 'value'=>Input::old('bezeichnung'))) }}
+               {{ Form::text('bezeichnung', $list_recipe_type->bezeichnung, array('class'=>'form-control', 'id' => 'bezeichnung', 'placeholder'=>'Rezept Typ', 'required','value'=>Input::old('bezeichnung'))) }}
                @if ($errors->first('bezeichnung'))
                <span class="help-block">{{ $errors->first('bezeichnung') }}</span>
                @endif

@@ -389,6 +389,15 @@ Route::get('list_settings_products', function()
 return View::make('backend.lists.index_list_settings_products');
 });
 
+
+//Select Fields ALL
+Route::get('list_settings_all', function()
+{
+return View::make('backend.lists.index_list_settings_all');
+});
+
+
+
 // log
 Route::any('log', ['as'=>'admin.log', 'uses'=>'LogController@index']);
 

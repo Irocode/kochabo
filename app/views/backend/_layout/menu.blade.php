@@ -108,12 +108,21 @@
              <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/ingredients') }}"><span class="glyphicon glyphicon-plus"></span>Zutaten</a></li>
              </ul>
 
+
+
          </ul>
          <ul class="nav navbar-nav navbar-right">
             <li @if(isset($active) && $active=="form-post") class="active" @endif><a href="{{ url('/admin/form-post') }}"><span class="glyphicon glyphicon-envelope"></span>Inbox <span class="label label-info">{{ $formPostCount }}</span></a></li>
             <li @if(isset($active) && $active=="settings") class="active" @endif><a href="{{ url('/admin/settings') }}"><span class="glyphicon glyphicon-cog"></span>Einst.</a></li>
+            <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/list_settings_all') }}"><span class="glyphicon glyphicon-cog"></span>Filter Settings</a></li>
+
             <li><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
          </ul>
+
+
+
+        
+
       </div>
    </div>
 
