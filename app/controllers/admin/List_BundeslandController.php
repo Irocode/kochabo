@@ -13,7 +13,6 @@ class List_BundeslandController extends BaseController
 {
     protected $list_bundesland;
     public function __construct(List_Bundesland $list_bundesland)
-
     {
         View::share('active', 'modules');
         $this->list_bundesland = $list_bundesland;
@@ -24,7 +23,6 @@ class List_BundeslandController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $list_bundesland = $this->list_bundesland->paginate(10);
         return View::make('backend.lists.list_bundesland.index', compact('list_bundesland'));
@@ -35,7 +33,6 @@ class List_BundeslandController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.lists.list_bundesland.create');
     }
@@ -45,7 +42,6 @@ class List_BundeslandController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -72,7 +68,6 @@ class List_BundeslandController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         //
     }
@@ -83,7 +78,6 @@ class List_BundeslandController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $list_bundesland = $this->list_bundesland->find($id);
         return View::make('backend.lists.list_bundesland.edit', compact('list_bundesland'));
@@ -95,7 +89,6 @@ class List_BundeslandController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -122,7 +115,6 @@ class List_BundeslandController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $list_bundesland = List_Bundesland::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $this->list_bundesland->destroy($id);
@@ -130,7 +122,6 @@ class List_BundeslandController extends BaseController
         return Redirect::action('App\Controllers\Admin\List_BundeslandController@index');
     }
     public function confirmDestroy($id)
-
     {
         $list_bundesland = List_Bundesland::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $list_bundesland = $this->list_bundesland->find($id);

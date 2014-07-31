@@ -9,7 +9,6 @@ use Response;class OrderAddressController extends BaseController
 {
     protected $order_address;
     public function __construct(OrderAddress $order_address)
-
     {
         View::share('active', 'modules');
         $this->order_address = $order_address;
@@ -20,7 +19,6 @@ use Response;class OrderAddressController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $order_address = $this->order_address->paginate(null, true);
         return View::make('backend.order_address.index', compact('order_address'));
@@ -31,7 +29,6 @@ use Response;class OrderAddressController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.order_address.create');
     }
@@ -41,7 +38,6 @@ use Response;class OrderAddressController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -61,7 +57,6 @@ use Response;class OrderAddressController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $order_address = $this->order_address->find($id);
         return View::make('backend.order_address.show', compact('order_address'));
@@ -73,7 +68,6 @@ use Response;class OrderAddressController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $order_address = $this->order_address->find($id);
         $order_address_status_history = $this->order_address->find($id)->order_address_status_history;
@@ -87,7 +81,6 @@ use Response;class OrderAddressController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -107,26 +100,21 @@ use Response;class OrderAddressController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->order_address->destroy($id);
         Notification::success('Bestellung wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\OrderController@index');
     }
     public function confirmDestroy($id)
-
     {
         $order_address = $this->order_address->find($id);
         return View::make('backend.order_address.confirm-destroy', compact('order_address'));
     }
     public function togglePublish($id)
-
     {
         return $this->order_address->togglePublish($id);
     }
 }
-
-
 
 use Str;
 use Notification;
@@ -147,7 +135,6 @@ $this->order_address = $order_address;
  * @return Response
  */
 public function index()
-
 				{
 				$order_address = $this->order_address->paginate(null, true);
 				return View::make('backend.order_address.index', compact('order_address'));
@@ -158,7 +145,6 @@ public function index()
  * @return Response
  */
 public function create()
-
 				{
 				return View::make('backend.order_address.create');
 				}
@@ -168,7 +154,6 @@ public function create()
  * @return Response
  */
 public function store()
-
 				{
 				try
 								{
@@ -188,7 +173,6 @@ public function store()
  * @return Response
  */
 public function show($id)
-
 				{
 				$order_address = $this->order_address->find($id);
 				return View::make('backend.order_address.show', compact('order_address'));
@@ -200,7 +184,6 @@ public function show($id)
  * @return Response
  */
 public function edit($id)
-
 				{
 				$order_address = $this->order_address->find($id);
 				$order_address_status_history = $this->order_address->find($id)->order_address_status_history;
@@ -214,7 +197,6 @@ public function edit($id)
  * @return Response
  */
 public function update($id)
-
 				{
 				try
 								{
@@ -234,20 +216,17 @@ public function update($id)
  * @return Response
  */
 public function destroy($id)
-
 				{
 				$this->order_address->destroy($id);
 				Notification::success('Bestellung wurde gelöscht');
 				return Redirect::action('App\Controllers\Admin\OrderController@index');
 				}
 public function confirmDestroy($id)
-
 				{
 				$order_address = $this->order_address->find($id);
 				return View::make('backend.order_address.confirm-destroy', compact('order_address'));
 				}
 public function togglePublish($id)
-
 				{
 				return $this->order_address->togglePublish($id);
 				}

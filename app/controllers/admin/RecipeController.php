@@ -31,7 +31,6 @@ class RecipeController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $recipe = $this->recipe->paginate(null, true);
         return View::make('backend.recipe.index', compact('recipe'));
@@ -58,7 +57,6 @@ class RecipeController extends BaseController
 
 
 public function create()
-
     {
 
         $attributes = ['title' => 'Neuer Titel', 'imagesmall' => 'data:image/png;base64,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','imagemiddle' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAF4ElEQVR4nO3dT24UdxrH4ZcRB0DZp6SBG3iSEwyoLwBzBPsGWOl9SoIbmDnBJBwgJTw3mHCD8aL3kbgBs+iykoHuL7+y3aTc9TwSG1RuXon6uOt/Pfjxl28/FrDTX/7sAWDOBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCB4OPUH1qvNg0MMAl9DP3STrj30DQKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBALBwz97gF36oTutqheNi/+8Xm3eHHIelmuWgVTVo6p62rjsu0MOwrLZxIJAIBAIBAKBQCAQCAQCgUAgEAgEcz1ReG/0Q/eoqv5RVU+q6qSqHo9//uhq/PO+qv5bVT+tV5sPxzzLsRDIDfVD97SqzqrqecPi1yvq9dUBF/3QvamqV+vV5uq+ztIP3cfGRZ+tV5vLHT9/WlXP6veYq6pqvdo8mDLHIQlkon7oTqrqVbVfCrPPaVWd9kP3er3anN/3WaYYwzivz7/dZkcgE4z/sRd3/LEvx2+Av0/Z1JnTLK36oXtc25lvG/RXYye9UT90F3X3K+S1k6r6932cpdUY3q91j+KoEkiTfuhe1nYz5JBO+qF7dZ9mmeBFba+6fnSHn/lVCOQLxt98rSvLh6p6W9vt6/Oqel3bI0atXo77FbOfZaJDB30w9kGC8bBp66bMeVW92bHtft4P3fOq+me1/Qb9oXbcLDanWZbEN0h2Wm1HWs7Wq83rfTu269XmbbWvaM/Hndk5z7IYAsl+aFjmsuWW3/E8wGfnAvbYdT5jTrMshk2sPcbDqC2bIVN2Zn+utqM43891ljtyWdsz+b/94e+eVNV3tT2KNhsC2e9Zy0K7zhAH/2lc7tMVd06z3MSHqvqpqt6Nm3j3hk2s/VpWjCkrZK1Xm/eNi376bTGnWW7ixXq1ObtvcVT5Btlp3DFtWTG+64fuIE9V6YfuZL3avJ/TLIf47LkTyG6tR26mPJ5oqm9mOMvi2MTabU47inOaZXEEAoFAIBAIBHbSb+eqDnfZ+dQ7Dec0y9EQyG6tK8SH9Wrz+qCTzGuWxbGJtVvr3XRf4wjTnGZZHIHsMOWSjfHy8UXMskQC2a/1zPHZXf6j/dA93nGj0pxmWRSB7PevxuWejlfb3tp4O+2v9flVuXOaZVGOYSf9yXgr6m1dffJcqLfVvnJc9ENXN30V3Dj/ee2/VGROsyzKMQRyWndzz/P1fdtVVbVeba7GB6q1fvZFP3R/qwkPYBv3Gc7qCyvjnGZZmmMI5JBe1fZRnq2XfF8/gO19bS8//63+f//hUW0vPvy+tivilEvJ5zTLYggkGH9zn9f0E3AndceHXec0y5LYSf+CcVt+Fifg5jTLUgikwfi82lmsmHOaZQkE0mhcMc+q/cz2ImY5dgKZYNzE+WtV3egQaqPLatjPmNMsx8xO+kTjA9nOxmfXXh8ave3D1a6PNF1MeUfHnGY5Vg9+/OXb1pegVNW8Xm4yF+ODFZ7W7292+qb2Hzm6vrbqXW2v1L28y1cNzGmWOZrw0p+qEggLMzUQ+yAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKB4OHUH+iH7uMhBoE58g0CgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgE/wMjGKjrXd2C8gAAAABJRU5ErkJggg==','imagebig' => 'data:image/png;base64,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', 'is_published' => false];
@@ -84,7 +82,6 @@ public function create()
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -180,7 +177,6 @@ $this->recipe->create($input_all);
      * @return Response
      */
     public function show($id)
-
     {
         $recipe = $this->recipe->find($id);
         return View::make('backend.recipe.show', compact('recipe'));
@@ -192,7 +188,6 @@ $this->recipe->create($input_all);
      * @return Response
      */
     public function edit($id)
-
     {
 
 
@@ -236,7 +231,6 @@ $this->recipe->create($input_all);
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -338,20 +332,17 @@ $input_all = (array_merge($input, $input1, $input2, $input3));
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->recipe->destroy($id);
         Notification::success('Rezept wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\RecipeController@index');
     }
     public function confirmDestroy($id)
-
     {
         $recipe = $this->recipe->find($id);
         return View::make('backend.recipe.confirm-destroy', compact('recipe'));
     }
     public function togglePublish($id)
-
     {
         return $this->recipe->togglePublish($id);
     }

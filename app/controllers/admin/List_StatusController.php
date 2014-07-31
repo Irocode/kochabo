@@ -13,7 +13,6 @@ class List_StatusController extends BaseController
 {
     protected $list_status;
     public function __construct(List_Status $list_status)
-
     {
         View::share('active', 'modules');
         $this->list_status = $list_status;
@@ -24,7 +23,6 @@ class List_StatusController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $list_status = $this->list_status->paginate(10);
         return View::make('backend.lists.list_status.index', compact('list_status'));
@@ -35,7 +33,6 @@ class List_StatusController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.lists.list_status.create');
     }
@@ -45,7 +42,6 @@ class List_StatusController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -72,7 +68,6 @@ class List_StatusController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         //
     }
@@ -83,7 +78,6 @@ class List_StatusController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $list_status = $this->list_status->find($id);
         return View::make('backend.lists.list_status.edit', compact('list_status'));
@@ -95,7 +89,6 @@ class List_StatusController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -122,7 +115,6 @@ class List_StatusController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $list_status = List_Status::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $this->list_status->destroy($id);
@@ -130,7 +122,6 @@ class List_StatusController extends BaseController
         return Redirect::action('App\Controllers\Admin\List_StatusController@index');
     }
     public function confirmDestroy($id)
-
     {
         $list_status = List_Status::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $list_status = $this->list_status->find($id);

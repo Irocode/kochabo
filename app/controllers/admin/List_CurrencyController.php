@@ -13,7 +13,6 @@ class List_CurrencyController extends BaseController
 {
     protected $list_currency;
     public function __construct(List_Currency $list_currency)
-
     {
         View::share('active', 'modules');
         $this->list_currency = $list_currency;
@@ -24,7 +23,6 @@ class List_CurrencyController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $list_currency = $this->list_currency->paginate(10);
         return View::make('backend.lists.list_currency.index', compact('list_currency'));
@@ -35,7 +33,6 @@ class List_CurrencyController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.lists.list_currency.create');
     }
@@ -45,7 +42,6 @@ class List_CurrencyController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -72,7 +68,6 @@ class List_CurrencyController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         //
     }
@@ -83,7 +78,6 @@ class List_CurrencyController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $list_currency = $this->list_currency->find($id);
         return View::make('backend.lists.list_currency.edit', compact('list_currency'));
@@ -95,7 +89,6 @@ class List_CurrencyController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -122,7 +115,6 @@ class List_CurrencyController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $list_currency = List_Currency::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $this->list_currency->destroy($id);
@@ -130,7 +122,6 @@ class List_CurrencyController extends BaseController
         return Redirect::action('App\Controllers\Admin\List_CurrencyController@index');
     }
     public function confirmDestroy($id)
-
     {
         $list_currency = List_Currency::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $list_currency = $this->list_currency->find($id);

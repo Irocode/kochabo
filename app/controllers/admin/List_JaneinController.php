@@ -13,7 +13,6 @@ class List_JaneinController extends BaseController
 {
     protected $list_janein;
     public function __construct(List_Janein $list_janein)
-
     {
         View::share('active', 'modules');
         $this->list_janein = $list_janein;
@@ -24,7 +23,6 @@ class List_JaneinController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $list_janein = $this->list_janein->paginate(10);
         return View::make('backend.lists.list_janein.index', compact('list_janein'));
@@ -35,7 +33,6 @@ class List_JaneinController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.lists.list_janein.create');
     }
@@ -45,7 +42,6 @@ class List_JaneinController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -83,7 +79,6 @@ class List_JaneinController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $list_janein = $this->list_janein->find($id);
         return View::make('backend.lists.list_janein.edit', compact('list_janein'));
@@ -95,7 +90,6 @@ class List_JaneinController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -122,7 +116,6 @@ class List_JaneinController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $list_janein = List_Janein::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $this->list_janein->destroy($id);
@@ -130,7 +123,6 @@ class List_JaneinController extends BaseController
         return Redirect::action('App\Controllers\Admin\List_AbotypController@index');
     }
     public function confirmDestroy($id)
-
     {
         $list_janein = List_Janein::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $list_janein = $this->list_janein->find($id);

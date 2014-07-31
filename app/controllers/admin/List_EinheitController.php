@@ -13,7 +13,6 @@ class List_EinheitController extends BaseController
 {
     protected $list_einheit;
     public function __construct(List_Einheit $list_einheit)
-
     {
         View::share('active', 'modules');
         $this->list_einheit = $list_einheit;
@@ -24,7 +23,6 @@ class List_EinheitController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $list_einheit = $this->list_einheit->paginate(10);
         return View::make('backend.lists.list_einheit.index', compact('list_einheit'));
@@ -35,7 +33,6 @@ class List_EinheitController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.lists.list_einheit.create');
     }
@@ -45,7 +42,6 @@ class List_EinheitController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -72,7 +68,6 @@ class List_EinheitController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         //
     }
@@ -83,7 +78,6 @@ class List_EinheitController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $list_einheit = $this->list_einheit->find($id);
         return View::make('backend.lists.list_einheit.edit', compact('list_einheit'));
@@ -95,7 +89,6 @@ class List_EinheitController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -122,7 +115,6 @@ class List_EinheitController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $list_einheit = List_Einheit::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $this->list_einheit->destroy($id);
@@ -130,7 +122,6 @@ class List_EinheitController extends BaseController
         return Redirect::action('App\Controllers\Admin\List_EinheitController@index');
     }
     public function confirmDestroy($id)
-
     {
         $list_einheit = List_Einheit::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $list_einheit = $this->list_einheit->find($id);

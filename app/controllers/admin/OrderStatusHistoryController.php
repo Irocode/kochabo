@@ -14,7 +14,6 @@ class OrderStatusHistoryController extends BaseController
 {
     protected $order_status_history;
     public function __construct(OrderStatusHistory $order_status_history)
-
     {
         $this->order_status_history = $order_status_history;
     }
@@ -24,7 +23,6 @@ class OrderStatusHistoryController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $order_status_history = $this->order_status_history->paginate(null, true);
         return View::make('backend.order_status_history.index', compact('order_status_history'));
@@ -35,7 +33,6 @@ class OrderStatusHistoryController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.order_status_history.create');
     }
@@ -45,7 +42,6 @@ class OrderStatusHistoryController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -65,7 +61,6 @@ class OrderStatusHistoryController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $order_status_history = $this->order_status_history->find($id);
         return View::make('backend.order_status_history.show', compact('order_status_history'));
@@ -77,7 +72,6 @@ class OrderStatusHistoryController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $order_status_history = $this->order_status_history->find($id);
         $order_status_history_status_history = $this->order_status_history->find($id)->order_status_history_status_history;
@@ -91,7 +85,6 @@ class OrderStatusHistoryController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -111,20 +104,17 @@ class OrderStatusHistoryController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->order_status_history->destroy($id);
         Notification::success('Bestellung wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\Order_ItemsController@index');
     }
     public function confirmDestroy($id)
-
     {
         $order_status_history = $this->order_status_history->find($id);
         return View::make('backend.order_status_history.confirm-destroy', compact('order_status_history'));
     }
     public function togglePublish($id)
-
     {
         return $this->order_status_history->togglePublish($id);
     }

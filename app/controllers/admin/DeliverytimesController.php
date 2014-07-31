@@ -28,7 +28,6 @@ class DeliverytimesController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $deliverytimes = $this->deliverytimes->paginate(null, true);
         return View::make('backend.deliverytimes.index', compact('deliverytimes'));
@@ -39,7 +38,6 @@ class DeliverytimesController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.deliverytimes.create');
     }
@@ -49,13 +47,11 @@ class DeliverytimesController extends BaseController
      * @return Response
      */
     public function store()
-
     {
     if (isset($_GET["logisticianmanagerid"])) {
     $logisticianmanagerid = $_GET["logisticianmanagerid"];
    
-}
-
+    }
         try
         {
             $this->deliverytimes->create(Input::all());
@@ -76,7 +72,6 @@ class DeliverytimesController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $deliverytimes = $this->deliverytimes->find($id);
         return View::make('backend.deliverytimes.show', compact('deliverytimes'));
@@ -88,7 +83,6 @@ class DeliverytimesController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $deliverytimes = $this->deliverytimes->find($id);
         return View::make('backend.edit_deliverytimes.edit', compact('deliverytimes'));
@@ -100,7 +94,6 @@ class DeliverytimesController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -120,13 +113,12 @@ class DeliverytimesController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
 
-           if (isset($_GET["logisticianmanagerid"])) {
-    $logisticianmanagerid = $_GET["logisticianmanagerid"];
+       if (isset($_GET["logisticianmanagerid"])) {
+       $logisticianmanagerid = $_GET["logisticianmanagerid"];
 
-}
+    }
         $user_id = Input::get('user_id');
         $this->deliverytimes->destroy($id);
         // Notification::warning('Zeit wurde gelöscht');
@@ -139,18 +131,13 @@ class DeliverytimesController extends BaseController
         ));
     }
     public function confirmDestroy($id)
-
-    {
-
-     
+    {    
 
         $deliverytimes = $this->deliverytimes->find($id);
-        return View::make('backend.deliverytimes.confirm-destroy', compact('deliverytimes'));
-          
+        return View::make('backend.deliverytimes.confirm-destroy', compact('deliverytimes'));         
 
     }
     public function lieferzeiten_update($id)
-
     {
         $this->deliverytimes->update($id, Input::all());
         return $this->deliverytimes->lieferzeiten_update($id);

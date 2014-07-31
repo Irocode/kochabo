@@ -35,7 +35,6 @@ class Logisticianmanager_sefa_free_Controller extends BaseController
      * @return Response
      */
     public function group($id)
-
     {
         // Bezeihung Many Belongs
         $logisticianmanager = Logisticianmanager::find($id);
@@ -44,7 +43,6 @@ class Logisticianmanager_sefa_free_Controller extends BaseController
         return View::make('backend.logisticianmanager.group_sefa_free', compact('logisticianmanager', 'deliveryzipcode', 'deliverytimes'));
     }
     public function group_assign($id)
-
     {
         // $logisticianmanager = Logisticianmanager::with('deliveryzipcode')->get();
         // Alle holen und damit anzeigen
@@ -57,7 +55,6 @@ class Logisticianmanager_sefa_free_Controller extends BaseController
     }
     // deliveryassign AJAX CALL
     public function zip_repository_update()
-
     {
         $id = Deliveryzipcode::find(Input::get('id'));
         $deliveryzipcode = Deliveryzipcode::find(Input::get('id'));
@@ -68,7 +65,6 @@ class Logisticianmanager_sefa_free_Controller extends BaseController
     }
     // deliveryassign AJAX CALL
     public function zip_logistiker_update()
-
     {
         $id = Deliveryzipcode::find(Input::get('id'));
         $deliveryzipcode = Deliveryzipcode::find(Input::get('id'));
@@ -83,7 +79,6 @@ class Logisticianmanager_sefa_free_Controller extends BaseController
      * @return Response
      */
     public function create()
-
     {
     }
     /**
@@ -92,7 +87,6 @@ class Logisticianmanager_sefa_free_Controller extends BaseController
      * @return Response
      */
     public function store()
-
     {
     }
     /**
@@ -101,7 +95,6 @@ class Logisticianmanager_sefa_free_Controller extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
     }
     /**
@@ -111,7 +104,6 @@ class Logisticianmanager_sefa_free_Controller extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
     }
     /**
@@ -121,7 +113,6 @@ class Logisticianmanager_sefa_free_Controller extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
     }
 }

@@ -9,7 +9,6 @@ class NewsletteradminController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         // get all the varibale_ausgabe
         $varibale_ausgabe = Newsletter::all();
@@ -22,7 +21,6 @@ class NewsletteradminController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         // load the create form (app/views/varibale_ausgabe/create.blade.php)
         return View::make('backend.newsletter.create');
@@ -33,7 +31,6 @@ class NewsletteradminController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         // validate
         // read more on validation at http://laravel.com/docs/validation
@@ -68,7 +65,6 @@ class NewsletteradminController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         // get the ausgaben_adminnewsletter
         $ausgaben_adminnewsletter = Newsletter::find($id);
@@ -86,7 +82,6 @@ class NewsletteradminController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         // get the ausgaben_adminnewsletter
         $ausgaben_adminnewsletter = Newsletter::find($id);
@@ -100,7 +95,6 @@ class NewsletteradminController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         // validate
         // read more on validation at http://laravel.com/docs/validation
@@ -135,7 +129,6 @@ class NewsletteradminController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         // delete
         $ausgabe = Newsletter::find($id);
@@ -145,7 +138,6 @@ class NewsletteradminController extends BaseController
         return Redirect::to('admin/newsletter');
     }
     public function confirmDestroy($id)
-
     {
         $newsletter = Newsletter::find($id);
         return View::make('backend.newsletter.confirm-destroy', compact('newsletter'));

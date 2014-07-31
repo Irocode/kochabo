@@ -15,7 +15,6 @@ class OrderController extends BaseController
 {
     protected $order;
     public function __construct(Order $order, OrderAddress $order_address)
-
     {
         View::share('active', 'modules');
         $this->order = $order;
@@ -27,7 +26,6 @@ class OrderController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $order = $this->order->paginate(null, true);
         return View::make('backend.order.index', compact('order'));
@@ -38,7 +36,6 @@ class OrderController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.order.create');
     }
@@ -48,7 +45,6 @@ class OrderController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -68,7 +64,6 @@ class OrderController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $order = $this->order->find($id);
         return View::make('backend.order.show', compact('order'));
@@ -80,7 +75,6 @@ class OrderController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $order = $this->order->find($id);
         $order_address = $this->order->find($id)->order_address;
@@ -94,7 +88,6 @@ class OrderController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -114,20 +107,17 @@ class OrderController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->order->destroy($id);
         Notification::success('Bestellung wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\OrderController@index');
     }
     public function confirmDestroy($id)
-
     {
         $order = $this->order->find($id);
         return View::make('backend.order.confirm-destroy', compact('order'));
     }
     public function togglePublish($id)
-
     {
         return $this->order->togglePublish($id);
     }

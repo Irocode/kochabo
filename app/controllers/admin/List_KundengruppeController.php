@@ -13,7 +13,6 @@ class List_KundengruppeController extends BaseController
 {
     protected $list_kundengruppe;
     public function __construct(List_Kundengruppe $list_kundengruppe)
-
     {
         View::share('active', 'modules');
         $this->list_kundengruppe = $list_kundengruppe;
@@ -24,7 +23,6 @@ class List_KundengruppeController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $list_kundengruppe = $this->list_kundengruppe->paginate(10);
         return View::make('backend.lists.list_kundengruppe.index', compact('list_kundengruppe'));
@@ -35,7 +33,6 @@ class List_KundengruppeController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.lists.list_kundengruppe.create');
     }
@@ -45,7 +42,6 @@ class List_KundengruppeController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $rules = array(
             'groupname' => 'required',
@@ -72,7 +68,6 @@ class List_KundengruppeController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         //
     }
@@ -83,7 +78,6 @@ class List_KundengruppeController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $list_kundengruppe = $this->list_kundengruppe->find($id);
         return View::make('backend.lists.list_kundengruppe.edit', compact('list_kundengruppe'));
@@ -95,7 +89,6 @@ class List_KundengruppeController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $rules = array(
             'groupname' => 'required',
@@ -122,7 +115,6 @@ class List_KundengruppeController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $list_kundengruppe = List_Abotyp::where('customers_groups_id', '>', 1)->orderBy('groupname', 'DESC')->get();
         $this->list_kundengruppe->destroy($id);
@@ -130,7 +122,6 @@ class List_KundengruppeController extends BaseController
         return Redirect::action('App\Controllers\Admin\List_AbotypController@index');
     }
     public function confirmDestroy($id)
-
     {
         $list_kundengruppe = List_Abotyp::where('customers_groups_id', '>', 1)->orderBy('groupname', 'DESC')->get();
         $list_kundengruppe = $this->list_kundengruppe->find($id);

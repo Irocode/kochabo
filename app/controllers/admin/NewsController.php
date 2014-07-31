@@ -17,7 +17,6 @@ class NewsController extends BaseController
 {
     protected $news;
     public function __construct(News $news)
-
     {
         View::share('active', 'modules');
         $this->news = $news;
@@ -28,7 +27,6 @@ class NewsController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $news = $this->news->paginate(null, true);
         return View::make('backend.news.index', compact('news'));
@@ -39,7 +37,6 @@ class NewsController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.news.create');
     }
@@ -49,7 +46,6 @@ class NewsController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -69,7 +65,6 @@ class NewsController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $news = $this->news->find($id);
         return View::make('backend.news.show', compact('news'));
@@ -81,7 +76,6 @@ class NewsController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $news = $this->news->find($id);
         return View::make('backend.news.edit', compact('news'));
@@ -93,7 +87,6 @@ class NewsController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -120,7 +113,6 @@ class NewsController extends BaseController
         return Redirect::action('App\Controllers\Admin\NewsController@index');
     }
     public function confirmDestroy($id)
-
     {
         $news = $this->news->find($id);
         return View::make('backend.news.confirm-destroy', compact('news'));

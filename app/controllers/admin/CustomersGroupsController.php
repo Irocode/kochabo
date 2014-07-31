@@ -16,7 +16,6 @@ class CustomersGroupsController extends BaseController
 {
     protected $customers_groups;
     public function __construct(CustomersGroups $customers_groups,  Users $users)
-
     {
         View::share('active', 'modules');
         $this->customers_groups = $customers_groups;
@@ -29,7 +28,6 @@ class CustomersGroupsController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $customers_groups = $this->customers_groups->paginate(null, true);
         return View::make('backend.customers_groups.index', compact('customers_groups'));
@@ -40,7 +38,6 @@ class CustomersGroupsController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         $janein = List_Janein::lists('bezeichnung', 'bezeichnung');
         $janeinwert = List_Janein::lists('wert', 'wert');
@@ -53,7 +50,6 @@ class CustomersGroupsController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -73,8 +69,7 @@ class CustomersGroupsController extends BaseController
      * @return Response
      */
     public function show($id)
-
-    {
+        {
         $customers_groups = $this->customers_groups->find($id);
         return View::make('backend.customers_groups.show', compact('customers_groups'));
     }
@@ -85,10 +80,7 @@ class CustomersGroupsController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
-
-
 
         $customers_groups = $this->customers_groups->find($id);
         return View::make('backend.customers_groups.edit', compact('customers_groups'));
@@ -100,7 +92,6 @@ class CustomersGroupsController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -121,20 +112,17 @@ class CustomersGroupsController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->customers_groups->destroy($id);
         Notification::success('Gruppe wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\CustomersGroupsController@index');
     }
     public function confirmDestroy($id)
-
     {
         $customers_groups = $this->customers_groups->find($id);
         return View::make('backend.customers_groups.confirm-destroy', compact('customers_groups'));
     }
     public function togglePublish($id)
-
     {
         return $this->customers_groups->togglePublish($id);
     }
@@ -145,7 +133,6 @@ class CustomersGroupsController extends BaseController
      * @return Response
      */
     public function index_customers_groups($id)
-
     {
          $users = Users::all();
          $id= $id;        

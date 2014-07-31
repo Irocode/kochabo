@@ -18,7 +18,6 @@ class PhotoGalleryController extends BaseController
 {
     protected $photoGallery;
     public function __construct(PhotoGallery $photoGallery)
-
     {
         View::share('active', 'modules');
         $this->photoGallery = $photoGallery;
@@ -29,7 +28,6 @@ class PhotoGalleryController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $photo_galleries = $this->photoGallery->paginate();
         return View::make('backend.photo_gallery.index', compact('photo_galleries'));
@@ -40,7 +38,6 @@ class PhotoGalleryController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         $attributes = ['title' => 'Photo Gallery Title', 'content' => 'Photo Gallery Content', 'is_published' => false];
         try
@@ -59,7 +56,6 @@ class PhotoGalleryController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $photo_gallery = $this->photoGallery->find($id);
         return View::make('backend.photo_gallery.show', compact('photo_gallery'));
@@ -71,7 +67,6 @@ class PhotoGalleryController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $photo_gallery = $this->photoGallery->find($id);
         return View::make('backend.photo_gallery.edit', compact('photo_gallery'));
@@ -83,7 +78,6 @@ class PhotoGalleryController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -103,25 +97,21 @@ class PhotoGalleryController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->photoGallery->destroy($id);
         Notification::success('Photogalerie wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\PhotoGalleryController@index');
     }
     public function confirmDestroy($id)
-
     {
         $photo_gallery = $this->photoGallery->find($id);
         return View::make('backend.photo_gallery.confirm-destroy', compact('photo_gallery'));
     }
     public function togglePublish($id)
-
     {
         return $this->photoGallery->togglePublish($id);
     }
     public function upload($id)
-
     {
         try
         {
@@ -134,7 +124,6 @@ class PhotoGalleryController extends BaseController
         }
     }
     public function deleteImage()
-
     {
         return $this->photoGallery->deletePhoto(Input::get('file'));
     }

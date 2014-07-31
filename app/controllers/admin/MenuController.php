@@ -17,7 +17,6 @@ class MenuController extends BaseController
 {
     protected $menu;
     public function __construct(Menu $menu)
-
     {
         $this->menu = $menu;
     }
@@ -27,7 +26,6 @@ class MenuController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $items = $this->menu->orderBy('order', 'asc')->get();
         $menus = $this->menu->getMenuHTML($items);
@@ -39,7 +37,6 @@ class MenuController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         $options = $this->menu->getMenuOptions();
         return View::make('backend.menu.create', compact('options'));
@@ -50,7 +47,6 @@ class MenuController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $formData = Input::all();
         if ($formData['type'] == 'module')
@@ -86,7 +82,6 @@ class MenuController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         return View::make('menu.show');
     }
@@ -97,7 +92,6 @@ class MenuController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $options = $this->menu->getMenuOptions();
         $menu = $this->menu->find($id);
@@ -110,7 +104,6 @@ class MenuController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $formData = Input::all();
         if ($formData['type'] == 'module')
@@ -146,7 +139,6 @@ class MenuController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         if ($this->menu->hasChildItems($id))
         {
@@ -160,13 +152,11 @@ class MenuController extends BaseController
         return Redirect::action('App\Controllers\Admin\MenuController@index');
     }
     public function confirmDestroy($id)
-
     {
         $menu = $this->menu->find($id);
         return View::make('backend.menu.confirm-destroy', compact('menu'));
     }
     public function save()
-
     {
         $this->menu->changeParentById($this->menu->parseJsonArray(json_decode(Input::get('json') , true)));
         return Response::json(array(
@@ -174,7 +164,6 @@ class MenuController extends BaseController
         ));
     }
     public function togglePublish($id)
-
     {
         $this->menu = $this->menu->find($id);
         $this->menu->is_published = ($this->menu->is_published) ? false : true;

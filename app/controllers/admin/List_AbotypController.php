@@ -13,7 +13,6 @@ class List_AbotypController extends BaseController
 {
     protected $list_abotyp;
     public function __construct(List_Abotyp $list_abotyp)
-
     {
         View::share('active', 'modules');
         $this->list_abotyp = $list_abotyp;
@@ -24,7 +23,6 @@ class List_AbotypController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $list_abotyp = $this->list_abotyp->paginate(10);
         return View::make('backend.lists.list_abotyp.index', compact('list_abotyp'));
@@ -35,7 +33,6 @@ class List_AbotypController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.lists.list_abotyp.create');
     }
@@ -45,7 +42,6 @@ class List_AbotypController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -72,7 +68,6 @@ class List_AbotypController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         //
     }
@@ -83,7 +78,6 @@ class List_AbotypController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $list_abotyp = $this->list_abotyp->find($id);
         return View::make('backend.lists.list_abotyp.edit', compact('list_abotyp'));
@@ -95,7 +89,6 @@ class List_AbotypController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -122,7 +115,6 @@ class List_AbotypController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $list_abotyp = List_Abotyp::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $this->list_abotyp->destroy($id);
@@ -130,7 +122,6 @@ class List_AbotypController extends BaseController
         return Redirect::action('App\Controllers\Admin\List_AbotypController@index');
     }
     public function confirmDestroy($id)
-
     {
         $list_abotyp = List_Abotyp::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $list_abotyp = $this->list_abotyp->find($id);

@@ -27,7 +27,6 @@ class OfferController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $offer = $this->offer->paginate(null, true);
         return View::make('backend.offer.index', compact('offer'));
@@ -38,7 +37,6 @@ class OfferController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.offer.create');
     }
@@ -48,7 +46,6 @@ class OfferController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -68,7 +65,6 @@ class OfferController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $offer = $this->offer->find($id);
         return View::make('backend.offer.show', compact('offer'));
@@ -80,7 +76,6 @@ class OfferController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $offer = $this->offer->find($id);
         return View::make('backend.offer.edit', compact('offer'));
@@ -92,7 +87,6 @@ class OfferController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -112,20 +106,17 @@ class OfferController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->offer->destroy($id);
         Notification::success('Angebot wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\OfferController@index');
     }
     public function confirmDestroy($id)
-
     {
         $offer = $this->offer->find($id);
         return View::make('backend.offer.confirm-destroy', compact('offer'));
     }
     public function togglePublish($id)
-
     {
         return $this->offer->togglePublish($id);
     }

@@ -13,7 +13,6 @@ class List_TypeController extends BaseController
 {
     protected $list_type;
     public function __construct(List_Type $list_type)
-
     {
         View::share('active', 'modules');
         $this->list_type = $list_type;
@@ -24,7 +23,6 @@ class List_TypeController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $list_type = $this->list_type->paginate(10);
         return View::make('backend.lists.list_type.index', compact('list_type'));
@@ -35,7 +33,6 @@ class List_TypeController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.lists.list_type.create');
     }
@@ -45,7 +42,6 @@ class List_TypeController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -72,7 +68,6 @@ class List_TypeController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         //
     }
@@ -83,7 +78,6 @@ class List_TypeController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $list_type = $this->list_type->find($id);
         return View::make('backend.lists.list_type.edit', compact('list_type'));
@@ -95,7 +89,6 @@ class List_TypeController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -122,15 +115,13 @@ class List_TypeController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $list_type = List_Type::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $this->list_type->destroy($id);
         Notification::success('Typ wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\List_TypeController@index');
     }
-    public function confirmDestroy($id)
-
+        public function confirmDestroy($id)
     {
         $list_type = List_Type::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $list_type = $this->list_type->find($id);

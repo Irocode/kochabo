@@ -34,7 +34,6 @@ class LogisticianmanagerController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         // return Datatables::of(Logisticianmanager::select(array('id', 'name')))->make();
         /*
@@ -53,7 +52,6 @@ class LogisticianmanagerController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.logisticianmanager.create');
     }
@@ -63,7 +61,6 @@ class LogisticianmanagerController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -83,7 +80,6 @@ class LogisticianmanagerController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $logisticianmanager = $this->logisticianmanager->find($id);
         $deliverytimes = $this->logisticianmanager->find(10)->deliverytimes;
@@ -96,7 +92,6 @@ class LogisticianmanagerController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $logisticianmanager = $this->logisticianmanager->find($id);
         return View::make('backend.logisticianmanager.edit', compact('logisticianmanager'));
@@ -108,7 +103,6 @@ class LogisticianmanagerController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -128,20 +122,17 @@ class LogisticianmanagerController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->logisticianmanager->destroy($id);
         Notification::success('Kunde wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\LogisticianmanagerController@index');
     }
     public function confirmDestroy($id)
-
     {
         $logisticianmanager = $this->logisticianmanager->find($id);
         return View::make('backend.logisticianmanager.confirm-destroy', compact('logisticianmanager'));
     }
     public function togglePublish($id)
-
     {
         return $this->logisticianmanager->togglePublish($id);
     }
@@ -152,7 +143,6 @@ class LogisticianmanagerController extends BaseController
      * @return Response
      */
     public function lieferzeiten_update($id)
-
     {
         $this->deliverytimes->update($id, Input::all());
         return $this->deliverytimes->lieferzeiten_update($id);

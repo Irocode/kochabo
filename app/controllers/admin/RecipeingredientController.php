@@ -15,11 +15,10 @@ class RecipeingredientController extends BaseController
 {
     protected $recipe_ingredient;
     public function __construct(Recipeingredient $recipe_ingredient, Recipe $recipe)
-
     {
         View::share('active', 'modules');
         $this->recipe_ingredient = $recipe_ingredient;
-         $this->recipe = $recipe;
+        $this->recipe = $recipe;
       
     }
     /**
@@ -28,7 +27,6 @@ class RecipeingredientController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $recipe_ingredient = $this->recipe_ingredient->paginate(null, true);
         return View::make('backend.recipeingredient.index', compact('recipe_ingredient'));
@@ -39,7 +37,6 @@ class RecipeingredientController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.recipeingredient.create');
     }
@@ -49,7 +46,6 @@ class RecipeingredientController extends BaseController
      * @return Response
      */
     public function store()
-
     {
     if (isset($_GET["recipeid"])) {
     $recipeid = $_GET["recipeid"];
@@ -75,7 +71,6 @@ class RecipeingredientController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $recipe_ingredient = $this->recipe_ingredient->find($id);
         return View::make('backend.recipeingredient.show', compact('recipe_ingredient'));
@@ -87,7 +82,6 @@ class RecipeingredientController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $recipe_ingredient = $this->recipe_ingredient->find($id);
        
@@ -101,7 +95,6 @@ class RecipeingredientController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -121,41 +114,30 @@ class RecipeingredientController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
-
        
-if (isset($_GET["recipeid"])) {
+    if (isset($_GET["recipeid"])) {
     $recipeid = $_GET["recipeid"];
-
-}
-
-
-
+    }
         $this->recipe_ingredient->destroy($id);
         Notification::success('Zutat wurde gelöscht');
 
-           return Redirect::to("/admin/recipe/" . $recipeid . "/edit#zielanker_loeschen");
-
-
+        return Redirect::to("/admin/recipe/" . $recipeid . "/edit#zielanker_loeschen");
        
     }
-    public function confirmDestroy($id)
 
+    public function confirmDestroy($id)
     {
         $recipe_ingredient = $this->recipe_ingredient->find($id);
         return View::make('backend.recipeingredient.confirm-destroy', compact('recipe_ingredient'));
     }
-    public function togglePublish($id)
 
+    public function togglePublish($id)
     {
         return $this->recipe_ingredient->togglePublish($id);
     }
 
-
-
        public function zutaten_update($id)
-
     {
         $this->recipe_ingredient->update($id, Input::all());
         return $this->recipe_ingredient->zutaten_update($id);

@@ -16,7 +16,6 @@ class FooterController extends BaseController
 {
     protected $footer;
     public function __construct(Footer $footer)
-
     {
         View::share('active', 'modules');
         $this->footer = $footer;
@@ -27,7 +26,6 @@ class FooterController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $footer = $this->footer->paginate(null, true);
         return View::make('backend.footer.index', compact('footer'));
@@ -38,7 +36,6 @@ class FooterController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.footer.create');
     }
@@ -48,7 +45,6 @@ class FooterController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -68,7 +64,6 @@ class FooterController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $footer = $this->footer->find($id);
         return View::make('backend.footer.show', compact('footer'));
@@ -80,7 +75,6 @@ class FooterController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $footer = $this->footer->find($id);
         return View::make('backend.footer.edit', compact('footer'));
@@ -92,7 +86,6 @@ class FooterController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -112,20 +105,17 @@ class FooterController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->footer->destroy($id);
         Notification::success('Footer wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\FooterController@index');
     }
     public function confirmDestroy($id)
-
     {
         $footer = $this->footer->find($id);
         return View::make('backend.footer.confirm-destroy', compact('footer'));
     }
     public function togglePublish($id)
-
     {
         return $this->footer->togglePublish($id);
     }

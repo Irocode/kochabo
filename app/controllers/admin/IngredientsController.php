@@ -29,7 +29,6 @@ class IngredientsController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $ingredients = $this->ingredients->paginate(null, true);
         return View::make('backend.ingredients.index', compact('ingredients'));
@@ -40,7 +39,6 @@ class IngredientsController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.ingredients.create');
     }
@@ -50,7 +48,6 @@ class IngredientsController extends BaseController
      * @return Response
      */
     public function store()
-
     {
      
 
@@ -100,7 +97,6 @@ $input_all = (array_merge($input, $input1));
 
             if ($modal == 'yes')
             {      
- 
               
            //   var_dump($lastInsertedId);
                 
@@ -109,11 +105,7 @@ $input_all = (array_merge($input, $input1));
             else
             {
                 return Redirect::route('admin.ingredients.index');
-            }
-
-
-
-            
+            }            
         }
         catch(ValidationException $e)
         {
@@ -133,7 +125,6 @@ $input_all = (array_merge($input, $input1));
      * @return Response
      */
     public function show($id)
-
     {
         $ingredients = $this->ingredients->find($id);
         return View::make('backend.ingredients.show', compact('ingredients'));
@@ -145,7 +136,6 @@ $input_all = (array_merge($input, $input1));
      * @return Response
      */
     public function edit($id)
-
     {
         $ingredients = $this->ingredients->find($id);
        
@@ -159,7 +149,6 @@ $input_all = (array_merge($input, $input1));
      * @return Response
      */
     public function update($id)
-
     {
        // Image New Start
    try
@@ -212,20 +201,17 @@ $input_all = (array_merge($input, $input1));
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->ingredients->destroy($id);
         Notification::success('Zutat wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\IngredientsController@index');
     }
     public function confirmDestroy($id)
-
     {
         $ingredients = $this->ingredients->find($id);
         return View::make('backend.ingredients.confirm-destroy', compact('ingredients'));
     }
     public function togglePublish($id)
-
     {
         return $this->ingredients->togglePublish($id);
     }

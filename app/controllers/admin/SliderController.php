@@ -20,7 +20,6 @@ class SliderController extends BaseController
     protected $height;
     protected $imgDir;
     public function __construct()
-
     {
         View::share('active', 'plugins');
         $config = Config::get('sfcms');
@@ -34,7 +33,6 @@ class SliderController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $sliders = Slider::orderBy('created_at', 'DESC')->paginate(15);
         return View::make('backend.slider.index', compact('sliders'));
@@ -45,7 +43,6 @@ class SliderController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         if (Slider::get()->count() >= 1)
         {
@@ -66,7 +63,6 @@ class SliderController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $slider = Slider::with('images')->findOrFail($id);
         $types = ['home' => 'Home'];
@@ -79,7 +75,6 @@ class SliderController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $slider = Slider::findOrFail($id);
         $slider->title = Input::get('title');
@@ -95,7 +90,6 @@ class SliderController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $slider = Slider::with('images')->findOrFail($id);
         $slider->delete();
@@ -109,18 +103,15 @@ class SliderController extends BaseController
         return Redirect::route('admin.slider.index');
     }
     public function usex()
-
     {
         return View::make('backend.singleuploader.index', compact('paginator', 'levels', 'level'))->with('active', 'logs');
     }
     public function confirmDestroy($id)
-
     {
         $slider = Slider::findOrFail($id);
         return View::make('backend.slider.confirm-destroy', compact('slider'));
     }
     public function upload($id)
-
     {
         $file = Input::file('file');
         $rules = array(
@@ -155,7 +146,6 @@ class SliderController extends BaseController
         return Response::json('error', 400);
     }
     public function deleteImage()
-
     {
         $fileName = Input::get('file');
         Photo::where('file_name', '=', $fileName)->delete();

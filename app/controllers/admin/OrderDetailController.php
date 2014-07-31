@@ -13,16 +13,11 @@ use OrderItems;
 use Sefa\Exceptions\Validation\ValidationException;
 class OrderDetailController extends BaseController
 
-{
-  
-
+{ 
     public function __construct(OrderDetail $order_detail)
-
     {
-        View::share('active', 'modules');
-       
-        $this->order_detail = $order_detail;
-  
+        View::share('active', 'modules');       
+        $this->order_detail = $order_detail; 
        
     }
     /**
@@ -31,7 +26,6 @@ class OrderDetailController extends BaseController
      * @return Response
      */
     public function index()
-
     {
     }
     /**
@@ -40,7 +34,6 @@ class OrderDetailController extends BaseController
      * @return Response
      */
     public function create()
-
     {
     }
     /**
@@ -49,7 +42,6 @@ class OrderDetailController extends BaseController
      * @return Response
      */
     public function store()
-
     {
     }
     /**
@@ -59,7 +51,6 @@ class OrderDetailController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
     }
     /**
@@ -69,7 +60,6 @@ class OrderDetailController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
     }
     /**
@@ -79,7 +69,6 @@ class OrderDetailController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $order = $this->order_detail->find($id);
         $order_address = $this->order_detail->find($id);

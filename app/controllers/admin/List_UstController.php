@@ -13,7 +13,6 @@ class List_UstController extends BaseController
 {
     protected $list_ust;
     public function __construct(List_Ust $list_ust)
-
     {
         View::share('active', 'modules');
         $this->list_ust = $list_ust;
@@ -24,7 +23,6 @@ class List_UstController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $list_ust = $this->list_ust->paginate(10);
         return View::make('backend.lists.list_ust.index', compact('list_ust'));
@@ -35,7 +33,6 @@ class List_UstController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.lists.list_ust.create');
     }
@@ -45,7 +42,6 @@ class List_UstController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -72,7 +68,6 @@ class List_UstController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         //
     }
@@ -83,7 +78,6 @@ class List_UstController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $list_ust = $this->list_ust->find($id);
         return View::make('backend.lists.list_ust.edit', compact('list_ust'));
@@ -95,7 +89,6 @@ class List_UstController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -122,7 +115,6 @@ class List_UstController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $list_ust = List_Ust::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $this->list_ust->destroy($id);
@@ -130,7 +122,6 @@ class List_UstController extends BaseController
         return Redirect::action('App\Controllers\Admin\List_UstController@index');
     }
     public function confirmDestroy($id)
-
     {
         $list_ust = List_Ust::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $list_ust = $this->list_ust->find($id);

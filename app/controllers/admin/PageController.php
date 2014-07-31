@@ -15,7 +15,6 @@ class PageController extends BaseController
 {
     protected $page;
     public function __construct(Page $page)
-
     {
         $this->page = $page;
         View::share('active', 'modules');
@@ -26,7 +25,6 @@ class PageController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $pages = $this->page->paginate();
         return View::make('backend.page.index', compact('pages'));
@@ -37,7 +35,6 @@ class PageController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.page.create');
     }
@@ -47,7 +44,6 @@ class PageController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -67,7 +63,6 @@ class PageController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $page = $this->page->find($id);
         return View::make('backend.page.show', compact('page'));
@@ -79,7 +74,6 @@ class PageController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $page = $this->page->find($id);
         return View::make('backend.page.edit', compact('page'));
@@ -91,7 +85,6 @@ class PageController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -111,20 +104,17 @@ class PageController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->page->destroy($id);
         Notification::success('Seite wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\PageController@index');
     }
     public function confirmDestroy($id)
-
     {
         $page = $this->page->find($id);
         return View::make('backend.page.confirm-destroy', compact('page'));
     }
     public function togglePublish($id)
-
     {
         return $this->page->togglePublish($id);
     }

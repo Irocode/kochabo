@@ -16,7 +16,6 @@ class AddressNoPrimaryKeyController extends BaseController
 {
     protected $address;
     public function __construct(Address $address, AddressNoPrimaryKey $addressnoprimarykey, Users $users)
-
     {
         View::share('active', 'modules');
         $this->address = $address;
@@ -29,7 +28,6 @@ class AddressNoPrimaryKeyController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $address = $this->address->paginate();
         $products = Products::all();
@@ -43,7 +41,6 @@ class AddressNoPrimaryKeyController extends BaseController
      * @return \Illuminate\View\View
      */
     public function show($id, $slug = null)
-
     {
         $address = $this->address->find($id);
         return View::make('frontend.address.show', compact('address'));
@@ -55,7 +52,6 @@ class AddressNoPrimaryKeyController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $this->addressnoprimarykey->update($id, Input::all());
         /*
@@ -75,7 +71,6 @@ class AddressNoPrimaryKeyController extends BaseController
     }
     // Test loginabfrage
     public function login_query()
-
     {
         $address = $this->address->paginate();
         return View::make('frontend.address.login_query', compact('address'));

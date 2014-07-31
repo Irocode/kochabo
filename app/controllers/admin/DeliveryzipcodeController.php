@@ -17,7 +17,6 @@ class DeliveryzipcodeController extends BaseController
     protected $deliveryzipcode;
     protected $logisticianmanager;
     public function __construct(Deliveryzipcode $deliveryzipcode, Logisticianmanager $logisticianmanager)
-
     {
         View::share('active', 'modules');
         $this->deliveryzipcode = $deliveryzipcode;
@@ -29,7 +28,6 @@ class DeliveryzipcodeController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $deliveryzipcode = $this->deliveryzipcode->paginate(150, true);
         return View::make('backend.deliveryzipcode.index', compact('deliveryzipcode'));
@@ -40,7 +38,6 @@ class DeliveryzipcodeController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.deliveryzipcode.create');
     }
@@ -50,7 +47,6 @@ class DeliveryzipcodeController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -72,7 +68,6 @@ class DeliveryzipcodeController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $deliveryzipcode = $this->deliveryzipcode->find($id);
         return View::make('backend.deliveryzipcode.show', compact('deliveryzipcode'));
@@ -84,7 +79,6 @@ class DeliveryzipcodeController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $deliveryzipcode = $this->deliveryzipcode->find($id);
         return View::make('backend.deliveryzipcode.edit', compact('deliveryzipcode'));
@@ -96,7 +90,6 @@ class DeliveryzipcodeController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -116,7 +109,6 @@ class DeliveryzipcodeController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->deliveryzipcode->destroy($id);
         Notification::success('Postleitzahl wurde gelöscht');
@@ -131,13 +123,11 @@ class DeliveryzipcodeController extends BaseController
         // return Redirect::action('Logisticianmanager_sefa_free_Controller@index', array($id->id));
     }
     public function confirmDestroy($id)
-
     {
         $deliveryzipcode = $this->deliveryzipcode->find($id);
         return View::make('backend.deliveryzipcode.confirm-destroy', compact('deliveryzipcode'));
     }
     public function lieferPostleitzahlen_update($id)
-
     {
         $this->deliveryzipcode->update($id, Input::all());
         return $this->deliveryzipcode->lieferPostleitzahlen_update($id);

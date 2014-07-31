@@ -17,7 +17,6 @@ class ProductsController extends BaseController
 {
     protected $products;
     public function __construct(Products $products, PhotoGallery $photoGallery)
-
     {
         View::share('active', 'modules');
         $this->products = $products;
@@ -29,7 +28,6 @@ class ProductsController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $products = $this->products->paginate(null, true);
         return View::make('backend.products.index', compact('products'));
@@ -40,7 +38,6 @@ class ProductsController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.products.create');
     }
@@ -50,7 +47,6 @@ class ProductsController extends BaseController
      * @return Response
      */
     public function store()
-
     {
 
 // Image New Start
@@ -100,7 +96,6 @@ $input_all = (array_merge($input, $input1));
      * @return Response
      */
     public function show($id)
-
     {
         $products = $this->products->find($id);
         return View::make('backend.products.show', compact('products'));
@@ -112,7 +107,6 @@ $input_all = (array_merge($input, $input1));
      * @return Response
      */
     public function edit($id)
-
     {
         $products = $this->products->find($id);
         return View::make('backend.products.edit', compact('products'));
@@ -124,7 +118,6 @@ $input_all = (array_merge($input, $input1));
      * @return Response
      */
     public function update($id)
-
     {
         // Image New Start
    try
@@ -177,7 +170,6 @@ $input_all = (array_merge($input, $input1));
      * @return Response
      */
     public function destroy($id)
-
     {
         $user_id = Input::get('user_id');
         $this->products->destroy($id);
@@ -187,13 +179,11 @@ $input_all = (array_merge($input, $input1));
         ));
     }
     public function confirmDestroy($id)
-
     {
         $products = $this->products->find($id);
         return View::make('backend.products.confirm-destroy', compact('products'));
     }
     public function lieferzeiten_update($id)
-
     {
         $this->products->update($id, Input::all());
         return $this->products->lieferzeiten_update($id);

@@ -50,7 +50,6 @@ class AjaxController extends BaseController
     }
     // AJAX Call-> Index Logistmanager Start
     public function getDatatable_logisticianmanager()
-
     {
         // return Logisticianmanager::all()->toArray('id','name', 'street','contactPerson','phone','email', JSON_PRETTY_PRINT); // Array dooh
         $logisticianmanager = Logisticianmanager::where('id', '>', 1)->orderBy('updated_at', 'DESC')->get();
@@ -61,7 +60,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Logistmanager END
     // AJAX Call-> Index Address INDEX Start
     public function getDatatable_address($id)
-
     {
         $address = Address::where('customercustomer_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
         return View::make('backend.address.data', compact('address'));
@@ -69,7 +67,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Address SHOW END
     // AJAX Call-> Index Address (ALLE) INDEX Start
     public function getDatatable_address_all()
-
     {
         $address = Address::where('customercustomer_id', '>', 0)->orderBy('updated_at', 'DESC')->get();
         return View::make('backend.address.data', compact('address'));
@@ -77,7 +74,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Address INDEX END
     // AJAX Call-> Index Order INDEX Start
     public function getDatatable_order($id)
-
     {
         $order = Order::where('customercustomer_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
         return View::make('backend.order.data', compact('order'));
@@ -85,7 +81,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Order INDEX END
     // AJAX Call-> Index Order INDEX Start ALL
     public function getDatatable_order_all()
-
     {
         $order = Order::where('customercustomer_id', '>', 0)->orderBy('updated_at', 'DESC')->get();
         return View::make('backend.order.data', compact('order'));
@@ -93,7 +88,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Order INDEX END
     // AJAX Call-> Index Order_address INDEX Start
     public function getDatatable_order_address($id)
-
     {
         $order_address = OrderAddress::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
         return View::make('backend.order_address.data', compact('order_address'));
@@ -101,7 +95,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Order_address INDEX END
     // AJAX Call-> Index Order_order_items INDEX Start
     public function getDatatable_order_items($id)
-
     {
         $order_items = OrderItems::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
         return View::make('backend.order_items.data', compact('order_items'));
@@ -109,7 +102,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Order_order_items INDEX END
     // AJAX Call-> Index Order_order_items (ALLE) INDEX Start
     public function getDatatable_order_items_all()
-
     {
         $order_items = OrderItems::where('orderorder_id', '>', 0)->orderBy('orderorder_id', 'DESC')->get();
         return View::make('backend.order_items.data', compact('order_items'));
@@ -117,7 +109,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Order_order_items (ALLE) INDEX END
     // AJAX Call-> Index Order_status_history INDEX Start
     public function getDatatable_order_status_history($id)
-
     {
         $order_status_history = OrderStatusHistory::where('orderorder_id', '=', $id)->orderBy('orderorder_id', 'DESC')->get();
         return View::make('backend.order_status_history.data', compact('order_status_history'));
@@ -125,7 +116,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Order_status_history INDEX END
     // AJAX Call-> Index Order_status_history (ALLE)INDEX Start
     public function getDatatable_order_status_history_all()
-
     {
         $order_status_history = OrderStatusHistory::where('orderorder_id', '>', 0)->orderBy('orderorder_id', 'DESC')->get();
         return View::make('backend.order_status_history.data', compact('order_status_history'));
@@ -133,7 +123,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index Order_status_history (ALLE) INDEX END
     // AJAX Call-> Index products INDEX Start
     public function getDatatable_products()
-
     {
         $products = Products::where('id', '>', 1)->orderBy('id', 'DESC')->get();
         return View::make('backend.products.data', compact('products'));
@@ -141,7 +130,6 @@ class AjaxController extends BaseController
     // AJAX Call-> Index products INDEX END
     // AJAX Call-> Index Deliveryzipcode INDEX Start
     public function getDatatable_deliveryzipcode()
-
     {
         $deliveryzipcode = Deliveryzipcode::where('id', '>', 1)->orderBy('updated_at', 'DESC')->get();
         return View::make('backend.deliveryzipcode.data', compact('deliveryzipcode'));
@@ -151,7 +139,6 @@ class AjaxController extends BaseController
 
     // AJAX Call-> Index Customer_managment INDEX Start
     public function getDatatable_customer_management()
-
     {
 
         $users = Users::where('id', '>', 0)->get();
@@ -188,7 +175,6 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
 
  // AJAX Call-> Index customer_management_customers_groups INDEX END
   public function getDatatable_tablesorter_customer_management_customers_groups($id)
-
     {
         $users = Users::where('id', '>', 0)->get();
         foreach ($users as $user)
@@ -224,7 +210,6 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
 
     // AJAX Call-> Index Newsletter INDEX Start
     public function getDatatable_newsletter()
-
     {
         $newsletter = Newsletter::where('id', '=', $id)->orderBy('id', 'DESC')->get();
         return View::make('backend.newsletter.data', compact('newsletter'));
@@ -232,7 +217,6 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
     // AJAX Call-> Index Newsletter INDEX END
     // AJAX Call-> Index Newsletter (ALLE) INDEX Start
     public function getDatatable_newsletter_all()
-
     {
         $newsletter = Newsletter::where('id', '>', 1)->orderBy('id', 'DESC')->get();
         return View::make('backend.newsletter.data', compact('newsletter'));
@@ -242,7 +226,6 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
    
     // AJAX Call-> Index CustomersGroups INDEX Start
     public function getDatatable_customers_groups($id)
-
     {
         $customers_groups = CustomersGroups::where('customers_groups_id', '=', $id)->orderBy('customers_groups_id', 'DESC')->get();
         return View::make('backend.customers_groups.data', compact('customers_groups'));
@@ -250,7 +233,6 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
     
     // AJAX Call-> Index CustomersGroups (ALLE)INDEX Start
     public function getDatatable_customers_groups_all()
-
     {
         $customers_groups = CustomersGroups::where('customers_groups_id', '>', 0)->orderBy('customers_groups_id', 'DESC')->get();
         return View::make('backend.customers_groups.data', compact('customers_groups'));
@@ -259,7 +241,6 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
 
     // AJAX Call-> Index ingredient INDEX Start
     public function getDatatable_ingredients()
-
     {
          $ingredients = Ingredients::where('id', '=', $id)->orderBy('id', 'DESC')->get();
         return View::make('backend.ingredients.data', compact('ingredients'));
@@ -278,7 +259,6 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
 
  // AJAX Call-> Index recipe_ingredient INDEX Start
     public function getDatatable_recipe_ingredient()
-
     {
          $recipe_ingredient = Recipeingredient::where('recipe_id', '=', $id)->orderBy('recipe_id', 'DESC')->get();
         return View::make('backend.recipe_ingredient.data', compact('recipe_ingredient'));
@@ -297,7 +277,6 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
 
      // AJAX Call-> Index recipe INDEX Start
     public function getDatatable_recipe()
-
     {
          $recipe = Recipe::where('id', '=', $id)->orderBy('id', 'DESC')->get();
         return View::make('backend.recipe.data', compact('recipe'));
@@ -312,10 +291,6 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
           return View::make('backend.recipe.data', compact('recipe'));
     }
     // AJAX Call-> Index recipe (ALLE)INDEX Ende
-
-
-
- 
 
 
 

@@ -13,7 +13,6 @@ class List_GruppeController extends BaseController
 {
     protected $list_gruppe;
     public function __construct(List_Gruppe $list_gruppe)
-
     {
         View::share('active', 'modules');
         $this->list_gruppe = $list_gruppe;
@@ -24,7 +23,6 @@ class List_GruppeController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $list_gruppe = $this->list_gruppe->paginate(10);
         return View::make('backend.lists.list_gruppe.index', compact('list_gruppe'));
@@ -35,7 +33,6 @@ class List_GruppeController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.lists.list_gruppe.create');
     }
@@ -45,7 +42,6 @@ class List_GruppeController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -72,7 +68,6 @@ class List_GruppeController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         //
     }
@@ -83,7 +78,6 @@ class List_GruppeController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $list_gruppe = $this->list_gruppe->find($id);
         return View::make('backend.lists.list_gruppe.edit', compact('list_gruppe'));
@@ -95,7 +89,6 @@ class List_GruppeController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         $rules = array(
             'bezeichnung' => 'required',
@@ -122,7 +115,6 @@ class List_GruppeController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $list_gruppe = List_Gruppe::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $this->list_gruppe->destroy($id);
@@ -130,7 +122,6 @@ class List_GruppeController extends BaseController
         return Redirect::action('App\Controllers\Admin\List_GruppeController@index');
     }
     public function confirmDestroy($id)
-
     {
         $list_gruppe = List_Gruppe::where('id', '>', 1)->orderBy('bezeichnung', 'DESC')->get();
         $list_gruppe = $this->list_gruppe->find($id);

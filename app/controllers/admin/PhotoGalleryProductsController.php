@@ -32,7 +32,6 @@ class PhotoGalleryProductsController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $photo_galleries = $this->photoGallery->paginate();
         return View::make('backend.photo_gallery.index', compact('photo_galleries'));
@@ -43,7 +42,6 @@ class PhotoGalleryProductsController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         $attributes = ['title' => 'Photo Gallery Title', 'content' => 'Photo Gallery Content', 'is_published' => false];
         try
@@ -62,7 +60,6 @@ class PhotoGalleryProductsController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $photo_gallery = $this->photoGallery->find($id);
         return View::make('backend.photo_gallery.show', compact('photo_gallery'));
@@ -74,7 +71,6 @@ class PhotoGalleryProductsController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $pruefe_anlegen = Input::get('anlegen');
         // var_dump($pruefe_anlegen);
@@ -97,20 +93,9 @@ class PhotoGalleryProductsController extends BaseController
         }
         else
         {
-            // var_dump('passt nicht');
+        
             $photoGallery = $this->photoGallery->find($id);
-            /*
-            $products = $this->products->find($id);
-            $products->photo_galleries_id = $id;
-            $products->save();
-            // var_dump($id);
-            $attributes = [
-            'id'  => $id,
-            'title'        => 'Anlage_von_Products',
-            'content'      => 'Products Photo Gallery',
-            'is_published' => false
-            ];
-            $id = $this->photoGallery->create($attributes);
+        
             */
             $photo_gallery = $this->photoGallery->find($id);
             return View::make('backend.photo_gallery.edit_products', compact('photo_gallery'));
@@ -123,7 +108,6 @@ class PhotoGalleryProductsController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -143,25 +127,21 @@ class PhotoGalleryProductsController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->photoGallery->destroy($id);
         Notification::success('Photo gallery was successfully deleted');
         return Redirect::action('App\Controllers\Admin\PhotoGalleryController@index');
     }
     public function confirmDestroy($id)
-
     {
         $photo_gallery = $this->photoGallery->find($id);
         return View::make('backend.photo_gallery.confirm-destroy', compact('photo_gallery'));
     }
     public function togglePublish($id)
-
     {
         return $this->photoGallery->togglePublish($id);
     }
     public function upload($id)
-
     {
         try
         {
@@ -174,7 +154,6 @@ class PhotoGalleryProductsController extends BaseController
         }
     }
     public function deleteImage()
-
     {
         return $this->photoGallery->deletePhoto(Input::get('file'));
     }

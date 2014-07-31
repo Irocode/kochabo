@@ -14,7 +14,6 @@ class OrderItemsController extends BaseController
 {
     protected $order_items;
     public function __construct(OrderItems $order_items)
-
     {
         $this->order_items = $order_items;
     }
@@ -24,7 +23,6 @@ class OrderItemsController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $order_items = $this->order_items->paginate(null, true);
         return View::make('backend.order_items.index', compact('order_items'));
@@ -35,7 +33,6 @@ class OrderItemsController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.order_items.create');
     }
@@ -45,7 +42,6 @@ class OrderItemsController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -65,7 +61,6 @@ class OrderItemsController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $order_items = $this->order_items->find($id);
         return View::make('backend.order_items.show', compact('order_items'));
@@ -77,7 +72,6 @@ class OrderItemsController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $order_items = $this->order_items->find($id);
         $order_items_status_history = $this->order_items->find($id)->order_items_status_history;
@@ -91,7 +85,6 @@ class OrderItemsController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -111,20 +104,17 @@ class OrderItemsController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->order_items->destroy($id);
         Notification::success('Bestellung wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\Order_ItemsController@index');
     }
     public function confirmDestroy($id)
-
     {
         $order_items = $this->order_items->find($id);
         return View::make('backend.order_items.confirm-destroy', compact('order_items'));
     }
     public function togglePublish($id)
-
     {
         return $this->order_items->togglePublish($id);
     }

@@ -16,7 +16,6 @@ class AddressController extends BaseController
 {
     protected $address;
     public function __construct(Address $address, AddressNoPrimaryKey $addressnoprimarykey, Users $users)
-
     {
         View::share('active', 'modules');
         $this->address = $address;
@@ -29,7 +28,6 @@ class AddressController extends BaseController
      * @return Response
      */
     public function index()
-
     {
         $address = $this->address->paginate(null, true);
         return View::make('backend.address.index', compact('address'));
@@ -40,7 +38,6 @@ class AddressController extends BaseController
      * @return Response
      */
     public function create()
-
     {
         return View::make('backend.address.create');
     }
@@ -50,7 +47,6 @@ class AddressController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         try
         {
@@ -70,7 +66,6 @@ class AddressController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
         $address = $this->address->find($id);
         return View::make('backend.address.show', compact('address'));
@@ -82,7 +77,6 @@ class AddressController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
         $address = AddressNoPrimaryKey::find($id);
         // $address = $this->address->find($id);
@@ -95,7 +89,6 @@ class AddressController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
         try
         {
@@ -116,20 +109,17 @@ class AddressController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
         $this->address->destroy($id);
         Notification::success('Adresse wurde gelöscht');
         return Redirect::action('App\Controllers\Admin\AddressController@index');
     }
     public function confirmDestroy($id)
-
     {
         $address = $this->address->find($id);
         return View::make('backend.address.confirm-destroy', compact('address'));
     }
     public function togglePublish($id)
-
     {
         return $this->address->togglePublish($id);
     }
