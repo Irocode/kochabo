@@ -29,21 +29,6 @@ if (isset($_GET["idzt"]))
 
 ?>
 
-<!-- [Zahl angeben]-->
-<script>
-    function isNumberKey(evt){
-    var charCode = (evt.which) ? evt.which : evt.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-    return false;
-    return true;
-}
-</script>
-
-
-
-
-<!--{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}-->
-
 {{ HTML::style('assets/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
 {{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectizenew.js') }}
 
@@ -1126,7 +1111,7 @@ if (isset($idzt))
          <div class="control-group {{ $errors->has('name') ? 'has-error' : '' }}">
             <label class="control-label" for="name">Name <span class="stern" >*</span></label>
             <div class="controls">         
-               {{ Form::text('name', null, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Name', 'required', 'value'=>Input::old('name'))) }}
+               {{ Form::text('name', null, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Name', 'pattern' =>'.{2,}', 'required', 'value'=>Input::old('name'))) }}
                @if ($errors->first('name'))
                <span class="help-block">{{ $errors->first('name') }}</span>
                @endif
@@ -1137,7 +1122,7 @@ if (isset($idzt))
          <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
             <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
             <div class="controls">         
-               {{ Form::textarea('description', null, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Beschreibung',  'required', 'value'=>Input::old('description'))) }}
+               {{ Form::textarea('description', null, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Beschreibung',  'pattern' =>'.{2,}', 'required', 'value'=>Input::old('description'))) }}
                @if ($errors->first('description'))
                <span class="help-block">{{ $errors->first('description') }}</span>
                @endif
@@ -1150,7 +1135,8 @@ if (isset($idzt))
                <div class="control-group {{ $errors->has('kcal100g') ? 'has-error' : '' }}">
                   <label class="control-label" for="kcal100g">Kcal pro 100g <span class="stern" >*</span></label>
                   <div class="controls">         
-                     {{ Form::text('kcal100g', null, array('class'=>'form-control', 'id' => 'kcal100g',  'onkeypress' =>'return isNumberKey(event)', 'placeholder'=>'Kcal pro 100g',  'required', 'x-moz-errormessage' => 'Bitte eine Zahl eingeben.', 'value'=>Input::old('kcal100g'))) }}
+                       {{ Form::text('kcal100g', null, array('class'=>'form-control', 'onkeypress' =>'return isNumberKey(event)', 'id' => 'kcal100g', 'placeholder'=>'Kcal pro 100g [Zahl angeben]', 'required','value'=>Input::old('kcal100g'))) }}
+                     
                      @if ($errors->first('kcal100g'))
                      <span class="help-block">{{ $errors->first('kcal100g') }}</span>
                      @endif

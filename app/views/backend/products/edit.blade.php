@@ -19,7 +19,7 @@
    <div class="control-group {{ $errors->has('product_name') ? 'has-error' : '' }}">
       <label class="control-label" for="product_name">Artikel Name <span class="stern" >*</span></label>
       <div class="controls">
-         {{ Form::text('product_name', $products->product_name, array('class'=>'form-control', 'id' => 'product_name', 'placeholder'=>'Artikel Name', 'value'=>Input::old('product_name'))) }}
+         {{ Form::text('product_name', $products->product_name, array('class'=>'form-control', 'id' => 'product_name', 'placeholder'=>'Artikel Name', 'pattern' =>'.{2,}','required','value'=>Input::old('product_name'))) }}
          @if ($errors->first('product_name'))
          <span class="help-block">{{ $errors->first('product_name') }}</span>
          @endif
@@ -30,7 +30,7 @@
    <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
       <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
       <div class="controls">
-         {{ Form::text('description', $products->description, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}
+         {{ Form::text('description', $products->description, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Beschreibung', 'pattern' =>'.{2,}', 'required','value'=>Input::old('description'))) }}
          @if ($errors->first('description'))
          <span class="help-block">{{ $errors->first('description') }}</span>
          @endif
@@ -39,7 +39,7 @@
    <br>
    <!-- type -->
    <div class="control-group {{ $errors->has('type') ? 'has-error' : '' }}">
-      <label class="control-label" for="kundeseit">Type</label>
+      <label class="control-label" for="kundeseit">Type <span class="stern" >*</span></label>
       <div class="controls">
          <select name="type" class="form-control">
             <option value="{{$products->type}}" selected>{{$products->type}}</option>
@@ -57,9 +57,9 @@
    <div class="col-md-6">
    <!-- price -->
    <div class="control-group {{ $errors->has('price') ? 'has-error' : '' }}">
-      <label class="control-label" for="price">Preis</label>
+      <label class="control-label" for="price">Preis <span class="stern" >*</span></label>
       <div class="controls">
-         {{ Form::text('price', $products->price, array('class'=>'form-control', 'id' => 'price', 'placeholder'=>'Preis', 'value'=>Input::old('price'))) }}
+         {{ Form::text('price', $products->price, array('class'=>'form-control', 'id' => 'price', 'placeholder'=>'Preis',  'required',  'value'=>Input::old('price'))) }}
          @if ($errors->first('price'))
          <span class="help-block">{{ $errors->first('price') }}</span>
          @endif
@@ -69,9 +69,9 @@
       </div><div class="col-md-6">
             <!-- currency -->
    <div class="control-group {{ $errors->has('price') ? 'has-error' : '' }}">
-      <label class="control-label" for="currency">Währung</label>
+      <label class="control-label" for="currency">Währung <span class="stern" >*</span></label>
       <div class="controls">
-       <select name="currency" class="form-control">
+       <select name="currency" class="form-control" required>
            <option value="{{$products->currency}}" selected>{{$products->currency}}</option>
             @foreach( $list_currency as $x )             
             <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
@@ -87,10 +87,10 @@
 
    <!-- ust -->
    <div class="control-group {{ $errors->has('ust') ? 'has-error' : '' }}">
-      <label class="control-label" for="ust">Ust</label>
+      <label class="control-label" for="ust">Ust <span class="stern" >*</span></label>
       <div class="controls">
        <div class="input-group">
-         <select name="ust" class="form-control">
+         <select name="ust" class="form-control" required>
             <option value="{{$products->recipetype}}" selected>{{$products->ust}}</option>
             @foreach( $list_ust as $x )  
             <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
@@ -105,9 +105,9 @@
    <br>
      <!-- recipetype -->
    <div class="control-group {{ $errors->has('recipetype') ? 'has-error' : '' }}">
-      <label class="control-label" for="recipetype">Rezept Typ</label>
+      <label class="control-label" for="recipetype">Rezept Typ <span class="stern" >*</span></label>
       <div class="controls">
-         <select name="recipetype" class="form-control">
+         <select name="recipetype" class="form-control"  required>
             <option value="{{$products->recipetype}}" selected>{{$products->recipetype}}</option>
             @foreach( $list_recipe_type as $x )  
             <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>

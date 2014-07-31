@@ -6,6 +6,7 @@
       {{ HTML::style('assets/bootstrap/css/backend_bootstrap.css') }}   
       {{ HTML::script('assets/js/holder.js') }}
       {{ HTML::script('assets/js/jquery-ui-1.10.4.custom/development-bundle/jquery-1.10.2.js') }}    
+      {{ HTML::script('assets/js/company.js') }}    
       {{ HTML::script('assets/js/jquery.2.0.3.js') }}  
       {{ HTML::script('assets/bootstrap/js/bootstrap.min.js') }}
       {{ HTML::script('assets/js/holder.js') }}

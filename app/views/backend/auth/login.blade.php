@@ -59,13 +59,13 @@
                      <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                         </span>
-                        {{ Form::text('email', null,array('class' => 'form-control', 'placeholder'=>'E-Mail', 'autofocus'=>'')) }}
+                        {{ Form::email('email', null,array('class' => 'form-control', 'required', 'placeholder'=>'E-Mail', 'autofocus'=>'')) }}
                      </div>
                   </div>
                   <div class="form-group">
                      <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                        {{ Form::password('password', array('class' => 'form-control','placeholder'=>'Passwort')) }}
+                        {{ Form::password('password', array('class' => 'form-control','required','placeholder'=>'Passwort')) }}
                      </div>
                   </div>
                   <label style="text-align: left" class="checkbox">{{ Form::checkbox('rememberMe', 'rememberMe') }} Merken</label>

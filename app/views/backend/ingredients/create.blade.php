@@ -24,7 +24,7 @@
          <div class="control-group {{ $errors->has('name') ? 'has-error' : '' }}">
             <label class="control-label" for="name">Name <span class="stern" >*</span></label>
             <div class="controls">         
-               {{ Form::text('name', null, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Name', 'value'=>Input::old('name'))) }}
+               {{ Form::text('name', null, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Name', 'pattern' =>'.{2,}', 'required','value'=>Input::old('name'))) }}
                @if ($errors->first('name'))
                <span class="help-block">{{ $errors->first('name') }}</span>
                @endif
@@ -35,7 +35,7 @@
          <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
             <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
             <div class="controls">         
-               {{ Form::textarea('description', null, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}
+               {{ Form::textarea('description', null, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Beschreibung', 'pattern' =>'.{5,}', 'required', 'value'=>Input::old('description'))) }}
                @if ($errors->first('description'))
                <span class="help-block">{{ $errors->first('description') }}</span>
                @endif
@@ -48,7 +48,7 @@
                <div class="control-group {{ $errors->has('kcal100g') ? 'has-error' : '' }}">
                   <label class="control-label" for="kcal100g">Kcal pro 100g<span class="stern" >*</span></label>
                   <div class="controls">         
-                     {{ Form::text('kcal100g', null, array('class'=>'form-control', 'id' => 'kcal100g', 'placeholder'=>'Kcal pro 100g', 'value'=>Input::old('kcal100g'))) }}
+                     {{ Form::text('kcal100g', null, array('class'=>'form-control', 'onkeypress' =>'return isNumberKey(event)', 'id' => 'kcal100g', 'placeholder'=>'Kcal pro 100g [Zahl angeben]', 'required','value'=>Input::old('kcal100g'))) }}
                      @if ($errors->first('kcal100g'))
                      <span class="help-block">{{ $errors->first('kcal100g') }}</span>
                      @endif
@@ -124,6 +124,8 @@
      
          <br>
          <!-- Published -->
+
+         <!--
          <input type="hidden" value="is_published">
          <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
             <div class="controls">
@@ -134,6 +136,8 @@
             </div>
          </div>
          <br>
+
+         -->
       </div>
    </div>
    <br>

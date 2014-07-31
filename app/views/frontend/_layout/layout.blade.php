@@ -17,6 +17,7 @@
             <meta name="author" content="Bernd Obendorfer">
             <link rel="icon" href="<?php echo asset('assets/img/favicon_1.png')?>" type="image/x-icon" />
             {{ HTML::script('assets/js/jquery.2.0.3.js') }}
+            {{ HTML::script('assets/js/company.js') }} 
             {{ HTML::style('assets/css/pages/page_pricing.css') }}
             {{ HTML::style('assets/plugins/fancybox/source/jquery.fancybox.css') }}
             {{ HTML::style('assets/plugins/bootstrap/css/bootstrap.min.css') }}

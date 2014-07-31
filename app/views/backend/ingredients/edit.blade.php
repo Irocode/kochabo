@@ -25,7 +25,7 @@
          <div class="control-group {{ $errors->has('name') ? 'has-error' : '' }}">
             <label class="control-label" for="name">Name <span class="stern" >*</span></label>
             <div class="controls">         
-             {{ Form::text('name', $ingredients->name, array('class'=>'form-control', 'id' => 'ingredients',  'placeholder'=>'Name', 'value'=>Input::old('name'))) }}              
+             {{ Form::text('name', $ingredients->name, array('class'=>'form-control', 'id' => 'ingredients',  'placeholder'=>'Name', 'pattern' =>'.{2,}', 'required', 'value'=>Input::old('name'))) }}              
                @if ($errors->first('name'))
                <span class="help-block">{{ $errors->first('name') }}</span>
                @endif
@@ -37,7 +37,7 @@
          <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
             <label class="control-label" for="description">Beschreibung <span class="stern" >*</span></label>
             <div class="controls">     
-                {{ Form::textarea('description', $ingredients->description, array('class'=>'form-control', 'id' => 'ingredients',  'placeholder'=>'Beschreibung', 'value'=>Input::old('description'))) }}                 
+                {{ Form::textarea('description', $ingredients->description, array('class'=>'form-control', 'id' => 'ingredients',  'placeholder'=>'Beschreibung', 'pattern' =>'.{5,}', 'required', 'value'=>Input::old('description'))) }}                 
                @if ($errors->first('description'))
                <span class="help-block">{{ $errors->first('description') }}</span>
                @endif
@@ -51,7 +51,7 @@
                <div class="control-group {{ $errors->has('kcal100g') ? 'has-error' : '' }}">
                   <label class="control-label" for="kcal100g">Kcal pro 100g<span class="stern" >*</span></label>
                   <div class="controls">         
-                   {{ Form::text('kcal100g', $ingredients->kcal100g, array('class'=>'form-control', 'id' => 'ingredients',  'placeholder'=>'Kcal pro 100g', 'value'=>Input::old('kcal100g'))) }}                  
+                   {{ Form::text('kcal100g', $ingredients->kcal100g, array('class'=>'form-control',  'onkeypress' =>'return isNumberKey(event)', 'id' => 'ingredients',  'placeholder'=>'Kcal pro 100g', 'required', 'value'=>Input::old('kcal100g'))) }}                  
                      @if ($errors->first('kcal100g'))
                      <span class="help-block">{{ $errors->first('kcal100g') }}</span>
                      @endif
@@ -60,6 +60,8 @@
             </div>
             <div class="col-md-6">
                <!-- defaultunit  -->
+
+
                <div class="control-group {{ $errors->has('defaultunit ') ? 'has-error' : '' }}">
                   <label class="control-label" for="defaultunit ">Default</label>
                   <div class="controls">  
@@ -149,7 +151,7 @@
 
 </div>
          <br>
-         <!-- Published -->
+         <!-- Published --><!--
          <input type="hidden" value="is_published">
          <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
             <div class="controls">

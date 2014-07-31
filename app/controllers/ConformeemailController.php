@@ -1,17 +1,10 @@
 <?php 
 
-
-
-
-
-
-
 class ConformeemailController extends BaseController
 
 {
     protected $users;
     public function __construct(Users $users)
-
     {
       $this->users = $users;
     }
@@ -21,7 +14,6 @@ class ConformeemailController extends BaseController
      * @return Response
      */
     public function index()
-
     {
       
     }
@@ -31,7 +23,6 @@ class ConformeemailController extends BaseController
      * @return Response
      */
     public function create()
-
     {
       
     }
@@ -41,7 +32,6 @@ class ConformeemailController extends BaseController
      * @return Response
      */
     public function store()
-
     {
         
     }
@@ -52,7 +42,6 @@ class ConformeemailController extends BaseController
      * @return Response
      */
     public function show($id)
-
     {
       
     }
@@ -63,7 +52,6 @@ class ConformeemailController extends BaseController
      * @return Response
      */
     public function edit($id)
-
     {
        
     }
@@ -74,25 +62,14 @@ class ConformeemailController extends BaseController
      * @return Response
      */
     public function update($id)
-
     {
-
         //Remove the Session for Popup         
          Session::forget('conformemail');
-
-
          $fbaktuelleemail = Users::find($id);
          $fbaktuelleemail->fbaktuelleemail = Input::get('fbaktuelleemail');
-         $fbaktuelleemail->save();
-          
-        
-     
-           
-       return Redirect::back();
+         $fbaktuelleemail->save();   
+         return Redirect::back();
     }
-
-
- 
 
 
     /**
@@ -102,9 +79,8 @@ class ConformeemailController extends BaseController
      * @return Response
      */
     public function destroy($id)
-
     {
-          Session::forget('conformemail');             
+       Session::forget('conformemail');             
        return Redirect::back();
        
     }
@@ -119,5 +95,3 @@ class ConformeemailController extends BaseController
         
     }
 }
-
-
