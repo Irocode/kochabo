@@ -621,7 +621,7 @@ if (isset($_GET["idzt"]))
                <table class="table table-striped">
                   <thead>
                      <tr>
-                        <th>Name <span class="stern" >*</span></th>
+                        <th style="width:300px">Zutat <span class="stern" >*</span></th>
                         <th>Menge für 2 Personen <span class="stern" >*</span></th>
                         <th>Menge für 2 Personen <span class="stern" >*</span></th>
                         <th>Menge für 6 Personen <span class="stern" >*</span></th>
@@ -677,7 +677,7 @@ $selectbeastx_ee = "selectbeastx_$selectbeastx_e" ?>
    
     <div id="wrapper">          
         <div class="control-group"> 
-            <select id="{{$selectbeastx_ee}}" name="ingredient_id"  required class="demo-default"  style="width:260px;  placeholder="Wähle eine Zutat">
+            <select id="{{$selectbeastx_ee}}" name="ingredient_id"  required class="demo-default"  style="width:auto "  placeholder="Wähle / Suche     ">
               <option value="{{$v->ingredient_id}}" selected >{{$v->name}}</option>
               @foreach( $ingredients as $x ) 
               <option value="{{$x->id }}">{{ $x->name }}</option>
@@ -897,7 +897,7 @@ $selectbeastx_ee = "selectbeastx_$selectbeastx_e" ?>
       <table class="table table-striped">
          <thead>
             <tr>
-               <th>Name <span class="stern" >*</span></th>
+               <th style="width:300px">Zutat <span class="stern" >*</span></th>
                <th>Menge für 2 Personen <span class="stern" >*</span></th>
                <th>Menge für 4 Personen <span class="stern" >*</span></th>
                <th>Menge für 6 Personen <span class="stern" >*</span></th>
@@ -920,7 +920,7 @@ $selectbeastx_ee = "selectbeastx_$selectbeastx_e" ?>
    
     <div id="wrapper">          
           <div class="control-group {{ $errors->has('ingredient_id') ? 'has-error' : '' }}">
-            <select  id="select-beast" name="ingredient_id"  style="width:260px; "  placeholder="Wähle eine Zutat" required="required"  >
+            <select  id="select-beast" name="ingredient_id"  style="width:auto"  placeholder=">Wähle / Suche     " required="required"  >
 
               <?php
 
@@ -935,7 +935,7 @@ if (isset($idzt))
   }
   else
   { ?>
-                <option value="" selected  >Wähle eine Zutat</option>
+                <option value="" selected>Wähle / Suche     </option>
               <?php
   }
 
@@ -1042,7 +1042,7 @@ if (isset($idzt))
 </button>
                </td>
                <td>
-                  {{ Form::submit('Neue Zutat hinzufügen', array('class' => 'btn btn-danger ')) }}
+                  {{ Form::submit('Zutat hinzufügen', array('class' => 'btn btn-danger ')) }}
                </td>
               
             </tr>

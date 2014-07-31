@@ -52,6 +52,37 @@ background: rgba(0, 0, 0, 0.3);
 
 }
 
+
+
+html body div.container div.panel.panel-default div.panel-body form div.table-responsive table.table.table-striped tbody tr td div#wrapper div.control-group div.selectize-control.single div.selectize-input.items.required.not-full.has-options input:required:invalid
+{
+  color: red;
+  background-position:105% 50%;
+
+  }
+
+
+  html body div.container div.panel.panel-default div.panel-body form div.table-responsive table.table.table-striped tbody tr td div#wrapper div.control-group div.selectize-control.single div.selectize-input.items.required.not-full.has-options input:required:valid
+{
+  color: #85b81d;
+   background-position:115% 50%;
+   background-image: none !important;
+  }
+
+
+
+
+
+
+html body div.container div.panel.panel-default div.panel-body form div.table-responsive table.table.table-striped tbody tr td div#wrapper div.control-group div.selectize-control.single div.selectize-input.items.required.not-full.has-options input
+{
+
+ background-position:102% 50%;
+
+}
+
+
+
 textarea{
 height:195px!important;
 }
