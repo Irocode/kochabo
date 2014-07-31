@@ -25,7 +25,7 @@ Create Group
         <h2>Erstelle neue Gruppe</h2>
     
         <div class="form-group {{ ($errors->has('name')) ? 'has-error' : '' }}">
-            {{ Form::text('name', null, array('class' => 'form-control', 'placeholder' => 'Name')) }}
+            {{ Form::text('name', null, array('pattern' =>'.{2,}', 'required', 'class' => 'form-control', 'placeholder' => 'Name')) }}
             {{ ($errors->has('name') ? $errors->first('name') : '') }}
         </div>
 

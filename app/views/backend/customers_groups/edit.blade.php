@@ -23,7 +23,7 @@
 
        <?php if ($customers_groups->default=='1'   ) {$default='Ja';} else {$default='Nein';} ?>
        
-         <select name="default" class="form-control">
+         <select name="default" class="form-control" required>
             <option value="{{$default}}" selected>{{$default}}</option>
             @foreach( $list_janein as $x ) 
             <option value="{{ $x->wert }}">{{ $x->bezeichnung }}</option>
@@ -45,7 +45,7 @@
    <div class="control-group {{ $errors->has('groupname') ? 'has-error' : '' }}">
       <label class="control-label" for="groupname">Kunden Gruppenname <span class="stern" >*</span></label>
       <div class="controls">
-         {{ Form::text('groupname', $customers_groups->groupname, array('class'=>'form-control', 'id' => 'groupname', 'placeholder'=>'Kunden Gruppenname', 'value'=>Input::old('groupname'))) }}
+         {{ Form::text('groupname', $customers_groups->groupname, array('class'=>'form-control', 'id' => 'groupname', 'placeholder'=>'Kunden Gruppenname','pattern' =>'.{2,}', 'required', 'value'=>Input::old('groupname'))) }}
          @if ($errors->first('description'))
          <span class="help-block">{{ $errors->first('groupname') }}</span>
          @endif

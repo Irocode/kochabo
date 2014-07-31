@@ -28,7 +28,7 @@ Edit Group
         <h2>Gruppenname ändern</h2>
     
         <div class="form-group {{ ($errors->has('name')) ? 'has-error' : '' }}">
-            {{ Form::text('name', $group->name, array('class' => 'form-control', 'placeholder' => 'Name')) }}
+            {{ Form::text('name', $group->name, array('pattern' =>'.{2,}', 'required', 'class' => 'form-control', 'placeholder' => 'Name')) }}
             {{ ($errors->has('name') ? $errors->first('name') : '') }}
         </div>
 

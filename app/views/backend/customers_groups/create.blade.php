@@ -29,7 +29,7 @@
       <div class="controls">
 
 
-<select name="default" class="form-control"> 
+<select name="default" class="form-control" required> 
                           @foreach( $list_janein as $x ) 
                           <option value="{{ $x->wert }}">{{ $x->bezeichnung }}</option>
                            @endforeach                  
@@ -53,7 +53,7 @@
    <div class="control-group {{ $errors->has('groupname') ? 'has-error' : '' }}">
       <label class="control-label" for="groupname">Kunden Gruppenname <span class="stern" >*</span></label>
       <div class="controls">         
-         {{ Form::text('groupname', null, array('class'=>'form-control', 'id' => 'groupname', 'placeholder'=>'Kunden Gruppenname', 'value'=>Input::old('groupname'))) }}
+         {{ Form::text('groupname', null, array('class'=>'form-control', 'id' => 'groupname', 'placeholder'=>'Kunden Gruppenname', 'pattern' =>'.{2,}', 'required', 'value'=>Input::old('groupname'))) }}
          @if ($errors->first('groupname'))
          <span class="help-block">{{ $errors->first('groupname') }}</span>
          @endif

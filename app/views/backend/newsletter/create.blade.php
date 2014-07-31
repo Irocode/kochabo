@@ -25,21 +25,21 @@
 
 
 	<div class="form-group">
-		{{ Form::label('first_name', 'Vorname') }}
-		{{ Form::text('first_name', Input::old('first_name'), array('class' => 'form-control')) }}
+		{{ Form::label('first_name', 'Vorname') }} 
+		{{ Form::text('first_name', Input::old('first_name'), array('class' => 'form-control' , 'required',)) }}
 	</div>
 
 
 <div class="form-group">
 		{{ Form::label('last_name', 'Nachname') }}
-		{{ Form::text('last_name', Input::old('last_name'), array('class' => 'form-control')) }}
+		{{ Form::text('last_name', Input::old('last_name'), array('class' => 'form-control' , 'required',)) }}
 	</div>
 
 
 
 	<div class="form-group">
 		{{ Form::label('email', 'Email') }}
-		{{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
+		{{ Form::email('email', Input::old('email'), array('class' => 'form-control' , 'required', )) }}
 	</div>
 
 

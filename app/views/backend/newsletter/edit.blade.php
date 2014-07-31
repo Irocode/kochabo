@@ -19,17 +19,17 @@
 
 	<div class="form-group">
 		{{ Form::label('first_name', 'Vorname') }}
-		{{ Form::text('first_name', null, array('class' => 'form-control')) }}
+		{{ Form::text('first_name', null, array('class' => 'form-control', 'required',)) }}
 	</div>
 
 		<div class="form-group">
 		{{ Form::label('last_name', 'Nachname') }}
-		{{ Form::text('last_name', null, array('class' => 'form-control')) }}
+		{{ Form::text('last_name', null, array('class' => 'form-control', 'required',)) }}
 	</div>
 
 	<div class="form-group">
 		{{ Form::label('email', 'E-Mail') }}
-		{{ Form::email('email', null, array('class' => 'form-control')) }}
+		{{ Form::email('email', null, array('class' => 'form-control' , 'required',)) }}
 	</div>
 
 
