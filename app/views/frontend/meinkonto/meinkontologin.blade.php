@@ -43,14 +43,14 @@
 
         <div class="input-group margin-bottom-20 {{ ($errors->has('email')) ? 'has-error' : '' }} ">
             <span class="input-group-addon"><i class="icon-envelope"></i></span>
-            <input value="{{Input::old('identity')}}" class="form-control" type="email" placeholder="Username/Email" autofocus required="" id="username" name="identity"/>
+            <input value="{{Input::old('identity')}}" class="form-control" type="email" placeholder="E-Mail Adresse" autofocus required="" id="username" name="identity"/>
 
         
           {{ ($errors->has('email') ? $errors->first('email') : '') }}
         </div>
         <div class="input-group margin-bottom-20 {{ ($errors->has('password')) ? 'has-error' : '' }}">
             <span class="input-group-addon"><i class="icon-lock"></i></span>
-            {{ Form::password('password', array('class' => 'form-control', 'required', 'placeholder' => 'Passwort'))}}
+            {{ Form::password('password', array('class' => 'form-control', 'required', 'pattern' =>'.{6,}', 'placeholder' => 'Passwort'))}}
              {{ ($errors->has('password') ?  $errors->first('password') : '') }}
         </div>
         <hr>

@@ -321,7 +321,7 @@ Nein! Dann einfach im folgenden Eingabefeld ändern und speichern.<br><br>
          <div class="control-group {{ $errors->has('fbaktuelleemail') ? 'has-error' : '' }}">
             <label class="control-label" for="fbaktuelleemail">Aktuelle E-Mail Adresse </label>
             <div class="controls">         
-               {{ Form::text('fbaktuelleemail', $conformemailaddress, array('class'=>'form-control', 'id' => 'fbaktuelleemail',  'placeholder'=>'Aktuelle E-Mail Adresse', 'value'=>Input::old('fbaktuelleemail'))) }}
+               {{ Form::email('fbaktuelleemail', $conformemailaddress, array('class'=>'form-control', 'id' => 'fbaktuelleemail',  'placeholder'=>'Aktuelle E-Mail Adresse', 'required',  'value'=>Input::old('fbaktuelleemail'))) }}
                @if ($errors->first('fbaktuelleemail'))
                <span class="help-block">{{ $errors->first('fbaktuelleemail') }}</span>
                @endif
