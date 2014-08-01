@@ -346,8 +346,10 @@ Dein KochAbo Team steht dir jederzeit mit Rat und Tat zur Verfügung. Erreichbar
 <p><span class="stern" >*</span> Plichtfelder müssen ausgefüllt werden. </p>
 </div>
  <!-- Plichtfeld Ende -->
-<!--Formular Registrierung Ende-->
-    {{ Form::hidden('default', 'General', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
+<!--Formular Registrierung Ende -->
+
+<!--default=4 = GENERAL -->
+    {{ Form::hidden('default', '4', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
  {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
             {{ Form::submit('Registrieren', array('class' => 'btn btn-u')) }}
 
