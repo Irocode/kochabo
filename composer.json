@@ -15,6 +15,7 @@
 		"anahkiasen/former": "dev-master",
 		"orangehill/iseed": "dev-master",    
 		"nesbot/Carbon": "*",
+		"bkwld/laravel-haml": "~2.0",
 		"hybridauth/hybridauth": "*"
 	
 

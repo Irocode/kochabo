@@ -121,6 +121,7 @@ return array(
         'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
         'Former\FormerServiceProvider',
         'Orangehill\Iseed\IseedServiceProvider',
+        'Bkwld\LaravelHaml\ServiceProvider',
       
 
 
