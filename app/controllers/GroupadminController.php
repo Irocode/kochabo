@@ -1,55 +1,54 @@
-<?php 
+<?php
 use Authority\Repo\Group\GroupInterface;
 use Authority\Service\Form\Group\GroupForm;
 
 class GroupadminController extends BaseController
-
 {
     /**
      * Member Vars
      */
     protected $group;
     protected $groupForm;
+
     /**
      * Constructor
      */
     public function __construct(GroupInterface $group, GroupForm $groupForm)
-
     {
         $this->group = $group;
         $this->groupForm = $groupForm;
         // Establish Filters
         $this->beforeFilter('inGroup:Admins');
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
     public function index()
-
     {
         $groups = $this->group->all();
         return View::make('backend.groups.index')->with('groups', $groups);
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
     public function create()
-
     {
         // Form for creating a new Group
         return View::make('backend.groups.create');
     }
+
     /**
      * Store a newly created resource in storage.
      *
      * @return Response
      */
     public function store()
-
     {
         // Form Processing
         $result = $this->groupForm->save(Input::all());
@@ -65,6 +64,7 @@ class GroupadminController extends BaseController
             return Redirect::action('GroupadminController@create')->withInput()->withErrors($this->groupForm->errors());
         }
     }
+
     /**
      * Display the specified resource.
      *
@@ -77,6 +77,7 @@ class GroupadminController extends BaseController
         $group = $this->group->byId($id);
         return View::make('backend.groups.show')->with('group', $group);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -88,6 +89,7 @@ class GroupadminController extends BaseController
         $group = $this->group->byId($id);
         return View::make('backend.groups.edit')->with('group', $group);
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -110,13 +112,13 @@ class GroupadminController extends BaseController
             return Redirect::action('GroupadminController@create')->withInput()->withErrors($this->groupForm->errors());
         }
     }
+
     /**
      * Remove the specified resource from storage.
      *
      * @return Response
      */
     public function destroy($id)
-
     {
         if ($this->group->destroy($id))
         {

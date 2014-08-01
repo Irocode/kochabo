@@ -1,13 +1,14 @@
-<?php 
+<?php
 
 class ConformeemailController extends BaseController
-
 {
     protected $users;
+
     public function __construct(Users $users)
     {
       $this->users = $users;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +16,9 @@ class ConformeemailController extends BaseController
      */
     public function index()
     {
-      
+
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -24,8 +26,9 @@ class ConformeemailController extends BaseController
      */
     public function create()
     {
-      
+
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -33,8 +36,9 @@ class ConformeemailController extends BaseController
      */
     public function store()
     {
-        
+
     }
+
     /**
      * Display the specified resource.
      *
@@ -43,8 +47,9 @@ class ConformeemailController extends BaseController
      */
     public function show($id)
     {
-      
+
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -53,8 +58,9 @@ class ConformeemailController extends BaseController
      */
     public function edit($id)
     {
-       
+
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -63,11 +69,11 @@ class ConformeemailController extends BaseController
      */
     public function update($id)
     {
-        //Remove the Session for Popup         
+        //Remove the Session for Popup
          Session::forget('conformemail');
          $fbaktuelleemail = Users::find($id);
          $fbaktuelleemail->fbaktuelleemail = Input::get('fbaktuelleemail');
-         $fbaktuelleemail->save();   
+         $fbaktuelleemail->save();
          return Redirect::back();
     }
 
@@ -80,18 +86,15 @@ class ConformeemailController extends BaseController
      */
     public function destroy($id)
     {
-       Session::forget('conformemail');             
+       Session::forget('conformemail');
        return Redirect::back();
-       
+
     }
     public function confirmDestroy($id)
-
-    {
-      
     }
-    public function togglePublish($id)
 
+    public function togglePublish($id)
     {
-        
+
     }
 }

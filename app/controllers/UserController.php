@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Authority\Repo\User\UserInterface;
 use Authority\Repo\Group\GroupInterface;
@@ -26,9 +26,9 @@ class UserController extends BaseController {
      * Instantiate a new UserController
      */
     public function __construct(
-        UserInterface $user, 
-        GroupInterface $group, 
-        RegisterForm $registerForm, 
+        UserInterface $user,
+        GroupInterface $group,
+        RegisterForm $registerForm,
         UserForm $userForm,
         ResendActivationForm $resendActivationForm,
         ForgotPasswordForm $forgotPasswordForm,
@@ -62,7 +62,7 @@ class UserController extends BaseController {
     public function index()
     {
         $users = $this->user->all();
-      
+
         return View::make('users.index')->with('users', $users);
     }
 
@@ -73,131 +73,105 @@ class UserController extends BaseController {
      */
     public function store()
     {
-
         // Form Processing
 
-      
-
-       // $result = $this->registerForm->save( Input::all() );
+        // $result = $this->registerForm->save( Input::all() );
         $result = $this->registerForm->save( Input::all() );
 
-         $first_name= Input::get('last_name');   
-         $email= Input::get('email');
-         $password= Input::get('password');
-         
+        $first_name= Input::get('last_name');
+        $email= Input::get('email');
+        $password= Input::get('password');
 
-var_dump($email); var_dump('<br>'); 
-var_dump($password);var_dump('<br>'); 
-var_dump($first_name);var_dump('<br>'); 
 
-/*
-$lastInsertedId = $this->user->id;
-var_dump($lastInsertedId);
+        var_dump($email); var_dump('<br>');
+        var_dump($password);var_dump('<br>');
+        var_dump($first_name);var_dump('<br>');
+
+        /*
+        $lastInsertedId = $this->user->id;
+        var_dump($lastInsertedId);
 
         // erstelle Tabel mit UserID der ID von customer
 
-         
-//$lastInsertedemail = e($data['email']);
-//$address = new Address;
+        //$lastInsertedemail = e($data['email']);
+        //$address = new Address;
 
+        //$lastInsertedId = $this->user->id;
+        //var_dump($lastInsertedemail);
 
-//$lastInsertedId = $this->user->id;
-//var_dump($lastInsertedemail);
+        /*
+        $address->user_id = $lastInsertedId;
+        $address->gender = $this->registerForm->gender;
+        $address->first_name = $this->registerForm->first_name;
+        $address->last_name = $this->registerForm->last_name;
 
-
-
-/*
-$address->user_id = $lastInsertedId;
-$address->gender = $this->registerForm->gender;
-$address->first_name = $this->registerForm->first_name;
-$address->last_name = $this->registerForm->last_name;
-
-// $address->id = '9991';
-$address->save();
-*/
-
-
+        // $address->id = '9991';
+        $address->save();
+        */
 
         if( $result['success'] )
         {
+            $email= Input::get('email');
+            $users = Users::where('email', '=', $email)->get();
 
+            foreach ($users as $user)
+            {
+                var_dump($user->email); var_dump($user->id);
 
+                $lastInserted_id= $user->id;
+                $lastInserted_first_name= $user->first_name;
+                $lastInserted_last_name= $user->last_name;
+                $lastInserted_gender= $user->gender;
+            }
 
+            $address = new Address;
+            $address->customercustomer_id = $lastInserted_id;
+            $address->first_name = $lastInserted_first_name;
+            $address->last_name = $lastInserted_last_name;
+            $address->gender = $lastInserted_gender;
+            $address->art = 'Rechnungsadresse';
 
+            // $address->id = '9991';
+            $address->save();
 
-$email= Input::get('email');
-$users = Users::where('email', '=', $email)->get();
+            $address = new Address;
+            $address->customercustomer_id = $lastInserted_id;
+            $address->first_name = $lastInserted_first_name;
+            $address->last_name = $lastInserted_last_name;
+            $address->gender = $lastInserted_gender;
+            $address->art = 'Lieferadresse';
 
-foreach ($users as $user)
-{
-    var_dump($user->email); var_dump($user->id);
+            // $address->id = '9991';
+            $address->save();
 
-     $lastInserted_id= $user->id;
-     $lastInserted_first_name= $user->first_name;
-     $lastInserted_last_name= $user->last_name;
-     $lastInserted_gender= $user->gender;
-}
+            Mail::send('backend.customer_management.versand', array(), function($message)
+            {
+                $email      = Input::get('email');
+                $password      = Input::get('password');
+                $first_name      = Input::get('first_name');
 
-
-
-$address = new Address;
-$address->customercustomer_id = $lastInserted_id;
-$address->first_name = $lastInserted_first_name;
-$address->last_name = $lastInserted_last_name;
-$address->gender = $lastInserted_gender;
-$address->art = 'Rechnungsadresse';
-
-// $address->id = '9991';
-$address->save();
-
-
-
-$address = new Address;
-$address->customercustomer_id = $lastInserted_id;
-$address->first_name = $lastInserted_first_name;
-$address->last_name = $lastInserted_last_name;
-$address->gender = $lastInserted_gender;
-$address->art = 'Lieferadresse';
-
-// $address->id = '9991';
-$address->save();
-
-
-
-
-Mail::send('backend.customer_management.versand', array(), function($message)
-{
-$email      = Input::get('email');
-$password      = Input::get('password');
-$first_name      = Input::get('first_name');
-
-$message
-->to($email)
-->from('office@kochabo.com','KochAbo.com')
-->subject('KochAbo-Registrierung');
-});
-Notification::success('Dir wurde ein Registrierungs-E-Mail geschickt');
+                $message
+                    ->to($email)
+                    ->from('office@kochabo.com','KochAbo.com')
+                    ->subject('KochAbo-Registrierung');
+            });
+            Notification::success('Dir wurde ein Registrierungs-E-Mail geschickt');
 
 
            /*  Event::fire('user.signup', array(
-                'email' => $result['mailData']['email'], 
-                'userId' => $result['mailData']['userId'], 
+                'email' => $result['mailData']['email'],
+                'userId' => $result['mailData']['userId'],
                 'activationCode' => $result['mailData']['activationCode']
-            ));*/
+        ));*/
 
-            // Success!
-            Session::flash('success', $result['message']);
-           // return Redirect::route('home');
+        // Success!
+        Session::flash('success', $result['message']);
+        // return Redirect::route('home');
 
-      return Redirect::to('/meinkontologinzurbestellung?user_id='.$lastInserted_id.'');
-
+        return Redirect::to('/meinkontologinzurbestellung?user_id='.$lastInserted_id.'');
 
         } else {
-
-
-     
-
-          //  Session::put('produkt',$produkt);
+            //  Session::put('produkt',$produkt);
             Session::flash('error', $result['message']);
             return Redirect::action('UserController@create')
                 ->withInput()
@@ -205,410 +179,396 @@ Notification::success('Dir wurde ein Registrierungs-E-Mail geschickt');
         }
     }
 
-
-
-
-
- /**
+    /**
      * Show the form for creating a new user.
      *
      * @return Response
      */
-    public function create()
-     
-    {
-$day = List_Day::lists('bezeichnung', 'bezeichnung');
-$month = List_Month::lists('bezeichnung', 'bezeichnung');
-$gender = List_Gender::lists('bezeichnung', 'bezeichnung');
-return View::make('frontend.checkout.index')->with('month',$month)->with('gender',$gender)->with('day',$day);
+     public function create()
+     {
+         $day = List_Day::lists('bezeichnung', 'bezeichnung');
+         $month = List_Month::lists('bezeichnung', 'bezeichnung');
+         $gender = List_Gender::lists('bezeichnung', 'bezeichnung');
+         return View::make('frontend.checkout.index')->with('month',$month)->with('gender',$gender)->with('day',$day);
 
-              
-    }
+     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        $user = $this->user->byId($id);
+     /**
+      * Display the specified resource.
+      *
+      * @param  int  $id
+      * @return Response
+      */
+     public function show($id)
+     {
+         $user = $this->user->byId($id);
 
-    
+         if($user == null || !is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
-        if($user == null || !is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
+         return View::make('users.show')->with('user', $user);
+     }
 
-        return View::make('users.show')->with('user', $user);
-    }
+     /**
+      * Show the form for editing the specified resource.
+      *
+      * @param  int  $id
+      * @return Response
+      */
+     public function edit($id)
+     {
+         $user = $this->user->byId($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $user = $this->user->byId($id);
+         if($user == null || !is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
-        if($user == null || !is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
+         $currentGroups = $user->getGroups()->toArray();
+         $userGroups = array();
+         foreach ($currentGroups as $group) {
+             array_push($userGroups, $group['name']);
+         }
+         $allGroups = $this->group->all();
 
-        $currentGroups = $user->getGroups()->toArray();
-        $userGroups = array();
-        foreach ($currentGroups as $group) {
-            array_push($userGroups, $group['name']);
-        }
-        $allGroups = $this->group->all();
+         return View::make('users.edit')->with('user', $user)->with('userGroups', $userGroups)->with('allGroups', $allGroups);
+     }
 
-        return View::make('users.edit')->with('user', $user)->with('userGroups', $userGroups)->with('allGroups', $allGroups);
-    }
+     /**
+      * Update the specified resource in storage.
+      *
+      * @param  int  $id
+      * @return Response
+      */
+     public function update($id)
+     {
+         if(!is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        if(!is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
+         // Form Processing
+         $result = $this->userForm->update( Input::all() );
 
-        // Form Processing
-        $result = $this->userForm->update( Input::all() );
+         if( $result['success'] )
+         {
+             // Success!
+             Session::flash('success', $result['message']);
+             return Redirect::action('UserController@show', array($id));
 
-        if( $result['success'] )
-        {
-            // Success!
-            Session::flash('success', $result['message']);
-            return Redirect::action('UserController@show', array($id));
+         } else {
+             Session::flash('error', $result['message']);
+             return Redirect::action('UserController@edit', array($id))
+                 ->withInput()
+                 ->withErrors( $this->userForm->errors() );
+         }
+     }
 
-        } else {
-            Session::flash('error', $result['message']);
-            return Redirect::action('UserController@edit', array($id))
-                ->withInput()
-                ->withErrors( $this->userForm->errors() );
-        }
-    }
+     /**
+      * Remove the specified resource from storage.
+      *
+      * @param  int  $id
+      * @return Response
+      */
+     public function destroy($id)
+     {
+         if(!is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
+         if ($this->user->destroy($id))
+         {
+             Session::flash('success', 'User Deleted');
+             return Redirect::to('/users');
+         }
+         else
+         {
+             Session::flash('error', 'Unable to Delete User');
+             return Redirect::to('/users');
+         }
+     }
 
+     /**
+      * Activate a new user
+      * @param  int $id
+      * @param  string $code
+      * @return Response
+      */
+     public function activate($id, $code)
+     {
+         if(!is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        if(!is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
+         $result = $this->user->activate($id, $code);
 
-        if ($this->user->destroy($id))
-        {
-            Session::flash('success', 'User Deleted');
-            return Redirect::to('/users');
-        }
-        else 
-        {
-            Session::flash('error', 'Unable to Delete User');
-            return Redirect::to('/users');
-        }
-    }
+         if( $result['success'] )
+         {
+             // Success!
+             Session::flash('success', $result['message']);
+             return Redirect::route('home');
 
-    /**
-     * Activate a new user
-     * @param  int $id   
-     * @param  string $code 
-     * @return Response
-     */
-    public function activate($id, $code)
-    {
-        if(!is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
+         } else {
+             Session::flash('error', $result['message']);
+             return Redirect::route('home');
+         }
+     }
 
-        $result = $this->user->activate($id, $code);
+     /**
+      * Process resend activation request
+      * @return Response
+      */
+     public function resend()
+     {
+         // Form Processing
+         $result = $this->resendActivationForm->resend( Input::all() );
 
-        if( $result['success'] )
-        {
-            // Success!
-            Session::flash('success', $result['message']);
-            return Redirect::route('home');
+         if( $result['success'] )
+         {
+             Event::fire('user.resend', array(
+                 'email' => $result['mailData']['email'],
+                 'telephone' => $result['mailData']['telephone'],
+                 'userId' => $result['mailData']['userId'],
+                 'activationCode' => $result['mailData']['activationCode']
+             ));
 
-        } else {
-            Session::flash('error', $result['message']);
-            return Redirect::route('home');
-        }
-    }
+             // Success!
+             Session::flash('success', $result['message']);
+             return Redirect::route('home');
+         }
+         else
+         {
+             Session::flash('error', $result['message']);
+             return Redirect::route('profile')
+                 ->withInput()
 
-    /**
-     * Process resend activation request
-     * @return Response
-     */
-    public function resend()
-    {
-        // Form Processing
-        $result = $this->resendActivationForm->resend( Input::all() );
+                 ->withErrors( $this->resendActivationForm->errors() );
+         }
+     }
 
-        if( $result['success'] )
-        {
-            Event::fire('user.resend', array(
-                'email' => $result['mailData']['email'], 
-                'telephone' => $result['mailData']['telephone'], 
-                'userId' => $result['mailData']['userId'], 
-                'activationCode' => $result['mailData']['activationCode']
-            ));
+     /**
+      * Process Forgot Password request
+      * @return Response
+      */
+     public function forgot()
+     {
+         // Form Processing
+         $result = $this->forgotPasswordForm->forgot( Input::all() );
 
-            // Success!
-            Session::flash('success', $result['message']);
-            return Redirect::route('home');
-        } 
-        else 
-        {
-            Session::flash('error', $result['message']);
-            return Redirect::route('profile')
-                ->withInput()
-                
-                ->withErrors( $this->resendActivationForm->errors() );
-        }
-    }
+         if( $result['success'] )
+         {
+             Event::fire('user.forgot', array(
+                 'email' => $result['mailData']['email'],
+                 'userId' => $result['mailData']['userId'],
+                 'resetCode' => $result['mailData']['resetCode']
+             ));
 
-    /**
-     * Process Forgot Password request
-     * @return Response
-     */
-    public function forgot()
-    {
-        // Form Processing
-        $result = $this->forgotPasswordForm->forgot( Input::all() );
+             // Success!
+             Session::flash('success', $result['message']);
+             return Redirect::route('home');
+         }
+         else
+         {
+             Session::flash('error', $result['message']);
+             return Redirect::route('forgotPasswordForm')
+                 ->withInput()
+                 ->withErrors( $this->forgotPasswordForm->errors() );
+         }
+     }
 
-        if( $result['success'] )
-        {
-            Event::fire('user.forgot', array(
-                'email' => $result['mailData']['email'],
-                'userId' => $result['mailData']['userId'],
-                'resetCode' => $result['mailData']['resetCode']
-            ));
+     /**
+      * Process a password reset request link
+      * @param  [type] $id   [description]
+      * @param  [type] $code [description]
+      * @return [type]       [description]
+      */
+     public function reset($id, $code)
+     {
+         if(!is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
-            // Success!
-            Session::flash('success', $result['message']);
-            return Redirect::route('home');
-        } 
-        else 
-        {
-            Session::flash('error', $result['message']);
-            return Redirect::route('forgotPasswordForm')
-                ->withInput()
-                ->withErrors( $this->forgotPasswordForm->errors() );
-        }
-    }
+         $result = $this->user->resetPassword($id, $code);
 
-    /**
-     * Process a password reset request link
-     * @param  [type] $id   [description]
-     * @param  [type] $code [description]
-     * @return [type]       [description]
-     */
-    public function reset($id, $code)
-    {
-        if(!is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
+         if( $result['success'] )
+         {
+             Event::fire('user.newpassword', array(
+                 'email' => $result['mailData']['email'],
+                 'newPassword' => $result['mailData']['newPassword']
+             ));
 
-        $result = $this->user->resetPassword($id, $code);
+             // Success!
+             Session::flash('success', $result['message']);
+             return Redirect::route('home');
 
-        if( $result['success'] )
-        {
-            Event::fire('user.newpassword', array(
-                'email' => $result['mailData']['email'],
-                'newPassword' => $result['mailData']['newPassword']
-            ));
+         } else {
+             Session::flash('error', $result['message']);
+             return Redirect::route('home');
+         }
+     }
 
-            // Success!
-            Session::flash('success', $result['message']);
-            return Redirect::route('home');
+     /**
+      * Process a password change request
+      * @param  int $id
+      * @return redirect
+      */
+     public function change($id)
+     {
+         if(!is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
-        } else {
-            Session::flash('error', $result['message']);
-            return Redirect::route('home');
-        }
-    }
+         $data = Input::all();
+         $data['id'] = $id;
 
-    /**
-     * Process a password change request
-     * @param  int $id 
-     * @return redirect     
-     */
-    public function change($id)
-    {
-        if(!is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
+         // Form Processing
+         $result = $this->changePasswordForm->change( $data );
 
-        $data = Input::all();
-        $data['id'] = $id;
+         if( $result['success'] )
+         {
+             // Success!
+             Session::flash('success', $result['message']);
+             return Redirect::route('home');
+         }
+         else
+         {
+             Session::flash('error', $result['message']);
+             return Redirect::action('UserController@edit', array($id))
+                 ->withInput()
+                 ->withErrors( $this->changePasswordForm->errors() );
+         }
+     }
 
-        // Form Processing
-        $result = $this->changePasswordForm->change( $data );
+     /**
+      * Process a suspend user request
+      * @param  int $id
+      * @return Redirect
+      */
+     public function suspend($id)
+     {
+         if(!is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
-        if( $result['success'] )
-        {
-            // Success!
-            Session::flash('success', $result['message']);
-            return Redirect::route('home');
-        } 
-        else 
-        {
-            Session::flash('error', $result['message']);
-            return Redirect::action('UserController@edit', array($id))
-                ->withInput()
-                ->withErrors( $this->changePasswordForm->errors() );
-        }
-    }
+         // Form Processing
+         $result = $this->suspendUserForm->suspend( Input::all() );
 
-    /**
-     * Process a suspend user request
-     * @param  int $id 
-     * @return Redirect     
-     */
-    public function suspend($id)
-    {
-        if(!is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
+         if( $result['success'] )
+         {
+             // Success!
+             Session::flash('success', $result['message']);
+             return Redirect::to('users');
 
-        // Form Processing
-        $result = $this->suspendUserForm->suspend( Input::all() );
+         } else {
+             Session::flash('error', $result['message']);
+             return Redirect::action('UserController@suspend', array($id))
+                 ->withInput()
+                 ->withErrors( $this->suspendUserForm->errors() );
+         }
+     }
 
-        if( $result['success'] )
-        {
-            // Success!
-            Session::flash('success', $result['message']);
-            return Redirect::to('users');
+     /**
+      * Unsuspend user
+      * @param  int $id
+      * @return Redirect
+      */
+     public function unsuspend($id)
+     {
+         if(!is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
-        } else {
-            Session::flash('error', $result['message']);
-            return Redirect::action('UserController@suspend', array($id))
-                ->withInput()
-                ->withErrors( $this->suspendUserForm->errors() );
-        }
-    }
+         $result = $this->user->unSuspend($id);
 
-    /**
-     * Unsuspend user
-     * @param  int $id 
-     * @return Redirect     
-     */
-    public function unsuspend($id)
-    {
-        if(!is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
+         if( $result['success'] )
+         {
+             // Success!
+             Session::flash('success', $result['message']);
+             return Redirect::to('users');
 
-        $result = $this->user->unSuspend($id);
+         } else {
+             Session::flash('error', $result['message']);
+             return Redirect::to('users');
+         }
+     }
 
-        if( $result['success'] )
-        {
-            // Success!
-            Session::flash('success', $result['message']);
-            return Redirect::to('users');
+     /**
+      * Ban a user
+      * @param  int $id
+      * @return Redirect
+      */
+     public function ban($id)
+     {
+         if(!is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
-        } else {
-            Session::flash('error', $result['message']);
-            return Redirect::to('users');
-        }
-    }
+         $result = $this->user->ban($id);
 
-    /**
-     * Ban a user
-     * @param  int $id 
-     * @return Redirect     
-     */
-    public function ban($id)
-    {
-        if(!is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
+         if( $result['success'] )
+         {
+             // Success!
+             Session::flash('success', $result['message']);
+             return Redirect::to('users');
 
-        $result = $this->user->ban($id);
+         } else {
+             Session::flash('error', $result['message']);
+             return Redirect::to('users');
+         }
+     }
 
-        if( $result['success'] )
-        {
-            // Success!
-            Session::flash('success', $result['message']);
-            return Redirect::to('users');
+     public function unban($id)
+     {
+         if(!is_numeric($id))
+         {
+             // @codeCoverageIgnoreStart
+             return \App::abort(404);
+             // @codeCoverageIgnoreEnd
+         }
 
-        } else {
-            Session::flash('error', $result['message']);
-            return Redirect::to('users');
-        }
-    }
+         $result = $this->user->unBan($id);
 
-    public function unban($id)
-    {
-        if(!is_numeric($id))
-        {
-            // @codeCoverageIgnoreStart
-            return \App::abort(404);
-            // @codeCoverageIgnoreEnd
-        }
-        
-        $result = $this->user->unBan($id);
+         if( $result['success'] )
+         {
+             // Success!
+             Session::flash('success', $result['message']);
+             return Redirect::to('users');
 
-        if( $result['success'] )
-        {
-            // Success!
-            Session::flash('success', $result['message']);
-            return Redirect::to('users');
-
-        } else {
-            Session::flash('error', $result['message']);
-            return Redirect::to('users');
-        }
-    }
-
-
-  
-
+         } else {
+             Session::flash('error', $result['message']);
+             return Redirect::to('users');
+         }
+     }
 }
 
-    
+

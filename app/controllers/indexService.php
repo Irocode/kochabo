@@ -4,6 +4,7 @@
 namespace Services;
 use Newsletter;
 use Users;
+
 class IndexService
 {
     public function indexData()
@@ -11,10 +12,8 @@ class IndexService
         $data = array(
             'ausgabenl'  => Newsletter::all(),
             'ausgabe' => Users::all(),
-          
         );
 
         return $data;
     }
-
 }
