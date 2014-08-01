@@ -3,9 +3,9 @@
 use Sefa\Repositories\Beispielbox\BeispielboxRepository as Beispielbox;
 
 class BeispielboxController extends BaseController
-
 {
     protected $beispielbox;
+
     public function __construct(Beispielbox $beispielbox)
     {
         $this->beispielbox = $beispielbox;

@@ -4,7 +4,6 @@ use Sefa\Interfaces\BaseModelInterface as BaseModelInterface;
 
 class Article extends BaseModel implements BaseModelInterface
 {
-
     public $table = 'articles';
     protected $fillable = [
         'title',

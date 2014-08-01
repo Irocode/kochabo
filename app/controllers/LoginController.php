@@ -9,7 +9,7 @@ class LoginController extends BaseController {
 
     protected $session;
 
- public function __construct(SessionInterface $session, Users $users, Address $address) {
+    public function __construct(SessionInterface $session, Users $users, Address $address) {
         $this->session = $session;
         $this->users = $users;
         $this->address = $address;
@@ -21,7 +21,7 @@ class LoginController extends BaseController {
         return View::make('index');
     }
 
-    
+
 
     public function loginWithSocial( $action = "") {
         // check URL segment
@@ -51,45 +51,45 @@ class LoginController extends BaseController {
             // exception codes can be found on HybBridAuth's web site
             Session::flash('error_msg', $e -> getMessage());
 
-             
+
             return Redirect::to('/meinkontologin');
         }
 
         $this -> createOAuthProfile($userProfile);
 
- 
+
         $email=$userProfile->email;
         $displayName= $userProfile->displayName;
         if  (empty($displayName)) {Session::flush();} else {
-        Session::put('displayName', $displayName);  
+            Session::put('displayName', $displayName);
         }
 
         // LOGGIN MIT Facebook
 
-        
 
-        
-      //  Session::put('email_frage', $email_frage); 
 
-        $email_facebook=$userProfile->email;  
-          if  (empty($email_facebook)) {} else {
 
-        $ausgabe_facebook = Users::where('email', '=', $email_facebook)->get();
-        foreach( $ausgabe_facebook as $v ) 
-               {   
-               
-                 $user_id=$v->id;              
-               } 
-               Session::put('email', $email_facebook); 
-               Session::put('userId', $user_id);  
-}
+        //  Session::put('email_frage', $email_frage);
+
+        $email_facebook=$userProfile->email;
+        if  (empty($email_facebook)) {} else {
+
+            $ausgabe_facebook = Users::where('email', '=', $email_facebook)->get();
+            foreach( $ausgabe_facebook as $v )
+            {
+
+                $user_id=$v->id;
+            }
+            Session::put('email', $email_facebook);
+            Session::put('userId', $user_id);
+        }
         //return Redirect::to('/meinkonto');
-$provider->logout(); 
-return View::make('frontend.meinkonto.index')->with('email', $email)->with('displayName', $displayName);
+        $provider->logout();
+        return View::make('frontend.meinkonto.index')->with('email', $email)->with('displayName', $displayName);
 
     }
 
-    public function createOAuthProfile($userProfile) { 
+    public function createOAuthProfile($userProfile) {
         if (isset($userProfile -> username)){
             $username = strlen($userProfile -> username) > 0 ? $userProfile -> username : "";
         }
@@ -98,62 +98,62 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             $firstname = strlen($userProfile -> firstName) > 0 ? $userProfile -> firstName : "";
         }
 
-         if (isset($userProfile -> lastName)){
+        if (isset($userProfile -> lastName)){
             $lastname = strlen($userProfile -> lastName) > 0 ? $userProfile -> lastName : "";
         }
 
-         if (isset($userProfile -> gender)){
+        if (isset($userProfile -> gender)){
             $gender = strlen($userProfile -> gender) > 0 ? $userProfile -> gender : "";
         }
 
-           if (isset($userProfile -> language)){
+        if (isset($userProfile -> language)){
             $language = strlen($userProfile -> language) > 0 ? $userProfile -> language : "";
         }
-   
-          if (isset($userProfile -> age)){
+
+        if (isset($userProfile -> age)){
             $age = strlen($userProfile -> age) > 0 ? $userProfile -> age : "";
         }
 
-          if (isset($userProfile -> city)){
+        if (isset($userProfile -> city)){
             $city = strlen($userProfile -> city) > 0 ? $userProfile -> city : "";
         }
 
-           if (isset($userProfile -> zip)){
+        if (isset($userProfile -> zip)){
             $zip = strlen($userProfile -> zip) > 0 ? $userProfile -> zip : "";
         }
 
-         if (isset($userProfile -> identifier)){
+        if (isset($userProfile -> identifier)){
             $identifier = strlen($userProfile -> identifier) > 0 ? $userProfile -> identifier : "";
         }
 
-           if (isset($userProfile -> region)){
+        if (isset($userProfile -> region)){
             $region = strlen($userProfile -> region) > 0 ? $userProfile -> region : "";
         }
-           if (isset($userProfile -> country)){
+        if (isset($userProfile -> country)){
             $country = strlen($userProfile -> country) > 0 ? $userProfile -> country : "";
         }
-           if (isset($userProfile -> birthDay)){
+        if (isset($userProfile -> birthDay)){
             $birthday = strlen($userProfile -> birthDay) > 0 ? $userProfile -> birthDay : "";
         }
 
-             if (isset($userProfile -> birthMonth)){
+        if (isset($userProfile -> birthMonth)){
             $birthmonth = strlen($userProfile -> birthMonth) > 0 ? $userProfile -> birthMonth : "";
         }
 
-             if (isset($userProfile -> birthYear)){
+        if (isset($userProfile -> birthYear)){
             $birthyear = strlen($userProfile -> birthYear) > 0 ? $userProfile -> birthYear : "";
         }
-           if (isset($userProfile -> phone)){
+        if (isset($userProfile -> phone)){
             $phone = strlen($userProfile -> phone) > 0 ? $userProfile -> phone : "";
         }
-           if (isset($userProfile -> address)){
+        if (isset($userProfile -> address)){
             $address = strlen($userProfile -> address) > 0 ? $userProfile -> address : "";
         }
-        
+
         if (isset($userProfile -> screen_name)){
             $username = strlen($userProfile -> screen_name) > 0 ? $userProfile -> screen_name : "";
         }
-        
+
         if (isset($userProfile -> displayName)){
             $username = strlen($userProfile -> displayName) > 0 ? $userProfile -> displayName : "";
         }
@@ -180,85 +180,85 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             $profile -> user_id = $user -> getId();
             $profile -> email = $email;
             $profile -> username = $username;
-            
 
 
-            //Email hinterfragen  
-            $conformuser_id  =   $user -> getId();     
+
+            //Email hinterfragen
+            $conformuser_id  =   $user -> getId();
             $conformemail="yes";
             $conformemailaddress=$email;;
-            Session::put('conformemail', $conformemail); 
-            Session::put('conformemailaddress', $conformemailaddress); 
-            Session::put('conformuser_id', $conformuser_id); 
+            Session::put('conformemail', $conformemail);
+            Session::put('conformemailaddress', $conformemailaddress);
+            Session::put('conformuser_id', $conformuser_id);
 
 
             // Profil anlegen
             if (isset($firstname)) {$profile -> firstname = $firstname;}
             if (isset($lastname)) {$profile -> lastname = $lastname;}
-            if (isset($gender)) {$profile -> gender = $gender;}
-            if (isset($language)) {$profile -> language = $language;}
-            if (isset($age)) {$profile -> age = $age;}
-            if (isset($birthday)) {$profile -> birthday = $birthday;}
-            if (isset($birthmonth)) {$profile -> birthmonth = $birthmonth;}
-            if (isset($birthyear)) {$profile -> birthyear = $birthyear;}
-            if (isset($phone)) {$profile -> phone = $phone;}
-            if (isset($country)) {$profile -> country = $country;}
-            if (isset($region)) {$profile -> region = $region;}
-            if (isset($city)) {$profile -> city = $city;}
-            if (isset($zip)) {$profile -> zip = $zip;}    
-            if (isset($identifier)) {$profile -> identifier = $identifier;}   
-            
-            $profile -> save();     
+                if (isset($gender)) {$profile -> gender = $gender;}
+                    if (isset($language)) {$profile -> language = $language;}
+                        if (isset($age)) {$profile -> age = $age;}
+                            if (isset($birthday)) {$profile -> birthday = $birthday;}
+                                if (isset($birthmonth)) {$profile -> birthmonth = $birthmonth;}
+                                    if (isset($birthyear)) {$profile -> birthyear = $birthyear;}
+                                        if (isset($phone)) {$profile -> phone = $phone;}
+                                            if (isset($country)) {$profile -> country = $country;}
+                                                if (isset($region)) {$profile -> region = $region;}
+                                                    if (isset($city)) {$profile -> city = $city;}
+                                                        if (isset($zip)) {$profile -> zip = $zip;}
+                                                            if (isset($identifier)) {$profile -> identifier = $identifier;}
+
+                                                                $profile -> save();
 
 
- 
 
-            // Addresse anlegen 
+
+            // Addresse anlegen
             $address = new Address;
             $address->customercustomer_id =  $user -> getId();
-              if (isset($firstname))  {$address->first_name =  $firstname;}
-              if (isset($lastname))  {$address->last_name =  $lastname;}
-              if (isset($gender))  {  
+            if (isset($firstname))  {$address->first_name =  $firstname;}
+            if (isset($lastname))  {$address->last_name =  $lastname;}
+                if (isset($gender))  {
 
-                if ($gender=="male") {$gendenew="Herr";} 
-                    if ($gender=="female") {$gendenew="Frau";} 
-          }
+                    if ($gender=="male") {$gendenew="Herr";}
+                        if ($gender=="female") {$gendenew="Frau";}
+                }
 
-              if (isset($gender))  {$address->gender =  $gendenew;}  
-            $address->art = 'Rechnungsadresse';
-            $address->save(); 
+            if (isset($gender))  {$address->gender =  $gendenew;}
+                $address->art = 'Rechnungsadresse';
+            $address->save();
 
             $address = new Address;
             $address->customercustomer_id =  $user -> getId();
-              if (isset($firstname))  {$address->first_name =  $firstname;}
-              if (isset($lastname))  {$address->last_name =  $lastname;}
-              if (isset($gender))  {
-                if ($gender=="male") {$gendenew="Herr";} 
-                    if ($gender=="female") {$gendenew="Frau";} 
-          }
-              if (isset($gender))  {$address->gender =  $gendenew;}  
-            $address->art = 'Lieferadresse';
+            if (isset($firstname))  {$address->first_name =  $firstname;}
+            if (isset($lastname))  {$address->last_name =  $lastname;}
+                if (isset($gender))  {
+                    if ($gender=="male") {$gendenew="Herr";}
+                        if ($gender=="female") {$gendenew="Frau";}
+                }
+            if (isset($gender))  {$address->gender =  $gendenew;}
+                $address->art = 'Lieferadresse';
             $address->save();
 
 
 
 
-                   // User ergänzen 
-             $conformuser_id = Session::get('conformuser_id');            
-             $user = Users::find($conformuser_id);
-             $user->customers_groups_id = '4';
+            // User ergänzen
+            $conformuser_id = Session::get('conformuser_id');
+            $user = Users::find($conformuser_id);
+            $user->customers_groups_id = '4';
             if (isset($firstname)) {$user -> first_name = $firstname;}
             if (isset($lastname)) {$user -> last_name = $lastname;}
-            if (isset($gender)) {$user -> gender = $gendenew;}
-            if (isset($birthday)) {$user -> birthday = $birthday;}
-            if (isset($birthmonth)) {$user -> birthmonth = $birthmonth;}
-            if (isset($birthyear)) {$user -> birthyear = $birthyear;}
-            if (isset($phone)) {$user -> telephone = $phone;}
+                if (isset($gender)) {$user -> gender = $gendenew;}
+                    if (isset($birthday)) {$user -> birthday = $birthday;}
+                        if (isset($birthmonth)) {$user -> birthmonth = $birthmonth;}
+                            if (isset($birthyear)) {$user -> birthyear = $birthyear;}
+                                if (isset($phone)) {$user -> telephone = $phone;}
 
-             $user->save();
+                                    $user->save();
 
 
-            
+
 
 
         }
@@ -415,28 +415,28 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             }
 
 
- // LOGGIN MIT EMAIL
-           Session::flash('success_msg', 'Erfolgreich eingeloggt');
+            // LOGGIN MIT EMAIL
+            Session::flash('success_msg', 'Erfolgreich eingeloggt');
             Session::flash('oida', 'Erfolgreich eingeloggtx');
             $user_session_Id = Session::get('userId');
-          
-            $email = Input::get('identity');  
+
+            $email = Input::get('identity');
 
             $ausgabe = Users::where('email', '=', $email)->get();
-            foreach( $ausgabe as $x ) 
-               {   
-               
-                 $id=$x->id;
-              
-    }    
- 
+            foreach( $ausgabe as $x )
+            {
+
+                $id=$x->id;
+
+            }
 
 
-   
-   Session::put('email', $email); 
-   Session::put('userId', $id); 
-  
-   return View::make('frontend.meinkonto.index');
+
+
+            Session::put('email', $email);
+            Session::put('userId', $id);
+
+            return View::make('frontend.meinkonto.index');
 
         }
 
@@ -497,7 +497,7 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
                 //send email with link to activate.
                 /*Mail::send('emails.register_confirm', $data, function($m) use ($data) {
                  $m -> to($data['email']) -> subject('Thanks for Registration - Support Team');
-                 });*/
+                });*/
 
                 //If no groups created then create new groups
                 try {
@@ -669,8 +669,8 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
 
     public function getLogout() {
         Sentry::logout();
-         $this->session->destroy();
-         Session::flush();
+        $this->session->destroy();
+        Session::flush();
         return Redirect::to('/');
     }
 

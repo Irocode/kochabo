@@ -1,41 +1,40 @@
-<?php 
+<?php
 
 use Authority\Repo\Session\SessionInterface;
 use Authority\Service\Form\Login\LoginForm;
 
 class SessionController extends BaseController
-
 {
     /**
      * Member Vars
      */
     protected $session;
     protected $loginForm;
+
     /**
      * Constructor
      */
     public function __construct(SessionInterface $session, LoginForm $loginForm, Users $users)
-
     {
         $this->session = $session;
         $this->loginForm = $loginForm;
         $this->users = $users;
     }
+
     /**
      * Show the login form
      */
     public function create()
-
     {
         return View::make('sessions.login');
     }
+
     /**
      * Store a newly created resource in storage.
      *
      * @return Response
      */
     public function store()
-
     {
         // Form Processing
         $result = $this->loginForm->save(Input::all());
@@ -66,13 +65,13 @@ class SessionController extends BaseController
             return Redirect::to('/meinkonto')->withInput()->withErrors($this->loginForm->errors());
         }
     }
+
     /**
      * Store a newly created resource in storage.
      *
      * @return Response
      */
     public function store_back_variable()
-
     {
         // Form Processing
         $result = $this->loginForm->save(Input::all());
@@ -85,7 +84,7 @@ class SessionController extends BaseController
             return Redirect::back();
         }
         else
-        {   
+        {
             Session::flash('error', $result['message']);
             return Redirect::to('/meinkonto')->withInput()->withErrors($this->loginForm->errors());
         }
@@ -97,62 +96,46 @@ class SessionController extends BaseController
      * @return Response
      */
     public function destroy()
-
     {
         $this->session->destroy();
         Event::fire('user.logout');
         return Redirect::to('/');
     }
 
-        public function forgotperemail()
-    {   
-
-             
-        
-       
-    $email = Input::get('email');     
-    $ausgabe = Users::where('email', '=', $email)->get();
-
-
-
-
-    foreach( $ausgabe as $x ) 
-    {   
-        $email=$x->email;
-
-
-         $first_name=$x->first_name;
-         $passwordhardcode=$x->passwordhardcode; 
-    }    
- 
- if (empty($passwordhardcode)) {var_dump('nix');
-Session::flash('message', 'Kein Passwort für diese E-Mail Adresse vorhanden');       
-return Redirect::back();
-
-}; 
-
-
-
- $data = array('first_name' => $first_name, 'email' => $email, 'passwordhardcode' => $passwordhardcode);
- Mail::send('users.versand', $data, function($message)
+    public function forgotperemail()
     {
-      
         $email = Input::get('email');
-        $message
-        ->to($email)
-        ->from('office@kochabo.com','KochAbo.com')
-        ->subject('KochAbo-Dein Passwort');
-    });
-   //Backend and Frontend
-  
-    Session::flash('message', 'E-Mail wurde dir zugeschickt');       
-    return Redirect::back();
+        $ausgabe = Users::where('email', '=', $email)->get();
 
+        foreach( $ausgabe as $x )
+        {
+            $email=$x->email;
+            $first_name=$x->first_name;
+            $passwordhardcode=$x->passwordhardcode;
+        }
 
-  
-}
+        if (empty($passwordhardcode)) 
+        {
+            var_dump('nix');
+            Session::flash('message', 'Kein Passwort für diese E-Mail Adresse vorhanden');
+            return Redirect::back();
+        };
 
+        $data = array('first_name' => $first_name, 'email' => $email, 'passwordhardcode' => $passwordhardcode);
 
+        Mail::send('users.versand', $data, function($message)
+        {
+            $email = Input::get('email');
+            $message
+                ->to($email)
+                ->from('office@kochabo.com','KochAbo.com')
+                ->subject('KochAbo-Dein Passwort');
+        });
+
+        //Backend and Frontend
+        Session::flash('message', 'E-Mail wurde dir zugeschickt');
+        return Redirect::back();
+    }
 }
 
 

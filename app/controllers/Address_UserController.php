@@ -1,6 +1,5 @@
 <?php
 class Address_UserController extends BaseController
-
 {
     // address_one
     public function address_one()

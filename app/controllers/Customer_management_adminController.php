@@ -102,7 +102,6 @@ class Customer_management_adminController extends BaseController
      */
     public function edit($id)
     {
-
         // <!-- retrieval Data from customers_groups_id an collation with CustomerGroup Start-->
         $users = Users::where('id', '=', $id)->get();
         foreach ($users as $user)
@@ -155,9 +154,9 @@ class Customer_management_adminController extends BaseController
             $ausgabe->date_of_birth = $datumumwandelnready;
             // var_dump($datumumwandelnready);
             $ausgabe->email = Input::get('email');
-   
+
             $ausgabe->fbaktuelleemail = Input::get('fbaktuelleemail');
-       
+
 
             $ausgabe->last_name = Input::get('last_name');
             $ausgabe->telephone = Input::get('telephone');
