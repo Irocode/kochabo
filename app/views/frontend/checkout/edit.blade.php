@@ -670,6 +670,7 @@
          <!-- Plichtfeld Ende -->
          <!--Formular Registrierung Ende-->
          {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
+
          {{ Form::submit('Registrieren', array('class' => 'btn btn-u')) }}
       </div>
       <div class="col-lg-9">

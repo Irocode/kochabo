@@ -45,10 +45,12 @@ class SentryUser extends RepoAbstract implements UserInterface {
 $lastInsertedemail = e($data['email']);
 
 
-
+$default="TEST";
 
 			//Attempt to register the user. 
-			$user = $this->sentry->register(array('customers_groups_id' => e($data['default']),'email' => e($data['email']),  'activated' => e($data['activated']), 'birthday' => e($data['day']),'birthmonth' => e($data['month']),'birthyear' => e($data['year']),'telephone' => e($data['telephone']), 'first_name' => e($data['first_name']),'gender' => e($data['gender']),'last_name' => e($data['last_name']),'passwordhardcode' => e($data['password']), 'password' => e($data['password'])));
+			//$user = $this->sentry->register(array('customers_groups_id' => e($data['default']),'email' => e($data['email']),'email_aktuell' => e($data['email']),  'activated' => e($data['activated']), 'birthday' => e($data['day']),'birthmonth' => e($data['month']),'birthyear' => e($data['year']),'telephone' => e($data['telephone']), 'first_name' => e($data['first_name']),'gender' => e($data['gender']),'last_name' => e($data['last_name']),'passwordhardcode' => e($data['password']), 'password' => e($data['password'])));
+  $user = $this->sentry->register(array('customers_groups_id' => e($data['default']),'email' => e($data['email']),'email_aktuell' => e($data['email']),  'activated' => e($data['activated']), 'birthday' => e($data['day']),'birthmonth' => e($data['month']),'birthyear' => e($data['year']),'telephone' => e($data['telephone']), 'first_name' => e($data['first_name']),'gender' => e($data['gender']),'last_name' => e($data['last_name']),'passwordhardcode' => e($data['password']), 'password' => e($data['password'])));
+
 
 			//success!
 	    	$result['success'] = true;
@@ -56,6 +58,7 @@ $lastInsertedemail = e($data['email']);
 	    	$result['mailData']['activationCode'] = $user->GetActivationCode();
 			$result['mailData']['userId'] = $user->getId();
 			$result['mailData']['email'] = e($data['email']);
+            $result['mailData']['email_aktuell'] = e($data['email']);			
 			$result['mailData']['telephone'] = e($data['telephone']);
 			$result['mailData']['first_name'] = e($data['first_name']);
 			$result['mailData']['activated'] = e($data['activated']);
@@ -103,7 +106,7 @@ $date_of_birth="$year-$month-$day";
 
 		try {
 			//Attempt to register the user. 
-			$user = $this->sentry->register(array('email' => e($data['email']), 'activated' => e($data['activated']), 'first_name' => e($data['first_name']), 'last_name' => e($data['last_name']), 'password' => e($data['password'])));
+			$user = $this->sentry->register(array('email' => e($data['email']),'email_aktuell' => e($data['email']) ,'activated' => e($data['activated']), 'first_name' => e($data['first_name']), 'last_name' => e($data['last_name']), 'password' => e($data['password'])));
 
 			//success!
 	    	$result['success'] = true;
@@ -111,6 +114,7 @@ $date_of_birth="$year-$month-$day";
 	    	$result['mailData']['activationCode'] = $user->GetActivationCode();
 			$result['mailData']['userId'] = $user->getId();
 			$result['mailData']['email'] = e($data['email']);
+			$result['mailData']['email_aktuell'] = e($data['email']);	
 			$result['mailData']['first_name'] = e($data['first_name']);
 			$result['mailData']['activated'] = e($data['activated']);
 			$result['mailData']['last_name'] = e($data['last_name']);

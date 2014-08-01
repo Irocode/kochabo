@@ -254,6 +254,7 @@ class LoginController extends BaseController {
                         if (isset($birthmonth)) {$user -> birthmonth = $birthmonth;}
                             if (isset($birthyear)) {$user -> birthyear = $birthyear;}
                                 if (isset($phone)) {$user -> telephone = $phone;}
+                                  if (isset($email)) {$user -> email_aktuell = $email;}
 
                                     $user->save();
 
