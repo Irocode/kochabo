@@ -10,11 +10,9 @@ class LoginController extends BaseController {
     protected $session;
 
  public function __construct(SessionInterface $session, Users $users, Address $address) {
-
         $this->session = $session;
         $this->users = $users;
         $this->address = $address;
-
         //We will implement Filters later
         $this -> beforeFilter('csrf', array('on' => 'post'));
     }
@@ -26,7 +24,6 @@ class LoginController extends BaseController {
     
 
     public function loginWithSocial( $action = "") {
-
         // check URL segment
         if ($action == "auth") {
 
@@ -92,13 +89,7 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
 
     }
 
-    public function createOAuthProfile($userProfile) {
-
-
-          
-
-
-
+    public function createOAuthProfile($userProfile) { 
         if (isset($userProfile -> username)){
             $username = strlen($userProfile -> username) > 0 ? $userProfile -> username : "";
         }
@@ -119,7 +110,6 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             $language = strlen($userProfile -> language) > 0 ? $userProfile -> language : "";
         }
    
-
           if (isset($userProfile -> age)){
             $age = strlen($userProfile -> age) > 0 ? $userProfile -> age : "";
         }
@@ -131,6 +121,11 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
            if (isset($userProfile -> zip)){
             $zip = strlen($userProfile -> zip) > 0 ? $userProfile -> zip : "";
         }
+
+         if (isset($userProfile -> identifier)){
+            $identifier = strlen($userProfile -> identifier) > 0 ? $userProfile -> identifier : "";
+        }
+
            if (isset($userProfile -> region)){
             $region = strlen($userProfile -> region) > 0 ? $userProfile -> region : "";
         }
@@ -211,10 +206,9 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             if (isset($region)) {$profile -> region = $region;}
             if (isset($city)) {$profile -> city = $city;}
             if (isset($zip)) {$profile -> zip = $zip;}    
-            $profile -> save();
-
-
-      
+            if (isset($identifier)) {$profile -> identifier = $identifier;}   
+            
+            $profile -> save();     
 
 
  
@@ -259,7 +253,7 @@ return View::make('frontend.meinkonto.index')->with('email', $email)->with('disp
             if (isset($birthday)) {$user -> birthday = $birthday;}
             if (isset($birthmonth)) {$user -> birthmonth = $birthmonth;}
             if (isset($birthyear)) {$user -> birthyear = $birthyear;}
-             if (isset($phone)) {$user -> telephone = $phone;}
+            if (isset($phone)) {$user -> telephone = $phone;}
 
              $user->save();
 
