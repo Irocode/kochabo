@@ -52,6 +52,46 @@ class UsersGroupsTableSeeder extends Seeder {
 				'user_id' => 85,
 				'group_id' => 1,
 			),
+			8 => 
+			array (
+				'user_id' => 113,
+				'group_id' => 2,
+			),
+			9 => 
+			array (
+				'user_id' => 118,
+				'group_id' => 1,
+			),
+			10 => 
+			array (
+				'user_id' => 119,
+				'group_id' => 1,
+			),
+			11 => 
+			array (
+				'user_id' => 120,
+				'group_id' => 1,
+			),
+			12 => 
+			array (
+				'user_id' => 122,
+				'group_id' => 1,
+			),
+			13 => 
+			array (
+				'user_id' => 125,
+				'group_id' => 1,
+			),
+			14 => 
+			array (
+				'user_id' => 126,
+				'group_id' => 1,
+			),
+			15 => 
+			array (
+				'user_id' => 175,
+				'group_id' => 1,
+			),
 		));
 	}
 
