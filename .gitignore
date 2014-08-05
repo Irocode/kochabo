@@ -14,3 +14,4 @@ Thumbs.db
 /app/storage/views
 /app/config
 /jquery-file-upload/server/php
+.tm_properties
