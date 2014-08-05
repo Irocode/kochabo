@@ -14,14 +14,25 @@ class OrderStatusHistoryTableSeeder extends Seeder {
 		\DB::table('order_status_history')->insert(array (
 			0 => 
 			array (
-				'order_status_history_id' => 0,
-				'orderorder_id' => 1,
+				'order_status_history_id' => 199,
+				'orderorder_id' => 100,
+				'status' => 'mein status',
+				'channel' => 'channel y',
+				'operator' => '',
+				'timestamp' => '2014-08-05 07:54:46',
+				'created_at' => '2014-08-05',
+				'updated_at' => '2014-08-05',
+			),
+			1 => 
+			array (
+				'order_status_history_id' => 200,
+				'orderorder_id' => 100,
 				'status' => 'mein status',
 				'channel' => 'channel x',
 				'operator' => '',
-				'timestamp' => '2014-06-26 12:55:57',
-				'created_at' => '0000-00-00',
-				'updated_at' => '0000-00-00',
+				'timestamp' => '2014-08-05 07:54:57',
+				'created_at' => '2014-08-03',
+				'updated_at' => '2014-08-03',
 			),
 		));
 	}

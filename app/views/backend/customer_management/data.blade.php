@@ -9,7 +9,7 @@
 "{{{ $x->gender }}}",
 "{{{ $x->first_name }}}",
 "{{{ $x->last_name }}}",
-"{{{ $x->email }}}",
+"{{{ $x->email_aktuell }}}",
 "{{{ $x->telephone}}}",
 "{{{$x->birthday}}}-{{{$x->birthmonth}}}-{{{$x->birthyear}}}", 
 "{{{ $x->last_login}}}",

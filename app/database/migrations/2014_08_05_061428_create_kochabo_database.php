@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-08-05 05:06:52
+// NOTE Migration Created: 2014-08-05 06:14:28
 // --------------------------------------------------
  
 class CreateKochaboDatabase {

@@ -171,32 +171,22 @@
             </div>
          </div>
      
-         <!-- email -->
-         <div class="control-group {{ $errors->has('email') ? 'has-error' : '' }}">
-            <label class="control-label" for="email">E-Mail <span class="stern" >*</span></label>
+         <!-- email_aktuell -->
+         <div class="control-group {{ $errors->has('email_aktuell') ? 'has-error' : '' }}">
+            <label class="control-label" for="email_aktuell">E-Mail für Newsletter(Bestätigt) <span class="stern" >*</span></label>
             <div class="controls">
-               {{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'E-Mail','required')) }}
-               @if ($errors->first('email'))
-               <span class="help-block">{{ $errors->first('email') }}</span>
+               {{ Form::email('email_aktuell', null, array('class' => 'form-control', 'placeholder' => 'E-Mail','required')) }}
+               @if ($errors->first('email_aktuell'))
+               <span class="help-block">{{ $errors->first('email_aktuell') }}</span>
                @endif
             </div>
          </div>
          <br>
 
+
+
       
-           <!-- facebookemail -->
-        
-         <div class="control-group {{ $errors->has('fbaktuelleemail') ? 'has-error' : '' }}">
-            <label class="control-label" for="fbaktuelleemail">Bestätigte E-Mail FB </label>
-            <div class="controls">
-               {{ Form::email('fbaktuelleemail', null, array('class' => 'form-control', 'placeholder' => 'E-Mail FB')) }}
-               @if ($errors->first('fbaktuelleemail'))
-               <span class="help-block">{{ $errors->first('fbaktuelleemail') }}</span>
-               @endif
-            </div>
-         </div>
-         <br>
-    
+      
 
 
 
@@ -207,6 +197,19 @@
                {{ Form::text('telephone', null, array('onkeypress' =>'return isNumberKey(event)', 'class' => 'form-control', 'placeholder' => 'Telefon [Zahl angeben]','required')) }}
                @if ($errors->first('telephone'))
                <span class="help-block">{{ $errors->first('telephone') }}</span>
+               @endif
+            </div>
+         </div>
+         <br>
+
+
+            <!-- email -->
+         <div class="control-group {{ $errors->has('email') ? 'has-error' : '' }}">
+            <label class="control-label" for="email">E-Mail für Anmeldung <span class="stern" >*</span></label>
+            <div class="controls">
+               {{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'E-Mail','required', 'disabled')) }}
+               @if ($errors->first('email'))
+               <span class="help-block">{{ $errors->first('email') }}</span>
                @endif
             </div>
          </div>

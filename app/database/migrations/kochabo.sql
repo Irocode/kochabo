@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 05. Aug 2014 um 07:10
+-- Erstellungszeit: 05. Aug 2014 um 08:09
 -- Server Version: 5.5.36
 -- PHP-Version: 5.4.27
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `address` (
   `is_published` tinyint(1) NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=226 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=228 ;
 
 --
 -- Daten für Tabelle `address`
@@ -82,7 +82,9 @@ INSERT INTO `address` (`id`, `customercustomer_id`, `art`, `gender`, `first_name
 (222, 177, 'Rechnungsadresse', 'Herr', 'a', 'b', '', '', '', '', 0, '', '', '', '', '', '2014-08-01 08:10:59', '2014-08-01 08:10:59', 0, NULL),
 (223, 177, 'Lieferadresse', 'Herr', 'a', 'b', '', '', '', '', 0, '', '', '', '', '', '2014-08-01 08:10:59', '2014-08-01 08:10:59', 0, NULL),
 (224, 178, 'Rechnungsadresse', 'Herr', 'dsafas', 'dsafa', '', '', '', '', 0, '', '', '', '', '', '2014-08-01 08:25:01', '2014-08-01 08:25:01', 0, NULL),
-(225, 178, 'Lieferadresse', 'Herr', 'dsafas', 'dsafa', '', '', '', '', 0, '', '', '', '', '', '2014-08-01 08:25:01', '2014-08-01 08:25:01', 0, NULL);
+(225, 178, 'Lieferadresse', 'Herr', 'dsafas', 'dsafa', '', '', '', '', 0, '', '', '', '', '', '2014-08-01 08:25:01', '2014-08-01 08:25:01', 0, NULL),
+(226, 179, 'Rechnungsadresse', 'Herr', 'Robert', 'Melk', 'Ochsengasse', 'Niederösterreich', 'Österreich', '', 2040, '1', '2', '', '', '', '2014-08-05 03:46:55', '2014-08-05 03:46:55', 0, NULL),
+(227, 179, 'Lieferadresse', 'Herr', 'Robert', 'Melk', 'Okalastrasse', 'Wien', 'Österreich', '', 1220, '1', '2', '3', '4', '', '2014-08-05 03:46:55', '2014-08-05 03:46:55', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -1776,7 +1778,14 @@ CREATE TABLE IF NOT EXISTS `order` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Daten für Tabelle `order`
+--
+
+INSERT INTO `order` (`order_id`, `delivery_date`, `order_increment_id`, `deliverable`, `customercustomer_id`, `created_at`, `updated_at`) VALUES
+(100, '2014-08-05', 100, 1, 179, '2014-08-04 22:00:00', '2014-08-04 22:00:00');
 
 -- --------------------------------------------------------
 
@@ -1811,8 +1820,8 @@ CREATE TABLE IF NOT EXISTS `order_address` (
 --
 
 INSERT INTO `order_address` (`address_id`, `orderorder_id`, `address_type`, `gender`, `first_name`, `last_name`, `street`, `city`, `country`, `stateprovince`, `zip`, `housenumber`, `stairway_number`, `floor`, `appartement_number`, `created_at`, `updated_at`, `delivery_information`) VALUES
-(1, 1, '', 'Herr', 'Tom', '', '', '', '', '', 0, '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
-(2, 1, '', 'Herr', 'Tom', '', '', '', '', '', 0, '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL);
+(1, 100, '', 'Herr', 'Robert', 'Melk', '', '', '', '', 0, '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(2, 100, '', 'Herr', 'Robert', 'Melk', '', '', '', '', 0, '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -1847,7 +1856,7 @@ CREATE TABLE IF NOT EXISTS `order_items` (
 --
 
 INSERT INTO `order_items` (`order_items_id`, `orderorder_id`, `product_id`, `product_sku`, `product_name`, `original_price_net`, `ust`, `discount`, `affilate_discount`, `affilate_credit`, `giftvoucher_credit`, `coupon_code`, `giftvoucher_code`, `affilate_code`, `quantity`, `timestamp`, `created_at`, `updated_at`) VALUES
-(0, 1, 2020, '', 'ObstBox', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '', '', '', 0, '2014-06-26 10:56:54', '0000-00-00', '0000-00-00');
+(200, 100, 2020, '', 'ObstBox', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '', '', '', 0, '2014-08-05 05:52:43', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -1872,7 +1881,8 @@ CREATE TABLE IF NOT EXISTS `order_status_history` (
 --
 
 INSERT INTO `order_status_history` (`order_status_history_id`, `orderorder_id`, `status`, `channel`, `operator`, `timestamp`, `created_at`, `updated_at`) VALUES
-(0, 1, 'mein status', 'channel x', '', '2014-06-26 10:55:57', '0000-00-00', '0000-00-00');
+(199, 100, 'mein status', 'channel y', '', '2014-08-05 05:54:46', '2014-08-05', '2014-08-05'),
+(200, 100, 'mein status', 'channel x', '', '2014-08-05 05:54:57', '2014-08-03', '2014-08-03');
 
 -- --------------------------------------------------------
 
@@ -2487,7 +2497,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `users_activation_code_index` (`activation_code`),
   KEY `users_reset_password_code_index` (`reset_password_code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=179 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=180 ;
 
 --
 -- Daten für Tabelle `users`
@@ -2506,8 +2516,9 @@ INSERT INTO `users` (`id`, `customers_groups_id`, `email`, `email_aktuell`, `pas
 (116, 6, 'robert.robishts@chello.at', '', '$2y$10$63PLZWXCbaujGMzXawBHbuw3bL6Qi.Voy0oYqfEVTLm8J5R3irQPG', '66666767765', NULL, 1, '9kUlXpAKqVYsE916wRCRxvIIAnpXn2fUMuUKD2cjeq', NULL, NULL, NULL, NULL, 'Robert', '1970-01-01', '66666767765', 'Herr', 0, 0, 'Robitsh', '01', '02', '2014', '', '2014-07-08 00:59:39', '2014-07-29 04:48:23', 0),
 (175, 4, 'b.obendorfer@kochabo.com', 'b.obendorferx@kochabo.com', '$2y$10$rThkw5WHW.owOSRbWAjjguXg6HEI4WpR2v6XLYjXm2nUedr2gMDq.', '', NULL, 1, NULL, '2014-08-01 07:44:36', '2014-08-01 07:45:08', '$2y$10$qdd3LZAUDV2y.b74qTH/wevWFDIO8FTT5lWaKP.UR5J4VlysHngAO', NULL, 'Mucki', '0000-00-00', '', 'Frau', 0, 0, 'Fatz', '1', '2', '1974', '', '2014-08-01 07:44:36', '2014-08-01 07:45:08', 0),
 (176, 0, 'maus.bear@chello.at', 'maus.bear@chello.at', '$2y$10$fuuvkRWVAQwPy7LM/xQ5tuOd7ngUiCEkf6jooQSPogU5km.ScnbUe', '444444', NULL, 1, 'EpVKCNcaVLinSUJ75srNdOaGz9fwEpcwXDljiJcYGO', NULL, NULL, NULL, NULL, 'maus', '0000-00-00', '23423432234', 'Herr', 0, 0, 'bar', '2', '1', '2014', '', '2014-08-01 08:09:27', '2014-08-01 08:09:27', 0),
-(177, 7, 'asd@gg.at', 'asd@gg.at', '$2y$10$Pg/NKZICie3vpjxC/KB/E.K8tvtfVwT4X5NxIU4uGGaivLTTIeoNa', '666666', NULL, 1, 'QgNXVziiqwIA8yaC3lWurVAr1rmForMvI31mzDNPqg', NULL, NULL, NULL, NULL, 'a', '0000-00-00', '2341123412', 'Herr', 0, 0, 'b', '1', '2', '2014', '', '2014-08-01 08:10:59', '2014-08-01 08:10:59', 0),
-(178, 0, '3fdfdsa@dd.at', '3fdfdsa@dd.at', '$2y$10$3.CjJn9WEUGEikqrc7t9FextEor7Qw/TX361x5YCM53OPzX3aKZ6i', '7777777', NULL, 1, 'NG1y9fjhBGTTpmCwUo4May1GoJKUq9CixV7vOK6S0D', NULL, NULL, NULL, NULL, 'dsafas', '0000-00-00', '23234234', 'Herr', 0, 0, 'dsafa', '1', '2', '3333', '', '2014-08-01 08:25:01', '2014-08-01 08:25:01', 0);
+(177, 7, 'max.mustermann@chello.at', 'asd@gg.at', '$2y$10$Pg/NKZICie3vpjxC/KB/E.K8tvtfVwT4X5NxIU4uGGaivLTTIeoNa', '666666', NULL, 1, 'QgNXVziiqwIA8yaC3lWurVAr1rmForMvI31mzDNPqg', NULL, NULL, NULL, NULL, 'Max', '1970-01-01', '2341123412', 'Herr', 0, 0, 'Mustermann', '1', '2', '2014', '', '2014-08-01 08:10:59', '2014-08-05 03:45:38', 0),
+(178, 0, '3fdfdsa@dd.at', '3fdfdsa@dd.at', '$2y$10$3.CjJn9WEUGEikqrc7t9FextEor7Qw/TX361x5YCM53OPzX3aKZ6i', '7777777', NULL, 1, 'NG1y9fjhBGTTpmCwUo4May1GoJKUq9CixV7vOK6S0D', NULL, NULL, NULL, NULL, 'dsafas', '0000-00-00', '23234234', 'Herr', 0, 0, 'dsafa', '1', '2', '3333', '', '2014-08-01 08:25:01', '2014-08-01 08:25:01', 0),
+(179, 1, 'robert.obendorfer@chello.at', 'robert.melk@gmail.com', '$2y$10$zoz0GzxPJofc6jlU/d8kdeASEB8HIiynfTOMu9NcDg9/be3i/Ch2u', '777777', NULL, 1, 'WmulAjzA8m1Lo7lWmsA0m1vfTeCrR8SGjI7OMbLL4o', NULL, NULL, NULL, NULL, 'Robert', '1970-01-01', '6516516169165', 'Herr', 0, 0, 'Melk', '1', '1', '2010', '', '2014-08-05 03:46:54', '2014-08-05 04:02:11', 0);
 
 -- --------------------------------------------------------
 

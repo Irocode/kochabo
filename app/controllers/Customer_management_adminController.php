@@ -131,7 +131,7 @@ class Customer_management_adminController extends BaseController
         $rules = array(
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|email',
+            'email_aktuell' => 'required|email',
             'telephone' => 'required'
         );
 
@@ -153,9 +153,9 @@ class Customer_management_adminController extends BaseController
             $datumumwandelnready = date("Y-m-d", strtotime($datumumwandeln));
             $ausgabe->date_of_birth = $datumumwandelnready;
             // var_dump($datumumwandelnready);
-            $ausgabe->email = Input::get('email');
+            $ausgabe->email_aktuell = Input::get('email_aktuell');
 
-            $ausgabe->fbaktuelleemail = Input::get('fbaktuelleemail');
+          //  $ausgabe->fbaktuelleemail = Input::get('fbaktuelleemail');
 
 
             $ausgabe->last_name = Input::get('last_name');

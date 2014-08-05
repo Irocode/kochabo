@@ -15,11 +15,11 @@ class OrderAddressTableSeeder extends Seeder {
 			0 => 
 			array (
 				'address_id' => 1,
-				'orderorder_id' => 1,
+				'orderorder_id' => 100,
 				'address_type' => '',
 				'gender' => 'Herr',
-				'first_name' => 'Tom',
-				'last_name' => '',
+				'first_name' => 'Robert',
+				'last_name' => 'Melk',
 				'street' => '',
 				'city' => '',
 				'country' => '',
@@ -36,11 +36,11 @@ class OrderAddressTableSeeder extends Seeder {
 			1 => 
 			array (
 				'address_id' => 2,
-				'orderorder_id' => 1,
+				'orderorder_id' => 100,
 				'address_type' => '',
 				'gender' => 'Herr',
-				'first_name' => 'Tom',
-				'last_name' => '',
+				'first_name' => 'Robert',
+				'last_name' => 'Melk',
 				'street' => '',
 				'city' => '',
 				'country' => '',

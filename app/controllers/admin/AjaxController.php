@@ -154,7 +154,7 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
     'users.gender',
     'users.first_name',
     'users.last_name',
-    'users.email',
+    'users.email_aktuell',
     'users.telephone',
     'users.birthday',
     'users.birthmonth',
