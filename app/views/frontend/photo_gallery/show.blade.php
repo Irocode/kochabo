@@ -86,6 +86,6 @@
    </footer>
 </div>
 <!--[if lt IE 9]>
-<script src="{{URL::to('assets/plugins/respond.js')}}"></script>
+<script src="{{URL::to('assets/frontend/plugins/respond.js')}}"></script>
 <![endif]-->
 @stop

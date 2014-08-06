@@ -3,31 +3,31 @@
    <head>
       <title>KochAbo.at CMS</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      {{ HTML::style('assets/bootstrap/css/backend_bootstrap.css') }}   
-      {{ HTML::script('assets/js/holder.js') }}
-      {{ HTML::script('assets/js/jquery-ui-1.10.4.custom/development-bundle/jquery-1.10.2.js') }}    
-      {{ HTML::script('assets/js/company.js') }}    
-      {{ HTML::script('assets/js/jquery.2.0.3.js') }}  
-      {{ HTML::script('assets/bootstrap/js/bootstrap.min.js') }}
-      {{ HTML::script('assets/js/holder.js') }}
-      {{ HTML::script('assets/js/jquery.2.0.3.js') }}
-      {{ HTML::style('assets/plugins/fancybox/source/jquery.fancybox.css') }}
-      {{ HTML::style('assets/plugins/bootstrap/css/bootstrap.min.css') }}
-      {{ HTML::style('assets/plugins/bootstrap/css/bootstrap.css') }}
-      {{ HTML::style('assets/css/style.css') }}
-      {{ HTML::style('assets/css/company.css') }}
-      {{ HTML::style('assets/css/headers/header1.css') }}
-      {{ HTML::style('assets/css/responsive.css') }}
-      {{ HTML::style('assets/plugins/font-awesome/css/font-awesome.css') }}
-      {{ HTML::style('assets/plugins/flexslider/flexslider.css') }}
-      {{ HTML::style('assets/plugins/parallax-slider/css/parallax-slider.css') }}
-      {{ HTML::style('assets/css/pages/portfolio-v1.css') }}
-      {{ HTML::style('assets/css/style_template.css') }}
-      {{ HTML::style('assets/plugins/font-awesome/css/font-awesome.css') }}
-      {{ HTML::style('assets/css/pages/page_pricing.css') }}
-      {{ HTML::style('assets/css/bootstrap-datetimepicker.min.css') }}
-      {{ HTML::style('assets/plugins/bootstrap-notify/pnotify.custom.min.css') }}
-      {{ HTML::style('assets/plugins/tablesorter/media/css/jquery.dataTables.css') }}
+      {{ HTML::style('assets/backend/bootstrap/css/backend_bootstrap.css') }}   
+      {{ HTML::script('assets/backend/js/holder.js') }}
+      {{ HTML::script('assets/backend/js/jquery-ui-1.10.4.custom/development-bundle/jquery-1.10.2.js') }}    
+      {{ HTML::script('assets/backend/js/company.js') }}    
+      {{ HTML::script('assets/backend/js/jquery.2.0.3.js') }}  
+      {{ HTML::script('assets/backend/bootstrap/js/bootstrap.min.js') }}
+      {{ HTML::script('assets/backend/js/holder.js') }}
+      {{ HTML::script('assets/backend/js/jquery.2.0.3.js') }}
+      {{ HTML::style('assets/backend/plugins/fancybox/source/jquery.fancybox.css') }}
+      {{ HTML::style('assets/backend/plugins/bootstrap/css/bootstrap.min.css') }}
+      {{ HTML::style('assets/backend/plugins/bootstrap/css/bootstrap.css') }}
+      {{ HTML::style('assets/backend/css/style.css') }}
+      {{ HTML::style('assets/backend/css/company.css') }}
+      {{ HTML::style('assets/backend/css/headers/header1.css') }}
+      {{ HTML::style('assets/backend/css/responsive.css') }}
+      {{ HTML::style('assets/backend/plugins/font-awesome/css/font-awesome.css') }}
+      {{ HTML::style('assets/backend/plugins/flexslider/flexslider.css') }}
+      {{ HTML::style('assets/backend/plugins/parallax-slider/css/parallax-slider.css') }}
+      {{ HTML::style('assets/backend/css/pages/portfolio-v1.css') }}
+      {{ HTML::style('assets/backend/css/style_template.css') }}
+      {{ HTML::style('assets/backend/plugins/font-awesome/css/font-awesome.css') }}
+      {{ HTML::style('assets/backend/css/pages/page_pricing.css') }}
+      {{ HTML::style('assets/backend/css/bootstrap-datetimepicker.min.css') }}
+      {{ HTML::style('assets/backend/plugins/bootstrap-notify/pnotify.custom.min.css') }}
+      {{ HTML::style('assets/backend/plugins/tablesorter/media/css/jquery.dataTables.css') }}
 
 
    
@@ -35,9 +35,9 @@
 
 
 
-<link rel="alternate stylesheet" href="{{URL::to('assets/plugins/bootstrap/css/normal.css')}}" type="text/css" title="Normal" media="screen, projection">
-<link rel="stylesheet" href="{{URL::to('/assets/plugins/bootstrap/css/bootstrap_widescreen.css')}}" type="text/css" title="Standard" media="screen, projection">
- {{ HTML::script('assets/plugins/bootstrap/css/switch.js') }}    
+<link rel="alternate stylesheet" href="{{URL::to('assets/backend/plugins/bootstrap/css/normal.css')}}" type="text/css" title="Normal" media="screen, projection">
+<link rel="stylesheet" href="{{URL::to('/assets/backend/plugins/bootstrap/css/bootstrap_widescreen.css')}}" type="text/css" title="Standard" media="screen, projection">
+ {{ HTML::script('assets/backend/plugins/bootstrap/css/switch.js') }}    
     
       <!--
          Beispiele für Datepicker
@@ -123,9 +123,9 @@
             </div>
          </div>
       </div>
-      {{ HTML::script('assets/plugins/hover-dropdown.min.js') }}    
-      {{ HTML::script('assets/plugins/back-to-top.js') }}    
-      {{ HTML::script('assets/plugins/bootstrap-notify/pnotify.custom.min.js') }} 
+      {{ HTML::script('assets/backend/plugins/hover-dropdown.min.js') }}    
+      {{ HTML::script('assets/backend/plugins/back-to-top.js') }}    
+      {{ HTML::script('assets/backend/plugins/bootstrap-notify/pnotify.custom.min.js') }} 
       
      
 

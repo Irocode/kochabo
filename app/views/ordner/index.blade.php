@@ -5,11 +5,11 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
 
-{{ HTML::style('assets/bootstrap/css/backend_bootstrap.css') }}
-    {{ HTML::style('assets/bootstrap/css/theme.css') }}
-    {{ HTML::script('assets/js/jquery.2.0.3.js') }}
-    {{ HTML::script('assets/bootstrap/js/bootstrap.min.js') }}
-    {{ HTML::script('assets/js/holder.js') }}
+{{ HTML::style('assets/frontend/bootstrap/css/backend_bootstrap.css') }}
+    {{ HTML::style('assets/frontend/bootstrap/css/theme.css') }}
+    {{ HTML::script('assets/frontend/js/jquery.2.0.3.js') }}
+    {{ HTML::script('assets/frontend/bootstrap/js/bootstrap.min.js') }}
+    {{ HTML::script('assets/frontend/js/holder.js') }}
 
 
 </head>

@@ -1,9 +1,9 @@
 @extends('backend/_layout/layout')
 @section('content')
 
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
+{{ HTML::script('assets/backend/plugins/ckeditor/ckeditor.js') }} 
 
-{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 
 
 <script type="text/javascript">

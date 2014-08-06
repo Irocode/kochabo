@@ -1,7 +1,7 @@
 @extends('frontend/_layout/layout')
 @section('content')
 <!-- CSS Page Style -->    
-<link rel="stylesheet" href="{{URL::to('assets/css/pages/page_contact.css')}}">
+<link rel="stylesheet" href="{{URL::to('assets/frontend/css/pages/page_contact.css')}}">
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs margin-bottom-0">
    <div class="container">
@@ -132,10 +132,10 @@
 </div>
 <!-- JS Implementing Plugins -->           
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-{{ HTML::script('assets/plugins/gmap/gmap.js') }}
-{{ HTML::script('assets/plugins/flexslider/jquery.flexslider-min.js') }}
-{{ HTML::script('assets/js/app.js') }}
-{{ HTML::script('assets/js/pages/contact.js') }}
+{{ HTML::script('assets/frontend/plugins/gmap/gmap.js') }}
+{{ HTML::script('assets/frontend/plugins/flexslider/jquery.flexslider-min.js') }}
+{{ HTML::script('assets/frontend/js/app.js') }}
+{{ HTML::script('assets/frontend/js/pages/contact.js') }}
 <!-- JS Page Level -->           
 <script type="text/javascript">
    jQuery(document).ready(function() {

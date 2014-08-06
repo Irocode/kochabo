@@ -451,7 +451,7 @@ else {
                      </td>
                      <td>
                         <!--  <a href="#" id="{{ $v->id }}" class="publish">
-                           <img id="publish-image-{{ $v->id }}" src="{{url('/')}}/assets/images/{{ ($v->is_published) ? 'publish.png' : 'not_publish.png'  }}"/>
+                           <img id="publish-image-{{ $v->id }}" src="{{url('/')}}/assets/backend/images/{{ ($v->is_published) ? 'publish.png' : 'not_publish.png'  }}"/>
                            </a>-->
                      </td>
                   </tr>

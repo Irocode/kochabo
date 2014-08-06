@@ -1,6 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 <script type="text/javascript">
    $(document).ready(function () {
        $("#title").slug();  
@@ -29,8 +29,8 @@ if (isset($_GET["idzt"]))
 
 ?>
 
-{{ HTML::style('assets/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
-{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectizenew.js') }}
+{{ HTML::style('assets/backend/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
+{{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectizenew.js') }}
 
 
 
@@ -804,7 +804,7 @@ $selectbeastx_ee = "selectbeastx_$selectbeastx_e" ?>
                
                
                            $("#flash_{{$v->id}}").show();
-                           $("#flash_{{$v->id}}").fadeIn(1000).html('<img src="{{ URL::to('assets/img/backend/icons/ajax-loader.gif') }}" />'); 
+                           $("#flash_{{$v->id}}").fadeIn(1000).html('<img src="{{ URL::to('assets/backend/img/backend/icons/ajax-loader.gif') }}" />'); 
                            $("#flash_{{$v->id}}").fadeOut(1000);
 
                

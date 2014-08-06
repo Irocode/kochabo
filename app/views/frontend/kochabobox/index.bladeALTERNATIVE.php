@@ -23,19 +23,19 @@
             <div class="posts margin-bottom-30">
                 <div class="headline"><h2>Rezepte Blog</h2></div>
                 <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="assets/img/sliders/elastislide/10.jpg" alt="" /></a></dt>
+                    <dt><a href="#"><img src="assets/frontend/img/sliders/elastislide/10.jpg" alt="" /></a></dt>
                     <dd>
                         <p><a href="#">Lorem sequat ipsum dolor lorem sunt aliqua put</a></p> 
                     </dd>
                 </dl>
                 <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="assets/img/sliders/elastislide/11.jpg" alt="" /></a></dt>
+                    <dt><a href="#"><img src="assets/frontend/img/sliders/elastislide/11.jpg" alt="" /></a></dt>
                     <dd>
                         <p><a href="#">It works on all major web browsers tablets</a></p> 
                     </dd>
                 </dl>
                 <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="assets/img/sliders/elastislide/9.jpg" alt="" /></a></dt>
+                    <dt><a href="#"><img src="assets/frontend/img/sliders/elastislide/9.jpg" alt="" /></a></dt>
                     <dd>
                         <p><a href="#">Brunch 3 wolf moon tempor sunt aliqua put.</a></p> 
                     </dd>

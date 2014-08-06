@@ -1,10 +1,10 @@
 @extends('backend/_layout/layout')
 @section('content')
 
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
-{{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
-{{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
-{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::script('assets/backend/plugins/ckeditor/ckeditor.js') }} 
+{{ HTML::style('assets/backend/bootstrap/css/bootstrap-tagsinput.css') }}
+{{ HTML::script('assets/backend/bootstrap/js/bootstrap-tagsinput.js') }}
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 
 
 <script type="text/javascript">

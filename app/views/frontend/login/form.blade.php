@@ -7,7 +7,7 @@
    
     <!-- CSS Page Style -->    
  
-    <link rel="stylesheet" href="assets/css/pages/page_log_reg_v1.css">  
+    <link rel="stylesheet" href="assets/frontend/css/pages/page_log_reg_v1.css">  
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs margin-bottom-40">
     <div class="container">

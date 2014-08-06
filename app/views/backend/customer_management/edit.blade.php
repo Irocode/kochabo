@@ -1,8 +1,8 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
-{{ HTML::script('assets/js/jquery.slug.js') }}
-{{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
+{{ HTML::script('assets/backend/plugins/ckeditor/ckeditor.js') }} 
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
+{{ HTML::script('assets/backend/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
 {{ Notification::showAll() }}
 <div class="container">
    <!--HEADER mit Zurück ANFANG-->
@@ -248,8 +248,8 @@
          {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
          {{ Form::submit('Ändern', array('class' => 'btn btn-u')) }}
          {{ Form::close() }}
-         <script type="text/javascript" src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
-         <script type="text/javascript" src="{{ URL::to('assets/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
+         <script type="text/javascript" src="{{ URL::to('assets/backend/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
+         <script type="text/javascript" src="{{ URL::to('assets/backend/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
          <script type="text/javascript">
             $('.form_datetime').datetimepicker({
                 //language:  'fr',
@@ -390,14 +390,14 @@
                
                "order": [[ 0, "desc" ]],
                "language": {
-                               "url": "{{URL::to('assets/plugins/tablesorter/media/german.json')}}"
+                               "url": "{{URL::to('assets/backend/plugins/tablesorter/media/german.json')}}"
                            },
                
                
                        "sDom": 'T<"clear">lfrtip',
                        "oTableTools": {
                          "sRowSelect": "multi",
-                          "sSwfPath": "{{URL::to('assets/plugins/tablesorter/TableTools-2.2.1/swf/copy_csv_xls_pdf.swf')}}",
+                          "sSwfPath": "{{URL::to('assets/backend/plugins/tablesorter/TableTools-2.2.1/swf/copy_csv_xls_pdf.swf')}}",
                            "aButtons": [
                
                               
@@ -558,11 +558,11 @@
          <div class="table-responsive">
             @if($address->count())
             <!-- Darf nur direkt im Blade verwendet werden da sonst Error in anderen Seiten-->
-          {{ HTML::style('assets/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
-            {{ HTML::script('assets/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
-            {{ HTML::script('assets/plugins/tablesorter/media/js/dataTables.bootstrap.js') }} 
-            {{ HTML::script('assets/plugins/tablesorter/TableTools-2.2.1/js/dataTables.tableTools.js') }} 
-            {{ HTML::style('assets/plugins/tablesorter/TableTools-2.2.1/css/dataTables.tableTools.css') }} 
+          {{ HTML::style('assets/backend/plugins/tablesorter/media/css/dataTables.bootstrap.css') }}
+            {{ HTML::script('assets/backend/plugins/tablesorter/media/js/jquery.dataTables.js') }} 
+            {{ HTML::script('assets/backend/plugins/tablesorter/media/js/dataTables.bootstrap.js') }} 
+            {{ HTML::script('assets/backend/plugins/tablesorter/TableTools-2.2.1/js/dataTables.tableTools.js') }} 
+            {{ HTML::style('assets/backend/plugins/tablesorter/TableTools-2.2.1/css/dataTables.tableTools.css') }} 
            
             <script type="text/javascript" language="javascript" class="init">
                $(document).ready(function() {
@@ -574,14 +574,14 @@
                
                "order": [[ 0, "desc" ]],
                "language": {
-                               "url": "{{URL::to('assets/plugins/tablesorter/media/german.json')}}"
+                               "url": "{{URL::to('assets/backend/plugins/tablesorter/media/german.json')}}"
                            },
                
                
                        "sDom": 'T<"clear">lfrtip',
                        "oTableTools": {
                          "sRowSelect": "multi",
-                          "sSwfPath": "{{URL::to('assets/plugins/tablesorter/TableTools-2.2.1/swf/copy_csv_xls_pdf.swf')}}",
+                          "sSwfPath": "{{URL::to('assets/backend/plugins/tablesorter/TableTools-2.2.1/swf/copy_csv_xls_pdf.swf')}}",
                            "aButtons": [
                
                               

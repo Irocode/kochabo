@@ -17,19 +17,19 @@
 
       <link href="{{URL::to('assets')}}/css/heroic-features.css" rel="stylesheet">
 
-            {{ HTML::script('assets/js/jquery.2.0.3.js') }}
-            {{ HTML::style('assets/css/pages/page_pricing.css') }}
-            {{ HTML::style('assets/plugins/fancybox/source/jquery.fancybox.css') }}
-            {{ HTML::style('assets/plugins/bootstrap/css/bootstrap.min.css') }}
-            {{ HTML::style('assets/css/style.css') }}
-            {{ HTML::style('assets/css/company.css') }}
-            {{ HTML::style('assets/css/headers/header1.css') }}
-            {{ HTML::style('assets/css/responsive.css') }}
-            {{ HTML::style('assets/plugins/font-awesome/css/font-awesome.css') }}
-            {{ HTML::style('assets/plugins/flexslider/flexslider.css') }}
-            {{ HTML::style('assets/plugins/parallax-slider/css/parallax-slider.css') }}
-            {{ HTML::style('assets/css/pages/portfolio-v1.css') }}
-            {{ HTML::style('assets/css/style_template.css') }}
+            {{ HTML::script('assets/frontend/js/jquery.2.0.3.js') }}
+            {{ HTML::style('assets/frontend/css/pages/page_pricing.css') }}
+            {{ HTML::style('assets/frontend/plugins/fancybox/source/jquery.fancybox.css') }}
+            {{ HTML::style('assets/frontend/plugins/bootstrap/css/bootstrap.min.css') }}
+            {{ HTML::style('assets/frontend/css/style.css') }}
+            {{ HTML::style('assets/frontend/css/company.css') }}
+            {{ HTML::style('assets/frontend/css/headers/header1.css') }}
+            {{ HTML::style('assets/frontend/css/responsive.css') }}
+            {{ HTML::style('assets/frontend/plugins/font-awesome/css/font-awesome.css') }}
+            {{ HTML::style('assets/frontend/plugins/flexslider/flexslider.css') }}
+            {{ HTML::style('assets/frontend/plugins/parallax-slider/css/parallax-slider.css') }}
+            {{ HTML::style('assets/frontend/css/pages/portfolio-v1.css') }}
+            {{ HTML::style('assets/frontend/css/style_template.css') }}
 
 
 
@@ -85,23 +85,23 @@
     @include('frontend/footer/index')
             @yield('footeradd')
             @include('frontend/_layout/footer')
-            {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
-            {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
-            {{ HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js') }}
-            {{ HTML::script('assets/plugins/hover-dropdown.min.js') }}
-            {{ HTML::script('assets/plugins/back-to-top.js') }}
-            {{ HTML::script('assets/plugins/flexslider/jquery.flexslider-min.js') }}
-            {{ HTML::script('assets/plugins/parallax-slider/js/modernizr.js') }}
-            {{ HTML::script('assets/plugins/parallax-slider/js/jquery.cslider.js') }}
-            {{ HTML::script('assets/plugins/fancybox/source/jquery.fancybox.pack.js') }}
-            {{ HTML::script('assets/js/pages/index.js') }}
-            {{ HTML::script('assets/plugins/counter/waypoints.min.js') }}
-            {{ HTML::script('assets/plugins/counter/jquery.counterup.min.js') }}
-            {{ HTML::script('assets/plugins/circles-master/circles.js') }}
-            {{ HTML::script('assets/js/app.js') }}
-            {{ HTML::script('assets/js/plugins/circles-master.js') }}
+            {{ HTML::script('assets/frontend/plugins/jquery-1.10.2.min.js') }}
+            {{ HTML::script('assets/frontend/plugins/jquery-migrate-1.2.1.min.js') }}
+            {{ HTML::script('assets/frontend/plugins/bootstrap/js/bootstrap.min.js') }}
+            {{ HTML::script('assets/frontend/plugins/hover-dropdown.min.js') }}
+            {{ HTML::script('assets/frontend/plugins/back-to-top.js') }}
+            {{ HTML::script('assets/frontend/plugins/flexslider/jquery.flexslider-min.js') }}
+            {{ HTML::script('assets/frontend/plugins/parallax-slider/js/modernizr.js') }}
+            {{ HTML::script('assets/frontend/plugins/parallax-slider/js/jquery.cslider.js') }}
+            {{ HTML::script('assets/frontend/plugins/fancybox/source/jquery.fancybox.pack.js') }}
+            {{ HTML::script('assets/frontend/js/pages/index.js') }}
+            {{ HTML::script('assets/frontend/plugins/counter/waypoints.min.js') }}
+            {{ HTML::script('assets/frontend/plugins/counter/jquery.counterup.min.js') }}
+            {{ HTML::script('assets/frontend/plugins/circles-master/circles.js') }}
+            {{ HTML::script('assets/frontend/js/app.js') }}
+            {{ HTML::script('assets/frontend/js/plugins/circles-master.js') }}
             <!--[if lt IE 9]>
-            <script src="{{URL::to('assets/plugins/respond.js')}}"></script>
+            <script src="{{URL::to('assets/frontend/plugins/respond.js')}}"></script>
             <![endif]-->
             <script type="text/javascript">
                jQuery(document).ready(function() {

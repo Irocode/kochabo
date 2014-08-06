@@ -122,6 +122,7 @@ return array(
         'Former\FormerServiceProvider',
         'Orangehill\Iseed\IseedServiceProvider',
         'Bkwld\LaravelHaml\ServiceProvider',
+        'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
       
 
 

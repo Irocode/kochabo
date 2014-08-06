@@ -5,7 +5,7 @@
         %title= 'This is HAML'
         %meta{:name => "description", :content => ""}
         %meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
-        %link{:href => "/assets/plugins/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
+        %link{:href => "assets/frontend/plugins/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
     %body   
     .container 
         %section.header
@@ -17,7 +17,7 @@
                 - foreach($sofunktioniertes as $f)
                     %li= $f->title  
 
-                    %script{:src => "assets/plugins/jquery-1.10.2.min.js"}
+                    %script{:src => "assets/frontend/plugins/jquery-1.10.2.min.js"}
                     %address
                     %strong Twitter, Inc.
                     %br/

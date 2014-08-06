@@ -262,7 +262,7 @@
                
                
                            $("#flash_{{$v->id}}").show();
-                           $("#flash_{{$v->id}}").fadeIn(1000).html('<img src="{{ URL::to('assets/img/backend/icons/ajax-loader.gif') }}" />'); 
+                           $("#flash_{{$v->id}}").fadeIn(1000).html('<img src="{{ URL::to('assets/backend/img/backend/icons/ajax-loader.gif') }}" />'); 
                            $("#flash_{{$v->id}}").fadeOut(1000);
                
                
@@ -408,8 +408,8 @@
 </div>
 <!-- <script src="http://code.jquery.com/jquery-2.1.1.js"></script>-->
 <!--Datepicker ANFANG-->   
-<script type="text/javascript" src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
-<script type="text/javascript" src="{{ URL::to('assets/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
+<script type="text/javascript" src="{{ URL::to('assets/backend/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
+<script type="text/javascript" src="{{ URL::to('assets/backend/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
 <script type="text/javascript">
    $('.form_datetime').datetimepicker({
        //language:  'de',

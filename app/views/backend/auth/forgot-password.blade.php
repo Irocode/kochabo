@@ -6,17 +6,17 @@
     <meta charset="utf-8">
     <!-- CSS are placed here -->
        
-       {{ HTML::style('assets/plugins/bootstrap/css/bootstrap.min.css') }}
-       {{ HTML::style('assets/css/style.css') }}
-       {{ HTML::style('assets/css/headers/header1.css') }}
-       {{ HTML::style('assets/css/responsive.css') }}
-       {{ HTML::style('assets/plugins/font-awesome/css/font-awesome.css') }}
-       {{ HTML::style('assets/css/pages/page_log_reg_v2.css') }}
-       {{ HTML::style('assets/css/themes/default.css') }}
-       {{ HTML::style('assets/css/bootstrap-datetimepicker.min.css') }}
-       {{ HTML::style('assets/plugins/bootstrap-notify/pnotify.custom.min.css') }}
+       {{ HTML::style('assets/backend/plugins/bootstrap/css/bootstrap.min.css') }}
+       {{ HTML::style('assets/backend/css/style.css') }}
+       {{ HTML::style('assets/backend/css/headers/header1.css') }}
+       {{ HTML::style('assets/backend/css/responsive.css') }}
+       {{ HTML::style('assets/backend/plugins/font-awesome/css/font-awesome.css') }}
+       {{ HTML::style('assets/backend/css/pages/page_log_reg_v2.css') }}
+       {{ HTML::style('assets/backend/css/themes/default.css') }}
+       {{ HTML::style('assets/backend/css/bootstrap-datetimepicker.min.css') }}
+       {{ HTML::style('assets/backend/plugins/bootstrap-notify/pnotify.custom.min.css') }}
 
-       {{ HTML::script('assets/plugins/bootstrap-notify/pnotify.custom.min.js') }}   
+       {{ HTML::script('assets/backend/plugins/bootstrap-notify/pnotify.custom.min.js') }}   
 
 </head>
 
@@ -63,23 +63,23 @@
     </div>
 </div>
 <!-- JS Global Compulsory -->  
- {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
- {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
- {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
- {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
- {{ HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js') }}
- {{ HTML::script('assets/plugins/hover-dropdown.min.js') }}
- {{ HTML::script('assets/plugins/countdown/jquery.countdown.js') }}
- {{ HTML::script('assets/plugins/back-to-top.js') }}
- {{ HTML::script('assets/plugins/backstretch/jquery.backstretch.min.js') }}                                             
+ {{ HTML::script('assets/backend/plugins/jquery-1.10.2.min.js') }}
+ {{ HTML::script('assets/backend/plugins/jquery-migrate-1.2.1.min.js') }}
+ {{ HTML::script('assets/backend/plugins/jquery-1.10.2.min.js') }}
+ {{ HTML::script('assets/backend/plugins/jquery-migrate-1.2.1.min.js') }}
+ {{ HTML::script('assets/backend/plugins/bootstrap/js/bootstrap.min.js') }}
+ {{ HTML::script('assets/backend/plugins/hover-dropdown.min.js') }}
+ {{ HTML::script('assets/backend/plugins/countdown/jquery.countdown.js') }}
+ {{ HTML::script('assets/backend/plugins/back-to-top.js') }}
+ {{ HTML::script('assets/backend/plugins/backstretch/jquery.backstretch.min.js') }}                                             
                                   
 
 
 <script type="text/javascript">
     $.backstretch([
 
-        "{{ URL::to('assets/img/bg/5.jpg') }}",
-        "{{ URL::to('assets/img/bg/4.jpg') }}",
+        "{{ URL::to('assets/backend/img/bg/5.jpg') }}",
+        "{{ URL::to('assets/backend/img/bg/4.jpg') }}",
     
      
       ], {
@@ -88,7 +88,7 @@
     });
 </script>
 <!-- JS Page Level -->           
-      {{ HTML::script('assets/js/app.js') }}
+      {{ HTML::script('assets/backend/js/app.js') }}
 
 <script type="text/javascript">
     jQuery(document).ready(function() {
@@ -96,7 +96,7 @@
     });
 </script>
 <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.js"></script>
+    <script src="assets/backend/plugins/respond.js"></script>
 <![endif]-->
 </body>
 </html>

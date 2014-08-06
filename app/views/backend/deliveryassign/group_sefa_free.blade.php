@@ -46,7 +46,7 @@
                        
                         
                           $("#flash").show();
-                          $("#flash").fadeIn(1000).html('<img src="  {{ URL::to('assets/img/backend/icons/ajax-loader_long.gif') }}" />'); 
+                          $("#flash").fadeIn(1000).html('<img src="  {{ URL::to('assets/backend/img/backend/icons/ajax-loader_long.gif') }}" />'); 
                           $("#flash").fadeOut(1000);
                         
                         
@@ -196,7 +196,7 @@
                         
                         
                                     $("#flash_{{$x->zip}}").show();
-                                    $("#flash_{{$x->zip}}").fadeIn(1000).html('<img src="{{URL::to('assets/img/backend/icons/ajax-loader.gif')}}" />'); 
+                                    $("#flash_{{$x->zip}}").fadeIn(1000).html('<img src="{{URL::to('assets/backend/img/backend/icons/ajax-loader.gif')}}" />'); 
                                     $("#flash_{{$x->zip}}").fadeOut(1000);                        
                         
                         //Hinweis Anfang
@@ -334,7 +334,7 @@
                         
                         
                                     $("#flash_{{$x->zip}}").show();
-                                    $("#flash_{{$x->zip}}").fadeIn(1000).html('<img src="{{URL::to('assets/img/backend/icons/ajax-loader.gif')}}" />'); 
+                                    $("#flash_{{$x->zip}}").fadeIn(1000).html('<img src="{{URL::to('assets/backend/img/backend/icons/ajax-loader.gif')}}" />'); 
                                     $("#flash_{{$x->zip}}").fadeOut(1000);
                         
                         

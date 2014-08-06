@@ -27,7 +27,7 @@
                               
             </ul>
             <hr>
-            <img class="img-responsive hidden-xs" alt="" src="<?php echo asset('assets/img/logos/logogross.png')?>">
+            <img class="img-responsive hidden-xs" alt="" src="<?php echo asset('assets/backend/img/logos/logogross.png')?>">
          </div>
       </div>
    </div>

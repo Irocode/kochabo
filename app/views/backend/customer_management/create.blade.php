@@ -1,8 +1,8 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
+{{ HTML::script('assets/backend/plugins/ckeditor/ckeditor.js') }} 
 
-{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 
 <div class="container">
 
@@ -268,8 +268,8 @@
 
 
 
-   <script type="text/javascript" src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
-   <script type="text/javascript" src="{{ URL::to('assets/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
+   <script type="text/javascript" src="{{ URL::to('assets/backend/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
+   <script type="text/javascript" src="{{ URL::to('assets/backend/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
 <script type="text/javascript">
     $('.form_datetime').datetimepicker({
         //language:  'fr',

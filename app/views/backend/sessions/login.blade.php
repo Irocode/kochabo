@@ -8,7 +8,7 @@ Log In
 {{-- Content --}}
 @section('content')
 
- <link rel="stylesheet" href="assets/css/pages/page_log_reg_v1.css">  
+ <link rel="stylesheet" href="assets/backend/css/pages/page_log_reg_v1.css">  
 
 <!--=== Content Part ===-->
 <div class="container">     

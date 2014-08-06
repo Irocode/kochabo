@@ -1,12 +1,12 @@
 @extends('backend/_layout/layout')
 @section('content')
 {{ HTML::script('ckeditor/ckeditor.js') }}
-{{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
-{{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
-{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::style('assets/backend/bootstrap/css/bootstrap-tagsinput.css') }}
+{{ HTML::script('assets/backend/bootstrap/js/bootstrap-tagsinput.js') }}
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 {{ HTML::style('bootstrap_datepicker/css/datepicker.css') }}
-{{ HTML::script('assets/bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.min.js') }}
-<link rel="stylesheet" href="{{$myuserurl}}assets/bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css">
+{{ HTML::script('assets/backend/bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.min.js') }}
+<link rel="stylesheet" href="{{$myuserurl}}assets/backend/bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css">
 
 
 

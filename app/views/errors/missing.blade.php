@@ -1,18 +1,18 @@
-{{ HTML::style('assets/bootstrap/css/backend_bootstrap.css') }}
-{{ HTML::style('assets/bootstrap/css/theme.css') }}
-   {{ HTML::script('assets/js/jquery.2.0.3.js') }}
-            {{ HTML::style('assets/css/pages/page_pricing.css') }}
-            {{ HTML::style('assets/plugins/fancybox/source/jquery.fancybox.css') }}
-            {{ HTML::style('assets/plugins/bootstrap/css/bootstrap.min.css') }}
-            {{ HTML::style('assets/css/style.css') }}
-            {{ HTML::style('assets/css/company.css') }}
-            {{ HTML::style('assets/css/headers/header1.css') }}
-            {{ HTML::style('assets/css/responsive.css') }}
-            {{ HTML::style('assets/plugins/font-awesome/css/font-awesome.css') }}
-            {{ HTML::style('assets/plugins/flexslider/flexslider.css') }}
-            {{ HTML::style('assets/plugins/parallax-slider/css/parallax-slider.css') }}
-            {{ HTML::style('assets/css/pages/portfolio-v1.css') }}
-            {{ HTML::style('assets/css/style_template.css') }}
+{{ HTML::style('assets/backend/bootstrap/css/backend_bootstrap.css') }}
+{{ HTML::style('assets/backend/bootstrap/css/theme.css') }}
+   {{ HTML::script('assets/backend/js/jquery.2.0.3.js') }}
+            {{ HTML::style('assets/backend/css/pages/page_pricing.css') }}
+            {{ HTML::style('assets/backend/plugins/fancybox/source/jquery.fancybox.css') }}
+            {{ HTML::style('assets/backend/plugins/bootstrap/css/bootstrap.min.css') }}
+            {{ HTML::style('assets/backend/css/style.css') }}
+            {{ HTML::style('assets/backend/css/company.css') }}
+            {{ HTML::style('assets/backend/css/headers/header1.css') }}
+            {{ HTML::style('assets/backend/css/responsive.css') }}
+            {{ HTML::style('assets/backend/plugins/font-awesome/css/font-awesome.css') }}
+            {{ HTML::style('assets/backend/plugins/flexslider/flexslider.css') }}
+            {{ HTML::style('assets/backend/plugins/parallax-slider/css/parallax-slider.css') }}
+            {{ HTML::style('assets/backend/css/pages/portfolio-v1.css') }}
+            {{ HTML::style('assets/backend/css/style_template.css') }}
 
 <style>
     .center {text-align: center; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto; color:#ffffff;}
@@ -46,13 +46,13 @@
 </div>
 
 
-{{ HTML::script('assets/plugins/backstretch/jquery.backstretch.min.js') }}    
+{{ HTML::script('assets/backend/plugins/backstretch/jquery.backstretch.min.js') }}    
  
    <script type="text/javascript">
       $.backstretch([
       
-          "{{URL::to('assets/img/bg/5.jpg')}}",
-          "{{URL::to('assets/img/bg/4.jpg')}}",
+          "{{URL::to('assets/backend/img/bg/5.jpg')}}",
+          "{{URL::to('assets/backend/img/bg/4.jpg')}}",
       
       
         ], {
@@ -63,5 +63,5 @@
    <!-- JS Page Level -->           
  
    <!--[if lt IE 9]>
-   {{ HTML::script('assets/plugins/respond.js') }}    
+   {{ HTML::script('assets/backend/plugins/respond.js') }}    
    <![endif]-->

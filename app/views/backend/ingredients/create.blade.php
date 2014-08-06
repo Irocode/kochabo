@@ -3,7 +3,7 @@
 
      
 
-{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 
 
 <div class="container">

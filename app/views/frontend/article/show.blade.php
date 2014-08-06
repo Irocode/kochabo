@@ -1,9 +1,9 @@
 @extends('frontend/_layout/layout')
 @section('content')
 
-{{ HTML::style('assets/css/style.css') }}
-{{ HTML::style('assets/plugins/code_prettify/css/prettify.css') }}
-{{ HTML::script('assets/plugins/code_prettify/js/prettify.js') }}
+{{ HTML::style('assets/frontend/css/style.css') }}
+{{ HTML::style('assets/frontend/plugins/code_prettify/css/prettify.css') }}
+{{ HTML::script('assets/frontend/plugins/code_prettify/js/prettify.js') }}
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs margin-bottom-40">
     <div class="container">

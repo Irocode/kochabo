@@ -1,13 +1,13 @@
 <!-- CSS Global Compulsory-->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/headers/header1.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/frontend/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/frontend/css/style.css">
+    <link rel="stylesheet" href="assets/frontend/css/headers/header1.css">
+    <link rel="stylesheet" href="assets/frontend/css/responsive.css">
     <link rel="shortcut icon" href="favicon.ico">        
     <!-- CSS Implementing Plugins -->    
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/frontend/plugins/font-awesome/css/font-awesome.css">
     <!-- CSS Page Style -->    
-    <link rel="stylesheet" href="assets/css/pages/page_log_reg_v2.css">    
+    <link rel="stylesheet" href="assets/frontend/css/pages/page_log_reg_v2.css">    
     <!-- CSS Theme -->    
 
 
@@ -77,31 +77,31 @@
 
 
 <!-- JS Global Compulsory -->           
- {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
- {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
- {{ HTML::script('assets/plugins/jquery-1.10.2.min.js') }}
- {{ HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js') }}
- {{ HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js') }}
- {{ HTML::script('assets/plugins/hover-dropdown.min.js') }}
- {{ HTML::script('assets/plugins/countdown/jquery.countdown.js') }}
- {{ HTML::script('assets/plugins/back-to-top.js') }}
- {{ HTML::script('assets/plugins/backstretch/jquery.backstretch.min.js') }}
+ {{ HTML::script('assets/frontend/plugins/jquery-1.10.2.min.js') }}
+ {{ HTML::script('assets/frontend/plugins/jquery-migrate-1.2.1.min.js') }}
+ {{ HTML::script('assets/frontend/plugins/jquery-1.10.2.min.js') }}
+ {{ HTML::script('assets/frontend/plugins/jquery-migrate-1.2.1.min.js') }}
+ {{ HTML::script('assets/frontend/plugins/bootstrap/js/bootstrap.min.js') }}
+ {{ HTML::script('assets/frontend/plugins/hover-dropdown.min.js') }}
+ {{ HTML::script('assets/frontend/plugins/countdown/jquery.countdown.js') }}
+ {{ HTML::script('assets/frontend/plugins/back-to-top.js') }}
+ {{ HTML::script('assets/frontend/plugins/backstretch/jquery.backstretch.min.js') }}
 <script type="text/javascript">
     $.backstretch([
-     "{{ URL::to('assets/img/bg/5.jpg') }}",
-     "{{ URL::to('assets/img/bg/4.jpg') }}",
+     "{{ URL::to('assets/frontend/img/bg/5.jpg') }}",
+     "{{ URL::to('assets/frontend/img/bg/4.jpg') }}",
       ], {
         fade: 1000,
         duration: 7000
     });
 </script>
 <!-- JS Page Level -->           
-<script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript" src="assets/frontend/js/app.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
     });
 </script>
 <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.js"></script>
+    <script src="assets/frontend/plugins/respond.js"></script>
 <![endif]-->

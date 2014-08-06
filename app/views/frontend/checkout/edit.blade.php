@@ -1,6 +1,6 @@
 @extends('frontend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
+{{ HTML::script('assets/frontend/plugins/ckeditor/ckeditor.js') }} 
 {{ Notification::showAll() }}
 <!-- Menü Wechsler für ACTIVE CLASS Linkanfrage -->
 <script>
