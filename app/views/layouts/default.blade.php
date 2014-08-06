@@ -9,14 +9,14 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <!-- Bootstrap 3.0: Latest compiled and minified CSS -->
       <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
-      {{ HTML::style('assets/plugins/bootstrap/css/bootstrap.css') }}
-      {{ HTML::style('assets/css/style.css') }}
-      {{ HTML::style('assets/css/headers/header1.css') }}
-      {{ HTML::style('assets/css/responsive.css') }}
-      {{ HTML::style('assets/plugins/font-awesome/css/font-awesome.css') }}
-      {{ HTML::style('assets/css/style_template.css') }}
-      {{ HTML::style('assets/plugins/font-awesome/css/font-awesome.css') }}
-      {{ HTML::style('assets/css/pages/page_pricing.css') }}
+      {{ HTML::style('assets/frontend/plugins/bootstrap/css/bootstrap.css') }}
+      {{ HTML::style('assets/frontend/css/style.css') }}
+      {{ HTML::style('assets/frontend/css/headers/header1.css') }}
+      {{ HTML::style('assets/frontend/css/responsive.css') }}
+      {{ HTML::style('assets/frontend/plugins/font-awesome/css/font-awesome.css') }}
+      {{ HTML::style('assets/frontend/css/style_template.css') }}
+      {{ HTML::style('assets/frontend/plugins/font-awesome/css/font-awesome.css') }}
+      {{ HTML::style('assets/frontend/css/pages/page_pricing.css') }}
       <!-- CSS Implementing Plugins -->    
       <!-- Optional theme -->
       <style>

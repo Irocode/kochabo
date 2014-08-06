@@ -1,19 +1,19 @@
 <!-- CSS Global Compulsory-->
 
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/headers/header1.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/frontend/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/frontend/css/style.css">
+    <link rel="stylesheet" href="assets/frontend/css/headers/header1.css">
+    <link rel="stylesheet" href="assets/frontend/css/responsive.css">
     <link rel="shortcut icon" href="favicon.ico">        
     <!-- CSS Implementing Plugins -->    
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/frontend/plugins/font-awesome/css/font-awesome.css">
     <!-- CSS Style Page -->    
-    <link rel="stylesheet" href="assets/css/pages/page_log_reg_v1.css">
+    <link rel="stylesheet" href="assets/frontend/css/pages/page_log_reg_v1.css">
     <!-- CSS Theme -->    
-    <link rel="stylesheet" href="assets/css/themes/default.css" id="style_color">
-    <link rel="stylesheet" href="assets/css/themes/headers/default.css" id="style_color-header-1">    
+    <link rel="stylesheet" href="assets/frontend/css/themes/default.css" id="style_color">
+    <link rel="stylesheet" href="assets/frontend/css/themes/headers/default.css" id="style_color-header-1">    
 
-    <link rel="stylesheet" href="{{$myuserurl}}assets/css/pages/page_pricing.css">    
+    <link rel="stylesheet" href="{{$myuserurl}}assets/frontend/css/pages/page_pricing.css">    
 
 
     <!--Reg Block-->
@@ -171,18 +171,18 @@
 
 
 <!-- JS Global Compulsory -->           
-<script type="text/javascript" src="assets/plugins/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
-<script type="text/javascript" src="assets/plugins/hover-dropdown.min.js"></script> 
-<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="assets/frontend/plugins/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="assets/frontend/plugins/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="assets/frontend/plugins/bootstrap/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="assets/frontend/plugins/hover-dropdown.min.js"></script> 
+<script type="text/javascript" src="assets/frontend/plugins/back-to-top.js"></script>
 <!-- JS Page Level -->           
-<script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript" src="assets/frontend/js/app.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
     });
 </script>
 <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.js"></script>
+    <script src="assets/frontend/plugins/respond.js"></script>
 <![endif]-->

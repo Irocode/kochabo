@@ -1,12 +1,12 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
+{{ HTML::script('assets/backend/plugins/ckeditor/ckeditor.js') }} 
 {{ HTML::script('ckfinder/ckfinder.js') }} 
 
    
      
 
-{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 <div class="container">
    <!--HEADER mit Zurück ANFANG-->
    <div class="headline">

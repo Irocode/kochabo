@@ -13,26 +13,26 @@
 		<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
 	
 
-		 <link rel="stylesheet" href="{{$myuserurl}}assets/plugins/bootstrap/css/bootstrap.css">
-		 <link rel="stylesheet" href="{{$myuserurl}}assets/css/style.css">
-   		 <link rel="stylesheet" href="{{$myuserurl}}assets/css/headers/header1.css">
-  		 <link rel="stylesheet" href="{{$myuserurl}}assets/css/responsive.css">
+		 <link rel="stylesheet" href="{{$myuserurl}}assets/backend/plugins/bootstrap/css/bootstrap.css">
+		 <link rel="stylesheet" href="{{$myuserurl}}assets/backend/css/style.css">
+   		 <link rel="stylesheet" href="{{$myuserurl}}assets/backend/css/headers/header1.css">
+  		 <link rel="stylesheet" href="{{$myuserurl}}assets/backend/css/responsive.css">
   		 <link rel="shortcut icon" href="favicon.ico">        
     	<!-- CSS Implementing Plugins -->    
 
-  		  <link rel="stylesheet" href="{{$myuserurl}}assets/plugins/font-awesome/css/font-awesome.css">
+  		  <link rel="stylesheet" href="{{$myuserurl}}assets/backend/plugins/font-awesome/css/font-awesome.css">
 
 		<!-- Optional theme -->
 	
 	
 
-    <link rel="stylesheet" href="{{$myuserurl}}assets/css/style_template.css">
+    <link rel="stylesheet" href="{{$myuserurl}}assets/backend/css/style_template.css">
     <!-- CSS Implementing Plugins -->    
-    <link rel="stylesheet" href="{{$myuserurl}}assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="{{$myuserurl}}assets/backend/plugins/font-awesome/css/font-awesome.css">
         <!-- CSS Page Style -->    
-    <link rel="stylesheet" href="{{$myuserurl}}assets/css/pages/page_pricing.css">    
+    <link rel="stylesheet" href="{{$myuserurl}}assets/backend/css/pages/page_pricing.css">    
     <!-- CSS Theme -->    
-     <link rel="stylesheet" href="{{$myuserurl}}assets/css/themes/default.css" id="style_color">   
+     <link rel="stylesheet" href="{{$myuserurl}}assets/backend/css/themes/default.css" id="style_color">   
 
 		<style>
 		@section('styles')
@@ -124,14 +124,14 @@
 	
 
 
-<script type="text/javascript" src="{{$myuserurl}}assets/plugins/restfulizer.js"></script>
+<script type="text/javascript" src="{{$myuserurl}}assets/backend/plugins/restfulizer.js"></script>
 
 
-<script type="text/javascript" src="{{$myuserurl}}assets/plugins/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="{{$myuserurl}}assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="{{$myuserurl}}assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
-<script type="text/javascript" src="{{$myuserurl}}assets/plugins/hover-dropdown.min.js"></script> 
-<script type="text/javascript" src="{{$myuserurl}}assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="{{$myuserurl}}assets/backend/plugins/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="{{$myuserurl}}assets/backend/plugins/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{{$myuserurl}}assets/backend/plugins/bootstrap/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="{{$myuserurl}}assets/backend/plugins/hover-dropdown.min.js"></script> 
+<script type="text/javascript" src="{{$myuserurl}}assets/backend/plugins/back-to-top.js"></script>
 
 
 

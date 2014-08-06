@@ -1,7 +1,7 @@
 @extends('frontend/_layout/layout')
 @section('content')
 
-{{ HTML::script('assets/js/moment-with-langs.min.js') }}
+{{ HTML::script('assets/frontend/js/moment-with-langs.min.js') }}
 
 <!-- Menü Wechsler für ACTIVE CLASS Linkanfrage -->
 <script>

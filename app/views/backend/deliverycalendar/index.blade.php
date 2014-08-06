@@ -1,12 +1,12 @@
 @extends('backend/_layout/layout')
 @section('content')
 {{ Notification::showAll() }}
-{{ HTML::style('assets/plugins/fullcalendar/css/fullcalendar.css') }}
-{{ HTML::style('assets/plugins/fullcalendar/css/fullcalendar.print.css') }}
-{{ HTML::script('assets/plugins/fullcalendar/js/jquery.min.js') }}
-{{ HTML::script('assets/plugins/fullcalendar/js/jquery-ui.custom.min.js') }}
-{{ HTML::script('assets/plugins/fullcalendar/js/fullcalendar.min.js') }}
-{{ HTML::script('assets/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
+{{ HTML::style('assets/backend/plugins/fullcalendar/css/fullcalendar.css') }}
+{{ HTML::style('assets/backend/plugins/fullcalendar/css/fullcalendar.print.css') }}
+{{ HTML::script('assets/backend/plugins/fullcalendar/js/jquery.min.js') }}
+{{ HTML::script('assets/backend/plugins/fullcalendar/js/jquery-ui.custom.min.js') }}
+{{ HTML::script('assets/backend/plugins/fullcalendar/js/fullcalendar.min.js') }}
+{{ HTML::script('assets/backend/plugins/fullcalendar/js/jquery.lightbox_me.min.js') }}
 <script>         
    $(document).ready(function() {         
     lightbox('Wird geladen');          

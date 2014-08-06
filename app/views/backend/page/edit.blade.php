@@ -1,6 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
+{{ HTML::script('assets/backend/plugins/ckeditor/ckeditor.js') }} 
 <div class="container">
     <div class="page-header">
         <h3>

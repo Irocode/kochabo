@@ -1,7 +1,7 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::style('assets/css/menu-managment.css') }}
-{{ HTML::script('assets/js/jquery.nestable.js') }}
+{{ HTML::style('assets/backend/css/menu-managment.css') }}
+{{ HTML::script('assets/backend/js/jquery.nestable.js') }}
 <script type="text/javascript">
     $(document).ready(function () {
 

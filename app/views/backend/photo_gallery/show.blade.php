@@ -1,7 +1,7 @@
 @extends('backend/_layout/layout')
 @section('content')
 {{ HTML::style('ckeditor/contents.css') }}
-{{ HTML::script('assets/js/jquery.lazyload.min.js') }}
+{{ HTML::script('assets/backend/js/jquery.lazyload.min.js') }}
 <script type="text/javascript">
     $(function () {
         $("img.lazy").lazyload({

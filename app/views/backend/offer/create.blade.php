@@ -1,10 +1,10 @@
 @extends('backend/_layout/layout')
 @section('content')
 
-{{ HTML::script('assets/plugins/ckeditor/ckeditor.js') }} 
-{{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
-{{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
-{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::script('assets/backend/plugins/ckeditor/ckeditor.js') }} 
+{{ HTML::style('assets/backend/bootstrap/css/bootstrap-tagsinput.css') }}
+{{ HTML::script('assets/backend/bootstrap/js/bootstrap-tagsinput.js') }}
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 
 
 <script type="text/javascript">
@@ -130,7 +130,7 @@
                 language: 'de',
               });  
  
-                  CKEDITOR.replace('bild1', { customConfig: "{{ URL::to('assets/plugins/ckeditor/config_images.js') }}",
+                  CKEDITOR.replace('bild1', { customConfig: "{{ URL::to('assets/backend/plugins/ckeditor/config_images.js') }}",
                     extraPlugins: 'doksoft_image',
                      toolbar: 'customToolbar',
                      toolbar_customToolbar: [ ['doksoft_image'] ],
@@ -147,8 +147,8 @@
 <!--CKEDITOR Ende--> 
 
    <!--Datepicker ANFANG-->   
-   <script type="text/javascript" src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
-   <script type="text/javascript" src="{{ URL::to('assets/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
+   <script type="text/javascript" src="{{ URL::to('assets/backend/js/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
+   <script type="text/javascript" src="{{ URL::to('assets/backend/js/locales/bootstrap-datetimepicker.de.js') }}" charset="UTF-8"></script>
    <script type="text/javascript">
       $(".form_date").datetimepicker({
             language:  'de',

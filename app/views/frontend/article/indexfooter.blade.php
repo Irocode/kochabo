@@ -9,7 +9,7 @@
                     <dl class="dl-horizontal">
                     
 
-                        <dt><a href="#"><img src="{{URL::to('assets/img/sliders/elastislide/6.jpg')}}" alt="" /></a></dt>
+                        <dt><a href="#"><img src="{{URL::to('assets/frontend/img/sliders/elastislide/6.jpg')}}" alt="" /></a></dt>
                         <dd>
 
                         

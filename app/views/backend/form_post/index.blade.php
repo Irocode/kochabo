@@ -13,7 +13,7 @@
                 url: "{{ url('/admin/form-post/" + id + "/toggle-answer/') }}",
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/img/backend/images/answered.png" : "{{url('/')}}/assets/img/backend/images/not_answered.png";
+                        var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/backend/img/backend/images/answered.png" : "{{url('/')}}/assets/backend/img/backend/images/not_answered.png";
                         $("#answer-image-" + id).attr('src', imagePath);
                     }
                 },
@@ -78,7 +78,7 @@
                         </td>
                         <td>
                             <a href="#" id="{{ $formPost->id }}" class="answer">
-                                <img id="answer-image-{{ $formPost->id }}" src="{{url('/')}}/assets/img/backend/images/{{ ($formPost->is_answered) ? 'answered.png' : 'not_answered.png'  }}"/>
+                                <img id="answer-image-{{ $formPost->id }}" src="{{url('/')}}/assets/backend/img/backend/images/{{ ($formPost->is_answered) ? 'answered.png' : 'not_answered.png'  }}"/>
                             </a>
                         </td>
                     </tr>

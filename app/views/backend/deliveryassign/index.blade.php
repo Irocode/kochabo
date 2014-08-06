@@ -14,7 +14,7 @@
                url: "{{ url('/admin/deliveryassign/" + id + "/toggle-publish/') }}",
                success: function (response) {
                    if (response['result'] == 'success') {
-                       var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/img/backend/images/publish.png" : "{{url('/')}}/assets/img/backend/images/not_publish.png";
+                       var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/backend/img/backend/images/publish.png" : "{{url('/')}}/assets/backend/img/backend/images/not_publish.png";
                        $("#publish-image-" + id).attr('src', imagePath);
                    }
                },
@@ -190,7 +190,7 @@
                   
                   
                               $("#flash").show();
-                              $("#flash").fadeIn(1000).html('<img src="{{$myuserurl}}assets/img/backend/icons/ajax-loader.gif" />'); 
+                              $("#flash").fadeIn(1000).html('<img src="{{$myuserurl}}assets/backend/img/backend/icons/ajax-loader.gif" />'); 
                               $("#flash").fadeOut(1000);
 
 

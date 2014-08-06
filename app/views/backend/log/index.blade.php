@@ -1,6 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::style('assets/css/style-backend.css') }}
+{{ HTML::style('assets/backend/css/style-backend.css') }}
 <script type="text/javascript">
     $(document).ready(function () {
         $('#levels').change(function(){

@@ -1,6 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 <script type="text/javascript">
    $(document).ready(function () {
        $("#title").slug();      

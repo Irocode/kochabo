@@ -1,6 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 <script type="text/javascript">
    $(document).ready(function () {
        $("#title").slug();  
@@ -590,10 +590,10 @@
 
 <!--selectize Zutenname auswählen Anfang-->
 
-{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
-{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
-{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
-{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
+{{ HTML::style('assets/backend/plugins/selectize/examples/css/normalize.css') }}
+{{ HTML::style('assets/backend/plugins/selectize/dist/css/selectize.default.css') }}
+{{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectize.js') }}
+{{ HTML::script('assets/backend/plugins/selectize/examples/js/index.js') }}
    
     <div id="wrapper">          
         <div class="control-group"> 
@@ -748,10 +748,10 @@
 
 <!--selectize Zutenname auswählen Anfang-->
 
-{{ HTML::style('assets/plugins/selectize/examples/css/normalize.css') }}
-{{ HTML::style('assets/plugins/selectize/dist/css/selectize.default.css') }}
-{{ HTML::script('assets/plugins/selectize/dist/js/standalone/selectize.js') }}
-{{ HTML::script('assets/plugins/selectize/examples/js/index.js') }}
+{{ HTML::style('assets/backend/plugins/selectize/examples/css/normalize.css') }}
+{{ HTML::style('assets/backend/plugins/selectize/dist/css/selectize.default.css') }}
+{{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectize.js') }}
+{{ HTML::script('assets/backend/plugins/selectize/examples/js/index.js') }}
    
     <div id="wrapper">          
         <div class="control-group"> 
@@ -878,7 +878,7 @@
                
                
                            $("#flash_{{$v->id}}").show();
-                           $("#flash_{{$v->id}}").fadeIn(1000).html('<img src="{{ URL::to('assets/img/backend/icons/ajax-loader.gif') }}" />'); 
+                           $("#flash_{{$v->id}}").fadeIn(1000).html('<img src="{{ URL::to('assets/backend/img/backend/icons/ajax-loader.gif') }}" />'); 
                            $("#flash_{{$v->id}}").fadeOut(1000);
                
                

@@ -41,9 +41,9 @@ class Menu extends Eloquent {
                 <div class='dd-handle'></div>
                     <div class='dd-content'><span>{$item->title}</span>
                     <div class='ns-actions'>
-                        <a title='Menü veröffentlichen' id='{$item->id}' class='publish' href='#'><img id='publish-image-". $item->id ."' alt='Publish' src='" . url('/') . '/assets/img/backend/images/' . $imageName . "'></a>
-                        <a title='Menü ansehen/bearbeiten' class='edit-menu' href='" . url('/admin/menu/' . $item->id . '/edit') . "'><img alt='Menü ansehen/bearbeiten' src='" . url('/') . '/assets/img/backend/images/edit.png' . "'></a>
-                        <a class='delete-menu' href='" . url('/admin/menu/' . $item->id . '/delete') . "'><img alt='Menü löschen' src='" . url('/') . '/assets/img/backend/images/cross.png' . "'></a><input type='hidden' value='1' name='menu_id'>
+                        <a title='Menü veröffentlichen' id='{$item->id}' class='publish' href='#'><img id='publish-image-". $item->id ."' alt='Publish' src='" . url('/') . '/assets/backend/img/backend/images/' . $imageName . "'></a>
+                        <a title='Menü ansehen/bearbeiten' class='edit-menu' href='" . url('/admin/menu/' . $item->id . '/edit') . "'><img alt='Menü ansehen/bearbeiten' src='" . url('/') . '/assets/backend/img/backend/images/edit.png' . "'></a>
+                        <a class='delete-menu' href='" . url('/admin/menu/' . $item->id . '/delete') . "'><img alt='Menü löschen' src='" . url('/') . '/assets/backend/img/backend/images/cross.png' . "'></a><input type='hidden' value='1' name='menu_id'>
                     </div>
                 </div>" . $this->generateMenu($menu, $item->id) . "
             </li>";

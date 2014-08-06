@@ -6,7 +6,7 @@
 @if( ! empty($x->imagex))
 "<img src=\"{{ $x->imagex }}\" width=\"50\" height=\"50\"> ",
 @else           
-"<img src=\"{{URL::to('assets/img/backend/images/empty.png')}}\" width=\"50\" height=\"50\"> ",
+"<img src=\"{{URL::to('assets/backend/img/backend/images/empty.png')}}\" width=\"50\" height=\"50\"> ",
 @endif
 
 "{{{ $x->name }}}",

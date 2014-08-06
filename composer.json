@@ -4,7 +4,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "laravel/framework": "4.1.*",
+        "laravel/framework": "4.2.6",
         "cartalyst/sentry": "2.1.*",
         "way/generators": "dev-master",        
         "davejamesmiller/laravel-breadcrumbs": "dev-master",
@@ -16,7 +16,8 @@
 		"orangehill/iseed": "dev-master",    
 		"nesbot/Carbon": "*",
 		"bkwld/laravel-haml": "~2.0",
-		"hybridauth/hybridauth": "*"
+		"hybridauth/hybridauth": "*",
+		"codesleeve/asset-pipeline": "dev-master"
 	
 
     },

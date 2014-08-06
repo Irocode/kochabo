@@ -15,7 +15,7 @@
                 url: "{{ url('/admin/news/" + id + "/toggle-publish/') }}",
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/img/backend/images/publish.png" : "{{url('/')}}/assets/img/backend/images/not_publish.png";
+                        var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/backend/img/backend/images/publish.png" : "{{url('/')}}/assets/backend/img/backend/images/not_publish.png";
                         $("#publish-image-" + id).attr('src', imagePath);
                     }
                 },
@@ -104,7 +104,7 @@ $datumumwandelnx= date("d.m.Y", strtotime($datumumwandeln));
                         </td>
                         <td>
                         <a href="#" id="{{ $v->id }}" class="publish">
-                            <img id="publish-image-{{ $v->id }}" src="{{url('/')}}/assets/img/backend/images/{{ ($v->is_published) ? 'publish.png' : 'not_publish.png'  }}"/>
+                            <img id="publish-image-{{ $v->id }}" src="{{url('/')}}/assets/backend/img/backend/images/{{ ($v->is_published) ? 'publish.png' : 'not_publish.png'  }}"/>
 
                             
 

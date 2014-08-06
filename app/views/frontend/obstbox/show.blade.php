@@ -1,7 +1,7 @@
 @extends('frontend/_layout/layout')
 @section('content')
 {{ HTML::style('ckeditor/contents.css') }}
-{{ HTML::style('assets/css/style.css') }}
+{{ HTML::style('assets/frontend/css/style.css') }}
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs margin-bottom-40">
     <div class="container">

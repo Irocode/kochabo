@@ -15,7 +15,7 @@
                url: "{{ url('/admin/photo_gallery/" + id + "/toggle-publish/') }}",
                success: function (response) {
                    if (response['result'] == 'success') {
-                       var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/img/backend/images/publish.png" : "{{url('/')}}/assets/img/backend/images/not_publish.png";
+                       var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/backend/img/backend/images/publish.png" : "{{url('/')}}/assets/backend/img/backend/images/not_publish.png";
                        $("#publish-image-" + id).attr('src', imagePath);
                    }
                },
@@ -99,7 +99,7 @@
                         </div>
                      </td>
                      <td>
-                        <a href="#" id="{{ $photo_gallery->id }}" class="publish"><img id="publish-image-{{ $photo_gallery->id }}" src="{{url('/')}}/assets/img/backend/images/{{ ($photo_gallery->is_published) ? 'publish.png' : 'not_publish.png'  }}"/></a>
+                        <a href="#" id="{{ $photo_gallery->id }}" class="publish"><img id="publish-image-{{ $photo_gallery->id }}" src="{{url('/')}}/assets/backend/img/backend/images/{{ ($photo_gallery->is_published) ? 'publish.png' : 'not_publish.png'  }}"/></a>
                      </td>
                   </tr>
                   @endforeach

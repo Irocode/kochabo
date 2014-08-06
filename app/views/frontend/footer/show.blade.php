@@ -1,7 +1,7 @@
 
 @section('content')
 {{ HTML::style('ckeditor/contents.css') }}
-{{ HTML::style('assets/css/style.css') }}
+{{ HTML::style('assets/frontend/frontend/css/style.css') }}
 
 
 <div class="container">
