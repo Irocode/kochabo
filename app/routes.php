@@ -211,6 +211,9 @@ Route::get('tablesorter_ingredients_index', array('as'=>'admin.ingredients.data'
 Route::get('ingredients/{id}/delete', array('as' => 'admin.ingredients.delete', 'uses' => 'IngredientsController@confirmDestroy'))
 ->where('id', '\d+');
 
+//calendarweek
+Route::resource('calendarweek', 'CalendarweekController');
+
 //recipe_ingredient
 Route::resource('recipe_ingredient', 'RecipeingredientController');
 ////order AJAX INDEX Tablesorter ingredients

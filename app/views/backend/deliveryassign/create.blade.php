@@ -1,4 +1,4 @@
-@extends('backend/_layout/layout')
+backend@extends('backend/_layout/layout')
 @section('content')
 {{ HTML::script('ckeditor/ckeditor.js') }}
  {{ Notification::showAll() }}

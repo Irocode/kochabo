@@ -106,6 +106,7 @@
                <ul class="dropdown-menu">
              <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/recipe') }}"><span class="glyphicon glyphicon-cutlery"></span>Rezept</a></li>
              <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/ingredients') }}"><span class="glyphicon glyphicon-plus"></span>Zutaten</a></li>
+              <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/calendarweek') }}"><span class="glyphicon glyphicon-book"></span>Wochenplan</a></li>
              </ul>
 
 
