@@ -1,37 +1,30 @@
 <?php namespace App\Controllers\Admin;
 use BaseController;
-use Deliverytimes;
-use Address;
-use AddressNoPrimaryKey;
-use Order;
-use OrderAddress;
-use OrderItems;
-use OrderStatusHistory;
 use Products;
-use Users;
-use List_Kundengruppe;
-use Deliveryzipcode;
-use Logisticianmanager;
-use CustomersGroups;
-use Newsletter;
 use Ingredients;
-use Recipe;
-use Recipeingredient;
 use Redirect;
 use View;
 use Input;
 use Validator;
 use Response;
 use Str;
+use Image;
+use Session;
+use File;
 use Notification;
+use Sefa\Repositories\Calendarweek\CalendarweekRepository as Calendarweek;
+use Sefa\Exceptions\Validation\ValidationException;
+
+
 class CalendarweekController extends BaseController
 
 {
-    public function __construct(Recipeingredient $calendarweek)
-
+    public function __construct(Calendarweek $calendarweek, Products $products, Ingredients $ingredients)
     {
         View::share('active', 'modules');
-        $this->calendarweek = $calendarweek;     
+        $this->calendarweek = $calendarweek;  
+        $this->products = $products;   
+        $this->ingredients = $ingredients;
 
     }
 
@@ -81,7 +74,9 @@ class CalendarweekController extends BaseController
     public function show($id)
     {
         $calendarweek = $this->calendarweek->find($id);
-        return View::make('backend.calendarweek.show', compact('calendarweek'));
+
+       
+       // return View::make('backend.calendarweek.show', compact('calendarweek'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -91,9 +86,15 @@ class CalendarweekController extends BaseController
      */
     public function edit($id)
     {
-        $calendarweek = AddressNoPrimaryKey::find($id);
-        // $calendarweek = $this->calendarweek->find($id);
-        return View::make('backend.calendarweek.edit', compact('calendarweek'));
+        //$calendarweek = Calendarweek::find($id);
+       // $ingredients = $this->ingredients->find($id);
+    $calendarweek = $this->calendarweek->find($id);
+
+      $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
+   
+   // $products = $this->products->all(); 
+       //var_dump($calendarweek );
+    return View::make('backend.calendarweek.edit', compact('calendarweek','products'));
     }
     /**
      * Update the specified resource in storage.

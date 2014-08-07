@@ -173,9 +173,9 @@
    <br>
    <!-- nr_of_recipes -->
    <div class="control-group {{ $errors->has('nr_of_recipes') ? 'has-error' : '' }}">
-      <label class="control-label" for="nr_of_recipes">Number of Recipes</label>
+      <label class="control-label" for="nr_of_recipes">Anzahl der Rezepte</label>
       <div class="controls">
-         {{ Form::text('nr_of_recipes', null, array('class'=>'form-control', 'id' => 'nr_of_recipes', 'placeholder'=>'Number of Recipes', 'value'=>Input::old('nr_of_recipes'))) }}            
+         {{ Form::text('nr_of_recipes', null, array('class'=>'form-control', 'id' => 'nr_of_recipes', 'placeholder'=>'Anzahl der Rezepte', 'value'=>Input::old('nr_of_recipes'))) }}            
          @if ($errors->first('nr_of_recipes'))
          <span class="help-block">{{ $errors->first('nr_of_recipes') }}</span>
          @endif
@@ -184,9 +184,9 @@
    <br>
    <!-- nr_of_persons -->
    <div class="control-group {{ $errors->has('nr_of_persons') ? 'has-error' : '' }}">
-      <label class="control-label" for="nr_of_persons">Number of Persons</label>
+      <label class="control-label" for="nr_of_persons">Anzahl der Personen</label>
       <div class="controls">
-         {{ Form::text('nr_of_persons', null, array('class'=>'form-control', 'id' => 'nr_of_persons', 'placeholder'=>'Number of Persons', 'value'=>Input::old('nr_of_persons'))) }}            
+         {{ Form::text('nr_of_persons', null, array('class'=>'form-control', 'id' => 'nr_of_persons', 'placeholder'=>'Anzahl der Personen', 'value'=>Input::old('nr_of_persons'))) }}            
          @if ($errors->first('nr_of_persons'))
          <span class="help-block">{{ $errors->first('nr_of_persons') }}</span>
          @endif

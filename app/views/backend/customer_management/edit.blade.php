@@ -518,6 +518,20 @@
 
 
 
+<!--
+
+
+   @if($address->count())
+                     @foreach( $address as $v )                  
+                    Bestellnummer: {{ $v->firsname}} / Datum: {{ $v->id}}<br>
+                     @endforeach
+                     @else
+                     <div class="alert alert-danger">Keine Bestellung vorhanden</div>
+                     @endif 
+
+-->
+
+
 
 <!--Adressen Anfang-->
 
