@@ -1,7 +1,7 @@
 <?php namespace App\Controllers\Admin;
 use BaseController;
 use Products;
-use Ingredients;
+use Recipe;
 use Redirect;
 use View;
 use Input;
@@ -19,12 +19,12 @@ use Sefa\Exceptions\Validation\ValidationException;
 class CalendarweekController extends BaseController
 
 {
-    public function __construct(Calendarweek $calendarweek, Products $products, Ingredients $ingredients)
+    public function __construct(Calendarweek $calendarweek, Products $products, Recipe $recipe)
     {
         View::share('active', 'modules');
         $this->calendarweek = $calendarweek;  
         $this->products = $products;   
-        $this->ingredients = $ingredients;
+        $this->recipe = $recipe;
 
     }
 
@@ -85,16 +85,12 @@ class CalendarweekController extends BaseController
      * @return Response
      */
     public function edit($id)
-    {
-        //$calendarweek = Calendarweek::find($id);
-       // $ingredients = $this->ingredients->find($id);
+    {       
     $calendarweek = $this->calendarweek->find($id);
+    $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
+    $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
 
-      $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
-   
-   // $products = $this->products->all(); 
-       //var_dump($calendarweek );
-    return View::make('backend.calendarweek.edit', compact('calendarweek','products'));
+    return View::make('backend.calendarweek.edit', compact('calendarweek','products','recipe'));
     }
     /**
      * Update the specified resource in storage.
