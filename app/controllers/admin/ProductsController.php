@@ -54,6 +54,12 @@ class ProductsController extends BaseController
         {
             
        $input = Input::all();
+
+       $recipetypezerlegen = Input::get('recipetype');
+       $recipetype="";
+       $recipetypenaummer="";
+
+
     
     //Anfrage ob Bild vorhanden wenn ja dann erstelle ein Upload 200x200px 
     if (Input::hasFile('imagex')){
@@ -76,7 +82,17 @@ class ProductsController extends BaseController
              }
 
 
-$input_all = (array_merge($input, $input1));
+
+  //Product Name and no explode from value Example: x,1
+       $recipetypezerlegen = Input::get('recipetype');
+       $teile = explode(",", $recipetypezerlegen);
+       $recipetype="$teile[0]";
+       $recipetypenummer="$teile[1]";
+       $input3= array('recipetype' => $recipetype,'recipetypenummer' => $recipetypenummer);
+       $input_all = (array_merge($input, $input1, $input3));
+
+
+
       // $attributes = ['title' => 'Photo Gallery Products', 'content' => 'nix', 'is_published' => false];
      $this->products->create($input_all);
           //  $this->products->create(Input::all());
@@ -150,8 +166,15 @@ $input_all = (array_merge($input, $input1));
              }
 
 
-         $input_all = (array_merge($input, $input1));
-            //  $input_all = $input;
+       //Product Name and no explode from value Example: x,1
+       $recipetypezerlegen = Input::get('recipetype');
+       $teile = explode(",", $recipetypezerlegen);
+       $recipetype="$teile[0]";
+       $recipetypenummer="$teile[1]";
+       $input3= array('recipetype' => $recipetype,'recipetypenummer' => $recipetypenummer);
+       $input_all = (array_merge($input, $input1, $input3));
+      
+          //  $input_all = $input;
          $this->products->update($id, $input_all);
 
             //$this->products->update($id, Input::all());

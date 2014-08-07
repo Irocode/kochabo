@@ -111,6 +111,7 @@
 
 
    <br>  
+
    <!-- recipetype -->
    <div class="control-group {{ $errors->has('recipetype') ? 'has-error' : '' }}">
       <label class="control-label" for="recipetype">Rezept Typ <span class="stern" >*</span></label>
@@ -118,7 +119,7 @@
          <select name="recipetype" class="form-control" required>
             <option value="" selected>Auswahl Rezept Typ</option>
             @foreach( $list_recipe_type as $x ) 
-            <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+            <option value="{{ $x->bezeichnung }},{{ $x->id }}">{{ $x->bezeichnung }}</option>
             @endforeach  
          </select>
          @if ($errors->first('recipetype'))

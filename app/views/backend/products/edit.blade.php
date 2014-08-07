@@ -108,9 +108,9 @@
       <label class="control-label" for="recipetype">Rezept Typ <span class="stern" >*</span></label>
       <div class="controls">
          <select name="recipetype" class="form-control"  required>
-            <option value="{{$products->recipetype}}" selected>{{$products->recipetype}}</option>
+            <option value="{{$products->recipetype}},{{$products->recipetypenummer}}" selected>{{$products->recipetype}}</option>
             @foreach( $list_recipe_type as $x )  
-            <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+            <option value="{{ $x->bezeichnung }},{{ $x->id }}">{{ $x->bezeichnung }}</option>
             @endforeach                 
          </select>
          @if ($errors->first('recipetype'))
