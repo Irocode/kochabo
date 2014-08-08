@@ -300,51 +300,41 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
 
 
 
- public function calendarweeknew( $year, $calendarweek)
-    {       
-             $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->get();
-            foreach( $calendarweekarray as $x )
-             {
-            $year=$x->year;
-            $idnew=$x->packetid; 
-           if (empty($year)) {
-           var_dump('no'); var_dump('create editblade');
-
-           $recipe = Recipe::where('id', '>', 0)->orderBy('id', 'DESC')->get();
-           return View::make('backend.recipe.data', compact('recipe'));
-       } 
-
-           else{
-           var_dump('yes');
-           var_dump($year);    
-             
-           
-    $calendarweek = $this->calendarweek->find($idnew);
-    $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $idnew)->orderBy('id', 'DESC')->get();
-    $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
-    $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
-
-    return View::make('backend.calendarweek.edit', compact('calendarweek','products','recipe','calendarweekrecipestruktur'));
-
+function calendarweeknew($year, $calendarweek)
+        {
+        $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->first();
+        if ($calendarweekarray == null)
+            {
+            var_dump(' insert new record into database');
+            }
+          else
+            {
+            var_dump('update the existing record');
+            $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->get();
+            foreach($calendarweekarray as $x)
+                {
+                $year = $x->year;
+                $idnew = $x->packetid;
+                if (empty($year))
+                    {
+                    $recipe = Recipe::where('id', '>', 0)->orderBy('id', 'DESC')->get();
+                    return View::make('backend.recipe.data', compact('recipe'));
+                    }
+                  else
+                    {
+                    $calendarweek = $this->calendarweek->find($idnew);
+                    $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $idnew)->orderBy('id', 'DESC')->get();
+                    $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
+                    $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
+                    return View::make('backend.calendarweek.edit', compact('calendarweek', 'products', 'recipe', 'calendarweekrecipestruktur'));
+                    }
+                };
+            }
         }
 
-};
-
-}
 
 
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-}
 
 
