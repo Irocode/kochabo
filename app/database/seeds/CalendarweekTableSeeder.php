@@ -19,7 +19,6 @@ class CalendarweekTableSeeder extends Seeder {
 				'year' => '2014',
 				'type' => '',
 				'recipeflyerur' => '',
-				'recipeflyerursingle' => '',
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 				'is_published' => 0,

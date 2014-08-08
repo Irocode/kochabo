@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-08-08 06:34:24
+// NOTE Migration Created: 2014-08-08 07:23:33
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -131,7 +131,6 @@ Schema::create('calendarweek', function($table) {
  $table->mediumtext('year');
  $table->string('type', 100);
  $table->('recipeflyerur');
- $table->('recipeflyerursingle');
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
  $table->unsignedInteger('is_published');
@@ -144,7 +143,7 @@ Schema::create('calendarweek', function($table) {
  
 Schema::create('calendarweekrecipestruktur', function($table) {
  $table->increments('packetid');
- $table->unsignedInteger('recipeid');
+ $table->('recipeid');
  $table->unsignedInteger('sorting');
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");

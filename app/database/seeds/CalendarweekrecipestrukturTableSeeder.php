@@ -16,7 +16,7 @@ class CalendarweekrecipestrukturTableSeeder extends Seeder {
 			array (
 				'packetid' => 1,
 				'recipeid' => 90,
-				'sorting' => 0,
+				'sorting' => 1,
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 				'is_published' => 0,

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 08. Aug 2014 um 08:35
+-- Erstellungszeit: 08. Aug 2014 um 09:24
 -- Server Version: 5.5.36
 -- PHP-Version: 5.4.27
 
@@ -270,12 +270,11 @@ INSERT INTO `calendar` (`id`, `timestamp`, `start`, `end`, `title`, `hinweis`, `
 --
 
 CREATE TABLE IF NOT EXISTS `calendarweek` (
-  `packetid` int(10) NOT NULL AUTO_INCREMENT,
+  `packetid` bigint(10) NOT NULL AUTO_INCREMENT,
   `calendarweek` varchar(255) NOT NULL,
   `year` mediumtext NOT NULL,
   `type` varchar(100) NOT NULL,
   `recipeflyerur` mediumblob NOT NULL,
-  `recipeflyerursingle` mediumblob NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `is_published` int(10) NOT NULL,
@@ -287,8 +286,8 @@ CREATE TABLE IF NOT EXISTS `calendarweek` (
 -- Daten für Tabelle `calendarweek`
 --
 
-INSERT INTO `calendarweek` (`packetid`, `calendarweek`, `year`, `type`, `recipeflyerur`, `recipeflyerursingle`, `created_at`, `updated_at`, `is_published`) VALUES
-(1, '32', '2014', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0);
+INSERT INTO `calendarweek` (`packetid`, `calendarweek`, `year`, `type`, `recipeflyerur`, `created_at`, `updated_at`, `is_published`) VALUES
+(1, '32', '2014', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -297,22 +296,22 @@ INSERT INTO `calendarweek` (`packetid`, `calendarweek`, `year`, `type`, `recipef
 --
 
 CREATE TABLE IF NOT EXISTS `calendarweekrecipestruktur` (
-  `packetid` int(10) NOT NULL AUTO_INCREMENT,
-  `recipeid` int(255) NOT NULL,
+  `packetid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `recipeid` bigint(20) NOT NULL,
   `sorting` int(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `is_published` int(10) NOT NULL,
   PRIMARY KEY (`packetid`),
   UNIQUE KEY `id` (`packetid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Daten für Tabelle `calendarweekrecipestruktur`
 --
 
 INSERT INTO `calendarweekrecipestruktur` (`packetid`, `recipeid`, `sorting`, `created_at`, `updated_at`, `is_published`) VALUES
-(1, 90, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0);
+(1, 90, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 

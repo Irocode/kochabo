@@ -12,8 +12,7 @@ class Calendarweek extends BaseModel implements BaseModelInterface
         'calendarweek',
         'year', 
         'type', 
-        'recipeflyerur',
-        'recipeflyerursingle',
+        'recipeflyerur',        
         'created_at',
         'updated_at',
         'is_published' ];
