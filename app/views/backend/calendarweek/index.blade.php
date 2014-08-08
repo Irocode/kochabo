@@ -75,16 +75,16 @@
 
 
 
-
-
 <script>
     $(function(){
       // bind change event to select
       $('#week_selector').bind('change', function () {
           var variable = $(this).val(); // get selected value
+  var split = variable.split('-');
+var calendarweek = split[0];
+var year = split[1];
           if (variable) { // require a URL
-
-              window.location = 'http://127.0.0.1/laravel/kochabo/admin/calendar' + variable; // redirect
+              window.location = 'http://127.0.0.1/laravel/kochabo/admin/calendarweeknew/' + year + '/' +calendarweek + '/edit'; // redirect
           }
           return false;
       });

@@ -299,7 +299,7 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
     // AJAX Call-> Index recipe (ALLE)INDEX Ende
 
 
-
+// calendarweeknew Startseite abfrage Anfang
 function calendarweeknew($year, $calendarweek)
         {
         $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->first();
@@ -331,9 +331,9 @@ function calendarweeknew($year, $calendarweek)
                 };
             }
         }
+// calendarweeknew Startseite abfrage Ende
 
-
-
+        
     }
 
 
