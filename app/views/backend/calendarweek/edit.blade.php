@@ -16,6 +16,10 @@
 <strong>ID: {{$calendarweek->packetid}} - Kalenderwoche: {{$calendarweek->calendarweek}} Jahr: {{$calendarweek->year}}</strong><hr><br>
 <strong>Ausgabe Produkte: (Mit Filterung)</strong><hr>
 
+   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\CalendarweekController@update', $calendarweek->id ),'files'=>true, 'method' => 'PATCH')) }}
+
+
+
 @if($products->count())
 
 @foreach( $products as $v ) 
@@ -235,6 +239,9 @@ $random3 = rand(30, 14000);
    {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::submit('Anlegen', array('class' => 'btn btn-u')) }}
+
+
+    {{ Form::close() }}
 </div>
 <!-- Plichtfeld Ende -->
 <br>

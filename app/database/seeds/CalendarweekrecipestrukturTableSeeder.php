@@ -1,6 +1,6 @@
 <?php
 
-class CalendarweekTableSeeder extends Seeder {
+class CalendarweekrecipestrukturTableSeeder extends Seeder {
 
 	/**
 	 * Auto generated seed file
@@ -9,17 +9,14 @@ class CalendarweekTableSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		\DB::table('calendarweek')->truncate();
+		\DB::table('calendarweekrecipestruktur')->truncate();
         
-		\DB::table('calendarweek')->insert(array (
+		\DB::table('calendarweekrecipestruktur')->insert(array (
 			0 => 
 			array (
 				'packetid' => 1,
-				'calendarweek' => '32',
-				'year' => '2014',
-				'type' => '',
-				'recipeflyerur' => '',
-				'recipeflyerursingle' => '',
+				'recipeid' => 90,
+				'sorting' => 0,
 				'created_at' => '0000-00-00 00:00:00',
 				'updated_at' => '0000-00-00 00:00:00',
 				'is_published' => 0,

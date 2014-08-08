@@ -76,5 +76,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ListEinheitTableSeeder');
 		$this->call('ProfileTableSeeder');
 		$this->call('CalendarweekTableSeeder');
+		$this->call('CalendarweekrecipestrukturTableSeeder');
 	}
 }

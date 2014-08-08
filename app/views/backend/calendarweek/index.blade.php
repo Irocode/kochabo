@@ -37,7 +37,7 @@
 ?>
 
 <form id="week_form"  name="week_form" >
-                    <select id="week_selector"  class="form-control" name="week" onchange="showSelectedWeek();" required="required">
+                    <select id="week_selector"  class="form-control" name="week" onchange="showSelectedWeek();" >
                         <?php
                             $now = time();
                             $currentDay = date('w', $now);
@@ -70,5 +70,33 @@
                 </form>
 </div>
 </div>
+
+
+
+
+
+
+
+<script>
+    $(function(){
+      // bind change event to select
+      $('#week_selector').bind('change', function () {
+          var variable = $(this).val(); // get selected value
+          if (variable) { // require a URL
+
+              window.location = 'http://127.0.0.1/laravel/kochabo/admin/calendar' + variable; // redirect
+          }
+          return false;
+      });
+    });
+</script>
+
+
+
+
+
+
+
+
 
 @stop
