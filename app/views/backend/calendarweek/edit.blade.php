@@ -4,6 +4,26 @@
 {{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectizenew.js') }}     
 
 <div class="container">
+
+<?php 
+/* 
+ * Alternative Zuweisung und Ausgabe der Felder 
+ */ 
+$wert_neu  =array(); 
+$wert_neu[]= "a"; 
+$wert_neu[]= "b"; 
+$wert_neux[]= 2; 
+$wert_neu[]= 3; 
+for(  $key = 0 ; $key < count($wert_neu) ; $key++){ 
+    echo   $wert_neu[$key].'<br>'; 
+} 
+
+
+?>
+<hr>
+
+
+
    <!--HEADER mit Zurück ANFANG-->
    <div class="headline">
       <h2>Neuen Wochenplan erstellen</h2>
@@ -16,7 +36,21 @@
 <strong>ID: {{$calendarweek->packetid}} - Kalenderwoche: {{$calendarweek->calendarweek}} Jahr: {{$calendarweek->year}}</strong><hr><br>
 <strong>Ausgabe Produkte: (Mit Filterung)</strong><hr>
 
-   {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\CalendarweekController@update', $calendarweek->id ),'files'=>true, 'method' => 'PATCH')) }}
+
+<pre>
+   @if($calendarweekrecipestruktur->count())
+                     @foreach( $calendarweekrecipestruktur as $v )                  
+                     ID: {{ $v->id}} / Sort: {{ $v->sorting}} / packetid: {{ $v->packetid}} / recipeid: {{ $v->recipeid}}<br>
+                     @endforeach
+                     @else
+                     <div class="alert alert-danger">Keine calendarweekrecipestruktur vorhanden</div>
+                     @endif 
+</pre>
+
+
+  {{Form::open( array( 'action' => array( 'App\Controllers\Admin\CalendarweekController@update', $calendarweek->packetid ),'files'=>true, 'method' => 'PATCH'))}}
+
+
 
 
 
@@ -30,31 +64,38 @@ $random3 = rand(30, 14000);
 
 
 ?>
+<!--Leerzeichen , Sonderzeichen entfernen-->
+<?php
+$dateiname = $v->product_name;
+$dateiname = preg_replace('/[^A-Za-z 0-9]/', '', $dateiname); // alles weg, bis auf Buchstaben, Ziffern und Leerzeichen
+$dateiname = preg_replace('/\s\s+/', ' ', $dateiname);        // überflüssige Leerzeichen auf eines reduzieren
+$dateiname = preg_replace('/\s/', '_', $dateiname);           // Leerzeichen durch Unterstrich ersetzen
+//echo strtolower($dateiname);
+$product_name_var= strtolower($dateiname);
+?>
+
+
+
 
 <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">{{ $v->product_name}} [id: {{ $v->id}}] </h3>
+<h3 class="panel-title">{{$v->product_name}} [id: {{ $v->id}}] </h3>
 </div>
 <div class="panel-body">
 <div>  
-
-
-
-
-
-
 <div class="row">
   <div class="col-md-6">
 
-
+ 
 
 <!--selectize Rezept 2 auswählen Anfang-->   
 
 
       <label class="control-label" for="recipetype">Rezept 1</label>
+        <input type="hidden" name="{{$product_name_var}}[id]" value="{{$v->id}}">
     <div id="wrapper">    
           <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-            <select  id="select-beast_<?php echo "$random" ?>" name="title1"  style="width:auto"  placeholder=">Wähle / Suche "   >
+            <select  id="select-beast_<?php echo "$random" ?>" name="{{$product_name_var}}[recipes][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
                 <option value="" selected>Wähle / Suche     </option> 
               @foreach( $recipe as $x ) 
               <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -76,16 +117,12 @@ $random3 = rand(30, 14000);
   
 </div>
 
- 
-
-<!--selectize Rezept 1 auswählen Ende-->   
-
-
+<!--selectize Rezept 1 auswählen Ende-->  
 <!--selectize Rezept 2 auswählen Anfang-->  
 <label class="control-label" for="recipetype">Rezept 2</label> 
     <div id="wrapper">    
           <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-            <select  id="select-beast_<?php echo "$random2" ?>" name="title1"  style="width:auto"  placeholder=">Wähle / Suche "   >
+            <select  id="select-beast_<?php echo "$random2" ?>" name="{{$product_name_var}}[recipes][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
                 <option value="" selected>Wähle / Suche     </option> 
               @foreach( $recipe as $x ) 
               <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -106,15 +143,12 @@ $random3 = rand(30, 14000);
         </script>
   
 </div>
-<!--selectize Rezept 2 auswählen Ende-->   
-
-
-
+<!--selectize Rezept 2 auswählen Ende--> 
 <!--selectize Rezept 3 auswählen Anfang-->  
 <label class="control-label" for="recipetype">Rezept 3</label> 
     <div id="wrapper">    
           <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-            <select  id="select-beast_<?php echo "$random3" ?>" name="title1"  style="width:auto"  placeholder=">Wähle / Suche "   >
+            <select  id="select-beast_<?php echo "$random3" ?>" name="{{$product_name_var}}[recipes][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
                 <option value="" selected>Wähle / Suche     </option> 
               @foreach( $recipe as $x ) 
               <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -135,14 +169,8 @@ $random3 = rand(30, 14000);
         </script>
   
 </div>
-<!--selectize Rezept 3 auswählen Ende-->   
-
-
-
+<!--selectize Rezept 3 auswählen Ende-->
 </div><div class="col-md-6">
-
-
-
        <!-- Image -->
 <label class="control-label" for="image">PDF einfügen (Derzeit 200 x 200px)</label>
 <div id="zone">
@@ -207,16 +235,7 @@ $random3 = rand(30, 14000);
 <!--Aktuelles Bild-->
 </div>
 </div>
-
-
-
-
-
-
-
-
 </div>
-
 </div>
 </div>
 </div>

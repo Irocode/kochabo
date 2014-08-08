@@ -24,10 +24,12 @@ use Validator;
 use Response;
 use Str;
 use Notification;
+use Calendarweekrecipestruktur;
+use Calendarweek;
 class AjaxController extends BaseController
 
 {
-    public function __construct(Recipeingredient $recipe_ingredient, Recipe $recipe, Ingredients $ingredients, Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
+    public function __construct(Calendarweekrecipestruktur $calendarweekrecipestruktur,Calendarweek $calendarweek,Recipeingredient $recipe_ingredient, Recipe $recipe, Ingredients $ingredients, Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
 
     {
         View::share('active', 'modules');
@@ -46,6 +48,10 @@ class AjaxController extends BaseController
         $this->ingredients = $ingredients;
         $this->recipe = $recipe;
         $this->recipe_ingredient = $recipe_ingredient;
+
+        $this->calendarweek = $calendarweek;
+       
+        $this->calendarweekrecipestruktur = $calendarweekrecipestruktur;
 
     }
     // AJAX Call-> Index Logistmanager Start
@@ -291,6 +297,51 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
           return View::make('backend.recipe.data', compact('recipe'));
     }
     // AJAX Call-> Index recipe (ALLE)INDEX Ende
+
+
+
+ public function calendarweeknew( $year, $calendarweek)
+    {       
+             $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->get();
+            foreach( $calendarweekarray as $x )
+             {
+            $year=$x->year;
+            $idnew=$x->packetid; 
+           if (empty($year)) {
+           var_dump('no'); var_dump('create editblade');
+
+           $recipe = Recipe::where('id', '>', 0)->orderBy('id', 'DESC')->get();
+           return View::make('backend.recipe.data', compact('recipe'));
+       } 
+
+           else{
+           var_dump('yes');
+           var_dump($year);    
+             
+           
+    $calendarweek = $this->calendarweek->find($idnew);
+    $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $idnew)->orderBy('id', 'DESC')->get();
+    $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
+    $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
+
+    return View::make('backend.calendarweek.edit', compact('calendarweek','products','recipe','calendarweekrecipestruktur'));
+
+        }
+
+};
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

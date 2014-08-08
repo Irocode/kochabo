@@ -8,23 +8,26 @@ use Input;
 use Validator;
 use Response;
 use Str;
+use calendarweekrecipestruktur;
 use Image;
 use Session;
 use File;
 use Notification;
-use Sefa\Repositories\Calendarweek\CalendarweekRepository as Calendarweek;
-use Sefa\Exceptions\Validation\ValidationException;
+use calendarweek;
+//use Sefa\Repositories\Calendarweek\CalendarweekRepository as Calendarweek;
+//use Sefa\Exceptions\Validation\ValidationException;
 
 
 class CalendarweekController extends BaseController
 
 {
-    public function __construct(Calendarweek $calendarweek, Products $products, Recipe $recipe)
+    public function __construct(Calendarweek $calendarweek, Products $products, Recipe $recipe, Calendarweekrecipestruktur $calendarweekrecipestruktur)
     {
         View::share('active', 'modules');
         $this->calendarweek = $calendarweek;  
         $this->products = $products;   
         $this->recipe = $recipe;
+        $this->calendarweekrecipestruktur = $calendarweekrecipestruktur;
 
     }
 
@@ -87,10 +90,11 @@ class CalendarweekController extends BaseController
     public function edit($id)
     {       
     $calendarweek = $this->calendarweek->find($id);
+    $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $id)->orderBy('id', 'DESC')->get();
     $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
     $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
 
-    return View::make('backend.calendarweek.edit', compact('calendarweek','products','recipe'));
+    return View::make('backend.calendarweek.edit', compact('calendarweek','products','recipe','calendarweekrecipestruktur'));
     }
     /**
      * Update the specified resource in storage.
@@ -100,17 +104,65 @@ class CalendarweekController extends BaseController
      */
     public function update($id)
     {
-        try
-        {
-            $this->calendarweek->update($id, Input::all());
-            Notification::success('Adresse wurde geändert');
-            return Redirect::back();
-            // return Redirect::route('admin.calendarweek.index');
-        }
-        catch(ValidationException $e)
-        {
-            return Redirect::back()->withInput()->withErrors($e->getErrors());
-        }
+
+//return View::make('backend.calendarweek.index');
+
+ $familienbox_5 = Input::get('familienbox_5');
+ $familienbox_3 = Input::get('familienbox_3');
+
+
+
+
+
+$array    = array("val"=>$familienbox_3);
+$json_str = json_encode($array);
+
+var_dump($familienbox_3);
+
+var_dump('<br>');
+
+var_dump($array);
+
+
+
+
+/*
+
+$new = new Contact(array(
+    'salutation' => Input::get('salutation'),
+    'first_name' => Input::get('first_name'),
+    'last_name'  => Input::get('last_name'),
+    'company_id' => Input::get('company_id'),
+    'city' => ...
+    ...
+));
+
+*/
+
+
+
+
+//$familienbox_5="2016";
+//print_r(array_keys($_REQUEST, "familienbox_5"));
+
+//var_dump($serializedArr);
+//$serializedArr = serialize($familienbox_3);
+//$record = Calendarweek::find(16);
+//unserialize($record->year);
+//$calendarweek = new Calendarweek;
+//$calendarweek->year = $serializedArr;
+//$calendarweek->save();
+
+/*
+$calendarweek = new Calendarweek;
+$calendarweek->year = $familienbox_3;
+$calendarweek->save();
+
+*/
+
+//var_dump($_REQUEST);
+
+ 
     }
     /**
      * Remove the specified resource from storage.

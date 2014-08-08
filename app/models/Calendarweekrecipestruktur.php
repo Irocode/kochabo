@@ -4,10 +4,11 @@ use Sefa\Interfaces\BaseModelInterface as BaseModelInterface;
 
 class Calendarweekrecipestruktur extends BaseModel implements BaseModelInterface
 {
-   protected $primaryKey = 'packetid';
-    public $table = 'calendarweek';
+   //protected $primaryKey = 'packetid';
+    public $table = 'calendarweekrecipestruktur';
     public $fillable = [
-        
+
+        'id',        
         'packetid',
         'recipeid',
         'sorting',

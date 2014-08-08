@@ -213,6 +213,14 @@ Route::get('ingredients/{id}/delete', array('as' => 'admin.ingredients.delete', 
 
 //calendarweek
 Route::resource('calendarweek', 'CalendarweekController');
+Route::get('calendarweeknew/{year?}/{calendarweek?}/edit', array('as' => 'admin.calendarweek.edit', 'uses' => 'AjaxController@calendarweeknew'))
+->where(array('year' => '[0-9]+', 'calendarweek' => '[0-9]+'));
+
+
+
+
+
+
 
 //recipe_ingredient
 Route::resource('recipe_ingredient', 'RecipeingredientController');
