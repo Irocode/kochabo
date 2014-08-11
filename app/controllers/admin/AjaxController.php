@@ -26,7 +26,7 @@ use Str;
 use Notification;
 use Calendarweekrecipestruktur;
 use Calendarweek;
-class AjaxController extends BaseController
+class HelperController extends BaseController
 
 {
     public function __construct(Calendarweekrecipestruktur $calendarweekrecipestruktur,Calendarweek $calendarweek,Recipeingredient $recipe_ingredient, Recipe $recipe, Ingredients $ingredients, Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
@@ -297,74 +297,6 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
           return View::make('backend.recipe.data', compact('recipe'));
     }
     // AJAX Call-> Index recipe (ALLE)INDEX Ende
-
-
-// calendarweeknew Startseite abfrage Anfang
-function calendarweeknew($year, $calendarweek)
-        {
-        $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->first();
-        if ($calendarweekarray == null)
-            {
-            var_dump(' insert new record into database');
-            }
-          else
-            {
-            var_dump('update the existing record');
-            $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->get();
-            foreach($calendarweekarray as $x)
-                {
-                $year = $x->year;
-                $calendarweek = $x->calendarweek;
-                $idnew = $x->packetid;
-                if (empty($year))
-                    {
-                    $recipe = Recipe::where('id', '>', 0)->orderBy('id', 'DESC')->get();
-                    return View::make('backend.recipe.data', compact('recipe'));
-                    }
-                  else
-                    {
-
-
-
-
-                        $joinaufbau = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
-                        ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')          
-
-                        ->where('calendarweek.calendarweek','=',$calendarweek)
-                        ->orderBy('sorting', 'asc')                       
-                        
-                        
-                        ->get([
-                        'calendarweekrecipestruktur.packetid',
-                        'calendarweek.calendarweek',
-                        'calendarweek.year',
-                        'calendarweekrecipestruktur.sorting',  
-                        'recipe.title',
-                        'recipe.id',
-                        ]);  
-
-
-
-                       
-
-
-
-                   
-
-                   
-
-
-                
-                    $calendarweek = $this->calendarweek->find($idnew);
-                    $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $idnew)->orderBy('id', 'DESC')->get();
-                    $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
-                    $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
-                    return View::make('backend.calendarweek.edit', compact('calendarweek', 'products', 'recipe', 'calendarweekrecipestruktur','joinaufbau'));
-                    }
-                };
-            }
-        }
-// calendarweeknew Startseite abfrage Ende
 
         
     }
