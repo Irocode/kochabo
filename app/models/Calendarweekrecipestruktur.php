@@ -30,6 +30,22 @@ class Calendarweekrecipestruktur extends BaseModel implements BaseModelInterface
 
  
 
+  //hasmanybelongs
+    public function calendarweek()
+
+    {
+        return $this->belongsTo ('Calendarweek');
+
+    }
+
+
+      //hasmanybelongs
+    public function recipe()
+
+    {
+        return $this->belongsTo ('Recipe');
+
+    }
 
 
 }

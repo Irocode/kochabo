@@ -30,7 +30,10 @@ class Calendarweek extends BaseModel implements BaseModelInterface
     }
 
  
-
+   public function calendarweekrecipestruktur()
+    {
+        return $this->hasMany ('Calendarweekrecipestruktur', 'packetid')->orderBy('packetid', 'ASC');
+    }
 
 
 }

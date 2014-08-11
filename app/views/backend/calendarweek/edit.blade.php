@@ -40,7 +40,7 @@ for(  $key = 0 ; $key < count($wert_neu) ; $key++){
 <pre>
    @if($calendarweekrecipestruktur->count())
                      @foreach( $calendarweekrecipestruktur as $v )                  
-                     ID: {{ $v->id}} / Sort: {{ $v->sorting}} / packetid: {{ $v->packetid}} / recipeid: {{ $v->recipeid}}<br>
+                     ID: {{ $v->id}} / Sort: {{ $v->sorting}} / packetid: {{ $v->id}} / recipeid: {{ $v->recipeid}}<br>
                      @endforeach
                      @else
                      <div class="alert alert-danger">Keine calendarweekrecipestruktur vorhanden</div>
@@ -50,16 +50,25 @@ for(  $key = 0 ; $key < count($wert_neu) ; $key++){
 
 <pre>
 
-                    @foreach( $ab as $v )               
+                    @foreach( $joinaufbau as $v )               
                     packetid: {{ $v->packetid}} <br>
                     calendarweek: {{ $v->calendarweek}} <br>
                     year: {{ $v->year}} <br>
-                    sorting: {{ $v->sorting}}
+                    sorting: {{ $v->sorting}}<br>
+                    title: {{ $v->title}} <br>
+                    titleid: {{ $v->id}}
                     <hr>
                      @endforeach
                 
 
 </pre>
+
+
+
+
+
+
+
   {{Form::open( array( 'action' => array( 'App\Controllers\Admin\CalendarweekController@update', $calendarweek->packetid ),'files'=>true, 'method' => 'PATCH'))}}
 
        

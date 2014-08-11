@@ -8,23 +8,11 @@
       </div>
       <div class="panel-body">
          <div class="pull-left">
-            <div class="btn-toolbar">
-               <a href="{{ URL::route('admin.customer_management.create') }}" class="btn btn-u">
-               <span class="glyphicon glyphicon-plus"></span>&nbsp;Neue Kalenderwoche anlegen
-               </a>
-            </div>
+           
          </div>
-                <div class="pull-right">
-            <div class="btn-toolbar">
-
-               <a href="{{URL::to('admin/list_settings_customer')}}" class="btn btn-u" disabled="">
-               <span class="glyphicon glyphicon-cog"></span>&nbsp;Filter Settings
-               </a>               
-            </div>
- </div>      
+          
          <br>
-         <br>
-         <br>
+       
        
 
 
@@ -36,8 +24,15 @@
 
 ?>
 
+
+
+<div class="row">
+  <div class="col-md-6">
+
+
+ <br> <br> <br>
 <form id="week_form"  name="week_form" >
-                    <select id="week_selector"  class="form-control" name="week" onchange="showSelectedWeek();" >
+                    <select id="week_selector"  class="form-control notinvalid" name="week" onchange="showSelectedWeek();"  >
                         <?php
                             $now = time();
                             $currentDay = date('w', $now);
@@ -68,6 +63,33 @@
                         ?>
                     </select>
                 </form>
+
+
+ </div>
+  <div class="col-md-6">
+<div class="headline">
+<h2>Hinweis</h2>
+</div>
+<blockquote class="hero">
+<p>Ein Wochenplan wird nur mit den aktuellen Produkten angelegt. Änderungen in den Produkten werden dann nicht mehr in einen bestehenden Wochenplan übernommen. </p>
+
+
+
+
+
+</blockquote>
+</div>
+</div>
+</div>  
+
+
+
+
+
+
+
+
+
 </div>
 </div>
 

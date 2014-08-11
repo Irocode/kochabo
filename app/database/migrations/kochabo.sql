@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 08. Aug 2014 um 09:24
+-- Erstellungszeit: 11. Aug 2014 um 11:49
 -- Server Version: 5.5.36
 -- PHP-Version: 5.4.27
 
@@ -280,14 +280,17 @@ CREATE TABLE IF NOT EXISTS `calendarweek` (
   `is_published` int(10) NOT NULL,
   PRIMARY KEY (`packetid`),
   UNIQUE KEY `id` (`packetid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Daten für Tabelle `calendarweek`
 --
 
 INSERT INTO `calendarweek` (`packetid`, `calendarweek`, `year`, `type`, `recipeflyerur`, `created_at`, `updated_at`, `is_published`) VALUES
-(1, '32', '2014', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0);
+(1, '32', '2014', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0),
+(2, '33', '2014', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0),
+(3, '33', '2014', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0),
+(4, '33', '2014', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -296,22 +299,27 @@ INSERT INTO `calendarweek` (`packetid`, `calendarweek`, `year`, `type`, `recipef
 --
 
 CREATE TABLE IF NOT EXISTS `calendarweekrecipestruktur` (
-  `packetid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
+  `packetid` bigint(20) NOT NULL,
   `recipeid` bigint(20) NOT NULL,
   `sorting` int(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `is_published` int(10) NOT NULL,
-  PRIMARY KEY (`packetid`),
-  UNIQUE KEY `id` (`packetid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  PRIMARY KEY (`id`),
+  KEY `recipeid` (`recipeid`),
+  KEY `packetid` (`packetid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `calendarweekrecipestruktur`
 --
 
-INSERT INTO `calendarweekrecipestruktur` (`packetid`, `recipeid`, `sorting`, `created_at`, `updated_at`, `is_published`) VALUES
-(1, 90, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0);
+INSERT INTO `calendarweekrecipestruktur` (`id`, `packetid`, `recipeid`, `sorting`, `created_at`, `updated_at`, `is_published`) VALUES
+(1, 1, 89, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0),
+(2, 3, 89, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0),
+(3, 4, 90, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0),
+(4, 2, 88, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -2561,12 +2569,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `customers_groups_id`, `email`, `email_aktuell`, `password`, `passwordhardcode`, `permissions`, `activated`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `first_name`, `date_of_birth`, `telephone`, `gender`, `default_billing_address`, `default_shipping_address`, `last_name`, `birthday`, `birthmonth`, `birthyear`, `status`, `created_at`, `updated_at`, `is_published`) VALUES
 (1, 2, 'admin@admin.com', '', '$2y$10$NkEaWuEFQTUBHbgEkrT9zeMsx/eePq7zq/8QU/EeTbRLucyfP3GVm', '', NULL, 1, NULL, NULL, '2014-04-18 22:14:45', '$2y$10$rxvjqmdYYZT7VBarfa2/s.MK/vP74qFUPMZUHukjKiDz0T2hAoXMm', NULL, 'Bernd', '0000-00-00', '06604258008', '1', 2, 3, 'Obendorfer', '', '', '', '0', '2014-04-17 10:56:15', '2014-06-09 01:07:57', 0),
-(3, 3, 'bernd.obendorfer@chello.at', '', '$2y$10$8AOyQXE.bt4am8Y77Z2WCOOevUxMwZXxG5RV6JazNWi1HAIVjL3wq', '', NULL, 1, 'Myu4J2vqYDTVIqfoad3CZQCMYnkWisrCyXwVk5IvHV', NULL, '2014-08-08 03:32:00', '$2y$10$WYvgGcRWuBGq14UGN9lHQeMtNWafuA16JN9UmwuxQcj4QH2D4rXgG', NULL, 'Bernd', '1970-01-01', '0660645949459', 'Herr', 0, 0, 'Obendorfer', '', '', '', 'admin', '2014-04-18 22:02:36', '2014-08-08 03:32:00', 0),
+(3, 3, 'bernd.obendorfer@chello.at', '', '$2y$10$8AOyQXE.bt4am8Y77Z2WCOOevUxMwZXxG5RV6JazNWi1HAIVjL3wq', '', NULL, 1, 'Myu4J2vqYDTVIqfoad3CZQCMYnkWisrCyXwVk5IvHV', NULL, '2014-08-11 03:06:23', '$2y$10$9lNOuGexpOWA1xD0IoNZxe74zfuWxhvGEMOVMH8lcnkJaRvj0ac7W', NULL, 'Bernd', '1970-01-01', '0660645949459', 'Herr', 0, 0, 'Obendorfer', '', '', '', 'admin', '2014-04-18 22:02:36', '2014-08-11 03:06:23', 0),
 (109, 4, 'theresa.schoerky@chello.at', '', '$2y$10$h2VPB80zNVTi59CqDv/wMudW88fUiB2PEF3E1lZXraCSq05j0NSTy', 'theresa', NULL, 1, 'fsDsmN4O6iSkqFTBrfOn9f11irrvc2YFVAqEtu9xkW', NULL, '2014-06-16 06:41:07', '$2y$10$F0j4TayUpCrC2hg6ktY.v.E.DFAkZ0nzU/LvEtKkGoUmjmdkKNBZi', NULL, 'Theresa', '0000-00-00', '066565656', 'Frau', 0, 0, 'Sch&ouml;rkhuber', '16', '02', '1985', '', '2014-06-16 06:40:56', '2014-06-16 06:41:07', 0),
 (110, 5, 'robert.ginder@chello.at', '', '$2y$10$pCjc/sGeLQ9EiGDCSGWw8.kArnb0LraKP54Pe7Wk0tLH92qj/IpJa', '333333', NULL, 1, 'qi95leByn6qkcPVs8HcN3BFi8B60R7VBx0NoUnLTt8', NULL, '2014-06-16 12:33:39', '$2y$10$ZYnouIRCkJ6EtTBRJmw.puzQsoWmAxxOnlmOYbgyFCC.66Ie96bLS', NULL, 'Robert', '0000-00-00', '0660595656569', 'Herr', 0, 0, 'Ginder', '19', '11', '1980', '', '2014-06-16 12:33:29', '2014-06-16 12:33:39', 0),
 (111, 6, 'martin.mauser@chello.at', '', '$2y$10$HqyO5gid8C2dRv7Ofn9mWesJDF/JlMOiMps6gvWus0tImctxKnT7i', '3333334', NULL, 1, 'TKB7oRShYyZoOXXXYDvLvFeU9xbPUZoXK8cbtQ7y3V', NULL, NULL, NULL, NULL, 'Martin', '0000-00-00', '15451515115', 'Herr', 0, 0, 'Mauser', '01', '01', '2014', '', '2014-07-07 04:20:22', '2014-07-07 04:20:22', 0),
 (112, 9, 'richard.gerli@chello.at', '', '$2y$10$oyUwjujHa.vEx0bS56y3s.bCfAgA8Los2E9s.YHMo2IFzAPdDxaNe', '2131231', NULL, 1, 'JI6KiWu3Ye4dsLZog2c6ZroZi8zmDJRXMU0krWloJr', '2014-07-08 11:16:38', NULL, NULL, NULL, 'Richard', '0000-00-00', '2131231321', 'Herr', 0, 0, 'Gerli', '02', '02', '2014', '', '2014-07-07 04:36:08', '2014-07-07 04:36:08', 0),
-(113, 7, 'gast@kochabo.com', '', '$2y$10$Z/.gNPZ6z6b/fJ1nRwpRLejz63Fnal/tw1D.aLpW9Hxr56LhGkbla', 'gast05', NULL, 1, 'QuV98pWRdtISVJfLSs7lGSCKTkCpFTHWGFiMhIm90X', NULL, '2014-07-18 05:38:35', '$2y$10$DrVGIeIkBw3VGuFVloXD8e2XxJSsi4/bOsPbW4LltklypGfVyRqBq', NULL, 'Kochabo', '0000-00-00', '4523452345', 'Herr', 0, 0, 'Kochabo TEST', '01', '02', '2014', '', '2014-07-07 04:49:24', '2014-07-18 05:38:35', 0),
+(113, 7, 'gast@kochabo.com', '', '$2y$10$Z/.gNPZ6z6b/fJ1nRwpRLejz63Fnal/tw1D.aLpW9Hxr56LhGkbla', 'gast05', NULL, 1, 'QuV98pWRdtISVJfLSs7lGSCKTkCpFTHWGFiMhIm90X', NULL, '2014-08-08 11:09:29', '$2y$10$kB4o7.cDb1qZhT.alDANx.X6tUYayahc5Q0nKxSaOkEG6H2vsjeJO', NULL, 'Kochabo', '0000-00-00', '4523452345', 'Herr', 0, 0, 'Kochabo TEST', '01', '02', '2014', '', '2014-07-07 04:49:24', '2014-08-08 11:09:29', 0),
 (114, 1, 'servai.maunz@chello.at', '', '$2y$10$sqZ9ZinW.2e7IZh9kfh1GuqqeQmyZ9zrD.fjt8yfGoHFpY1nP0/du', '999999999999', NULL, 1, 'T2BdUApZmnBrABRHwzDjZqlV2WJtk73AhFCcLcHROz', NULL, NULL, NULL, NULL, 'Servai', '0000-00-00', '52352354', 'Herr', 0, 0, 'Maunz', '01', '02', '2014', '', '2014-07-07 04:56:01', '2014-07-07 04:56:01', 0),
 (115, 8, 'Markus.Moser@chello.at', '', '$2y$10$NFoMiPdckIQJwKnGwT1wY.UMpxPJc/ZeFbzP4VQwUwxeaXceTxh7u', '5555555555555555555', NULL, 1, '0KWy0OOF3SBwX4PluaYpsYqVD7MqLrOZJfnBzcN1pN', NULL, NULL, NULL, NULL, 'Markus', '1970-01-01', '5555555555555555555', 'Herr', 0, 0, 'Moser', '01', '01', '2014', '', '2014-07-07 04:57:40', '2014-07-07 23:36:22', 0),
 (116, 6, 'robert.robishts@chello.at', '', '$2y$10$63PLZWXCbaujGMzXawBHbuw3bL6Qi.Voy0oYqfEVTLm8J5R3irQPG', '66666767765', NULL, 1, '9kUlXpAKqVYsE916wRCRxvIIAnpXn2fUMuUKD2cjeq', NULL, NULL, NULL, NULL, 'Robert', '1970-01-01', '66666767765', 'Herr', 0, 0, 'Robitsh', '01', '02', '2014', '', '2014-07-08 00:59:39', '2014-07-29 04:48:23', 0),

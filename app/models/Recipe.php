@@ -68,5 +68,14 @@ class Recipe extends BaseModel implements BaseModelInterface
         return $this->hasMany ('Recipeingredient', 'recipe_id')->orderBy('recipe_id', 'ASC');
     }
 
+
+
+     public function calendarweekrecipestruktur()
+    {
+        return $this->hasMany ('Calendarweekrecipestruktur', 'packetid')->orderBy('packetid', 'ASC');
+    }
+
+
+
 }
 
