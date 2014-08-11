@@ -110,18 +110,24 @@ class CalendarweekController extends BaseController
  $familienbox_5 = Input::get('familienbox_5');
  $familienbox_3 = Input::get('familienbox_3');
 
+$array = array_dot($familienbox_3);
+
+$array2 = array_dot($familienbox_5);
 
 
 
 
-$array    = array("val"=>$familienbox_3);
-$json_str = json_encode($array);
 
-var_dump($familienbox_3);
+//$array    = array("val"=>$familienbox_3);
+//$json_str = json_encode($array);
+
+//var_dump($familienbox_5);
 
 var_dump('<br>');
 
-var_dump($array);
+var_dump($array); 
+var_dump('<br>');
+var_dump($array2);
 
 
 
