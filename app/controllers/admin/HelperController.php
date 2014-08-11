@@ -63,11 +63,18 @@ function calendarweeknew($year, $calendarweek)
         $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->first();
         if ($calendarweekarray == null)
             {
-            var_dump(' insert new record into database');
+          //  var_dump(' insert new record into database');
+              $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
+                 $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
+
+              
+             return View::make('backend.calendarweek.create', compact( 'products','recipe','calendarweek','year'));
+
+
             }
           else
             {
-            var_dump('update the existing record');
+            //var_dump('update the existing record');
             $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->get();
             foreach($calendarweekarray as $x)
                 {
@@ -82,7 +89,8 @@ function calendarweeknew($year, $calendarweek)
                   else
                     {
                         $joinaufbau = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
-                        ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')          
+                        ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
+                        ->join('products','products.id','=','calendarweekrecipestruktur.productid')          
 
                         ->where('calendarweek.calendarweek','=',$calendarweek)
                         ->orderBy('sorting', 'asc')                       
@@ -95,6 +103,7 @@ function calendarweeknew($year, $calendarweek)
                         'calendarweekrecipestruktur.sorting',  
                         'recipe.title',
                         'recipe.id',
+                        'products.product_name',
                         ]);  
 
                     $calendarweek = $this->calendarweek->find($idnew);

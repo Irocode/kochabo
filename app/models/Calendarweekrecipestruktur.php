@@ -11,6 +11,7 @@ class Calendarweekrecipestruktur extends BaseModel implements BaseModelInterface
         'id',        
         'packetid',
         'recipeid',
+        'productid',
         'sorting',
         'created_at',
         'updated_at',

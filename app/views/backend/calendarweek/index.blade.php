@@ -71,7 +71,7 @@
 <h2>Hinweis</h2>
 </div>
 <blockquote class="hero">
-<p>Ein Wochenplan wird nur mit den aktuellen Produkten angelegt. Änderungen in den Produkten werden dann nicht mehr in einen bestehenden Wochenplan übernommen. </p>
+<p>Ein Wochenplan wird mit den aktuellen Produkten angelegt. Nachherige Änderungen in den Produkten werden nicht in einem bestehenden Wochenplan übernommen. </p>
 
 
 

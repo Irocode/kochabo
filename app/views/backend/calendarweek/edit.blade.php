@@ -26,7 +26,8 @@ for(  $key = 0 ; $key < count($wert_neu) ; $key++){
 
    <!--HEADER mit Zurück ANFANG-->
    <div class="headline">
-      <h2>Neuen Wochenplan erstellen</h2>
+         <h2>Neuen Wochenplan für KW: {{$calendarweek->packetid}} / Jahr: {{$calendarweek->year}} bearbeiten</h2>
+ 
       <div class="pull-right">
          {{ HTML::link('/admin/calendarweek','Zurück', array('class'=>'btn btn-u')) }}
       </div>
@@ -56,7 +57,9 @@ for(  $key = 0 ; $key < count($wert_neu) ; $key++){
                     year: {{ $v->year}} <br>
                     sorting: {{ $v->sorting}}<br>
                     title: {{ $v->title}} <br>
-                    titleid: {{ $v->id}}
+                    titleid: {{ $v->id}}<br>
+                    product_name: {{ $v->product_name}}
+               
                     <hr>
                      @endforeach
                 
@@ -284,7 +287,7 @@ $product_name_var= strtolower($dateiname);
    <!--Formular Registrierung Ende-->
    {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
-   {{ Form::submit('Anlegen', array('class' => 'btn btn-u')) }}
+   {{ Form::submit('Ändern', array('class' => 'btn btn-u')) }}
 
 
     {{ Form::close() }}

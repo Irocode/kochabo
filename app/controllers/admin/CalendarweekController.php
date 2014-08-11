@@ -57,16 +57,29 @@ class CalendarweekController extends BaseController
      */
     public function store()
     {
-        try
-        {
-            $this->calendarweek->create(Input::all());
-            Notification::success('Adresse wurde hinzugefügt');
-            return Redirect::route('admin.calendarweek.index');
-        }
-        catch(ValidationException $e)
-        {
-            return Redirect::back()->withInput()->withErrors($e->getErrors());
-        }
+    
+    $calendarweek = new Calendarweek;  
+    $calendarweek->calendarweek = Input::get('calendarweek');
+    $calendarweek->year = Input::get('year');  
+    $calendarweek->save();
+    $LastInsertId_calendarweek = $calendarweek->packetid;
+    var_dump('<br>LASTINSERIDcalendarweek');
+    var_dump($LastInsertId_calendarweek);
+
+
+    $Calendarweekrecipestruktur = new Calendarweekrecipestruktur; 
+    $Calendarweekrecipestruktur->packetid = $LastInsertId_calendarweek;  
+    $Calendarweekrecipestruktur->save();
+    $LastInsertId = $Calendarweekrecipestruktur->packetid;
+    var_dump('<br>LASTINSERIDCalendarweekrecipestruktur');
+    var_dump($LastInsertId);
+
+
+
+
+   
+
+
     }
     /**
      * Display the specified resource.
@@ -91,7 +104,7 @@ class CalendarweekController extends BaseController
     {       
 
 
-        
+
     $calendarweek = $this->calendarweek->find($id);
     $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $id)->orderBy('id', 'DESC')->get();
     $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
