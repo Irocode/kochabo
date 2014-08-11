@@ -48,9 +48,21 @@ for(  $key = 0 ; $key < count($wert_neu) ; $key++){
 </pre>
 
 
+<pre>
+
+                    @foreach( $ab as $v )               
+                    packetid: {{ $v->packetid}} <br>
+                    calendarweek: {{ $v->calendarweek}} <br>
+                    year: {{ $v->year}} <br>
+                    sorting: {{ $v->sorting}}
+                    <hr>
+                     @endforeach
+                
+
+</pre>
   {{Form::open( array( 'action' => array( 'App\Controllers\Admin\CalendarweekController@update', $calendarweek->packetid ),'files'=>true, 'method' => 'PATCH'))}}
 
-
+       
 
 
 
@@ -240,6 +252,12 @@ $product_name_var= strtolower($dateiname);
 </div>
 </div>
 <br>
+
+
+ <input type="hidden" name="{{$product_name_var}}[recipes][]" value="{{$calendarweek->packetid}}">
+ <input type="hidden" name="{{$product_name_var}}[recipes][]" value="{{$calendarweek->calendarweek}}">
+
+
 @endforeach
 
 

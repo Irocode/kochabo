@@ -322,11 +322,32 @@ function calendarweeknew($year, $calendarweek)
                     }
                   else
                     {
+
+
+
+
+
+
+                        $ab = calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
+                        
+                        ->orderBy('sorting', 'asc')
+->get([
+    'calendarweekrecipestruktur.packetid',
+    'calendarweek.calendarweek',
+    'calendarweek.year',
+    'calendarweekrecipestruktur.sorting',
+     
+
+    ]);            
+
+
+
+                
                     $calendarweek = $this->calendarweek->find($idnew);
                     $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $idnew)->orderBy('id', 'DESC')->get();
                     $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
                     $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
-                    return View::make('backend.calendarweek.edit', compact('calendarweek', 'products', 'recipe', 'calendarweekrecipestruktur'));
+                    return View::make('backend.calendarweek.edit', compact('calendarweek', 'products', 'recipe', 'calendarweekrecipestruktur','ab'));
                     }
                 };
             }

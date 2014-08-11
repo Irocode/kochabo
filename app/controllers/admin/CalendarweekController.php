@@ -89,6 +89,9 @@ class CalendarweekController extends BaseController
      */
     public function edit($id)
     {       
+
+
+        
     $calendarweek = $this->calendarweek->find($id);
     $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $id)->orderBy('id', 'DESC')->get();
     $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
@@ -110,9 +113,9 @@ class CalendarweekController extends BaseController
  $familienbox_5 = Input::get('familienbox_5');
  $familienbox_3 = Input::get('familienbox_3');
 
-$array = array_dot($familienbox_3);
+//$array = array_dot($familienbox_3);
 
-$array2 = array_dot($familienbox_5);
+//$array2 = array_dot($familienbox_5);
 
 
 
@@ -122,14 +125,46 @@ $array2 = array_dot($familienbox_5);
 //$json_str = json_encode($array);
 
 //var_dump($familienbox_5);
+$data= Input::all();
 
-var_dump('<br>');
 
+var_dump($data);
+var_dump('<hr>');
+
+/*
 var_dump($array); 
 var_dump('<br>');
 var_dump($array2);
 
 
+var_dump('<br>');var_dump('<br>');
+
+
+
+//$array = array();
+foreach ($array as $key => $value) {
+  array_set($array, $key, $value);
+var_dump($array); 
+
+}
+*/
+
+
+
+
+
+/*
+
+
+$packetid = Input::get('packetid');
+$calendarweek = Input::get('calendarweek');
+
+$calendarweek = new Calendarweek;
+$calendarweek->packetid = $packetid;
+$calendarweek->calendarweek = $calendarweek;
+
+$calendarweek->save();
+*/
 
 
 /*
@@ -166,7 +201,7 @@ $calendarweek->save();
 
 */
 
-//var_dump($_REQUEST);
+
 
  
     }
