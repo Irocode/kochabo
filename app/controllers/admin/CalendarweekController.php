@@ -110,39 +110,65 @@ if  ($key2="year") {$key3="86";} else {};
 
 */
 
-/*
+
 
 if ($key2 > 0) {
-$key3=$key2;
-//$oda="$key2";
 
-echo"$key2";
+
+
+//echo (int)$key2;  echo"<br>";
+echo (int)$key2;  echo"<br>";
+$recipe=(int)$key2;
 
 } else {};
 
-*/
+
+
+
+
 if ($key2 > 0) {
 $Calendarweekrecipestruktur = new Calendarweekrecipestruktur; 
 $Calendarweekrecipestruktur->packetid = $LastInsertId_calendarweek; 
-$Calendarweekrecipestruktur->productname = $key2; 
-
+$Calendarweekrecipestruktur->productname = $key2;
 $Lastproductname = $Calendarweekrecipestruktur->productname;
-
-
-
 $Calendarweekrecipestruktur->productid = $key2;
-$Calendarweekrecipestruktur->recipeid = $_REQUEST['familienbox_3']['a'];
-$Calendarweekrecipestruktur->recipeid = $_REQUEST['familienbox_3']['b'];
-$Calendarweekrecipestruktur->recipeid = $_REQUEST['familienbox_3']['c'];
- 
-$Calendarweekrecipestruktur->test2 =$_REQUEST['imagex'];
-
-
+$Calendarweekrecipestruktur->recipeid = $_REQUEST[$recipe]['a'];
+$Calendarweekrecipestruktur->sorting = 1;
 $Calendarweekrecipestruktur->save();
+}
+else {};
 
+if ($key2 > 0) {
+$Calendarweekrecipestruktur = new Calendarweekrecipestruktur; 
+$Calendarweekrecipestruktur->packetid = $LastInsertId_calendarweek; 
+$Calendarweekrecipestruktur->productname = $key2;
+$Lastproductname = $Calendarweekrecipestruktur->productname;
+$Calendarweekrecipestruktur->productid = $key2;
+$Calendarweekrecipestruktur->recipeid = $_REQUEST[$recipe]['b'];
+$Calendarweekrecipestruktur->sorting = 2;
+$Calendarweekrecipestruktur->save();
 
 }
 else {};
+
+
+if ($key2 > 0) {
+$Calendarweekrecipestruktur = new Calendarweekrecipestruktur; 
+$Calendarweekrecipestruktur->packetid = $LastInsertId_calendarweek; 
+$Calendarweekrecipestruktur->productname = $key2;
+$Lastproductname = $Calendarweekrecipestruktur->productname;
+$Calendarweekrecipestruktur->productid = $key2;
+$Calendarweekrecipestruktur->recipeid = $_REQUEST[$recipe]['c'];
+$Calendarweekrecipestruktur->sorting = 3;
+$Calendarweekrecipestruktur->save();
+}
+else {};
+
+
+
+
+
+
 
 /*
 var_dump($key2); var_dump('<br><br>');  

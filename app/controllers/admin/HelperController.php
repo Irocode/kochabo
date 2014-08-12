@@ -93,11 +93,17 @@ function calendarweeknew($year, $calendarweek)
                         ->join('products','products.id','=','calendarweekrecipestruktur.productid')          
 
                         ->where('calendarweek.calendarweek','=',$calendarweek)
-                        ->orderBy('sorting', 'asc')                       
+                        ->orderBy('calendarweekrecipestruktur.id', 'asc')                       
                         
                         
                         ->get([
                         'calendarweekrecipestruktur.packetid',
+                         'calendarweekrecipestruktur.recipeid',
+                          'calendarweekrecipestruktur.sorting',
+                           'calendarweekrecipestruktur.productid',
+
+                          
+
                         'calendarweek.calendarweek',
                         'calendarweek.year',
                         'calendarweekrecipestruktur.sorting',  

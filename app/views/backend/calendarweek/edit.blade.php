@@ -51,11 +51,11 @@ for(  $key = 0 ; $key < count($wert_neu) ; $key++){
 
 <pre>
 
-                    @foreach( $joinaufbau as $v )               
-                    packetid: {{ $v->packetid}} <br>
-                    calendarweek: {{ $v->calendarweek}} <br>
-                    year: {{ $v->year}} <br>
-                    sorting: {{ $v->sorting}}<br>
+                    @foreach( $joinaufbau as $v )  
+                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
+                    productid: {{ $v->productid}} <br> 
+                    sorting: {{ $v->sorting}} <br> 
+                    recipeid: {{ $v->recipeid}} <br> 
                     title: {{ $v->title}} <br>
                     titleid: {{ $v->id}}<br>
                     product_name: {{ $v->product_name}}
