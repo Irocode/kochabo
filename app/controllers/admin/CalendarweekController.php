@@ -57,7 +57,21 @@ class CalendarweekController extends BaseController
      */
     public function store()
     {
+
+       
+
+        $data= Input::all();
+
+
+//var_dump($data);
+echo "<pre>"; 
+echo print_r($data); 
+echo "</pre>"; 
+
+
+var_dump('<hr>');  
     
+
     $calendarweek = new Calendarweek;  
     $calendarweek->calendarweek = Input::get('calendarweek');
     $calendarweek->year = Input::get('year');  
@@ -74,13 +88,120 @@ class CalendarweekController extends BaseController
     var_dump('<br>LASTINSERIDCalendarweekrecipestruktur');
     var_dump($LastInsertId);
 
+var_dump('<hr>');  
 
 
 
+
+
+
+  
+foreach ($_REQUEST as $key2 => $value) {
+
+
+
+/*
+if  ($key2="_tocken") {$key3="86";} else {$key3=$key2;};
+if  ($key2="imagex") {$key3="86";} else {$key3=$key2;};
+if  ($key2="activated") {$key3="86";} else {$key3=$key2;};
+if  ($key2="check_yes") {$key3="86";} else {$key3=$key2;};
+if  ($key2="calendarweek") {$key3="86";} else {};
+if  ($key2="year") {$key3="86";} else {};
+
+*/
+
+/*
+
+if ($key2 > 0) {
+$key3=$key2;
+//$oda="$key2";
+
+echo"$key2";
+
+} else {};
+
+*/
+if ($key2 > 0) {
+$Calendarweekrecipestruktur = new Calendarweekrecipestruktur; 
+$Calendarweekrecipestruktur->packetid = $LastInsertId_calendarweek; 
+$Calendarweekrecipestruktur->productname = $key2; 
+
+$Lastproductname = $Calendarweekrecipestruktur->productname;
+
+
+
+$Calendarweekrecipestruktur->productid = $key2;
+$Calendarweekrecipestruktur->recipeid = $_REQUEST['familienbox_3']['a'];
+$Calendarweekrecipestruktur->recipeid = $_REQUEST['familienbox_3']['b'];
+$Calendarweekrecipestruktur->recipeid = $_REQUEST['familienbox_3']['c'];
+ 
+$Calendarweekrecipestruktur->test2 =$_REQUEST['imagex'];
+
+
+$Calendarweekrecipestruktur->save();
+
+
+}
+else {};
+
+/*
+var_dump($key2); var_dump('<br><br>');  
+var_dump($value);var_dump('<br>');
+var_dump('<hr>');  
+
+
+
+   // Diese einfache Callback-Funktion gibt jedes Schlüssel-Wert-Paar aus
    
 
 
-    }
+
+*/
+
+
+
+}
+
+/*
+
+
+$familienbox_5=Input::get('familienbox_3');
+
+
+
+ $callback = function($value, $familienbox_5) {
+        echo("$value: $familienbox_5, ");
+            }; 
+    array_walk_recursive($familienbox_5, $callback);
+
+var_dump('<hr>');  
+
+
+    $familienbox_3=Input::get('familienbox_3');
+
+
+
+ $callback = function($value, $familienbox_3) {
+        echo("$value: $familienbox_3, ");
+            }; 
+    array_walk_recursive($familienbox_3, $callback);
+
+
+*/
+echo"<br>";
+
+
+}
+
+
+
+
+
+
+
+
+
+
     /**
      * Display the specified resource.
      *
