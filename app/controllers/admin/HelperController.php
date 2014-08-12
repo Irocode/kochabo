@@ -110,6 +110,7 @@ function calendarweeknew($year, $calendarweek)
                         'recipe.title',
                         'recipe.id',
                         'products.product_name',
+                        'calendarweekrecipestruktur.id',
                         ]);  
 
                     $calendarweek = $this->calendarweek->find($idnew);

@@ -63,7 +63,7 @@ $product_name_var=  $v->id;
         <input type="hidden" name="{{$product_name_var}}[id]" value="{{$v->id}}">
     <div id="wrapper">    
           <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-            <select  id="select-beast_<?php echo "$random" ?>" name="{{$product_name_var}}[a]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+            <select  id="select-beast_<?php echo "$random" ?>" name="{{$product_name_var}}[]"  style="width:auto"  placeholder=">Wähle / Suche "   >
                 <option value="" selected>Wähle / Suche     </option> 
               @foreach( $recipe as $x ) 
               <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -90,7 +90,7 @@ $product_name_var=  $v->id;
 <label class="control-label" for="recipetype">Rezept 2</label> 
     <div id="wrapper">    
           <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-            <select  id="select-beast_<?php echo "$random2" ?>" name="{{$product_name_var}}[b]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+            <select  id="select-beast_<?php echo "$random2" ?>" name="{{$product_name_var}}[]"  style="width:auto"  placeholder=">Wähle / Suche "   >
                 <option value="" selected>Wähle / Suche     </option> 
               @foreach( $recipe as $x ) 
               <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -116,7 +116,7 @@ $product_name_var=  $v->id;
 <label class="control-label" for="recipetype">Rezept 3</label> 
     <div id="wrapper">    
           <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-            <select  id="select-beast_<?php echo "$random3" ?>" name="{{$product_name_var}}[c]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+            <select  id="select-beast_<?php echo "$random3" ?>" name="{{$product_name_var}}[]"  style="width:auto"  placeholder=">Wähle / Suche "   >
                 <option value="" selected>Wähle / Suche     </option> 
               @foreach( $recipe as $x ) 
               <option value="{{$x->id }}">{{ $x->title }}</option>

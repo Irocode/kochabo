@@ -59,6 +59,7 @@ for(  $key = 0 ; $key < count($wert_neu) ; $key++){
                     title: {{ $v->title}} <br>
                     titleid: {{ $v->id}}<br>
                     product_name: {{ $v->product_name}}
+                    ID: {{ $v->id}}
                
                     <hr>
                      @endforeach

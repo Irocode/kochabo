@@ -123,46 +123,52 @@ $recipe=(int)$key2;
 } else {};
 
 
+$counterrecipe = 0;
+$countersorting = 1;
+while ($counterrecipe <= 2)  //20mal 20 Felder möglich
+
+{
 
 
 
-if ($key2 > 0) {
+
+
+if ($key2 > 0) { // Nur Felder mit Zahl
+
+// Nur speichern wenn Recipe angelegt wurde
+$abfragewievielefelderesgibt = $_REQUEST[$recipe][$counterrecipe];
+if (isset($abfragewievielefelderesgibt)) {
+
+
+echo"<h1>$abfragewievielefelderesgibt</h1>";
+
+
+
 $Calendarweekrecipestruktur = new Calendarweekrecipestruktur; 
 $Calendarweekrecipestruktur->packetid = $LastInsertId_calendarweek; 
 $Calendarweekrecipestruktur->productname = $key2;
 $Lastproductname = $Calendarweekrecipestruktur->productname;
 $Calendarweekrecipestruktur->productid = $key2;
-$Calendarweekrecipestruktur->recipeid = $_REQUEST[$recipe]['a'];
-$Calendarweekrecipestruktur->sorting = 1;
+$Calendarweekrecipestruktur->recipeid = $_REQUEST[$recipe][$counterrecipe];
+$Calendarweekrecipestruktur->sorting = $countersorting;
+
+
 $Calendarweekrecipestruktur->save();
 }
-else {};
 
-if ($key2 > 0) {
-$Calendarweekrecipestruktur = new Calendarweekrecipestruktur; 
-$Calendarweekrecipestruktur->packetid = $LastInsertId_calendarweek; 
-$Calendarweekrecipestruktur->productname = $key2;
-$Lastproductname = $Calendarweekrecipestruktur->productname;
-$Calendarweekrecipestruktur->productid = $key2;
-$Calendarweekrecipestruktur->recipeid = $_REQUEST[$recipe]['b'];
-$Calendarweekrecipestruktur->sorting = 2;
-$Calendarweekrecipestruktur->save();
+else {var_dump('wurde nicht gespeichert');
+}
 
 }
 else {};
 
-
-if ($key2 > 0) {
-$Calendarweekrecipestruktur = new Calendarweekrecipestruktur; 
-$Calendarweekrecipestruktur->packetid = $LastInsertId_calendarweek; 
-$Calendarweekrecipestruktur->productname = $key2;
-$Lastproductname = $Calendarweekrecipestruktur->productname;
-$Calendarweekrecipestruktur->productid = $key2;
-$Calendarweekrecipestruktur->recipeid = $_REQUEST[$recipe]['c'];
-$Calendarweekrecipestruktur->sorting = 3;
-$Calendarweekrecipestruktur->save();
+    echo $counterrecipe;        
+    echo "<br />"; 
+    $counterrecipe++;      
+    $countersorting++;          
 }
-else {};
+
+
 
 
 
