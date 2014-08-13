@@ -5,21 +5,7 @@
 
 <div class="container">
 
-<?php 
-/* 
- * Alternative Zuweisung und Ausgabe der Felder 
- */ 
-$wert_neu  =array(); 
-$wert_neu[]= "a"; 
-$wert_neu[]= "b"; 
-$wert_neux[]= 2; 
-$wert_neu[]= 3; 
-for(  $key = 0 ; $key < count($wert_neu) ; $key++){ 
-    echo   $wert_neu[$key].'<br>'; 
-} 
 
-
-?>
 <hr>
 
 
@@ -34,31 +20,43 @@ for(  $key = 0 ; $key < count($wert_neu) ; $key++){
    </div>
    <!--HEADER mit Zurück ENDE-->
 
-<strong>ID: {{$calendarweek->packetid}} - Kalenderwoche: {{$calendarweek->calendarweek}} Jahr: {{$calendarweek->year}}</strong><hr><br>
-<strong>Ausgabe Produkte: (Mit Filterung)</strong><hr>
 
 
-<pre>
-   @if($calendarweekrecipestruktur->count())
-                     @foreach( $calendarweekrecipestruktur as $v )                  
-                     ID: {{ $v->id}} / Sort: {{ $v->sorting}} / packetid: {{ $v->id}} / recipeid: {{ $v->recipeid}}<br>
-                     @endforeach
-                     @else
-                     <div class="alert alert-danger">Keine calendarweekrecipestruktur vorhanden</div>
-                     @endif 
-</pre>
+
 
 
 <pre>
 
                     @foreach( $joinaufbau as $v )  
+                    <b>product_name: {{ $v->product_name}}</b>
                     calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
                     productid: {{ $v->productid}} <br> 
                     sorting: {{ $v->sorting}} <br> 
                     recipeid: {{ $v->recipeid}} <br> 
                     title: {{ $v->title}} <br>
                     titleid: {{ $v->id}}<br>
-                    product_name: {{ $v->product_name}}
+                    
+                    ID: {{ $v->id}}
+               
+                    <hr>
+                     @endforeach
+                
+
+</pre>
+
+
+
+<pre>
+--------------------------------------------------------
+                    @foreach( $joinaufbau3 as $v )  
+                    <b>product_name: {{ $v->product_name}}</b>
+                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
+                    productid: {{ $v->productid}} <br> 
+                    sorting: {{ $v->sorting}} <br> 
+                    recipeid: {{ $v->recipeid}} <br> 
+                    title: {{ $v->title}} <br>
+                    titleid: {{ $v->id}}<br>
+                    
                     ID: {{ $v->id}}
                
                     <hr>
@@ -111,159 +109,36 @@ $product_name_var= strtolower($dateiname);
 <div class="row">
   <div class="col-md-6">
 
- 
-
-<!--selectize Rezept 2 auswählen Anfang-->   
 
 
-      <label class="control-label" for="recipetype">Rezept 1</label>
-        <input type="hidden" name="{{$product_name_var}}[id]" value="{{$v->id}}">
-    <div id="wrapper">    
-          <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-            <select  id="select-beast_<?php echo "$random" ?>" name="{{$product_name_var}}[recipes][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
-                <option value="" selected>Wähle / Suche     </option> 
-              @foreach( $recipe as $x ) 
-              <option value="{{$x->id }}">{{ $x->title }}</option>
-               @endforeach             
-            </select>
-@if ($errors->first('title1'))
-<span class="help-block">{{ $errors->first('title1') }}</span>
-@endif
-        </div>
-        <script>
-        $('#select-beast_<?php echo "$random" ?>').selectize({
-          create: true,
-          sortField: {
-            field: 'text',
-            direction: 'asc'
-          }
-        });
-        </script>
-  
-</div>
+<!--selectize Rezept DYNAMISCH auswählen Anfang-->   
 
-<!--selectize Rezept 1 auswählen Ende-->  
-<!--selectize Rezept 2 auswählen Anfang-->  
-<label class="control-label" for="recipetype">Rezept 2</label> 
-    <div id="wrapper">    
-          <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-            <select  id="select-beast_<?php echo "$random2" ?>" name="{{$product_name_var}}[recipes][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
-                <option value="" selected>Wähle / Suche     </option> 
-              @foreach( $recipe as $x ) 
-              <option value="{{$x->id }}">{{ $x->title }}</option>
-               @endforeach             
-            </select>
-@if ($errors->first('title1'))
-<span class="help-block">{{ $errors->first('title1') }}</span>
-@endif
-        </div>
-        <script>
-        $('#select-beast_<?php echo "$random2" ?>').selectize({
-          create: true,
-          sortField: {
-            field: 'text',
-            direction: 'asc'
-          }
-        });
-        </script>
-  
-</div>
-<!--selectize Rezept 2 auswählen Ende--> 
-<!--selectize Rezept 3 auswählen Anfang-->  
-<label class="control-label" for="recipetype">Rezept 3</label> 
-    <div id="wrapper">    
-          <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-            <select  id="select-beast_<?php echo "$random3" ?>" name="{{$product_name_var}}[recipes][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
-                <option value="" selected>Wähle / Suche     </option> 
-              @foreach( $recipe as $x ) 
-              <option value="{{$x->id }}">{{ $x->title }}</option>
-               @endforeach             
-            </select>
-@if ($errors->first('title1'))
-<span class="help-block">{{ $errors->first('title1') }}</span>
-@endif
-        </div>
-        <script>
-        $('#select-beast_<?php echo "$random3" ?>').selectize({
-          create: true,
-          sortField: {
-            field: 'text',
-            direction: 'asc'
-          }
-        });
-        </script>
-  
-</div>
-<!--selectize Rezept 3 auswählen Ende-->
+
+    @foreach( $joinaufbau2 as $v )  </b>
+            
+                    ID: {{ $v->id}}
+               
+                    <hr>
+                     @endforeach
+
+<!--selectize Rezept DYNAMISCH auswählen Ende-->  
+
+
+
+
+
+
+
 </div><div class="col-md-6">
        <!-- Image -->
-<label class="control-label" for="image">PDF einfügen (Derzeit 200 x 200px)</label>
+<label class="control-label" for="image">PDF einfügen </label>
 <div id="zone">
-<span>
-    <input  type="file" 
-            style="visibility:hidden; width: 1px;" 
-            id='files' name='imagex'  
-            onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> <!-- Chrome security returns 'C:\fakepath\'  -->
-            <input id="btnclick" class="btn btn-u" type="button" value="PDF auswählen" onclick="$(this).parent().find('input[type=file]').click();"/> <!-- on button click fire the file click event -->
-     
-   <div id="zonepicandtitle"><span  class="badge badge-important" ></span><br><output id="list"></output></div>
-</span>
-
-<div id="stored" >
-<span style="background-color:#fed51c; color:#000000" >Derzeit gespeichert</span><br><span>
- </span>
-</div>
-
-<script>
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-          document.getElementById('list').insertBefore(span, null);
-        };
-      })(f);
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  }
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
-
-
-
-  $( "#btnclick" ).click(function() {
-  $( "#stored" ).animate({
-    opacity: 0.25,
-    left: "+=10"
-    
-  }, 700, function() {
-    $("#stored").css("visibility","hidden");
-  });
-});
-
-
-</script>
-<!--Aktuelles Bild-->
+BILD
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <br>
 
 
