@@ -48,7 +48,11 @@ class CalendarweekController extends BaseController
      */
     public function create()
     {
-        return View::make('backend.calendarweek.create');
+
+         $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
+         
+        return View::make('backend.calendarweek.create', compact('products'));
+
     }
     /**
      * Store a newly created resource in storage.

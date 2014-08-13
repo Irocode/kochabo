@@ -9,6 +9,12 @@
 <div class="container">
 
 
+                    
+
+
+
+
+
    <!--HEADER mit Zurück ANFANG-->
    <div class="headline">
       <h2>Neuen Wochenplan für KW: {{$calendarweek}} / Jahr: {{$year}} erstellen</h2>
@@ -20,14 +26,41 @@
 
 
   {{ Form::open(array('action' => 'App\Controllers\Admin\CalendarweekController@store')) }}
+
+ 
+
+
        
-@if($products->count())
-@foreach( $products as $v ) 
+
 <?php
 $random = rand(50, 15000);
 $random2 = rand(40, 18000);
 $random3 = rand(30, 14000);
 ?>
+
+
+
+
+
+
+
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title"> </h3>
+</div>
+<div class="panel-body">
+<div>  
+<div class="row">
+  <div class="col-md-6">
+
+ 
+
+
+
+               
+  @if($products->count())
+@foreach( $products as $v )  
 <!--Leerzeichen , Sonderzeichen entfernen-->
 <?php
 $dateiname = $v->product_name;
@@ -40,30 +73,21 @@ $dateiname = preg_replace('/\s/', '_', $dateiname);           // Leerzeichen dur
 $product_name_var=  $v->id;
 
 
-?>
 
+$countername = 1;
+$countselectbeast = 1;
+while ($countername <= $v->nr_of_recipes)  //20mal 20 Felder möglich
 
-
-
-<div class="panel panel-default">
-<div class="panel-heading">
-<h3 class="panel-title">{{$v->product_name}} [id: {{ $v->id}}] </h3>
-</div>
-<div class="panel-body">
-<div>  
-<div class="row">
-  <div class="col-md-6">
-
- 
+{
+    ?>
 
 <!--selectize Rezept 2 auswählen Anfang-->   
 
-
-      <label class="control-label" for="recipetype">Rezept 1</label>
+      <label class="control-label" for="recipetype">Rezeptx {{$countername}}</label>
         <input type="hidden" name="{{$product_name_var}}[id]" value="{{$v->id}}">
     <div id="wrapper">    
           <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-            <select  id="select-beast_<?php echo "$random" ?>" name="{{$product_name_var}}[]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+            <select  id="select-beast_<?php echo "$countselectbeast$product_name_var" ?>" name="{{$product_name_var}}[]"  style="width:auto"  placeholder=">Wähle / Suche "   >
                 <option value="" selected>Wähle / Suche     </option> 
               @foreach( $recipe as $x ) 
               <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -74,7 +98,7 @@ $product_name_var=  $v->id;
 @endif
         </div>
         <script>
-        $('#select-beast_<?php echo "$random" ?>').selectize({
+        $('#select-beast_<?php echo "$countselectbeast$product_name_var" ?>').selectize({
           create: true,
           sortField: {
             field: 'text',
@@ -85,7 +109,24 @@ $product_name_var=  $v->id;
   
 </div>
 
-<!--selectize Rezept 1 auswählen Ende-->  
+<!--selectize Rezept 1 auswählen Ende--> 
+<?php
+$countername++;    
+$countselectbeast++;       
+        
+}
+?>
+
+
+nr_of_recipes: {{ $v->nr_of_recipes}}  product_name: {{ $v->product_name}}  <br>
+@endforeach
+@else
+<div class="alert alert-danger">Keine Produkte vorhanden</div>
+@endif 
+
+
+
+
 <!--selectize Rezept 2 auswählen Anfang-->  
 <label class="control-label" for="recipetype">Rezept 2</label> 
     <div id="wrapper">    
@@ -213,12 +254,7 @@ $product_name_var=  $v->id;
 
 
 
-@endforeach
 
-
-@else
-<div class="alert alert-danger">Keine Produkte vorhanden</div>
-@endif 
 
 
   <br>  
