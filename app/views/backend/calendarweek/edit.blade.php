@@ -25,8 +25,12 @@
 
 
 
-<pre>
 
+
+
+
+<pre>
+--------------------------------------------------------
                     @foreach( $joinaufbau as $v )  
                     <b>product_name: {{ $v->product_name}}</b>
                     calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
@@ -46,29 +50,8 @@
 
 
 
-<pre>
---------------------------------------------------------
-                    @foreach( $joinaufbau3 as $v )  
-                    <b>product_name: {{ $v->product_name}}</b>
-                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
-                    productid: {{ $v->productid}} <br> 
-                    sorting: {{ $v->sorting}} <br> 
-                    recipeid: {{ $v->recipeid}} <br> 
-                    title: {{ $v->title}} <br>
-                    titleid: {{ $v->id}}<br>
-                    
-                    ID: {{ $v->id}}
-               
-                    <hr>
-                     @endforeach
-                
 
-</pre>
-
-
-
-
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
   {{Form::open( array( 'action' => array( 'App\Controllers\Admin\CalendarweekController@update', $calendarweek->packetid ),'files'=>true, 'method' => 'PATCH'))}}
@@ -77,9 +60,9 @@
 
 
 
-@if($products->count())
+@if($joinaufbau->count())
 
-@foreach( $products as $v ) 
+@foreach( $joinaufbau as $v ) 
 <?php
 $random = rand(50, 15000);
 $random2 = rand(40, 18000);
@@ -114,8 +97,18 @@ $product_name_var= strtolower($dateiname);
 <!--selectize Rezept DYNAMISCH auswählen Anfang-->   
 
 
+
+
     @foreach( $joinaufbau2 as $v )  </b>
             
+                   <b>product_name: {{ $v->product_name}}</b>
+                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
+                    productid: {{ $v->productid}} <br> 
+                    sorting: {{ $v->sorting}} <br> 
+                    recipeid: {{ $v->recipeid}} <br> 
+                    title: {{ $v->title}} <br>
+                    titleid: {{ $v->id}}<br>
+                    
                     ID: {{ $v->id}}
                
                     <hr>
