@@ -135,7 +135,7 @@
 <div id="zone">
 <div class="form-group">
     <label for="exampleInputFile">PDF einfügen</label>
-   <input type="text" name="pdf_{{$imagevar}}" class="btn btn-u" value="PDF auswählen">
+   <input type="file" name="pdf_{{$imagevar}}" class="btn btn-u" value="PDF auswählen">
 
   </div>
 </div>
