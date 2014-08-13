@@ -50,7 +50,7 @@ class CalendarweekController extends BaseController
     {
 
          $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
-         
+
         return View::make('backend.calendarweek.create', compact('products'));
 
     }
@@ -116,20 +116,50 @@ if  ($key2="year") {$key3="86";} else {};
 
 
 
+
+//Globale Varaiable setzen
+$counterstore_key_counter=0;
+
+
 if ($key2 > 0) {
-
-
-
 //echo (int)$key2;  echo"<br>";
 echo (int)$key2;  echo"<br>";
 $recipe=(int)$key2;
+$key2pdf="pdf_$recipe";
+global $counterstore_key;
+$counterstore_key="counterstore_$key2";
+
+
+//Hole Variable aus Blade
+$counterstore_key_counter= ($_REQUEST[$key2][$counterstore_key]);
+// Für Counter Schleife minus 1
+$counterstore_key_counter--;
+
+
+
+
+
 
 } else {};
 
 
+
+echo"<strong>DES:  $counterstore_key_counter  </strong>";
+
+
+
+
+
+
+
+$counterstore_key_counterx=2;
+
+
+
+
 $counterrecipe = 0;
 $countersorting = 1;
-while ($counterrecipe <= 2)  //20mal 20 Felder möglich
+while ($counterrecipe <= $counterstore_key_counter)  //20mal 20 Felder möglich
 
 {
 
@@ -155,6 +185,9 @@ $Lastproductname = $Calendarweekrecipestruktur->productname;
 $Calendarweekrecipestruktur->productid = $key2;
 $Calendarweekrecipestruktur->recipeid = $_REQUEST[$recipe][$counterrecipe];
 $Calendarweekrecipestruktur->sorting = $countersorting;
+
+$Calendarweekrecipestruktur->test2 = $_REQUEST[$key2pdf];
+
 
 
 $Calendarweekrecipestruktur->save();
