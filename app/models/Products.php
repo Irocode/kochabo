@@ -13,6 +13,7 @@ class Products extends Eloquent
         'photo_galleries_id',
         'description',
         'type',
+        'typename',
         'nr_of_recipes',
         'nr_of_persons',
         'price','ust',

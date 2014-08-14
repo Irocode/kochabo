@@ -5,7 +5,9 @@
         %title= 'This is HAML'
         %meta{:name => "description", :content => ""}
         %meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
-        %link{:href => "assets/frontend/plugins/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
+
+        - stylesheet_link_tag()
+        - javascript_include_tag()
     %body   
     .container 
         %section.header

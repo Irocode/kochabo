@@ -20,8 +20,6 @@ return View::make('frontend._layout.dashboard');
 
 
 
-
-
 //CartTest
 Route::resource('cart', 'CartController');
 

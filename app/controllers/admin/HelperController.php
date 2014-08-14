@@ -61,7 +61,7 @@ function calendarweeknew($year, $calendarweek)
         if ($calendarweekarray == null)
             {
           //  var_dump(' insert new record into database');
-              $products = Products::where('recipetypenummer', '>', '1')->where('type', '=', 'KochAbo-Box')->orderBy('id', 'DESC')->get();
+              $products = Products::where('recipetypenummer', '>', '1')->where('type', '=', '1')->orderBy('id', 'DESC')->get();
                  $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();              
              return View::make('backend.calendarweek.create', compact( 'products','recipe','calendarweek','year'));
             }
