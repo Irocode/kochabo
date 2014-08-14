@@ -148,6 +148,12 @@ class CalendarweekController extends BaseController
                         $Calendarweekrecipestruktur->sorting = $countersorting;
                         $Calendarweekrecipestruktur->recipeflyerurl = $pdf;
                         $Calendarweekrecipestruktur->save();
+
+                        $calendarweek = new Calendarweek;
+                        $calendarweek->calendarweek = Input::get('calendarweek');
+                        $calendarweek->year = Input::get('year');
+                        $calendarweek->type = 'test';
+                        $calendarweek->save();
                         }
                       else
                         {
