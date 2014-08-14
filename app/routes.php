@@ -88,6 +88,13 @@ Route::resource('newsletter', 'NewsletterController');
 Route::get('/versand',function() {
 return View::make('frontend.newsletter.versand');
 });
+
+// Versand
+Route::get('/middleman',function() {
+return View::make('frontend.middleman.index');
+});
+
+
 // aktivierung
 Route::resource('aktivierung', 'NewslettereintragController@update');
 Route::get('/aktivierung/{email}/email', 'NewslettereintragController@update')->where('email', '$email');
