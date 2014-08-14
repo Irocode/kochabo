@@ -12,7 +12,7 @@
 
    <!--HEADER mit Zurück ANFANG-->
    <div class="headline">
-         <h2>Neuen Wochenplan für KW: {{$calendarweek->packetid}} / Jahr: {{$calendarweek->year}} bearbeiten</h2>
+         <h2>Neuen Wochenplan für KW: {{$calendarweek->calendarweek}} / Jahr: {{$calendarweek->year}} bearbeiten</h2>
  
       <div class="pull-right">
          {{ HTML::link('/admin/calendarweek','Zurück', array('class'=>'btn btn-u')) }}
@@ -24,14 +24,51 @@
 
 
 
+<pre>
 
+                    @foreach( $joinaufbau90 as $v )  
+                    <b>product_name: {{ $v->product_name}}</b>
+                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
+                    productid: {{ $v->productid}} <br> 
+                    sorting: {{ $v->sorting}} <br> 
+                    recipeid: {{ $v->recipeid}} <br> 
+                    title: {{ $v->title}} <br>
+                    titleid: {{ $v->id}}<br>
+                    
+                    ID: {{ $v->id}}
+               
+                    <hr>
+                     @endforeach
+                
+
+</pre>
+<br>
+
+<pre>
+
+                    @foreach( $joinaufbau89 as $v )  
+                    <b>product_name: {{ $v->product_name}}</b>
+                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
+                    productid: {{ $v->productid}} <br> 
+                    sorting: {{ $v->sorting}} <br> 
+                    recipeid: {{ $v->recipeid}} <br> 
+                    title: {{ $v->title}} <br>
+                    titleid: {{ $v->id}}<br>
+                    
+                    ID: {{ $v->id}}
+               
+                    <hr>
+                     @endforeach
+                
+
+</pre>
 
 
 
 
 <pre>
 --------------------------------------------------------
-                    @foreach( $joinaufbau as $v )  
+                    @foreach( $joinaufbaugesamt as $v )  
                     <b>product_name: {{ $v->product_name}}</b>
                     calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
                     productid: {{ $v->productid}} <br> 
@@ -99,7 +136,7 @@ $product_name_var= strtolower($dateiname);
 
 
 
-    @foreach( $joinaufbau2 as $v )  </b>
+    @foreach( $joinaufbaugesamt as $v )  </b>
             
                    <b>product_name: {{ $v->product_name}}</b>
                     calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    

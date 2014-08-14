@@ -106,7 +106,6 @@ class CalendarweekController extends BaseController
                 $counterstore_key = "counterstore_$key2";
 
                 // Save PDFs
-
                 if (Input::hasFile($key2pdf))
                     {
 
@@ -174,8 +173,6 @@ class CalendarweekController extends BaseController
     
 
         return Redirect::to("/admin/calendarweeknew/" . $year . "/" . $calendarweek . "/edit");
-
-
 
 ///admin/calendarweeknew/2014/35/edit
         }
