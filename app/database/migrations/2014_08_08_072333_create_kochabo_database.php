@@ -1,7 +1,7 @@
 <?php
  
 //
-// NOTE Migration Created: 2014-08-05 06:14:28
+// NOTE Migration Created: 2014-08-08 07:23:33
 // --------------------------------------------------
  
 class CreateKochaboDatabase {
@@ -118,6 +118,36 @@ Schema::create('calendar', function($table) {
  $table->mediumtext('hinweis');
  $table->timestamp('created_at')->default("0000-00-00 00:00:00");
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ });
+
+
+//
+// NOTE -- calendarweek
+// --------------------------------------------------
+ 
+Schema::create('calendarweek', function($table) {
+ $table->increments('packetid');
+ $table->string('calendarweek', 255);
+ $table->mediumtext('year');
+ $table->string('type', 100);
+ $table->('recipeflyerur');
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ $table->unsignedInteger('is_published');
+ });
+
+
+//
+// NOTE -- calendarweekrecipestruktur
+// --------------------------------------------------
+ 
+Schema::create('calendarweekrecipestruktur', function($table) {
+ $table->increments('packetid');
+ $table->('recipeid');
+ $table->unsignedInteger('sorting');
+ $table->timestamp('created_at')->default("0000-00-00 00:00:00");
+ $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
+ $table->unsignedInteger('is_published');
  });
 
 
@@ -910,6 +940,7 @@ Schema::create('products', function($table) {
  $table->string('currency', 100);
  $table->('ust');
  $table->string('recipetype', 255);
+ $table->unsignedInteger('recipetypenummer');
  $table->string('sku', 100);
  $table->unsignedInteger('standalone');
  $table->timestamp('updated_at')->default("0000-00-00 00:00:00");
@@ -1187,6 +1218,8 @@ Schema::drop('articles');
 Schema::drop('articles_tags');
 Schema::drop('beispielbox');
 Schema::drop('calendar');
+Schema::drop('calendarweek');
+Schema::drop('calendarweekrecipestruktur');
 Schema::drop('categories');
 Schema::drop('customers_groups');
 Schema::drop('delivery_date');

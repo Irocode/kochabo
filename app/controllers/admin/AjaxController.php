@@ -24,10 +24,12 @@ use Validator;
 use Response;
 use Str;
 use Notification;
+use Calendarweekrecipestruktur;
+use Calendarweek;
 class AjaxController extends BaseController
 
 {
-    public function __construct(Recipeingredient $recipe_ingredient, Recipe $recipe, Ingredients $ingredients, Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
+    public function __construct(Calendarweekrecipestruktur $calendarweekrecipestruktur,Calendarweek $calendarweek,Recipeingredient $recipe_ingredient, Recipe $recipe, Ingredients $ingredients, Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
 
     {
         View::share('active', 'modules');
@@ -46,6 +48,10 @@ class AjaxController extends BaseController
         $this->ingredients = $ingredients;
         $this->recipe = $recipe;
         $this->recipe_ingredient = $recipe_ingredient;
+
+        $this->calendarweek = $calendarweek;
+       
+        $this->calendarweekrecipestruktur = $calendarweekrecipestruktur;
 
     }
     // AJAX Call-> Index Logistmanager Start
@@ -292,8 +298,8 @@ $kundengrupperesult = Users::join('customers_groups','customers_groups.customers
     }
     // AJAX Call-> Index recipe (ALLE)INDEX Ende
 
+        
+    }
 
-
-}
 
 

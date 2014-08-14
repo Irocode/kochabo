@@ -912,11 +912,7 @@ $selectbeastx_ee = "selectbeastx_$selectbeastx_e" ?>
                <td>
                 
 
-<!--selectize Zutenname auswählen Anfang-->
-
-
-
-
+<!--selectize Zutatname auswählen Anfang-->
    
     <div id="wrapper">          
           <div class="control-group {{ $errors->has('ingredient_id') ? 'has-error' : '' }}">
@@ -1163,7 +1159,7 @@ if (isset($idzt))
          <div style="height:30px;"> </div>
 
          <!-- Image -->
- <label class="control-label" for="imagex">Bild einfügen (Derzeit 200 x 200px)</label>
+        <label class="control-label" for="imagex">Bild einfügen (Derzeit 200 x 200px)</label>
          <div id="zone">
             <span>
                <input  type="file" 

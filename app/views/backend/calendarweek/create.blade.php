@@ -1,159 +1,194 @@
 @extends('backend/_layout/layout')
-@section('content')
+@section('content')  
+{{ HTML::style('assets/backend/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
+{{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectizenew.js') }}    
 
-{{ HTML::script('ckeditor/ckeditor.js') }}
-{{ HTML::style('assets/backend/bootstrap/css/bootstrap-tagsinput.css') }}
-{{ HTML::script('assets/backend/bootstrap/js/bootstrap-tagsinput.js') }}
-{{ HTML::script('assets/backend/js/jquery.slug.js') }}
 
-{{ HTML::style('bootstrap_datepicker/css/datepicker.css') }}
-{{ HTML::script('bootstrap_datepicker/js/bootstrap-datepicker.js') }}
-{{ HTML::script('bootstrap_datepicker/js/locales/bootstrap-datepicker.tr.js') }}
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#title").slug();
 
-        $('#datetime').datepicker({
-            format: "yyyy-mm-dd",
-            todayBtn: "linked",
-            orientation: "top auto"
-        });
 
-        if ($('#tag').length != 0) {
-            var elt = $('#tag');
-            elt.tagsinput();
-        }
-    });
-</script>
 <div class="container">
-    <div class="page-header">
-        <h3>
-            News erstellen
-            <div class="pull-right">
-                {{ HTML::link('/admin/news','Zurück', array('class'=>'btn btn-primary')) }}
-            </div>
-        </h3>
-    </div>
-    {{ Form::open(array('action' => 'App\Controllers\Admin\NewsController@store')) }}
 
-    <!-- Title -->
-    <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
-        <label class="control-label" for="title">Titel</label>
 
-        <div class="controls">
-            {{ Form::text('title', null, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'Titel', 'value'=>Input::old('title'))) }}
-            @if ($errors->first('title'))
-            <span class="help-block">{{ $errors->first('title') }}</span>
-            @endif
-        </div>
-    </div>
-    <br>
-
-    <!-- Slug -->
-    <div class="control-group {{ $errors->has('slug') ? 'has-error' : '' }}">
-        <label class="control-label" for="title">Slug</label>
-
-        <div class="controls">
-            <div class="input-group">
-                <span class="input-group-addon">www.kochabo.at/</span>
-                {{ Form::text('slug', null, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
-            </div>
-            @if ($errors->first('slug'))
-            <span class="help-block">{{ $errors->first('slug') }}</span>
-            @endif
-        </div>
-    </div>
-    <br>
-
-    <!-- Datetime -->
-    <div class="control-group {{ $errors->has('datetime') ? 'has-error' : '' }}">
-        <label class="control-label" for="title">Datum</label>
-
-        <div class="controls">
-            {{ Form::text('datetime', null, array('class'=>'form-control', 'id' => 'datetime', 'value'=>Input::old('datetime'))) }}
-            @if ($errors->first('datetime'))
-            <span class="help-block">{{ $errors->first('datetime') }}</span>
-            @endif
-        </div>
-    </div>
-    <br>
-
-    <!-- Content -->
-    <div class="control-group {{ $errors->has('content') ? 'has-error' : '' }}">
-        <label class="control-label" for="title">Content</label>
-
-        <div class="controls">
-            {{ Form::textarea('content', null, array('class'=>'form-control', 'id' => 'content', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
-            @if ($errors->first('content'))
-            <span class="help-block">{{ $errors->first('content') }}</span>
-            @endif
-        </div>
-    </div>
-    <br>
+   <!--HEADER mit Zurück ANFANG-->
+   <div class="headline">
+      <h2>Neuen Wochenplan für KW: {{$calendarweek}} / Jahr: {{$year}} erstellen</h2>
+      <div class="pull-right">
+         {{ HTML::link('/admin/calendarweek','Zurück', array('class'=>'btn btn-u')) }}
+      </div>
+   </div>
+   <!--HEADER mit Zurück ENDE-->
 
 
 
 
-    <div class="control-group {{ $errors->has('bild1') ? 'has-error' : '' }}">
-        <label class="control-label" for="title">Teaserbild einfügen</label>
+   {{ Form::open(array('action' => 'App\Controllers\Admin\CalendarweekController@store' , 'files'=> true, 'method' => 'post' )) }}
 
-        <div class="controls">
-           {{ Form::textarea('bild1', null, array('class'=>'form-control', 'id' => 'bild1', 'value'=>Input::old('bild1'))) }}
-            @if ($errors->first('bild1'))
-            <span class="help-block">{{ $errors->first('bild1') }}</span>
-            @endif
-        </div>
-    </div>
-    <br>
-
-    <!-- Published -->
-    <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
-
-        <div class="controls">
-            <label class="checkbox">{{ Form::checkbox('is_published', 'is_published') }} Veröffentlichen ?</label>
-            @if ($errors->first('is_published'))
-            <span class="help-block">{{ $errors->first('is_published') }}</span>
-            @endif
-        </div>
-    </div>
-    <br>
-
-
-
-
-
-
-
-
-
-    {{ Form::submit('Anlegen', array('class' => 'btn btn-success')) }}
-    {{ Form::close() }}
- <script>
-
-        window.onload = function () {
+  
 
        
+@if($products->count())
+@foreach( $products as $v )  
 
-            CKEDITOR.replace('content', {
-               "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",
-                height: '150px',
-              });  
+
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title">{{$v->product_name}} [id: {{ $v->id}}] </h3>
+</div>
+<div class="panel-body">
+<div>  
+<div class="row">
+  <div class="col-md-6">
 
  
-                  CKEDITOR.replace('bild1', { customConfig: "{{$myuserurl}}ckeditor/config_images.js",
-                    extraPlugins: 'doksoft_image',
-                     toolbar: 'customToolbar',
-                     toolbar_customToolbar: [ ['doksoft_image'] ],
-                        allowedContent: true,
-                        height: 200,
-                        width: 400,
+
+
+
+
+
+
+
+
+
+
+                  
+                  <!--Leerzeichen , Sonderzeichen entfernen-->
+                  <?php
+                     $dateiname = $v->product_name;
+                     $dateiname = preg_replace('/[^A-Za-z 0-9]/', '', $dateiname); // alles weg, bis auf Buchstaben, Ziffern und Leerzeichen
+                     $dateiname = preg_replace('/\s\s+/', ' ', $dateiname);        // überflüssige Leerzeichen auf eines reduzieren
+                     $dateiname = preg_replace('/\s/', '_', $dateiname);           // Leerzeichen durch Unterstrich ersetzen
+                     //echo strtolower($dateiname);
+                     //$product_name_var= strtolower($dateiname);
+                     
+                     $product_name_var=  $v->id;
+                     $imagevar=  $v->id;
+                      $pdfvar=  $v->id;
+
+                     $countername = 1;
+                     $countselectbeast = 1;
+                     while ($countername <= $v->nr_of_recipes)  //20mal 20 Felder möglich
+                     
+                     {
+                         ?>
+                  <!--selectize Rezept Dynamic auswählen Anfang-->   
 
                 
-                  "filebrowserBrowseUrl": "{{ url('filemanager/show') }}",       
-            });
+                  <label class="control-label" for="recipetype">Rezept {{$countername}}</label>
+                  <input type="hidden" name="{{$product_name_var}}[id]" value="{{$v->id}}">
+                   <input type="hidden" name="{{$product_name_var}}[counterstore_{{$imagevar}}]" value="{{$v->nr_of_recipes}}">
+                  <div id="wrapper">
+                     <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
+                        <select  id="select-beast_<?php echo "$countselectbeast$product_name_var" ?>" name="{{$product_name_var}}[]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+                           <option value="" selected>Wähle / Suche     </option>
+                           @foreach( $recipe as $x ) 
+                           <option value="{{$x->id }}">{{ $x->title }}</option>
+                           @endforeach             
+                        </select>
+                        @if ($errors->first('title1'))
+                        <span class="help-block">{{ $errors->first('title1') }}</span>
+                        @endif
+                     </div>
+                     <script>
+                        $('#select-beast_<?php echo "$countselectbeast$product_name_var" ?>').selectize({
+                          create: true,
+                          sortField: {
+                            field: 'text',
+                            direction: 'asc'
+                          }
+                        });
+                     </script>
+                  </div>
+              
+                  <!--selectize Rezept Dynamic auswählen Ende--> 
+                  <?php
+                     $countername++;    
+                     $countselectbeast++;      
 
-        };
 
-    </script>
+
+                            
+                     }
+                     ?>
+                    
+                 <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div><div class="col-md-6">
+
+
+
+
+
+ <!-- PDF -->
+<div id="zone">
+<div class="form-group">
+    <label for="exampleInputFile">PDF einfügen</label>
+   <input type="file" name="pdf_{{$imagevar}}" class="btn btn-u" value="PDF auswählen">
+
+  </div>
 </div>
+
+
+
+    
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+
+
+
+
+
+@endforeach
+
+
+@else
+<div class="alert alert-danger">Keine Produkte vorhanden</div>
+@endif 
+
+
+  <br>  
+   <!-- Plichtfeld Anfang -->
+   <div  style="margin-top:20px; margin-bottom:10px;">
+      <p><span class="stern" >*</span> Plichtfelder müssen ausgefüllt werden. </p>
+   </div>
+   <!-- Plichtfeld Ende -->
+   <!--Formular Registrierung Ende-->
+   {{ Form::hidden('activated', '1', array('class' => 'form-control' )) }} 
+   {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control' )) }} 
+   {{ Form::hidden('calendarweek', $calendarweek, array('class' => 'form-control' )) }} 
+   {{ Form::hidden('year', $year, array('class' => 'form-control' )) }} 
+   {{ Form::submit('Anlegen', array('class' => 'btn btn-u')) }}
+
+
+    {{ Form::close() }}
+</div>
+<!-- Plichtfeld Ende -->
+<br>
+<br>
+</div>
+
+</div>
+</div>
+
 @stop

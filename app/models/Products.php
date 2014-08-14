@@ -17,6 +17,7 @@ class Products extends Eloquent
         'nr_of_persons',
         'price','ust',
         'recipetype',
+        'recipetypenummer',
         'sku',
         'standalone' ,        
         'imagex',
