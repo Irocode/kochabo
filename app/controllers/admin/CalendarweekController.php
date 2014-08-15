@@ -65,122 +65,63 @@ class CalendarweekController extends BaseController
 
     function store()
         {
-        $data = Input::all();
 
-        // var_dump($data);
-
+        $data = Input::all(); 
         echo "<pre>";
         echo print_r($data);
         echo "</pre>";
-        var_dump('<hr>');
-        $calendarweek = new Calendarweek;
-        $calendarweek->calendarweek = Input::get('calendarweek');
-        $calendarweek->year = Input::get('year');
-        $calendarweek->save();
-        $LastInsertId_calendarweek = $calendarweek->packetid;
-        var_dump('<br />LASTINSERIDcalendarweek');
-        var_dump($LastInsertId_calendarweek);
-        $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
-        $Calendarweekrecipestruktur->packetid = $LastInsertId_calendarweek;
-        $Calendarweekrecipestruktur->save();
-        $LastInsertId = $Calendarweekrecipestruktur->packetid;
-        var_dump('<br />LASTINSERIDCalendarweekrecipestruktur');
-        var_dump($LastInsertId);
-        var_dump('<hr>');
-        foreach($_REQUEST as $key2 => $value)
-            {
+        echo"<hr>";        
 
-            // Globale Varaiable setzen
+          $calendarweek = Input::get('calendarweek');    
+          $year = Input::get('year'); 
 
-            $counterstore_key_counter = 0;
-            if ($key2 > 0)
-                {
+foreach($_REQUEST['merger'] as $key => $value)
+ {
+    echo "<hr>";
+echo "$key: <br>";
+echo "<br>";
+echo "<hr>";
 
-                // echo (int)$key2;  echo"<br />";
+$calendarweek = new Calendarweek;
+$calendarweek->calendarweek = Input::get('calendarweek');
+$calendarweek->year = Input::get('year');
+$calendarweek->type = $_REQUEST['merger'][$key]['type'];
+$keypdf = "pdf_$key";
+ if (Input::hasFile($keypdf))
+    {
+    // var_dump('pdf is here');
+    $file = Input::file($keypdf);
+    $pdf = $file->getClientOriginalName();
+    $calendarweek->recipeflyerurl = $pdf;
+    }
 
-                echo (int)$key2;
-                echo "<br />";
-                $recipe = (int)$key2;
-                $key2pdf = "pdf_$recipe";
-                global $counterstore_key;
-                $counterstore_key = "counterstore_$key2";
-
-                // Save PDFs
-                if (Input::hasFile($key2pdf))
-                    {
-
-                    // var_dump('pdf is here');
-
-                    $file = Input::file($key2pdf);
-                    $pdf = $file->getClientOriginalName();
-                    }
-
-                // Hole Variable aus Blade
-
-                $counterstore_key_counter = ($_REQUEST[$key2][$counterstore_key]);
-
-                // Für Counter Schleife minus 1
-
-                $counterstore_key_counter--;
-                }
-              else
-                {
-                };
-            $counterrecipe = 0;
-            $countersorting = 1;
-            while ($counterrecipe <= $counterstore_key_counter) //20mal 20 Felder möglich
-                {
-                if ($key2 > 0)
-                    { // Nur Felder mit Zahl
-
-                    // Nur speichern wenn Recipe angelegt wurde
-
-                    $abfragewievielefelderesgibt = $_REQUEST[$recipe][$counterrecipe];
-                    if (isset($abfragewievielefelderesgibt))
-                        {
-                      
-                        $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
-                        $Calendarweekrecipestruktur->packetid = $LastInsertId_calendarweek;
-                        $Calendarweekrecipestruktur->productname = $key2;
-                        $Lastproductname = $Calendarweekrecipestruktur->productname;
-                        $Calendarweekrecipestruktur->productid = $key2;
-                        $Calendarweekrecipestruktur->recipeid = $_REQUEST[$recipe][$counterrecipe];
-                        $Calendarweekrecipestruktur->sorting = $countersorting;
-                        $Calendarweekrecipestruktur->recipeflyerurl = $pdf;
-                        $Calendarweekrecipestruktur->save();
-
-                        $calendarweek = new Calendarweek;
-                        $calendarweek->calendarweek = Input::get('calendarweek');
-                        $calendarweek->year = Input::get('year');
-                        $calendarweek->type = 'test';
-                        $calendarweek->save();
-                        }
-                      else
-                        {
-                        var_dump('wurde nicht gespeichert');
-                        }
-                    }
-                  else
-                    {
-                    };
-                echo $counterrecipe;
-                echo "<br />";
-                $counterrecipe++;
-                $countersorting++;
-                }
-            }
-
-        echo "<br />";
+$calendarweek->save();
+$lastinsertidcalendarweek = $calendarweek->packetid;
 
 
 
-        $calendarweek = Input::get('calendarweek');
-        $year = Input::get('year');
-    
+foreach($_REQUEST['merger'][$key]['recipe'] as $key3 => $value3)
+ {
 
-        return Redirect::to("/admin/calendarweeknew/" . $year . "/" . $calendarweek . "/edit");
+    echo "hier: $key3: <br>";
 
-///admin/calendarweeknew/2014/35/edit
+
+
+ $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
+ $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek;  
+ $Calendarweekrecipestruktur->productid = $key; 
+ $Calendarweekrecipestruktur->productname = $key;
+ $sorteraddeins= ($key3+1);   
+ $Calendarweekrecipestruktur->sorting = $sorteraddeins;    
+ $Calendarweekrecipestruktur->recipeid = $_REQUEST['merger'][$key]['recipe'][$key3];
+ $Calendarweekrecipestruktur->save();
+}
+
+}
+
+return Redirect::to("/admin/calendarweeknew/" . $year . "/" . $calendarweek . "/edit");
+
+       
         }
 
     /**

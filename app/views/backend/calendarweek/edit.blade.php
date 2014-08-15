@@ -26,7 +26,7 @@
 
 <pre>
 
-                    @foreach( $joinaufbau90 as $v )  
+                    @foreach( $joinaufbautest as $v )  
                     <b>product_name: {{ $v->product_name}}</b>
                     calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
                     productid: {{ $v->productid}} <br> 
@@ -44,46 +44,11 @@
 </pre>
 <br>
 
-<pre>
-
-                    @foreach( $joinaufbau89 as $v )  
-                    <b>product_name: {{ $v->product_name}}</b>
-                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
-                    productid: {{ $v->productid}} <br> 
-                    sorting: {{ $v->sorting}} <br> 
-                    recipeid: {{ $v->recipeid}} <br> 
-                    title: {{ $v->title}} <br>
-                    titleid: {{ $v->id}}<br>
-                    
-                    ID: {{ $v->id}}
-               
-                    <hr>
-                     @endforeach
-                
-
-</pre>
 
 
 
 
-<pre>
---------------------------------------------------------
-                    @foreach( $joinaufbaugesamt as $v )  
-                    <b>product_name: {{ $v->product_name}}</b>
-                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
-                    productid: {{ $v->productid}} <br> 
-                    sorting: {{ $v->sorting}} <br> 
-                    recipeid: {{ $v->recipeid}} <br> 
-                    title: {{ $v->title}} <br>
-                    titleid: {{ $v->id}}<br>
-                    
-                    ID: {{ $v->id}}
-               
-                    <hr>
-                     @endforeach
-                
 
-</pre>
 
 
 

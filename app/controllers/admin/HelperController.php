@@ -239,6 +239,39 @@ var_dump($result);
 
 
 
+
+
+ $joinaufbautest = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
+                        ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
+                        ->join('products','products.id','=','calendarweekrecipestruktur.productid')        
+
+                        ->where('calendarweek.calendarweek','=',$calendarweek)->where('calendarweek.year','=',$year)
+                       
+
+     
+                      -> groupBy('calendarweek.type')-> groupBy('calendarweekrecipestruktur.productid')
+
+
+                        ->get([
+                           'calendarweekrecipestruktur.packetid',
+                         'calendarweekrecipestruktur.recipeid',
+                          'calendarweekrecipestruktur.sorting',
+                           'calendarweekrecipestruktur.productid',                   
+                            'calendarweek.calendarweek',
+                             'calendarweek.year',
+                              'calendarweekrecipestruktur.sorting',  
+                                'recipe.title',
+                                 'recipe.id',
+                                  'products.product_name',
+                                    'calendarweekrecipestruktur.id',
+                        ]);  
+
+
+
+
+
+
+
                     $calendarweek = $this->calendarweek->find($idnew);
                     $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $idnew)->orderBy('id', 'DESC')->get();
                     $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
@@ -246,7 +279,7 @@ var_dump($result);
                     
 
                     $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
-                    return View::make('backend.calendarweek.edit', compact('joinaufbau90','joinaufbau89','test','calendarweek', 'products', 'recipe', 'calendarweekrecipestruktur','joinaufbau','joinaufbaugesamt','joinaufbau3'));
+                    return View::make('backend.calendarweek.edit', compact('joinaufbautest','joinaufbau90','joinaufbau89','test','calendarweek', 'products', 'recipe', 'calendarweekrecipestruktur','joinaufbau','joinaufbaugesamt','joinaufbau3'));
                     }
                 };
             }
