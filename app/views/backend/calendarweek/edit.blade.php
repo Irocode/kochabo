@@ -24,9 +24,11 @@
 
 
 
-<pre>
 
-                    @foreach( $joinaufbautest as $v )  
+
+                    @foreach( $joinaufbautest as $v ) 
+
+                    <pre> 
                     <b>product_name: {{ $v->product_name}}</b>
                     calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
                     productid: {{ $v->productid}} <br> 
@@ -38,10 +40,11 @@
                     ID: {{ $v->id}}
                
                     <hr>
+                    </pre>
                      @endforeach
                 
 
-</pre>
+
 <br>
 
 
@@ -116,7 +119,6 @@ $product_name_var= strtolower($dateiname);
                     <hr>
                      @endforeach
 
-<!--selectize Rezept DYNAMISCH auswählen Ende-->  
 
 
 

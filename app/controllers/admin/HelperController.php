@@ -241,7 +241,39 @@ var_dump($result);
 
 
 
- $joinaufbautest = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
+
+
+ $joinaufbautestx= Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
+                        ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
+                        ->join('products','products.id','=','calendarweekrecipestruktur.productid')        
+
+                        ->where('calendarweek.calendarweek','=',$calendarweek)->where('calendarweek.year','=',$year)
+                       
+
+     
+                     // -> groupBy('calendarweek.type')-> groupBy('calendarweekrecipestruktur.productid')
+
+
+                        ->get([
+                           'calendarweekrecipestruktur.packetid',
+                         'calendarweekrecipestruktur.recipeid',
+                          'calendarweekrecipestruktur.sorting',
+                           'calendarweekrecipestruktur.productid',                   
+                            'calendarweek.calendarweek',
+                             'calendarweek.year',
+                              'calendarweekrecipestruktur.sorting',  
+                                'recipe.title',
+                                 'recipe.id',
+                                  'products.product_name',
+                                    'calendarweekrecipestruktur.id',
+                        ]);  
+
+
+
+
+ $joinaufbautest= Calendarweek::join('calendarweekrecipestruktur','calendarweekrecipestruktur.packetid','=','calendarweek.packetid')
+
+
                         ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
                         ->join('products','products.id','=','calendarweekrecipestruktur.productid')        
 
@@ -267,7 +299,40 @@ var_dump($result);
                         ]);  
 
 
+                    
 
+
+foreach($joinaufbautest as $key => $value)
+ {
+
+    echo "$key: <br>";
+ $joinaufbautestxx= Calendarweek::join('calendarweekrecipestruktur','calendarweekrecipestruktur.packetid','=','calendarweek.packetid')
+
+
+                        ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
+                        ->join('products','products.id','=','calendarweekrecipestruktur.productid')        
+
+                        ->where('calendarweek.calendarweek','=',$calendarweek)->where('calendarweek.year','=',$year)
+                       
+                        ->where('calendarweekrecipestruktur.productid','=',$key) 
+     
+                      
+
+
+                        ->get([
+                           'calendarweekrecipestruktur.packetid',
+                         'calendarweekrecipestruktur.recipeid',
+                          'calendarweekrecipestruktur.sorting',
+                           'calendarweekrecipestruktur.productid',                   
+                            'calendarweek.calendarweek',
+                             'calendarweek.year',
+                              'calendarweekrecipestruktur.sorting',  
+                                'recipe.title',
+                                 'recipe.id',
+                                  'products.product_name',
+                                    'calendarweekrecipestruktur.id',
+                        ]);  
+}
 
 
 

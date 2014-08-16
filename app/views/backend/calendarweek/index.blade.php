@@ -9,26 +9,13 @@
       <div class="panel-body">
          <div class="pull-left">
            
-         </div>
-          
+         </div>          
          <br>
-       
-       
-
-
 <?php
-
-
-
     $week  = date('W'); 
-
 ?>
-
-
-
 <div class="row">
   <div class="col-md-6">
-
 
  <br> <br> <br>
 <form id="week_form"  name="week_form" >
@@ -64,7 +51,6 @@
                     </select>
                 </form>
 
-
  </div>
   <div class="col-md-6">
 <div class="headline">
@@ -73,29 +59,14 @@
 <blockquote class="hero">
 <p>Ein Wochenplan wird mit den aktuellen Produkten angelegt. Nachherige Änderungen in den Produkten werden nicht in einem bestehenden Wochenplan übernommen. </p>
 
-
-
-
-
 </blockquote>
 </div>
 </div>
-</div>  
-
-
-
-
-
-
-
+</div> 
 
 
 </div>
 </div>
-
-
-
-
 
 <script>
     $(function(){
@@ -106,18 +77,12 @@
 var calendarweek = split[0];
 var year = split[1];
           if (variable) { // require a URL
-              window.location = 'http://127.0.0.1/laravel/kochabo/admin/calendarweeknew/' + year + '/' +calendarweek + '/edit'; // redirect
+             window.location = location.href+'new/' + year + '/' +calendarweek + '/edit'; // redirect
           }
           return false;
       });
     });
 </script>
-
-
-
-
-
-
 
 
 
