@@ -26,7 +26,7 @@
 
 
 
-                    @foreach( $joinaufbautest as $v ) 
+                    @foreach( $joinaufbaugesamt as $v ) 
 
                     <pre> 
                     <b>product_name: {{ $v->product_name}}</b>
@@ -65,9 +65,9 @@
 
 
 
-@if($joinaufbau->count())
+@if($joinaufbaugesamt->count())
 
-@foreach( $joinaufbau as $v ) 
+@foreach( $joinaufbaugesamt as $v ) 
 <?php
 $random = rand(50, 15000);
 $random2 = rand(40, 18000);
