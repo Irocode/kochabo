@@ -20,28 +20,96 @@
    </div>
    <!--HEADER mit Zurück ENDE-->
 
+<?php
+
+$calendarweekstructure = array
+   (
+   array("rezept1",22,18),
+   array("rezept1",15,13),
+   array("rezept3",5,2),
+   array("rezept4",17,15)
+   );
+   
+
+   
+   
+   //echo count ( $calendarweekstructure ); 
+   $counter=count ( $calendarweekstructure );
+
+
+//Durchgaenge
+
+$counterminus=$counter-1;
+
+$productsx = array(
+    0 => "fressibox1",
+    1 => "fressibox1",
+    2 => "megaalibox",
+    3 => "alibox"
+);
+// elimnierung von duplicaten   
+$result = array_unique($outproducts);
+  echo "<pre>";
+        echo print_r($result);
+        echo "</pre>";
+
+          echo "<pre>dddddddddddddddddddddddddddd";
+        echo print_r($outproductsrecipe);
+        echo "</pre>";
+     
+     
+for ($row = 0; $row <  $counter; $row++) {
+foreach ($result as $key => $value) {
+   // echo "Key: $key; Value: $value<br />\n";
+  
+  if ($key==$row){echo "<hr><div  style='border: solid 1px #000000; background-color:#fed51c'><h1><b>HEADLINE $value</b></h1> ";}else {echo "<div style='background-color:#ggd51c'>";};
+}
+
+
+
+
+   for ($col = 0; $col <  $counterminus; $col++) {
+ 
+   
+  
+  
+   }
+  
+   
+  
+   for ($col = 0; $col <  $counterminus; $col++) {
+ 
+     echo "".$outproductsrecipe[$row][$col]."<br>";
+  
+  
+  
+
+foreach ($result as $key => $value) {
+   // echo "Key: $key; Value: $value<br />\n";
+  
+  if ($key==$row){echo "</div>";}else {};
+}
+  
+  
+   }
+  
+   
+   
+}
+
+
+
+?>
+<br>
 
 
 
 
 
 
-                    @foreach( $joinaufbaugesamt as $v ) 
 
-                    <pre> 
-                    <b>product_name: {{ $v->product_name}}</b>
-                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
-                    productid: {{ $v->productid}} <br> 
-                    sorting: {{ $v->sorting}} <br> 
-                    recipeid: {{ $v->recipeid}} <br> 
-                    title: {{ $v->title}} <br>
-                    titleid: {{ $v->id}}<br>
-                    
-                    ID: {{ $v->id}}
-               
-                    <hr>
-                    </pre>
-                     @endforeach
+
+
                 
 
 
