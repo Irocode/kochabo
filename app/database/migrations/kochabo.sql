@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 14. Aug 2014 um 19:34
+-- Erstellungszeit: 18. Aug 2014 um 12:06
 -- Server Version: 5.5.36
 -- PHP-Version: 5.4.27
 
@@ -236,32 +236,7 @@ CREATE TABLE IF NOT EXISTS `calendar` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
-
---
--- Daten für Tabelle `calendar`
---
-
-INSERT INTO `calendar` (`id`, `timestamp`, `start`, `end`, `title`, `hinweis`, `created_at`, `updated_at`) VALUES
-(8, '2014-05-23 07:45:03', '2014-04-10', '2014-04-10', 'Liefertag', '', '0000-00-00 00:00:00', '2014-05-23 05:43:17'),
-(9, '2014-05-23 09:42:36', '2014-05-05', '0000-00-00', 'Liefertag', '', '0000-00-00 00:00:00', '2014-05-23 07:42:36'),
-(10, '2014-05-17 09:03:22', '2014-04-09', '2014-04-09', 'Liefertag', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(11, '2014-05-17 09:03:31', '2014-04-16', '2014-04-16', 'Feiertag', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, '2014-05-17 09:06:46', '2014-04-02', '2014-04-02', 'Feiertag', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, '2014-05-17 09:19:49', '2014-04-01', '2014-04-01', 'Feiertag', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(14, '2014-05-17 09:24:44', '2014-04-07', '2014-04-07', 'Feiertag', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(16, '2014-05-21 09:28:26', '2014-04-30', '2014-04-30', 'Feiertag', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, '2014-05-21 09:28:34', '2014-04-08', '2014-04-08', 'Liefertag', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, '2014-05-21 09:28:43', '2014-04-03', '2014-04-03', 'Liefertag', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(21, '2014-05-23 09:05:44', '2014-05-09', '2014-05-09', 'Feiertag', '', '2014-05-23 07:05:44', '2014-05-23 07:05:44'),
-(22, '2014-05-23 09:07:49', '2014-05-01', '2014-05-01', 'Feiertag', '', '2014-05-23 07:07:49', '2014-05-23 07:07:49'),
-(23, '2014-05-23 09:37:53', '2014-05-07', '2014-05-07', 'Liefertag', '', '2014-05-23 07:37:53', '2014-05-23 07:37:53'),
-(24, '2014-05-23 09:40:38', '2014-05-08', '2014-05-08', 'Liefertag', '', '2014-05-23 07:40:38', '2014-05-23 07:40:38'),
-(25, '2014-05-23 09:42:41', '2014-04-29', '2014-04-29', 'Feiertag', '', '2014-05-23 07:42:41', '2014-05-23 07:42:41'),
-(27, '2014-05-23 09:43:01', '2014-08-08', '2014-08-08', 'Feiertag', '', '2014-05-23 07:43:01', '2014-05-23 07:43:01'),
-(28, '2014-05-23 11:24:51', '2014-07-12', '0000-00-00', 'Feiertag', '', '2014-05-23 08:41:14', '2014-05-23 09:24:51'),
-(29, '2014-06-11 11:48:58', '2014-06-12', '0000-00-00', 'Feiertag', '', '2014-06-11 09:48:51', '2014-06-11 09:48:58'),
-(30, '2014-07-30 17:46:09', '2014-06-30', '2014-06-30', 'Liefertag', '', '2014-07-30 15:46:09', '2014-07-30 15:46:09');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -273,34 +248,27 @@ CREATE TABLE IF NOT EXISTS `calendarweek` (
   `packetid` bigint(10) NOT NULL AUTO_INCREMENT,
   `calendarweek` varchar(255) NOT NULL,
   `year` mediumtext NOT NULL,
-  `type` varchar(100) NOT NULL,
+  `type` int(100) NOT NULL,
+  `recipeflyerurl` mediumblob NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `is_published` int(10) NOT NULL,
+  `test` mediumtext NOT NULL,
   PRIMARY KEY (`packetid`),
   UNIQUE KEY `id` (`packetid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=313 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Daten für Tabelle `calendarweek`
 --
 
-INSERT INTO `calendarweek` (`packetid`, `calendarweek`, `year`, `type`, `created_at`, `updated_at`, `is_published`) VALUES
-(298, '30', '2014', '', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(299, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(300, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(301, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(302, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(303, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(304, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(305, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(306, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(307, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(308, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(309, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(310, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(311, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0),
-(312, '30', '2014', 'test', '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0);
+INSERT INTO `calendarweek` (`packetid`, `calendarweek`, `year`, `type`, `recipeflyerurl`, `created_at`, `updated_at`, `is_published`, `test`) VALUES
+(1, '31', '2014', 3, 0x33612e706e67, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, 'a:6:{s:6:"_token";s:40:"dDzDp4ooTt9WSw1crhtT6IRtL2ls0zH90r5VREQL";s:6:"merger";a:6:{i:90;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"90";s:13:"nr_of_recipes";s:1:"4";}s:6:"recipe";a:4:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";}s:4:"type";s:1:"3";}i:89;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"89";s:13:"nr_of_recipes";s:1:"5";}s:6:"recipe";a:5:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";i:4;s:2:"10";}s:4:"type";s:1:"6";}i:85;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"85";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}i:84;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"84";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"4";}i:83;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"83";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"5";}i:82;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"82";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}}s:9:"activated";s:1:"1";s:9:"check_yes";s:3:"yes";s:12:"calendarweek";s:2:"31";s:4:"year";s:4:"2014";}'),
+(2, '31', '2014', 6, '', '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, 'a:6:{s:6:"_token";s:40:"dDzDp4ooTt9WSw1crhtT6IRtL2ls0zH90r5VREQL";s:6:"merger";a:6:{i:90;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"90";s:13:"nr_of_recipes";s:1:"4";}s:6:"recipe";a:4:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";}s:4:"type";s:1:"3";}i:89;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"89";s:13:"nr_of_recipes";s:1:"5";}s:6:"recipe";a:5:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";i:4;s:2:"10";}s:4:"type";s:1:"6";}i:85;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"85";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}i:84;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"84";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"4";}i:83;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"83";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"5";}i:82;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"82";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}}s:9:"activated";s:1:"1";s:9:"check_yes";s:3:"yes";s:12:"calendarweek";s:2:"31";s:4:"year";s:4:"2014";}'),
+(3, '31', '2014', 3, '', '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, 'a:6:{s:6:"_token";s:40:"dDzDp4ooTt9WSw1crhtT6IRtL2ls0zH90r5VREQL";s:6:"merger";a:6:{i:90;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"90";s:13:"nr_of_recipes";s:1:"4";}s:6:"recipe";a:4:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";}s:4:"type";s:1:"3";}i:89;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"89";s:13:"nr_of_recipes";s:1:"5";}s:6:"recipe";a:5:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";i:4;s:2:"10";}s:4:"type";s:1:"6";}i:85;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"85";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}i:84;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"84";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"4";}i:83;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"83";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"5";}i:82;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"82";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}}s:9:"activated";s:1:"1";s:9:"check_yes";s:3:"yes";s:12:"calendarweek";s:2:"31";s:4:"year";s:4:"2014";}'),
+(4, '31', '2014', 4, '', '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, 'a:6:{s:6:"_token";s:40:"dDzDp4ooTt9WSw1crhtT6IRtL2ls0zH90r5VREQL";s:6:"merger";a:6:{i:90;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"90";s:13:"nr_of_recipes";s:1:"4";}s:6:"recipe";a:4:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";}s:4:"type";s:1:"3";}i:89;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"89";s:13:"nr_of_recipes";s:1:"5";}s:6:"recipe";a:5:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";i:4;s:2:"10";}s:4:"type";s:1:"6";}i:85;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"85";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}i:84;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"84";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"4";}i:83;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"83";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"5";}i:82;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"82";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}}s:9:"activated";s:1:"1";s:9:"check_yes";s:3:"yes";s:12:"calendarweek";s:2:"31";s:4:"year";s:4:"2014";}'),
+(5, '31', '2014', 5, '', '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, 'a:6:{s:6:"_token";s:40:"dDzDp4ooTt9WSw1crhtT6IRtL2ls0zH90r5VREQL";s:6:"merger";a:6:{i:90;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"90";s:13:"nr_of_recipes";s:1:"4";}s:6:"recipe";a:4:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";}s:4:"type";s:1:"3";}i:89;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"89";s:13:"nr_of_recipes";s:1:"5";}s:6:"recipe";a:5:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";i:4;s:2:"10";}s:4:"type";s:1:"6";}i:85;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"85";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}i:84;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"84";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"4";}i:83;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"83";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"5";}i:82;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"82";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}}s:9:"activated";s:1:"1";s:9:"check_yes";s:3:"yes";s:12:"calendarweek";s:2:"31";s:4:"year";s:4:"2014";}'),
+(6, '31', '2014', 3, '', '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, 'a:6:{s:6:"_token";s:40:"dDzDp4ooTt9WSw1crhtT6IRtL2ls0zH90r5VREQL";s:6:"merger";a:6:{i:90;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"90";s:13:"nr_of_recipes";s:1:"4";}s:6:"recipe";a:4:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";}s:4:"type";s:1:"3";}i:89;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"89";s:13:"nr_of_recipes";s:1:"5";}s:6:"recipe";a:5:{i:0;s:1:"2";i:1;s:1:"9";i:2;s:1:"8";i:3;s:1:"7";i:4;s:2:"10";}s:4:"type";s:1:"6";}i:85;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"85";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}i:84;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"84";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"4";}i:83;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"83";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"5";}i:82;a:3:{s:2:"id";a:2:{s:2:"id";s:2:"82";s:13:"nr_of_recipes";s:1:"1";}s:6:"recipe";a:1:{i:0;s:0:"";}s:4:"type";s:1:"3";}}s:9:"activated";s:1:"1";s:9:"check_yes";s:3:"yes";s:12:"calendarweek";s:2:"31";s:4:"year";s:4:"2014";}');
 
 -- --------------------------------------------------------
 
@@ -324,28 +292,26 @@ CREATE TABLE IF NOT EXISTS `calendarweekrecipestruktur` (
   PRIMARY KEY (`id`),
   KEY `recipeid` (`recipeid`),
   KEY `packetid` (`packetid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2227 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Daten für Tabelle `calendarweekrecipestruktur`
 --
 
 INSERT INTO `calendarweekrecipestruktur` (`id`, `packetid`, `recipeid`, `productid`, `sorting`, `created_at`, `updated_at`, `is_published`, `productname`, `test2`, `recipeflyerurl`, `test3`) VALUES
-(2212, 298, 0, 0, 0, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '', '', '', ''),
-(2213, 298, 2, 90, 1, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '90', '', 0x3278782e6a7067, ''),
-(2214, 298, 9, 90, 2, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '90', '', 0x3278782e6a7067, ''),
-(2215, 298, 8, 90, 3, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '90', '', 0x3278782e6a7067, ''),
-(2216, 298, 5, 90, 4, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '90', '', 0x3278782e6a7067, ''),
-(2217, 298, 0, 89, 1, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '89', '', 0x3278782e6a7067, ''),
-(2218, 298, 0, 89, 2, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '89', '', 0x3278782e6a7067, ''),
-(2219, 298, 0, 89, 3, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '89', '', 0x3278782e6a7067, ''),
-(2220, 298, 0, 89, 4, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '89', '', 0x3278782e6a7067, ''),
-(2221, 298, 0, 89, 5, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '89', '', 0x3278782e6a7067, ''),
-(2222, 298, 0, 86, 1, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '86', '', 0x3278782e6a7067, ''),
-(2223, 298, 0, 86, 2, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '86', '', 0x3278782e6a7067, ''),
-(2224, 298, 0, 86, 3, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '86', '', 0x3278782e6a7067, ''),
-(2225, 298, 0, 85, 1, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '85', '', 0x3278782e6a7067, ''),
-(2226, 298, 0, 82, 1, '2014-08-14 10:34:54', '2014-08-14 10:34:54', 0, '82', '', 0x3278782e6a7067, '');
+(1, 1, 2, 90, 1, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '90', '', '', ''),
+(2, 1, 9, 90, 2, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '90', '', '', ''),
+(3, 1, 8, 90, 3, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '90', '', '', ''),
+(4, 1, 7, 90, 4, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '90', '', '', ''),
+(5, 2, 2, 89, 1, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '89', '', '', ''),
+(6, 2, 9, 89, 2, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '89', '', '', ''),
+(7, 2, 8, 89, 3, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '89', '', '', ''),
+(8, 2, 7, 89, 4, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '89', '', '', ''),
+(9, 2, 10, 89, 5, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '89', '', '', ''),
+(10, 3, 0, 85, 1, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '85', '', '', ''),
+(11, 4, 0, 84, 1, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '84', '', '', ''),
+(12, 5, 0, 83, 1, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '83', '', '', ''),
+(13, 6, 0, 82, 1, '2014-08-18 06:54:30', '2014-08-18 06:54:30', 0, '82', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -2136,7 +2102,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`id`),
   KEY `articles_tags_article_id_index` (`type`),
   KEY `articles_tags_tag_id_index` (`nr_of_recipes`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=93 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=91 ;
 
 --
 -- Daten für Tabelle `products`
@@ -2646,7 +2612,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `customers_groups_id`, `email`, `email_aktuell`, `password`, `passwordhardcode`, `permissions`, `activated`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `first_name`, `date_of_birth`, `telephone`, `gender`, `default_billing_address`, `default_shipping_address`, `last_name`, `birthday`, `birthmonth`, `birthyear`, `status`, `created_at`, `updated_at`, `is_published`) VALUES
 (1, 2, 'admin@admin.com', '', '$2y$10$NkEaWuEFQTUBHbgEkrT9zeMsx/eePq7zq/8QU/EeTbRLucyfP3GVm', '', NULL, 1, NULL, NULL, '2014-04-18 22:14:45', '$2y$10$rxvjqmdYYZT7VBarfa2/s.MK/vP74qFUPMZUHukjKiDz0T2hAoXMm', NULL, 'Bernd', '0000-00-00', '06604258008', '1', 2, 3, 'Obendorfer', '', '', '', '0', '2014-04-17 10:56:15', '2014-06-09 01:07:57', 0),
-(3, 3, 'bernd.obendorfer@chello.at', '', '$2y$10$8AOyQXE.bt4am8Y77Z2WCOOevUxMwZXxG5RV6JazNWi1HAIVjL3wq', '', NULL, 1, 'Myu4J2vqYDTVIqfoad3CZQCMYnkWisrCyXwVk5IvHV', NULL, '2014-08-14 14:22:35', '$2y$10$lVsewT3VNXekNJZUSyBnde/6pbTQeTjLYJd1fpR89qQqhK4Kbl5me', NULL, 'Bernd', '1970-01-01', '0660645949459', 'Herr', 0, 0, 'Obendorfer', '', '', '', 'admin', '2014-04-18 22:02:36', '2014-08-14 14:22:35', 0),
+(3, 3, 'bernd.obendorfer@chello.at', '', '$2y$10$8AOyQXE.bt4am8Y77Z2WCOOevUxMwZXxG5RV6JazNWi1HAIVjL3wq', '', NULL, 1, 'Myu4J2vqYDTVIqfoad3CZQCMYnkWisrCyXwVk5IvHV', NULL, '2014-08-18 03:37:16', '$2y$10$7D80AbQP1ljo0cfd8MrFCO021w0eTGxRq2R8Jld9QACcVtXAtavni', NULL, 'Bernd', '1970-01-01', '0660645949459', 'Herr', 0, 0, 'Obendorfer', '', '', '', 'admin', '2014-04-18 22:02:36', '2014-08-18 03:37:16', 0),
 (109, 4, 'theresa.schoerky@chello.at', '', '$2y$10$h2VPB80zNVTi59CqDv/wMudW88fUiB2PEF3E1lZXraCSq05j0NSTy', 'theresa', NULL, 1, 'fsDsmN4O6iSkqFTBrfOn9f11irrvc2YFVAqEtu9xkW', NULL, '2014-06-16 06:41:07', '$2y$10$F0j4TayUpCrC2hg6ktY.v.E.DFAkZ0nzU/LvEtKkGoUmjmdkKNBZi', NULL, 'Theresa', '0000-00-00', '066565656', 'Frau', 0, 0, 'Sch&ouml;rkhuber', '16', '02', '1985', '', '2014-06-16 06:40:56', '2014-06-16 06:41:07', 0),
 (110, 5, 'robert.ginder@chello.at', '', '$2y$10$pCjc/sGeLQ9EiGDCSGWw8.kArnb0LraKP54Pe7Wk0tLH92qj/IpJa', '333333', NULL, 1, 'qi95leByn6qkcPVs8HcN3BFi8B60R7VBx0NoUnLTt8', NULL, '2014-06-16 12:33:39', '$2y$10$ZYnouIRCkJ6EtTBRJmw.puzQsoWmAxxOnlmOYbgyFCC.66Ie96bLS', NULL, 'Robert', '0000-00-00', '0660595656569', 'Herr', 0, 0, 'Ginder', '19', '11', '1980', '', '2014-06-16 12:33:29', '2014-06-16 12:33:39', 0),
 (111, 6, 'martin.mauser@chello.at', '', '$2y$10$HqyO5gid8C2dRv7Ofn9mWesJDF/JlMOiMps6gvWus0tImctxKnT7i', '3333334', NULL, 1, 'TKB7oRShYyZoOXXXYDvLvFeU9xbPUZoXK8cbtQ7y3V', NULL, NULL, NULL, NULL, 'Martin', '0000-00-00', '15451515115', 'Herr', 0, 0, 'Mauser', '01', '01', '2014', '', '2014-07-07 04:20:22', '2014-07-07 04:20:22', 0),
