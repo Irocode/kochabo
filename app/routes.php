@@ -1,7 +1,131 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| Frontend Routes
+| New Frontend Routes START
+|--------------------------------------------------------------------------
+*/
+// start HOME
+Route::get('/',function() {
+return View::make('frontend.start.index');
+});
+// so-funktionierts
+Route::get('/so-funktionierts',function() {
+return View::make('frontend.so-funktionierts.index');
+});
+// kochabo-box
+Route::get('/kochabo-box',function() {
+return View::make('frontend.kochabo-box.index');
+});
+// aktuelle-rezepte
+Route::get('/aktuelle-rezepte',function() {
+return View::make('frontend.aktuelle-rezepte.index');
+});
+// rezeptewelt
+Route::get('/rezeptewelt',function() {
+return View::make('frontend.rezeptewelt.index');
+});
+// rezeptewelt
+Route::get('/rezeptewelt',function() {
+return View::make('frontend.rezeptewelt.index');
+});
+// classic-box
+Route::get('/boxen/classic-box',function() {
+return View::make('frontend.boxen.classic-box.index');
+});
+// veggie-box
+Route::get('/boxen/veggie-box',function() {
+return View::make('frontend.boxen.veggie-box.index');
+});
+// vegan-box
+Route::get('/boxen/vegan-box',function() {
+return View::make('frontend.boxen.vegan-box.index');
+});
+// gesund-fit-box
+Route::get('/boxen/gesund-fit-box',function() {
+return View::make('frontend.boxen.gesund-fit-box.index');
+});
+// wein-box
+Route::get('/boxen/wein-box',function() {
+return View::make('frontend.boxen.wein-box.index');
+});
+// obst-box
+Route::get('/boxen/obst-box',function() {
+return View::make('frontend.boxen.obst-box.index');
+});
+// rezeptewelt
+Route::get('/boxen/delikatessen-box',function() {
+return View::make('frontend.rezeptewelt.index');
+});
+// lieferinformationen
+Route::get('/lieferinformationen',function() {
+return View::make('frontend.lieferinformationen.index');
+});
+// partner
+Route::get('/partner',function() {
+return View::make('frontend.partner.index');
+});
+// datenschutz
+Route::get('/datenschutz',function() {
+return View::make('frontend.datenschutz.index');
+});
+// agb
+Route::get('/agb',function() {
+return View::make('frontend.agb.index');
+});
+// impressum
+Route::get('/impressum',function() {
+return View::make('frontend.impressum.index');
+});
+// jobs
+Route::get('/jobs',function() {
+return View::make('frontend.jobs.index');
+});
+// press
+Route::get('/press',function() {
+return View::make('frontend.press.index');
+});
+// jobs/review
+Route::get('/press/review',function() {
+return View::make('frontend.jobs.review');
+});
+// contact
+Route::get('/contact',function() {
+return View::make('frontend.contact.index');
+});
+// faq
+Route::get('/faq',function() {
+return View::make('frontend.faq.index');
+});
+// team
+Route::get('/team',function() {
+return View::make('frontend.team.index');
+});
+// abo
+Route::get('/abo',function() {
+return View::make('frontend.abo.index');
+});
+// jetzt-bestellen
+Route::get('/jetzt-bestellen',function() {
+return View::make('frontend.jetzt-bestellen.index');
+});
+// lieferanten
+Route::get('/lieferanten',function() {
+return View::make('frontend.lieferanten.index');
+});
+//geschenkgutschein
+Route::get('/geschenkgutschein',function() {
+return View::make('frontend.geschenkgutschein.index');
+});
+/*
+|--------------------------------------------------------------------------
+| New Frontend Routes END
+|--------------------------------------------------------------------------
+*/
+
+
+/*
+|--------------------------------------------------------------------------
+| OLD Frontend Routes
 |--------------------------------------------------------------------------
 */
 
@@ -9,7 +133,7 @@
 Route::group((Config::get('sfcms')['cache']) ? array('before' => 'cache.fetch', 'after' => 'cache.put') : array(), function () {
 
 //Home
-Route::get('/', ['as' => 'dashboard', 'uses' => 'HomeController@index']);
+Route::get('/NIX', ['as' => 'dashboard', 'uses' => 'HomeController@index']);
 
 //frontend dashboard
 Route::get('/start', array('as' => 'frontend._layout.dashboard', function()
@@ -68,7 +192,7 @@ Route::get('/page/{id}', array('as' => 'dashboard.page.show', 'uses' => 'PageCon
 // photo gallery
 Route::get('/photo_gallery/{id}', array('as' => 'dashboard.photo_gallery.show', 'uses' => 'PhotoGalleryController@show'));
 // contact
-Route::get('/contact', array('as' => 'dashboard.contact', 'uses' => 'FormPostController@getContact'));
+Route::get('/contactNIX', array('as' => 'dashboard.contact', 'uses' => 'FormPostController@getContact'));
 // rss
 Route::get('/rss', array('as' => 'rss', 'uses' => 'RssController@index'));
 // search
@@ -89,10 +213,10 @@ Route::get('/versand',function() {
 return View::make('frontend.newsletter.versand');
 });
 
-// Versand
-Route::get('/middleman',function() {
-return View::make('frontend.middleman.index');
-});
+
+
+
+
 
 
 // aktivierung
