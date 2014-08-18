@@ -116,6 +116,22 @@ return View::make('frontend.lieferanten.index');
 Route::get('/geschenkgutschein',function() {
 return View::make('frontend.geschenkgutschein.index');
 });
+
+
+# Recipes Overview Page - Paginated
+Route::get('/recipes/all', 'RecipeController@getIndex');
+# Recipes Index Page - Endless Scroll
+Route::get('/recipes', function() {
+   // return View::make('site/pages/recipes');
+     return View::make('frontend/recipes/index');
+});
+# Recipes - match slug
+Route::get('/recipes/{recipeSlug}', 'RecipeController@getView');
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | New Frontend Routes END
