@@ -81,18 +81,37 @@ function calendarweeknew($year, $calendarweek)
                     }
                   else
                     {
-  
-
-
                           $joinaufbaugesamt = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
                         ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
-                        ->join('products','products.id','=','calendarweekrecipestruktur.productid')        
+                        ->join('products','products.id','=','calendarweekrecipestruktur.productid')      
 
                         ->where('calendarweek.calendarweek','=',$calendarweek)->where('calendarweek.year','=',$year)
 
-                        ->orderBy('calendarweekrecipestruktur.id', 'asc')                  
-                        
-                                                           
+                        ->orderBy('calendarweekrecipestruktur.id', 'asc') 
+                      
+                        ->get([
+                           'calendarweekrecipestruktur.packetid',
+                         'calendarweekrecipestruktur.recipeid',
+                          'calendarweekrecipestruktur.sorting',
+                           'calendarweekrecipestruktur.productid',                   
+                            'calendarweek.calendarweek',
+                             'calendarweek.year',
+                              'calendarweekrecipestruktur.sorting',  
+                                'recipe.title',
+                                 'recipe.id',
+                                  'products.product_name',
+                                    'calendarweekrecipestruktur.id',
+                        ]);  
+
+
+
+                              $joinaufbaueinzel = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
+                        ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
+                        ->join('products','products.id','=','calendarweekrecipestruktur.productid')      
+
+                        ->where('calendarweek.calendarweek','=',$calendarweek)->where('calendarweek.year','=',$year)
+                        ->where('calendarweekrecipestruktur.productid','=',90)
+                        ->orderBy('calendarweekrecipestruktur.id', 'asc') 
                       
                         ->get([
                            'calendarweekrecipestruktur.packetid',
@@ -113,75 +132,6 @@ function calendarweeknew($year, $calendarweek)
 
 
 
-
-
-
-
-
-
-
-$products = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
-->join('products','products.id','=','calendarweekrecipestruktur.productid')  
-  ->where('calendarweek.calendarweek','=',$calendarweek)->where('calendarweek.year','=',$year)
-->get([               
-  'products.product_name',                         
-]);  
-
-
-$productsrecipe = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
-->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
-  ->where('calendarweek.calendarweek','=',$calendarweek)->where('calendarweek.year','=',$year)
-->get([               
-  'recipe.title',
-  'recipe.id',   
-  'calendarweekrecipestruktur.sorting',                     
-]);  
-
-
-
-
-
-
-$outproducts = array(); 
-foreach($products  as $key => $value)
- {
-$outproducts[$key]=$value->product_name;
-}
-//return $out ;
-
- 
-
-  echo "<pre>";
-        echo print_r($outproducts);
-        echo "</pre>";
-
-
-
-
-$outproductsrecipe = array(); 
-foreach($productsrecipe  as $key => $value)
- {
-    
-$outproductsrecipe[$value->title]=$value->title;
-
-
-}
-//return $out ;
-
- 
-
-  echo "<pre>";
-        echo print_r($outproductsrecipe);
-        echo "</pre>";
-
-
-
-
-
-
-
-
-
                     $calendarweek = $this->calendarweek->find($idnew);
                     $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $idnew)->orderBy('id', 'DESC')->get();
                     $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
@@ -189,7 +139,7 @@ $outproductsrecipe[$value->title]=$value->title;
                     
 
                     $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
-                    return View::make('backend.calendarweek.edit', compact('outproductsrecipe','test','calendarweek', 'outproducts', 'recipe', 'calendarweekrecipestruktur','joinaufbaugesamt'));
+                    return View::make('backend.calendarweek.edit', compact('calendarweek', 'outproducts', 'recipe', 'calendarweekrecipestruktur','joinaufbaugesamt','joinaufbaueinzel'));
                     }
                 };
             }

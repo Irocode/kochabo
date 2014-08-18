@@ -86,6 +86,8 @@ $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');
 $calendarweek->type = $_REQUEST['merger'][$key]['type'];
+$calendarweek->test = serialize($_REQUEST);
+
 $keypdf = "pdf_$key";
  if (Input::hasFile($keypdf))
     {
