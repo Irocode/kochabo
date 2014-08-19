@@ -246,6 +246,30 @@ function calendarweeknew($year, $calendarweek)
 
 
 
+
+
+
+
+
+ //Produkteanzahl  erfragen     
+  $final_results = array();
+  foreach($joinaufbaugesamt as $value) {
+      
+      $ret = $value->productid;
+      $final_results[] = $ret; // DONE :)
+  }
+//Dupolicate entfernen
+$final_results = array_unique($final_results);
+//Neugruppierung Index
+$final_results = array_merge($final_results);
+var_dump($final_results);
+
+
+
+
+
+
+
                     $calendarweek = $this->calendarweek->find($idnew);
                     $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $idnew)->orderBy('id', 'DESC')->get();
       $products = Products::where('recipetypenummer', '>', '1')->where('type', '=', '1')->orderBy('id', 'DESC')->get();
