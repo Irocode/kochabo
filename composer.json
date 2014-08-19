@@ -14,10 +14,11 @@
         "gloudemans/shoppingcart": "dev-master",
 		"anahkiasen/former": "dev-master",
 		"orangehill/iseed": "dev-master",    
-		"nesbot/Carbon": "*",
-		"bkwld/laravel-haml": "~2.0",
+		"nesbot/Carbon": "*",		
 		"hybridauth/hybridauth": "*",
-		"codesleeve/asset-pipeline": "dev-master"
+        "zacoza/laravel-twigbridge": "dev-master",
+        "mthaml/mthaml": "dev-master"
+		
 	
 
     },

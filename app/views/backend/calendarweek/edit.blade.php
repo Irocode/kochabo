@@ -7,7 +7,7 @@
 
 
 <hr>
-
+ <p><a class="index-block-want-more-infos" href="{{URL::to('modal')}}"> zur Obstbox </a></p>
 <?php echo"$calendarweek->calendarweek";?>
 
    <!--HEADER mit Zurück ANFANG-->

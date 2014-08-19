@@ -8,6 +8,10 @@
 Route::get('/',function() {
 return View::make('frontend.start.index');
 });
+Route::get('/testx',function() {
+return View::make('frontend.geschenkgutschein.test');
+});
+
 // so-funktionierts
 Route::get('/so-funktionierts',function() {
 return View::make('frontend.so-funktionierts.index');
@@ -115,6 +119,10 @@ return View::make('frontend.lieferanten.index');
 //geschenkgutschein
 Route::get('/geschenkgutschein',function() {
 return View::make('frontend.geschenkgutschein.index');
+});
+//modals
+Route::get('/modal',function() {
+return View::make('frontend.modal.index');
 });
 
 
@@ -672,7 +680,7 @@ Route::post('admin/reset-password', array('as' => 'admin.reset.password.post', '
 | General Routes
 |--------------------------------------------------------------------------
 */
-
+/*
 // error
 App::error(function (Exception $exception) {
 Log::error($exception);
@@ -711,7 +719,7 @@ $active = '';
 }
 return '<li ' . $active . '>' . link_to($route, $text) . '</li>';
 });
-
+*/
 /*
 |--------------------------------------------------------------------------
 | Kundenbereich mit Warenkorb Frontend

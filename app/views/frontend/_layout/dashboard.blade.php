@@ -116,7 +116,7 @@
                <h4>Einfache Bestellung</h4>
                <p>Bestell einfach online deine KochAbo-Box mit 3 oder 5 k&ouml;stlichen und gesunden Rezepten.</p>
 
-               <p><a class="index-block-want-more-infos" href="{{ URL::to('obstbox') }}"> zur Obstbox </a></p>
+               <p><a class="index-block-want-more-infos" href="{{URL::to('obstbox')}}"> zur Obstbox </a></p>
             </div>
          </div>
       </div>
