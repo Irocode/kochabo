@@ -66,24 +66,7 @@ class CalendarweekController extends BaseController
     function store()
         {
 
-         $delete = Input::get('delete'); 
-
-         if (isset($delete))
-          {
-           
-
-       
-
-
-
-            echo"ja";
-        } else {
-            echo"nein";
-        }
-
-
-
-        $data = Input::all(); 
+ $data = Input::all(); 
         echo "<pre>";
         echo print_r($data);
         echo "</pre>";
@@ -91,6 +74,40 @@ class CalendarweekController extends BaseController
 
           $calendarweek = Input::get('calendarweek');    
           $year = Input::get('year'); 
+
+
+
+//Wenn Edit Balde dann Update
+$update = Input::get('update'); 
+         if (isset($update))
+          {            
+
+            foreach($_REQUEST['merger'] as $key => $value) {
+      
+
+      $dx= $_REQUEST['merger'][$key];  
+  var_dump($key);
+
+       //$calendarweekrecipestrukturid = Calendarweekrecipestruktur::find($key);
+       //$calendarweekrecipestrukturid->delete();
+
+  $calendarweekrecipestrukturid = Calendarweekrecipestruktur::find($key);
+  $calendarweekrecipestrukturid->test3 = 'updated3';
+  $calendarweekrecipestrukturid->recipeid = $_REQUEST['merger'][$key]['recipe'][0];
+  $calendarweekrecipestrukturid->save();
+
+
+
+ }
+
+  
+ } else {
+          
+       
+
+
+
+       
 
 foreach($_REQUEST['merger'] as $key => $value)
  {
@@ -139,6 +156,12 @@ foreach($_REQUEST['merger'][$key]['recipe'] as $key3 => $value3)
 }
 
 return Redirect::to("/admin/calendarweeknew/" . $year . "/" . $calendarweek . "/edit");
+
+
+ } //Else update Ende
+
+
+//return Redirect::to("/admin/calendarweeknew/" . $year . "/" . $calendarweek . "/edit");
 
        
         }

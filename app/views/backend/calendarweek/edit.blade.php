@@ -30,7 +30,7 @@
  
  <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">{{$final_results[0]}}</h3>
+<h3 class="panel-title"><?php if (isset($final_results[0])) { echo"$final_results[0]";} else {};?></h3>
 </div>
 <div class="panel-body">
 <div>  
@@ -46,7 +46,7 @@ $countselectbeast=rand(5, 15);
       
                    <b>product_name: {{ $v->product_name}}</b><br> 
 
-                   nr_of_recipes {{ $v->nr_of_recipes}}<br> 
+                    nr_of_recipes {{ $v->nr_of_recipes}}<br> 
 
                     calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
                     productid: {{ $v->productid}} <br> 
@@ -54,7 +54,8 @@ $countselectbeast=rand(5, 15);
                     recipeid: {{ $v->recipeid}} <br> 
                     title: {{ $v->title}} <br>
                     titleid: {{ $v->id}}<br>
-                    
+                    recipetypenummer: {{ $v->recipetypenummer}}<br>
+                    type: {{ $v->type}}<br>
                     ID: {{ $v->id}}               
             
 
@@ -62,7 +63,7 @@ $countselectbeast=rand(5, 15);
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
-                           <option value="{{$v->id }}" selected="selected">{{ $v->title }}</option>
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
                            @endforeach             
@@ -109,7 +110,7 @@ $countselectbeast=rand(5, 15);
  
  <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">{{$final_results[1]}}</h3>
+<h3 class="panel-title"><?php if (isset($final_results[1])) { echo"$final_results[1]";} else {};?></h3>
 </div>
 <div class="panel-body">
 <div>  
@@ -128,7 +129,7 @@ $countselectbeast=rand(5, 15);
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
-                           <option value="{{$v->id }}" selected="selected">{{ $v->title }}</option>
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
                            @endforeach             
@@ -163,7 +164,7 @@ $countselectbeast=rand(5, 15);
  
  <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">{{$final_results[2]}}</h3>
+<h3 class="panel-title"><?php if (isset($final_results[2])) { echo"$final_results[2]";} else {};?></h3>
 </div>
 <div class="panel-body">
 <div>       
@@ -180,7 +181,7 @@ $countselectbeast=rand(5, 15);
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
-                           <option value="{{$v->id }}" selected="selected">{{ $v->title }}</option>
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
                            @endforeach             
@@ -216,7 +217,7 @@ $countselectbeast=rand(5, 15);
  
  <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">{{$final_results[3]}}</h3>
+<h3 class="panel-title"><?php if (isset($final_results[3])) { echo"$final_results[3]";} else {};?></h3>
 </div>
 <div class="panel-body">
 <div>       
@@ -235,7 +236,7 @@ $countselectbeast=rand(5, 15);
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
-                           <option value="{{$v->id }}" selected="selected">{{ $v->title }}</option>
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
                            @endforeach             
@@ -272,7 +273,7 @@ $countselectbeast=rand(5, 15);
 
       <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">{{$final_results[4]}}</h3>
+<h3 class="panel-title"><?php if (isset($final_results[4])) { echo"$final_results[4]";} else {};?></h3>
 </div>
 <div class="panel-body">
 <div>       
@@ -291,7 +292,7 @@ $countselectbeast=rand(5, 15);
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
-                           <option value="{{$v->id }}" selected="selected">{{ $v->title }}</option>
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
                            @endforeach             
@@ -328,7 +329,7 @@ $countselectbeast=rand(5, 15);
 
       <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">{{$final_results[5]}}</h3>
+<h3 class="panel-title"><?php if (isset($final_results[5])) { echo"$final_results[5]";} else {};?></h3>
 </div>
 <div class="panel-body">
 <div>       
@@ -342,7 +343,7 @@ $countselectbeast=rand(5, 15);
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
-                           <option value="{{$v->id }}" selected="selected">{{ $v->title }}</option>
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
                            @endforeach             
@@ -379,7 +380,7 @@ $countselectbeast=rand(5, 15);
 
       {{ Form::hidden('calendarweek', $calendarweek->calendarweek, array('class' => 'form-control' )) }} 
    {{ Form::hidden('year', $year, array('class' => 'form-control' )) }} 
-    {{ Form::hidden('delete', 'yes', array('class' => 'form-control' )) }} 
+    {{ Form::hidden('update', 'yes', array('class' => 'form-control' )) }} 
    {{ Form::submit('Ändern', array('class' => 'btn btn-u')) }}
 
 

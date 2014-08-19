@@ -101,6 +101,7 @@ function calendarweeknew($year, $calendarweek)
                                  'recipe.id',
                                   'products.product_name',
                                     'calendarweekrecipestruktur.id',
+                                     'products.recipetypenummer',
                         ]);  
 
 
@@ -125,6 +126,8 @@ function calendarweeknew($year, $calendarweek)
                                  'recipe.id',
                                   'products.product_name',
                                     'calendarweekrecipestruktur.id',
+                                      'products.recipetypenummer',
+                                        'products.type',
                                 
                                     
 
@@ -150,6 +153,8 @@ function calendarweeknew($year, $calendarweek)
                                   'products.product_name',
                                     'calendarweekrecipestruktur.id',
                                     'calendarweek.recipeflyerurl',
+                                     'products.recipetypenummer',
+                                        'products.type',
                         ]); 
 
                               $joinaufbaueinzel85 = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
@@ -172,6 +177,8 @@ function calendarweeknew($year, $calendarweek)
                                   'products.product_name',
                                     'calendarweekrecipestruktur.id',
                                     'calendarweek.recipeflyerurl',
+                                     'products.recipetypenummer',
+                                        'products.type',
                         ]); 
 
                               $joinaufbaueinzel84 = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
@@ -194,6 +201,8 @@ function calendarweeknew($year, $calendarweek)
                                   'products.product_name',
                                     'calendarweekrecipestruktur.id',
                                     'calendarweek.recipeflyerurl',
+                                     'products.recipetypenummer',
+                                        'products.type',
                         ]); 
 
 
@@ -217,6 +226,8 @@ function calendarweeknew($year, $calendarweek)
                                   'products.product_name',
                                     'calendarweekrecipestruktur.id',
                                     'calendarweek.recipeflyerurl',
+                                     'products.recipetypenummer',
+                                        'products.type',
                         ]); 
 
 
@@ -240,6 +251,8 @@ function calendarweeknew($year, $calendarweek)
                                   'products.product_name',
                                     'calendarweekrecipestruktur.id',
                                     'calendarweek.recipeflyerurl',
+                                     'products.recipetypenummer',
+                                        'products.type',
                         ]); 
 
 
@@ -262,7 +275,7 @@ function calendarweeknew($year, $calendarweek)
 $final_results = array_unique($final_results);
 //Neugruppierung Index
 $final_results = array_merge($final_results);
-var_dump($final_results[0]);
+var_dump($final_results);
 
 echo"<hr>";
 
