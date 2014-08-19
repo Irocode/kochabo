@@ -81,6 +81,7 @@
     %link{:href => "assets/frontend/new/stylesheets/application.css", :rel => "stylesheet" }
     
   %body   
+    - {{ @include("frontend/layout/foo"); }}
     #fb-root
     #spinner
       .leafs
