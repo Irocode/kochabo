@@ -21,6 +21,13 @@
 
 
 
+
+
+
+
+
+
+
    {{ Form::open(array('action' => 'App\Controllers\Admin\CalendarweekController@store' , 'files'=> true, 'method' => 'post' )) }}
 
   
@@ -71,15 +78,22 @@
                      
                      {
                          ?>
-                  <!--selectize Rezept Dynamic auswählen Anfang-->   
+                  <!--selectize Rezept Dynamic auswählen Anfang-->                  
 
-                
                   <label class="control-label" for="recipetype">Rezept {{$countername}}</label>
-                  <input type="hidden" name="{{$product_name_var}}[id]" value="{{$v->id}}">
-                   <input type="hidden" name="{{$product_name_var}}[counterstore_{{$imagevar}}]" value="{{$v->nr_of_recipes}}">
+
+
+                  <!--productid 1x-->    
+                  <input type="hidden" name="merger[{{$v->id}}][id][id]" value="{{$v->id}}">
+
+                  <!--nr_of_recipes 1x-->    
+                  <input type="hidden" name="merger[{{$v->id}}][id][nr_of_recipes]" value="{{$v->nr_of_recipes}}">
+                   
+               
+                  <!--nr_of_recipes 1x-->   
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-                        <select  id="select-beast_<?php echo "$countselectbeast$product_name_var" ?>" name="{{$product_name_var}}[]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
                            <option value="" selected>Wähle / Suche     </option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -99,6 +113,9 @@
                         });
                      </script>
                   </div>
+
+                  <input type="hidden" name="merger[{{$v->id}}][type]" value="{{$v->recipetypenummer}}">
+
               
                   <!--selectize Rezept Dynamic auswählen Ende--> 
                   <?php
@@ -135,7 +152,7 @@
 <div id="zone">
 <div class="form-group">
     <label for="exampleInputFile">PDF einfügen</label>
-   <input type="file" name="pdf_{{$imagevar}}" class="btn btn-u" value="PDF auswählen">
+    <input type="file" name="pdf_{{$imagevar}}" class="btn btn-u" value="PDF auswählen">
 
   </div>
 </div>

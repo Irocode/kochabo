@@ -7,8 +7,8 @@
 
 
 <hr>
-
-
+ <p><a class="index-block-want-more-infos" href="{{URL::to('modal')}}"> zur Obstbox </a></p>
+<?php echo"$calendarweek->calendarweek";?>
 
    <!--HEADER mit Zurück ANFANG-->
    <div class="headline">
@@ -21,85 +21,393 @@
    <!--HEADER mit Zurück ENDE-->
 
 
+   {{ Form::open(array('action' => 'App\Controllers\Admin\CalendarweekController@store' , 'files'=> true, 'method' => 'post' )) }}
 
 
 
-<pre>
 
-                    @foreach( $joinaufbau90 as $v )  
-                    <b>product_name: {{ $v->product_name}}</b>
+
+ 
+ <div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title"><?php if (isset($final_results[0])) { echo"$final_results[0]";} else {};?></h3>
+</div>
+<div class="panel-body">
+<div>  
+<?php
+$countselectbeast=rand(5, 15);
+$product_name_var="90";
+?>
+ @foreach( $joinaufbaueinzel90 as $v )  </b>
+
+<?php
+$countselectbeast=rand(5, 15);
+?>
+      
+                   <b>product_name: {{ $v->product_name}}</b><br> 
+
+                    nr_of_recipes {{ $v->nr_of_recipes}}<br> 
+
                     calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
                     productid: {{ $v->productid}} <br> 
                     sorting: {{ $v->sorting}} <br> 
                     recipeid: {{ $v->recipeid}} <br> 
                     title: {{ $v->title}} <br>
                     titleid: {{ $v->id}}<br>
-                    
-                    ID: {{ $v->id}}
-               
-                    <hr>
+                    recipetypenummer: {{ $v->recipetypenummer}}<br>
+                    type: {{ $v->type}}<br>
+                    ID: {{ $v->id}}               
+            
+
+                                      <!--nr_of_recipes 1x-->   
+                  <div id="wrapper">
+                     <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
+                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
+                           @foreach( $recipe as $x ) 
+                           <option value="{{$x->id }}">{{ $x->title }}</option>
+                           @endforeach             
+                        </select>
+                        @if ($errors->first('title1'))
+                        <span class="help-block">{{ $errors->first('title1') }}</span>
+                        @endif
+                     </div>
+                     <script>
+                        $('#select-beast_<?php echo "$countselectbeast$product_name_var" ?>').selectize({
+                          create: true,
+                          sortField: {
+                            field: 'text',
+                            direction: 'asc'
+                          }
+                        });
+                     </script>
+                  </div>
+
+                  <input type="hidden" name="merger[{{$v->id}}][type]" value="{{$v->recipetypenummer}}">
+
+              
+                  <!--selectize Rezept Dynamic auswählen Ende--> 
+                      <hr>                                 
+  
                      @endforeach
-                
 
-</pre>
-<br>
 
-<pre>
+                       
+     {{ $v->recipeflyerurl}}
+        
 
-                    @foreach( $joinaufbau89 as $v )  
-                    <b>product_name: {{ $v->product_name}}</b>
-                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
-                    productid: {{ $v->productid}} <br> 
-                    sorting: {{ $v->sorting}} <br> 
-                    recipeid: {{ $v->recipeid}} <br> 
-                    title: {{ $v->title}} <br>
-                    titleid: {{ $v->id}}<br>
-                    
-                    ID: {{ $v->id}}
-               
-                    <hr>
+
+
+
+
+
+
+                                    
+     </div>
+     </div>
+     </div>
+                  
+ 
+ <div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title"><?php if (isset($final_results[1])) { echo"$final_results[1]";} else {};?></h3>
+</div>
+<div class="panel-body">
+<div>  
+ @foreach( $joinaufbaueinzel89 as $v )  </b>
+
+
+<?php
+$countselectbeast=rand(5, 15);
+?>
+
+      
+                                    
+            
+
+                                      <!--nr_of_recipes 1x-->   
+                  <div id="wrapper">
+                     <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
+                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
+                           @foreach( $recipe as $x ) 
+                           <option value="{{$x->id }}">{{ $x->title }}</option>
+                           @endforeach             
+                        </select>
+                        @if ($errors->first('title1'))
+                        <span class="help-block">{{ $errors->first('title1') }}</span>
+                        @endif
+                     </div>
+                     <script>
+                        $('#select-beast_<?php echo "$countselectbeast$product_name_var" ?>').selectize({
+                          create: true,
+                          sortField: {
+                            field: 'text',
+                            direction: 'asc'
+                          }
+                        });
+                     </script>
+                  </div>
+
+                  <input type="hidden" name="merger[{{$v->id}}][type]" value="{{$v->recipetypenummer}}">
+
+              
+                  <!--selectize Rezept Dynamic auswählen Ende--> 
+                      <hr>                                 
+  
                      @endforeach
-                
+{{ $v->recipeflyerurl}}
 
-</pre>
+     </div>
+     </div>
+     </div> 
+ 
+ <div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title"><?php if (isset($final_results[2])) { echo"$final_results[2]";} else {};?></h3>
+</div>
+<div class="panel-body">
+<div>       
+ @foreach( $joinaufbaueinzel85 as $v )  </b>
 
 
+<?php
+$countselectbeast=rand(5, 15);
+?>
+        
+            
 
+                                      <!--nr_of_recipes 1x-->   
+                  <div id="wrapper">
+                     <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
+                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
+                           @foreach( $recipe as $x ) 
+                           <option value="{{$x->id }}">{{ $x->title }}</option>
+                           @endforeach             
+                        </select>
+                        @if ($errors->first('title1'))
+                        <span class="help-block">{{ $errors->first('title1') }}</span>
+                        @endif
+                     </div>
+                     <script>
+                        $('#select-beast_<?php echo "$countselectbeast$product_name_var" ?>').selectize({
+                          create: true,
+                          sortField: {
+                            field: 'text',
+                            direction: 'asc'
+                          }
+                        });
+                     </script>
+                  </div>
 
-<pre>
---------------------------------------------------------
-                    @foreach( $joinaufbaugesamt as $v )  
-                    <b>product_name: {{ $v->product_name}}</b>
-                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
-                    productid: {{ $v->productid}} <br> 
-                    sorting: {{ $v->sorting}} <br> 
-                    recipeid: {{ $v->recipeid}} <br> 
-                    title: {{ $v->title}} <br>
-                    titleid: {{ $v->id}}<br>
-                    
-                    ID: {{ $v->id}}
-               
-                    <hr>
+                  <input type="hidden" name="merger[{{$v->id}}][type]" value="{{$v->recipetypenummer}}">
+
+              
+                  <!--selectize Rezept Dynamic auswählen Ende--> 
+                      <hr>                                 
+  
                      @endforeach
-                
+{{ $v->recipeflyerurl}}
 
-</pre>
+ </div> 
+     </div>
+     </div>
+     
+ 
+ <div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title"><?php if (isset($final_results[3])) { echo"$final_results[3]";} else {};?></h3>
+</div>
+<div class="panel-body">
+<div>       
+    @foreach( $joinaufbaueinzel84 as $v )  </b>
+
+
+<?php
+$countselectbeast=rand(5, 15);
+?>
+
+      
+            
+            
+
+                                      <!--nr_of_recipes 1x-->   
+                  <div id="wrapper">
+                     <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
+                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
+                           @foreach( $recipe as $x ) 
+                           <option value="{{$x->id }}">{{ $x->title }}</option>
+                           @endforeach             
+                        </select>
+                        @if ($errors->first('title1'))
+                        <span class="help-block">{{ $errors->first('title1') }}</span>
+                        @endif
+                     </div>
+                     <script>
+                        $('#select-beast_<?php echo "$countselectbeast$product_name_var" ?>').selectize({
+                          create: true,
+                          sortField: {
+                            field: 'text',
+                            direction: 'asc'
+                          }
+                        });
+                     </script>
+                  </div>
+
+                  <input type="hidden" name="merger[{{$v->id}}][type]" value="{{$v->recipetypenummer}}">
+
+              
+                  <!--selectize Rezept Dynamic auswählen Ende--> 
+                      <hr>                                 
+  
+                     @endforeach      
+{{ $v->recipeflyerurl}}
+
+ </div>
+     </div>
+     </div>
 
 
 
+      <div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title"><?php if (isset($final_results[4])) { echo"$final_results[4]";} else {};?></h3>
+</div>
+<div class="panel-body">
+<div>       
+ @foreach( $joinaufbaueinzel83 as $v )  </b>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<?php
+$countselectbeast=rand(5, 15);
+?>
+
+      
+                    
+            
+
+                                      <!--nr_of_recipes 1x-->   
+                  <div id="wrapper">
+                     <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
+                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
+                           @foreach( $recipe as $x ) 
+                           <option value="{{$x->id }}">{{ $x->title }}</option>
+                           @endforeach             
+                        </select>
+                        @if ($errors->first('title1'))
+                        <span class="help-block">{{ $errors->first('title1') }}</span>
+                        @endif
+                     </div>
+                     <script>
+                        $('#select-beast_<?php echo "$countselectbeast$product_name_var" ?>').selectize({
+                          create: true,
+                          sortField: {
+                            field: 'text',
+                            direction: 'asc'
+                          }
+                        });
+                     </script>
+                  </div>
+
+                  <input type="hidden" name="merger[{{$v->id}}][type]" value="{{$v->recipetypenummer}}">
+
+              
+                  <!--selectize Rezept Dynamic auswählen Ende--> 
+                      <hr>                                 
+  
+                     @endforeach        
+{{ $v->recipeflyerurl}}
+
+ </div>
+     </div>
+     </div>
 
 
-  {{Form::open( array( 'action' => array( 'App\Controllers\Admin\CalendarweekController@update', $calendarweek->packetid ),'files'=>true, 'method' => 'PATCH'))}}
 
-       
+      <div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title"><?php if (isset($final_results[5])) { echo"$final_results[5]";} else {};?></h3>
+</div>
+<div class="panel-body">
+<div>       
+  @foreach( $joinaufbaueinzel82 as $v )  </b>
+
+
+            
+            
+
+                                      <!--nr_of_recipes 1x-->   
+                  <div id="wrapper">
+                     <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
+                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+                           <option value="{{$v->recipeid }}" selected="selected">{{ $v->title }}</option>
+                           @foreach( $recipe as $x ) 
+                           <option value="{{$x->id }}">{{ $x->title }}</option>
+                           @endforeach             
+                        </select>
+                        @if ($errors->first('title1'))
+                        <span class="help-block">{{ $errors->first('title1') }}</span>
+                        @endif
+                     </div>
+                     <script>
+                        $('#select-beast_<?php echo "$countselectbeast$product_name_var" ?>').selectize({
+                          create: true,
+                          sortField: {
+                            field: 'text',
+                            direction: 'asc'
+                          }
+                        });
+                     </script>
+                  </div>
+
+                  <input type="hidden" name="merger[{{$v->id}}][type]" value="{{$v->recipetypenummer}}">
+
+              
+                  <!--selectize Rezept Dynamic auswählen Ende--> 
+                      <hr>                                 
+  
+                     @endforeach       
+{{ $v->recipeflyerurl}}
+
+ </div>
+     </div>
+     </div>
+       {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
+   {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
+
+      {{ Form::hidden('calendarweek', $calendarweek->calendarweek, array('class' => 'form-control' )) }} 
+   {{ Form::hidden('year', $year, array('class' => 'form-control' )) }} 
+    {{ Form::hidden('update', 'yes', array('class' => 'form-control' )) }} 
+   {{ Form::submit('Ändern', array('class' => 'btn btn-u')) }}
+
+
+    {{ Form::close() }}
+
+    <br> <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
 
 
 
-@if($joinaufbau->count())
+@if($joinaufbaueinzel90->count())
 
-@foreach( $joinaufbau as $v ) 
+@foreach( $joinaufbaueinzel90 as $v ) 
 <?php
 $random = rand(50, 15000);
 $random2 = rand(40, 18000);
@@ -136,7 +444,7 @@ $product_name_var= strtolower($dateiname);
 
 
 
-    @foreach( $joinaufbaugesamt as $v )  </b>
+    @foreach( $joinaufbaueinzel90 as $v )  </b>
             
                    <b>product_name: {{ $v->product_name}}</b>
                     calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
@@ -151,7 +459,56 @@ $product_name_var= strtolower($dateiname);
                     <hr>
                      @endforeach
 
-<!--selectize Rezept DYNAMISCH auswählen Ende-->  
+                     <hr>
+
+    @foreach( $joinaufbaueinzel89 as $v )  </b>
+            
+                   <b>product_name: {{ $v->product_name}}</b>
+                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
+                    productid: {{ $v->productid}} <br> 
+                    sorting: {{ $v->sorting}} <br> 
+                    recipeid: {{ $v->recipeid}} <br> 
+                    title: {{ $v->title}} <br>
+                    titleid: {{ $v->id}}<br>
+                    
+                    ID: {{ $v->id}}
+               
+                    <hr>
+                     @endforeach
+
+ <hr>
+    @foreach( $joinaufbaueinzel90 as $v )  </b>
+            
+                   <b>product_name: {{ $v->product_name}}</b>
+                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
+                    productid: {{ $v->productid}} <br> 
+                    sorting: {{ $v->sorting}} <br> 
+                    recipeid: {{ $v->recipeid}} <br> 
+                    title: {{ $v->title}} <br>
+                    titleid: {{ $v->id}}<br>
+                    
+                    ID: {{ $v->id}}
+               
+                    <hr>
+                     @endforeach
+
+
+ <hr>
+    @foreach( $joinaufbaueinzel90 as $v )  </b>
+            
+                   <b>product_name: {{ $v->product_name}}</b>
+                    calendarweek: {{ $v->calendarweek}}/ year: {{ $v->year}} - packetid: {{ $v->packetid}} <br>    
+                    productid: {{ $v->productid}} <br> 
+                    sorting: {{ $v->sorting}} <br> 
+                    recipeid: {{ $v->recipeid}} <br> 
+                    title: {{ $v->title}} <br>
+                    titleid: {{ $v->id}}<br>
+                    
+                    ID: {{ $v->id}}
+               
+                    <hr>
+                     @endforeach                                                               
+
 
 
 
@@ -191,12 +548,7 @@ BILD
    </div>
    <!-- Plichtfeld Ende -->
    <!--Formular Registrierung Ende-->
-   {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
-   {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
-   {{ Form::submit('Ändern', array('class' => 'btn btn-u')) }}
 
-
-    {{ Form::close() }}
 </div>
 <!-- Plichtfeld Ende -->
 <br>
@@ -206,4 +558,9 @@ BILD
 </div>
 </div>
 
-@stop
+
+
+
+
+
+

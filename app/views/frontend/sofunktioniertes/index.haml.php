@@ -81,7 +81,7 @@
     %link{:href => "assets/frontend/new/stylesheets/application.css", :rel => "stylesheet" }
     
   %body   
-    - {{ @include("frontend/layout/foo"); }}
+    - {{ @include("frontend/layout/"); }}
     #fb-root
     #spinner
       .leafs
@@ -157,7 +157,7 @@
                   %a{:href => "/rezeptewelt"} 
                     Kochabo Welt
                     %span.label.label-default Neu
-        
+
               .slide-container.navbar-right.hidden-sm.hidden-xs
                 .slide
                   .cta
@@ -554,6 +554,7 @@
                       %i.icon.icon-paypal{ :title => "Bequem bezahlen mit mit PayPal" }
                     %li
                       %i.icon.icon-debit{ :title => "Bequem bezahlen mit Bankeinzug oder auf Rechnung" }
+
 
                 
         %section#closure

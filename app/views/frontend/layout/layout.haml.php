@@ -1,0 +1,3 @@
+- {{ @include('frontend/layout/menu'); }}
+- {{ @yield('content'); }}
+- {{ @include('frontend/layout/footer'); }}

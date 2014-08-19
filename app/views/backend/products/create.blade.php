@@ -48,7 +48,7 @@
          <select name="type" class="form-control" required>
             <option value="" selected>Auswahl Typ</option>
             @foreach( $list_type as $x ) 
-            <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+            <option value="{{ $x->id }}-{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
             @endforeach  
          </select>
          @if ($errors->first('type'))

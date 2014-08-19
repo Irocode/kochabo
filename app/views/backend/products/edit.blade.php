@@ -42,9 +42,9 @@
       <label class="control-label" for="kundeseit">Type <span class="stern" >*</span></label>
       <div class="controls">
          <select name="type" class="form-control">
-            <option value="{{$products->type}}" selected>{{$products->type}}</option>
+            <option value="{{$products->type}}-{{$products->typename}}" selected>{{$products->typename}}</option>
             @foreach( $list_type as $x )  
-            <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
+            <option value="{{ $x->id }}-{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
             @endforeach                 
          </select>
          @if ($errors->first('type'))

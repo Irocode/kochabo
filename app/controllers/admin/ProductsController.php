@@ -89,7 +89,15 @@ class ProductsController extends BaseController
        $recipetype="$teile[0]";
        $recipetypenummer="$teile[1]";
        $input3= array('recipetype' => $recipetype,'recipetypenummer' => $recipetypenummer);
-       $input_all = (array_merge($input, $input1, $input3));
+
+       //Product Type and no explode from value Example: x,1
+       $typezerlegen = Input::get('type');
+       $teile = explode("-", $typezerlegen);
+       $type="$teile[0]";
+       $typename="$teile[1]";
+
+       $input4= array('type' => $type,'typename' => $typename);
+       $input_all = (array_merge($input, $input1, $input3, $input4));
 
 
 
@@ -171,8 +179,17 @@ class ProductsController extends BaseController
        $teile = explode(",", $recipetypezerlegen);
        $recipetype="$teile[0]";
        $recipetypenummer="$teile[1]";
+
+       //Product Type and no explode from value Example: x,1
+       $typezerlegen = Input::get('type');
+       $teile = explode("-", $typezerlegen);
+       $type="$teile[0]";
+       $typename="$teile[1]";
+
+
        $input3= array('recipetype' => $recipetype,'recipetypenummer' => $recipetypenummer);
-       $input_all = (array_merge($input, $input1, $input3));
+       $input4= array('type' => $type,'typename' => $typename);
+       $input_all = (array_merge($input, $input1, $input3, $input4));
       
           //  $input_all = $input;
          $this->products->update($id, $input_all);

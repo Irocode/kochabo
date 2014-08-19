@@ -120,9 +120,9 @@ return array(
         'Moltin\Cart\CartServiceProvider',
         'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
         'Former\FormerServiceProvider',
-        'Orangehill\Iseed\IseedServiceProvider',
-        'Bkwld\LaravelHaml\ServiceProvider',
-        'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
+        'Orangehill\Iseed\IseedServiceProvider',      
+        'ZaCoZa\TwigBridge\ServiceProvider',
+       
       
 
 
