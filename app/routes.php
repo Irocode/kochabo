@@ -25,6 +25,7 @@ return View::make('frontend._layout.dashboard');
 //CartTest
 Route::resource('cart', 'CartController');
 
+
 // newsletter
 Route::resource('newslettereintrag', 'NewslettereintragController');
 Route::get('newslettereintrag', array('as' => 'dashboard.newslettereintrag.show', 'uses' => 'NewslettereintragController@index'));  
@@ -90,6 +91,12 @@ Route::resource('newsletter', 'NewsletterController');
 Route::get('/versand',function() {
 return View::make('frontend.newsletter.versand');
 });
+
+// Experiment
+Route::get('/middleman',function() {
+    return View::make('frontend.middleman.index');
+});
+
 // aktivierung
 Route::resource('aktivierung', 'NewslettereintragController@update');
 Route::get('/aktivierung/{email}/email', 'NewslettereintragController@update')->where('email', '$email');

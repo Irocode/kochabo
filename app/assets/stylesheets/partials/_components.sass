@@ -1,0 +1,1195 @@
+
+// Spinner
+// --------------------------------------------------
+
+#spinner
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 2000
+  background-color: white
+  display: none
+  
+  .leafs
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 52px
+    height: 24px
+    margin: -12px 0 0 -26px
+  
+  .left,
+  .right
+    float: left
+    width: 25px
+    height: 24px
+    background-image: url("../images/logos/kochabo-leafs-gradient.svg")
+    background-position: 0 0
+    background-repeat: no-repeat
+    
+  .left
+    background-position: 0 0
+    margin-right: 1px
+    @include transform-origin(right bottom)
+    @include animation(spinnerLeftLeaf .6s ease-in-out infinite)
+    
+  .right
+    background-position: -25px 0
+    @include transform-origin(left bottom)
+    @include animation(spinnerRightLeaf .6s ease-in-out infinite)
+    
+
+// Kochabo Box
+// --------------------------------------------------
+
+.ka-box
+  position: relative
+  margin-bottom: 30px
+  background: white
+  border-radius: 4px
+  box-shadow: 0 0 14px 0 rgba(black, .05)
+  font-size: em(16)
+    
+  h2
+    font-size: em(40)
+    margin: 16px 0 20px
+    line-height: 1
+    
+  .lead
+    font-size: em(16)
+    padding: 0 8px
+    margin-bottom: 16px
+      
+  header
+    padding-top: 135px
+    background-position: center top 
+    background-repeat: no-repeat
+    border-radius: 4px 4px 0 0
+    
+  .content
+    padding: 0 20px
+    
+  footer
+    font-size: em(12)
+    padding-bottom: 10px
+    
+  .features
+    display: inline-block
+    margin: 0 auto
+    font-weight: bold
+    
+    li
+      margin-bottom: 8px
+    
+    .fa
+      width: 15px
+      margin-right: 8px
+      text-align: right
+  
+  .cta
+    margin: 20px auto 28px
+    max-width: 240px
+    
+
+      
+.ka-classic
+  .background
+    background-image: url("../images/backgrounds/box-header-classic.jpg") 
+
+.ka-veggie
+  .background
+    background-image: url("../images/backgrounds/box-header-veggie.jpg") 
+
+.ka-vegan
+  .background
+    background-image: url("../images/backgrounds/box-header-vegan.jpg") 
+
+.ka-fitness
+  .background
+    background-image: url("../images/backgrounds/box-header-fitness.jpg")
+    
+.ka-fruits
+  .background
+    background-image: url("../images/backgrounds/box-header-fruits.jpg")
+
+.ka-wine
+  .background
+    background-image: url("../images/backgrounds/box-header-wine.jpg")
+
+.ka-gourmet
+  .background
+    background-image: url("../images/backgrounds/box-header-gourmet.jpg")
+
+
+// Kochabo Addon
+// --------------------------------------------------
+
+.ka-addon
+  border: 1px solid rgba( $text-color-lighter, .25 )
+  box-shadow: none
+
+// Prices
+// --------------------------------------------------
+
+.ka-price
+  margin-bottom: 10px
+  
+  .prepend
+    vertical-align: top
+    color: $brand-primary
+    
+  .append
+    font-style: italic
+
+  .price
+    font-size: em(56)
+    font-family: $font-family-serif
+    font-weight: $aleo-light
+    line-height: 1
+    color: $brand-primary
+    letter-spacing: -0.02em
+      
+
+// Recipes Accordion
+// --------------------------------------------------
+
+.recipes-accordion
+  min-height: 438px
+  background: darken( $body-bg-dark, 10% )
+  
+  &:before
+    
+  
+.panel-default
+  margin-bottom: 0
+  box-shadow: none
+  border: none
+  
+  &.disabled
+    opacity: .7
+    
+    &:hover
+      a
+        text-decoration: none
+        cursor: not-allowed !important
+        color: darken( $text-color, 25% )
+      
+    
+  
+  .panel-title
+    line-height: 1
+  
+  > .panel-heading
+    border-bottom: 1px solid #e4e2de
+  
+  a
+    @include ellipsis
+    display: block 
+    padding: 20px 20px
+    color: darken( $text-color, 25% )
+    
+    &:hover
+      text-decoration: none
+      color: $brand-primary
+      
+  .panel-body
+    position: relative
+    text-align: center
+    height: 260px
+    overflow: hidden
+    
+    img
+      max-width: 100%
+      height: auto
+    
+  .panel-collapse  
+    position: relative
+    
+    &:before
+      display: block
+      position: absolute
+      left: 0
+      bottom: -8px
+      right: 0
+      height: 19px
+      content: ""
+      z-index: 5
+      background: url("../images/icons/spikes.svg") left bottom repeat-x
+      
+  .panel-collapse.in + .panel-heading a
+    color: darken( $brand-primary, 5% )
+    
+  
+    
+// Ribbon
+// --------------------------------------------------
+
+.ribbon
+  position: absolute
+  top: 16px
+  right: -5px
+  display: inline-block
+  padding: 5px 24px 7px 26px
+  background-color: $brand-primary
+  color: white
+  line-height: 1
+  border-radius: 0 4px 0 4px
+  z-index: 5
+  box-shadow: 0 2px 3px rgba( black, .35 )
+    
+  .fold-up
+    position: absolute    
+    left: 0
+    top: -8px
+    width: 6px
+    bottom: 0
+    border-radius: 4px 0 0 4px
+    background: lighten( $brand-primary, 10 )
+    
+    &:after
+      position: absolute
+      left: 0
+      bottom: 0
+      height: 8px
+      width: 6px
+      border-radius: 10px 0 0 10px 
+      background: $brand-primary
+      content: ""
+  
+  .fold-back
+    position: absolute    
+    right: 0
+    bottom: -5px
+    width: 5px
+    height: 5px
+    background: $brand-primary
+    
+    &:after
+      position: absolute
+      right: 0
+      bottom: -5px
+      height: 10px
+      width: 5px
+      border-radius: 0 10px 10px 0
+      background: darken( $brand-primary, 10 )
+      content: ""
+      
+      
+      
+      
+// Week Switch
+// --------------------------------------------------      
+      
+.ka-week-switch
+  display: inline-block
+  background-color: $brand-primary
+  text-align: center
+  line-height: 40px
+  color: white
+  width: 100%
+  border-radius: 40px
+  
+  .current
+    padding: 0 20px
+    font-weight: bold
+    
+    .fa
+      margin-right: 8px
+  
+  .prev,
+  .next
+    display: inline-block
+    color: darken( $brand-primary, 12.5% )
+    padding: 0 16px
+    @include transition( all .2s ease-in-out )
+    
+    &:hover
+      background-color: darken( $brand-primary, 5% )
+      color: white
+    
+  // .prev
+  //   border-radius: 40px 0 0 40px
+  //
+  // .next
+  //   border-radius: 0 40px 40px 0
+
+
+
+
+// Recipe Single
+// --------------------------------------------------
+
+.ka-recipe
+  position: relative
+  background-color: white
+  border-radius: 0 0 4px 4px
+  border-bottom: 3px solid #eeeae4
+  
+  .ribbon
+    font-weight: bold
+  
+  a
+    display: block
+        
+  .overlay
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    color: white
+    text-align: center
+    border-radius: 4px 4px 0 0
+    background-color: $brand-primary
+    background-color: rgba( $brand-primary, .8 )
+    text-shadow: 0 2px 4px darken( $brand-primary, 15% )
+    @include transition( all .1s ease-out )
+    z-index: 1
+    opacity: 0 
+    
+    .inner
+      position: absolute
+      top: 35%
+      left: 0
+      right: 0
+      
+    .fa
+      font-size: em(36)
+      margin-bottom: 4px
+    
+    span
+      display: block
+      font-size: em(18)
+      font-weight: bold
+      
+  .preview
+    position: relative
+    border-radius: 4px 4px 0 0
+    overflow: hidden
+    // min-height: 218px
+    // max-height: 232px
+    height: 224px
+    background-color: $body-bg-dark
+    
+    &:before
+      display: block
+      position: absolute
+      left: 0
+      bottom: -8px
+      right: 0
+      height: 19px
+      content: ""
+      z-index: 5
+      background: url("../images/icons/spikes.svg") left bottom repeat-x
+      
+    img
+      @include transition( all 4s ease-out )
+            
+  .content
+    padding: 20px 25px
+    
+    a:hover
+      text-decoration: none
+      h3
+        color: darken( $text-color-darker, 10% )
+    
+    h3
+      font-weight: $aleo-regular
+      color: $text-color-darker
+      font-size: em(22)
+      margin: 0 0 16px
+      @include transition( color .2s ease-out )
+      @include ellipsis
+    
+    .hardfacts
+      color: $text-color-lighter
+      margin-bottom: 0
+    
+    .fa
+      font-size: em(22)
+      margin-right: 6px
+      vertical-align: middle
+      
+      
+body:not(.no-hover)
+  .ka-recipe
+    header:hover
+      .preview img
+        @include transform( scale(1.1) )
+      .overlay
+        opacity: 1
+
+
+
+// Breadcrumbs
+// --------------------------------------------------
+
+.breadcrumb 
+  > li + li:before
+    font-family: "FontAwesome"
+    content: "\f105"
+    padding: 0 12px
+    color: $text-color-lighter
+
+
+
+// Circlet Icon
+// --------------------------------------------------
+
+$circle-size: 56px
+
+.ka-circlet
+  width: $circle-size
+  height: $circle-size
+  border-radius: $circle-size
+  border: 2px dotted $brand-primary
+  text-align: center
+  line-height: $circle-size - 4
+  
+  font-family: $font-family-serif
+  font-weight: $aleo-regular
+  font-style: italic
+  font-size: em(34)
+  color: $brand-primary
+  
+.ka-circlet-success
+  background-color: $brand-primary
+  border-color: white
+  color: white
+  
+  
+  
+
+// Tooltip (External)
+// --------------------------------------------------  
+  
+.ka-tooltip
+  background-color: $brand-primary
+  background-color: rgba( $brand-primary, .9 )
+  height: 30px
+  border-radius: 4px
+  
+  &.tooltip.in
+    opacity: 1
+  
+  &.tooltip.top
+    padding: 0
+    margin-top: -6px
+    
+    .tooltip-arrow
+      bottom: -5px
+      border-top-color: $brand-primary
+      border-top-color: rgba( $brand-primary, .9 )
+      
+      .fa
+        vertical-align: middle
+  
+  .tooltip-prepend
+    float: left
+    width: 34px
+    height: 30px
+    line-height: 30px
+    color: white
+    text-align: center
+    text-indent: 1px
+    border-radius: 4px 0 0 4px
+    background-color: darken( $brand-primary, 5% )
+  
+  .tooltip-inner
+    padding: 0 10px
+    background: none
+    line-height: 30px
+    border-radius: 0
+    @include ellipsis(320px)
+        
+  
+  
+
+// Nutritional Values
+// --------------------------------------------------  
+    
+.ka-nutritional-values
+  font-family: $font-family-serif
+  
+  li
+    text-align: center
+
+  .value
+    display: block
+    margin-bottom: 10px
+    font-weight: $aleo-light
+    font-size: em(36)
+    line-height: 1
+    color: $brand-primary
+    
+    small
+      font-weight: $aleo-regular
+      font-size: 50%
+      margin-left: -6px
+    
+  .text
+    display: block
+    font-size: em(16)
+    font-style: italic
+    color: $text-color-lighter
+    
+    
+
+// Themed Lists
+// --------------------------------------------------  
+      
+.ka-list
+
+  &.inactive
+    li
+      background-image: url("../images/logos/kochabo-leaf-gray.svg")
+      
+  li
+    padding: 3px 0 3px 26px
+    background-image: url("../images/logos/kochabo-leaf.svg")
+    background-position: 0 center
+    background-repeat: no-repeat
+    
+  a
+    display: block
+    margin-left: -26px
+    padding-left: 26px
+    
+    &:hover
+      text-decoration: none
+      color: $text-color-darker
+          
+          
+  
+
+// Select Box
+// --------------------------------------------------
+
+$selectbox-width: 280px
+$selectbox-height: 46px
+
+.sod_select
+  position: relative
+  display: inline-block
+  width: $selectbox-width
+  height: $selectbox-height
+  background-color: white
+  border: 3px solid $body-bg-darker
+  border-radius: $selectbox-height / 2
+  line-height: 1
+  font-size: em(16)
+  outline: none
+  cursor: default
+  @include user-select( none )
+  
+  &.open
+    .sod_label,
+    &:before
+      z-index: 10
+      
+    .sod_list_wrapper
+      display: block
+      z-index: 5
+  
+  &:before
+    position: absolute
+    top: 0
+    right: 16px
+    bottom: 0
+    line-height: $selectbox-height - 6
+    content: "\f0dc"
+    font-family: "FontAwesome"
+    color: darken( $body-bg-darker, 20 )
+    z-index: 2
+
+  .sod_label
+    @include ellipsis
+    width: 100%
+    max-width: 80%
+    display: block
+    
+  
+.sod_label
+  position: relative
+  display: inline-block
+  margin: 4px
+  padding: 0 18px
+  z-index: 2
+  background-color: $brand-primary
+  border-radius: $selectbox-height / 2
+  color: white
+  font-weight: bold
+  line-height: $selectbox-height - 14
+  cursor: pointer
+  
+
+.sod_prefix
+  position: relative
+  top: -1px
+  margin: 0 4px 0 -2px
+  font-size: em(14)
+  
+  
+.sod_list_wrapper
+  position: absolute
+  top: 100%
+  left: 0
+  height: auto
+  width: $selectbox-width
+  margin: 0 0 0 -3px
+  background: white
+  border: 3px solid $body-bg-darker
+  border-radius: 0 0 ($selectbox-height / 2) ($selectbox-height / 2)
+  border-top: none
+  z-index: 1
+  margin-top: - $selectbox-height / 2
+  padding-top: $selectbox-height / 2
+  display: none
+
+
+.sod_list
+  display: block
+  overflow-y: auto
+  padding: 4px
+  margin: 0
+  border-radius: 0 0 ($selectbox-height / 2) ($selectbox-height / 2)
+
+  .sod_option
+    position: relative
+    @include ellipsis
+    display: block
+    padding: 0 14px
+    line-height: $selectbox-height - 14
+    border-radius: $selectbox-height / 2
+    margin-bottom: 4px
+    list-style-type: none
+  
+    &.active,
+    &.selected
+      background-color: lighten( $body-bg-dark, 1 )
+      
+    &.selected
+      &:before
+        position: absolute
+        top: 0
+        right: 16px
+        bottom: 0
+        line-height: $selectbox-height - 12px
+        content: "\f00c"
+        font-family: "FontAwesome"
+        color: $brand-primary
+        z-index: 2
+    
+    &:last-child
+      border-radius: $selectbox-height / 2
+      margin-bottom: 0
+          
+.sod_select select 
+  display: none !important
+
+.sod_select.touch select
+  -webkit-appearance: menulist-button
+  position: absolute
+  top: 0
+  left: 0
+  display: block !important
+  height: 100%
+  width: 100%
+  opacity: 0
+  z-index: 1
+    
+  
+ 
+// Toggle Box
+// --------------------------------------------------
+
+.ka-togglebox  
+  position: relative
+  display: inline-block
+  // width: $selectbox-width
+  height: $selectbox-height
+  background-color: white
+  border: 3px solid $body-bg-darker
+  border-radius: $selectbox-height / 2
+  line-height: 1
+  font-size: em(16)
+  outline: none
+  cursor: default
+  @include user-select( none )
+  @include clearfix
+  
+  .radio
+    display: inline-block
+    float: left
+    margin: 4px 0 4px 4px
+    
+    label
+      margin-bottom: 0
+      
+    &:last-child
+      label
+        margin-right: 4px
+    
+    
+  input[type="radio"]
+    margin-left: 0
+    display: none
+    
+    &:checked 
+      & + label 
+        background-color: $brand-primary
+        color: white
+    
+  label
+    padding: 0 20px
+    z-index: 2
+    background-color: white
+    border-radius: $selectbox-height / 2
+    font-size: em(16)
+    font-weight: bold
+    color: $text-color
+    line-height: $selectbox-height - 14
+    cursor: pointer
+    font-style: normal
+  
+
+
+// Social Links
+// --------------------------------------------------
+
+ul.social
+    
+  &.list-inline li
+    margin: 0
+    
+  li
+    height: 20px
+    margin-bottom: 10px
+    
+  a
+    font-size: 0
+    
+  a[target="_blank"]
+    font-size: inherit
+    
+    
+// Support Boxes
+// --------------------------------------------------    
+  
+$support-icon-size: 80px
+  
+.ka-support
+  background-color: white
+  text-align: center
+  margin-bottom: 20px
+  
+  &.phone
+    .fa
+      font-size: em(34)
+      top: 3px
+      left: -1px
+    a
+      font-size: em(36)
+      color: $brand-primary
+      font-family: $font-family-serif
+      font-weight: $aleo-regular
+  
+  &.email
+    .fa
+      font-size: em(28)
+      top: 1px
+      left: -3px
+    a
+      font-size: em(26)
+      color: $brand-primary
+      font-family: $font-family-serif
+      font-weight: $aleo-regular
+  
+  .icon
+    display: inline-block
+    width: $support-icon-size
+    height: $support-icon-size
+    border-radius: $support-icon-size
+    margin: 30px auto
+    border: 4px solid #E8E8E8
+    color: $brand-primary
+    @include box-sizing( content-box )
+    
+  .fa
+    position: relative
+    line-height: $support-icon-size
+    font-size: em(32)
+    
+  .action
+    height: 46px
+    margin-bottom: 8px
+    
+    .btn-default
+      margin-top: -2px
+    
+    .btn-link
+      padding: 0
+      line-height: 46px
+    
+  p
+    padding: 10px 60px    
+    
+    
+    
+    
+    
+// Call To Action Sidebar
+// --------------------------------------------------    
+     
+.sidebar-cta
+  background-color: lighten( $body-bg-dark, 2 )
+  padding: 20px 40px 40px
+  text-align: center
+  
+  h4
+    font-size: em(26)
+    margin: 10px 0
+    
+  ul
+    margin: 20px 0 30px
+    text-align: left
+    
+  li
+    margin-bottom: 20px
+    
+  .text
+    padding-left: 50px
+    
+  strong
+    display: block
+    
+  .icon
+    float: left
+    width: 30px
+    text-align: center
+    font-size: em(30)
+    margin-top: 4px
+    color: $brand-primary
+
+
+
+// Support Sidebar
+// --------------------------------------------------    
+     
+.sidebar-support
+  .ka-support 
+
+    .icon
+      float: left
+      width: 60px
+      height: 60px
+      margin: 0
+      
+    .fa
+      line-height: 60px
+      font-size: em(26)
+      
+    .text
+      padding-left: 100px
+      padding-top: 8px
+      text-align: left
+      
+      
+    p
+      padding: 0
+      
+      
+.sidebar-component
+  margin-bottom: 40px
+  
+  
+.media-photos
+  text-align: center
+  margin: 40px 0
+  
+  &.col-2
+    figure
+      width: 45%
+  
+  figure
+    display: inline-block
+    margin: 0 20px
+    
+  figcaption
+    padding: 6px 0
+    font-size: em(16)
+    font-style: italic
+    
+  img
+    max-width: 100%
+    height: auto
+    
+  a
+    text-decoration: underline
+
+
+// Partner List Item
+// --------------------------------------------------    
+
+.ka-partner
+  position: relative
+  margin-bottom: 40px
+  
+
+// Related Partner Thumbs
+// --------------------------------------------------    
+
+.ka-partner-thumb
+  position: relative
+  display: block
+  text-align: center
+    
+  .text
+    position: absolute
+    top: 50%
+    left: 0
+    right: 0
+    padding: 0 18px
+    @include transform( translate3d( 0, -50%, 0) )
+    z-index: 5
+  
+  .title
+    font-size: em(36)
+    color: white
+    text-shadow: 0 0 14px rgba( black, .5 )
+    font-weight: $aleo-regular
+    line-height: 1.2
+  
+  .background
+    position: relative
+    display: block
+    z-index: 1
+    
+    &:before
+      @include fill-parent
+      content: ""
+      background-color: transparent
+      @include transition( background-color .1s ease-in-out )
+    
+  img
+    max-width: 100%
+    height: auto
+    
+body:not(.no-hover) .ka-partner-thumb
+  &:hover
+    .background
+      &:before
+        background-color: rgba( $brand-primary, .5 )
+
+
+
+// Badges
+// --------------------------------------------------    
+
+.badge
+  display: inline-block
+  min-width: 10px
+  padding: 8px 16px
+  font-size: em(14)
+  line-height: 1
+  color: $text-color
+  text-align: center
+  white-space: nowrap
+  vertical-align: baseline
+  border-radius: 26px
+  text-transform: uppercase
+  font-weight: bold
+  
+.badge-sm
+  padding: 5px 10px
+  font-size: em(12)
+  
+.badge-lg
+  padding: 12px 24px
+  font-size: em(16)
+  
+.badge-default
+  background-color: white
+  color: $brand-primary
+  
+  
+.badge-success
+  background-color: $brand-primary
+  color: white
+  
+.badge-info
+  background-color: $body-bg-darker
+  color: $text-color-lighter
+  
+  
+
+// Sidebar Checkout
+// --------------------------------------------------    
+
+.sidebar-cart.affix
+  position: fixed !important
+  z-index: 100
+
+.sidebar-cart
+  width: 480px
+  margin-top: 40px
+  padding: 0 30px 2px
+  background-color: $body-bg-dark
+  color: $text-color-darker
+
+  .badge
+    border: 4px solid white
+    text-transform: inherit
+    @include transform( translateY( -50% ) )
+    
+  .ka-cart-list
+    margin: 10px 0 40px
+    
+  .cta
+    text-align: center
+    max-width: 320px
+    margin: 0 auto
+    
+    p
+      padding: 10px 0
+          
+
+// Checkout Summary List
+// --------------------------------------------------    
+
+.ka-cart-list
+  font-size: em(18)
+  
+  .cart-item
+    padding: 8px 12px 8px 6px
+    border-bottom: 2px solid $body-bg-darker
+    
+    small
+      color: $text-color-lighter
+      font-size: 80%
+      margin-left: 4px
+    
+  .cart-item-sum
+    background-color: white
+    border-bottom: none
+    @include clearfix
+    
+    .price
+      font-style: normal
+    
+  .remove
+    font-size: em(16)
+    
+    &:hover
+      text-decoration: none
+  
+  .price
+    width: 64px
+    display: inline-block
+    text-align: right
+    font-style: italic
+    
+
+// Add-Ons List
+// --------------------------------------------------    
+
+.addon-list-item
+  margin-bottom: 40px 
+  
+  &.disabled
+    opacity: .8
+    
+  .thumb
+    position: relative
+    height: 180px
+    line-height: 180px
+    margin: 28px 0
+    text-align: center
+    
+  img
+    max-height: 100%
+    width: auto
+    
+  .ka-price-tag
+    position: absolute
+    bottom: -12px
+    right: 24px
+  
+  .text
+    padding-right: 20px
+    font-size: em(18)
+    
+  .title
+    margin: 14px 0 2px
+    small
+      font-style: italic
+      
+  .subtitle
+    display: inline-block
+    margin: 6px 0 10px
+    font-weight: bold
+      
+  .description
+    margin-bottom: 18px
+    
+  
+// Price Tag
+// --------------------------------------------------      
+
+$price-tag-size: 70px
+
+.ka-price-tag
+  width: $price-tag-size
+  height: $price-tag-size
+  border-radius: $price-tag-size
+  border: 3px dotted white
+  text-align: center
+  background-color: $brand-danger
+  @include box-sizing( content-box )
+  
+  font-family: $font-family-serif
+  font-weight: $aleo-bold
+  font-style: italic
+  color: white
+  
+  .pre,
+  .post
+    font-size: em(16)
+    line-height: 1
+    margin: 14px 0
+    
+  .price
+    font-size: em(20)
+    line-height: 1
+    margin: -12px 0
+
+
+// Discount Code
+// --------------------------------------------------      
+
+.ka-discount
+  position: relative
+  display: inline-block
+  margin: 10px auto
+  border: 2px solid $brand-danger
+  border-radius: 4px
+  font-size: em(18)
+  
+  strong,
+  .code
+    padding: 5px 10px
+  
+  strong
+    display: inline-block
+    background-color: $brand-danger
+    color: white
+    
+  .code
+    display: inline-block
+    padding-left: 15px
+    padding-right: 15px
+    font-style: italic
+    padding-top: 5px
+    padding-bottom: 5px

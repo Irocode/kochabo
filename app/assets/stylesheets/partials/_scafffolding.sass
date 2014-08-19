@@ -1,0 +1,75 @@
+@include selection 
+  background-color: rgba($text-color, .2)
+
+
+//
+// Scafffolding
+// --------------------------------------------------
+
+html,
+body
+  height: 100%
+  
+body    
+  @include font-smoothing(on)
+  
+body.no-hover,
+body.no-hover *
+  pointer-events: none !important
+  
+#content
+  position: relative
+
+//
+// Headings
+// --------------------------------------------------
+
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6
+  
+  small
+    color: $text-color-lighter
+    font-weight: normal
+    font-family: $font-family-sans-serif
+  
+
+//
+// Body
+// --------------------------------------------------
+  
+hr
+  height: 1px
+  margin: 20px auto
+  border-color: $text-color
+  border-color: rgba($text-color, .2)
+  
+hr.short
+  display: inline-block
+  width: 34px
+  
+hr.logo
+  display: inline-block
+  width: 48px
+  height: 23px
+  border: none
+  background-image: url("../images/logos/kochabo-leafs.svg")
+  background-position: center center
+  background-repeat: no-repeat
+  
+
+
+
+blockquote
+  padding: 4px 24px
+  font-size: em(24)
+  
+  p
+    font-family: $font-family-serif
+    font-weight: $aleo-light
+    margin-bottom: 6px
+    
+  footer
+    font-size: 64%
+    
+.preface
+  font-style: italic

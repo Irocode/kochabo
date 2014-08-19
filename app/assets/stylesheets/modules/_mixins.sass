@@ -1,0 +1,103 @@
+@import "variables"
+
+// Global mixins
+// --------------------------------------------------
+
+// Shortcut to fix blurry / jumping images and fonts in Chrome  
+@mixin fix-blurry-transitions
+  @include transform( translate3d(0,0,0) )
+  @include backface-visibility(hidden)
+
+
+// Shortcut for easy enabling/disabling of font-smoothing
+// @param : $on : toggles font-smoothing
+@mixin font-smoothing($value: on) 
+  @if $value == on 
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+  @else 
+    -webkit-font-smoothing: subpixel-antialiased
+    -moz-osx-font-smoothing: auto
+ 
+    
+// Shortcut to fill parent element (requires parent to have postion set)    
+@mixin fill-parent
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  
+// Shortcut to center both x and y axis
+@mixin centerer
+  position: absolute
+  top: 50%
+  left: 50%
+  @include transform( translate(-50%, -50%) )
+  
+  
+@mixin word-wrap() 
+  word-break: break-word
+  -webkit-hyphens: auto
+  -moz-hyphens: auto
+  hyphens: auto
+
+     
+// Shortcut for text formatting
+// @param : $size : the size in px (converts it to em)
+// @param : $lineheight : line-height in px (converts it to em)
+// @param : $letterspacing : give photoshop value (converts it to em)
+@mixin text-style($size, $lineheight, $letterspacing)
+  font-size: pe($size)
+  line-height: pe($lineheight, $size)
+  letter-spacing: #{$letterspacing/1000}em
+
+
+// Shortcut for letterspacing from photoshop value  
+// @param : $letterspacing : give photoshop value (converts it to em)    
+@function psls($letterspacing)
+  @return #{$letterspacing/1000}em
+
+
+// Shortcut for line height (converts it to number)
+// @param : $font-size : font-size in px    
+// @param : $line-height : line-height in px    
+@function pslh($font-size, $line-height)
+  @return $line-height/$font-size
+
+
+// Shortcut for selection styling 
+@mixin selection 
+  ::-moz-selection 
+    @content
+  ::selection 
+    @content
+    
+// Responsive image
+@mixin responsive-img
+  max-width: 100%
+  height: auto
+    
+// Fancy button gradients
+@mixin btn-style($start-color, $end-color) 
+  @include linear-gradient($start-color, $end-color)
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+  background-repeat: repeat-x
+
+  &:hover,
+  &:focus  
+    background-color: $end-color
+    background-position: 0 -15px
+  
+
+  &:active,
+  &.active 
+    background-color: $start-color
+  
+
+  &:disabled,
+  &[disabled] 
+    background-color: #999
+    background-image: none
+  

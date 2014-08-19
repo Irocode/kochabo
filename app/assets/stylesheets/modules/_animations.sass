@@ -1,0 +1,59 @@
+// Animations
+// --------------------------------------------------
+
+// @include animation(fadeInTop 0.3s $ease-out-back 1s forwards)
+
+@include keyframes(fadeInTop)
+  0% 
+    opacity: 0
+    @include transform( translate3d(0, -10px, 0) ) 
+  100%
+    opacity: 1
+    @include transform( translate3d(0, 0, 0) )
+    
+@include keyframes(fadeInBottom)
+  0% 
+    opacity: 0
+    @include transform( translate3d(0, 10px, 0) ) 
+  100%
+    opacity: 1
+    @include transform( translate3d(0, 0, 0) )
+  
+
+// Spinner
+// --------------------------------------------------
+    
+@include keyframes(spinnerLeftLeaf)
+  0% 
+    @include transform( rotate(0deg) )
+  50%
+    @include transform( rotate(-15deg) )  
+  85%
+    @include transform( rotate(5deg) )  
+  100%
+    @include transform( rotate(0deg) )
+  
+@include keyframes(spinnerRightLeaf)
+  0% 
+    @include transform( rotate(0deg) )
+  50%
+    @include transform( rotate(15deg) )   
+  85%
+    @include transform( rotate(-5deg) )   
+  100%
+    @include transform( rotate(0deg) )
+    
+    
+    
+// Kochabo Boxes Entrance
+// --------------------------------------------------
+  
+@include keyframes(showBox)
+  0%
+    opacity: 0
+    @include transform( translate3d(-10px, 0, 0) )
+  100%
+    opacity: 1
+    @include transform( translate3d(0, 0, 0) )
+    
+        

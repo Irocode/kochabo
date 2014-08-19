@@ -32,6 +32,9 @@
             {{ HTML::style('assets/frontend/css/pages/portfolio-v1.css') }}
             {{ HTML::style('assets/frontend/css/style_template.css') }}
             {{ HTML::style('assets/frontend/plugins/bootstrap-notify/pnotify.custom.min.css') }}
+            {{{ stylesheet_link_tag() }}}
+            {{{ javascript_include_tag() }}}
+            
             <script type="text/javascript">
                var _gaq = _gaq || [];
                _gaq.push(['_setAccount', "{{ $settings['ga_code']  or 'ga_code' }}"]);

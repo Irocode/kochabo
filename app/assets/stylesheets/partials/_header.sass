@@ -1,0 +1,178 @@
+// Header
+// --------------------------------------------------
+
+#header
+  border-top: 1px solid $brand-primary
+  min-height: 146px
+
+.infobar
+  min-height: 90px
+      
+  .brand
+    display: inline-block
+    padding: 24px 0
+
+  .trust
+    margin: 0 20px 0 0
+    padding: 28px 0
+    
+    li
+      float: left
+      
+    a
+      display: block
+      color: #585858
+      @include clearfix
+      
+    .icon
+      float: left
+      font-size: em(22)
+      width: 24px
+      line-height: 30px
+      text-align: right
+      
+      .fa
+        vertical-align: middle
+      
+    .text
+      display: block
+      padding-left: 34px
+      font-size: em(14)
+      line-height: 1.1
+            
+  .badges
+    margin: 0 22px 0 0
+    padding: 22px 0
+    
+    a
+      display: block
+      
+    img
+      height: auto
+      
+  .cta
+    padding: 18px 0 14px
+    
+    .btn
+      margin-bottom: 4px
+      min-width: 160px
+      
+    small
+      display: block
+      font-size: em(14)
+
+      a
+        color: $brand-primary
+        text-decoration: underline
+
+#navbar
+  position: relative
+  
+    
+.navbar-nav.navbar-right:last-child
+  margin-right: 0
+  
+.navbar-default
+  box-shadow: 0 3px 7px -3px rgba( black, .12 ) inset
+  margin-bottom: 0
+  @include transition( background-color .3s ease-out )
+  
+  .container
+    position: relative
+  
+  
+  .slide-container
+    height: 54px
+    overflow: hidden
+    
+    .slide
+      @include transform( translate3d(0, -54px, 0) )
+      @include transition( all .2s ease-in-out )
+  
+  &.affix
+    top: 0
+    left: 0
+    right: 0
+    background-color: rgba( $brand-primary, .9 )
+    
+    .brand-small
+      @include transform( translate3d( 0, 0, 0) )
+      opacity: 1
+      
+    .slide-container .slide
+      @include transform( translate3d( 0, 0, 0) )
+        
+    .cta
+      opacity: 1
+    
+    .social
+      opacity: 0
+    
+  .brand-small
+    position: absolute
+    top: 50%
+    left: -50px
+    margin-top: -16px
+    opacity: 0
+    @include transform( translate3d( -10px, 0, 0) )
+    @include transition( all .2s ease-in-out )
+    
+  
+  .label
+    position: relative
+    top: -3px
+    margin-left: 3px
+    background-color: white
+    color: $brand-primary
+    text-transform: uppercase
+    font-size: 55%
+    
+  .cta
+    float: right
+    height: 54px
+    @include transition( all .2s ease-in-out )
+    opacity: 0
+    
+    .btn
+      margin: 8px 0
+    
+  .social
+    float: right
+    clear: both
+    height: 54px
+    opacity: 1
+    @include transition( all .2s ease-in-out )
+    
+    li a
+      padding: 12px 5px
+      
+    .fa
+      position: relative
+      
+    .facebook .fa
+      left: -1px
+    .pinterest .fa
+      left: 1px
+      
+    .circle
+      display: block
+      width: 30px
+      height: 30px
+      background-color: white
+      color: $brand-primary
+      border-radius: 30px
+      text-align: center
+      line-height: 30px
+      
+      
+.navbar-toggle
+  padding-top: 7px
+  padding-bottom: 7px
+  
+  .text
+    position: relative
+    top: -1px
+    color: white
+    font-weight: bold
+    margin-right: 6px
+    line-height: 1

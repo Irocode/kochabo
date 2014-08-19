@@ -15,3 +15,7 @@ Thumbs.db
 /app/config
 /jquery-file-upload/server/php
 .tm_properties
+/node_modules
+/bower_components
+/lib
+/.sass-cache

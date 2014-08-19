@@ -1,0 +1,74 @@
+//
+// Buttons
+// --------------------------------------------------
+
+
+// Bootstrap Buttons
+// --------------------------------------------------
+
+.btn
+  border: none
+  color: white
+  
+  &.disabled,
+  &[disabled],
+    opacity: .8
+  
+.btn-default
+  @include btn-style( darken($text-color, 2%), darken($text-color, 10%) )
+  text-shadow: 0 1px 1px rgba( darken($text-color, 10%), .5 )
+  box-shadow: 0 2px 0 0 darken($text-color, 20%)
+  color: white
+  
+  &.disabled
+    background-color: darken($text-color, 2%)
+
+.btn-success
+  @include btn-style(#98D025, #85B81D)
+  text-shadow: 0 1px 1px rgba( #688D1D, .5 )
+  box-shadow: 0 2px 0 0 #76a02d
+  
+  &.disabled
+    background-color: #98D025
+
+.btn-primary,
+.btn-danger
+  @include btn-style(#F86553, #D95A4A)
+  text-shadow: 0 1px 1px rgba( #C75547, .5 )
+  box-shadow: 0 2px 0 0 #c45247
+  
+  &.disabled
+    background-color: #F86553
+
+  
+.btn-info
+  @include btn-style($brand-info, darken($brand-info, 10))
+  text-shadow: 0 1px 1px rgba( darken($brand-info, 20), .5 )
+  box-shadow: 0 2px 0 0 darken($brand-info, 20)
+
+.btn-warning
+  @include btn-style($brand-warning, darken($brand-warning, 10))
+  text-shadow: 0 1px 1px rgba( darken($brand-warning, 20), .5 )
+  box-shadow: 0 2px 0 0 darken($brand-warning, 20)  
+  
+.btn-wine
+  @include btn-style($brand-wine, darken($brand-wine, 10))
+  text-shadow: 0 1px 1px rgba( darken($brand-wine, 20), .5 )
+  box-shadow: 0 2px 0 0 darken($brand-wine, 20) 
+  color: white
+
+// Custom Buttons
+// --------------------------------------------------
+
+.btn-facebook
+  @include btn-style(#4182C3, #264d9a)
+  text-shadow: 0 1px 1px rgba( #0e2b5b, .5 )
+  box-shadow: 0 2px 0 0 #0e2b5b
+  color: white
+
+
+// Misc
+// --------------------------------------------------
+
+.btn > .fa
+  margin-right: 6px

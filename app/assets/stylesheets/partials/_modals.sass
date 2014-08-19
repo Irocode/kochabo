@@ -1,0 +1,103 @@
+//
+// Modals
+// --------------------------------------------------
+
+
+// General
+// --------------------------------------------------
+
+.modal-content
+  box-shadow: 0 5px 15px rgba( black, 0.1)
+
+.modal-content
+  border-radius: 4px
+  overflow: hidden
+  
+.modal-body
+  position: relative
+  z-index: 10
+  
+  .close
+    position: absolute
+    top: 10px
+    right: 10px
+    padding: 0 5px
+
+.modal-background
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 5
+
+
+// Lead Generation Modal
+// --------------------------------------------------
+  
+.modal-lead
+  .modal-dialog
+    width: auto
+    max-width: 720px
+    
+  .modal-body
+    padding: 80px 15px 50px
+    
+  .modal-background
+    background: url("../images/backgrounds/hero-modal.jpg") center -70px no-repeat
+    background-size: 180%
+    // -webkit-filter: blur(4px)
+    // opacity: .5  
+        
+  .cta
+    max-width: 340px
+    margin: 0 auto
+    
+  .or
+    font-weight: $aleo-bold
+    font-style: italic
+    padding: 15px 0
+    
+  .lead
+    max-width: 580px
+    margin: 0 auto 30px
+    padding: 0 30px
+    color: $text-color-dark
+    
+  .left-col
+    padding-right: 0
+    
+    .form-control
+      border-radius: 4px 0 0 4px
+
+  .right-col
+    padding-left: 0
+    
+    .form-control
+      border-radius: 0 4px 4px 0
+      border-left: 0
+      
+  .footnote
+    font-size: em(12)
+    padding: 14px 0 0
+    
+  
+    
+// Login Modal
+// --------------------------------------------------
+  
+.modal-login
+  .modal-dialog
+    width: auto
+    max-width: 400px
+    
+  .modal-body
+    padding: 30px
+  
+  .brand
+    margin: 30px 0 60px
+    
+    img
+      width: 180px
+    
+    

@@ -1,0 +1,94 @@
+.icon
+  display: inline-block
+  line-height: 1
+
+
+// Payment Icons
+// --------------------------------------------------
+  
+.icon-mastercard,
+.icon-visa,
+.icon-paypal,
+.icon-debit
+  width: 50px
+  height: 32px
+  background-image: url("../images/icons/payments.svg")
+  background-position: 0 0
+  background-repeat: no-repeat
+  border-radius: 4px
+  
+.icon-mastercard
+  background-position: 0 0
+.icon-visa
+  background-position: 0 -32px
+.icon-paypal
+  background-position: 0 -64px
+.icon-debit
+  background-position: 0 -96px
+
+
+// Play Icon
+// --------------------------------------------------
+
+$play-icon-shadow: 0 1px 6px rgba( black, .1 )
+  
+.icon-play
+  display: inline-block
+  width: 35px
+  height: 35px
+  border-radius: 35px
+  border: 4px solid white
+  text-align: center
+  line-height: 35px
+  color: white
+  box-shadow: $play-icon-shadow, $play-icon-shadow inset
+  @include box-sizing( content-box )
+  @include perspective( 1000 )
+  @include transform-style( preserve-3d )
+  @include transition( all .3s ease-out )
+  
+  .fa
+    position: relative
+    left: 1px
+    font-size: 94%
+    text-shadow: $play-icon-shadow  
+    
+    
+// Ingredients Icons
+// --------------------------------------------------
+
+.icon-gluten,
+.icon-lactose,
+.icon-meat,
+.icon-fish,
+.icon-veggie,
+.icon-vegan
+  width: 42px
+  height: 42px
+  background-image: url("../images/icons/ingredients.svg")
+  background-position: 0 0
+  background-repeat: no-repeat
+  
+.icon-gluten
+  background-position: 0 0
+.icon-lactose
+  background-position: 0 -42px
+.icon-meat
+  background-position: 0 -84px
+.icon-fish
+  background-position: 0 -126px
+.icon-veggie
+  background-position: 0 -168px
+.icon-vegan
+  background-position: 0 -210px
+  
+
+
+// Icons Helper
+// --------------------------------------------------  
+
+.fa-gap-right
+  margin-right: 6px
+  
+.fa-gap-left
+  margin-right: 6px  
