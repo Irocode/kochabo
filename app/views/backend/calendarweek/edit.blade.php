@@ -8,7 +8,7 @@
 
 <hr>
 
-
+<?php echo"$calendarweek->calendarweek";?>
 
    <!--HEADER mit Zurück ANFANG-->
    <div class="headline">
@@ -21,7 +21,7 @@
    <!--HEADER mit Zurück ENDE-->
 
 
-  {{Form::open( array( 'action' => array( 'App\Controllers\Admin\CalendarweekController@update', $calendarweek->packetid ),'files'=>true, 'method' => 'PATCH'))}}
+   {{ Form::open(array('action' => 'App\Controllers\Admin\CalendarweekController@store' , 'files'=> true, 'method' => 'post' )) }}
 
 
 
@@ -30,7 +30,7 @@
  
  <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">Familienbox</h3>
+<h3 class="panel-title">{{$final_results[0]}}</h3>
 </div>
 <div class="panel-body">
 <div>  
@@ -109,7 +109,7 @@ $countselectbeast=rand(5, 15);
  
  <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">Götterspeise</h3>
+<h3 class="panel-title">{{$final_results[1]}}</h3>
 </div>
 <div class="panel-body">
 <div>  
@@ -163,7 +163,7 @@ $countselectbeast=rand(5, 15);
  
  <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">Für Zwei</h3>
+<h3 class="panel-title">{{$final_results[2]}}</h3>
 </div>
 <div class="panel-body">
 <div>       
@@ -216,7 +216,7 @@ $countselectbeast=rand(5, 15);
  
  <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">Kleine Obstbox</h3>
+<h3 class="panel-title">{{$final_results[3]}}</h3>
 </div>
 <div class="panel-body">
 <div>       
@@ -272,7 +272,7 @@ $countselectbeast=rand(5, 15);
 
       <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">Große Obstbox</h3>
+<h3 class="panel-title">{{$final_results[4]}}</h3>
 </div>
 <div class="panel-body">
 <div>       
@@ -328,7 +328,7 @@ $countselectbeast=rand(5, 15);
 
       <div class="panel panel-default">
 <div class="panel-heading">
-<h3 class="panel-title">Singlebox</h3>
+<h3 class="panel-title">{{$final_results[5]}}</h3>
 </div>
 <div class="panel-body">
 <div>       
@@ -374,7 +374,16 @@ $countselectbeast=rand(5, 15);
  </div>
      </div>
      </div>
-    
+       {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
+   {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
+
+      {{ Form::hidden('calendarweek', $calendarweek->calendarweek, array('class' => 'form-control' )) }} 
+   {{ Form::hidden('year', $year, array('class' => 'form-control' )) }} 
+    {{ Form::hidden('delete', 'yes', array('class' => 'form-control' )) }} 
+   {{ Form::submit('Ändern', array('class' => 'btn btn-u')) }}
+
+
+    {{ Form::close() }}
 
     <br> <br>
  <br>
@@ -538,12 +547,7 @@ BILD
    </div>
    <!-- Plichtfeld Ende -->
    <!--Formular Registrierung Ende-->
-   {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
-   {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
-   {{ Form::submit('Ändern', array('class' => 'btn btn-u')) }}
 
-
-    {{ Form::close() }}
 </div>
 <!-- Plichtfeld Ende -->
 <br>

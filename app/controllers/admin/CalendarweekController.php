@@ -66,6 +66,23 @@ class CalendarweekController extends BaseController
     function store()
         {
 
+         $delete = Input::get('delete'); 
+
+         if (isset($delete))
+          {
+           
+
+       
+
+
+
+            echo"ja";
+        } else {
+            echo"nein";
+        }
+
+
+
         $data = Input::all(); 
         echo "<pre>";
         echo print_r($data);
@@ -86,7 +103,7 @@ $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');
 $calendarweek->type = $_REQUEST['merger'][$key]['type'];
-$calendarweek->test = serialize($_REQUEST);
+
 
 $keypdf = "pdf_$key";
  if (Input::hasFile($keypdf))
@@ -158,6 +175,13 @@ return Redirect::to("/admin/calendarweeknew/" . $year . "/" . $calendarweek . "/
         $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
         return View::make('backend.calendarweek.edit', compact('calendarweek', 'products', 'recipe', 'calendarweekrecipestruktur'));
         }
+
+
+
+
+
+
+
 
     /**
      * Update the specified resource in storage.

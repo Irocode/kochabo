@@ -255,14 +255,16 @@ function calendarweeknew($year, $calendarweek)
   $final_results = array();
   foreach($joinaufbaugesamt as $value) {
       
-      $ret = $value->productid;
+      $ret = $value->product_name;
       $final_results[] = $ret; // DONE :)
   }
 //Dupolicate entfernen
 $final_results = array_unique($final_results);
 //Neugruppierung Index
 $final_results = array_merge($final_results);
-var_dump($final_results);
+var_dump($final_results[0]);
+
+echo"<hr>";
 
 
 
@@ -271,13 +273,16 @@ var_dump($final_results);
 
 
                     $calendarweek = $this->calendarweek->find($idnew);
+
+                   
+
                     $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $idnew)->orderBy('id', 'DESC')->get();
       $products = Products::where('recipetypenummer', '>', '1')->where('type', '=', '1')->orderBy('id', 'DESC')->get();
 
                     
 
                     $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
-                    return View::make('backend.calendarweek.edit', compact('products','calendarweek', 'outproducts', 'recipe', 'calendarweekrecipestruktur','joinaufbaugesamt','joinaufbaueinzel90' ,'joinaufbaueinzel89','joinaufbaueinzel90','joinaufbaueinzel85','joinaufbaueinzel84','joinaufbaueinzel83','joinaufbaueinzel82'));
+                    return View::make('backend.calendarweek.edit', compact('year', 'calendarweek','final_results','products', 'outproducts', 'recipe', 'calendarweekrecipestruktur','joinaufbaugesamt','joinaufbaueinzel90' ,'joinaufbaueinzel89','joinaufbaueinzel90','joinaufbaueinzel85','joinaufbaueinzel84','joinaufbaueinzel83','joinaufbaueinzel82'));
                     }
                 };
             }
