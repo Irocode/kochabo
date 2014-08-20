@@ -30,7 +30,7 @@ $env = $app->detectEnvironment(array(
   	'dev_home' => array('Irocode'), //Home
   	'dev_work' => array('IrocodeBase'),	//Büro
     'dev_irocode' => array('irocode.com'), //www.irocode.com		
-    'dev_martin' => array("booki"), //Martin MAC Büro
+    'dev_martin' => array("booki.local"), //Martin MAC Büro
 	'production' => array('DEV - production.com'), //
 
 

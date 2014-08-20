@@ -1,0 +1,124 @@
+{% haml %}
+!!! 5
+/[if IE 8]      <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en">
+/[if IE 9]      <html class="no-js lt-ie10 lt-ie9" lang="en">
+/[if lt IE 10]  <html class="no-js lt-ie10" lang="en">
+/[if !IE]>
+%html{lang: "de", class: "no-js"}
+  /<![endif]
+  %head
+    %meta{ charset: "utf-8" }
+    -# %title #{"KochAbo.at" + (data.page.title ? " - " + data.page.title : "")}
+    %title KochAbo.at
+
+    %meta{ "http-equiv" => "X-UA-Compatible", content: "IE=edge,chrome=1" }
+
+    %meta{ name: "description", content: "Gschmackige Rezepte und frische Zutaten wöchentlich direkt nach Hause geliefert. Keine Versandkosten - jede Woche neu!" }
+    %meta{ name: "keywords", content: "KochAbo, Lebensmittel, Zutaten, Rezepte, Lebensmittellieferung, Online Supermarkt, gesund, abwechslungsreich, ausgewogen, Qualität, Nachhaltigkeit" }
+    %meta{ name: "author", content: "" }
+
+    -# Mobile
+    %meta{name: "viewport", content: "initial-scale=1.0, user-scalable=no, maximum-scale=1, width=device-width, minimal-ui" }
+
+    -# Apple
+    %meta{ name: "apple-mobile-web-app-title", content: "" }
+    %meta{ name: "apple-mobile-web-app-capable", content: "yes" }
+    %meta{ name: "apple-mobile-web-app-status-bar-style", content: "translucent-black" }
+
+    -# Chrome
+    %meta{ name: "mobile-web-app-capable", content: "yes" }
+
+    -# iOS Icons
+    %link{ rel: "apple-touch-icon", sizes: "152x152", href: "images/favicons/apple-touch-icon-152x152-precomposed.png" }
+    %link{ rel: "apple-touch-icon", sizes: "144x144", href: "images/favicons/apple-touch-icon-144x144-precomposed.png" }
+    %link{ rel: "apple-touch-icon", sizes: "120x120", href: "images/favicons/apple-touch-icon-120x120-precomposed.png" }
+    %link{ rel: "apple-touch-icon", sizes: "114x114", href: "images/favicons/apple-touch-icon-114x114-precomposed.png" }
+    %link{ rel: "apple-touch-icon", sizes: "76x76", href: "images/favicons/apple-touch-icon-76x76-precomposed.png" }
+    %link{ rel: "apple-touch-icon", sizes: "72x72", href: "images/favicons/apple-touch-icon-72x72-precomposed.png" }
+    %link{ rel: "apple-touch-icon", sizes: "60x60", href: "images/favicons/apple-touch-icon-60x60-precomposed.png" }
+    %link{ rel: "apple-touch-icon", sizes: "57x57", href: "images/favicons/apple-touch-icon-57x57-precomposed.png" }
+    %link{ rel: "apple-touch-icon", href: "images/favicons/apple-touch-icon-precomposed.png" }
+
+    -# Favicons
+    %link{ rel: "icon", type: "image/png", sizes: "196x196", href: "images/favicons/favicon-196x196.png" }
+    %link{ rel: "icon", type: "image/png", sizes: "128x128", href: "images/favicons/favicon-128x128.png" }
+    %link{ rel: "icon", type: "image/png", sizes: "96x96", href: "images/favicons/favicon-96x96.png" }
+    %link{ rel: "icon", type: "image/png", sizes: "32x32", href: "images/favicons/favicon-32x32.png" }
+    %link{ rel: "icon", type: "image/png", sizes: "16x16", href: "images/favicons/favicon-16x16.png" }
+    %link{ rel: "icon", type: "image/ico", href: "images/favicons/favicon.ico" }
+    %link{ rel: "shortcut icon", href: "images/favicons/favicon.png" }
+
+    -# Microsoft
+    %meta{ name: "msapplication-TileImage", content: "images/favicons/mstile-144x144.png" }
+    %meta{ name: "msapplication-square70x70logo", content: "images/favicons/mstile-70x70.png" }
+    %meta{ name: "msapplication-square150x150logo", content: "images/favicons/mstile-150x150.png" }
+    %meta{ name: "msapplication-wide310x150logo", content: "images/favicons/mstile-310x150.png" }
+    %meta{ name: "msapplication-square310x310logo", content: "images/favicons/mstile-310x310.png" }
+
+    %meta{ name: "application-name", content: "KochAbo.at - Einfach kochen." }
+    %meta{ name: "msapplication-TileColor", content: "#FFFFFF"}
+    %meta{ name: "msapplication-tap-highlight", content: "no"}
+    %meta{ name: "msapplication-tooltip", content: "Gschmackige Rezepte und frische Zutaten wöchentlich direkt nach Hause geliefert. Keine Versandkosten - jede Woche neu!"}
+
+    -# Open Graph
+    %meta{ property: "og:title", content: "KochAbo.at" }
+    %meta{ property: "og:type", content: "website" }
+    %meta{ property: "og:url", content: "ROOT_URL" }
+    %meta{ property: "og:image", content: "" }
+    %meta{ property: "og:description", content: "KochAbo.at - Einfach kochen." }
+    %meta{ property: "fb:admins", content: "249007485172986" }
+
+    -# Twitter Cards
+    %meta{ name: "twitter:card", content: "summary" }
+    %meta{ name: "twitter:site", content: "@KochAbo_at" }
+    %meta{ name: "twitter:creator", content: "@KochAbo_at" }
+    %meta{ name: "twitter:url", content: "ROOT_URL" }
+    %meta{ name: "twitter:title", content: "Kochabo.at" }
+    %meta{ name: "twitter:description", content: "KochAbo.at - Einfach kochen." }
+    %meta{ name: "twitter:image", content: "" }
+    
+
+    -# Stylesheets
+    != HTML.style("assets/frontend/new/stylesheets/bootstrap.css")
+    != HTML.style("assets/frontend/new/stylesheets/vendor.css")
+    != HTML.style("assets/frontend/new/stylesheets/application.css")
+    
+    -# Hook for <head>
+    - block stylesheets ""
+
+    -# Modernizr
+    -# - if development?
+    -#   = javascript_include_tag "vendor/modernizr.js"
+    -# -else
+    -#   :javascript
+    -#     #{File.read("source/javascripts/vendor/modernizr.custom.min.js").html_safe}
+
+    -# Sitemap
+    %link{ rel: "sitemap", type: "application/xml", title: "Sitemap", href: "/sitemap.xml" }
+  
+  -# %body{class: page_classes || "page"}
+  %body
+    #fb-root
+    #spinner
+      .leafs
+        .left &nbsp;
+        .right &nbsp;
+    :javascript
+      // document.getElementById("spinner").style.display = "block"
+
+    #app
+      - include "frontend/_layout2/header"
+      #main
+        - block yield ""
+      
+      - include "frontend/_layout2/footer"
+      - include "frontend/_layout2/modals"
+      
+
+    -# Javascripts
+    -# = javascript_include_tag "application"
+    != HTML.script("assets/frontend/new/javascripts/vendor.js")
+    != HTML.script("assets/frontend/new/javascripts/application.js")
+    
+    -# Hook for footer
+    - block javascripts ""

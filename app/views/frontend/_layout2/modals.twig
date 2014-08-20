@@ -1,0 +1,55 @@
+{% haml %}
+#modal-lead.modal.modal-lead.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-body.text-center
+        %button.close{"data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Schliessen
+        %h4.h2 Werde ein Teil von KochAbo
+        %p.lead Unser KochAbo-Koch erfindet immer neue geniale Rezepte. Die Rezepte sind gut beschrieben, einfach und rasch zum Nachkochen. 
+        .cta
+          %button.btn.btn-facebook.btn-lg.btn-block{"data-dismiss" => "modal", type: "button"}
+            %i.fa.fa-facebook-square
+            mit Facebook anmelden
+          %span.or.blocked oder
+          %form
+            .row
+              .col-xs-8.left-col
+                .form-group
+                  %label.hide-label{ for: "signup-mail" } Deine E-Mail
+                  %input#signup-mail.form-control.input-lg.text-center{ type: "email", placeholder: "E-Mail"}
+              .col-xs-4.right-col
+                .form-group
+                  %label.hide-label{ for: "signup-postal" } Deine PLZ
+                  %input#signup-postal.form-control.input-lg.text-center{ type: "text", placeholder: "PLZ"}
+            .form-error.alert.alert-danger.hide Ungültige E-Mail Adresse
+            %button.btn.btn-default.btn-lg.btn-block{"data-dismiss" => "modal", type: "button"} 
+              %i.fa.fa-envelope
+              mit E-Mail anmelden
+          %footer.footnote *mit der Teilnahme akzeptierst du unsere Teilnahmebedingungen.
+      .modal-background &nbsp;
+          
+
+#modal-login.modal.modal-login.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-body.text-center
+        %button.close{"data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Schliessen
+        .brand 
+          = image_tag("logos/kochabo-center.svg")
+        %form
+          .form-group
+            %label.hide-label{ for: "login-mail" } Deine E-Mail
+            %input#login-mail.form-control.input-lg.text-center{ type: "email", placeholder: "E-Mail"}
+          .form-group
+            %label.hide-label{ for: "login-password" } Dein Passwort
+            %input#login-password.form-control.input-lg.text-center{ type: "password", placeholder: "Passwort"}
+          .form-error.alert.alert-danger.hide E-Mail Adresse oder Passwort falsch
+          %button.btn.btn-success.btn-lg.btn-block{"data-dismiss" => "modal", type: "button"} 
+            %i.fa.fa-unlock-alt
+            Login
+      .modal-background &nbsp;
+          

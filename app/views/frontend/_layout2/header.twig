@@ -1,0 +1,93 @@
+{% haml %}
+%header#header
+  .infobar
+    .container
+      %a.brand{ href: "/" }
+        = image_tag('logos/kochabo-inline.svg')
+      .pull-right
+        %ul.trust.list-unstyled.list-inline.pull-left.hidden-sm.hidden-xs
+          %li
+            %a{ href: "#" }
+              %span.icon
+                %i.fa.fa-truck
+              %span.text
+                Kostenlose <br>Lieferung
+          %li
+            %a{ href: "#" }
+              %span.icon
+                %i.fa.fa-lock
+              %span.text
+                Sicher <br>einkaufen
+          %li
+            %a{ href: "tel:+43 1 544 39 00" }
+              %span.icon
+                %i.fa.fa-phone
+              %span.text
+                Hotline <br> 01 544 39 00
+        %ul.badges.list-unstyled.list-inline.pull-left.hidden-xs
+          %li
+            %a{ href: "#" }
+              = image_tag("icons/e-trust.png", "", { "width" : "34" } )
+          %li
+            %a{ href: "#" }
+              = image_tag("icons/ganz-oesterreich.png", "", { "width" : "74" } )
+      
+        .cta.pull-left.text-center
+          %a.btn.btn-danger{  href: "/kochabo-box" } 
+            %i.fa.fa-shopping-cart.fa-gap-right
+            Jetzt probieren!
+          %small 
+            Bereits registriert? 
+            %a{ href: "#", "data-target" => "#modal-login", "data-toggle" => "modal" } Login
+          
+  %nav.navbar.navbar-default.navbar-static-top{role: "navigation"}
+    .container
+      %a.brand-small{ href: "/" }
+        = image_tag("logos/kochabo-sign.svg")
+      .navbar-header
+        %button.navbar-toggle{"data-target" => "#navbar", "data-toggle" => "collapse", type: "button"}
+          %span.sr-only Zur Navigation
+          %span.text Menü
+          %span.icon
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+
+      #navbar.collapse.navbar-collapse
+        %ul.main-nav.nav.navbar-nav
+          %li.active
+            %a{href: "#"} So funktioniert's
+          %li
+            %a{href: "/kochabo-box"} Kochabo Box
+          %li
+            %a{href: "/aktuelle-rezepte"} Aktuelle Rezepte
+          %li
+            %a{href: "#"} Blog
+          %li
+            %a{href: "/rezeptewelt"} 
+              Kochabo Welt
+              %span.label.label-default Neu
+        
+        .slide-container.navbar-right.hidden-sm.hidden-xs
+          .slide
+            .cta
+              %a.btn.btn-danger{  href: "/kochabo-box" } 
+                %i.fa.fa-shopping-cart.fa-gap-right
+                Jetzt probieren!
+        
+            %ul.social.nav.navbar-nav
+              %li.facebook
+                %a{href: "https://www.facebook.com/KochAbo", target: "_blank"} 
+                  %span.circle
+                    %i.fa.fa-facebook
+              %li.twitter
+                %a{href: "https://twitter.com/KochAbo_at", target: "_blank"} 
+                  %span.circle
+                    %i.fa.fa-twitter
+              %li.pinterest
+                %a{href: "http://www.pinterest.com/kochabo/", target: "_blank"} 
+                  %span.circle
+                    %i.fa.fa-pinterest
+         
+      / /.navbar-collapse
+    / /.container-fluid

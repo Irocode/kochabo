@@ -1,0 +1,351 @@
+{% haml %}
+- extends 'frontend/_layout2/layout'
+- block yield
+  .page-header.page-header-center
+    .container
+      %h1 Wähle eine Kochabo Box
+      %p.lead Du hast die Wahl zwischen einer <strong>Classic</strong>, <strong>Veggie</strong>, <strong>Vegan</strong> und <strong>Gesund &amp; Fit</strong> Box
+    
+  %section#choose-box
+    .container-fluid    
+      .ka-box.ka-classic.text-center
+        %header
+          .ribbon 
+            .fold-up
+            .text Besteseller!
+            .fold-back
+          %h2 Classic
+          .background &nbsp;
+        .content
+          %p.lead Rundum-Sorglos-Paket für den <strong class="text-color">vielfältigen Genuss</strong>
+          %ul.features.list-unstyled.text-left
+            %li 
+              %i.fa.fa-cutlery
+              <strong class="text-color">3 oder 5</strong> Rezepte
+            %li 
+              %i.fa.fa-group
+              <strong class="text-color">1 bis 4</strong> Personen
+          .cta
+            %a{ href: "/boxen/classic-box", class: "btn btn-danger btn-block btn-lg" } 
+              %i.fa.fa-check-square-o.fa-gap-right
+              Box auswählen
+          .ka-price
+            %span.prepend ab
+            %span.price 34,90
+            %span.append pro Box
+          %footer
+            %p <strong class="text-color">kostenloser Versand</strong> in ganz Österreich
+
+      .ka-box.ka-veggie.text-center
+        %header
+          %h2 Veggie
+          .background &nbsp;
+        .content
+          %p.lead Vegetarische Rezepte mit&nbsp;<strong class="text-color">viel&nbsp;Abwechslung</strong>
+          %ul.features.list-unstyled.text-left
+            %li 
+              %i.fa.fa-cutlery
+              <strong class="text-color">3 oder 5</strong> Rezepte
+            %li 
+              %i.fa.fa-group
+              <strong class="text-color">2 bis 4</strong> Personen
+          .cta
+            %a{ href: "/boxen/veggie-box", class: "btn btn-danger btn-block btn-lg" } 
+              %i.fa.fa-check-square-o.fa-gap-right
+              Box auswählen
+          .ka-price
+            %span.prepend ab
+            %span.price 41,90
+            %span.append pro Box
+          %footer
+            %p <strong class="text-color">kostenloser Versand</strong> in ganz Österreich
+
+      .ka-box.ka-vegan.text-center
+        %header
+          %h2 Vegan
+          .background &nbsp;
+        .content
+          %p.lead Smackhafte Rezepte mit <strong class="text-color">100% pflanzlichen</strong>&nbsp;Zutaten
+          %ul.features.list-unstyled.text-left
+            %li 
+              %i.fa.fa-cutlery
+              <strong class="text-color">3</strong> leckere Rezepte
+            %li 
+              %i.fa.fa-group
+              <strong class="text-color">2</strong> Personen
+          .cta
+            %a{ href: "/boxen/vegan-box", class: "btn btn-danger btn-block btn-lg" } 
+              %i.fa.fa-check-square-o.fa-gap-right
+              Box auswählen
+          .ka-price
+            %span.prepend ab
+            %span.price 40,90
+            %span.append pro Box
+          %footer
+            %p <strong class="text-color">kostenloser Versand</strong> in ganz Österreich
+
+      .ka-box.ka-fitness.text-center
+        %header
+          .ribbon 
+            .fold-up
+            .text Jetzt neu!
+            .fold-back
+          %h2 Gesund &amp; Fit
+          .background &nbsp;
+        .content
+          %p.lead <strong class="text-color">Gesunde und kalorienarme</strong> Rezepte, ideal für Sportler
+          %ul.features.list-unstyled.text-left
+            %li 
+              %i.fa.fa-cutlery
+              <strong class="text-color">3kg</strong> frisches Obst
+            %li 
+              %i.fa.fa-group
+              <strong class="text-color">5 bis 6</strong> Obstsorten
+          .cta
+            %a{ href: "/boxen/gesund-fit-box", class: "btn btn-danger btn-block btn-lg" } 
+              %i.fa.fa-check-square-o.fa-gap-right
+              Box auswählen
+          .ka-price
+            %span.prepend ab
+            %span.price 12,90
+            %span.append pro Box
+          %footer
+            %p <strong class="text-color">kostenloser Versand</strong> in ganz Österreich
+
+    .container-fluid
+      .ka-box.ka-fruits.text-center
+        %header
+          %h2 Obstbox
+          .background &nbsp;
+        .content
+          %p.lead Leckeres und gesundes Obst für die <strong class="text-color">extraportion Vitamine</strong>
+          %ul.features.list-unstyled.text-left
+            %li 
+              %i.fa.fa-leaf
+              <strong class="text-color">3 oder 5 kg</strong> Obst
+            %li 
+              %i.fa.fa-heart
+              <strong class="text-color">Gesunde Snacks</strong> für danach
+          .cta
+            %a{ href: "/boxen/obst-box", class: "btn btn-danger btn-block " } 
+              %i.fa.fa-check-square-o.fa-gap-right
+              Box auswählen
+          .ka-price
+            %span.prepend ab
+            %span.price 12,90
+            %span.append pro Box
+          %footer
+            %p <strong class="text-color">kostenloser Versand</strong> in ganz Österreich
+
+      .ka-box.ka-wine.text-center
+        %header
+          %h2 Weinbox
+          .background &nbsp;
+        .content
+          %p.lead Von unserem Kochabo Somelier <strong class="text-color">auserlesende Weine</strong>
+          %ul.features.list-unstyled.text-left
+            %li 
+              %i.fa.fa-glass
+              <strong class="text-color">4x Flaschen</strong> pro Kiste
+            %li 
+              %i.fa.fa-truck
+              <strong class="text-color">monatliche</strong> Zustellung
+          .cta
+            %a{ href: "/boxen/wein-box", class: "btn btn-danger btn-block " } 
+              %i.fa.fa-check-square-o.fa-gap-right
+              Box auswählen
+          .ka-price
+            %span.prepend ab
+            %span.price 29,90
+            %span.append pro Box
+          %footer
+            %p <strong class="text-color">kostenloser Versand</strong> in ganz Österreich
+
+      .ka-box.ka-gourmet.text-center
+        %header
+          %h2 Delikatessenbox
+          .background &nbsp;
+        .content
+          %p.lead <strong class="text-color">Deliziöse Snacks</strong> und schmackhafte Gaumenfreuden
+          %ul.features.list-unstyled.text-left
+            %li 
+              %i.fa.fa-cutlery
+              Exquisite <strong class="text-color">Delikatessen</strong>
+            %li 
+              %i.fa.fa-truck
+              <strong class="text-color">monatliche</strong> Zustellung
+          .cta
+            %a{ href: "/boxen/delikatessen-box", class: "btn btn-danger btn-block " } 
+              %i.fa.fa-check-square-o.fa-gap-right
+              Box auswählen
+          .ka-price
+            %span.prepend ab
+            %span.price 49,90
+            %span.append pro Box
+          %footer
+            %p <strong class="text-color">kostenloser Versand</strong> in ganz Österreich
+
+
+  %section#choose-addon.hide
+    .container
+      %header.text-center
+        %hr.logo
+        %h2 Darf's was besonderes sein?
+        %p.lead Du hast einfach nur Lust auf <strong>leckeres Obst</strong>, <strong>ausgewählte Weine</strong> oder <strong>schmackhafte Delikatessen</strong>, dann wähle ein Kochabo Addon.
+    
+      .row
+        .col-md-4
+          .ka-box.ka-addon.ka-fruits.text-center
+            %header
+              %h2 Obstbox
+            .content
+              %p.lead Leckeres und gesundes Obst für die <strong class="text-color">extraportion Vitamine</strong>
+              %ul.features.list-unstyled.text-left
+                %li 
+                  %i.fa.fa-cutlery
+                  <strong class="text-color">3 oder 5 kg</strong> Obst
+                %li 
+                  %i.fa.fa-group
+                  <strong class="text-color">Gesunde Snacks</strong> für danach
+              .cta
+                %a{ href: "/boxen/classic-box", class: "btn btn-danger btn-block " } 
+                  %i.fa.fa-check-square-o.fa-gap-right
+                  Obstbox auswählen
+              .ka-price
+                %span.prepend ab
+                %span.price 12,90
+                %span.append pro Box
+              %footer
+                %p <strong class="text-color">kostenloser Versand</strong> in ganz Österreich
+        .col-md-4
+          .ka-box.ka-addon.ka-wine.text-center
+            %header
+              %h2 Weinbox
+            .content
+              %p.lead Ausgewählte und auf unsere Rezepte abstimmte Weine von unserem <strong class="text-color">Somelier</strong>
+              %ul.features.list-unstyled.text-left
+                %li 
+                  %i.fa.fa-cutlery
+                  <strong class="text-color">4x Flaschen</strong> pro Kiste
+                %li 
+                  %i.fa.fa-group
+                  <strong class="text-color">monatliche</strong> Zustellung
+              .cta
+                %a{ href: "/boxen/classic-box", class: "btn btn-danger btn-block " } 
+                  %i.fa.fa-check-square-o.fa-gap-right
+                  Weinbox auswählen
+              .ka-price
+                %span.prepend ab
+                %span.price 29,90
+                %span.append pro Box
+              %footer
+                %p <strong class="text-color">kostenloser Versand</strong> in ganz Österreich
+        .col-md-4
+          .ka-box.ka-addon.ka-gourmet.text-center
+            %header
+              %h2 Delikatessenbox
+            .content
+              %p.lead <strong class="text-color">Deliziöse Snacks</strong> und schmackhafte Gaumenfreude für die Feinschmecker
+              %ul.features.list-unstyled.text-left
+                %li 
+                  %i.fa.fa-cutlery
+                  <strong class="text-color">4-5 Snacks</strong> pro Box
+                %li 
+                  %i.fa.fa-group
+                  <strong class="text-color">2</strong> Personen
+              .cta
+                %a{ href: "/boxen/classic-box", class: "btn btn-danger btn-block " } 
+                  %i.fa.fa-check-square-o.fa-gap-right
+                  Delikatessenbox auswählen
+              .ka-price
+                %span.prepend ab
+                %span.price 49,90
+                %span.append pro Box
+              %footer
+                %p <strong class="text-color">kostenloser Versand</strong> in ganz Österreich
+
+
+  %section.features-inline
+    .container
+      .row
+        .col-sm-3
+          .feature
+            .icon
+              %i.fa.fa-check-square-o
+            .text Keine<br> feste Bindung
+        .col-sm-3
+          .feature
+            .icon
+              %i.fa.fa-check-square-o
+            .text Kostenlose<br> Lieferung
+        .col-sm-3
+          .feature
+            .icon
+              %i.fa.fa-check-square-o
+            .text Frische<br> Lebensmittel
+        .col-sm-3
+          .feature
+            .icon
+              %i.fa.fa-check-square-o
+            .text Direkt<br> vor die Haustür
+          
+          
+  %section.choose-coupon
+    .container
+      .row
+        .col-sm-6
+          %h2 Schenke Zeit und Inspiration!
+          %p.lead <strong class="blocked">Der KochAbo Geschenk-Gutschein.</strong> Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man macht keinen Sinn. 
+          %form
+            .row
+              .col-sm-4
+                %label.hide-label{ for: "" } Gutscheinwert
+                .form-group.input-group.transparent
+                  %input.form-control{ type: "text", placeholder: "mind. 10€" }
+                  .input-group-addon €
+              .col-sm-1.no-horizontal-padding
+                %span.or oder
+              .col-sm-7
+                .form-group
+                  %select.form-control
+                    %option{ value: "" } 5er Box für 2 Personen (80,90€)
+                    %option{ value: "" } 5er Box für 2 Personen (80,90€)
+                    %option{ value: "" } 5er Box für 2 Personen (80,90€)
+                    %option{ value: "" } 5er Box für 2 Personen (80,90€)
+                    %option{ value: "" } 5er Box für 2 Personen (80,90€)
+                    %option{ value: "" } 5er Box für 2 Personen (80,90€)
+                    %option{ value: "" } 5er Box für 2 Personen (80,90€)
+            .form-group
+              %label.blocked{ for: "" } Deine persönliche Nachricht
+              %textarea.form-control.no-resize{ placeholder: "Überrasche deine Liebsten mit einer ganz persönlichen Nachricht <3", rows: 5 }
+            
+            .form-group 
+              .checkbox-inline
+                %label
+                  %input{ type: "checkbox" }
+                  Gutschein per E-Mail versenden
+              .checkbox-inline
+                %label
+                  %input{ type: "checkbox" }
+                  Nach Bestellvorgang ausdrucken
+          
+            .form-footer
+              %span.form-error.hide Bitte alle Felder ausfüllen
+              %button.btn.btn-success{ type: "submit" } 
+                %i.fa.fa-shopping-cart
+                Weiter zur Kassa…
+            
+        .col-sm-5.col-sm-offset-1
+          = image_tag("backgrounds/coupon.png", "", { "class" : "img-responsive" } )
+          %strong So einfach funktionierts
+          %ul.list-unstyled
+            %li 
+              .icon
+                .ka-circlet 1
+              .text Gib dann den gewünschten Betrag ein. zB kostet eine KochAbo-Box für eine ganze Woche für 2 Personen mit 3 Rezepten 41,90 Euro.
+            %li 
+              .icon
+                .ka-circlet 2
+              .text Dann sendest du den Gutschein per E-Mail oder druckst ihn aus und übergibst ihn persönlich.
+              
+          

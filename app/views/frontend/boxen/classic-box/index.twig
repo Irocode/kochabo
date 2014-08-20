@@ -1,0 +1,163 @@
+{% haml %}
+- extends 'frontend/_layout2/layout'
+- block yield
+ 
+  %section.box-detail
+    .container-fluid
+      .row
+        .left-col.col-sm-6
+          .recipes-preview-slider
+            .recipes-preview{ data: { "box-type" : "classic", "week" : "current" } }
+            .recipes-preview.hide{ data: { "box-type" : "classic", "week" : "next" } }
+            .recipes-preview.hide{ data: { "box-type" : "classic", "week" : "weekafternext" } }
+            .recipes-placeholder.hide
+              .icon= image_tag("logos/kochabo-leafs-gradient.svg")
+              .text Für dieses Lieferdatum sind noch keine Rezepte verfügbar
+        .right-col.col-sm-6
+          .box-summary
+            %h1 Classic Box
+            %p.lead Die ideale Kochabo Box für Haushalte mit Kindern. Ausgelegt für <strong class="text-color">3-4 Personen</strong> sorgt diese Box auch für die Kleinsten unter uns. Und ich bin ein Lückenfüller!
+            .ka-options        
+              .option
+                %label{ for: "optionsRadio1" } Ich möchte in meiner Box…
+                .ka-togglebox
+                  .radio
+                    %input#boxRecipeCount3{ type: "radio", name: "box_recipe_count", value: "3", checked: "checked" }
+                    %label{ for: "boxRecipeCount3" } 3x Rezepte
+                  .radio  
+                    %input#boxRecipeCount5{ type: "radio", name: "box_recipe_count", value: "5" }
+                    %label{ for: "boxRecipeCount5" } 5x Rezepte
+              .option
+                %label{ for: "recipes-domestic-size" } für einen Haushalt mit…
+                %select#recipes-domestic-size.form-control.ka-selectbox{ data: { "prefix" : "<i class='fa fa-user'></i>" } }
+                  %option{ value: "1" } 1er Person
+                  %option{ value: "2" } 2 Personen
+                  %option{ value: "4" } 4 Personen
+                
+              .option
+                %label{ for: "recipes-delivery-dates" } beginnend mit der Woche vom…
+                %select#recipes-delivery-dates.form-control.ka-selectbox{ data: { "prefix" : "<i class='fa fa-calendar'></i>", "async" : "true" } }
+
+            .ka-price
+              %span.prepend €
+              %span.price 34,90
+              %span.append pro Box
+          
+            .cta
+              -# http://www.kochabo.at/checkout/cart/add
+              %form#checkout_form{ method: "POST", action: "/addons", data: { "step" : "product" } }
+            
+                %input#product_id{ type: "hidden", name: "product", value: "" }
+                   
+                %button{ type: "submit", class: "btn btn-danger btn-lg btn-block", data: { "loading-text" : "<i class='fa fa-spinner fa-spin'></i> Lade Add-Ons…" } } 
+                  %i.fa.fa-shopping-cart.fa-gap-right
+                  Jetzt bestellen!
+                %p <strong class="text-color"><i class="fa fa-check-square-o"></i> kostenloser Versand</strong> in ganz Österreich
+          
+  %section.features-inline
+    .container
+      .row
+        .col-sm-3
+          .feature
+            .icon
+              %i.fa.fa-check-square-o
+            .text Keine<br> feste Bindung
+        .col-sm-3
+          .feature
+            .icon
+              %i.fa.fa-check-square-o
+            .text Kostenlose<br> Lieferung
+        .col-sm-3
+          .feature
+            .icon
+              %i.fa.fa-check-square-o
+            .text Frische<br> Lebensmittel
+        .col-sm-3
+          .feature
+            .icon
+              %i.fa.fa-check-square-o
+            .text Direkt<br> vor die Haustür
+          
+
+  %section#box-contents
+    .container
+      %header.text-center
+        %hr.logo
+        %h2 Und was erwartet dich in deiner Kochabo Box?
+    .content
+      .container
+        .row
+          .col-sm-3
+            .inner
+              .icon
+                %i.fa.fa-rocket
+              %h3 Einfache Bestellung
+              %p KochAbo liefert kostenlos an jeden Haushalt in ganz Österreich. Gib einfach im untenstehenden Feld deine Postleitzahl ein, dann erhältst du die genaue Lieferzeit in deinem Ort. 
+          .col-sm-3.col-sm-offset-6
+            .inner
+              .icon
+                %i.fa.fa-rocket
+              %h3 Lieferung frei Haus
+              %p Abhängig von deiner Postleitzahlliefern wir dir deine Box Montag abendzwischen 17 und 22 Uhr oder Dienstag früh. Wahlweise kannst du dir deine Box auch Donnerstag abend oder Freitag Früh zustellen.
+          .col-sm-3
+            .inner
+              .icon
+                %i.fa.fa-rocket
+              %h3 Kreation der Rezepte
+              %p Unser KochAbo-Koch erfindet immer neue geniale Rezepte. Die Rezepte sind gut beschrieben, einfach und rasch zum Nachkochen. 
+          .col-sm-3.col-sm-offset-6
+            .inner
+              .icon
+                %i.fa.fa-rocket
+              %h3 Gesund genießen
+              %p Jetzt ist es soweit! Du musst nur noch kochen und kannst die köstlichen und gesunden Mahlzeiten mit deinen Lieben genießen.
+        
+
+  %section.newsletter
+    .container
+      .row
+        .col-sm-5.col-sm-offset-1
+          %header
+            %h2 Genieße die Vorteile der Kochabo-Welt!
+            %p.lead Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man macht keinen Sinn. 
+            .content
+              %ul.ka-list.list-unstyled
+                %li Sicher die deinen <strong class="text-color">5€ Rabatt Gutschein</strong>
+                %li Dazu bekommst du <strong class="text-color">100 Treue Punkte</strong> geschenkt
+                %li Wöchentlich <strong class="text-color">neue Rezepte per E-Mail</strong>
+                %li Zugang zum <strong class="text-color">Kochabo Rezeptarchiv</strong>
+
+        .col-sm-5.col-sm-offset-1
+          .inner
+            %hr.logo
+            %h3 Gratis Rezepte Newsletter!
+            %p.lead Trage Dich für unseren Newsletter ein und erhalte <strong>jede Woche leckere Rezepte</strong> zum einfachen Nachkochen zu Hause.
+            %form
+              .form-group
+                %label.hide-label{ for: "#newsletter-signup" } Deine E-Mail Adresse
+                %input#newsletter-signup.form-control.input-lg.text-center{ type: "email", placeholder: "Deine E-Mail Adresse…" }
+              %button.btn.btn-success.btn-lg.btn-block{ type: "submit" } 
+                %i.fa.fa-paper-plane
+                Jetzt anmelden!
+
+
+  %script#recipe-template{ type: "text/x-handlebars" }
+    .ka-week-switch
+      %a.prev{ href: "#" } 
+        %i.fa.fa-chevron-left
+      %span.current
+        %i.fa.fa-calendar
+        Woche vom {{week}}
+      %a.next{ href: "#" } 
+        %i.fa.fa-chevron-right
+       
+    .recipes-accordion{ id: "{{token}}"}
+      {{#each recipes}}
+      .panel.panel-default{ data: { "order" : "{{order}}" } }
+        .panel-collapse.collapse{ id: "recipe-{{id}}", class: "{{visibility}}" }
+          .panel-body
+            %img{ src: "{{image720}}" }
+        .panel-heading
+          %h4.panel-title
+            %a{"data-parent" => "#" + "{{../token}}", "data-toggle" => "collapse", href: "#recipe-{{id}}"} {{name}}
+      {{/each}}
