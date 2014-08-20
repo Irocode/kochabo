@@ -1,5 +1,11 @@
 /bootstrap/compiled.php
-
+/app/config/app.php
+/app/config/auth.php
+/app/config/cache.php
+/app/config/database.php
+/app/config/mail.php
+/app/config/remote.php
+/app/config/session.php
 /vendor
 composer.phar
 composer.lock
