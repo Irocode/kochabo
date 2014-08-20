@@ -122,6 +122,7 @@ $joinaufbaueinzel2 = Calendarweekrecipestruktur::join('calendarweek','calendarwe
 'products.product_name',
 'calendarweekrecipestruktur.id',
 'products.recipetypenummer',
+'products.nr_of_recipes',
 'products.type',
 ]);  
 //Für Zwei
@@ -145,6 +146,7 @@ $joinaufbaueinzel3 = Calendarweekrecipestruktur::join('calendarweek','calendarwe
 'calendarweekrecipestruktur.id',
 'calendarweek.recipeflyerurl',
 'products.recipetypenummer',
+'products.nr_of_recipes',
 'products.type',
 ]); 
 //Famileinbox
@@ -168,6 +170,7 @@ $joinaufbaueinzel4 = Calendarweekrecipestruktur::join('calendarweek','calendarwe
 'calendarweekrecipestruktur.id',
 'calendarweek.recipeflyerurl',
 'products.recipetypenummer',
+'products.nr_of_recipes',
 'products.type',
 ]); 
 //Vegetarische Box
@@ -191,6 +194,7 @@ $joinaufbaueinzel5 = Calendarweekrecipestruktur::join('calendarweek','calendarwe
 'calendarweekrecipestruktur.id',
 'calendarweek.recipeflyerurl',
 'products.recipetypenummer',
+'products.nr_of_recipes',
 'products.type',
 ]); 
 //Vegan Box
@@ -214,6 +218,7 @@ $joinaufbaueinzel6 = Calendarweekrecipestruktur::join('calendarweek','calendarwe
 'calendarweekrecipestruktur.id',
 'calendarweek.recipeflyerurl',
 'products.recipetypenummer',
+'products.nr_of_recipes',
 'products.type',
 ]); 
 //Fit Box
@@ -237,6 +242,7 @@ $joinaufbaueinzel7 = Calendarweekrecipestruktur::join('calendarweek','calendarwe
 'calendarweekrecipestruktur.id',
 'calendarweek.recipeflyerurl',
 'products.recipetypenummer',
+'products.nr_of_recipes',
 'products.type',
 ]); 
 //Produkteanzahl  erfragen     

@@ -3,7 +3,6 @@
 {{ HTML::style('assets/backend/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
 {{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectizecalandarweek.js') }}    
 {{ Notification::showAll() }}  
-
 <div class="container">
    <!--HEADER mit Zurück ANFANG-->
    <div class="headline">
@@ -13,6 +12,15 @@
       </div>
    </div>
    <!--HEADER mit Zurück ENDE-->
+
+
+
+
+
+
+
+
+   
 
    {{ Form::open(array('action' => 'App\Controllers\Admin\CalendarweekController@store' , 'files'=> true, 'method' => 'post' )) }}
        
