@@ -98,6 +98,11 @@ public function create()
        $name = $file->getClientOriginalName();
        $image = Image::make(Input::file('imagesmall')->getRealPath())->resize(200, 200);
        $image->save(public_path() . '/filemanager/userfiles/' . $input['imagesmall']->getClientOriginalName());
+
+
+
+
+       
        $input1['imagesmall'] = $name;
 
        // Upload nehmen und in DB speichern.
