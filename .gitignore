@@ -12,7 +12,7 @@ Thumbs.db
 /app/storage/cache
 /app/storage/sessions
 /app/storage/views
-/app/config
+/app/config/dev_*
 /jquery-file-upload/server/php
 .tm_properties
 /node_modules
