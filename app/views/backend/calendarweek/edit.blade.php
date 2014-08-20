@@ -1,7 +1,8 @@
 @extends('backend/_layout/layout')
 @section('content')  
 {{ HTML::style('assets/backend/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
-{{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectizenew.js') }}     
+{{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectizenew.js') }}   
+{{ Notification::showAll() }}  
 
 <div class="container">
 

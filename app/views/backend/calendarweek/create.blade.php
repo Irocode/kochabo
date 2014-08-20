@@ -2,10 +2,18 @@
 @section('content')  
 {{ HTML::style('assets/backend/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
 {{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectizenew.js') }}    
+{{ Notification::showAll() }}  
 
 
 
 
+
+
+<?php
+
+
+
+?>
 <div class="container">
 
 
