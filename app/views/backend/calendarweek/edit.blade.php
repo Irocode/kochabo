@@ -26,7 +26,8 @@
                ?>
             <div class="row">
                <div class="col-md-6">
-                  @foreach( $joinaufbaueinzel90 as $v )  </b>
+               <!--Singlebox-->
+                  @foreach( $joinaufbaueinzel2 as $v )  </b>
                   <?php
                      $countselectbeast=rand(5, 15);
                      ?>
@@ -95,7 +96,8 @@
          <div>
           <div class="row">
                <div class="col-md-6">
-            @foreach( $joinaufbaueinzel89 as $v )  </b>
+               <!--Für Zwei-->
+            @foreach( $joinaufbaueinzel3 as $v )  </b>
             <?php
                $countselectbeast=rand(5, 15);
                ?>
@@ -149,7 +151,8 @@
          <div>
           <div class="row">
                <div class="col-md-6">
-            @foreach( $joinaufbaueinzel85 as $v )  </b>
+               <!--Familienbox-->
+            @foreach( $joinaufbaueinzel4 as $v )  </b>
             <?php
                $countselectbeast=rand(5, 15);
                ?>
@@ -203,7 +206,8 @@
          <div>
           <div class="row">
                <div class="col-md-6">
-            @foreach( $joinaufbaueinzel84 as $v )  </b>
+            <!--Vegetarische Box-->
+            @foreach( $joinaufbaueinzel5 as $v )  </b>
             <?php
                $countselectbeast=rand(5, 15);
                ?>
@@ -257,7 +261,8 @@
          <div>
           <div class="row">
                <div class="col-md-6">
-            @foreach( $joinaufbaueinzel83 as $v )  </b>
+               <!--Vegan Box-->
+            @foreach( $joinaufbaueinzel6 as $v )  </b>
             <?php
                $countselectbeast=rand(5, 15);
                ?>
@@ -311,7 +316,8 @@
          <div>
           <div class="row">
                <div class="col-md-6">
-            @foreach( $joinaufbaueinzel82 as $v )  </b>
+               <!--Fit Box-->
+            @foreach( $joinaufbaueinzel7 as $v )  </b>
             <!--nr_of_recipes 1x-->   
             <div id="wrapper">
                <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">

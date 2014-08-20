@@ -92,7 +92,7 @@ class ProductsController extends BaseController
 
        //Product Type and no explode from value Example: x,1
        $typezerlegen = Input::get('type');
-       $teile = explode("-", $typezerlegen);
+       $teile = explode("*", $typezerlegen);
        $type="$teile[0]";
        $typename="$teile[1]";
 
@@ -182,7 +182,7 @@ class ProductsController extends BaseController
 
        //Product Type and no explode from value Example: x,1
        $typezerlegen = Input::get('type');
-       $teile = explode("-", $typezerlegen);
+       $teile = explode("*", $typezerlegen);
        $type="$teile[0]";
        $typename="$teile[1]";
 

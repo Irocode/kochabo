@@ -43,21 +43,17 @@
 
                      $countername = 1;
                      $countselectbeast = 1;
-                     while ($countername <= $v->nr_of_recipes)  //20mal 20 Felder möglich
-                     
+                     while ($countername <= $v->nr_of_recipes)                      
                      {
                          ?>
-                  <!--selectize Rezept Dynamic auswählen Anfang-->                  
+                  <!--selectize Rezept Dynamic auswählen Anfang-->                
 
                   <label class="control-label" for="recipetype">Rezept {{$countername}}</label>
-
-
                   <!--productid 1x-->    
                   <input type="hidden" name="merger[{{$v->id}}][id][id]" value="{{$v->id}}">
 
                   <!--nr_of_recipes 1x-->    
-                  <input type="hidden" name="merger[{{$v->id}}][id][nr_of_recipes]" value="{{$v->nr_of_recipes}}">
-                   
+                  <input type="hidden" name="merger[{{$v->id}}][id][nr_of_recipes]" value="{{$v->nr_of_recipes}}">                   
                
                   <!--nr_of_recipes 1x-->   
                   <div id="wrapper">
@@ -83,9 +79,7 @@
                      </script>
                   </div>
 
-                  <input type="hidden" name="merger[{{$v->id}}][type]" value="{{$v->recipetypenummer}}">
-
-              
+                  <input type="hidden" name="merger[{{$v->id}}][type]" value="{{$v->recipetypenummer}}">              
                   <!--selectize Rezept Dynamic auswählen Ende--> 
                   <?php
                      $countername++;    
