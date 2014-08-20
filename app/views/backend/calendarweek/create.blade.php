@@ -1,22 +1,10 @@
 @extends('backend/_layout/layout')
 @section('content')  
 {{ HTML::style('assets/backend/plugins/selectize/dist/css/selectize.bootstrap3.css') }}
-{{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectizenew.js') }}    
+{{ HTML::script('assets/backend/plugins/selectize/dist/js/standalone/selectizecalandarweek.js') }}    
 {{ Notification::showAll() }}  
 
-
-
-
-
-
-<?php
-
-
-
-?>
 <div class="container">
-
-
    <!--HEADER mit Zurück ANFANG-->
    <div class="headline">
       <h2>Neuen Wochenplan für KW: {{$calendarweek}} / Jahr: {{$year}} erstellen</h2>
@@ -26,25 +14,10 @@
    </div>
    <!--HEADER mit Zurück ENDE-->
 
-
-
-
-
-
-
-
-
-
-
    {{ Form::open(array('action' => 'App\Controllers\Admin\CalendarweekController@store' , 'files'=> true, 'method' => 'post' )) }}
-
-  
-
        
 @if($products->count())
-@foreach( $products as $v )  
-
-
+@foreach( $products as $v ) 
 
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -54,18 +27,6 @@
 <div>  
 <div class="row">
   <div class="col-md-6">
-
- 
-
-
-
-
-
-
-
-
-
-
                   
                   <!--Leerzeichen , Sonderzeichen entfernen-->
                   <?php
@@ -101,7 +62,7 @@
                   <!--nr_of_recipes 1x-->   
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "   >
+                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche " required="required"  pattern=".{2,}"   >
                            <option value="" selected>Wähle / Suche     </option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -128,34 +89,12 @@
                   <!--selectize Rezept Dynamic auswählen Ende--> 
                   <?php
                      $countername++;    
-                     $countselectbeast++;      
-
-
-
+                     $countselectbeast++;   
                             
                      }
-                     ?>
-                    
+                     ?>                    
                  <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div><div class="col-md-6">
-
-
-
-
-
  <!-- PDF -->
 <div id="zone">
 <div class="form-group">
@@ -164,34 +103,16 @@
 
   </div>
 </div>
-
-
-
-    
-
-
-
-
-
 </div>
 </div>
 </div>
 </div>
 </div>
 <br>
-
-
-
-
-
 @endforeach
-
-
 @else
 <div class="alert alert-danger">Keine Produkte vorhanden</div>
 @endif 
-
-
   <br>  
    <!-- Plichtfeld Anfang -->
    <div  style="margin-top:20px; margin-bottom:10px;">
@@ -204,16 +125,12 @@
    {{ Form::hidden('calendarweek', $calendarweek, array('class' => 'form-control' )) }} 
    {{ Form::hidden('year', $year, array('class' => 'form-control' )) }} 
    {{ Form::submit('Anlegen', array('class' => 'btn btn-u')) }}
-
-
     {{ Form::close() }}
 </div>
 <!-- Plichtfeld Ende -->
 <br>
 <br>
 </div>
-
 </div>
 </div>
-
 @stop
