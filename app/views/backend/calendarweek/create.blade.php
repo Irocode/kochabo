@@ -66,7 +66,7 @@
                   <!--nr_of_recipes 1x-->   
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche " required="required"  pattern=".{2,}"   >
+                        <select  id="select-beast_<?php echo "$countselectbeast$v->id" ?>" name="merger[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
                            <option value="" selected>Wähle / Suche     </option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>

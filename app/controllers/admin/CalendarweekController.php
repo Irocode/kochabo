@@ -96,15 +96,54 @@ $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');
 $calendarweek->type = $_REQUEST['merger'][$key]['type'];
 $keypdf = "pdf_$key";
+
+
 if (Input::hasFile($keypdf))
 {
 // var_dump('pdf is here');
-  $input = Input::all();
-$file = Input::file($keypdf);
-$name = $file->getClientOriginalName();
-$pdf=Image::make(Input::file($keypdf)->getRealPath());
 
-$pdf->save(public_path() . '/filemanager/userfiles/' . $input[$keypdf]->getClientOriginalName());
+
+
+
+
+
+
+
+
+
+
+  $input = Input::all();
+      $file = Input::file($keypdf);
+       $name = $file->getClientOriginalName();
+       $image = Image::make(Input::file($keypdf)->getRealPath());
+       $image->save(public_path() . '/filemanager/userfiles/' . $input[$keypdf]->getClientOriginalName());
+       $input1['recipeflyerurl'] = $name;
+
+       var_dump('name:');   
+       var_dump($name);
+
+       // Upload nehmen und in DB speichern.
+       $path=public_path() . '/filemanager/userfiles/' . $input1['recipeflyerurl'];
+       $type = pathinfo($path, PATHINFO_EXTENSION);
+       $data = file_get_contents($path);
+       $pdf = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+
+       //$input1['recipeflyerurl'] = $base64;
+
+
+var_dump('<br><hr>:');   
+   var_dump('input1:');   
+       var_dump($input1);
+
+
+
+
+
+
+
+
+
          
 //$pdf = $file->getClientOriginalName();
 $calendarweek->recipeflyerurl = $pdf;
@@ -124,15 +163,15 @@ $Calendarweekrecipestruktur->recipeid = $_REQUEST['merger'][$key]['recipe'][$key
 $Calendarweekrecipestruktur->save();
 }
 }
-Notification::success('Wochenplann wurde geändert');
+Notification::success('Wochenplann wurde angelegt');
 $calendarweek = Input::get('calendarweek');    
 $year = Input::get('year'); 
-return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
+//return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
 } //Else update Ende
 $calendarweek = Input::get('calendarweek');    
 $year = Input::get('year'); 
 Notification::success('Wochenplann wurde geändert');
-return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
+//return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
 }
 /**
 * Display the specified resource.
@@ -170,13 +209,7 @@ return View::make('backend.calendarweek.edit', compact('calendarweek', 'products
 public
 function update($id)
 {
-$familienbox_5 = Input::get('familienbox_5');
-$familienbox_3 = Input::get('familienbox_3');
-$data = Input::all();
-var_dump($data);
-var_dump('
-<hr>
-');
+
 }
 /**
 * Remove the specified resource from storage.
