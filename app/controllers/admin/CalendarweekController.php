@@ -99,8 +99,14 @@ $keypdf = "pdf_$key";
 if (Input::hasFile($keypdf))
 {
 // var_dump('pdf is here');
+  $input = Input::all();
 $file = Input::file($keypdf);
-$pdf = $file->getClientOriginalName();
+$name = $file->getClientOriginalName();
+$pdf=Image::make(Input::file($keypdf)->getRealPath());
+
+$pdf->save(public_path() . '/filemanager/userfiles/' . $input[$keypdf]->getClientOriginalName());
+         
+//$pdf = $file->getClientOriginalName();
 $calendarweek->recipeflyerurl = $pdf;
 }
 $calendarweek->save();

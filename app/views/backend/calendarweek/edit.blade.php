@@ -113,7 +113,10 @@
 
                </div>
                <div class="col-md-6">
-                  {{ $v->recipeflyerurl}}
+                  
+                  <a href="{{$v->recipeflyerurl}}" target="_blank">Download {{$v->recipeflyerurl}}</a><br><br>
+                   <img src="{{$v->recipeflyerurl}}" width="120" height="120"> </span>
+
                   <!-- PDF -->
                   <div id="zone">
                      <div class="form-group">
@@ -170,7 +173,7 @@
             @endforeach
                     </div>
                <div class="col-md-6">
-                  {{ $v->recipeflyerurl}}
+                  <a href="{{$v->recipeflyerurl}}" target="_blank">Download {{$v->recipeflyerurl}}</a>
                   <!-- PDF -->
                   <div id="zone">
                      <div class="form-group">
@@ -227,7 +230,7 @@
             @endforeach
                     </div>
                <div class="col-md-6">
-                  {{ $v->recipeflyerurl}}
+                  <a href="{{$v->recipeflyerurl}}" target="_blank">Download {{$v->recipeflyerurl}}</a>
                   <!-- PDF -->
                   <div id="zone">
                      <div class="form-group">
@@ -284,7 +287,7 @@
             @endforeach   
                     </div>
                <div class="col-md-6">
-                  {{ $v->recipeflyerurl}}
+                  <a href="{{$v->recipeflyerurl}}" target="_blank">Download {{$v->recipeflyerurl}}</a>
                   <!-- PDF -->
                   <div id="zone">
                      <div class="form-group">
@@ -341,7 +344,7 @@
             @endforeach  
                     </div>
                <div class="col-md-6">
-                  {{ $v->recipeflyerurl}}
+                  <a href="{{$v->recipeflyerurl}}" target="_blank">Download {{$v->recipeflyerurl}}</a>
                   <!-- PDF -->
                   <div id="zone">
                      <div class="form-group">
@@ -398,7 +401,7 @@
             @endforeach   
                     </div>
                <div class="col-md-6">
-                  {{ $v->recipeflyerurl}}
+                  <a href="{{$v->recipeflyerurl}}" target="_blank">Download {{$v->recipeflyerurl}}</a>
                   <!-- PDF -->
                   <div id="zone">
                      <div class="form-group">
