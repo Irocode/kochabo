@@ -56,6 +56,29 @@ return View::make('backend.calendarweek.create', compact('products','productscla
 public
 function store()
 {
+
+$data = Input::all(); 
+echo "
+<pre>";echo print_r($data);
+ echo "</pre>";
+echo"<hr>";
+
+$calendarweek = Input::get('calendarweek');    
+$year = Input::get('year'); 
+
+
+
+foreach($_REQUEST['mergerclassic'] as $key => $value)
+{
+$calendarweek = new Calendarweek;
+$calendarweek->calendarweek = Input::get('calendarweek');
+$calendarweek->year = Input::get('year');    
+$calendarweek->test = $_REQUEST['mergerclassic']['recipe'][$key];
+$calendarweek->save(); 
+  }
+ 
+
+/*
 $data = Input::all(); 
 echo "
 <pre>";
@@ -173,6 +196,12 @@ $calendarweek = Input::get('calendarweek');
 $year = Input::get('year'); 
 Notification::success('Wochenplann wurde geändert');
 //return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
+
+
+
+*/
+
+
 }
 /**
 * Display the specified resource.
