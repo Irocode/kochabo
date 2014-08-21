@@ -68,13 +68,76 @@ $year = Input::get('year');
 
 
 
-foreach($_REQUEST['mergerclassic'] as $key => $value)
+
+foreach($_REQUEST['mergerclassic']['recipe'] as $key => $value)
 {
+  echo"<hr>";
+  var_dump($value);echo"<br>";
 $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');    
-$calendarweek->test = $_REQUEST['mergerclassic']['recipe'][$key];
+$calendarweek->type = 3;
 $calendarweek->save(); 
+
+
+
+
+
+
+$productsclassicrecipecount = Products::where('recipetypenummer', '=', 3)->orderBy('id', 'ASC')->get();
+
+$lastinsertidcalendarweek = $calendarweek->packetid;
+foreach($productsclassicrecipecount as $key3 => $value3)
+{
+echo "hier: $key3: <br>";
+$productid=$value3->id;
+
+$Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
+$Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek; 
+//$Calendarweekrecipestruktur->productid = $productid; 
+$sorteraddeins= ($key3+1); 
+$Calendarweekrecipestruktur->sorting = $sorteraddeins; 
+$Calendarweekrecipestruktur->save();
+/*
+
+$Calendarweekrecipestruktur->productid = $key; 
+$Calendarweekrecipestruktur->productname = $key;
+$sorteraddeins= ($key3+1);   
+$Calendarweekrecipestruktur->sorting = $sorteraddeins;    
+$Calendarweekrecipestruktur->recipeid = $_REQUEST['merger'][$key]['recipe'][$key3];
+$Calendarweekrecipestruktur->save();
+*/
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  foreach($_REQUEST['mergerclassic']['type'] as $key => $valuex)
+{ echo"<hr>type";
+  var_dump($valuex);echo"<br>";
+
+//$calendarweek->save(); 
+  }
+
+  foreach($_REQUEST['mergerclassic']['nr_of_recipes'] as $key => $valuex)
+{ echo"<hr>HIER";
+  var_dump($valuex);echo"<br>";
+
+//$calendarweek->save(); 
   }
  
 

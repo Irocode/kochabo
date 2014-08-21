@@ -75,7 +75,7 @@ if ($calendarweekarray == null)
 
 //Erfragen wie die höchste Receptanzahl bei den Boxen ist START:
 //ID von Classic Boxen erfragen
-$typeerfragen = list_Recipe_type::where('bezeichnung','=','Classic')->get();
+$typeerfragen = list_Recipe_type::where('id','=','3')->get();
 $typeerfragenx = list_Recipe_type::join('products','products.recipetypenummer','=','list_recipe_type.id')
 ->where('bezeichnung','=','Classic')
 ->orderBy('products.id', 'asc')                       
@@ -97,7 +97,11 @@ foreach($typeerfragen as $x)
 {
 $typeerfragenid = $x->id;
 $typeerfragenbezeichung_classic  = $x->bezeichnung;
+
 $productsclassicrecipecount = Products::where('recipetypenummer', '=', $typeerfragenid)->orderBy('id', 'ASC')->get();
+
+
+
 $final_results_counter_nr_of_recipes_classic = array();
 foreach($productsclassicrecipecount as $x)
 {
@@ -106,7 +110,7 @@ $ret = $x->nr_of_recipes;
 $final_results_counter_nr_of_recipes_classic[] = $ret;
 }
 $max_classic = max($final_results_counter_nr_of_recipes_classic);
-
+$nr_of_recipes_classic=$nr_of_recipes;
 
 $productsjoin = list_Recipe_type::join('products','products.recipetypenummer','=','list_recipe_type.id')
 ->where('list_recipe_type.id','=',$typeerfragenid)
@@ -191,7 +195,7 @@ $max_fit = max($final_results_counter_nr_of_recipes_fit);
 
 $products = Products::where('recipetypenummer', '>', '1')->where('type', '=', '1')->orderBy('id', 'ASC')->get();
 $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();              
-return View::make('backend.calendarweek.create', compact( 'productsjoin','products','recipe','calendarweek','year','max_classic','typeerfragenbezeichung_classic','max_vegetarisch','typeerfragenbezeichung_vegetarisch','max_vegan','typeerfragenbezeichung_vegan','max_fit','typeerfragenbezeichung_fit'));
+return View::make('backend.calendarweek.create', compact( 'nr_of_recipes_classic','productsjoin','products','recipe','calendarweek','year','max_classic','typeerfragenbezeichung_classic','max_vegetarisch','typeerfragenbezeichung_vegetarisch','max_vegan','typeerfragenbezeichung_vegan','max_fit','typeerfragenbezeichung_fit'));
 }
 else
 {

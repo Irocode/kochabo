@@ -85,19 +85,19 @@
  @foreach( $productsjoin as $v ) 
 {{ $v->recipetypenummer }}/ productsID{{ $v->id }} / product_name{{ $v->product_name }}/ type{{ $v->type }}<br>
   <!--productid -->    
-                  <input type="hidden" name="merger{{$group}}[id][id][]" value="{{$v->id}}">
+                  <input type="hidden" name="merger{{$group}}[id][]" value="{{$v->id}}">
 
 <!--nr_of_recipes -->    
-                  <input type="hidden" name="merger{{$group}}[id][nr_of_recipes][]" value="{{$v->nr_of_recipes}}">
+                  <input type="hidden" name="merger{{$group}}[nr_of_recipes][]" value="{{$v->nr_of_recipes}}">
 
-                   <input type="hidden" name="merger{{$group}}[type][]" value="{{$v->recipetypenummer}}">     
+                     
 
 
 
 
 
  @endforeach    
-
+<input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_classic}}">   
 
 
 
