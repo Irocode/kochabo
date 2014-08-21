@@ -165,12 +165,8 @@ Route::get('/start', array('as' => 'frontend._layout.dashboard', function()
 return View::make('frontend._layout.dashboard');
 }));
 
-
-
-
 //CartTest
 Route::resource('cart', 'CartController');
-
 
 // newsletter
 Route::resource('newslettereintrag', 'NewslettereintragController');
@@ -237,7 +233,6 @@ Route::resource('newsletter', 'NewsletterController');
 Route::get('/versand',function() {
 return View::make('frontend.newsletter.versand');
 });
-
 // aktivierung
 Route::resource('aktivierung', 'NewslettereintragController@update');
 Route::get('/aktivierung/{email}/email', 'NewslettereintragController@update')->where('email', '$email');
@@ -364,12 +359,6 @@ Route::resource('calendarweek', 'CalendarweekController');
 Route::get('calendarweeknew/{year?}/{calendarweek?}/edit', array('as' => 'admin.calendarweek.edit', 'uses' => 'HelperController@calendarweeknew'))
 ->where(array('year' => '[0-9]+', 'calendarweek' => '[0-9]+'));
 
-
-
-
-
-
-
 //recipe_ingredient
 Route::resource('recipe_ingredient', 'RecipeingredientController');
 ////order AJAX INDEX Tablesorter ingredients
@@ -385,7 +374,6 @@ Route::post('recipe/submitx/{id}/toggle-publish', array('as' => 'admin.recipe.su
 Route::get('tablesorter_recipe_index/{id}', array('as'=>'admin.recipe.data', 'uses'=>'AjaxController@getDatatable_recipe'));
 Route::get('tablesorter_recipe_index', array('as'=>'admin.recipe.data', 'uses'=>'AjaxController@getDatatable_recipe_all'));
 
-
 Route::get('recipe/{id}/delete', array('as' => 'admin.recipe.delete', 'uses' => 'RecipeController@confirmDestroy'))
 ->where('id', '\d+');
 
@@ -400,9 +388,6 @@ Route::get('customers_groups/{id}/delete', array('as' => 'admin.customers_groups
 Route::get('tablesorter_customer_management_customers_groups/{id}', array('as'=>'admin.customer_management.data_customers_groups', 'uses'=>'AjaxController@getDatatable_tablesorter_customer_management_customers_groups'));
 //customer_management _customers_groups_index
 Route::get('index_customer_management_groups/{id}', array('as'=>'admin.customer_management.index_customers_groups', 'uses'=>'CustomersGroupsController@index_customers_groups'));
-
-
-
 
 //order_status_history
 Route::resource('order_status_history', 'OrderStatusHistoryController');
@@ -425,8 +410,7 @@ Route::get('logisticianmanager/{id}/delete', array('as' => 'admin.logisticianman
 ->where('id', '\d+');
 ////Logistician with zipcode and Deliverytimes (GROUP)
 Route::get('logisticianmanager/{id}/group', array('as' => 'admin.logisticianmanager.group_sefa_free', 'uses' => 'Logisticianmanager_sefa_free_Controller@group'))
-->where('id', '\d+');
- 
+->where('id', '\d+'); 
 
 //Search for Results from Zip
 Route::get('search', array('as' => 'admin.search', 'uses' => 'SearchbackenddeliveryzipcodeController@index')) ->where('id', '\d+');
@@ -520,10 +504,7 @@ Route::get('list_type/{id}/delete', array('as' => 'admin.list.list_type.delete',
 Route::resource('list_recipe_type', 'List_Recipe_typeController');
 Route::get('list_recipe_type/{id}/delete', array('as' => 'admin.list.list_recipe_type.delete', 'uses' => 'List_Recipe_typeController@confirmDestroy'))
 ->where('id', '[0-9]+');
-
-
 Route::resource('list_kundengruppe', 'List_KundengruppeController');
-
 ////Newsletter AJAX INDEX Tablesorter
 Route::get('tablesorter_newsletter_index/{id}', array('as'=>'admin.newsletter.data', 'uses'=>'AjaxController@getDatatable_newsletter'));
 Route::get('tablesorter_newsletter_index', array('as'=>'admin.newsletter.data', 'uses'=>'AjaxController@getDatatable_newsletter_all'));
@@ -547,16 +528,11 @@ Route::get('list_settings_products', function()
 {
 return View::make('backend.lists.index_list_settings_products');
 });
-
-
 //Select Fields ALL
 Route::get('list_settings_all', function()
 {
 return View::make('backend.lists.index_list_settings_all');
 });
-
-
-
 // log
 Route::any('log', ['as'=>'admin.log', 'uses'=>'LogController@index']);
 
@@ -595,12 +571,6 @@ Route::get('admin/register', 'Customer_management_adminController@create');
 Route::get('admin/customer_management/{id}/delete', array('as' => 'admin.customer_management.delete', 'uses' => 'Customer_management_adminController@confirmDestroy'))
 ->where('id', '\d+');
 
-
-
-
-
-
-
 //Groups admin
 Route::resource('admin/groups', 'GroupadminController');
 //Session
@@ -629,24 +599,17 @@ Route::resource('admin/users', 'UseradminController');
 Route::get('filemanager/show', function () {
 return View::make('backend/plugins/filemanager');
 });
-
-
 // filemanager little fileupload images
 Route::get('filemanager/showiamges', function () {
 return View::make('backend/plugins/filemanager');
 });
-
-
 Route::get('filemanagernew/show', function () {
 return View::make('backend/plugins/filemanagernew');
 });
-
-
 // filemanager little fileupload images
 Route::get('filemanagernew/showiamges', function () {
 return View::make('backend/plugins/filemanagernew');
 });
-
 /*
 |--------------------------------------------------------------------------
 | Backend Login
@@ -672,7 +635,7 @@ Route::post('admin/reset-password', array('as' => 'admin.reset.password.post', '
 
 /*
 |--------------------------------------------------------------------------
-| General Routes
+| General Routes ERROR SEITE
 |--------------------------------------------------------------------------
 */
 /*
@@ -841,9 +804,6 @@ View::share ('list_country',List_Country::all());
 View::share ('list_janein',List_Janein::all());
 View::share ('list_kundengruppe',List_Kundengruppe::all());
 View::share ('list_einheit',List_Einheit::all());
-
-
-
 //Wichtig damit Daten überall ankommen
 //importent for Share Data from Footer 
 View::share ('footer',Footer::all());
@@ -953,16 +913,11 @@ Route::post('checkout', function()
 return View::make('frontend.checkout.index');
 });
 
-
 // login option unangemeldet in die Bestellung
 Route::get('meinkontologinzurbestellung', function()
 {
 return View::make('frontend.meinkonto.meinkontologinzurbestellung');
 });
-
-
-
-
 
 /*
 |----------------------------------------------------------------------------------------------------------------------------------
@@ -977,76 +932,9 @@ Route::get('/logout', 'LoginController@getLogout');
 
 Route::resource('/conformemail', 'ConformeemailController');
 
-
-
 Route::get('/social/{provider}/{action?}', array("as" => "loginWith", "uses" => "LoginController@loginWithSocial"));
 
 
-/*
-
-Route::get('social/{action?}', array("as" => "hybridauth", function($action = "")
-{
-	// check URL segment
-	if ($action == "auth") {
-		// process authentication
-		try {
-			Hybrid_Endpoint::process();
-		}
-		catch (Exception $e) {
-			// redirect back to http://URL/social/
-			return Redirect::route('hybridauth');
-		}
-		return;
-	}
-	try {
-		// create a HybridAuth object
-		$socialAuth = new Hybrid_Auth(app_path() . '/config/hybridauth.php');
-		// authenticate with facebook
-		$provider = $socialAuth->authenticate("Facebook");
-		// fetch user profile
-		$userProfile = $provider->getUserProfile();
-	}
-	catch(Exception $e) {
-		// exception codes can be found on HybBridAuth's web site
-		return $e->getMessage();
-
-		
-	}
-
-$email=$userProfile->email;
-$displayName= $userProfile->displayName;
-
-
-if  (empty($email)) {Session::flush();} else {
-Session::put('email', $email);
-Session::put('displayName', $displayName);  
-
-Session::put('hybridAuth', $userProfile);
-}
-
-
-
-$provider->logout();
-return View::make('frontend.meinkonto.index')->with('displayName', $displayName)->with('email', $email)->with('hybridAuth', $userProfile);
-
-
-}));
-
-
-
-/*
-|----------------------------------------------------------------------------------------------------------------------------------
-| TESTS tests (in progress)       PLEASE NOT DELETE 
-|-----------------------------------------------------------------------------------------------------------------------------------
-*/
 
 //<!-- BAUSTELLE ANFANG-->
 //<!-- BAUSTELLE ENDE-->
-
-
-
-
-
-
-
-

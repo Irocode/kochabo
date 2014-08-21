@@ -25,11 +25,11 @@ use Response;
 use Str;
 use Notification;
 use Calendarweekrecipestruktur;
-use Calendarweekrecipestrukturx;
+
 use Calendarweek;
 class HelperController extends BaseController
 {
-public function __construct(Calendarweekrecipestruktur $calendarweekrecipestruktur,Calendarweekrecipestrukturx $calendarweekrecipestrukturx,Calendarweek $calendarweek,Recipeingredient $recipe_ingredient, Recipe $recipe, Ingredients $ingredients, Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
+public function __construct(Calendarweekrecipestruktur $calendarweekrecipestruktur,Calendarweek $calendarweek,Recipeingredient $recipe_ingredient, Recipe $recipe, Ingredients $ingredients, Order $order, OrderAddress $order_address, OrderItems $order_items, OrderStatusHistory $order_status_history, Users $users, Logisticianmanager $logisticianmanager,  Address $address, AddressNoPrimaryKey $addressnoprimarykey, Deliveryzipcode $deliveryzipcode, Products $products, Newsletter $newsletter, CustomersGroups $customers_groups)
 {
 View::share('active', 'modules');
 $this->logisticianmanager = $logisticianmanager;      
@@ -49,7 +49,7 @@ $this->recipe = $recipe;
 $this->recipe_ingredient = $recipe_ingredient;
 $this->calendarweek = $calendarweek;       
 $this->calendarweekrecipestruktur = $calendarweekrecipestruktur;
-$this->calendarweekrecipestrukturx = $calendarweekrecipestrukturx;
+
 }  
 // calendarweeknew Startseite abfrage Anfang
 function calendarweeknew($year, $calendarweek)
