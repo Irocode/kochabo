@@ -58,9 +58,30 @@ $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->wh
 if ($calendarweekarray == null)
 {
 //  var_dump(' insert new record into database');
+$productsclassic = Products::where('recipetypenummer', '=', '3')->orderBy('id', 'ASC')->get();
+
+
+//Erfragen wie die höchste Receptanzahl bei Classic(id3) Boxen ist
+$productsclassicrecipecount = Products::where('recipetypenummer', '=', '3')->orderBy('id', 'ASC')->get();
+$final_results_counter_nr_of_recipes = array();
+foreach($productsclassicrecipecount as $x)
+{
+$nr_of_recipes = $x->nr_of_recipes;
+var_dump($nr_of_recipes);
+$ret = $x->nr_of_recipes;
+$final_results_counter_nr_of_recipes[] = $ret; // DONE :)
+}
+$max = max($final_results_counter_nr_of_recipes);
+var_dump('hier');
+var_dump($max);
+//Anhand der höchsten Rezeptanzhal Felder aufbauen für Classic GESAMT
+
+
+
+
 $products = Products::where('recipetypenummer', '>', '1')->where('type', '=', '1')->orderBy('id', 'ASC')->get();
 $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();              
-return View::make('backend.calendarweek.create', compact( 'products','recipe','calendarweek','year'));
+return View::make('backend.calendarweek.create', compact( 'products','recipe','calendarweek','year','productsclassic'));
 }
 else
 {

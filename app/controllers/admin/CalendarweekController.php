@@ -44,8 +44,9 @@ return View::make('backend.calendarweek.index');
 public
 function create()
 {
+$productsclassic = Products::where('type', '=', '1')->orderBy('id', 'DESC')->get();
 $products = Products::where('recipetypenummer', '>', '1')->orderBy('id', 'DESC')->get();
-return View::make('backend.calendarweek.create', compact('products'));
+return View::make('backend.calendarweek.create', compact('products','productsclassic'));
 }
 /**
 * Store a newly created resource in storage.
