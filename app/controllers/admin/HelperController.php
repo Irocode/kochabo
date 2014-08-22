@@ -26,7 +26,6 @@ use Str;
 use Notification;
 use Calendarweekrecipestruktur;
 use List_Recipe_type;
-
 use Calendarweek;
 class HelperController extends BaseController
 {
@@ -51,7 +50,6 @@ $this->recipe_ingredient = $recipe_ingredient;
 $this->calendarweek = $calendarweek;       
 $this->calendarweekrecipestruktur = $calendarweekrecipestruktur;
 $this->list_Recipe_type = $list_Recipe_type;
-
 }  
 // calendarweeknew Startseite abfrage Anfang
 function calendarweeknew($year, $calendarweek)
@@ -59,20 +57,6 @@ function calendarweeknew($year, $calendarweek)
 $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->first();
 if ($calendarweekarray == null)
 {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Erfragen wie die höchste Receptanzahl bei den Boxen ist START:
 //ID von Classic Boxen erfragen
 $typeerfragen = list_Recipe_type::where('id','=','3')->get();
@@ -86,16 +70,11 @@ $typeerfragenx = list_Recipe_type::join('products','products.recipetypenummer','
 'products.product_name',
 'products.type',
 ]); 
-
 foreach($typeerfragen as $x)
 {
 $typeerfragenid = $x->id;
 $typeerfragenbezeichung_classic  = $x->bezeichnung;
-
 $productsclassicrecipecount = Products::where('recipetypenummer', '=', $typeerfragenid)->orderBy('id', 'ASC')->get();
-
-
-
 $final_results_counter_nr_of_recipes_classic = array();
 foreach($productsclassicrecipecount as $x)
 {
@@ -105,7 +84,6 @@ $final_results_counter_nr_of_recipes_classic[] = $ret;
 }
 $max_classic = max($final_results_counter_nr_of_recipes_classic);
 $nr_of_recipes_classic=$nr_of_recipes;
-
 $productsjoin = list_Recipe_type::join('products','products.recipetypenummer','=','list_recipe_type.id')
 ->where('list_recipe_type.id','=',$typeerfragenid)
 ->orderBy('products.id', 'asc')                       
@@ -116,17 +94,10 @@ $productsjoin = list_Recipe_type::join('products','products.recipetypenummer','=
 'products.product_name',
 'products.type',
 ]); 
-
 }
 //Anhand der höchsten Rezeptanzahl Felder aufbauen für Classic GESAMT
-
-
-
-
-
-
 //ID von Vegetarisch Boxen erfragen
-$typeerfragen = list_Recipe_type::where('bezeichnung','=','Vegetarisch')->get();
+$typeerfragen = list_Recipe_type::where('id','=','5')->get();
 foreach($typeerfragen as $x)
 {
 $typeerfragenid = $x->id;
@@ -143,54 +114,46 @@ $max_vegetarisch = max($final_results_counter_nr_of_recipes_vegetarisch);
 $nr_of_recipes_vegetarisch=$nr_of_recipes;
 }
 //Anhand der höchsten Rezeptanzahl Felder aufbauen für Vegetarisch GESAMT
-
-
 //ID von Vegan Boxen erfragen
-$typeerfragen = list_Recipe_type::where('bezeichnung','=','Vegan')->get();
+$typeerfragen = list_Recipe_type::where('id','=','4')->get();
 foreach($typeerfragen as $x)
 {
 $typeerfragenid = $x->id;
 $typeerfragenbezeichung_vegan  = $x->bezeichnung;
-$productsclassicrecipecount = Products::where('recipetypenummer', '=', $typeerfragenid)->orderBy('id', 'ASC')->get();
+$productsveganrecipecount = Products::where('recipetypenummer', '=', $typeerfragenid)->orderBy('id', 'ASC')->get();
 $final_results_counter_nr_of_recipes_vegan = array();
-foreach($productsclassicrecipecount as $x)
+foreach($productsveganrecipecount as $x)
 {
 $nr_of_recipes = $x->nr_of_recipes;
 $ret = $x->nr_of_recipes;
 $final_results_counter_nr_of_recipes_vegan[] = $ret;
 }
 $max_vegan = max($final_results_counter_nr_of_recipes_vegan);
+$nr_of_recipes_vegan=$nr_of_recipes;
 }
 //Anhand der höchsten Rezeptanzahl Felder aufbauen für Vegan GESAMT
-
-
 //ID von Fit Boxen erfragen
-$typeerfragen = list_Recipe_type::where('bezeichnung','=','Fit')->get();
+$typeerfragen = list_Recipe_type::where('id','=','6')->get();
 foreach($typeerfragen as $x)
 {
 $typeerfragenid = $x->id;
 $typeerfragenbezeichung_fit  = $x->bezeichnung;
-$productsclassicrecipecount = Products::where('recipetypenummer', '=', $typeerfragenid)->orderBy('id', 'ASC')->get();
+$productsfitrecipecount = Products::where('recipetypenummer', '=', $typeerfragenid)->orderBy('id', 'ASC')->get();
 $final_results_counter_nr_of_recipes_fit = array();
-foreach($productsclassicrecipecount as $x)
+foreach($productsfitrecipecount as $x)
 {
 $nr_of_recipes = $x->nr_of_recipes;
 $ret = $x->nr_of_recipes;
 $final_results_counter_nr_of_recipes_fit[] = $ret;
 }
 $max_fit = max($final_results_counter_nr_of_recipes_fit);
+$nr_of_recipes_fit=$nr_of_recipes;
 }
 //Anhand der höchsten Rezeptanzahl Felder aufbauen für Fit GESAMT
-
 //Erfragen wie die höchste Receptanzahl bei den Boxen ist END:
-
-
-
-
-
 $products = Products::where('recipetypenummer', '>', '1')->where('type', '=', '1')->orderBy('id', 'ASC')->get();
 $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();              
-return View::make('backend.calendarweek.create', compact( 'nr_of_recipes_classic','nr_of_recipes_vegetarisch','productsjoin','products','recipe','calendarweek','year','max_classic','typeerfragenbezeichung_classic','max_vegetarisch','typeerfragenbezeichung_vegetarisch','max_vegan','typeerfragenbezeichung_vegan','max_fit','typeerfragenbezeichung_fit'));
+return View::make('backend.calendarweek.create', compact( 'nr_of_recipes_fit','nr_of_recipes_vegan','nr_of_recipes_classic','nr_of_recipes_vegetarisch','productsjoin','products','recipe','calendarweek','year','max_classic','typeerfragenbezeichung_classic','max_vegetarisch','typeerfragenbezeichung_vegetarisch','max_vegan','typeerfragenbezeichung_vegan','max_fit','typeerfragenbezeichung_fit'));
 }
 else
 {
@@ -208,7 +171,7 @@ return View::make('backend.recipe.data', compact('recipe'));
 }
 else
 {
-  //GESAMT
+//GESAMT
 $joinaufbaugesamt = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
 ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
 ->join('products','products.id','=','calendarweekrecipestruktur.productid')   
@@ -230,7 +193,6 @@ $joinaufbaugesamt = Calendarweekrecipestruktur::join('calendarweek','calendarwee
 'products.recipetypenummer',
 'products.type',
 ]);  
-
 //Singlebox
 $joinaufbaueinzel2 = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
 ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
@@ -327,6 +289,54 @@ $joinaufbaueinzel5 = Calendarweekrecipestruktur::join('calendarweek','calendarwe
 'products.nr_of_recipes',
 'products.type',
 ]); 
+//Vegetarische Box
+$joinaufbaueinzel85 = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
+->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
+->join('products','products.id','=','calendarweekrecipestruktur.productid')   
+->where('calendarweek.calendarweek','=',$calendarweek)->where('calendarweek.year','=',$year)
+->where('calendarweekrecipestruktur.productid','=',85)
+->orderBy('calendarweekrecipestruktur.id', 'asc')                       
+->get([
+'calendarweekrecipestruktur.packetid',
+'calendarweekrecipestruktur.recipeid',
+'calendarweekrecipestruktur.sorting',
+'calendarweekrecipestruktur.productid',                   
+'calendarweek.calendarweek',
+'calendarweek.year',
+'calendarweekrecipestruktur.sorting',  
+'recipe.title',
+'recipe.id',
+'products.product_name',
+'calendarweekrecipestruktur.id',
+'calendarweek.recipeflyerurl',
+'products.recipetypenummer',
+'products.nr_of_recipes',
+'products.type',
+]); 
+//Vegetarische Box
+$joinaufbaueinzel86 = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
+->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
+->join('products','products.id','=','calendarweekrecipestruktur.productid')   
+->where('calendarweek.calendarweek','=',$calendarweek)->where('calendarweek.year','=',$year)
+->where('calendarweekrecipestruktur.productid','=',86)
+->orderBy('calendarweekrecipestruktur.id', 'asc')                       
+->get([
+'calendarweekrecipestruktur.packetid',
+'calendarweekrecipestruktur.recipeid',
+'calendarweekrecipestruktur.sorting',
+'calendarweekrecipestruktur.productid',                   
+'calendarweek.calendarweek',
+'calendarweek.year',
+'calendarweekrecipestruktur.sorting',  
+'recipe.title',
+'recipe.id',
+'products.product_name',
+'calendarweekrecipestruktur.id',
+'calendarweek.recipeflyerurl',
+'products.recipetypenummer',
+'products.nr_of_recipes',
+'products.type',
+]); 
 //Vegan Box
 $joinaufbaueinzel6 = Calendarweekrecipestruktur::join('calendarweek','calendarweek.packetid','=','calendarweekrecipestruktur.packetid')
 ->join('recipe','recipe.id','=','calendarweekrecipestruktur.recipeid')   
@@ -386,12 +396,11 @@ $final_results = array_unique($final_results);
 //Neugruppierung Index
 $final_results = array_merge($final_results);
 //var_dump($final_results);
-
 $calendarweek = $this->calendarweek->find($idnew);
 $calendarweekrecipestruktur = Calendarweekrecipestruktur::where('packetid', '=', $idnew)->orderBy('id', 'DESC')->get();
 $products = Products::where('recipetypenummer', '>', '1')->where('type', '=', '1')->orderBy('id', 'DESC')->get();
 $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();
-return View::make('backend.calendarweek.edit', compact('year', 'calendarweek','final_results','products', 'recipe', 'calendarweekrecipestruktur','joinaufbaugesamt','joinaufbaueinzel2' ,'joinaufbaueinzel3','joinaufbaueinzel4','joinaufbaueinzel5','joinaufbaueinzel6','joinaufbaueinzel7'));
+return View::make('backend.calendarweek.edit', compact('year', 'calendarweek','final_results','products', 'recipe', 'calendarweekrecipestruktur','joinaufbaugesamt','joinaufbaueinzel2' ,'joinaufbaueinzel3','joinaufbaueinzel4','joinaufbaueinzel5','joinaufbaueinzel6','joinaufbaueinzel7','joinaufbaueinzel85','joinaufbaueinzel86'));
 }
 };
 }

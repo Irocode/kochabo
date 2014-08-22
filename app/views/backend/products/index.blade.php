@@ -142,6 +142,7 @@
                      <th>Name</th>
                      <th>Preis</th>
                      <th>Typ</th>
+                     <th>Rezepteanzahl</th>
                      <th>Rezept Typ</th>
                      <th>Erstellt am</th>
                      <th>Update am</th>
@@ -172,6 +173,9 @@
                            <option value="{{ $x->bezeichnung }}">{{ $x->bezeichnung }}</option>
                            @endforeach  
                         </select>
+                     </th>
+
+                      <th rowspan="1" colspan="1">
                      </th>
 
                      <th rowspan="1" colspan="1">

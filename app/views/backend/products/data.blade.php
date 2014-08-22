@@ -11,6 +11,7 @@
 "{{{ $v->product_name }}}",
 "{{{ $v->price}}} {{{ $v->currency}}}",
 "{{{ $v->typename}}}",
+"{{{ $v->nr_of_recipes}}}",
 "{{{ $v->recipetype}}}",
 "{{{ $v->created_at->format('d-m-Y (H:i:s)') }}} ",
 "{{{ $v->updated_at->format('d-m-Y (H:i:s)')}}}", 
@@ -20,6 +21,6 @@
 ], 
 @if ($index == 0)
 @elseif ($index+1 == count($products))
-    [ "", "", "", "", "", "", "", "","" ] ]}
+    [ "", "", "", "", "", "", "","", "","" ] ]}
 @endif
 @endforeach
