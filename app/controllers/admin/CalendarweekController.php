@@ -64,8 +64,12 @@ echo "
 echo"
 <hr>
 ";
+
+//Kalenderwoche und Jahr
 $calendarweek = Input::get('calendarweek');    
 $year = Input::get('year'); 
+
+
 //Classic
 $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
@@ -321,6 +325,13 @@ $Calendarweekrecipestruktur->save();
 $counter++; $sorting++; $keyx++;
     
 }
+
+Notification::success('Wochenplann wurde angelegt');
+$calendarweek = Input::get('calendarweek');    
+$year = Input::get('year'); 
+return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
+
+
 //$Calendarweekrecipestruktur->productid = $productid; 
 //$sorteraddeins= ($key3+1); 
 //$Calendarweekrecipestruktur->sorting = $sorteraddeins; 
@@ -423,8 +434,11 @@ $year = Input::get('year');
 $calendarweek = Input::get('calendarweek');    
 $year = Input::get('year'); 
 Notification::success('Wochenplann wurde geändert');
-//return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
+
 */
+
+
+
 }
 /**
 * Display the specified resource.

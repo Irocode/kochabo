@@ -130,7 +130,7 @@ class AjaxController extends BaseController
     // AJAX Call-> Index products INDEX Start
     public function getDatatable_products()
     {
-        $products = Products::where('id', '>', 1)->orderBy('id', 'DESC')->get();
+        $products = Products::where('id', '>', 0)->orderBy('id', 'DESC')->get();
         return View::make('backend.products.data', compact('products'));
     }
     // AJAX Call-> Index products INDEX END
