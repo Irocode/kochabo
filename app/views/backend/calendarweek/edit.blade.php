@@ -20,7 +20,7 @@
    <?php $group="classic";?>   
    <div class="panel panel-default" style=" border-style:solid; border-color:red;">
       <div class="panel-heading">
-         <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_classic [Maximale Feldanzahl: $max_classic";?>]</h3>
+         <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_classic";?></h3>
       </div>
       <div class="panel-body">
          <div>
@@ -54,7 +54,7 @@
                      </script>
                   </div>
                   <!--selectize Rezept Dynamic auswählen Ende-->                   
-                  <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_classic}}">   
+                
                   @endforeach  
                </div>
                <div class="col-md-6">
@@ -76,7 +76,7 @@
    <?php $group="vegetarisch";?>   
    <div class="panel panel-default" style=" border-style:solid; border-color:blue;">
       <div class="panel-heading">
-         <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_vegetarisch [Maximale Feldanzahl: $max_vegetarisch";?>]</h3>
+         <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_vegetarisch";?></h3>
       </div>
       <div class="panel-body">
          <div>
@@ -110,7 +110,7 @@
                      </script>
                   </div>
                   <!--selectize Rezept Dynamic auswählen Ende-->                
-                  <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_classic}}">   
+                 
                   @endforeach  
                </div>
                <div class="col-md-6">
@@ -132,7 +132,7 @@
    <?php $group="vegan";?>   
    <div class="panel panel-default" style=" border-style:solid; border-color:green;">
       <div class="panel-heading">
-         <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_vegan [Maximale Feldanzahl: $max_vegan";?>]</h3>
+         <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_vegan";?></h3>
       </div>
       <div class="panel-body">
          <div>
@@ -166,7 +166,7 @@
                      </script>
                   </div>
                   <!--selectize Rezept Dynamic auswählen Ende-->                  
-                  <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_vegan}}">   
+                 
                   @endforeach  
                </div>
                <div class="col-md-6">
@@ -188,7 +188,7 @@
    <?php $group="fit";?>  
    <div class="panel panel-default" style=" border-style:solid; border-color:yellow;">
       <div class="panel-heading">
-         <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_fit [Maximale Feldanzahl: $max_fit";?>]</h3>
+         <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_fit";?></h3>
       </div>
       <div class="panel-body">
          <div>
@@ -221,8 +221,8 @@
                         });
                      </script>
                   </div>
-                  <!--selectize Rezept Dynamic auswählen Ende-->                  
-                  <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_fit}}">   
+                  <!--selectize Rezept Dynamic auswählen Ende-->             
+                 
                   @endforeach  
                </div>
                <div class="col-md-6">

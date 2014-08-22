@@ -60,7 +60,7 @@
                      $countername++; 
                      }
                      ?>
-                  <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_classic}}">   
+            
                </div>
                <div class="col-md-6">
                   <!-- PDF -->
@@ -123,7 +123,7 @@
                      $countername++; 
                      } 
                      ?>
-                  <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_vegetarisch}}">   
+                  
                </div>
                <div class="col-md-6">
                   <!-- PDF -->
@@ -186,7 +186,7 @@
                      $countername++; 
                      } 
                      ?>
-                  <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_vegan}}">   
+                  
                </div>
                <div class="col-md-6">
                   <!-- PDF -->
@@ -249,7 +249,7 @@
                      $countername++; 
                      } 
                      ?>
-                  <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_fit}}">   
+                 
                </div>
                <div class="col-md-6">
                   <!-- PDF -->

@@ -70,16 +70,18 @@ $calendarweek = Input::get('calendarweek');
 $year = Input::get('year'); 
 
 
-//Classic
+/*
+|----------------------------------------------------------------------------------------------------------------------------------
+| CLASSIC BOXEN START 
+|-----------------------------------------------------------------------------------------------------------------------------------
+*/
 $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');    
 $calendarweek->type = 3;
-
 $keypdf = "pdf_classic";
 if (Input::hasFile($keypdf))
 {
-// var_dump('pdf is here');
 $input = Input::all();
 $file = Input::file($keypdf);
 $name = $file->getClientOriginalName();
@@ -93,29 +95,17 @@ $path=public_path() . '/filemanager/userfiles/' . $input1['recipeflyerurl'];
 $type = pathinfo($path, PATHINFO_EXTENSION);
 $data = file_get_contents($path);
 $pdf = 'data:image/' . $type . ';base64,' . base64_encode($data);
-//$input1['recipeflyerurl'] = $base64;
-var_dump('<br>
-<hr>
-:');   
-var_dump('input1:');   
-var_dump($input1);
-//$pdf = $file->getClientOriginalName();
 $calendarweek->recipeflyerurl = $pdf;
 }
-$calendarweek->save(); 
+$calendarweek->save();
 
 
-echo"
-<hr>
-";
 $productsclassicrecipecount = Products::where('recipetypenummer', '=', 3)->orderBy('id', 'ASC')->get();
 foreach($productsclassicrecipecount as $key3 => $value3)
 {
 $productid=$value3->id;
 $product_name=$value3->product_name;
 $nr_of_recipes=$value3->nr_of_recipes;
-echo "nr_of_recipes: $nr_of_recipes: <br>";
-echo "productid: $productid: <br>";
 }
 
 $keyx=0; 
@@ -126,19 +116,25 @@ while ($counter <= $nr_of_recipes)
 $lastinsertidcalendarweek = $calendarweek->packetid;
 $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
 $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek; 
-//$Calendarweekrecipestruktur->productid = $productid;
 $Calendarweekrecipestruktur->productname = "Classic";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergerclassic']['recipe'][$keyx];
 $Calendarweekrecipestruktur->sorting = $sorting; 
-echo "<br>productidx: $productid: <br>";
 $Calendarweekrecipestruktur->save();
 $counter++; $sorting++; $keyx++;
 }  
+/*
+|----------------------------------------------------------------------------------------------------------------------------------
+| CLASSIC BOXEN END 
+|-----------------------------------------------------------------------------------------------------------------------------------
+*/
 
 
 
-
-//Vegetarisch
+/*
+|----------------------------------------------------------------------------------------------------------------------------------
+| VEGETARISCHE BOXEN START 
+|-----------------------------------------------------------------------------------------------------------------------------------
+*/
 $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');    
@@ -146,41 +142,26 @@ $calendarweek->type = 5;
 $keypdf = "pdf_vegetarisch";
 if (Input::hasFile($keypdf))
 {
-// var_dump('pdf is here');
 $input = Input::all();
 $file = Input::file($keypdf);
 $name = $file->getClientOriginalName();
 $image = Image::make(Input::file($keypdf)->getRealPath());
 $image->save(public_path() . '/filemanager/userfiles/' . $input[$keypdf]->getClientOriginalName());
 $input1['recipeflyerurl'] = $name;
-var_dump('name:');   
-var_dump($name);
 // Upload nehmen und in DB speichern.
 $path=public_path() . '/filemanager/userfiles/' . $input1['recipeflyerurl'];
 $type = pathinfo($path, PATHINFO_EXTENSION);
 $data = file_get_contents($path);
 $pdf = 'data:image/' . $type . ';base64,' . base64_encode($data);
-//$input1['recipeflyerurl'] = $base64;
-var_dump('<br>
-<hr>
-:');   
-var_dump('input1:');   
-var_dump($input1);
-//$pdf = $file->getClientOriginalName();
 $calendarweek->recipeflyerurl = $pdf;
 }
 $calendarweek->save(); 
-echo"
-<hr>
-";
 $productsclassicrecipecount = Products::where('recipetypenummer', '=', 5)->orderBy('id', 'ASC')->get();
 foreach($productsclassicrecipecount as $key3 => $value3)
 {
 $productid=$value3->id;
 $product_name=$value3->product_name;
 $nr_of_recipes=$value3->nr_of_recipes;
-echo "nr_of_recipes: $nr_of_recipes: <br>";
-echo "productid: $productid: <br>";
 }  
 
 $keyx=0; 
@@ -191,15 +172,24 @@ while ($counter <= $nr_of_recipes)
 $lastinsertidcalendarweek = $calendarweek->packetid;
 $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
 $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek; 
-//$Calendarweekrecipestruktur->productid = $productid;
 $Calendarweekrecipestruktur->productname = "Vegetarisch";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergervegetarisch']['recipe'][$keyx];
 $Calendarweekrecipestruktur->sorting = $sorting; 
-echo "<br>productidx: $productid: <br>";
+
 $Calendarweekrecipestruktur->save();
-$counter++; $sorting++; $keyx++;
-     
+$counter++; $sorting++; $keyx++;     
 }
+/*
+|----------------------------------------------------------------------------------------------------------------------------------
+| VEGETARISCHE BOXEN END 
+|-----------------------------------------------------------------------------------------------------------------------------------
+*/
+
+/*
+|----------------------------------------------------------------------------------------------------------------------------------
+| VEGAN BOXEN START 
+|-----------------------------------------------------------------------------------------------------------------------------------
+*/
 //Vegan
 $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
@@ -208,41 +198,28 @@ $calendarweek->type = 4;
 $keypdf = "pdf_vegan";
 if (Input::hasFile($keypdf))
 {
-// var_dump('pdf is here');
 $input = Input::all();
 $file = Input::file($keypdf);
 $name = $file->getClientOriginalName();
 $image = Image::make(Input::file($keypdf)->getRealPath());
 $image->save(public_path() . '/filemanager/userfiles/' . $input[$keypdf]->getClientOriginalName());
 $input1['recipeflyerurl'] = $name;
-var_dump('name:');   
-var_dump($name);
 // Upload nehmen und in DB speichern.
 $path=public_path() . '/filemanager/userfiles/' . $input1['recipeflyerurl'];
 $type = pathinfo($path, PATHINFO_EXTENSION);
 $data = file_get_contents($path);
 $pdf = 'data:image/' . $type . ';base64,' . base64_encode($data);
-//$input1['recipeflyerurl'] = $base64;
-var_dump('<br>
-<hr>
-:');   
-var_dump('input1:');   
-var_dump($input1);
-//$pdf = $file->getClientOriginalName();
 $calendarweek->recipeflyerurl = $pdf;
 }
-$calendarweek->save(); 
-echo"
-<hr>
-";
+$calendarweek->save();
+
 $productsveganrecipecount = Products::where('recipetypenummer', '=', 4)->orderBy('id', 'ASC')->get();
 foreach($productsveganrecipecount as $key3 => $value3)
 {
 $productid=$value3->id;
 $product_name=$value3->product_name;
 $nr_of_recipes=$value3->nr_of_recipes;
-echo "nr_of_recipes: $nr_of_recipes: <br>";
-echo "productid: $productid: <br>";
+;
 }   
 
 $keyx=0; 
@@ -257,12 +234,22 @@ $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek;
 $Calendarweekrecipestruktur->productname = "Vegan";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergervegan']['recipe'][$keyx];
 $Calendarweekrecipestruktur->sorting = $sorting; 
-echo "<br>productidx: $productid: <br>";
-$Calendarweekrecipestruktur->save();
-$counter++; $sorting++; $keyx++;
-    
+
+$counter++; $sorting++; $keyx++;    
 }
-//fit
+
+/*
+|----------------------------------------------------------------------------------------------------------------------------------
+| VEGAN BOXEN END 
+|-----------------------------------------------------------------------------------------------------------------------------------
+*/
+
+
+/*
+|----------------------------------------------------------------------------------------------------------------------------------
+| FIT BOXEN START 
+|-----------------------------------------------------------------------------------------------------------------------------------
+*/
 $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');    
@@ -277,36 +264,21 @@ $name = $file->getClientOriginalName();
 $image = Image::make(Input::file($keypdf)->getRealPath());
 $image->save(public_path() . '/filemanager/userfiles/' . $input[$keypdf]->getClientOriginalName());
 $input1['recipeflyerurl'] = $name;
-var_dump('name:');   
-var_dump($name);
 // Upload nehmen und in DB speichern.
 $path=public_path() . '/filemanager/userfiles/' . $input1['recipeflyerurl'];
 $type = pathinfo($path, PATHINFO_EXTENSION);
 $data = file_get_contents($path);
 $pdf = 'data:image/' . $type . ';base64,' . base64_encode($data);
-//$input1['recipeflyerurl'] = $base64;
-var_dump('<br>
-<hr>
-:');   
-var_dump('input1:');   
-var_dump($input1);
-//$pdf = $file->getClientOriginalName();
 $calendarweek->recipeflyerurl = $pdf;
 }
 $calendarweek->save(); 
-echo"
-<hr>
-";
 $productsfitrecipecount = Products::where('recipetypenummer', '=', 6)->orderBy('id', 'ASC')->get();
 foreach($productsfitrecipecount as $key3 => $value3)
 {
 $productid=$value3->id;
 $product_name=$value3->product_name;
 $nr_of_recipes=$value3->nr_of_recipes;
-echo "nr_of_recipes: $nr_of_recipes: <br>";
-echo "productid: $productid: <br>";
-}   
-
+}  
 $keyx=0; 
 $sorting=1;  
 $counter = 1;                  
@@ -320,11 +292,15 @@ $Calendarweekrecipestruktur->productname = "Fit";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergerfit']['recipe'][$keyx];
 ; 
 $Calendarweekrecipestruktur->sorting = $sorting; 
-echo "<br>productidx: $productid: <br>";
+
 $Calendarweekrecipestruktur->save();
-$counter++; $sorting++; $keyx++;
-    
+$counter++; $sorting++; $keyx++;    
 }
+/*
+|----------------------------------------------------------------------------------------------------------------------------------
+| FIT BOXEN END 
+|-----------------------------------------------------------------------------------------------------------------------------------
+*/
 
 Notification::success('Wochenplann wurde angelegt');
 $calendarweek = Input::get('calendarweek');    
