@@ -83,23 +83,27 @@ $product_name=$value3->product_name;
 $nr_of_recipes=$value3->nr_of_recipes;
 echo "nr_of_recipes: $nr_of_recipes: <br>";
 echo "productid: $productid: <br>";
+}
+
 $keyx=0; 
 $sorting=1;  
-$counter = 1;                  
+$counter = 1;
 while ($counter <= $nr_of_recipes)                      
 {    
 $lastinsertidcalendarweek = $calendarweek->packetid;
 $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
 $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek; 
-$Calendarweekrecipestruktur->productid = $productid;
-$Calendarweekrecipestruktur->productname = $product_name;
+//$Calendarweekrecipestruktur->productid = $productid;
+$Calendarweekrecipestruktur->productname = "Classic";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergerclassic']['recipe'][$keyx];
 $Calendarweekrecipestruktur->sorting = $sorting; 
 echo "<br>productidx: $productid: <br>";
 $Calendarweekrecipestruktur->save();
 $counter++; $sorting++; $keyx++;
-}       
-}
+}  
+
+
+
 
 //Vegetarisch
 $calendarweek = new Calendarweek;
@@ -118,6 +122,8 @@ $product_name=$value3->product_name;
 $nr_of_recipes=$value3->nr_of_recipes;
 echo "nr_of_recipes: $nr_of_recipes: <br>";
 echo "productid: $productid: <br>";
+}  
+
 $keyx=0; 
 $sorting=1;  
 $counter = 1;                  
@@ -126,14 +132,14 @@ while ($counter <= $nr_of_recipes)
 $lastinsertidcalendarweek = $calendarweek->packetid;
 $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
 $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek; 
-$Calendarweekrecipestruktur->productid = $productid;
-$Calendarweekrecipestruktur->productname = $product_name;
+//$Calendarweekrecipestruktur->productid = $productid;
+$Calendarweekrecipestruktur->productname = "Vegetarisch";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergervegetarisch']['recipe'][$keyx];
 $Calendarweekrecipestruktur->sorting = $sorting; 
 echo "<br>productidx: $productid: <br>";
 $Calendarweekrecipestruktur->save();
 $counter++; $sorting++; $keyx++;
-}       
+     
 }
 //Vegan
 $calendarweek = new Calendarweek;
@@ -152,6 +158,8 @@ $product_name=$value3->product_name;
 $nr_of_recipes=$value3->nr_of_recipes;
 echo "nr_of_recipes: $nr_of_recipes: <br>";
 echo "productid: $productid: <br>";
+}   
+
 $keyx=0; 
 $sorting=1;  
 $counter = 1;                  
@@ -160,14 +168,14 @@ while ($counter <= $nr_of_recipes)
 $lastinsertidcalendarweek = $calendarweek->packetid;
 $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
 $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek; 
-$Calendarweekrecipestruktur->productid = $productid;
-$Calendarweekrecipestruktur->productname = $product_name;
+//$Calendarweekrecipestruktur->productid = $productid;
+$Calendarweekrecipestruktur->productname = "Vegan";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergervegan']['recipe'][$keyx];
 $Calendarweekrecipestruktur->sorting = $sorting; 
 echo "<br>productidx: $productid: <br>";
 $Calendarweekrecipestruktur->save();
 $counter++; $sorting++; $keyx++;
-}       
+    
 }
 //fit
 $calendarweek = new Calendarweek;
@@ -186,6 +194,8 @@ $product_name=$value3->product_name;
 $nr_of_recipes=$value3->nr_of_recipes;
 echo "nr_of_recipes: $nr_of_recipes: <br>";
 echo "productid: $productid: <br>";
+}   
+
 $keyx=0; 
 $sorting=1;  
 $counter = 1;                  
@@ -194,15 +204,15 @@ while ($counter <= $nr_of_recipes)
 $lastinsertidcalendarweek = $calendarweek->packetid;
 $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
 $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek; 
-$Calendarweekrecipestruktur->productid = $productid;
-$Calendarweekrecipestruktur->productname = $product_name;
+//$Calendarweekrecipestruktur->productid = $productid;
+$Calendarweekrecipestruktur->productname = "Fit";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergerfit']['recipe'][$keyx];
 ; 
 $Calendarweekrecipestruktur->sorting = $sorting; 
 echo "<br>productidx: $productid: <br>";
 $Calendarweekrecipestruktur->save();
 $counter++; $sorting++; $keyx++;
-}       
+    
 }
 //$Calendarweekrecipestruktur->productid = $productid; 
 //$sorteraddeins= ($key3+1); 
