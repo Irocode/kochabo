@@ -71,7 +71,36 @@ $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');    
 $calendarweek->type = 3;
+
+$keypdf = "pdf_classic";
+if (Input::hasFile($keypdf))
+{
+// var_dump('pdf is here');
+$input = Input::all();
+$file = Input::file($keypdf);
+$name = $file->getClientOriginalName();
+$image = Image::make(Input::file($keypdf)->getRealPath());
+$image->save(public_path() . '/filemanager/userfiles/' . $input[$keypdf]->getClientOriginalName());
+$input1['recipeflyerurl'] = $name;
+var_dump('name:');   
+var_dump($name);
+// Upload nehmen und in DB speichern.
+$path=public_path() . '/filemanager/userfiles/' . $input1['recipeflyerurl'];
+$type = pathinfo($path, PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$pdf = 'data:image/' . $type . ';base64,' . base64_encode($data);
+//$input1['recipeflyerurl'] = $base64;
+var_dump('<br>
+<hr>
+:');   
+var_dump('input1:');   
+var_dump($input1);
+//$pdf = $file->getClientOriginalName();
+$calendarweek->recipeflyerurl = $pdf;
+}
 $calendarweek->save(); 
+
+
 echo"
 <hr>
 ";
@@ -110,6 +139,32 @@ $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');    
 $calendarweek->type = 5;
+$keypdf = "pdf_vegetarisch";
+if (Input::hasFile($keypdf))
+{
+// var_dump('pdf is here');
+$input = Input::all();
+$file = Input::file($keypdf);
+$name = $file->getClientOriginalName();
+$image = Image::make(Input::file($keypdf)->getRealPath());
+$image->save(public_path() . '/filemanager/userfiles/' . $input[$keypdf]->getClientOriginalName());
+$input1['recipeflyerurl'] = $name;
+var_dump('name:');   
+var_dump($name);
+// Upload nehmen und in DB speichern.
+$path=public_path() . '/filemanager/userfiles/' . $input1['recipeflyerurl'];
+$type = pathinfo($path, PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$pdf = 'data:image/' . $type . ';base64,' . base64_encode($data);
+//$input1['recipeflyerurl'] = $base64;
+var_dump('<br>
+<hr>
+:');   
+var_dump('input1:');   
+var_dump($input1);
+//$pdf = $file->getClientOriginalName();
+$calendarweek->recipeflyerurl = $pdf;
+}
 $calendarweek->save(); 
 echo"
 <hr>
@@ -146,6 +201,32 @@ $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');    
 $calendarweek->type = 4;
+$keypdf = "pdf_vegan";
+if (Input::hasFile($keypdf))
+{
+// var_dump('pdf is here');
+$input = Input::all();
+$file = Input::file($keypdf);
+$name = $file->getClientOriginalName();
+$image = Image::make(Input::file($keypdf)->getRealPath());
+$image->save(public_path() . '/filemanager/userfiles/' . $input[$keypdf]->getClientOriginalName());
+$input1['recipeflyerurl'] = $name;
+var_dump('name:');   
+var_dump($name);
+// Upload nehmen und in DB speichern.
+$path=public_path() . '/filemanager/userfiles/' . $input1['recipeflyerurl'];
+$type = pathinfo($path, PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$pdf = 'data:image/' . $type . ';base64,' . base64_encode($data);
+//$input1['recipeflyerurl'] = $base64;
+var_dump('<br>
+<hr>
+:');   
+var_dump('input1:');   
+var_dump($input1);
+//$pdf = $file->getClientOriginalName();
+$calendarweek->recipeflyerurl = $pdf;
+}
 $calendarweek->save(); 
 echo"
 <hr>
@@ -182,6 +263,32 @@ $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');    
 $calendarweek->type = 6;
+$keypdf = "pdf_fit";
+if (Input::hasFile($keypdf))
+{
+// var_dump('pdf is here');
+$input = Input::all();
+$file = Input::file($keypdf);
+$name = $file->getClientOriginalName();
+$image = Image::make(Input::file($keypdf)->getRealPath());
+$image->save(public_path() . '/filemanager/userfiles/' . $input[$keypdf]->getClientOriginalName());
+$input1['recipeflyerurl'] = $name;
+var_dump('name:');   
+var_dump($name);
+// Upload nehmen und in DB speichern.
+$path=public_path() . '/filemanager/userfiles/' . $input1['recipeflyerurl'];
+$type = pathinfo($path, PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$pdf = 'data:image/' . $type . ';base64,' . base64_encode($data);
+//$input1['recipeflyerurl'] = $base64;
+var_dump('<br>
+<hr>
+:');   
+var_dump('input1:');   
+var_dump($input1);
+//$pdf = $file->getClientOriginalName();
+$calendarweek->recipeflyerurl = $pdf;
+}
 $calendarweek->save(); 
 echo"
 <hr>

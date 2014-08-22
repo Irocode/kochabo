@@ -68,7 +68,7 @@
                   <div id="zone">
                      <div class="form-group">
                         <label for="exampleInputFile">PDF einfügen</label>
-                        <input type="file" name="pdf_" class="btn btn-u" value="PDF auswählen">
+                        <input type="file" name="pdf_{{$group}}" class="btn btn-u" value="PDF auswählen">
                      </div>
                   </div>
                </div>
@@ -133,7 +133,7 @@
                   <div id="zone">
                      <div class="form-group">
                         <label for="exampleInputFile">PDF einfügen</label>
-                        <input type="file" name="pdf_" class="btn btn-u" value="PDF auswählen">
+                        <input type="file" name="pdf_{{$group}}" class="btn btn-u" value="PDF auswählen">
                      </div>
                   </div>
                </div>
@@ -198,7 +198,7 @@
                   <div id="zone">
                      <div class="form-group">
                         <label for="exampleInputFile">PDF einfügen</label>
-                        <input type="file" name="pdf_" class="btn btn-u" value="PDF auswählen">
+                        <input type="file" name="pdf_{{$group}}" class="btn btn-u" value="PDF auswählen">
                      </div>
                   </div>
                </div>
@@ -263,7 +263,7 @@
                   <div id="zone">
                      <div class="form-group">
                         <label for="exampleInputFile">PDF einfügen</label>
-                        <input type="file" name="pdf_" class="btn btn-u" value="PDF auswählen">
+                        <input type="file" name="pdf_{{$group}}" class="btn btn-u" value="PDF auswählen">
                      </div>
                   </div>
                </div>
