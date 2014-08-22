@@ -87,12 +87,6 @@ $typeerfragenx = list_Recipe_type::join('products','products.recipetypenummer','
 'products.type',
 ]); 
 
-
-
-
-
-
-
 foreach($typeerfragen as $x)
 {
 $typeerfragenid = $x->id;
@@ -146,6 +140,7 @@ $ret = $x->nr_of_recipes;
 $final_results_counter_nr_of_recipes_vegetarisch[] = $ret;
 }
 $max_vegetarisch = max($final_results_counter_nr_of_recipes_vegetarisch);
+$nr_of_recipes_vegetarisch=$nr_of_recipes;
 }
 //Anhand der höchsten Rezeptanzahl Felder aufbauen für Vegetarisch GESAMT
 
@@ -195,7 +190,7 @@ $max_fit = max($final_results_counter_nr_of_recipes_fit);
 
 $products = Products::where('recipetypenummer', '>', '1')->where('type', '=', '1')->orderBy('id', 'ASC')->get();
 $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();              
-return View::make('backend.calendarweek.create', compact( 'nr_of_recipes_classic','productsjoin','products','recipe','calendarweek','year','max_classic','typeerfragenbezeichung_classic','max_vegetarisch','typeerfragenbezeichung_vegetarisch','max_vegan','typeerfragenbezeichung_vegan','max_fit','typeerfragenbezeichung_fit'));
+return View::make('backend.calendarweek.create', compact( 'nr_of_recipes_classic','nr_of_recipes_vegetarisch','productsjoin','products','recipe','calendarweek','year','max_classic','typeerfragenbezeichung_classic','max_vegetarisch','typeerfragenbezeichung_vegetarisch','max_vegan','typeerfragenbezeichung_vegan','max_fit','typeerfragenbezeichung_fit'));
 }
 else
 {

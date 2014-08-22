@@ -86,15 +86,8 @@
 {{ $v->recipetypenummer }}/ productsID{{ $v->id }} / product_name{{ $v->product_name }}/ type{{ $v->type }}<br>
   <!--productid -->    
                   <input type="hidden" name="merger{{$group}}[id][]" value="{{$v->id}}">
-
 <!--nr_of_recipes -->    
-                  <input type="hidden" name="merger{{$group}}[nr_of_recipes][]" value="{{$v->nr_of_recipes}}">
-
-                     
-
-
-
-
+                  <input type="hidden" name="merger{{$group}}[nr_of_recipes][]" value="{{$v->nr_of_recipes}}">              
 
  @endforeach    
 <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_classic}}">   
@@ -125,7 +118,7 @@
 
 <!--VEGEARISCHE BOXEN START-->
 <!-- Maximale Anzahl Vegetarische Rezepte ausgeben Start-->
-<div class="panel panel-default" style=" border-style:solid; border-color:blue;">
+<div class="panel panel-default" style=" border-style:solid; border-color:red;">
 <div class="panel-heading">
 <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_vegetarisch [Maximale Feldanzahl: $max_vegetarisch";?>]</h3>
 </div>
@@ -133,6 +126,8 @@
 <div>  
 <div class="row">
 <div class="col-md-6">
+
+
 <?php                    
                   $countermaxstart = 1;
                   $countselectbeast = 1;
@@ -142,10 +137,14 @@
                      {                    
 ?>
                   <label class="control-label" for="recipetype">Rezept {{$countername}}</label>
-                        <!--nr_of_recipes 1x-->   
+                        <!--nr_of_recipes 1x-->  
+
+               
+
+                         
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-                        <select  id="select-beast_<?php echo "$countselectbeast$countermaxstart$group" ?>" name="merger{{$group}}[{{$countermaxstart}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
+                        <select  id="select-beast_<?php echo "$countselectbeast$countermaxstart$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
                            <option value="" selected>Wähle / Suche     </option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -172,7 +171,24 @@
                      $countername++; 
                      }
 
+
+
 ?>
+ @foreach( $productsjoin as $v ) 
+{{ $v->recipetypenummer }}/ productsID{{ $v->id }} / product_name{{ $v->product_name }}/ type{{ $v->type }}<br>
+  <!--productid -->    
+                  <input type="hidden" name="merger{{$group}}[id][]" value="{{$v->id}}">
+<!--nr_of_recipes -->    
+                  <input type="hidden" name="merger{{$group}}[nr_of_recipes][]" value="{{$v->nr_of_recipes}}">              
+
+ @endforeach    
+<input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_vegetarisch}}">   
+
+
+
+
+
+
 </div><div class="col-md-6">
  <!-- PDF -->
 <div id="zone">

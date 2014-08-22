@@ -69,35 +69,101 @@ $year = Input::get('year');
 
 
 
-foreach($_REQUEST['mergerclassic']['recipe'] as $key => $value)
-{
-  echo"<hr>";
-  var_dump($value);echo"<br>";
+//Classic
 $calendarweek = new Calendarweek;
 $calendarweek->calendarweek = Input::get('calendarweek');
 $calendarweek->year = Input::get('year');    
 $calendarweek->type = 3;
 $calendarweek->save(); 
-
-
-
-
-
-
+  echo"<hr>";
 $productsclassicrecipecount = Products::where('recipetypenummer', '=', 3)->orderBy('id', 'ASC')->get();
-
-$lastinsertidcalendarweek = $calendarweek->packetid;
 foreach($productsclassicrecipecount as $key3 => $value3)
 {
-echo "hier: $key3: <br>";
 $productid=$value3->id;
+$product_name=$value3->product_name;
+$nr_of_recipes=$value3->nr_of_recipes;
+echo "nr_of_recipes: $nr_of_recipes: <br>";
+echo "productid: $productid: <br>";
 
+                  $keyx=0; 
+                  $sorting=1;  
+                  $counter = 1;                  
+                  while ($counter <= $nr_of_recipes)                      
+                     {    
+
+$lastinsertidcalendarweek = $calendarweek->packetid;
 $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
 $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek; 
+$Calendarweekrecipestruktur->productid = $productid;
+$Calendarweekrecipestruktur->productname = $product_name;
+$Calendarweekrecipestruktur->recipeid = $_REQUEST['mergerclassic']['recipe'][$keyx];
+; 
+$Calendarweekrecipestruktur->sorting = $sorting; 
+
+                   echo "<br>productidx: $productid: <br>";
+                     $Calendarweekrecipestruktur->save();
+                       $counter++; $sorting++; $keyx++;
+                     }       
+
+}
+
+
+
+
+//Vegetarisch
+$calendarweek = new Calendarweek;
+$calendarweek->calendarweek = Input::get('calendarweek');
+$calendarweek->year = Input::get('year');    
+$calendarweek->type = 5;
+$calendarweek->save(); 
+  echo"<hr>";
+$productsclassicrecipecount = Products::where('recipetypenummer', '=', 5)->orderBy('id', 'ASC')->get();
+foreach($productsclassicrecipecount as $key3 => $value3)
+{
+$productid=$value3->id;
+$product_name=$value3->product_name;
+$nr_of_recipes=$value3->nr_of_recipes;
+echo "nr_of_recipes: $nr_of_recipes: <br>";
+echo "productid: $productid: <br>";
+
+                  $keyx=0; 
+                  $sorting=1;  
+                  $counter = 1;                  
+                  while ($counter <= $nr_of_recipes)                      
+                     {    
+
+$lastinsertidcalendarweek = $calendarweek->packetid;
+$Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
+$Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek; 
+$Calendarweekrecipestruktur->productid = $productid;
+$Calendarweekrecipestruktur->productname = $product_name;
+$Calendarweekrecipestruktur->recipeid = $_REQUEST['mergervegetarisch']['recipe'][$keyx];
+; 
+$Calendarweekrecipestruktur->sorting = $sorting; 
+
+                   echo "<br>productidx: $productid: <br>";
+                     $Calendarweekrecipestruktur->save();
+                       $counter++; $sorting++; $keyx++;
+                     }       
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 //$Calendarweekrecipestruktur->productid = $productid; 
-$sorteraddeins= ($key3+1); 
-$Calendarweekrecipestruktur->sorting = $sorteraddeins; 
-$Calendarweekrecipestruktur->save();
+//$sorteraddeins= ($key3+1); 
+//$Calendarweekrecipestruktur->sorting = $sorteraddeins; 
+
+//$Calendarweekrecipestruktur->save();
 /*
 
 $Calendarweekrecipestruktur->productid = $key; 
@@ -107,8 +173,8 @@ $Calendarweekrecipestruktur->sorting = $sorteraddeins;
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['merger'][$key]['recipe'][$key3];
 $Calendarweekrecipestruktur->save();
 */
-}
-}
+
+
 
 
 
