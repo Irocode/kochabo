@@ -52,15 +52,12 @@ $this->calendarweekrecipestruktur = $calendarweekrecipestruktur;
 $this->list_Recipe_type = $list_Recipe_type;
 }  
 
-
 // Welche Seite EDIT oder CREATE Startseite Abfrage Anfang
 function calendarweeknew($year, $calendarweek)
 {
 $calendarweekarray = Calendarweek::where('calendarweek', '=', $calendarweek)->where('year', '=', $year)->orderBy('packetid', 'DESC')->first();
 if ($calendarweekarray == null)
 {
-
-
 
 /*
 |----------------------------------------------------------------------------------------------------------------------------------
@@ -93,8 +90,6 @@ $max_classic = max($final_results_counter_nr_of_recipes_classic);
 |-----------------------------------------------------------------------------------------------------------------------------------
 */
 
-
-
 /*
 |----------------------------------------------------------------------------------------------------------------------------------
 | VEGETARISCHE BOXEN START 
@@ -125,8 +120,6 @@ $max_vegetarisch = max($final_results_counter_nr_of_recipes_vegetarisch);
 | VEGETARISCHE BOXEN END 
 |-----------------------------------------------------------------------------------------------------------------------------------
 */
-
-
 
 /*
 |----------------------------------------------------------------------------------------------------------------------------------
@@ -183,9 +176,6 @@ $final_results_counter_nr_of_recipes_fit[] = $ret;
 //Maximale Anzahl an Feldern 
 $max_fit = max($final_results_counter_nr_of_recipes_fit);
 }
-//Fit Boxen END
-
-
 $recipe = Recipe::where('id', '>', '0')->orderBy('id', 'DESC')->get();              
 return View::make('backend.calendarweek.create', compact(
  'recipe',
@@ -303,7 +293,6 @@ $joinaufbauvegetarisch = Calendarweekrecipestruktur::join('calendarweek','calend
 |-----------------------------------------------------------------------------------------------------------------------------------
 */
 
-
 /*
 |----------------------------------------------------------------------------------------------------------------------------------
 | VEGAN BOXEN START 
@@ -343,7 +332,6 @@ $joinaufbauvegan = Calendarweekrecipestruktur::join('calendarweek','calendarweek
 |-----------------------------------------------------------------------------------------------------------------------------------
 */
 
-
 /*
 |----------------------------------------------------------------------------------------------------------------------------------
 | VEGAN FIT START 
@@ -382,7 +370,6 @@ $joinaufbaufit = Calendarweekrecipestruktur::join('calendarweek','calendarweek.p
 | VEGAN FIT END 
 |-----------------------------------------------------------------------------------------------------------------------------------
 */
-
 
 //Output
 $calendarweek = $this->calendarweek->find($idnew);

@@ -59,15 +59,31 @@ function store()
 $data = Input::all(); 
 echo "
 <pre>";echo print_r($data);
- echo "</pre>
-";
-echo"
-<hr>
-";
+ echo "</pre>";
+echo"<hr>";
 
 //Kalenderwoche und Jahr
 $calendarweek = Input::get('calendarweek');    
 $year = Input::get('year'); 
+
+// Wenn update dann erfolgt....
+$update = Input::get('update'); 
+if (isset($update))
+{   
+
+
+
+
+
+Notification::success('Wochenplann wurde geändert');
+$calendarweek = Input::get('calendarweek');    
+$year = Input::get('year'); 
+//return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
+}
+
+else {
+
+
 
 
 /*
@@ -163,7 +179,6 @@ $productid=$value3->id;
 $product_name=$value3->product_name;
 $nr_of_recipes=$value3->nr_of_recipes;
 }  
-
 $keyx=0; 
 $sorting=1;  
 $counter = 1;                  
@@ -175,7 +190,6 @@ $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek;
 $Calendarweekrecipestruktur->productname = "Vegetarisch";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergervegetarisch']['recipe'][$keyx];
 $Calendarweekrecipestruktur->sorting = $sorting; 
-
 $Calendarweekrecipestruktur->save();
 $counter++; $sorting++; $keyx++;     
 }
@@ -230,7 +244,6 @@ while ($counter <= $nr_of_recipes)
 $lastinsertidcalendarweek = $calendarweek->packetid;
 $Calendarweekrecipestruktur = new Calendarweekrecipestruktur;
 $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek; 
-//$Calendarweekrecipestruktur->productid = $productid;
 $Calendarweekrecipestruktur->productname = "Vegan";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergervegan']['recipe'][$keyx];
 $Calendarweekrecipestruktur->sorting = $sorting; 
@@ -290,9 +303,7 @@ $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek;
 //$Calendarweekrecipestruktur->productid = $productid;
 $Calendarweekrecipestruktur->productname = "Fit";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergerfit']['recipe'][$keyx];
-; 
 $Calendarweekrecipestruktur->sorting = $sorting; 
-
 $Calendarweekrecipestruktur->save();
 $counter++; $sorting++; $keyx++;    
 }
@@ -306,6 +317,9 @@ Notification::success('Wochenplann wurde angelegt');
 $calendarweek = Input::get('calendarweek');    
 $year = Input::get('year'); 
 return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
+}
+
+
 
 
 //$Calendarweekrecipestruktur->productid = $productid; 
@@ -462,19 +476,16 @@ function update($id)
 public
 function destroy($id)
 {
-$this->calendarweek->destroy($id);
-Notification::success('Adresse wurde gelöscht');
-return Redirect::action('App\Controllers\Admin\AddressController@index');
+
 }
 public
 function confirmDestroy($id)
 {
-$calendarweek = $this->calendarweek->find($id);
-return View::make('backend.calendarweek.confirm-destroy', compact('calendarweek'));
+
 }
 public
 function togglePublish($id)
 {
-return $this->calendarweek->togglePublish($id);
+
 }
 }
