@@ -30,13 +30,13 @@
             <div class="row">
                <div class="col-md-6">
                   @foreach( $joinaufbauclassic as $v )  
-                  <?php $id =$v->title;?>
+                  <?php $id =$v->title;?> 
                   <!--selectize Rezept Dynamic auswählen Anfang--> 
                   <div style="height :10px;"></div>
                   <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label>   
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-                        <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
+                        <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
                            <option value="{{$v->recipeid }}" selected="selected">{{$v->title}}</option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -99,7 +99,7 @@
                   <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label> 
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-                        <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
+                        <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
                            <option value="{{$v->recipeid }}" selected="selected">{{$v->title}}</option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -119,7 +119,7 @@
                         });
                      </script>
                   </div>
-                  <!--selectize Rezept Dynamic auswählen Ende-->                
+                  <!--selectize Rezept Dynamic auswählen Ende-->            
                  
                   @endforeach  
                </div>
@@ -162,7 +162,7 @@
                   <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label> 
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-                        <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
+                        <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
                            <option value="{{$v->recipeid }}" selected="selected">{{$v->title}}</option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>
@@ -225,7 +225,7 @@
                   <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label> 
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
-                        <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
+                        <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[{{$v->id}}][recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
                            <option value="{{$v->recipeid }}" selected="selected">{{$v->title}}</option>
                            @foreach( $recipe as $x ) 
                            <option value="{{$x->id }}">{{ $x->title }}</option>

@@ -69,7 +69,46 @@ $year = Input::get('year');
 // Wenn update dann erfolgt....
 $update = Input::get('update'); 
 if (isset($update))
-{   
+{
+
+
+
+
+
+
+foreach($_REQUEST['mergerclassic'] as $key => $value) {
+$dx= $_REQUEST['mergerclassic'][$key];
+$calendarweekrecipestrukturid = Calendarweekrecipestruktur::find($key);
+$calendarweekrecipestrukturid->test3 = 'updated1';
+$calendarweekrecipestrukturid->recipeid = $_REQUEST['mergerclassic'][$key]['recipe'][0];
+$calendarweekrecipestrukturid->save();
+}
+
+foreach($_REQUEST['mergervegetarisch'] as $key => $value) {
+$dx= $_REQUEST['mergervegetarisch'][$key];
+$calendarweekrecipestrukturid = Calendarweekrecipestruktur::find($key);
+$calendarweekrecipestrukturid->test3 = 'updated2';
+$calendarweekrecipestrukturid->recipeid = $_REQUEST['mergervegetarisch'][$key]['recipe'][0];
+$calendarweekrecipestrukturid->save();
+}
+
+foreach($_REQUEST['mergervegan'] as $key => $value) {
+$dx= $_REQUEST['mergervegan'][$key];
+$calendarweekrecipestrukturid = Calendarweekrecipestruktur::find($key);
+$calendarweekrecipestrukturid->test3 = 'updated3';
+$calendarweekrecipestrukturid->recipeid = $_REQUEST['mergervegan'][$key]['recipe'][0];
+$calendarweekrecipestrukturid->save();
+}
+
+foreach($_REQUEST['mergerfit'] as $key => $value) {
+$dx= $_REQUEST['mergerfit'][$key];
+$calendarweekrecipestrukturid = Calendarweekrecipestruktur::find($key);
+$calendarweekrecipestrukturid->test3 = 'updated4';
+$calendarweekrecipestrukturid->recipeid = $_REQUEST['mergerfit'][$key]['recipe'][0];
+$calendarweekrecipestrukturid->save();
+}
+
+
 
 
 
@@ -78,7 +117,7 @@ if (isset($update))
 Notification::success('Wochenplann wurde geändert');
 $calendarweek = Input::get('calendarweek');    
 $year = Input::get('year'); 
-//return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
+return Redirect::to("/admin/calendarweeknew/".$year."/".$calendarweek."/edit");
 }
 
 else {
@@ -247,7 +286,7 @@ $Calendarweekrecipestruktur->packetid = $lastinsertidcalendarweek;
 $Calendarweekrecipestruktur->productname = "Vegan";
 $Calendarweekrecipestruktur->recipeid = $_REQUEST['mergervegan']['recipe'][$keyx];
 $Calendarweekrecipestruktur->sorting = $sorting; 
-
+$Calendarweekrecipestruktur->save();
 $counter++; $sorting++; $keyx++;    
 }
 
