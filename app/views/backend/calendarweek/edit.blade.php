@@ -16,14 +16,8 @@
    </div>
    <!--HEADER mit Zurück ENDE-->
    {{ Form::open(array('action' => 'App\Controllers\Admin\CalendarweekController@store' , 'files'=> true, 'method' => 'post' )) }}
-   
-
-
-
-
    <!--CLASSIC BOXEN START-->
-        <?php $group="classic";?>
-   <!-- Maximale Anzahl Classic Rezepte ausgeben Start-->
+   <?php $group="classic";?>   
    <div class="panel panel-default" style=" border-style:solid; border-color:red;">
       <div class="panel-heading">
          <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_classic [Maximale Feldanzahl: $max_classic";?>]</h3>
@@ -32,15 +26,11 @@
          <div>
             <div class="row">
                <div class="col-md-6">
-                  <?php                    
-                     ?>
-                  
                   @foreach( $joinaufbauclassic as $v )  
                   <?php $id =$v->title;?>
-                  <!--nr_of_recipes 1x-->  
-                         <div style="height :10px;"></div>
-                  <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label>     
-
+                  <!--selectize Rezept Dynamic auswählen Anfang--> 
+                  <div style="height :10px;"></div>
+                  <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label>   
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
@@ -63,20 +53,16 @@
                         });
                      </script>
                   </div>
-                  <!--selectize Rezept Dynamic auswählen Ende--> 
-                  <?php
-                     ?>
+                  <!--selectize Rezept Dynamic auswählen Ende-->                   
                   <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_classic}}">   
                   @endforeach  
                </div>
                <div class="col-md-6">
                   <!-- PDF -->
                   <div id="zone">
-
                      <div class="form-group">
                         <label for="exampleInputFile">PDF einfügen</label>
                         <input type="file" name="pdf_{{$group}}" class="btn btn-u" value="PDF auswählen">
-
                      </div>
                      <img src="{{$v->recipeflyerurl}}" width="120" height="120"> </span>
                   </div>
@@ -85,15 +71,9 @@
          </div>
       </div>
    </div>
-   <!-- Maximale Anzahl Classic Rezepte ausgeben End-->
    <!--CLASSIC BOXEN END-->
-
-
-
-
-  <!--VEGETARISCH BOXEN START-->
-        <?php $group="vegetarisch";?>
-   <!-- Maximale Anzahl VEGETARISCH Rezepte ausgeben Start-->
+   <!--VEGETARISCH BOXEN START-->
+   <?php $group="vegetarisch";?>   
    <div class="panel panel-default" style=" border-style:solid; border-color:blue;">
       <div class="panel-heading">
          <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_vegetarisch [Maximale Feldanzahl: $max_vegetarisch";?>]</h3>
@@ -102,15 +82,11 @@
          <div>
             <div class="row">
                <div class="col-md-6">
-                  <?php                    
-                     ?>
-                  
                   @foreach( $joinaufbauvegetarisch as $v )  
                   <?php $id =$v->title;?>
-                  <!--nr_of_recipes 1x-->  
-                         <div style="height :10px;"></div>
-                  <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label>     
-
+                  <!--selectize Rezept Dynamic auswählen Anfang--> 
+                  <div style="height :10px;"></div>
+                  <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label> 
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
@@ -133,36 +109,27 @@
                         });
                      </script>
                   </div>
-                  <!--selectize Rezept Dynamic auswählen Ende--> 
-                  <?php
-                     ?>
+                  <!--selectize Rezept Dynamic auswählen Ende-->                
                   <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_classic}}">   
                   @endforeach  
                </div>
                <div class="col-md-6">
                   <!-- PDF -->
                   <div id="zone">
-
                      <div class="form-group">
                         <label for="exampleInputFile">PDF einfügen</label>
                         <input type="file" name="pdf_{{$group}}" class="btn btn-u" value="PDF auswählen">
-                       <span> <img src="{{$v->recipeflyerurl}}" width="120" height="120"> </span>
+                        </span> <img src="{{$v->recipeflyerurl}}" width="120" height="120"> </span>
                      </div>
-                     
                   </div>
                </div>
             </div>
          </div>
       </div>
    </div>
-   <!-- Maximale Anzahl VEGETARISCH Rezepte ausgeben End-->
    <!--VEGETARISCH BOXEN END-->
-
-
-
-     <!--VEGAN BOXEN START-->
-        <?php $group="vegan";?>
-   <!-- Maximale Anzahl VEGAN Rezepte ausgeben Start-->
+   <!--VEGAN BOXEN START-->
+   <?php $group="vegan";?>   
    <div class="panel panel-default" style=" border-style:solid; border-color:green;">
       <div class="panel-heading">
          <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_vegan [Maximale Feldanzahl: $max_vegan";?>]</h3>
@@ -171,15 +138,11 @@
          <div>
             <div class="row">
                <div class="col-md-6">
-                  <?php                    
-                     ?>
-                  
                   @foreach( $joinaufbauvegan as $v )  
                   <?php $id =$v->title;?>
-                  <!--nr_of_recipes 1x-->  
-                         <div style="height :10px;"></div>
-                  <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label>     
-
+                  <!--selectize Rezept Dynamic auswählen Anfang--> 
+                  <div style="height :10px;"></div>
+                  <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label> 
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
@@ -202,20 +165,16 @@
                         });
                      </script>
                   </div>
-                  <!--selectize Rezept Dynamic auswählen Ende--> 
-                  <?php
-                     ?>
+                  <!--selectize Rezept Dynamic auswählen Ende-->                  
                   <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_vegan}}">   
                   @endforeach  
                </div>
                <div class="col-md-6">
                   <!-- PDF -->
                   <div id="zone">
-
                      <div class="form-group">
                         <label for="exampleInputFile">PDF einfügen</label>
                         <input type="file" name="pdf_{{$group}}" class="btn btn-u" value="PDF auswählen">
-
                      </div>
                      <img src="{{$v->recipeflyerurl}}" width="120" height="120"> </span>
                   </div>
@@ -224,14 +183,9 @@
          </div>
       </div>
    </div>
-   <!-- Maximale Anzahl VEGAN Rezepte ausgeben End-->
    <!--VEGAN BOXEN END-->
-
-
-
-     <!--FIT BOXEN START-->
-        <?php $group="fit";?>
-   <!-- Maximale Anzahl FIT Rezepte ausgeben Start-->
+   <!--FIT BOXEN START-->
+   <?php $group="fit";?>  
    <div class="panel panel-default" style=" border-style:solid; border-color:yellow;">
       <div class="panel-heading">
          <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_fit [Maximale Feldanzahl: $max_fit";?>]</h3>
@@ -240,15 +194,11 @@
          <div>
             <div class="row">
                <div class="col-md-6">
-                  <?php                    
-                     ?>
-                  
                   @foreach( $joinaufbaufit as $v )  
                   <?php $id =$v->title;?>
-                  <!--nr_of_recipes 1x-->  
-                         <div style="height :10px;"></div>
-                  <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label>     
-
+                  <!--selectize Rezept Dynamic auswählen Anfang--> 
+                  <div style="height :10px;"></div>
+                  <label class="control-label" for="recipetype">Rezept {{ $v->sorting}}</label> 
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$id$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
@@ -271,20 +221,16 @@
                         });
                      </script>
                   </div>
-                  <!--selectize Rezept Dynamic auswählen Ende--> 
-                  <?php
-                     ?>
+                  <!--selectize Rezept Dynamic auswählen Ende-->                  
                   <input type="hidden" name="merger{{$group}}[type][]" value="{{$nr_of_recipes_fit}}">   
                   @endforeach  
                </div>
                <div class="col-md-6">
                   <!-- PDF -->
                   <div id="zone">
-
                      <div class="form-group">
                         <label for="exampleInputFile">PDF einfügen</label>
                         <input type="file" name="pdf_{{$group}}" class="btn btn-u" value="PDF auswählen">
-
                      </div>
                      <img src="{{$v->recipeflyerurl}}" width="120" height="120"> </span>
                   </div>
@@ -293,11 +239,7 @@
          </div>
       </div>
    </div>
-   <!-- Maximale Anzahl FIT Rezepte ausgeben End-->
    <!--FIT BOXEN END-->
-
-
-
    {{ Form::hidden('activated', '1', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::hidden('check_yes', 'yes', array('class' => 'form-control', 'placeholder' => 'activated' )) }} 
    {{ Form::hidden('calendarweek', $calendarweek->calendarweek, array('class' => 'form-control' )) }} 

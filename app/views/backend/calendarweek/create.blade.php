@@ -13,8 +13,7 @@
    </div>
    <!--HEADER mit Zurück ENDE-->
    {{ Form::open(array('action' => 'App\Controllers\Admin\CalendarweekController@store' , 'files'=> true, 'method' => 'post' )) }}
-   <!--CLASSIC BOXEN START-->
-   <!-- Maximale Anzahl Classic Rezepte ausgeben Start-->
+   <!--CLASSIC BOXEN START--> 
    <div class="panel panel-default" style=" border-style:solid; border-color:red;">
       <div class="panel-heading">
          <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_classic [Maximale Feldanzahl: $max_classic";?>]</h3>
@@ -32,7 +31,7 @@
                         {                    
                      ?>
                   <label class="control-label" for="recipetype">Rezept {{$countername}}</label>
-                  <!--nr_of_recipes 1x-->  
+                  <!--selectize Rezept Dynamic auswählen Anfang--> 
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$countselectbeast$countermaxstart$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
@@ -76,10 +75,8 @@
          </div>
       </div>
    </div>
-   <!-- Maximale Anzahl Classic Rezepte ausgeben End-->
    <!--CLASSIC BOXEN END-->
-   <!--VEGEARISCHE BOXEN START-->
-   <!-- Maximale Anzahl Vegetarische Rezepte ausgeben Start-->
+   <!--VEGEARISCHE BOXEN START-->   
    <div class="panel panel-default" style=" border-style:solid; border-color:blue;">
       <div class="panel-heading">
          <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_vegetarisch [Maximale Feldanzahl: $max_vegetarisch";?>]</h3>
@@ -97,7 +94,7 @@
                         {                    
                      ?>
                   <label class="control-label" for="recipetype">Rezept {{$countername}}</label>
-                  <!--nr_of_recipes 1x-->  
+                  <!--selectize Rezept Dynamic auswählen Anfang--> 
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$countselectbeast$countermaxstart$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
@@ -141,10 +138,8 @@
          </div>
       </div>
    </div>
-   <!-- Maximale Anzahl Vegetarische Rezepte ausgeben End-->
    <!--Vegetarische BOXEN END-->
-   <!--Vegan BOXEN START-->
-   <!-- Maximale Anzahl Vegan Rezepte ausgeben Start-->
+   <!--Vegan BOXEN START-->   
    <div class="panel panel-default" style=" border-style:solid; border-color:green;">
       <div class="panel-heading">
          <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_vegan [Maximale Feldanzahl: $max_vegan";?>]</h3>
@@ -162,7 +157,7 @@
                         {                    
                      ?>
                   <label class="control-label" for="recipetype">Rezept {{$countername}}</label>
-                  <!--nr_of_recipes 1x-->  
+                  <!--selectize Rezept Dynamic auswählen Anfang--> 
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$countselectbeast$countermaxstart$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
@@ -206,10 +201,8 @@
          </div>
       </div>
    </div>
-   <!-- Maximale Anzahl Vegan Rezepte ausgeben End-->
    <!--Vegan BOXEN END-->
-   <!--Fit BOXEN START-->
-   <!-- Maximale Anzahl Fit Rezepte ausgeben Start-->
+   <!--Fit BOXEN START-->  
    <div class="panel panel-default" style=" border-style:solid; border-color:yellow;">
       <div class="panel-heading">
          <h3 class="panel-title"> <?php echo" $typeerfragenbezeichung_fit [Maximale Feldanzahl: $max_fit";?>]</h3>
@@ -227,7 +220,7 @@
                         {                    
                      ?>
                   <label class="control-label" for="recipetype">Rezept {{$countername}}</label>
-                  <!--nr_of_recipes 1x-->  
+                  <!--selectize Rezept Dynamic auswählen Anfang-->   
                   <div id="wrapper">
                      <div class="control-group {{ $errors->has('title1') ? 'has-error' : '' }}">
                         <select  id="select-beast_<?php echo "$countselectbeast$countermaxstart$group" ?>" name="merger{{$group}}[recipe][]"  style="width:auto"  placeholder=">Wähle / Suche "    >
@@ -271,7 +264,6 @@
          </div>
       </div>
    </div>
-   <!-- Maximale Anzahl Fit Rezepte ausgeben End-->
    <!--Fit BOXEN END-->
    <br>  
    <!-- Plichtfeld Anfang -->
